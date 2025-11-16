@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.bpy.score.game.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: org.bpy.score.engine.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.bpy.score.engine.tests;singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.bpy.score.game,
+ org.junit;bundle-version="4.13.0",
+ org.bpy.score.internationalization;bundle-version="1.0.0",
+ org.bpy.score.engine;bundle-version="1.0.0",
+ org.eclipse.xtext.xbase;bundle-version="2.23.0",
+ com.google.inject;bundle-version="3.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Import-Package: com.google.inject,
+ javax.inject;version="1.0.0",
+ org.bpy.score.game.tests,
+ org.eclipse.xtext.parser,
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.testing.extensions

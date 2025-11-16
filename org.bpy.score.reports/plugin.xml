@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.bpy.score.reports.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="org.bpy.score.reports.Perspective"
+            id="org.bpy.score.reports.perspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated GameReport -->
+      <package
+            uri="http:/www.org.bpy.score/reports/game"
+            class="org.bpy.score.reports.gamereports.GameReportsPackage"
+            genModel="model/GameReport.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated GameReport -->
+      <parser
+            type="gamereports"
+            class="org.bpy.score.reports.gamereports.util.GameReportsResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Graphics
+Bundle-SymbolicName: org.bpy.score.graphics;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.bpy.score.graphics.Activator
+Bundle-Vendor: BRIAND Patrick
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.bpy.score.game;bundle-version="1.0.0",
+ org.eclipse.emf;bundle-version="2.6.0",
+ org.eclipse.emf.common;bundle-version="2.13.0",
+ org.bpy.score.engine;bundle-version="1.0.0",
+ org.bpy.score.internationalization;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-ActivationPolicy: lazy
+Export-Package: org.bpy.score.graphics
+Import-Package: org.bpy.score.engine.exception,
+ org.bpy.score.engine.manager,
+ org.bpy.score.engine.stats,
+ org.bpy.score.engine.util

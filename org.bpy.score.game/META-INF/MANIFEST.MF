@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.bpy.score.game
+Bundle-ManifestVersion: 2
+Bundle-Name: org.bpy.score.game
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.bpy.score.game; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ org.bpy.score.internationalization;bundle-version="1.0.0",
+ org.eclipse.osgi.util;bundle-version="3.7.100",
+ org.eclipse.xtext.builder;bundle-version="2.28.0",
+ org.eclipse.osgi;bundle-version="3.18.100",
+ org.bpy.score.club;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.bpy.score.game,
+ org.bpy.score.game.game,
+ org.bpy.score.game.game.impl,
+ org.bpy.score.game.game.util,
+ org.bpy.score.game.generator,
+ org.bpy.score.game.parser.antlr,
+ org.bpy.score.game.parser.antlr.internal,
+ org.bpy.score.game.scoping,
+ org.bpy.score.game.serializer,
+ org.bpy.score.game.services,
+ org.bpy.score.game.util,
+ org.bpy.score.game.validation
+Import-Package: org.apache.log4j

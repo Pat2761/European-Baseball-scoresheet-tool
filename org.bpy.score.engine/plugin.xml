@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ScoreEngineModel -->
+      <package
+            uri="www.org.bpy.score"
+            class="org.bpy.score.engine.stats.emf.statistic.StatisticPackage"
+            genModel="model/ScoreEngineModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated ScoreEngineModel -->
+      <parser
+            type="gamestat"
+            class="org.bpy.score.engine.stats.emf.statistic.util.StatisticResourceFactoryImpl"/>
+   </extension>
+ 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated GlobalStatisticsModel -->
+      <package
+            uri="http:/www.org.bpy.score/global/stats"
+            class="org.bpy.score.engine.stats.emf.globalstatistics.GlobalStatisticsPackage"
+            genModel="model/GlobalStatisticsModel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated GlobalStatisticsModel -->
+      <parser
+            type="globalstats"
+            class="org.bpy.score.engine.stats.emf.globalstatistics.util.GlobalStatisticsResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

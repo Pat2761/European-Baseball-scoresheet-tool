@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="game" nsURI="http://www.bpy.org/score/game/Game" nsPrefix="game">
+  <eClassifiers xsi:type="ecore:EClass" name="Game">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Description"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="visitor" eType="#//Roster"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hometeam" eType="#//Roster"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forfeitGame" eType="#//ForfeitGame"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" eType="#//Actions"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForfeitGame">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="team" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Actions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lineup" upperBound="-1"
+        eType="#//LineUp" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="halfInnings" upperBound="-1"
+        eType="#//HalfInning" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gameResume" eType="#//GameResume"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameResume">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="win" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lose" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="save" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HalfInning">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="team" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inningSetting" upperBound="-1"
+        eType="#//InningSetting" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inningElements" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="notes" upperBound="-1"
+        eType="#//Note" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Commands">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="command" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MoveCommand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectedBatterCommand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="starterBatter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Note">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InningSetting">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTiebrak" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pitches" eType="#//Pitches"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="batterAction" eType="#//BatterAction"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="runnerActions" upperBound="-1"
+        eType="#//RunnerAction" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pitches">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pitches" upperBound="-1"
+        eType="#//Pitch" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pitch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pitch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="runner" eType="#//CurrentRunner"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OtherRunnerAction" eSuperTypes="#//RunnerAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actionCode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerOut" eSuperTypes="#//RunnerAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notInDoublePlay" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvance" eSuperTypes="#//RunnerAction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moreAdvances" upperBound="-1"
+        eType="#//AdvanceWithContinuation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="runnerOut" eType="#//MoreAdanceFail"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runnerAdvance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEarned" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubstitutionEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="team" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="substitutions" upperBound="-1"
+        eType="#//SubstitutionDescription" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubstitutionDescription">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentDefensivePosition"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subtitution" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NewDefensivePosition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="newDefensivePosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="laterality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Replacement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shirtNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defensivePosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="newDefensivePosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="laterality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentBatter" eType="#//CurrentBatter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterBalk" eSuperTypes="#//BatterAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterAction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterMustOutOnFlyFoulBall" eSuperTypes="#//BatterAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="error" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterLostTurn" eSuperTypes="#//BatterAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterAdvance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvance" eSuperTypes="#//BatterAction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moreAdvances" upperBound="-1"
+        eType="#//AdvanceWithContinuation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="out" eType="#//MoreAdanceFail"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DefensiveChoiceForBatter" eSuperTypes="#//BatterAdvance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterAdvance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MoreAdanceFail"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OtherBatterAdvance" eSuperTypes="#//BatterAdvance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterAdvance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Hit" eSuperTypes="#//BatterAdvance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisiveError" eSuperTypes="#//BatterAdvance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterAdvance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOut" eSuperTypes="#//BatterAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notInDoublePlay" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FielderOut" eSuperTypes="#//BatterOut"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StrikeOut" eSuperTypes="#//BatterOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strikeOutValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CurrentBatter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CurrentRunner">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runner" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LineUp">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="teamType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lineUpEntries" upperBound="-1"
+        eType="#//LineUpEntry" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LineUpEntry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defensivePosition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shirtNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="laterality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Roster">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="who" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="players" upperBound="-1"
+        eType="#//Player" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Player">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="playerName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Description">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tournament" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stadium" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="place" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="startTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="umpires" eType="#//Umpires"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scorekeepers" eType="#//ScoreKeepers"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="notes" eType="#//Notes"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Notes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notes" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notess" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScoreKeepers">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scorekeepers" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Umpires">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="umpires" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerMustBeOutOnError" eSuperTypes="#//OtherRunnerAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerDontAdvanceOnError" eSuperTypes="#//OtherRunnerAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerDontAdvanceOnPickOffWithError"
+      eSuperTypes="#//OtherRunnerAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerDontAdvanceOnCaughtStealingWithError"
+      eSuperTypes="#//OtherRunnerAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerDontAdvanceOnThrowError" eSuperTypes="#//OtherRunnerAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerDontAdvanceOnReceiveError" eSuperTypes="#//OtherRunnerAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerDontAdvanceOnNonDecisiveThrowError"
+      eSuperTypes="#//OtherRunnerAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerDontAdvanceOnNonDecisiveReceiveError"
+      eSuperTypes="#//OtherRunnerAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerOutOnCaugthStealing" eSuperTypes="#//RunnerOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runnerOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerOutOnPickOff" eSuperTypes="#//RunnerOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runnerOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerOutOnFielderAction" eSuperTypes="#//RunnerOut #//MoreAdanceFail">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runnerOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerOutByRules" eSuperTypes="#//RunnerOut #//MoreAdanceFail">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runnerOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerOutOnAppeal" eSuperTypes="#//RunnerOut #//MoreAdanceFail">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runnerOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceByBatterAction" eSuperTypes="#//RunnerAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnError" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnStolenBase" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnWildPitch" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnPassBall" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnBalk" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnPickOffWithError" eSuperTypes="#//RunnerAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnCaughtStealingWithError"
+      eSuperTypes="#//RunnerAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnOccupedBall" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnNoDecisiveObstruction"
+      eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnDecisiveObstruction"
+      eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnThrow" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnIndiference" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnThrowError" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnReceiveError" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnNonDecisiveThrowError"
+      eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnNonDecisiveReceiveError"
+      eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnRule" eSuperTypes="#//RunnerAdvance #//AdvanceWithContinuation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnOtherPlayerError" eSuperTypes="#//RunnerAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnFielderChoice" eSuperTypes="#//RunnerAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnOccupedBall" eSuperTypes="#//DefensiveChoiceForBatter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnDefensiveChoice" eSuperTypes="#//DefensiveChoiceForBatter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnIndiference" eSuperTypes="#//DefensiveChoiceForBatter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnNonDecisiveFlyError"
+      eSuperTypes="#//AdvanceWithContinuation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runnerAdvance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEarned" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RunnerAdvanceOnDefensiveChoice" eSuperTypes="#//AdvanceWithContinuation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="runnerAdvance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEarned" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnBaseOnBall" eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnIntentionalBaseOnBall"
+      eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnHitByPitch" eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnKPassBall" eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnKWildPitch" eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnKAbr" eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnKWithError" eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnSacrificeHitWithError"
+      eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnSacrificeHitWithFielderChoice"
+      eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnSacrificeFlyWithError"
+      eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnSacrificeFlyWithFielderChoice"
+      eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnCatcherInterference"
+      eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnObstruction" eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnKWithFielderChoice" eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnGdpWithFielderChoice"
+      eSuperTypes="#//OtherBatterAdvance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnSingleHit" eSuperTypes="#//Hit"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnDoubleHit" eSuperTypes="#//Hit"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnTripleHit" eSuperTypes="#//Hit"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnHomeRun" eSuperTypes="#//Hit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEarned" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnInsidePark" eSuperTypes="#//Hit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEarned" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnFlyError" eSuperTypes="#//DecisiveError"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnReceiveError" eSuperTypes="#//DecisiveError"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnThrowError" eSuperTypes="#//DecisiveError"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnGdpWithError" eSuperTypes="#//DecisiveError"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnFlyed" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnLine" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnPopped" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnFlyedFallBall" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnPoppedFallBall" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnLineDriveFallBall" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnGroundedBall" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBunt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutByRule" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnAppeal" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnGroundedDoublePlay" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnSacrificeFly" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnSacrificeFlyFallBall" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnSacrificeHit" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnInfieldFly" eSuperTypes="#//FielderOut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnSwingedStrike" eSuperTypes="#//StrikeOut"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnLookedStrike" eSuperTypes="#//StrikeOut"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterOutOnReleasedStrike" eSuperTypes="#//StrikeOut"/>
+</ecore:EPackage>

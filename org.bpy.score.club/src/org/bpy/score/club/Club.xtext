@@ -1,0 +1,144 @@
+/*
+ * European Scoring Tool For Baseball
+ * Copyright (C) 2020  patrick BRIAND
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+grammar org.bpy.score.club.Club with org.eclipse.xtext.common.Terminals
+
+generate club "http://www.bpy.org/score/club/Club"
+
+/**
+ * Entry point of the declaration of a Club
+ */
+Club:
+	'club' name=STRING '{'
+		clubDescription = ClubDescription
+	'}'
+;
+
+/**
+ * Allow to define the description of a club. 
+ * A club is define by :
+ * <ul>
+ * <li>The name of the city</li>
+ * <li>the list of the members</li>
+ * <li>the description of each teams</li>
+ * <li>The list of the officials</li>
+ * </ul> 
+ */
+ClubDescription:
+	'city' '=' name = STRING ';'
+
+	members = Members
+
+	teams += Team*
+
+	officials = Officials?
+;
+
+/**
+ * Allow the description of a team.
+ * A team is define by a name (Name of the category)
+ * and by the list of players which play in this team
+ */
+Team:
+	'team' name = STRING '{'
+		players += Player*
+	'}'
+;
+
+/**
+ * Define a player in a team
+ */
+Player:
+	'player' 'name' '=' playerName=[Member|STRING] ';'
+;
+
+/**
+ * Define the list of officials
+ */
+Officials:
+	{Officials}
+	'officials' '{'
+		officials += Official*
+	'}'
+;
+
+/**
+ * Define the category of officials (Scorekeeper, umpire)
+ */
+Official:
+	Umpire | ScoreKeeper
+;
+
+/**
+ * Define the description of an official
+ */
+ScoreKeeper:
+	'scoreKeeper' 'name' '=' name=[Member|STRING] ';'
+;
+
+/**
+ * Define the description of an umpire
+ */
+Umpire:
+	'umpire' 'name' '=' name=[Member|STRING] ';'
+;
+
+/**
+ * define the list of member
+ */
+Members:
+	'members' '{'
+		members += Member+
+	'}'
+;
+
+/**
+ * Allow to describe a member
+ * A member is define by
+ * <ul>
+ * <li>Its mane (mandatory)</li>
+ * <li>its short name (optional) </li>
+ * <li>The licence number (mandatory)</li>
+ * <li>its short number</li>
+ * <li> the status (foreign, u18, european, ....)</li>
+ * </ul>
+ */
+Member:
+	'member' 'name' '='  name = STRING
+	('shortName' '=' shortName = STRING)?
+	'licenceNumber' '=' licenceNumber = STRING
+	('shirtNumber' '=' shirtNumber = INT)?
+	('status' '=' status = MemberStatus)?
+	';'
+;
+
+MemberStatus:
+	status += STATUS (',' status += STATUS)*
+;
+
+/**
+ * Possible status
+ */
+enum STATUS : 
+	foreign = 'E' |
+	european = 'UE' |
+	transfered = 'M' |
+	licenseExtension = 'Ex' |
+	age = '18U'
+;
+

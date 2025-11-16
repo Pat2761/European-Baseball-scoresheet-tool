@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="club" nsURI="http://www.bpy.org/score/club/Club" nsPrefix="club">
+  <eClassifiers xsi:type="ecore:EClass" name="Club">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clubDescription" eType="#//ClubDescription"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClubDescription">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" eType="#//Members"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="teams" upperBound="-1"
+        eType="#//Team" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="officials" eType="#//Officials"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Team">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="players" upperBound="-1"
+        eType="#//Player" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Player">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="playerName" eType="#//Member"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Officials">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="officials" upperBound="-1"
+        eType="#//Official" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Official">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Member"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScoreKeeper" eSuperTypes="#//Official"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Umpire" eSuperTypes="#//Official"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Members">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="#//Member" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Member">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="licenceNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shirtNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="#//MemberStatus"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MemberStatus">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" unique="false"
+        upperBound="-1" eType="#//STATUS"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="STATUS">
+    <eLiterals name="foreign" literal="E"/>
+    <eLiterals name="european" value="1" literal="UE"/>
+    <eLiterals name="transfered" value="2" literal="M"/>
+    <eLiterals name="licenseExtension" value="3" literal="Ex"/>
+    <eLiterals name="age" value="4" literal="18U"/>
+  </eClassifiers>
+</ecore:EPackage>

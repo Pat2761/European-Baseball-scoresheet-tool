@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Internationalization
+Bundle-SymbolicName: org.bpy.score.internationalization; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.bpy.score.internationalization.Activator
+Require-Bundle: org.eclipse.ui;bundle-version="3.118.0",
+ org.eclipse.core.runtime;bundle-version="3.19.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: org.bpy.score.internationalization
+Bundle-ActivationPolicy: lazy
+Export-Package: org.bpy.score.internationalization.club,
+ org.bpy.score.internationalization.engine,
+ org.bpy.score.internationalization.game,
+ org.bpy.score.internationalization.graphics,
+ org.bpy.score.internationalization.rcp,
+ org.bpy.score.internationalization.reports

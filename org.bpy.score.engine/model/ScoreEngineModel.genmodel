@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.bpy.score.engine/src-gen" editDirectory="/org.bpy.score.engine.edit/src-gen"
+    editorDirectory="/org.bpy.score.engine.editor/src-gen" modelPluginID="org.bpy.score.engine"
+    modelName="ScoreEngineModel" editPluginClass="org.bpy.score.engine.emf.statistic.provider.ScoreEngineModelEditPlugin"
+    editorPluginClass="org.bpy.score.engine.emf.statistic.presentation.ScoreEngineModelEditorPlugin"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>ScoreEngineModel.ecore</foreignModel>
+  <genPackages prefix="Statistic" basePackage="org.bpy.score.engine.stats.emf" resource="XML"
+      disposableProviderFactory="true" fileExtensions="gamestat" ecorePackage="ScoreEngineModel.ecore#/">
+    <genDataTypes ecoreDataType="ScoreEngineModel.ecore#//LineupEntryType"/>
+    <genDataTypes ecoreDataType="ScoreEngineModel.ecore#//AssociatedObject"/>
+    <genDataTypes ecoreDataType="ScoreEngineModel.ecore#//PlayerDescription"/>
+    <genDataTypes ecoreDataType="ScoreEngineModel.ecore#//DefensiveStatisticType"/>
+    <genDataTypes ecoreDataType="ScoreEngineModel.ecore#//CatcherStatisticType"/>
+    <genDataTypes ecoreDataType="ScoreEngineModel.ecore#//OffensiveStatisticType"/>
+    <genDataTypes ecoreDataType="ScoreEngineModel.ecore#//PitcherStatisticType"/>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//GameStatistic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//GameStatistic/gameName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//GameStatistic/hometeam"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//GameStatistic/visitor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//GameStatistic/winningPitcher"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//GameStatistic/loosingPitcher"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//GameStatistic/savePitcher"/>
+    </genClasses>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//TeamStatistic">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//TeamStatistic/generalInningStats"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//TeamStatistic/totalCatcherStatistic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//TeamStatistic/totalDefensiveStatistic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//TeamStatistic/totalPitcherStatistic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//TeamStatistic/totalOffensiveStatistic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/doublePlayCounter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/tieBreakCounter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//TeamStatistic/currentOffensivePlayer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//TeamStatistic/currentDefensivePlayer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/currentCatcher"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/currentPitcher"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/catchers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/pitchers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/players"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/gwRbi"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/earnedAgainstTheTeam"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//TeamStatistic/finalScore"/>
+    </genClasses>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//InningGeneralStatistic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//InningGeneralStatistic/atBats"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//InningGeneralStatistic/runs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//InningGeneralStatistic/earnedRuns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//InningGeneralStatistic/hits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//InningGeneralStatistic/assitances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//InningGeneralStatistic/errors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//InningGeneralStatistic/lob"/>
+    </genClasses>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//InninStatictic">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//InninStatictic/inningStat"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//InninStatictic/cumulativeInningStat"/>
+    </genClasses>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//OffensiveStatistic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/plateAppearances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/atBats"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/runs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/hits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/double"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/triple"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/homerun"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/groundedDoublePlay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/sacrificeHit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/sacrificeFly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/baseOnBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/intentionalbaseOnBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/hitByPitch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/interferanceObstruction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/stolenBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/caughtStealing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/strikeOut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//OffensiveStatistic/rbi"/>
+    </genClasses>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//PitcherStatistic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/batterFront"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/atBats"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/runs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/hits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/double"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/triple"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/homerun"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/sacrificeHit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/sacrificeFly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/baseOnBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/intentionalbaseOnBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/hitByPitch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/interferanceObstruction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/strikeOut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/earnedRuns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/wildPitches"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/balks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/pitchCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/pitchCountK"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/pitchCountB"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/pitchCountOthers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/runnerLeftOnBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/caughtStealing"/>
+    </genClasses>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//CatcherStatistic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//CatcherStatistic/passBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//CatcherStatistic/stolenBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//CatcherStatistic/caughtStealing"/>
+    </genClasses>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//DefensiveStatistic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//DefensiveStatistic/putOut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//DefensiveStatistic/assitances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//DefensiveStatistic/errors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//DefensiveStatistic/doublePlay"/>
+    </genClasses>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//LineupEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/isDefensiveEntry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/defensivePosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/offensivePosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/defensivePositionIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/startEntryIp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/ipPlayed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/playerDescription"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ScoreEngineModel.ecore#//LineupEntry/associatedObjects"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/defensiveStatistic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/offensiveStatistic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/catcherStatistic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/pitcherStatistic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/actif"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/orderNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//LineupEntry/laterality"/>
+    </genClasses>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//EStringToAssociatedObjectMap">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//EStringToAssociatedObjectMap/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//EStringToAssociatedObjectMap/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ScoreEngineModel.ecore#//EStringToLineupEntryTypeMap">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//EStringToLineupEntryTypeMap/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//EStringToLineupEntryTypeMap/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,512 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/D:/Programmes/Eclipse/Java_11/eclipse/plugins/org.eclipse.m2e.maven.runtime.slf4j.simple_1.16.0.20200610-1735/jars/slf4j-simple-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [file:/D:/Programmes/Eclipse/Java_11/eclipse/configuration/org.eclipse.osgi/5/0/.cp/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.SimpleLoggerFactory]
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/D:/Programmes/Eclipse/Java_11/eclipse/plugins/org.eclipse.m2e.maven.runtime.slf4j.simple_1.16.0.20200610-1735/jars/slf4j-simple-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [file:/D:/Programmes/Eclipse/Java_11/eclipse/configuration/org.eclipse.osgi/5/0/.cp/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.SimpleLoggerFactory]
+[INFO] Scanning for projects...
+[INFO] Computing target platform for MavenProject: org.bpy.score:org.bpy.score.engine.tests:1.0.0-SNAPSHOT @ E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\pom.xml
+[WARNING] Target location path 'E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\${eclipse_home}' does not exits, target resoloution might be incomplete.
+[INFO] Performing subquery
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/2020-09/ (122B)
+[INFO] Adding repository http://download.eclipse.org/releases/2020-09
+[INFO] Fetching p2.index from http://download.eclipse.org/technology/epp/packages/2020-09/ (128B)
+[INFO] Fetching p2.index from http://download.eclipse.org/releases/2020-09/202009161000/ (142B)
+[INFO] Adding repository https://download.eclipse.org/justj/jres/11/updates/release/latest
+[INFO] Fetching p2.index from https://download.eclipse.org/justj/jres/11/updates/release/11.0.2/ (172B)
+[INFO] Resolving dependencies of MavenProject: org.bpy.score:org.bpy.score.engine.tests:1.0.0-SNAPSHOT @ E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\pom.xml
+[WARNING] The following locally built units have been used to resolve project dependencies:
+[WARNING]   org.bpy.score.club/1.0.0.202012021402
+[WARNING]   org.bpy.score.engine/1.0.0.202012021402
+[WARNING]   org.bpy.score.game.tests/1.0.0.202012021402
+[WARNING]   org.bpy.score.game/1.0.0.202012021402
+[WARNING]   org.bpy.score.internationalization/1.0.0.202012021402
+[INFO] Resolving class path of MavenProject: org.bpy.score:org.bpy.score.engine.tests:1.0.0-SNAPSHOT @ E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\pom.xml
+[INFO] 
+[INFO] --------------< org.bpy.score:org.bpy.score.engine.tests >--------------
+[INFO] Building org.bpy.score.engine.tests 1.0.0-SNAPSHOT
+[INFO] ------------------------[ eclipse-test-plugin ]-------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ org.bpy.score.engine.tests ---
+[INFO] Deleting E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target
+[INFO] 
+[INFO] --- tycho-packaging-plugin:2.1.0:build-qualifier (default-build-qualifier) @ org.bpy.score.engine.tests ---
+[INFO] The project's OSGi version is 1.0.0.202012030747
+[INFO] 
+[INFO] --- tycho-packaging-plugin:2.1.0:validate-id (default-validate-id) @ org.bpy.score.engine.tests ---
+[INFO] 
+[INFO] --- tycho-packaging-plugin:2.1.0:validate-version (default-validate-version) @ org.bpy.score.engine.tests ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M3:enforce (enforce-versions) @ org.bpy.score.engine.tests ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M3:enforce (no-duplicate-declared-dependencies) @ org.bpy.score.engine.tests ---
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.6:prepare-agent (coverage-initialize) @ org.bpy.score.engine.tests ---
+[INFO] tycho.testArgLine set to -javaagent:C:\\Users\\uidq0529\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.6\\org.jacoco.agent-0.8.6-runtime.jar=destfile=E:\\Perso\\Dev\\Download\\perso\\projet\\Statcrew3\\org.bpy.score.engine.parent\\org.bpy.score.engine.tests\\target\\jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ org.bpy.score.engine.tests ---
+[INFO] Using 'windows-1252' encoding to copy filtered resources.
+[INFO] Using 'windows-1252' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\src\main\resources
+[INFO] 
+[INFO] --- tycho-compiler-plugin:2.1.0:compile (default-compile) @ org.bpy.score.engine.tests ---
+[INFO] Compiling 41 source files to E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ org.bpy.score.engine.tests ---
+[INFO] Using 'windows-1252' encoding to copy filtered resources.
+[INFO] Using 'windows-1252' encoding to copy filtered properties files.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- tycho-source-plugin:2.1.0:plugin-source (plugin-source) @ org.bpy.score.engine.tests ---
+[INFO] Building jar: E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\org.bpy.score.engine.tests-1.0.0-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- target-platform-configuration:2.1.0:target-platform (default-target-platform) @ org.bpy.score.engine.tests ---
+[INFO] 
+[INFO] --- tycho-packaging-plugin:2.1.0:package-plugin (default-package-plugin) @ org.bpy.score.engine.tests ---
+[INFO] Building jar: E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\org.bpy.score.engine.tests-1.0.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- tycho-p2-plugin:2.1.0:p2-metadata-default (default-p2-metadata-default) @ org.bpy.score.engine.tests ---
+[INFO] 
+[INFO] --- tycho-surefire-plugin:2.1.0:test (default-test) @ org.bpy.score.engine.tests ---
+[INFO] Executing Test Runtime with timeout 0, logs (if any) will be placed at: E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\work\data\.metadata\.log
+[INFO] Command line:
+	[D:\Programmes\java\jdk-11\bin\java.exe, -Dosgi.noShutdown=false, -Dosgi.os=win32, -Dosgi.ws=win32, -Dosgi.arch=x86_64, -javaagent:C:\\Users\\uidq0529\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.6\\org.jacoco.agent-0.8.6-runtime.jar=destfile=E:\\Perso\\Dev\\Download\\perso\\projet\\Statcrew3\\org.bpy.score.engine.parent\\org.bpy.score.engine.tests\\target\\jacoco.exec, -Dosgi.clean=true, -jar, C:\Users\uidq0529\.m2\repository\p2\osgi\bundle\org.eclipse.equinox.launcher\1.5.800.v20200727-1323\org.eclipse.equinox.launcher-1.5.800.v20200727-1323.jar, -data, E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\work\data, -install, E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\work, -configuration, E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\work\configuration, -application, org.eclipse.tycho.surefire.osgibooter.headlesstest, -testproperties, E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\surefire.properties]
+Running org.bpy.score.engine.tests.IPUtilTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s - in org.bpy.score.engine.tests.IPUtilTest
+test01  Time elapsed: 0.029 s
+test02  Time elapsed: 0.001 s
+test03  Time elapsed: 0 s
+test04  Time elapsed: 0 s
+test05  Time elapsed: 0 s
+test06  Time elapsed: 0.001 s
+test07  Time elapsed: 0 s
+Running org.bpy.score.engine.tests.WBSC_2016_Defense_Appeal_Test
+log4j:WARN No appenders could be found for logger (org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser).
+log4j:WARN Please initialize the log4j system properly.
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.558 s - in org.bpy.score.engine.tests.WBSC_2016_Defense_Appeal_Test
+example009  Time elapsed: 1.727 s
+example010  Time elapsed: 0.154 s
+example011  Time elapsed: 0.121 s
+example012  Time elapsed: 0.092 s
+example013  Time elapsed: 0.084 s
+example014  Time elapsed: 0.075 s
+example015  Time elapsed: 0.056 s
+example016  Time elapsed: 0.075 s
+example017  Time elapsed: 0.06 s
+example018  Time elapsed: 0.049 s
+example019  Time elapsed: 0.052 s
+Running org.bpy.score.engine.tests.WBSC_2016_Defense_Assists_Test
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.56 s - in org.bpy.score.engine.tests.WBSC_2016_Defense_Assists_Test
+example033  Time elapsed: 0.053 s
+example034  Time elapsed: 0.054 s
+example035  Time elapsed: 0.059 s
+example036  Time elapsed: 0.056 s
+example037  Time elapsed: 0.094 s
+example038  Time elapsed: 0.073 s
+example039  Time elapsed: 0.05 s
+example040  Time elapsed: 0.062 s
+example041  Time elapsed: 0.056 s
+Running org.bpy.score.engine.tests.WBSC_2016_Defense_BattingOutOfTurn
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.234 s - in org.bpy.score.engine.tests.WBSC_2016_Defense_BattingOutOfTurn
+example027  Time elapsed: 0.047 s
+example028  Time elapsed: 0.043 s
+example029  Time elapsed: 0.045 s
+example030  Time elapsed: 0.047 s
+example032  Time elapsed: 0.049 s
+Running org.bpy.score.engine.tests.WBSC_2016_Defense_Errors
+Tests run: 38, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.818 s - in org.bpy.score.engine.tests.WBSC_2016_Defense_Errors
+example042  Time elapsed: 0.047 s
+example043  Time elapsed: 0.062 s
+example044  Time elapsed: 0.06 s
+example045  Time elapsed: 0.043 s
+example046  Time elapsed: 0.044 s
+example047  Time elapsed: 0.052 s
+example048  Time elapsed: 0.052 s
+example049  Time elapsed: 0.048 s
+example050  Time elapsed: 0.037 s
+example051  Time elapsed: 0.06 s
+example052  Time elapsed: 0.052 s
+example053  Time elapsed: 0.054 s
+example054  Time elapsed: 0.045 s
+example055  Time elapsed: 0.042 s
+example056  Time elapsed: 0.046 s
+example057  Time elapsed: 0.047 s
+example058  Time elapsed: 0.052 s
+example059  Time elapsed: 0.045 s
+example060  Time elapsed: 0.04 s
+example061  Time elapsed: 0.045 s
+example062  Time elapsed: 0.043 s
+example063  Time elapsed: 0.05 s
+example064  Time elapsed: 0.075 s
+example065  Time elapsed: 0.068 s
+example066  Time elapsed: 0.067 s
+example067  Time elapsed: 0.041 s
+example068  Time elapsed: 0.044 s
+example069  Time elapsed: 0.04 s
+example070  Time elapsed: 0.037 s
+example071  Time elapsed: 0.036 s
+example072  Time elapsed: 0.035 s
+example073  Time elapsed: 0.038 s
+example074  Time elapsed: 0.041 s
+example075  Time elapsed: 0.04 s
+example076  Time elapsed: 0.041 s
+example077  Time elapsed: 0.046 s
+example078  Time elapsed: 0.057 s
+example079  Time elapsed: 0.045 s
+Running org.bpy.score.engine.tests.WBSC_2016_Defense_GDP
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.388 s - in org.bpy.score.engine.tests.WBSC_2016_Defense_GDP
+example001  Time elapsed: 0.039 s
+example002  Time elapsed: 0.038 s
+example003  Time elapsed: 0.042 s
+example004  Time elapsed: 0.039 s
+example006  Time elapsed: 0.049 s
+example007  Time elapsed: 0.051 s
+example008  Time elapsed: 0.047 s
+example005a  Time elapsed: 0.039 s
+example005b  Time elapsed: 0.043 s
+Running org.bpy.score.engine.tests.WBSC_2016_Defense_InfeildFly
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.239 s - in org.bpy.score.engine.tests.WBSC_2016_Defense_InfeildFly
+example020  Time elapsed: 0.053 s
+example021  Time elapsed: 0.031 s
+example022  Time elapsed: 0.038 s
+example023  Time elapsed: 0.039 s
+example024  Time elapsed: 0.039 s
+example025  Time elapsed: 0.038 s
+Running org.bpy.score.engine.tests.WBSC_2016_Defense_OBR
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.497 s - in org.bpy.score.engine.tests.WBSC_2016_Defense_OBR
+example_OBR_10  Time elapsed: 0.032 s
+example_OBR_11  Time elapsed: 0.037 s
+example_OBR_12  Time elapsed: 0.04 s
+example_OBR_13  Time elapsed: 0.031 s
+example_OBR_14  Time elapsed: 0.036 s
+example_OBR_2_1  Time elapsed: 0.03 s
+example_OBR_2_2  Time elapsed: 0.031 s
+example_OBR_1  Time elapsed: 0.029 s
+example_OBR_3  Time elapsed: 0.031 s
+example_OBR_4  Time elapsed: 0.034 s
+example_OBR_5  Time elapsed: 0.034 s
+example_OBR_6  Time elapsed: 0.032 s
+example_OBR_7  Time elapsed: 0.033 s
+example_OBR_8  Time elapsed: 0.031 s
+example_OBR_9  Time elapsed: 0.035 s
+Running org.bpy.score.engine.tests.WBSC_2016_Full_example
+déc. 03, 2020 8:47:39 AM org.bpy.score.engine.stats.StatisticEngine run
+SEVERE: null
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.068 s - in org.bpy.score.engine.tests.WBSC_2016_Full_example
+TestFulleExample  Time elapsed: 0.068 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_Occuped_Ball
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.277 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_Occuped_Ball
+example052  Time elapsed: 0.032 s
+example053  Time elapsed: 0.037 s
+example054  Time elapsed: 0.034 s
+example055  Time elapsed: 0.033 s
+example056  Time elapsed: 0.028 s
+example057  Time elapsed: 0.028 s
+example058  Time elapsed: 0.027 s
+example059  Time elapsed: 0.029 s
+example060  Time elapsed: 0.028 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Balk
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Balk
+example044  Time elapsed: 0.028 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Caught_Stealing
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.315 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Caught_Stealing
+example097  Time elapsed: 0.044 s
+example098  Time elapsed: 0.027 s
+example099  Time elapsed: 0.026 s
+example100  Time elapsed: 0.028 s
+example101  Time elapsed: 0.027 s
+example102  Time elapsed: 0.026 s
+example103  Time elapsed: 0.028 s
+example104  Time elapsed: 0.027 s
+example105  Time elapsed: 0.028 s
+example106  Time elapsed: 0.027 s
+example107  Time elapsed: 0.027 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Defensive_Indifference
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.282 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Defensive_Indifference
+example061  Time elapsed: 0.027 s
+example062  Time elapsed: 0.027 s
+example063  Time elapsed: 0.026 s
+example064  Time elapsed: 0.027 s
+example065  Time elapsed: 0.026 s
+example066  Time elapsed: 0.028 s
+example067  Time elapsed: 0.027 s
+example068  Time elapsed: 0.036 s
+example069  Time elapsed: 0.027 s
+example070  Time elapsed: 0.027 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Errors
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Errors
+example031  Time elapsed: 0.026 s
+example032  Time elapsed: 0.025 s
+example033  Time elapsed: 0.029 s
+example034  Time elapsed: 0.027 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Fielder_Choice
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.233 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Fielder_Choice
+example071  Time elapsed: 0.028 s
+example072  Time elapsed: 0.029 s
+example073  Time elapsed: 0.028 s
+example074  Time elapsed: 0.028 s
+example075  Time elapsed: 0.028 s
+example076  Time elapsed: 0.027 s
+example077  Time elapsed: 0.028 s
+example078  Time elapsed: 0.035 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Hit
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.1 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Hit
+example026  Time elapsed: 0.034 s
+example027  Time elapsed: 0.034 s
+example028  Time elapsed: 0.031 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Interference
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.255 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Interference
+example035  Time elapsed: 0.063 s
+example036  Time elapsed: 0.026 s
+example037  Time elapsed: 0.032 s
+example038  Time elapsed: 0.026 s
+example039  Time elapsed: 0.025 s
+example040  Time elapsed: 0.027 s
+example041  Time elapsed: 0.027 s
+example042  Time elapsed: 0.025 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Obstruction
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Obstruction
+example043  Time elapsed: 0.025 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Pass_Ball
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.14 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Pass_Ball
+example049  Time elapsed: 0.052 s
+example050  Time elapsed: 0.036 s
+example051  Time elapsed: 0.027 s
+example051_1  Time elapsed: 0.024 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Put_Out
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Put_Out
+example029  Time elapsed: 0.026 s
+example030  Time elapsed: 0.027 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Stolen_Base
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.381 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Stolen_Base
+example083  Time elapsed: 0.047 s
+example084  Time elapsed: 0.025 s
+example085  Time elapsed: 0.025 s
+example086  Time elapsed: 0.026 s
+example087  Time elapsed: 0.027 s
+example088  Time elapsed: 0.025 s
+example089  Time elapsed: 0.025 s
+example090  Time elapsed: 0.025 s
+example091  Time elapsed: 0.025 s
+example092  Time elapsed: 0.025 s
+example093  Time elapsed: 0.026 s
+example094  Time elapsed: 0.026 s
+example095  Time elapsed: 0.026 s
+example096  Time elapsed: 0.026 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Throw
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Throw
+example079  Time elapsed: 0.026 s
+example080  Time elapsed: 0.028 s
+example081  Time elapsed: 0.028 s
+example082  Time elapsed: 0.026 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Wild_Pitch
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.103 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Advance_On_Wild_Pitch
+example045  Time elapsed: 0.026 s
+example046  Time elapsed: 0.026 s
+example047  Time elapsed: 0.026 s
+example048  Time elapsed: 0.025 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Ball_Hitting
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.059 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Ball_Hitting
+example024  Time elapsed: 0.033 s
+example025  Time elapsed: 0.026 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Base_On_Ball
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Base_On_Ball
+example020  Time elapsed: 0.026 s
+example021  Time elapsed: 0.028 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits
+example003  Time elapsed: 0.027 s
+example004  Time elapsed: 0.026 s
+example005  Time elapsed: 0.025 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Game_Ending_Hits
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Game_Ending_Hits
+example006  Time elapsed: 0.027 s
+example007  Time elapsed: 0.03 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Hits
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.557 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Hits
+example001  Time elapsed: 0.025 s
+example002  Time elapsed: 0.058 s
+example003  Time elapsed: 0.026 s
+example004  Time elapsed: 0.025 s
+example005  Time elapsed: 0.026 s
+example006  Time elapsed: 0.025 s
+example007  Time elapsed: 0.025 s
+example008  Time elapsed: 0.025 s
+example009  Time elapsed: 0.023 s
+example010  Time elapsed: 0.024 s
+example011  Time elapsed: 0.025 s
+example012  Time elapsed: 0.024 s
+example013  Time elapsed: 0.037 s
+example014  Time elapsed: 0.031 s
+example015  Time elapsed: 0.027 s
+example016  Time elapsed: 0.031 s
+example017  Time elapsed: 0.029 s
+example018  Time elapsed: 0.03 s
+example019  Time elapsed: 0.037 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Hit_By_Pitch
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Hit_By_Pitch
+example023  Time elapsed: 0.029 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Intentional_Base_On_Ball
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Intentional_Base_On_Ball
+example022  Time elapsed: 0.06 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_MIssed_Infield_Fly
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_MIssed_Infield_Fly
+example121  Time elapsed: 0.027 s
+example122  Time elapsed: 0.027 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Particular_Advance
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.341 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Particular_Advance
+example108  Time elapsed: 0.029 s
+example109  Time elapsed: 0.026 s
+example110  Time elapsed: 0.026 s
+example111  Time elapsed: 0.026 s
+example112  Time elapsed: 0.026 s
+example113  Time elapsed: 0.025 s
+example114  Time elapsed: 0.025 s
+example115  Time elapsed: 0.026 s
+example116  Time elapsed: 0.027 s
+example117  Time elapsed: 0.027 s
+example118  Time elapsed: 0.026 s
+example119  Time elapsed: 0.026 s
+example120  Time elapsed: 0.025 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Run_Battle_In
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.329 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Run_Battle_In
+example123  Time elapsed: 0.026 s
+example124  Time elapsed: 0.027 s
+example125  Time elapsed: 0.026 s
+example126  Time elapsed: 0.028 s
+example127  Time elapsed: 0.025 s
+example128  Time elapsed: 0.026 s
+example129  Time elapsed: 0.025 s
+example130  Time elapsed: 0.029 s
+example131  Time elapsed: 0.026 s
+example132  Time elapsed: 0.035 s
+example133  Time elapsed: 0.026 s
+example134  Time elapsed: 0.028 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Sacrifices_Flies
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.138 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Sacrifices_Flies
+example015  Time elapsed: 0.027 s
+example016  Time elapsed: 0.029 s
+example017  Time elapsed: 0.028 s
+example018  Time elapsed: 0.028 s
+example019  Time elapsed: 0.026 s
+Running org.bpy.score.engine.tests.WBSC_2016_Offense_Sacrifices_Hits
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.188 s - in org.bpy.score.engine.tests.WBSC_2016_Offense_Sacrifices_Hits
+example008  Time elapsed: 0.026 s
+example009  Time elapsed: 0.027 s
+example010  Time elapsed: 0.026 s
+example011  Time elapsed: 0.028 s
+example012  Time elapsed: 0.025 s
+example013  Time elapsed: 0.028 s
+example014  Time elapsed: 0.026 s
+Running org.bpy.score.engine.tests.WBSC_2016_Pitcher_Earned_Runs
+Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.61 s - in org.bpy.score.engine.tests.WBSC_2016_Pitcher_Earned_Runs
+example001  Time elapsed: 0.025 s
+example002  Time elapsed: 0.025 s
+example003  Time elapsed: 0.026 s
+example004  Time elapsed: 0.025 s
+example005  Time elapsed: 0.027 s
+example006  Time elapsed: 0.026 s
+example007  Time elapsed: 0.025 s
+example008  Time elapsed: 0.024 s
+example009  Time elapsed: 0.025 s
+example010  Time elapsed: 0.026 s
+example011  Time elapsed: 0.026 s
+example012  Time elapsed: 0.025 s
+example013  Time elapsed: 0.032 s
+example014  Time elapsed: 0.026 s
+example015  Time elapsed: 0.024 s
+example016  Time elapsed: 0.025 s
+example017  Time elapsed: 0.024 s
+example018  Time elapsed: 0.024 s
+example019  Time elapsed: 0.025 s
+example020  Time elapsed: 0.025 s
+example021  Time elapsed: 0.024 s
+example022  Time elapsed: 0.025 s
+example023  Time elapsed: 0.025 s
+example024  Time elapsed: 0.024 s
+Running org.bpy.score.engine.tests.WBSC_2016_Pitcher_Earned_Run_With_Substitution
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.227 s - in org.bpy.score.engine.tests.WBSC_2016_Pitcher_Earned_Run_With_Substitution
+example025  Time elapsed: 0.025 s
+example026  Time elapsed: 0.026 s
+example027  Time elapsed: 0.025 s
+example028  Time elapsed: 0.025 s
+example029  Time elapsed: 0.025 s
+example030  Time elapsed: 0.026 s
+example031  Time elapsed: 0.025 s
+example032  Time elapsed: 0.025 s
+example033  Time elapsed: 0.025 s
+Running org.bpy.score.engine.tests.WBSC_2016_Pitcher_Not_Earned_For_Team
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.341 s - in org.bpy.score.engine.tests.WBSC_2016_Pitcher_Not_Earned_For_Team
+example034  Time elapsed: 0.025 s
+example036  Time elapsed: 0.026 s
+example037  Time elapsed: 0.025 s
+example038  Time elapsed: 0.025 s
+example039  Time elapsed: 0.026 s
+example040  Time elapsed: 0.027 s
+example041  Time elapsed: 0.025 s
+example042  Time elapsed: 0.036 s
+example043  Time elapsed: 0.025 s
+example044  Time elapsed: 0.025 s
+example045  Time elapsed: 0.024 s
+example046  Time elapsed: 0.024 s
+example047  Time elapsed: 0.025 s
+
+Results:
+
+Tests run: 299, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] All tests passed!
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.6:check (coverage-check) @ org.bpy.score.engine.tests ---
+[INFO] Loading execution data file E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\jacoco.exec
+[INFO] Analyzed bundle 'org.bpy.score.engine.tests' with 41 classes
+[INFO] All coverage checks have been met.
+[INFO] 
+[INFO] --- maven-install-plugin:3.0.0-M1:install (default-install) @ org.bpy.score.engine.tests ---
+[INFO] Installing E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\org.bpy.score.engine.tests-1.0.0-SNAPSHOT.jar to C:\Users\uidq0529\.m2\repository\org\bpy\score\org.bpy.score.engine.tests\1.0.0-SNAPSHOT\org.bpy.score.engine.tests-1.0.0-SNAPSHOT.jar
+[INFO] Installing E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\pom.xml to C:\Users\uidq0529\.m2\repository\org\bpy\score\org.bpy.score.engine.tests\1.0.0-SNAPSHOT\org.bpy.score.engine.tests-1.0.0-SNAPSHOT.pom
+[INFO] Installing E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\org.bpy.score.engine.tests-1.0.0-SNAPSHOT-sources.jar to C:\Users\uidq0529\.m2\repository\org\bpy\score\org.bpy.score.engine.tests\1.0.0-SNAPSHOT\org.bpy.score.engine.tests-1.0.0-SNAPSHOT-sources.jar
+[INFO] Installing E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\p2content.xml to C:\Users\uidq0529\.m2\repository\org\bpy\score\org.bpy.score.engine.tests\1.0.0-SNAPSHOT\org.bpy.score.engine.tests-1.0.0-SNAPSHOT-p2metadata.xml
+[INFO] Installing E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\p2artifacts.xml to C:\Users\uidq0529\.m2\repository\org\bpy\score\org.bpy.score.engine.tests\1.0.0-SNAPSHOT\org.bpy.score.engine.tests-1.0.0-SNAPSHOT-p2artifacts.xml
+[INFO] 
+[INFO] --- tycho-p2-plugin:2.1.0:update-local-index (default-update-local-index) @ org.bpy.score.engine.tests ---
+[INFO] 
+[INFO] --- maven-site-plugin:3.7.1:site (default-site) @ org.bpy.score.engine.tests ---
+[INFO] configuring report plugin com.github.spotbugs:spotbugs-maven-plugin:4.1.4
+[INFO] 1 report detected for spotbugs-maven-plugin:4.1.4: spotbugs
+[INFO] configuring report plugin org.jacoco:jacoco-maven-plugin:0.8.6
+[INFO] 3 reports detected for jacoco-maven-plugin:0.8.6: report, report-aggregate, report-integration
+[INFO] configuring report plugin org.apache.maven.plugins:maven-project-info-reports-plugin:3.1.1
+[INFO] 3 reports configured for maven-project-info-reports-plugin:3.1.1: scm, summary, team
+[INFO] configuring report plugin org.apache.maven.plugins:maven-pmd-plugin:3.14.0
+[INFO] 2 reports detected for maven-pmd-plugin:3.14.0: cpd, pmd
+[INFO] Fork Value is true
+[INFO] Done SpotBugs Analysis....
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[WARNING] Unable to locate Source XRef to link to - DISABLED
+[WARNING] Unable to locate Source XRef to link to - DISABLED
+[WARNING] Unable to locate Source XRef to link to - DISABLED
+[WARNING] Unable to locate Source XRef to link to - DISABLED
+[INFO] Rendering site with default locale English (en)
+[WARNING] No project URL defined - decoration links will not be relativized!
+[INFO] Rendering content with org.apache.maven.skins:maven-default-skin:jar:1.2 skin.
+[INFO] Generating "SpotBugs" report             --- spotbugs-maven-plugin:4.1.4:spotbugs
+[INFO] Generating "JaCoCo" report               --- jacoco-maven-plugin:0.8.6:report
+[INFO] Loading execution data file E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\jacoco.exec
+[INFO] Analyzed bundle 'org.bpy.score.engine.tests' with 41 classes
+[INFO] Generating "JaCoCo Aggregate" report     --- jacoco-maven-plugin:0.8.6:report-aggregate
+[INFO] Loading execution data file E:\Perso\Dev\Download\perso\projet\Statcrew3\org.bpy.score.engine.parent\org.bpy.score.engine.tests\target\jacoco.exec
+[INFO] Generating "Summary" report              --- maven-project-info-reports-plugin:3.1.1:summary
+[INFO] Generating "Team" report                 --- maven-project-info-reports-plugin:3.1.1:team
+[INFO] Generating "CPD" report                  --- maven-pmd-plugin:3.14.0:cpd
+[INFO] Generating "PMD" report                  --- maven-pmd-plugin:3.14.0:pmd
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:06 min
+[INFO] Finished at: 2020-12-03T08:48:12+01:00
+[INFO] ------------------------------------------------------------------------

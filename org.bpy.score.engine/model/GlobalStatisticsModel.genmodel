@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.bpy.score.engine/src-gen" editDirectory="/org.bpy.score.engine.edit/src-gen"
+    editorDirectory="/org.bpy.score.engine.editor/src-gen" modelPluginID="org.bpy.score.engine"
+    modelName="GlobalStatisticsModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>GlobalStatisticsModel.ecore</foreignModel>
+  <genPackages prefix="GlobalStatistics" basePackage="org.bpy.score.engine.stats.emf"
+      resource="XML" disposableProviderFactory="true" fileExtensions="globalstats"
+      ecorePackage="GlobalStatisticsModel.ecore#/">
+    <genClasses ecoreClass="GlobalStatisticsModel.ecore#//GlobalStatistic">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GlobalStatisticsModel.ecore#//GlobalStatistic/teams"/>
+    </genClasses>
+    <genClasses ecoreClass="GlobalStatisticsModel.ecore#//TeamStatistics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//TeamStatistics/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//TeamStatistics/city"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//TeamStatistics/gamePlayed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//TeamStatistics/gameWin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//TeamStatistics/gameLose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GlobalStatisticsModel.ecore#//TeamStatistics/members"/>
+    </genClasses>
+    <genClasses ecoreClass="GlobalStatisticsModel.ecore#//Member">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//Member/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GlobalStatisticsModel.ecore#//Member/pitcherStatistics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GlobalStatisticsModel.ecore#//Member/offensiveStatistics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GlobalStatisticsModel.ecore#//Member/defensiveStatistics"/>
+    </genClasses>
+    <genClasses ecoreClass="GlobalStatisticsModel.ecore#//PitcherStatistics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//PitcherStatistics/gameWin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//PitcherStatistics/gameLose"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//PitcherStatistics/gameSave"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//PitcherStatistics/earnedRuns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//PitcherStatistics/ips"/>
+    </genClasses>
+    <genClasses ecoreClass="GlobalStatisticsModel.ecore#//OffensiveStatistics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/hits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/baseOnBalls"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/hitsByPitch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/atBats"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/sacrificeFlies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/doubleBaseHits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/tripleBaseHits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/fourBaseHits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/plateAppearance"/>
+    </genClasses>
+    <genClasses ecoreClass="GlobalStatisticsModel.ecore#//DefensiveStatistics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/putouts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/assists"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/errors"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

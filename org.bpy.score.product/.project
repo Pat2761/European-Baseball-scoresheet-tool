@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>org.bpy.score.product</name>
+	<comment></comment>
+	<projects>
+		<project>org.bpy.score.club</project>
+		<project>org.bpy.score.club.ide</project>
+		<project>org.bpy.score.club.ui</project>
+		<project>org.bpy.score.engine</project>
+		<project>org.bpy.score.game</project>
+		<project>org.bpy.score.game.ide</project>
+		<project>org.bpy.score.game.ui</project>
+		<project>org.bpy.score.graphics</project>
+		<project>org.bpy.score.internationalization</project>
+		<project>org.bpy.score.rcp</project>
+		<project>org.bpy.score.reports</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+	</natures>
+</projectDescription>

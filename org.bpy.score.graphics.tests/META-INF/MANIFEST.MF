@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.bpy.score.graphics.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: org.bpy.score.graphics.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.bpy.score.graphics.tests;singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.bpy.score.game,
+ org.junit;bundle-version="4.13.0",
+ org.bpy.score.internationalization;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-17

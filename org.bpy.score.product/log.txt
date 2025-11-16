@@ -1,0 +1,31 @@
+!SESSION 2020-12-07 08:24:44.555 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
+Framework arguments:  -product org.bpy.score.rcp.product
+Command-line arguments:  -product org.bpy.score.rcp.product -dev file:E:/Perso/Dev/Download/perso/projet/Statcrew3/.metadata/.plugins/org.eclipse.pde.core/ScoreEngine.product/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.equinox.app 0 0 2020-12-07 08:24:48.157
+!MESSAGE Product org.bpy.score.rcp.product could not be found.
+
+!ENTRY org.eclipse.osgi 4 0 2020-12-07 08:24:48.179
+!MESSAGE Application error
+!STACK 1
+java.lang.RuntimeException: No application id has been found.
+	at org.eclipse.equinox.internal.app.EclipseAppContainer.startDefaultApp(EclipseAppContainer.java:246)
+	at org.eclipse.equinox.internal.app.MainApplicationLauncher.run(MainApplicationLauncher.java:33)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1438)
+An error has occurred. See the log file
+E:\Perso\Dev\Download\perso\projet\Statcrew3\.metadata\.plugins\org.eclipse.pde.core\ScoreEngine.product\1607325885027.log.

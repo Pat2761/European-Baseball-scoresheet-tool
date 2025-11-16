@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Identification of the project -->
+	<artifactId>org.bpy.score</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>org.bpy.score</groupId>
+		<artifactId>org.bpy.score.parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>./parent/pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>2.0.10</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>2.0.10</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+	
+	<modules>
+		<module>./parent</module>
+		<module>../org.bpy.score.target</module>
+		<module>../org.bpy.score.feature</module> 
+		<module>../org.bpy.score.internationalization</module> 
+		<module>../org.bpy.score.internationalization.tests</module> 
+		<module>../org.bpy.score.club</module> 
+		<module>../org.bpy.score.club.tests</module> 
+		<module>../org.bpy.score.club.ide</module> 
+		<module>../org.bpy.score.club.ui</module> 
+		<module>../org.bpy.score.club.ui.tests</module> 
+		<module>../org.bpy.score.game</module>
+		<module>../org.bpy.score.game.tests</module>
+		<module>../org.bpy.score.game.ide</module>
+		<module>../org.bpy.score.game.ui</module>
+		<module>../org.bpy.score.game.ui.tests</module>
+		<module>../org.bpy.score.engine</module>
+		<module>../org.bpy.score.engine.tests</module>
+		<module>../org.bpy.score.graphics</module>
+		<module>../org.bpy.score.graphics.tests</module>
+		<module>../org.bpy.score.reports</module>
+		<module>../org.bpy.score.reports.tests</module>
+		<module>../org.bpy.score.rcp</module> 
+		<module>../org.bpy.score.rcp.tests</module> 
+	</modules>
+
+</project>

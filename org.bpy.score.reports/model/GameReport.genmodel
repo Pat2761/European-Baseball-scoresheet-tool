@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.bpy.score.reports/src-gen" editDirectory="/org.bpy.score.reports.edit/src-gen"
+    editorDirectory="/org.bpy.score.reports.editor/src-gen" modelPluginID="org.bpy.score.reports"
+    modelName="GameReport" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>GameReport.ecore</foreignModel>
+  <genPackages prefix="GameReports" basePackage="org.bpy.score.reports" resource="XML"
+      disposableProviderFactory="true" fileExtensions="gamereports" ecorePackage="GameReport.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GameReport.ecore#//TEAM">
+      <genEnumLiterals ecoreEnumLiteral="GameReport.ecore#//TEAM/HOMETEAM"/>
+      <genEnumLiterals ecoreEnumLiteral="GameReport.ecore#//TEAM/VISITOR"/>
+    </genEnums>
+    <genClasses ecoreClass="GameReport.ecore#//GameReport">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/bannerPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/visitorSheetPath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//GameReport/visitorStats"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//GameReport/hometeamStats"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/umpires"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/scorekeepers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/startingTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/town"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/stadium"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/hometeamSheetPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/gameNumber"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//GameReport/playByPlay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/pdfFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//GameReport/generalStats"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//GameReport/visitorLineup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//GameReport/hometeamLineup"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//TeamStatisitics">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//TeamStatisitics/players"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//TeamStatisitics/teamName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//TeamStatisitics/town"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//TeamStatisitics/gameWin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//TeamStatisitics/gameLose"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//PitcherStatistic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/batterFront"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/atBats"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/runs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/hits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/double"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/triple"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/homerun"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/sacrificeHit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/sacrificeFly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/baseOnBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/intentionalbaseOnBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/hitByPitch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/interferanceObstruction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/strikeOut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/earnedRuns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/wildPitches"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/balks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/pitchCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/pitchCountK"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/pitchCountB"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/pitchCountOthers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/runnerLeftOnBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/caughtStealing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/gameLose"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/gameWin"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/gameSave"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//DefensiveStatistic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//DefensiveStatistic/putOut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//DefensiveStatistic/assitances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//DefensiveStatistic/errors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//DefensiveStatistic/doublePlay"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//CatcherStatistic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//CatcherStatistic/passBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//CatcherStatistic/stolenBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//CatcherStatistic/caughtStealing"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//OffensiveStatistic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/plateAppearances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/atBats"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/runs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/hits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/double"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/triple"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/homerun"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/groundedDoublePlay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/sacrificeHit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/sacrificeFly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/baseOnBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/intentionalbaseOnBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/hitByPitch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/interferanceObstruction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/stolenBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/caughtStealing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/strikeOut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//OffensiveStatistic/rbi"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//Player">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//Player/pitcherStatistic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//Player/defensiveStatistic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//Player/catchersStatistic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//Player/offensiveStatistic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//Player/name"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//PlayByPlay">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//PlayByPlay/actiondescription"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//GameGeneralStats">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//GameGeneralStats/pointsPerInning"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameGeneralStats/visitorErrors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameGeneralStats/visitorHits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameGeneralStats/visitorRuns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameGeneralStats/hometeamErrors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameGeneralStats/hometeamRuns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameGeneralStats/hometeamHits"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//PointsPerInning">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PointsPerInning/order"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PointsPerInning/visitorPoint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PointsPerInning/hometeamPoint"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//StartingLineup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//StartingLineup/teamName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//StartingLineup/lineupPlayers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//StartingLineup/fieldPictrureLink"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//LineupPlayer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//LineupPlayer/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//LineupPlayer/offensivePosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//LineupPlayer/defensivePosition"/>
+    </genClasses>
+    <genClasses ecoreClass="GameReport.ecore#//ActionDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//ActionDescription/header"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//ActionDescription/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//ActionDescription/resume"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

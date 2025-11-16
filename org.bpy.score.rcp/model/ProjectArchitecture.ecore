@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="project" nsURI="http://org.bpy.score.rcp" nsPrefix="http://org.bpy.score.rcp">
+  <eClassifiers xsi:type="ecore:EClass" name="PAAbstractElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" lowerBound="1"
+        eType="#//PAElementType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PAElementType">
+    <eLiterals name="PA_ROOT_LOCATION" literal="0"/>
+    <eLiterals name="PA_TOURNAMENT" value="1" literal="1"/>
+    <eLiterals name="PA_SEASON" value="2" literal="2"/>
+    <eLiterals name="PA_CATEGORY" value="3" literal="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PARootLocatoin" eSuperTypes="#//PAAbstractElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tournaments" upperBound="-1"
+        eType="#//PATournament" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PATournament" eSuperTypes="#//PAAbstractElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasons" upperBound="-1"
+        eType="#//PASeason" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PASeason" eSuperTypes="#//PAAbstractElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="caterories" upperBound="-1"
+        eType="#//PACaterory" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PACaterory" eSuperTypes="#//PAAbstractElement"/>
+</ecore:EPackage>
