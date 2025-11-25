@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Game_Ending_Hits extends AbstractWBSCUnitTest {
 
@@ -41,14 +40,14 @@ public class WBSC_2016_Offense_Game_Ending_Hits extends AbstractWBSCUnitTest {
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
     buf.append(
-        "        /* Le batteur frappe un hit en champ droit et est crédité d'un simple hit puisque le coureur en 3 marque le point de la victoire */\r\n");
+        "        /* Le batteur frappe un hit en champ droit et est crï¿½ditï¿½ d'un simple hit puisque le coureur en 3 marque le point de la victoire */\r\n");
     buf.append("        action { batter -> 1B9, runner1 -> +, runner3  -> + }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -93,7 +92,7 @@ public class WBSC_2016_Offense_Game_Ending_Hits extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -128,7 +127,7 @@ public class WBSC_2016_Offense_Game_Ending_Hits extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -177,7 +176,7 @@ public class WBSC_2016_Offense_Game_Ending_Hits extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

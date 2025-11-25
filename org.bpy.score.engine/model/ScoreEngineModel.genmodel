@@ -101,6 +101,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/pitchCountOthers"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/runnerLeftOnBase"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/caughtStealing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/ips"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/flyOuts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//PitcherStatistic/groundedOuts"/>
     </genClasses>
     <genClasses ecoreClass="ScoreEngineModel.ecore#//CatcherStatistic">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ScoreEngineModel.ecore#//CatcherStatistic/passBall"/>

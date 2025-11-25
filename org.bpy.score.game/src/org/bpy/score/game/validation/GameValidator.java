@@ -49,6 +49,8 @@ import org.bpy.score.game.game.HalfInning;
 import org.bpy.score.game.game.LineUp;
 import org.bpy.score.game.game.LineUpEntry;
 import org.bpy.score.game.game.OtherBatterAdvance;
+import org.bpy.score.game.game.Pitch;
+import org.bpy.score.game.game.Pitches;
 import org.bpy.score.game.game.Player;
 import org.bpy.score.game.game.Roster;
 import org.bpy.score.game.game.RunnerAction;
@@ -76,6 +78,7 @@ import org.bpy.score.game.util.ScoreGameAdvanceUtil;
 import org.bpy.score.game.util.ScoreGameAssistUtil;
 import org.bpy.score.game.util.ScoreGameUtil;
 import org.bpy.score.internationalization.game.Messages;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -129,6 +132,95 @@ public class GameValidator extends AbstractGameValidator {
 	private FieldSimulator fieldSimulator;
 	/** Put out counter */
 	private int putoutCounter;
+
+	/**
+	 * Check that a pitch description end by a
+	 * <ul>
+	 * <li> a . if in ball is in play ></li>
+	 * <li> b if for ball are detected</li>
+	 * <li> h in case of hit by pitch<li>
+	 * </ul>   
+	 * 	
+	 * @param pitches
+	 */
+	@Check
+	public void checkPitchesTerminaison(Pitches pitches) {
+		if (!pitches.getPitches().isEmpty()) {
+			Pitch pitch = pitches.getPitches().get(pitches.getPitches().size()-1);
+			
+			if ( pitch.getPitch() != null) {
+				
+				/* end on a hit by pitch */
+				if ("h".equalsIgnoreCase(pitch.getPitch())) { //$NON-NLS-1$
+					return;
+				}
+				
+				/* end on a put in game */
+				if (".".equalsIgnoreCase(pitch.getPitch())) { //$NON-NLS-1$
+					return;
+				}
+				
+				/* end with a ball */
+				if ("b".equalsIgnoreCase(pitch.getPitch())) { //$NON-NLS-1$
+					int countBall = countBall(pitches.getPitches());
+					if (countBall != 4) {
+						warning(Messages.GameValidator_PitchBallMissing,
+								GamePackage.Literals.PITCHES__PITCHES);
+					}
+					return;
+				}
+				
+				if ("s".equalsIgnoreCase(pitch.getPitch()) || "k".equalsIgnoreCase(pitch.getPitch())) { //$NON-NLS-1$ //$NON-NLS-2$
+					int strikeCounter = countStrike(pitches.getPitches());
+					if (strikeCounter<3) {
+						warning(Messages.GameValidator_PitchStrikeMissing,
+								GamePackage.Literals.PITCHES__PITCHES);
+					}
+					return;
+				}
+				
+				error(Messages.GameValidator_PitchEndindError, GamePackage.Literals.PITCHES__PITCHES);
+			}
+		}
+	}
+	
+	/**
+	 * Count number of strikes in a list of pitch
+	 * 
+	 * @param pitches list of pitchs
+	 * @return number of strikes
+	 */
+	private int countStrike(EList<Pitch> pitches) {
+		int strike = 0;
+		for (int i=0 ; i<pitches.size();i++) {
+			
+			String pitch = pitches.get(i).getPitch().toLowerCase();
+			
+			switch (pitch) {
+			case "s" : strike++;break; //$NON-NLS-1$
+			case "k" : strike++;break; //$NON-NLS-1$
+			case "f" : if (strike<2) strike++; break; //$NON-NLS-1$
+			default:
+			}
+		}
+		return strike;
+	}
+
+	/**
+	 * Count number of ball in a list of pitch
+	 * 
+	 * @param pitches list of pitchs
+	 * @return number of ball
+	 */
+	private int countBall(EList<Pitch> pitches) {
+		int counter = 0;
+		for (Pitch pitch : pitches) {
+			if ("b".equalsIgnoreCase(pitch.getPitch())) { //$NON-NLS-1$
+				counter++;
+			}
+		}
+		return counter;
+	}
 
 	/**
 	 * Check that no assistance can be set on a non decisive error
@@ -673,16 +765,22 @@ public class GameValidator extends AbstractGameValidator {
 		defensivePositions.put("9", 0); //$NON-NLS-1$
 
 		for (LineUpEntry lineupEntry : lineup.getLineUpEntries()) {
-			try {
-				int defensivePosition = Integer.parseInt(lineupEntry.getDefensivePosition());
-				if ((defensivePosition < 0) || (defensivePosition > 9)) {
-					// All is good
-				} else {
-					defensivePositions.put(lineupEntry.getDefensivePosition(),
-						defensivePositions.get(lineupEntry.getDefensivePosition()) + 1);
+
+			if (!lineupEntry.getDefensivePosition().equalsIgnoreCase("dh") //$NON-NLS-1$
+					&& !lineupEntry.getDefensivePosition().equalsIgnoreCase("ph") //$NON-NLS-1$
+					&& !lineupEntry.getDefensivePosition().equalsIgnoreCase("dp")) { //$NON-NLS-1$
+
+				try {
+					int defensivePosition = Integer.parseInt(lineupEntry.getDefensivePosition());
+					if ((defensivePosition < 0) || (defensivePosition > 9)) {
+						// All is good
+					} else {
+						defensivePositions.put(lineupEntry.getDefensivePosition(),
+								defensivePositions.get(lineupEntry.getDefensivePosition()) + 1);
+					}
+				} catch (NumberFormatException ex) {
+					logger.log(Level.SEVERE, ex.getMessage());
 				}
-			} catch (NumberFormatException ex) {
-				logger.log(Level.SEVERE,ex.getMessage());
 			}
 		}
 

@@ -22,14 +22,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JViewport;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.util.EngineConstants;
@@ -60,7 +57,6 @@ public class ScoreSheetPanel extends JPanel implements MouseWheelListener {
 	private ScoreViewEngine scoreViewEngine;
 	/** Current team edited */
 	private String currentTeam;
-	private JScrollPane scrollPane;
 
 	/**
 	 * Constructor of the class.
@@ -109,7 +105,7 @@ public class ScoreSheetPanel extends JPanel implements MouseWheelListener {
 	protected void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
-	    
+
 		if (game != null && scoreViewEngine != null) {
 
 			scoreViewEngine.setG2((Graphics2D) g);
@@ -135,25 +131,6 @@ public class ScoreSheetPanel extends JPanel implements MouseWheelListener {
 			setPreferredSize(new Dimension(width, heigth));
 
 			repaint();
-		} else {
-			int maxValue = scrollPane.getVerticalScrollBar().getMaximum();
-			int position = scrollPane.getVerticalScrollBar().getValue();
-
-			if ((count > 0) && (position < maxValue)) {
-				int newPosition = (position + count) > maxValue ? maxValue : position + count;
-				scrollPane.getVerticalScrollBar().setValue(newPosition);
-
-			} else if ((count < 0) && position > 0) {
-				int newPosition = (position + count) >= 0 ? position + count : 0;
-				scrollPane.getVerticalScrollBar().setValue(newPosition);
-			}
-
-			repaint();
 		}
-	}
-
-	public void setScrollPane(JScrollPane scrollPane) {
-		this.scrollPane = scrollPane;
-		
 	}
 }

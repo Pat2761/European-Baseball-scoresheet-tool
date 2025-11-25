@@ -75,6 +75,13 @@ public class Messages extends NLS {
 	public static String GameValidator_positionAfterTheMarble;
 	/** String for GameValidator class */
 	public static String GameValidator_noEarnedPointForPosition;
+	/** String for GameValidator class */
+	public static String GameValidator_PitchEndindError;
+	/** String for GameValidator class */
+	public static String GameValidator_PitchBallMissing;
+	/** String for GameValidator class */
+	public static String GameValidator_PitchStrikeMissing;
+
 
 	/** String for LineupEntryValidator_invalidDefensivePosition class */
 	public static String LineupEntryValidator_invalidDefensivePosition;
@@ -158,6 +165,25 @@ public class Messages extends NLS {
 	public static String GameProposalProvider_CurrentActiveBatter;
 	/** Game proposal provider message : Batter and  */ 
 	public static String GameProposalProvider_BatterAnd;
+	/** Game proposal provider message : Ball in play  */ 
+	public static String GameProposalProvider_PitchPutInPlay;
+	/** Game proposal provider message : Pitch add ball  */ 
+	public static String GameProposalProvider_PitchAddBall;
+	/** Game proposal provider message : Pitch add strike  */ 
+	public static String GameProposalProvider_PitchAddStrike;
+	/** Game proposal provider message : Pitch add swing  */ 
+	public static String GameProposalProvider_PitchAddSwing;
+	/** Game proposal provider message : Pitch add hit by pitch  */ 
+	public static String GameProposalProvider_PitchAddHitByPitch;
+	/** Game proposal provider message : Pitch add Fouled ball  */ 
+	public static String GameProposalProvider_PitchAddFouledBall;
+	/** Game proposal provider message : Pitch add Pick Off First Base  */ 
+	public static String GameProposalProvider_PitchAddPickOffFirstBase;
+	/** Game proposal provider message : Pitch add Pick Off Second Base  */ 
+	public static String GameProposalProvider_PitchAddPickOffSecondBase;
+	/** Game proposal provider message : Pitch add Pick Off third Base  */ 
+	public static String GameProposalProvider_PitchAddPickOffThirdBase;
+
 	
 	/** Game Outline Tree Provider: Roster Visitor String */
 	public static String GameOutlineTreeProvider_RosterVisitor;
@@ -176,6 +202,31 @@ public class Messages extends NLS {
 	/** Game Outline Tree Provider: game resume */
 	public static String GameOutlineTreeProvider_GameResume;
 	
+	/*----------------------------------------------------------------------- */
+	/* GameHighlightingConfiguration class                                         */
+	/*----------------------------------------------------------------------- */
+	/** keyword highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_keyword;
+	/** Punctuation character highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_PunctuationCharacter;
+	/** Comment highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_Comment;
+	/** Task tag highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_TaskTag;
+	/** String highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_String;
+	/** Number highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_Number;
+	/** Default highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_default;
+	/** Invalid symbol highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_InvalidSymbol;
+	/** Put outs symbol highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_PutOuts;
+	/** Advance symbol highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_Advances;
+	/** Pitches symbol highlighting name for preferences */   
+	public static String GameHighlightingConfiguration_Pitches;
 	
 	/**
 	 * Initialize the internationalization

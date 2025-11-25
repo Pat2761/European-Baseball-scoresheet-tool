@@ -135,18 +135,18 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	public void closeGame() {
 
 		try {
-		   InninStatictic lastGeneralStats = stats.getVisitor().getGeneralInningStats()
-				.get(stats.getVisitor().getGeneralInningStats().size() - 1);
-		   stats.getVisitor().setFinalScore(lastGeneralStats.getCumulativeInningStat().getRuns());
+			InninStatictic lastGeneralStats = stats.getVisitor().getGeneralInningStats().get(stats.getVisitor().getGeneralInningStats().size() - 1);
+			stats.getVisitor().setFinalScore(lastGeneralStats.getCumulativeInningStat().getRuns());
 
-		   lastGeneralStats = stats.getHometeam().getGeneralInningStats()
-				.get(stats.getHometeam().getGeneralInningStats().size() - 1);
-		   stats.getHometeam().setFinalScore(lastGeneralStats.getCumulativeInningStat().getRuns());
-		} catch (IndexOutOfBoundsException e) {
-			stats.getVisitor().setFinalScore(0);
-			stats.getHometeam().setFinalScore(0);
+			lastGeneralStats = stats.getHometeam().getGeneralInningStats().get(stats.getHometeam().getGeneralInningStats().size() - 1);
+			stats.getHometeam().setFinalScore(lastGeneralStats.getCumulativeInningStat().getRuns());
+		} catch (IndexOutOfBoundsException | NullPointerException e) {
+			if ((stats != null) && (stats.getVisitor() != null) && (stats.getHometeam()!=null)) {
+	 			stats.getVisitor().setFinalScore(0);
+				stats.getHometeam().setFinalScore(0);
+			}
 		}
-
+		
 		super.closeGame();
 	}
 
@@ -166,15 +166,18 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	 * @param visitorName name of the visitor team
 	 */
 	public void initStattistic(String gameName, String hometeamName, String visitorName) {
-		statisticContainer = new GameStatisticContainer();
-		stats = statisticContainer.createNewStaticContainer(gameName, hometeamName, visitorName);
-		statisticContainer.setLineupDescription(stats, EngineConstants.HOMETEAM, hometeamLineup);
-		statisticContainer.setLineupDescription(stats, EngineConstants.VISITOR, visitorLineup);
-
-		/* pitcher Awards initialisation */
-		pitcherAwardFactory = new PitcherAwardFactory();
-		pitcherAwardFactory.addPitcherReplacement(EngineConstants.VISITOR, visitorLineup.getCurrentPitcher());
-		pitcherAwardFactory.addPitcherReplacement(EngineConstants.HOMETEAM, hometeamLineup.getCurrentPitcher());
+		
+		if (hometeamLineup != null && visitorLineup != null) {
+			statisticContainer = new GameStatisticContainer();
+			stats = statisticContainer.createNewStaticContainer(gameName, hometeamName, visitorName);
+			statisticContainer.setLineupDescription(stats, EngineConstants.HOMETEAM, hometeamLineup);
+			statisticContainer.setLineupDescription(stats, EngineConstants.VISITOR, visitorLineup);
+	
+			/* pitcher Awards initialisation */
+			pitcherAwardFactory = new PitcherAwardFactory();
+			pitcherAwardFactory.addPitcherReplacement(EngineConstants.VISITOR, visitorLineup.getCurrentPitcher());
+			pitcherAwardFactory.addPitcherReplacement(EngineConstants.HOMETEAM, hometeamLineup.getCurrentPitcher());
+		}
 	}
 
 	/**
@@ -188,25 +191,29 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	public void setForfeitStattistic(String gameName, String hometeamName, String visitorName, String forfeitTeam) {
 		statisticContainer = new GameStatisticContainer();
 		stats = statisticContainer.createNewStaticContainer(gameName, hometeamName, visitorName);
-
-		if (forfeitTeam.equals(EngineConstants.HOMETEAM)) {
-			stats.getVisitor().setFinalScore(9);
-			stats.getHometeam().setFinalScore(0);
-		} else {
-			stats.getVisitor().setFinalScore(0);
-			stats.getHometeam().setFinalScore(9);
+		
+		if (forfeitTeam != null) {
+			if (forfeitTeam.equals(EngineConstants.HOMETEAM)) {
+				stats.getVisitor().setFinalScore(9);
+				stats.getHometeam().setFinalScore(0);
+			} else {
+				stats.getVisitor().setFinalScore(0);
+				stats.getHometeam().setFinalScore(9);
+			}
 		}
 	}
 
 	@Override
 	public void startInning(HalfInning halfInning) {
-		statisticContainer.startNewInnning(stats, halfInning.getTeam());
-
-		transferedPitchers.clear();
-		transferedPitchersCounter = 0;
-
-		super.startInning(halfInning);
-		runnerPositionManager.setLineUpManager(currentLineup);
+		try {
+			statisticContainer.startNewInnning(stats, halfInning.getTeam());
+	
+			transferedPitchers.clear();
+			transferedPitchersCounter = 0;
+	
+			super.startInning(halfInning);
+			runnerPositionManager.setLineUpManager(currentLineup);
+		} catch (NullPointerException ex) {}	
 	}
 
 	@Override
@@ -301,10 +308,18 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	@Override
 	public void manageTieBreak() throws OccupedbaseException {
 
-		statisticContainer.incTiebreak(stats, currentTeam);
-		statisticContainer.incTiebreak(stats, currentTeam);
-
 		super.manageTieBreak();
+
+		statisticContainer.incTiebreak(stats, currentTeam);
+		statisticContainer.incTiebreak(stats, currentTeam);
+		
+		runnerPositionManager.linkObjectToPlayer(2, OFFENSIVE_POSITION, 2);
+		runnerPositionManager.linkObjectToPlayer(1, OFFENSIVE_POSITION, 1);
+		
+		LineupManager oppositelineUp = getOpposingTeamLinup();
+		
+		runnerPositionManager.linkObjectToPlayer(2, PITCHER_REFERENCE, oppositelineUp.getCurrentPitcher());
+		runnerPositionManager.linkObjectToPlayer(1, PITCHER_REFERENCE, oppositelineUp.getCurrentPitcher());
 	}
 
 	@Override
@@ -355,7 +370,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	 */
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnNoDecisiveObstruction moreAdvance) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNoDecisiveObstruction moreAdvance) throws OccupedbaseException {
 
 		String defensivePosition = ScoreGameError.getDefensivePosition(moreAdvance);
 		statisticContainer.incErrors(stats, currentTeam,
@@ -365,65 +380,65 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnDecisiveObstruction moreAdvance) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnDecisiveObstruction moreAdvance) throws OccupedbaseException {
 
 		String defensivePosition = ScoreGameError.getDefensivePosition(moreAdvance);
 		try {
 			statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 		} catch (NumberFormatException ex) {
-			logger.log(Level.SEVERE,ex.getMessage());
+			logger.log(Level.SEVERE,ex.getLocalizedMessage());
 		}
 
 		super.makeActionOn(moreAdvance);
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnNonDecisiveFlyError moreAdvance) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNonDecisiveFlyError moreAdvance) throws OccupedbaseException {
 
 		String defensivePosition = ScoreGameError.getDefensivePosition(moreAdvance);
 		try {
 			statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 		} catch (NumberFormatException ex) {
-			logger.log(Level.SEVERE,ex.getMessage());
+			logger.log(Level.SEVERE,ex.getLocalizedMessage());
 		}
 		
 		super.makeActionOn(moreAdvance);
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnNonDecisiveReceiveError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNonDecisiveReceiveError action) throws OccupedbaseException {
 
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		try {
 			statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 		} catch (NumberFormatException ex) {
-			logger.log(Level.SEVERE,ex.getMessage());
+			logger.log(Level.SEVERE,ex.getLocalizedMessage());
 		}
 
 		super.makeActionOn(action);
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnNonDecisiveThrowError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNonDecisiveThrowError action) throws OccupedbaseException {
 
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		try  {
 			statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 		} catch (NumberFormatException ex) {
-			logger.log(Level.SEVERE,ex.getMessage());
+			logger.log(Level.SEVERE,ex.getLocalizedMessage());
 		}
 
 		super.makeActionOn(action);
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnReceiveError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnReceiveError action) throws OccupedbaseException {
 
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		try {
 			statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 		} catch (NumberFormatException ex) {
-			logger.log(Level.SEVERE,ex.getMessage());
+			logger.log(Level.SEVERE,ex.getLocalizedMessage());
 		}
 	
 		char[] assists = ScoreGameAssistUtil.getAssistances(action);
@@ -433,13 +448,13 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnThrowError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnThrowError action) throws OccupedbaseException {
 
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		try {
 			statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 		} catch (NumberFormatException ex) {
-			logger.log(Level.SEVERE,ex.getMessage());
+			logger.log(Level.SEVERE,ex.getLocalizedMessage());
 		}
 	
 		char[] assists = ScoreGameAssistUtil.getAssistances(action);
@@ -449,7 +464,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnCaughtStealingWithError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnCaughtStealingWithError action) throws OccupedbaseException {
 
 		int runnerPosition;
 		if (action.eContainer() instanceof Action) {
@@ -472,7 +487,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnPickOffWithError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnPickOffWithError action) throws OccupedbaseException {
 
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
@@ -484,7 +499,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnBalk action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnBalk action) throws OccupedbaseException {
 
 		if ("BK".equals(action.getRunnerAdvance())) { //$NON-NLS-1$
 			statisticContainer.incBalk(stats, currentTeam);
@@ -493,7 +508,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnPassBall action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnPassBall action) throws OccupedbaseException {
 
 		if (action.getRunnerAdvance().equals("PB")) { //$NON-NLS-1$
 			statisticContainer.incPassBall(stats, currentTeam);
@@ -503,7 +518,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnWildPitch action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnWildPitch action) throws OccupedbaseException {
 
 		if ("WP".equals(action.getRunnerAdvance().replaceAll(REGEX_REMOVE_PLUS, ""))) { //$NON-NLS-1$ //$NON-NLS-2$
 			statisticContainer.incWildPitch(stats, currentTeam);
@@ -513,7 +528,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnStolenBase action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnStolenBase action) throws OccupedbaseException {
 		int runnerPosition;
 
 		if (action.eContainer() instanceof Action) {
@@ -530,7 +545,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerOutOnAppeal action) {
+	public void makeActionOn(RunnerOutOnAppeal action) {
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -547,7 +562,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerOutByRules action) {
+	public void makeActionOn(RunnerOutByRules action) {
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -564,7 +579,30 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerOutOnFielderAction action) {
+	public void makeActionOn(RunnerOutOnFielderAction action) {
+
+		char defensivePosition = ScoreGameOutUtil.getOut(action);
+		statisticContainer.incOut(stats, currentTeam, defensivePosition);
+
+		if (action.eContainer() instanceof Action) {
+			Action mainAction = (Action) action.eContainer();
+			if (mainAction.getBatterAction() instanceof BatterAdvanceOnOccupedBall) {
+				statisticContainer.incGrounedOut(stats, currentTeam);
+			}
+		}
+
+		char[] assists = ScoreGameAssistUtil.getAssistances(action);
+		statisticContainer.addAssistances(stats, currentTeam, assists);
+
+		/* Double play or triple play management */
+		if (!action.isNotInDoublePlay()) {
+			setDoublePlayData("" + defensivePosition, assists); //$NON-NLS-1$
+		}
+		super.makeActionOn(action);
+	}
+
+	@Override
+	public void makeActionOn(RunnerOutOnPickOff action) {
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -581,24 +619,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerOutOnPickOff action) {
-
-		char defensivePosition = ScoreGameOutUtil.getOut(action);
-		statisticContainer.incOut(stats, currentTeam, defensivePosition);
-
-		char[] assists = ScoreGameAssistUtil.getAssistances(action);
-		statisticContainer.addAssistances(stats, currentTeam, assists);
-
-		/* Double play or triple play management */
-		if (!action.isNotInDoublePlay()) {
-			setDoublePlayData("" + defensivePosition, assists); //$NON-NLS-1$
-		}
-
-		super.makeActionOn(action);
-	}
-
-	@Override
-	protected void makeActionOn(RunnerOutOnCaugthStealing action) {
+	public void makeActionOn(RunnerOutOnCaugthStealing action) {
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -612,8 +633,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 		} else {
 			runnerPosition = runnerPositionManager.getLastPlayerPositionSetted();
 		}
-		int offensivePosition = (Integer) runnerPositionManager.getPlayerAssociatedObject(runnerPosition,
-				OFFENSIVE_POSITION);
+		int offensivePosition = (Integer) runnerPositionManager.getPlayerAssociatedObject(runnerPosition,OFFENSIVE_POSITION);
 		statisticContainer.incCaughtStealing(stats, currentTeam, offensivePosition, assists);
 
 		/* Double play or triple play management */
@@ -625,7 +645,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerMustBeOutOnError action) {
+	public void makeActionOn(RunnerMustBeOutOnError action) {
 
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
@@ -634,7 +654,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnPickOffWithError action) {
+	public void makeActionOn(RunnerDontAdvanceOnPickOffWithError action) {
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 
@@ -645,7 +665,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnCaughtStealingWithError action) {
+	public void makeActionOn(RunnerDontAdvanceOnCaughtStealingWithError action) {
 		int runnerPosition;
 		if (action.eContainer() instanceof Action) {
 			runnerPosition = ScoreGameUtil.getRunnerNumber(action.getRunner());
@@ -667,7 +687,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnThrowError action) {
+	public void makeActionOn(RunnerDontAdvanceOnThrowError action) {
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 
@@ -678,7 +698,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnReceiveError action) {
+	public void makeActionOn(RunnerDontAdvanceOnReceiveError action) {
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 
@@ -689,7 +709,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnNonDecisiveThrowError action) {
+	public void makeActionOn(RunnerDontAdvanceOnNonDecisiveThrowError action) {
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 
@@ -697,7 +717,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnNonDecisiveReceiveError action) {
+	public void makeActionOn(RunnerDontAdvanceOnNonDecisiveReceiveError action) {
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
 
@@ -712,14 +732,14 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	 */
 
 	@Override
-	protected void makeActionOn(BatterBalk action) {
+	public void makeActionOn(BatterBalk action) {
 
 		statisticContainer.incBalk(stats, currentTeam);
 		super.makeActionOn(action);
 	}
 
 	@Override
-	protected void makeActionOn(BatterMustOutOnFlyFoulBall action) {
+	public void makeActionOn(BatterMustOutOnFlyFoulBall action) {
 
 		String defensivePosition = ScoreGameError.getDefensivePosition(action);
 		statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
@@ -728,7 +748,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnDefensiveChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnDefensiveChoice action) throws OccupedbaseException {
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
@@ -745,7 +765,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	
 	
 	@Override
-	protected void makeActionOn(BatterAdvanceOnIndiference action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnIndiference action) throws OccupedbaseException {
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
@@ -760,7 +780,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnOccupedBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnOccupedBall action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -777,7 +797,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnKWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKWithFielderChoice action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -793,7 +813,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnObstruction action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnObstruction action) throws OccupedbaseException {
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
@@ -811,7 +831,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnCatcherInterference action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnCatcherInterference action) throws OccupedbaseException {
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
@@ -829,7 +849,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnSacrificeFlyWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeFlyWithFielderChoice action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -844,7 +864,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnSacrificeFlyWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeFlyWithError action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 
@@ -865,7 +885,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnSacrificeHitWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeHitWithFielderChoice action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -880,7 +900,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnSacrificeHitWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeHitWithError action) throws OccupedbaseException {
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
@@ -901,7 +921,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnKWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKWithError action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 
@@ -923,7 +943,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnKAbr action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKAbr action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -939,7 +959,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnKWildPitch action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKWildPitch action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -960,7 +980,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnKPassBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKPassBall action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -981,7 +1001,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnHitByPitch action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnHitByPitch action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -996,7 +1016,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnIntentionalBaseOnBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnIntentionalBaseOnBall action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -1011,7 +1031,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnBaseOnBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnBaseOnBall action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -1026,7 +1046,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnInsidePark action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnInsidePark action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -1041,7 +1061,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnHomeRun action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnHomeRun action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -1056,7 +1076,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnTripleHit action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnTripleHit action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -1072,7 +1092,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnDoubleHit action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnDoubleHit action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -1088,7 +1108,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnSingleHit action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSingleHit action) throws OccupedbaseException {
 
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
@@ -1105,7 +1125,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnGdpWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnGdpWithError action) throws OccupedbaseException {
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
@@ -1127,7 +1147,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnGdpWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnGdpWithFielderChoice action) throws OccupedbaseException {
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
@@ -1143,7 +1163,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnThrowError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnThrowError action) throws OccupedbaseException {
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
@@ -1164,7 +1184,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnReceiveError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnReceiveError action) throws OccupedbaseException {
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
@@ -1185,7 +1205,25 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnFlyError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnFlyError action) throws OccupedbaseException {
+		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
+		int offensivePosition = currentLineup.getCurrentBatterNumber();
+
+		statisticContainer.incPlateAppearance(stats, currentTeam, offensivePosition);
+		statisticContainer.incAtBat(stats, currentTeam, offensivePosition);
+
+		String defensivePosition = ScoreGameError.getDefensivePosition(action);
+		statisticContainer.incErrors(stats, currentTeam, Integer.parseInt(defensivePosition));
+
+		super.makeActionOn(action);
+
+		int baseWin = ScoreGameAdvanceUtil.getBaseWin(action);
+		runnerPositionManager.linkObjectToPlayer(baseWin, PITCHER_REFERENCE, oppositeTeamLineup.getCurrentPitcher());
+		runnerPositionManager.linkObjectToPlayer(baseWin, OFFENSIVE_POSITION, offensivePosition);
+	}
+	
+	@Override
+	public void makeActionOn(BatterAdvanceOnPopError action) throws OccupedbaseException {
 		LineupManager oppositeTeamLineup = getOpposingTeamLinup();
 		int offensivePosition = currentLineup.getCurrentBatterNumber();
 
@@ -1203,7 +1241,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnInfieldFly action) {
+	public void makeActionOn(BatterOutOnInfieldFly action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
@@ -1220,7 +1258,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnSacrificeHit action) {
+	public void makeActionOn(BatterOutOnSacrificeHit action) {
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incSacrificeHit(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 
@@ -1239,10 +1277,11 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnSacrificeFlyFallBall action) {
+	public void makeActionOn(BatterOutOnSacrificeFlyFallBall action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incSacrificeFly(stats, currentTeam, currentLineup.getCurrentBatterNumber());
+		statisticContainer.incFlyout(stats, currentTeam);
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -1259,10 +1298,11 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnSacrificeFly action) {
+	public void makeActionOn(BatterOutOnSacrificeFly action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incSacrificeFly(stats, currentTeam, currentLineup.getCurrentBatterNumber());
+		statisticContainer.incFlyout(stats, currentTeam);
 
 		char[] assists = ScoreGameAssistUtil.getAssistances(action);
 		statisticContainer.addAssistances(stats, currentTeam, assists);
@@ -1279,11 +1319,12 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnGroundedDoublePlay action) {
+	public void makeActionOn(BatterOutOnGroundedDoublePlay action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incGdp(stats, currentTeam, currentLineup.getCurrentBatterNumber());
+		statisticContainer.incGrounedOut(stats, currentTeam);
 
 		char[] assists = ScoreGameAssistUtil.getAssistances(action);
 		statisticContainer.addAssistances(stats, currentTeam, assists);
@@ -1300,7 +1341,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnAppeal action) {
+	public void makeActionOn(BatterOutOnAppeal action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
@@ -1320,7 +1361,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutByRule action) {
+	public void makeActionOn(BatterOutByRule action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
@@ -1354,9 +1395,10 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnGroundedBall action) {
+	public void makeActionOn(BatterOutOnGroundedBall action) {
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
+		statisticContainer.incGrounedOut(stats, currentTeam);
 
 		char[] assists = ScoreGameAssistUtil.getAssistances(action);
 		statisticContainer.addAssistances(stats, currentTeam, assists);
@@ -1373,10 +1415,11 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnLineDriveFallBall action) {
+	public void makeActionOn(BatterOutOnLineDriveFallBall action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
+		statisticContainer.incFlyout(stats, currentTeam);
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -1393,10 +1436,11 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnPoppedFallBall action) {
+	public void makeActionOn(BatterOutOnPoppedFallBall action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
+		statisticContainer.incFlyout(stats, currentTeam);
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -1413,10 +1457,11 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnFlyedFallBall action) {
+	public void makeActionOn(BatterOutOnFlyedFallBall action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
+		statisticContainer.incFlyout(stats, currentTeam);
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -1433,10 +1478,11 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnPopped action) {
+	public void makeActionOn(BatterOutOnPopped action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
+		statisticContainer.incFlyout(stats, currentTeam);
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -1453,10 +1499,11 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnLine action) {
+	public void makeActionOn(BatterOutOnLine action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
+		statisticContainer.incFlyout(stats, currentTeam);
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -1473,10 +1520,11 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnFlyed action) {
+	public void makeActionOn(BatterOutOnFlyed action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
+		statisticContainer.incFlyout(stats, currentTeam);
 
 		char defensivePosition = ScoreGameOutUtil.getOut(action);
 		statisticContainer.incOut(stats, currentTeam, defensivePosition);
@@ -1493,7 +1541,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnReleasedStrike action) {
+	public void makeActionOn(BatterOutOnReleasedStrike action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
@@ -1514,7 +1562,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnLookedStrike action) {
+	public void makeActionOn(BatterOutOnLookedStrike action) {
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incStrikeOut(stats, currentTeam, currentLineup.getCurrentBatterNumber());
@@ -1530,7 +1578,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnSwingedStrike action) {
+	public void makeActionOn(BatterOutOnSwingedStrike action) {
 
 		statisticContainer.incPlateAppearance(stats, currentTeam, currentLineup.getCurrentBatterNumber());
 		statisticContainer.incAtBat(stats, currentTeam, currentLineup.getCurrentBatterNumber());
@@ -1556,43 +1604,47 @@ public class StatisticManager extends AbstractActionManager implements PointList
 				: statisticContainer.getVisitorStatistic(stats));
 		LineupEntry currentPitcher = teamStatistic.getCurrentPitcher();
 
-		for (SubstitutionCommonData substitution : substitutionManager.getSubstitutions()) {
-
-			if (substitution instanceof ReplacementData) {
-
-				ReplacementData replacementData = (ReplacementData) substitution;
-				String offensivePosition = replacementData.getOffensivePosition();
-				LineupEntry player = substitutionManager.getLineupManager()
-						.getPlayerForOffensivePosition(offensivePosition);
-
-				statisticContainer.setNewPlayer(teamStatistic, team, player, false);
-				if (player.getDefensivePosition().equals("1")) { //$NON-NLS-1$
-					pitcherAwardFactory.addPitcherReplacement(team, player);
-					currentPitcher.getPitcherStatistic().setRunnerLeftOnBase(runnerPositionManager.getLeftOnBase());
-					currentPitcher.getAssociatedObjects().put(MAX_POSSIBLE_POINT,
-							runnerPositionManager.getLeftOnBase() + currentPitcher.getPitcherStatistic().getRuns());
-				}
-
-			} else if (substitution instanceof MoveToData) {
-				MoveToData moveToData = (MoveToData) substitution;
-
-				String defensivePosition = moveToData.getDefensivePosition().getNewDefensivePosition();
-
-				LineupEntry player = substitutionManager.getLineupManager().getPlayerForDefensivePosition(defensivePosition);
-
-				if (player.getDefensivePosition().equals("1")) { //$NON-NLS-1$
-					
-					if (moveToData.getPlayerReplaced().getPlayerDescription() != player.getPlayerDescription()) {
-					
+		try {
+			for (SubstitutionCommonData substitution : substitutionManager.getSubstitutions()) {
+	
+				if (substitution instanceof ReplacementData) {
+	
+					ReplacementData replacementData = (ReplacementData) substitution;
+					String offensivePosition = replacementData.getOffensivePosition();
+					LineupEntry player = substitutionManager.getLineupManager()
+							.getPlayerForOffensivePosition(offensivePosition);
+	
+					statisticContainer.setNewPlayer(teamStatistic, team, player, false);
+					if (player.getDefensivePosition().equals("1")) { //$NON-NLS-1$
 						pitcherAwardFactory.addPitcherReplacement(team, player);
 						currentPitcher.getPitcherStatistic().setRunnerLeftOnBase(runnerPositionManager.getLeftOnBase());
-						currentPitcher.getAssociatedObjects().put(MAX_POSSIBLE_POINT,runnerPositionManager.getLeftOnBase() + currentPitcher.getPitcherStatistic().getRuns());
+						currentPitcher.getAssociatedObjects().put(MAX_POSSIBLE_POINT,
+								runnerPositionManager.getLeftOnBase() + currentPitcher.getPitcherStatistic().getRuns());
+					}
+	
+				} else if (substitution instanceof MoveToData) {
+					MoveToData moveToData = (MoveToData) substitution;
+	
+					String defensivePosition = moveToData.getDefensivePosition().getNewDefensivePosition();
+	
+					LineupEntry player = substitutionManager.getLineupManager().getPlayerForDefensivePosition(defensivePosition);
+	
+					if (player.getDefensivePosition().equals("1")) { //$NON-NLS-1$
+						
+						if (moveToData.getPlayerReplaced().getPlayerDescription() != player.getPlayerDescription()) {
+						
+							pitcherAwardFactory.addPitcherReplacement(team, player);
+							currentPitcher.getPitcherStatistic().setRunnerLeftOnBase(runnerPositionManager.getLeftOnBase());
+							currentPitcher.getAssociatedObjects().put(MAX_POSSIBLE_POINT,runnerPositionManager.getLeftOnBase() + currentPitcher.getPitcherStatistic().getRuns());
+							statisticContainer.setNewDefensivePosition(teamStatistic, player);
+						}
+					} else {
 						statisticContainer.setNewDefensivePosition(teamStatistic, player);
 					}
-				} else {
-					statisticContainer.setNewDefensivePosition(teamStatistic, player);
 				}
 			}
+		} catch (NullPointerException ex) {
+			// nothing to do, just avoid null pointer during edition of substitution
 		}
 	}
 

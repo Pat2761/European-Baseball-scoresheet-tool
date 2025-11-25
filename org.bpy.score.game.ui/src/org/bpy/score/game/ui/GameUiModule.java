@@ -58,9 +58,6 @@ public class GameUiModule extends AbstractGameUiModule {
 	}
 	
 	@Override
-	/**
-	 * Allow validation
-	 */
 	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
 		return ValidatingEditorCallback.class;
 	}

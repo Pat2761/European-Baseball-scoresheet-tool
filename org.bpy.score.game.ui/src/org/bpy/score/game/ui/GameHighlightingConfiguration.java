@@ -18,6 +18,7 @@
  */
 package org.bpy.score.game.ui;
 
+import org.bpy.score.internationalization.game.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.xtext.ide.editor.syntaxcoloring.HighlightingStyles;
@@ -51,26 +52,26 @@ public class GameHighlightingConfiguration implements IHighlightingConfiguration
 	public static final String TASK_ID = HighlightingStyles.TASK_ID;
 
 	/** Constant for coloring put outs  */
-	public static final String PUTOUT_ID = "POUTOUT_ID";
+	public static final String PUTOUT_ID = "POUTOUT_ID"; //$NON-NLS-1$
 	/** Constant for coloring Advance  */
-	public static final String ADVANCE_ID = "ADVANCE_ID";
+	public static final String ADVANCE_ID = "ADVANCE_ID"; //$NON-NLS-1$
 	/** Constant for coloring Pitchs  */
-	public static final String PITCHE_ID = "PITCHE_ID";
+	public static final String PITCHE_ID = "PITCHE_ID"; //$NON-NLS-1$
 
 	@Override
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
-		acceptor.acceptDefaultHighlighting(KEYWORD_ID, "Keyword", keywordTextStyle());
-		acceptor.acceptDefaultHighlighting(PUNCTUATION_ID, "Punctuation character", punctuationTextStyle());
-		acceptor.acceptDefaultHighlighting(COMMENT_ID, "Comment", commentTextStyle());
-		acceptor.acceptDefaultHighlighting(TASK_ID, "Task Tag", taskTextStyle());
-		acceptor.acceptDefaultHighlighting(STRING_ID, "String", stringTextStyle());
-		acceptor.acceptDefaultHighlighting(NUMBER_ID, "Number", numberTextStyle());
-		acceptor.acceptDefaultHighlighting(DEFAULT_ID, "Default", defaultTextStyle());
-		acceptor.acceptDefaultHighlighting(INVALID_TOKEN_ID, "Invalid Symbol", errorTextStyle());
+		acceptor.acceptDefaultHighlighting(KEYWORD_ID, Messages.GameHighlightingConfiguration_keyword, keywordTextStyle()); 
+		acceptor.acceptDefaultHighlighting(PUNCTUATION_ID, Messages.GameHighlightingConfiguration_PunctuationCharacter, punctuationTextStyle());
+		acceptor.acceptDefaultHighlighting(COMMENT_ID, Messages.GameHighlightingConfiguration_Comment, commentTextStyle());
+		acceptor.acceptDefaultHighlighting(TASK_ID, Messages.GameHighlightingConfiguration_TaskTag, taskTextStyle()); 
+		acceptor.acceptDefaultHighlighting(STRING_ID, Messages.GameHighlightingConfiguration_String, stringTextStyle()); 
+		acceptor.acceptDefaultHighlighting(NUMBER_ID, Messages.GameHighlightingConfiguration_Number, numberTextStyle()); 
+		acceptor.acceptDefaultHighlighting(DEFAULT_ID, Messages.GameHighlightingConfiguration_default, defaultTextStyle()); 
+		acceptor.acceptDefaultHighlighting(INVALID_TOKEN_ID, Messages.GameHighlightingConfiguration_InvalidSymbol, errorTextStyle()); 
 
-		acceptor.acceptDefaultHighlighting(PUTOUT_ID, "Put outs", putoutTextStyle());
-		acceptor.acceptDefaultHighlighting(ADVANCE_ID, "Advances", advanceTextStyle());
-		acceptor.acceptDefaultHighlighting(PITCHE_ID, "Pitches", pitchTextStyle());
+		acceptor.acceptDefaultHighlighting(PUTOUT_ID, Messages.GameHighlightingConfiguration_PutOuts, putoutTextStyle()); 
+		acceptor.acceptDefaultHighlighting(ADVANCE_ID, Messages.GameHighlightingConfiguration_Advances, advanceTextStyle()); 
+		acceptor.acceptDefaultHighlighting(PITCHE_ID, Messages.GameHighlightingConfiguration_Pitches, pitchTextStyle()); 
 	}
 
 	/**

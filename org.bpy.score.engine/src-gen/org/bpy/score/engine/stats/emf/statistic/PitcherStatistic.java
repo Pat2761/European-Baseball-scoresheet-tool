@@ -36,6 +36,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getPitchCountOthers <em>Pitch Count Others</em>}</li>
  *   <li>{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getRunnerLeftOnBase <em>Runner Left On Base</em>}</li>
  *   <li>{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getCaughtStealing <em>Caught Stealing</em>}</li>
+ *   <li>{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getIps <em>Ips</em>}</li>
+ *   <li>{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getFlyOuts <em>Fly Outs</em>}</li>
+ *   <li>{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getGroundedOuts <em>Grounded Outs</em>}</li>
  * </ul>
  *
  * @see org.bpy.score.engine.stats.emf.statistic.StatisticPackage#getPitcherStatistic()
@@ -571,5 +574,74 @@ public interface PitcherStatistic extends EObject {
 	 * @generated
 	 */
 	void setCaughtStealing(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Ips</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ips</em>' attribute.
+	 * @see #setIps(double)
+	 * @see org.bpy.score.engine.stats.emf.statistic.StatisticPackage#getPitcherStatistic_Ips()
+	 * @model default="0.0" required="true"
+	 * @generated
+	 */
+	double getIps();
+
+	/**
+	 * Sets the value of the '{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getIps <em>Ips</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ips</em>' attribute.
+	 * @see #getIps()
+	 * @generated
+	 */
+	void setIps(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Fly Outs</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fly Outs</em>' attribute.
+	 * @see #setFlyOuts(int)
+	 * @see org.bpy.score.engine.stats.emf.statistic.StatisticPackage#getPitcherStatistic_FlyOuts()
+	 * @model default="0" required="true"
+	 * @generated
+	 */
+	int getFlyOuts();
+
+	/**
+	 * Sets the value of the '{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getFlyOuts <em>Fly Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fly Outs</em>' attribute.
+	 * @see #getFlyOuts()
+	 * @generated
+	 */
+	void setFlyOuts(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Grounded Outs</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Grounded Outs</em>' attribute.
+	 * @see #setGroundedOuts(int)
+	 * @see org.bpy.score.engine.stats.emf.statistic.StatisticPackage#getPitcherStatistic_GroundedOuts()
+	 * @model default="0" required="true"
+	 * @generated
+	 */
+	int getGroundedOuts();
+
+	/**
+	 * Sets the value of the '{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getGroundedOuts <em>Grounded Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Grounded Outs</em>' attribute.
+	 * @see #getGroundedOuts()
+	 * @generated
+	 */
+	void setGroundedOuts(int value);
 
 } // PitcherStatistic

@@ -36,6 +36,7 @@ import org.bpy.score.game.game.BatterAdvanceOnKWithError;
 import org.bpy.score.game.game.BatterAdvanceOnKWithFielderChoice;
 import org.bpy.score.game.game.BatterAdvanceOnObstruction;
 import org.bpy.score.game.game.BatterAdvanceOnOccupedBall;
+import org.bpy.score.game.game.BatterAdvanceOnPopError;
 import org.bpy.score.game.game.BatterAdvanceOnReceiveError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithFielderChoice;
@@ -184,6 +185,7 @@ public class GameSemanticHighLighting implements ISemanticHighlightingCalculator
 					node.getSemanticElement() instanceof BatterAdvanceOnHomeRun ||
 					node.getSemanticElement() instanceof BatterAdvanceOnInsidePark ||
 					node.getSemanticElement() instanceof BatterAdvanceOnFlyError ||
+					node.getSemanticElement() instanceof BatterAdvanceOnPopError ||
 					node.getSemanticElement() instanceof BatterAdvanceOnReceiveError ||
 					node.getSemanticElement() instanceof BatterAdvanceOnThrowError ||
 					node.getSemanticElement() instanceof BatterAdvanceOnGdpWithError ) {
@@ -221,8 +223,8 @@ public class GameSemanticHighLighting implements ISemanticHighlightingCalculator
 	private void setColoration(String text, int offset, String id, IHighlightedPositionAcceptor acceptor) {
 		String[] parts = text.split("->"); //$NON-NLS-1$
 		if (parts.length == 2) {
-			String code = parts[1].replace("earned", "").trim(); //$NON-NLS-1$
-			code = code.replace("unEarnedForTeam", "").trim(); //$NON-NLS-1$
+			String code = parts[1].replace("earned", "").trim(); //$NON-NLS-1$ //$NON-NLS-2$
+			code = code.replace("unEarnedForTeam", "").trim(); //$NON-NLS-1$ //$NON-NLS-2$
 			int start = text.trim().indexOf(code);
 			acceptor.addPosition(offset + start, code.length(), id);
 		} else {

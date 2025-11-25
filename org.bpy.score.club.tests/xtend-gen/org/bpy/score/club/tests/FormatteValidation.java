@@ -6,15 +6,15 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.testing.InjectWith;
-import org.eclipse.xtext.testing.XtextRunner;
+import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-@RunWith(XtextRunner.class)
+@ExtendWith(InjectionExtension.class)
 @InjectWith(ClubInjectorProvider.class)
 @SuppressWarnings("all")
 public class FormatteValidation {
@@ -53,7 +53,7 @@ public class FormatteValidation {
       _builder_1.append("}");
       _builder_1.newLine();
       final String expectedFormat = _builder_1.toString();
-      Assert.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
+      Assertions.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -86,7 +86,7 @@ public class FormatteValidation {
       _builder_1.append("}");
       _builder_1.newLine();
       final String expectedFormat = _builder_1.toString();
-      Assert.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
+      Assertions.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -121,7 +121,7 @@ public class FormatteValidation {
       _builder_1.append("}");
       _builder_1.newLine();
       final String expectedFormat = _builder_1.toString();
-      Assert.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
+      Assertions.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -158,7 +158,7 @@ public class FormatteValidation {
       _builder_1.append("}");
       _builder_1.newLine();
       final String expectedFormat = _builder_1.toString();
-      Assert.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
+      Assertions.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -195,7 +195,7 @@ public class FormatteValidation {
       _builder_1.newLine();
       _builder_1.append("}");
       final String expectedFormat = _builder_1.toString();
-      Assert.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
+      Assertions.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -268,7 +268,7 @@ public class FormatteValidation {
       _builder_1.newLine();
       _builder_1.append("}");
       final String expectedFormat = _builder_1.toString();
-      Assert.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
+      Assertions.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -335,7 +335,7 @@ public class FormatteValidation {
       _builder_1.newLine();
       _builder_1.append("}");
       final String expectedFormat = _builder_1.toString();
-      Assert.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
+      Assertions.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -435,7 +435,7 @@ public class FormatteValidation {
       _builder_1.newLine();
       _builder_1.append("}");
       final String expectedFormat = _builder_1.toString();
-      Assert.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
+      Assertions.assertEquals(expectedFormat, this._iSerializer.serialize(this._parseHelper.parse(input), SaveOptions.newBuilder().format().getOptions()));
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

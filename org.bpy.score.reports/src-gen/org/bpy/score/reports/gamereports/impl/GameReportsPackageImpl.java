@@ -149,7 +149,6 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 	private GameReportsPackageImpl() {
 		super(eNS_URI, GameReportsFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -380,6 +379,16 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 	@Override
 	public EReference getGameReport_HometeamLineup() {
 		return (EReference)gameReportEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGameReport_Mixed() {
+		return (EAttribute)gameReportEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -710,6 +719,46 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 	@Override
 	public EAttribute getPitcherStatistic_GameSave() {
 		return (EAttribute)pitcherStatisticEClass.getEStructuralFeatures().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPitcherStatistic_Ips() {
+		return (EAttribute)pitcherStatisticEClass.getEStructuralFeatures().get(26);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPitcherStatistic_PitcherOrder() {
+		return (EAttribute)pitcherStatisticEClass.getEStructuralFeatures().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPitcherStatistic_FlyOuts() {
+		return (EAttribute)pitcherStatisticEClass.getEStructuralFeatures().get(28);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPitcherStatistic_GroundedOuts() {
+		return (EAttribute)pitcherStatisticEClass.getEStructuralFeatures().get(29);
 	}
 
 	/**
@@ -1318,6 +1367,16 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getActionDescription_Team() {
+		return (EAttribute)actionDescriptionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getTEAM() {
 		return teamEEnum;
 	}
@@ -1370,6 +1429,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		createEReference(gameReportEClass, GAME_REPORT__GENERAL_STATS);
 		createEReference(gameReportEClass, GAME_REPORT__VISITOR_LINEUP);
 		createEReference(gameReportEClass, GAME_REPORT__HOMETEAM_LINEUP);
+		createEAttribute(gameReportEClass, GAME_REPORT__MIXED);
 
 		teamStatisiticsEClass = createEClass(TEAM_STATISITICS);
 		createEReference(teamStatisiticsEClass, TEAM_STATISITICS__PLAYERS);
@@ -1405,6 +1465,10 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__GAME_LOSE);
 		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__GAME_WIN);
 		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__GAME_SAVE);
+		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__IPS);
+		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__PITCHER_ORDER);
+		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__FLY_OUTS);
+		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__GROUNDED_OUTS);
 
 		defensiveStatisticEClass = createEClass(DEFENSIVE_STATISTIC);
 		createEAttribute(defensiveStatisticEClass, DEFENSIVE_STATISTIC__PUT_OUT);
@@ -1475,6 +1539,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		createEAttribute(actionDescriptionEClass, ACTION_DESCRIPTION__HEADER);
 		createEAttribute(actionDescriptionEClass, ACTION_DESCRIPTION__CONTENT);
 		createEAttribute(actionDescriptionEClass, ACTION_DESCRIPTION__RESUME);
+		createEAttribute(actionDescriptionEClass, ACTION_DESCRIPTION__TEAM);
 
 		// Create enums
 		teamEEnum = createEEnum(TEAM);
@@ -1511,12 +1576,12 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(gameReportEClass, GameReport.class, "GameReport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGameReport_BannerPath(), ecorePackage.getEString(), "bannerPath", null, 0, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGameReport_BannerPath(), ecorePackage.getEString(), "bannerPath", null, 0, -1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGameReport_VisitorSheetPath(), ecorePackage.getEString(), "visitorSheetPath", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGameReport_VisitorStats(), this.getTeamStatisitics(), null, "visitorStats", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGameReport_HometeamStats(), this.getTeamStatisitics(), null, "hometeamStats", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGameReport_Umpires(), ecorePackage.getEString(), "umpires", null, 0, -1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGameReport_Scorekeepers(), ecorePackage.getEString(), "scorekeepers", null, 0, -1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGameReport_VisitorStats(), this.getTeamStatisitics(), null, "visitorStats", null, 0, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getGameReport_HometeamStats(), this.getTeamStatisitics(), null, "hometeamStats", null, 0, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGameReport_Umpires(), ecorePackage.getEString(), "umpires", null, 0, -1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGameReport_Scorekeepers(), ecorePackage.getEString(), "scorekeepers", null, 0, -1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGameReport_Date(), ecorePackage.getEString(), "date", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGameReport_StartingTime(), ecorePackage.getEString(), "startingTime", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGameReport_Duration(), ecorePackage.getEString(), "duration", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1524,11 +1589,12 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		initEAttribute(getGameReport_Stadium(), ecorePackage.getEString(), "stadium", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGameReport_HometeamSheetPath(), ecorePackage.getEString(), "hometeamSheetPath", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGameReport_GameNumber(), ecorePackage.getEString(), "gameNumber", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGameReport_PlayByPlay(), this.getPlayByPlay(), null, "playByPlay", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGameReport_PlayByPlay(), this.getPlayByPlay(), null, "playByPlay", null, 0, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGameReport_PdfFile(), ecorePackage.getEString(), "pdfFile", null, 0, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGameReport_GeneralStats(), this.getGameGeneralStats(), null, "generalStats", null, 1, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGameReport_VisitorLineup(), this.getStartingLineup(), null, "visitorLineup", null, 0, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGameReport_HometeamLineup(), this.getStartingLineup(), null, "hometeamLineup", null, 0, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGameReport_GeneralStats(), this.getGameGeneralStats(), null, "generalStats", null, 0, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getGameReport_VisitorLineup(), this.getStartingLineup(), null, "visitorLineup", null, 0, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getGameReport_HometeamLineup(), this.getStartingLineup(), null, "hometeamLineup", null, 0, 1, GameReport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGameReport_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, 1, GameReport.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(teamStatisiticsEClass, TeamStatisitics.class, "TeamStatisitics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTeamStatisitics_Players(), this.getPlayer(), null, "players", null, 1, -1, TeamStatisitics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1564,6 +1630,10 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		initEAttribute(getPitcherStatistic_GameLose(), ecorePackage.getEInt(), "gameLose", "-1", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPitcherStatistic_GameWin(), ecorePackage.getEInt(), "gameWin", "-1", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPitcherStatistic_GameSave(), ecorePackage.getEInt(), "gameSave", "-1", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPitcherStatistic_Ips(), ecorePackage.getEDouble(), "ips", null, 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPitcherStatistic_PitcherOrder(), ecorePackage.getEInt(), "pitcherOrder", "-1", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPitcherStatistic_FlyOuts(), ecorePackage.getEInt(), "flyOuts", "-1", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPitcherStatistic_GroundedOuts(), ecorePackage.getEInt(), "groundedOuts", "-1", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(defensiveStatisticEClass, DefensiveStatistic.class, "DefensiveStatistic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDefensiveStatistic_PutOut(), ecorePackage.getEInt(), "putOut", "-1", 1, 1, DefensiveStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1634,6 +1704,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		initEAttribute(getActionDescription_Header(), ecorePackage.getEString(), "header", null, 1, 1, ActionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActionDescription_Content(), ecorePackage.getEString(), "content", null, 1, 1, ActionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActionDescription_Resume(), ecorePackage.getEString(), "resume", null, 1, 1, ActionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getActionDescription_Team(), this.getTEAM(), "team", null, 1, 1, ActionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(teamEEnum, org.bpy.score.reports.gamereports.TEAM.class, "TEAM");
@@ -1666,7 +1737,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		  (gameReportEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "GAME-REPORT"
 		   });
 		addAnnotation
@@ -1796,10 +1867,17 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 			   "name", "STARTING-HOMETEAM-LINEUP"
 		   });
 		addAnnotation
+		  (getGameReport_Mixed(),
+		   source,
+		   new String[] {
+			   "kind", "elementWildcard",
+			   "name", ":mixed"
+		   });
+		addAnnotation
 		  (teamStatisiticsEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "TEAM-STATISTICS"
 		   });
 		addAnnotation
@@ -1841,7 +1919,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		  (pitcherStatisticEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "PITCHER-STATISTICS"
 		   });
 		addAnnotation
@@ -2027,10 +2105,38 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 			   "name", "GAME-SAVE"
 		   });
 		addAnnotation
-		  (defensiveStatisticEClass,
+		  (getPitcherStatistic_Ips(),
 		   source,
 		   new String[] {
 			   "kind", "element",
+			   "name", "IPS"
+		   });
+		addAnnotation
+		  (getPitcherStatistic_PitcherOrder(),
+		   source,
+		   new String[] {
+			   "kind", "element",
+			   "name", "PITCHER-ORDER"
+		   });
+		addAnnotation
+		  (getPitcherStatistic_FlyOuts(),
+		   source,
+		   new String[] {
+			   "kind", "element",
+			   "name", "FLY-OUTS"
+		   });
+		addAnnotation
+		  (getPitcherStatistic_GroundedOuts(),
+		   source,
+		   new String[] {
+			   "kind", "element",
+			   "name", "GROUNDED-OUTS"
+		   });
+		addAnnotation
+		  (defensiveStatisticEClass,
+		   source,
+		   new String[] {
+			   "kind", "elementOnly",
 			   "name", "DEFENSIVES-STATISTICS"
 		   });
 		addAnnotation
@@ -2065,7 +2171,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		  (catcherStatisticEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "CATCHER-STATISTICS"
 		   });
 		addAnnotation
@@ -2093,7 +2199,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		  (offensiveStatisticEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "OFFENSIVE-STATISTICS"
 		   });
 		addAnnotation
@@ -2226,7 +2332,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		  (playerEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "PLAYER"
 		   });
 		addAnnotation
@@ -2268,14 +2374,21 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		  (playByPlayEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "PLAY-BY-PLAY"
+		   });
+		addAnnotation
+		  (getPlayByPlay_Actiondescription(),
+		   source,
+		   new String[] {
+			   "kind", "element",
+			   "name", "ACTION-DESCRIPTION"
 		   });
 		addAnnotation
 		  (gameGeneralStatsEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "GAME-GENERAL-STATS"
 		   });
 		addAnnotation
@@ -2331,7 +2444,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		  (pointsPerInningEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "POINTS-PER-INNING"
 		   });
 		addAnnotation
@@ -2359,7 +2472,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		  (startingLineupEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "STARTING-LINEUP"
 		   });
 		addAnnotation
@@ -2387,7 +2500,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		  (lineupPlayerEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "LINEUP-PLAYER"
 		   });
 		addAnnotation
@@ -2415,7 +2528,7 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		  (actionDescriptionEClass,
 		   source,
 		   new String[] {
-			   "kind", "element",
+			   "kind", "elementOnly",
 			   "name", "ACTION-DESCRIPTION"
 		   });
 		addAnnotation
@@ -2438,6 +2551,13 @@ public class GameReportsPackageImpl extends EPackageImpl implements GameReportsP
 		   new String[] {
 			   "kind", "element",
 			   "name", "RESUME"
+		   });
+		addAnnotation
+		  (getActionDescription_Team(),
+		   source,
+		   new String[] {
+			   "kind", "element",
+			   "name", "TEAM"
 		   });
 	}
 

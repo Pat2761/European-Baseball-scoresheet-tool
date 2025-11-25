@@ -1,0 +1,135 @@
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+}	
+
+table.lineup {
+  margin:auto;	
+  width: 60%;
+  text-align: center;
+  table-layout: fixed;
+}
+
+td.lineupFrappeur {
+	font-size : 1.5em;
+}	
+
+th.lineupFrappeur {
+	font-size : 1.5em;
+	text-align : left;
+}	
+
+table.PlayByPlay {
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td.PlayByPlay_Header {
+	border: 1px solid black;
+	font-size: 1.5em;
+	color: #0C47Ab;
+	background-color: #C0C0C0;
+}	
+
+td.PlayByPlay_Corps_visitor {
+	border: 1px solid black;
+	font-size: 1.5em;
+	background-color: #D7EC95;
+}	
+
+td.PlayByPlay_Resume {
+	border: 1px solid black;
+	font-size: 1.5em;
+	font-weight: bold;
+	background-color: #C0C0C0;
+}
+	
+td.PlayByPlay_Corps_hometeam {
+	border: 1px solid black;
+	font-size: 1.5em;
+	background-color: #ABEDF3;
+}	
+
+
+table.GeneralResult {
+	text-align:center;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+td.GeneralResult_inningRun {
+	border: 1px solid black;
+	font-size: 1.8em;
+	padding: 15px;
+}	
+
+td.GeneralResult_General {
+	border: 1px solid black;
+	font-size: 1.8em;
+	padding: 15px;
+	font-weight : bold;
+}	
+
+table.PlayerStats {
+	text-align:center;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th.PlayerStats_Town {
+	border: 1px solid black;
+	font-size: 1.5em;
+	padding: 15px;
+	font-weight : bold;
+}	
+
+th.PlayerStats_Offensive {
+	border: 1px solid black;
+	font-size: 1.5em;
+	padding: 15px;
+	font-weight : bold;
+}	
+
+th.PlayerStats_Defensive {
+	border: 1px solid black;
+	font-size: 1.5em;
+	padding: 15px;
+	font-weight : bold;
+}
+	
+td.PlayerStats_Town {
+	border: 1px solid black;
+	font-size: 1.3em;
+	padding: 15px;
+	font-weight : bold;
+}	
+
+td.PlayerStats_Offensive {
+	border: 1px solid black;
+	font-size: 1.3em;
+	padding: 15px;
+	font-weight : bold;
+}	
+
+td.PlayerStats_Defensive {
+	border: 1px solid black;
+	font-size: 1.3em;
+	padding: 15px;
+	font-weight : bold;
+}	
+
+p.startlingLineUpImage {
+	 min-height: 400px;
+	 align: center;
+}	
+
+
+img.startlingLineUpImage {
+	max-width: 100%;
+	height: auto;
+}	
+
+img.scoringSheet {
+	max-width: 100%;
+	height: auto;
+}	

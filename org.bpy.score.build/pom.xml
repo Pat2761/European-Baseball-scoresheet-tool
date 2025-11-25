@@ -50,6 +50,8 @@
 		<module>../org.bpy.score.engine.tests</module>
 		<module>../org.bpy.score.graphics</module>
 		<module>../org.bpy.score.graphics.tests</module>
+		<module>../org.bpy.score.preferences</module>
+		<module>../org.bpy.score.preferences.tests</module>
 		<module>../org.bpy.score.reports</module>
 		<module>../org.bpy.score.reports.tests</module>
 		<module>../org.bpy.score.rcp</module> 

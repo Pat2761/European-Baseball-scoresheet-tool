@@ -34,20 +34,50 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//PitcherStatistics/ips"/>
     </genClasses>
     <genClasses ecoreClass="GlobalStatisticsModel.ecore#//OffensiveStatistics">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/hits"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/baseOnBalls"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/hitsByPitch"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/atBats"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/sacrificeFlies"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/doubleBaseHits"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/tripleBaseHits"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/fourBaseHits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/battingAverage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/caughtStealing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/doubles"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/extraBaseHits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/gamesPlayed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/grandSlam"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/groundIntoDoublePlay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/groundoutToAiroutRatio"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/hitByPitchs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/hits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/homeRuns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/intentionalWalks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/leftOnBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/onBasePercentage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/onBasePlusSlugging"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/plateAppearance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/reachedOnError"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/runs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/rbis"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/sacrificeBunt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/sacrificeFly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/single"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/sluggingPercentage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/stolenBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/stolenBasePercentage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/totalBases"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/triples"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/walks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//OffensiveStatistics/walkOff"/>
     </genClasses>
     <genClasses ecoreClass="GlobalStatisticsModel.ecore#//DefensiveStatistics">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/putouts"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/assists"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/caughtStealingPercentage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/doublePlays"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/errors"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/fieldingPercentage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/inningsPlayed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/outs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/outfieldAssist"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/passedBall"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/putouts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/totalChances"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GlobalStatisticsModel.ecore#//DefensiveStatistics/triplePlay"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

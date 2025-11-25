@@ -252,7 +252,7 @@ public class NewTeamPageOneWizard extends WizardPage implements ModifyListener {
 		createListOfPossiblesClubs(clubsDescription, (IContainer)ResourcesPlugin.getWorkspace().getRoot(), currentFolder);
 		String[] choices = clubsDescription.keySet().toArray(new String[clubsDescription.keySet().size()]);
 
-		/* On permet à l'utilisateur de sélectionner le club à importer */
+		/* On permet ï¿½ l'utilisateur de sï¿½lectionner le club ï¿½ importer */
 		ElementListSelectionDialog elementListSelectionDialog = new ElementListSelectionDialog(new Shell(), new LabelProvider());
 		elementListSelectionDialog.setTitle(Messages.NewTeamPageOneWizard_ClubImportationDialogTitle);
 		elementListSelectionDialog.setMessage(Messages.NewTeamPageOneWizard_ClubImportationDialogMessage);

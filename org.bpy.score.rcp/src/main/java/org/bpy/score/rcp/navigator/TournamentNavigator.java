@@ -54,7 +54,6 @@ public class TournamentNavigator extends CommonNavigator {
 	protected void initListeners(TreeViewer viewer) {
 
 		viewer.addDoubleClickListener(event -> manageEvent(event));
-
 		super.initListeners(viewer);
 	}
 

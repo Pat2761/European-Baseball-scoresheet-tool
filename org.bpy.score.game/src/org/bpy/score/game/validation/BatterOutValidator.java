@@ -65,6 +65,7 @@ public class BatterOutValidator extends AbstractGameValidator {
 	@Check
 	public void checkReleasedStrikeOutConsistency(BatterOutOnReleasedStrike releaseStrikeOut) {
 		String defenderPart = ScoreGameUtil.getDefenderPart(releaseStrikeOut);
+
 		char outMadeBy = ScoreGameUtil.getPutoutDefender(defenderPart);
 		if (outMadeBy < '1' || outMadeBy > '9') {
 			error(
@@ -305,80 +306,80 @@ public class BatterOutValidator extends AbstractGameValidator {
 		checkConsistencyAssistAndOut(putoutDefender, assist, GamePackage.eINSTANCE.getBatterOutOnGroundedBall_BatterOut());
 	}
 
-	/**
-	 * Check that the defensive position is a valid defensive position (1..9)
-	 * Check that assist and out can't be done by the same defensive position
-	 * 
-	 * @param outOutByRuleOut Action to check 
-	 *
-	 */
-	@Check
-	public void checkBatterOutByRule(BatterOutByRule outOutByRuleOut) {
-
-		String obrType = ScoreGameUtil.getOBRType(outOutByRuleOut);
-		
-		if ("KS".equals(obrType) ||  //$NON-NLS-1$
-		    "1".equals(obrType) || "2".equals(obrType) || "3".equals(obrType) || "4".equals(obrType) ||   //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-		    "5".equals(obrType) || "6".equals(obrType)  || "8".equals(obrType) ||  //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ 
-		    "14".equals(obrType)  || "16".equals(obrType)  ) { //$NON-NLS-1$ //$NON-NLS-2$  
-		    
-			// it is paerfect
-			
-	    }  else  {
-			error(
-				NLS.bind(Messages.BatterOutValidator_invalidBatterBaseballObr, new String[] {obrType }),
-				GamePackage.eINSTANCE.getBatterOutByRule_BatterOut(),
-				INVALID_BATTER_OBR_CAUSE);
-	    }
-				
-
-		Game game = (Game) EcoreUtil.getRootContainer(outOutByRuleOut);
-		if ( ("baseball".equals(ScoreGameUtil.getTypeOfGame(game))) && //$NON-NLS-1$  
-			 ("15".equals(obrType) || "16".equals(obrType))) { //$NON-NLS-1$  //$NON-NLS-2$
-			 	error(
-					NLS.bind(Messages.BatterOutValidator_badBaseballObrCause, outOutByRuleOut.getBatterOut()),
-					GamePackage.eINSTANCE.getBatterOutByRule_BatterOut(),
-					INVALID_BATTER_OBR_CAUSE
-			);
-    	}
-	}
-
-	/**
-	 * Check that the defensive position is a valid defensive position (1..9)
-	 * Check that assist and out can't be done by the same defensive position
-	 * 
-	 * @param outOutByRuleOut Action to check 
-	 *
-	 */
-	@Check
-	public void checkRunnerOutByRule(RunnerOutByRules outOutByRuleOut) {
-
-		String obrType = ScoreGameUtil.getOBRType(outOutByRuleOut);
-		
-		if ("7".equals(obrType) || //$NON-NLS-1$ 
-		    "9".equals(obrType) || "10".equals(obrType) || "11".equals(obrType) || "12".equals(obrType) ||  //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-		    "13".equals(obrType)|| "14".equals(obrType)|| "15".equals(obrType)) { //$NON-NLS-1$ //$NON-NLS-2$   //$NON-NLS-3$ 
-		    
-			// it is paerfect
-			
-	    }  else  {
-			error(
-				NLS.bind(Messages.BatterOutValidator_invalidRunnerBaseballObr, new String[] {obrType }),
-				GamePackage.eINSTANCE.getRunnerOutByRules_RunnerOut(),
-				INVALID_RUNNER_OBR_CAUSE);
-	    }
-				
-
-		Game game = (Game) EcoreUtil.getRootContainer(outOutByRuleOut);
-		if ( ("baseball".equals(ScoreGameUtil.getTypeOfGame(game))) && //$NON-NLS-1$  
-			 ("15".equals(obrType) || "16".equals(obrType))) { //$NON-NLS-1$  //$NON-NLS-2$
-			 	error(
-					NLS.bind(Messages.BatterOutValidator_badBaseballObrCause, outOutByRuleOut.getRunnerOut()),
-					GamePackage.eINSTANCE.getRunnerOutByRules_RunnerOut(),
-					INVALID_RUNNER_OBR_CAUSE
-			);
-    	}
-	}
+//	/**
+//	 * Check that the defensive position is a valid defensive position (1..9)
+//	 * Check that assist and out can't be done by the same defensive position
+//	 * 
+//	 * @param outOutByRuleOut Action to check 
+//	 *
+//	 */
+//	@Check
+//	public void checkBatterOutByRule(BatterOutByRule outOutByRuleOut) {
+//
+//		String obrType = ScoreGameUtil.getOBRType(outOutByRuleOut);
+//		
+//		if ("KS".equals(obrType) ||  //$NON-NLS-1$
+//		    "1".equals(obrType) || "2".equals(obrType) || "3".equals(obrType) || "4".equals(obrType) ||   //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+//		    "5".equals(obrType) || "6".equals(obrType)  || "8".equals(obrType) ||  //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ 
+//		    "14".equals(obrType)  || "16".equals(obrType)  ) { //$NON-NLS-1$ //$NON-NLS-2$  
+//		    
+//			// it is paerfect
+//			
+//	    }  else  {
+//			error(
+//				NLS.bind(Messages.BatterOutValidator_invalidBatterBaseballObr, new String[] {obrType }),
+//				GamePackage.eINSTANCE.getBatterOutByRule_BatterOut(),
+//				INVALID_BATTER_OBR_CAUSE);
+//	    }
+//				
+//
+//		Game game = (Game) EcoreUtil.getRootContainer(outOutByRuleOut);
+//		if ( ("baseball".equals(ScoreGameUtil.getTypeOfGame(game))) && //$NON-NLS-1$  
+//			 ("15".equals(obrType) || "16".equals(obrType))) { //$NON-NLS-1$  //$NON-NLS-2$
+//			 	error(
+//					NLS.bind(Messages.BatterOutValidator_badBaseballObrCause, outOutByRuleOut.getBatterOut()),
+//					GamePackage.eINSTANCE.getBatterOutByRule_BatterOut(),
+//					INVALID_BATTER_OBR_CAUSE
+//			);
+//    	}
+//	}
+//
+//	/**
+//	 * Check that the defensive position is a valid defensive position (1..9)
+//	 * Check that assist and out can't be done by the same defensive position
+//	 * 
+//	 * @param outOutByRuleOut Action to check 
+//	 *
+//	 */
+//	@Check
+//	public void checkRunnerOutByRule(RunnerOutByRules outOutByRuleOut) {
+//
+//		String obrType = ScoreGameUtil.getOBRType(outOutByRuleOut);
+//		
+//		if ("7".equals(obrType) || //$NON-NLS-1$ 
+//		    "9".equals(obrType) || "10".equals(obrType) || "11".equals(obrType) || "12".equals(obrType) ||  //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+//		    "13".equals(obrType)|| "14".equals(obrType)|| "15".equals(obrType)) { //$NON-NLS-1$ //$NON-NLS-2$   //$NON-NLS-3$ 
+//		    
+//			// it is paerfect
+//			
+//	    }  else  {
+//			error(
+//				NLS.bind(Messages.BatterOutValidator_invalidRunnerBaseballObr, new String[] {obrType }),
+//				GamePackage.eINSTANCE.getRunnerOutByRules_RunnerOut(),
+//				INVALID_RUNNER_OBR_CAUSE);
+//	    }
+//				
+//
+//		Game game = (Game) EcoreUtil.getRootContainer(outOutByRuleOut);
+//		if ( ("baseball".equals(ScoreGameUtil.getTypeOfGame(game))) && //$NON-NLS-1$  
+//			 ("15".equals(obrType) || "16".equals(obrType))) { //$NON-NLS-1$  //$NON-NLS-2$
+//			 	error(
+//					NLS.bind(Messages.BatterOutValidator_badBaseballObrCause, outOutByRuleOut.getRunnerOut()),
+//					GamePackage.eINSTANCE.getRunnerOutByRules_RunnerOut(),
+//					INVALID_RUNNER_OBR_CAUSE
+//			);
+//    	}
+//	}
 
 	
 	/**

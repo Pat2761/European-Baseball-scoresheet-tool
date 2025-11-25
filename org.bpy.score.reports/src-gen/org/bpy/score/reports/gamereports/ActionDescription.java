@@ -16,10 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.bpy.score.reports.gamereports.ActionDescription#getHeader <em>Header</em>}</li>
  *   <li>{@link org.bpy.score.reports.gamereports.ActionDescription#getContent <em>Content</em>}</li>
  *   <li>{@link org.bpy.score.reports.gamereports.ActionDescription#getResume <em>Resume</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.ActionDescription#getTeam <em>Team</em>}</li>
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getActionDescription()
- * @model extendedMetaData="kind='element' name='ACTION-DESCRIPTION'"
+ * @model extendedMetaData="kind='elementOnly' name='ACTION-DESCRIPTION'"
  * @generated
  */
 public interface ActionDescription extends EObject {
@@ -91,5 +92,31 @@ public interface ActionDescription extends EObject {
 	 * @generated
 	 */
 	void setResume(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Team</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.bpy.score.reports.gamereports.TEAM}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Team</em>' attribute.
+	 * @see org.bpy.score.reports.gamereports.TEAM
+	 * @see #setTeam(TEAM)
+	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getActionDescription_Team()
+	 * @model required="true"
+	 *        extendedMetaData="kind='element' name='TEAM'"
+	 * @generated
+	 */
+	TEAM getTeam();
+
+	/**
+	 * Sets the value of the '{@link org.bpy.score.reports.gamereports.ActionDescription#getTeam <em>Team</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Team</em>' attribute.
+	 * @see org.bpy.score.reports.gamereports.TEAM
+	 * @see #getTeam()
+	 * @generated
+	 */
+	void setTeam(TEAM value);
 
 } // ActionDescription

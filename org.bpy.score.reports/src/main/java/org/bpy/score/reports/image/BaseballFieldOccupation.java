@@ -84,9 +84,9 @@ public class BaseballFieldOccupation {
 	 * @param lineUp Line-up of the team
 	 */
 	public void placePlayers(StartingLineup lineUp) {
-		Font font = new Font(Display.getCurrent(),"Arial",12,SWT.BOLD);
+		Font font = new Font(Display.getCurrent(),"Arial",12,SWT.BOLD);//$NON-NLS-1$
 
-		ImageDescriptor emptyField = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "./icons/baseball-field.png");
+		ImageDescriptor emptyField = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "./icons/baseball-field.png");//$NON-NLS-1$
 		fieldImage = emptyField.createImage();
 		
 		GC gc = new GC(fieldImage);

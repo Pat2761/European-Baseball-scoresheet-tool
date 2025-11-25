@@ -16,7 +16,8 @@ Require-Bundle: org.eclipse.xtext,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
  org.eclipse.ui.ide;bundle-version="3.19.100",
  org.eclipse.core.resources;bundle-version="3.18.0",
- org.eclipse.xtext.builder;bundle-version="2.28.0"
+ org.eclipse.xtext.builder;bundle-version="2.28.0",
+ org.bpy.score.internationalization;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.bpy.score.club,
  org.bpy.score.club.club,
@@ -31,4 +32,5 @@ Export-Package: org.bpy.score.club,
  org.bpy.score.club.services,
  org.bpy.score.club.util,
  org.bpy.score.club.validation
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.eclipse.osgi.util;version="1.1.0"

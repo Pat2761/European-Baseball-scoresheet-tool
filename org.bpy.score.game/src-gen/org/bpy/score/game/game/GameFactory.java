@@ -960,6 +960,15 @@ public interface GameFactory extends EFactory
   BatterAdvanceOnFlyError createBatterAdvanceOnFlyError();
 
   /**
+   * Returns a new object of class '<em>Batter Advance On Pop Error</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Batter Advance On Pop Error</em>'.
+   * @generated
+   */
+  BatterAdvanceOnPopError createBatterAdvanceOnPopError();
+
+  /**
    * Returns a new object of class '<em>Batter Advance On Receive Error</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -61,7 +61,7 @@ public class GlobalStatisticContainer {
 	 */
 	public GlobalStatisticContainer() {
 		if (resourceSet == null) {
-			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*",new GlobalStatisticsResourceFactoryImpl());
+			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*",new GlobalStatisticsResourceFactoryImpl()); //$NON-NLS-1$
 	
 			/* Création de la factory */
 			GlobalStatisticsAdapterFactory globalStatisiticAdapterFactory = new GlobalStatisticsAdapterFactory();
@@ -73,10 +73,9 @@ public class GlobalStatisticContainer {
 			AdapterFactoryEditingDomain editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack,new HashMap<>());
 			resourceSet = editingDomain.getResourceSet();
 	
-			resourceSet.createResource(URI.createFileURI("GlobalStatsContainer.xml"));
-			globalStatistic = GlobalStatisticsFactory.eINSTANCE.createGlobalStatistic();
+			resourceSet.createResource(URI.createFileURI("GlobalStatsContainer.xml")); //$NON-NLS-1$
 		}
-
+		globalStatistic = GlobalStatisticsFactory.eINSTANCE.createGlobalStatistic();
 	}
 
 	/**
@@ -158,14 +157,14 @@ public class GlobalStatisticContainer {
 			OffensiveStatistics offensiveStatitics = getOrCreateOffensiveStatisitics(team, memberName);
 
 			offensiveStatitics.setAtBats(offensiveStatitics.getAtBats() + player.getOffensiveStatistic().getAtBats());
-			offensiveStatitics.setBaseOnBalls(offensiveStatitics.getBaseOnBalls() + player.getOffensiveStatistic().getBaseOnBall());
-			offensiveStatitics.setDoubleBaseHits(offensiveStatitics.getDoubleBaseHits() + player.getOffensiveStatistic().getDouble());
-			offensiveStatitics.setFourBaseHits(offensiveStatitics.getFourBaseHits() + player.getOffensiveStatistic().getHomerun());
+			offensiveStatitics.setWalks(offensiveStatitics.getWalks() + player.getOffensiveStatistic().getBaseOnBall());
+			offensiveStatitics.setDoubles(offensiveStatitics.getDoubles() + player.getOffensiveStatistic().getDouble());
+			offensiveStatitics.setHomeRuns(offensiveStatitics.getHomeRuns() + player.getOffensiveStatistic().getHomerun());
 			offensiveStatitics.setHits(offensiveStatitics.getHits() + player.getOffensiveStatistic().getHits());
-			offensiveStatitics.setHitsByPitch(offensiveStatitics.getHitsByPitch() + player.getOffensiveStatistic().getHitByPitch());
+			offensiveStatitics.setHitByPitchs(offensiveStatitics.getHitByPitchs() + player.getOffensiveStatistic().getHitByPitch());
 			offensiveStatitics.setPlateAppearance(offensiveStatitics.getPlateAppearance() + player.getOffensiveStatistic().getPlateAppearances());
-			offensiveStatitics.setSacrificeFlies(offensiveStatitics.getSacrificeFlies() + player.getOffensiveStatistic().getSacrificeFly());
-			offensiveStatitics.setTripleBaseHits(offensiveStatitics.getTripleBaseHits() + player.getOffensiveStatistic().getTriple());
+			offensiveStatitics.setSacrificeFly(offensiveStatitics.getSacrificeFly() + player.getOffensiveStatistic().getSacrificeFly());
+			offensiveStatitics.setTriples(offensiveStatitics.getTriples() + player.getOffensiveStatistic().getTriple());
 		}
 	}
 
@@ -288,14 +287,14 @@ public class GlobalStatisticContainer {
 		member.setOffensiveStatistics(offensiveStatistics);
 		
 		offensiveStatistics.setAtBats(0);
-		offensiveStatistics.setBaseOnBalls(0);
-		offensiveStatistics.setDoubleBaseHits(0);
-		offensiveStatistics.setFourBaseHits(0);
+		offensiveStatistics.setWalkOff(0);
+		offensiveStatistics.setDoubles(0);
+		offensiveStatistics.setHomeRuns(0);
 		offensiveStatistics.setHits(0);
-		offensiveStatistics.setHitsByPitch(0);
+		offensiveStatistics.setHitByPitchs(0);
 		offensiveStatistics.setPlateAppearance(0);
-		offensiveStatistics.setSacrificeFlies(0);
-		offensiveStatistics.setTripleBaseHits(0);
+		offensiveStatistics.setSacrificeFly(0);
+		offensiveStatistics.setTriples(0);
 		
 		return offensiveStatistics;
 	}

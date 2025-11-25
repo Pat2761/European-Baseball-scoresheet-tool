@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.bpy.score.reports;singleton:=true
 Automatic-Module-Name: org.bpy.score.reports
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .,
- lib/itextpdf.jar
+ lib/itextpdf.jar,
+ lib/commons-io-2.4.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-Activator: org.bpy.score.reports.Activator
@@ -20,7 +21,9 @@ Require-Bundle: org.eclipse.ui,
  org.bpy.score.engine;bundle-version="1.0.0",
  org.eclipse.swt,
  org.bpy.score.internationalization;bundle-version="1.0.0",
- org.bpy.score.graphics;bundle-version="1.0.0"
+ org.bpy.score.graphics;bundle-version="1.0.0",
+ org.eclipse.core.variables;bundle-version="3.5.100",
+ com.ibm.icu;bundle-version="67.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: com.itextpdf.text.pdf,
  org.bpy.score.reports,

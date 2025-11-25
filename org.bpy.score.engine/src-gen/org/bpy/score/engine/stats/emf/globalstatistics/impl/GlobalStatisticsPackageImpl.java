@@ -345,7 +345,7 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 */
 	@Override
 	public EAttribute getOffensiveStatistics_Hits() {
-		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -354,8 +354,8 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOffensiveStatistics_BaseOnBalls() {
-		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(1);
+	public EAttribute getOffensiveStatistics_HomeRuns() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -364,8 +364,38 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOffensiveStatistics_HitsByPitch() {
-		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(2);
+	public EAttribute getOffensiveStatistics_IntentionalWalks() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_LeftOnBase() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_OnBasePercentage() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_OnBasePlusSlugging() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -375,6 +405,36 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 */
 	@Override
 	public EAttribute getOffensiveStatistics_AtBats() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_BattingAverage() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_CaughtStealing() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_Doubles() {
 		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -384,7 +444,7 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOffensiveStatistics_SacrificeFlies() {
+	public EAttribute getOffensiveStatistics_ExtraBaseHits() {
 		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -394,7 +454,7 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOffensiveStatistics_DoubleBaseHits() {
+	public EAttribute getOffensiveStatistics_GamesPlayed() {
 		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -404,7 +464,7 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOffensiveStatistics_TripleBaseHits() {
+	public EAttribute getOffensiveStatistics_GrandSlam() {
 		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -414,7 +474,7 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOffensiveStatistics_FourBaseHits() {
+	public EAttribute getOffensiveStatistics_GroundIntoDoublePlay() {
 		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -424,8 +484,158 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOffensiveStatistics_PlateAppearance() {
+	public EAttribute getOffensiveStatistics_GroundoutToAiroutRatio() {
 		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_HitByPitchs() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_PlateAppearance() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(16);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_ReachedOnError() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_Runs() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(18);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_Rbis() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_SacrificeBunt() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_SacrificeFly() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(21);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_Single() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(22);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_SluggingPercentage() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_StolenBase() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(24);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_StolenBasePercentage() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_TotalBases() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(26);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_Triples() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(27);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_Walks() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(28);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOffensiveStatistics_WalkOff() {
+		return (EAttribute)offensiveStatisticsEClass.getEStructuralFeatures().get(29);
 	}
 
 	/**
@@ -445,7 +655,27 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 */
 	@Override
 	public EAttribute getDefensiveStatistics_Putouts() {
-		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDefensiveStatistics_TotalChances() {
+		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDefensiveStatistics_TriplePlay() {
+		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -455,6 +685,16 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 */
 	@Override
 	public EAttribute getDefensiveStatistics_Assists() {
+		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDefensiveStatistics_CaughtStealingPercentage() {
 		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -464,8 +704,68 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDefensiveStatistics_Errors() {
+	public EAttribute getDefensiveStatistics_DoublePlays() {
 		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDefensiveStatistics_Errors() {
+		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDefensiveStatistics_FieldingPercentage() {
+		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDefensiveStatistics_InningsPlayed() {
+		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDefensiveStatistics_Outs() {
+		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDefensiveStatistics_OutfieldAssist() {
+		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDefensiveStatistics_PassedBall() {
+		return (EAttribute)defensiveStatisticsEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -522,20 +822,50 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 		createEAttribute(pitcherStatisticsEClass, PITCHER_STATISTICS__IPS);
 
 		offensiveStatisticsEClass = createEClass(OFFENSIVE_STATISTICS);
-		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__HITS);
-		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__BASE_ON_BALLS);
-		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__HITS_BY_PITCH);
 		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__AT_BATS);
-		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__SACRIFICE_FLIES);
-		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__DOUBLE_BASE_HITS);
-		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__TRIPLE_BASE_HITS);
-		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__FOUR_BASE_HITS);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__BATTING_AVERAGE);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__CAUGHT_STEALING);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__DOUBLES);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__EXTRA_BASE_HITS);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__GAMES_PLAYED);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__GRAND_SLAM);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__GROUND_INTO_DOUBLE_PLAY);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__GROUNDOUT_TO_AIROUT_RATIO);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__HIT_BY_PITCHS);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__HITS);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__HOME_RUNS);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__INTENTIONAL_WALKS);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__LEFT_ON_BASE);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__ON_BASE_PERCENTAGE);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__ON_BASE_PLUS_SLUGGING);
 		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__PLATE_APPEARANCE);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__REACHED_ON_ERROR);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__RUNS);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__RBIS);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__SACRIFICE_BUNT);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__SACRIFICE_FLY);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__SINGLE);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__SLUGGING_PERCENTAGE);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__STOLEN_BASE);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__STOLEN_BASE_PERCENTAGE);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__TOTAL_BASES);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__TRIPLES);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__WALKS);
+		createEAttribute(offensiveStatisticsEClass, OFFENSIVE_STATISTICS__WALK_OFF);
 
 		defensiveStatisticsEClass = createEClass(DEFENSIVE_STATISTICS);
-		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__PUTOUTS);
 		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__ASSISTS);
+		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__CAUGHT_STEALING_PERCENTAGE);
+		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__DOUBLE_PLAYS);
 		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__ERRORS);
+		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__FIELDING_PERCENTAGE);
+		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__INNINGS_PLAYED);
+		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__OUTS);
+		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__OUTFIELD_ASSIST);
+		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__PASSED_BALL);
+		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__PUTOUTS);
+		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__TOTAL_CHANCES);
+		createEAttribute(defensiveStatisticsEClass, DEFENSIVE_STATISTICS__TRIPLE_PLAY);
 	}
 
 	/**
@@ -593,20 +923,50 @@ public class GlobalStatisticsPackageImpl extends EPackageImpl implements GlobalS
 		initEAttribute(getPitcherStatistics_Ips(), ecorePackage.getEInt(), "ips", "-1", 1, 1, PitcherStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(offensiveStatisticsEClass, OffensiveStatistics.class, "OffensiveStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOffensiveStatistics_Hits(), ecorePackage.getEInt(), "hits", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOffensiveStatistics_BaseOnBalls(), ecorePackage.getEInt(), "baseOnBalls", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOffensiveStatistics_HitsByPitch(), ecorePackage.getEInt(), "hitsByPitch", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOffensiveStatistics_AtBats(), ecorePackage.getEInt(), "atBats", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOffensiveStatistics_SacrificeFlies(), ecorePackage.getEInt(), "sacrificeFlies", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOffensiveStatistics_DoubleBaseHits(), ecorePackage.getEInt(), "doubleBaseHits", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOffensiveStatistics_TripleBaseHits(), ecorePackage.getEInt(), "tripleBaseHits", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOffensiveStatistics_FourBaseHits(), ecorePackage.getEInt(), "fourBaseHits", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_BattingAverage(), ecorePackage.getEDouble(), "battingAverage", "0.0", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_CaughtStealing(), ecorePackage.getEInt(), "caughtStealing", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_Doubles(), ecorePackage.getEInt(), "doubles", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_ExtraBaseHits(), ecorePackage.getEInt(), "extraBaseHits", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_GamesPlayed(), ecorePackage.getEInt(), "gamesPlayed", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_GrandSlam(), ecorePackage.getEInt(), "grandSlam", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_GroundIntoDoublePlay(), ecorePackage.getEInt(), "groundIntoDoublePlay", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_GroundoutToAiroutRatio(), ecorePackage.getEDouble(), "groundoutToAiroutRatio", "0.0", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_HitByPitchs(), ecorePackage.getEInt(), "hitByPitchs", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_Hits(), ecorePackage.getEInt(), "hits", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_HomeRuns(), ecorePackage.getEInt(), "homeRuns", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_IntentionalWalks(), ecorePackage.getEInt(), "intentionalWalks", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_LeftOnBase(), ecorePackage.getEInt(), "leftOnBase", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_OnBasePercentage(), ecorePackage.getEDouble(), "onBasePercentage", "0.0", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_OnBasePlusSlugging(), ecorePackage.getEDouble(), "onBasePlusSlugging", "0.0", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOffensiveStatistics_PlateAppearance(), ecorePackage.getEInt(), "plateAppearance", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_ReachedOnError(), ecorePackage.getEInt(), "reachedOnError", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_Runs(), ecorePackage.getEInt(), "runs", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_Rbis(), ecorePackage.getEInt(), "rbis", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_SacrificeBunt(), ecorePackage.getEInt(), "sacrificeBunt", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_SacrificeFly(), ecorePackage.getEInt(), "sacrificeFly", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_Single(), ecorePackage.getEInt(), "single", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_SluggingPercentage(), ecorePackage.getEDouble(), "sluggingPercentage", "0.0", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_StolenBase(), ecorePackage.getEInt(), "stolenBase", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_StolenBasePercentage(), ecorePackage.getEDouble(), "stolenBasePercentage", "0.0", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_TotalBases(), ecorePackage.getEInt(), "totalBases", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_Triples(), ecorePackage.getEInt(), "triples", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_Walks(), ecorePackage.getEInt(), "walks", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOffensiveStatistics_WalkOff(), ecorePackage.getEInt(), "walkOff", "-1", 1, 1, OffensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(defensiveStatisticsEClass, DefensiveStatistics.class, "DefensiveStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDefensiveStatistics_Putouts(), ecorePackage.getEInt(), "putouts", "-1", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDefensiveStatistics_Assists(), ecorePackage.getEInt(), "assists", "-1", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDefensiveStatistics_CaughtStealingPercentage(), ecorePackage.getEDouble(), "caughtStealingPercentage", "0.0", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDefensiveStatistics_DoublePlays(), ecorePackage.getEInt(), "doublePlays", "-1", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDefensiveStatistics_Errors(), ecorePackage.getEInt(), "errors", "-1", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDefensiveStatistics_FieldingPercentage(), ecorePackage.getEDouble(), "fieldingPercentage", "0.0", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDefensiveStatistics_InningsPlayed(), ecorePackage.getEDouble(), "inningsPlayed", "0.0", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDefensiveStatistics_Outs(), ecorePackage.getEInt(), "outs", "-1", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDefensiveStatistics_OutfieldAssist(), ecorePackage.getEInt(), "outfieldAssist", "-1", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDefensiveStatistics_PassedBall(), ecorePackage.getEInt(), "passedBall", "-1", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDefensiveStatistics_Putouts(), ecorePackage.getEInt(), "putouts", "-1", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDefensiveStatistics_TotalChances(), ecorePackage.getEInt(), "totalChances", "-1", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDefensiveStatistics_TriplePlay(), ecorePackage.getEInt(), "triplePlay", "-1", 1, 1, DefensiveStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

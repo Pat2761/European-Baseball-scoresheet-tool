@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Advance_On_Fielder_Choice extends AbstractWBSCUnitTest {
 
@@ -47,14 +46,14 @@ public void example071() {
   buf.append("        /* Le premier batteru frappe un simple sur le lanceur */\r\n");
   buf.append("        action { batter -> 1B1 }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le batteur suivant frappe une balle vers le éfenseur de la troisième base qui fait le choix de relayer la balle au défenseur de la deuxième base sans succés */\r\n");
+  buf.append("        /* Le batteur suivant frappe une balle vers le ï¿½fenseur de la troisiï¿½me base qui fait le choix de relayer la balle au dï¿½fenseur de la deuxiï¿½me base sans succï¿½s */\r\n");
   buf.append("        action { batter -> FC54 , runner1 -> + }\r\n");
   buf.append("\r\n");
   buf.append(CommonResources.ENDING_GAME);
   
   
   IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-  assertNotNull("Parser result can't be null", parserResult);
+  assertNotNull(parserResult,"Parser result can't be null");
   Game game = (Game) parserResult.getRootASTElement();
   
   /* create statistiques */
@@ -98,7 +97,7 @@ public void example071() {
   /* ----------------------------------------------------------------------------------------------------------------------- */
   checkTotalCatcherSt(statisticEngine, 0, 0, 0);
   
-  /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+  /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
   
 }
 
@@ -110,7 +109,7 @@ public void example071() {
  *      <td>
  *        <img src="./resources/WBSC_2016_offense_exemple_072.JPG"/>
  *      </td>
- *      <td>The notation “FC” in the first base square indicates that a play
+ *      <td>The notation ï¿½FCï¿½ in the first base square indicates that a play
 for that base would have led to the batter-runner being put
 out, as demonstrated in the example 72.
  *      </td>
@@ -126,14 +125,14 @@ public void example072() {
   buf.append("        /* Le premier batteru frappe un simple sur le lanceur */\r\n");
   buf.append("        action { batter -> 1B1 }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le batteur suivant frappe une balle vers le défenseur de la troisième base qui relaier la balle au défenseur de la première base pour retire le batteur coureur */\r\n");
+  buf.append("        /* Le batteur suivant frappe une balle vers le dï¿½fenseur de la troisiï¿½me base qui relaier la balle au dï¿½fenseur de la premiï¿½re base pour retire le batteur coureur */\r\n");
   buf.append("        action { batter -> 53 , runner1 -> + }\r\n");
   buf.append("\r\n");
   buf.append(CommonResources.ENDING_GAME);
   
   
   IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-  assertNotNull("Parser result can't be null", parserResult);
+  assertNotNull(parserResult,"Parser result can't be null");
   Game game = (Game) parserResult.getRootASTElement();
   
   /* create statistiques */
@@ -180,7 +179,7 @@ public void example072() {
   /* ----------------------------------------------------------------------------------------------------------------------- */
   checkTotalCatcherSt(statisticEngine, 0, 0, 0);
   
-  /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+  /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
   
 }
 
@@ -208,14 +207,14 @@ public void example073() {
   buf.append("        /* Le premier batteru frappe un simple sur le lanceur */\r\n");
   buf.append("        action { batter -> 1B1 }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le batteur suivant frappe un balle vers le défenseur de la troisième base qui relaier la balle au défenseur de la deuxième base car c'est un hit */\r\n");
+  buf.append("        /* Le batteur suivant frappe un balle vers le dï¿½fenseur de la troisiï¿½me base qui relaier la balle au dï¿½fenseur de la deuxiï¿½me base car c'est un hit */\r\n");
   buf.append("        action { batter -> 1B5 , runner1 -> + }\r\n");
   buf.append("\r\n");
   buf.append(CommonResources.ENDING_GAME);
   
   
   IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-  assertNotNull("Parser result can't be null", parserResult);
+  assertNotNull(parserResult,"Parser result can't be null");
   Game game = (Game) parserResult.getRootASTElement();
   
   /* create statistiques */
@@ -260,7 +259,7 @@ public void example073() {
   /* ----------------------------------------------------------------------------------------------------------------------- */
   checkTotalCatcherSt(statisticEngine, 0, 0, 0);
   
-  /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+  /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
   
 }
 
@@ -286,20 +285,20 @@ public void example074() {
   
   StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_074") + "\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le premier batteur gagne la première base sur un 'base on ball' */\r\n");
+  buf.append("        /* Le premier batteur gagne la premiï¿½re base sur un 'base on ball' */\r\n");
   buf.append("        action { batter -> BB }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le batteur suivant frappe un hit sur la deuxième base, le coureur avence en deuxième base */\r\n");
+  buf.append("        /* Le batteur suivant frappe un hit sur la deuxiï¿½me base, le coureur avence en deuxiï¿½me base */\r\n");
   buf.append("        action { batter -> 1B4 , runner1 -> + }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le batteur brappe un bunt sacrifice, mais la défenseur fait le chois de retirer le coureur en 2 sans succès */\r\n");
+  buf.append("        /* Le batteur brappe un bunt sacrifice, mais la dï¿½fenseur fait le chois de retirer le coureur en 2 sans succï¿½s */\r\n");
   buf.append("        action { batter -> SHFC15 , runner1 -> +, runner2 -> + }\r\n");
   buf.append("\r\n");
   buf.append(CommonResources.ENDING_GAME);
   
   
   IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-  assertNotNull("Parser result can't be null", parserResult);
+  assertNotNull(parserResult,"Parser result can't be null");
   Game game = (Game) parserResult.getRootASTElement();
   
   /* create statistiques */
@@ -344,7 +343,7 @@ public void example074() {
   /* ----------------------------------------------------------------------------------------------------------------------- */
   checkTotalCatcherSt(statisticEngine, 0, 0, 0);
   
-  /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+  /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
   
 }
 
@@ -359,8 +358,8 @@ public void example074() {
  *      <td>Example 75: If, in the action described above, the lead runner
 had been put out (or had reached base safely on an error by
 one of the two fielders who took part in the action), the
-batter-runner’s arrival on first base would have been recorded
-as an “occupied ball”.
+batter-runnerï¿½s arrival on first base would have been recorded
+as an ï¿½occupied ballï¿½.
  *      </td>
  *   </tr>
  * </table>  
@@ -371,20 +370,20 @@ public void example075() {
   
   StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_075") + "\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le premier batteur gagne la première base sur un 'base on ball' */\r\n");
+  buf.append("        /* Le premier batteur gagne la premiï¿½re base sur un 'base on ball' */\r\n");
   buf.append("        action { batter -> BB }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le batteur suivant frappe un hit sur la deuxième base, le coureur avence en deuxième base */\r\n");
+  buf.append("        /* Le batteur suivant frappe un hit sur la deuxiï¿½me base, le coureur avence en deuxiï¿½me base */\r\n");
   buf.append("        action { batter -> 1B4 , runner1 -> + }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le batteur suivant frappe un bunt sur le lanceur qui récupère la balle et fait le choix d'éliminer le courreur arrivant en 3 */\r\n");
+  buf.append("        /* Le batteur suivant frappe un bunt sur le lanceur qui rï¿½cupï¿½re la balle et fait le choix d'ï¿½liminer le courreur arrivant en 3 */\r\n");
   buf.append("        action { batter -> O1b , runner1 -> O1 , runner2 -> 15 }\r\n");
   buf.append("\r\n");
   buf.append(CommonResources.ENDING_GAME);
   
   
   IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-  assertNotNull("Parser result can't be null", parserResult);
+  assertNotNull(parserResult,"Parser result can't be null");
   Game game = (Game) parserResult.getRootASTElement();
   
   /* create statistiques */
@@ -431,7 +430,7 @@ public void example075() {
   /* ----------------------------------------------------------------------------------------------------------------------- */
   checkTotalCatcherSt(statisticEngine, 0, 0, 0);
   
-  /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+  /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
   
 }
 
@@ -455,20 +454,20 @@ public void example076() {
   
   StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_076") + "\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le premier batteur gagne la première base sur un 'base on ball' */\r\n");
+  buf.append("        /* Le premier batteur gagne la premiï¿½re base sur un 'base on ball' */\r\n");
   buf.append("        action { batter -> BB }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le batteur suivant frappe un hit sur la deuxième base, le coureur avence en deuxième base */\r\n");
+  buf.append("        /* Le batteur suivant frappe un hit sur la deuxiï¿½me base, le coureur avence en deuxiï¿½me base */\r\n");
   buf.append("        action { batter -> 1B4 , runner1 -> + }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Le batteur suivant frappe un bunt sur le lanceur qui récupère la balle et relance la balle pour retirer le courreur arrivant en 3 sans succee */\r\n");
+  buf.append("        /* Le batteur suivant frappe un bunt sur le lanceur qui rï¿½cupï¿½re la balle et relance la balle pour retirer le courreur arrivant en 3 sans succee */\r\n");
   buf.append("        action { batter -> 1B1b , runner1 -> + , runner2 -> + }\r\n");
   buf.append("\r\n");
   buf.append(CommonResources.ENDING_GAME);
   
   
   IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-  assertNotNull("Parser result can't be null", parserResult);
+  assertNotNull(parserResult,"Parser result can't be null");
   Game game = (Game) parserResult.getRootASTElement();
   
   /* create statistiques */
@@ -513,7 +512,7 @@ public void example076() {
   /* ----------------------------------------------------------------------------------------------------------------------- */
   checkTotalCatcherSt(statisticEngine, 0, 0, 0);
   
-  /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+  /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
   
 }
 
@@ -543,14 +542,14 @@ public void example077() {
   buf.append("        /* Le premier batteur frappe un double dans le champ centre */\r\n");
   buf.append("        action { batter -> 2B8 }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Troisième strike relaché sur un pass ball, le receveur fait le chois de retirer le coureur arrivant en trois sans succés */\r\n");
+  buf.append("        /* Troisiï¿½me strike relachï¿½ sur un pass ball, le receveur fait le chois de retirer le coureur arrivant en trois sans succï¿½s */\r\n");
   buf.append("        action { batter -> KSFC25 , runner2 -> PB }\r\n");
   buf.append("\r\n");
   buf.append(CommonResources.ENDING_GAME);
   
   
   IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-  assertNotNull("Parser result can't be null", parserResult);
+  assertNotNull(parserResult,"Parser result can't be null");
   Game game = (Game) parserResult.getRootASTElement();
   
   /* create statistiques */
@@ -595,7 +594,7 @@ public void example077() {
   checkCatcherStat(statisticEngine, 1, 1, 0, 0);
   checkTotalCatcherSt(statisticEngine, 1, 0, 0);
   
-  /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+  /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
   
 }
 
@@ -623,14 +622,14 @@ public void example078() {
   buf.append("        /* Le premier batteur frappe un double dans le champ centre */\r\n");
   buf.append("        action { batter -> 2B8 }\r\n");
   buf.append("\r\n");
-  buf.append("        /* Troisième strike relaché sur un pass ball, le receveur retrait du batteur coureur par une relance au première base */\r\n");
+  buf.append("        /* Troisiï¿½me strike relachï¿½ sur un pass ball, le receveur retrait du batteur coureur par une relance au premiï¿½re base */\r\n");
   buf.append("        action { batter -> KS23 , runner2 -> O/2 }\r\n");
   buf.append("\r\n");
   buf.append(CommonResources.ENDING_GAME);
   
   
   IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-  assertNotNull("Parser result can't be null", parserResult);
+  assertNotNull(parserResult,"Parser result can't be null");
   Game game = (Game) parserResult.getRootASTElement();
   
   /* create statistiques */
@@ -676,7 +675,7 @@ public void example078() {
   /* ----------------------------------------------------------------------------------------------------------------------- */
   checkTotalCatcherSt(statisticEngine, 0, 0, 0);
   
-  /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+  /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
   
 }
 

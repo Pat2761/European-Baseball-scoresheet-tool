@@ -47,6 +47,8 @@ import org.bpy.score.game.game.Game;
 import org.bpy.score.game.game.LineUp;
 import org.bpy.score.game.game.LineUpEntry;
 import org.bpy.score.game.game.NewDefensivePosition;
+import org.bpy.score.game.game.Pitch;
+import org.bpy.score.game.game.Pitches;
 import org.bpy.score.game.game.Player;
 import org.bpy.score.game.game.Replacement;
 import org.bpy.score.game.game.Roster;
@@ -83,11 +85,12 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 /**
- * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#content-assist
+ * See
+ * https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#content-assist
  * on how to customize the content assistant.
  */
 public class GameProposalProvider extends AbstractGameProposalProvider {
-	
+
 	/** Open string constant */
 	public static final String OPEN_STRING = "\""; //$NON-NLS-1$
 	/** Open string constant */
@@ -113,16 +116,18 @@ public class GameProposalProvider extends AbstractGameProposalProvider {
 	/** Segment separator */
 	public static final String SEGMENT_SEPARATOR = "/"; //$NON-NLS-1$
 	/** Starting Batter String */
-	public static final String STARTING_BATTER_STRING = "batter (\""; //$NON-NLS-1$ 
-	
-	
-	/** Resource descrption provider */
-	@Inject private ResourceDescriptionsProvider resourceDescriptionsProvider;
-	/** resource set provider */
-	@Inject private Provider<XtextResourceSet> resourceSetProvider;
+	public static final String STARTING_BATTER_STRING = "batter (\""; //$NON-NLS-1$
 
-	@Override 
-	public void completeGameResume_Win(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	/** Resource descrption provider */
+	@Inject
+	private ResourceDescriptionsProvider resourceDescriptionsProvider;
+	/** resource set provider */
+	@Inject
+	private Provider<XtextResourceSet> resourceSetProvider;
+
+	@Override
+	public void completeGameResume_Win(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
 		Game game = (Game) model.eContainer();
 		StatisticEngine statEngine = new StatisticEngine();
 		statEngine.setGame(game);
@@ -131,9 +136,11 @@ public class GameProposalProvider extends AbstractGameProposalProvider {
 		TeamStatistic hometeamStats = statEngine.getStatisticManager().getStats().getHometeam();
 		TeamStatistic visitorStats = statEngine.getStatisticManager().getStats().getVisitor();
 
-		InninStatictic hometeamStat = hometeamStats.getGeneralInningStats().get(hometeamStats.getGeneralInningStats().size() - 1);
+		InninStatictic hometeamStat = hometeamStats.getGeneralInningStats()
+				.get(hometeamStats.getGeneralInningStats().size() - 1);
 		int hometeamRuns = hometeamStat.getCumulativeInningStat().getRuns();
-		InninStatictic visitorStat = visitorStats.getGeneralInningStats().get(visitorStats.getGeneralInningStats().size() - 1);
+		InninStatictic visitorStat = visitorStats.getGeneralInningStats()
+				.get(visitorStats.getGeneralInningStats().size() - 1);
 		int visitorRuns = visitorStat.getCumulativeInningStat().getRuns();
 
 		EList<LineupEntry> pitchers = visitorStats.getPitchers();
@@ -142,15 +149,16 @@ public class GameProposalProvider extends AbstractGameProposalProvider {
 		}
 
 		for (LineupEntry pitcher : pitchers) {
-			String message = NLS.bind(Messages.GameProposalProvider_WinnerPitecherIs, pitcher.getPlayerDescription().getName());	
-			acceptor.accept(
-				createCompletionProposal(OPEN_STRING + pitcher.getPlayerDescription().getName() + CLOSE_STRING,
-						message, null, context));
-			}
+			String message = NLS.bind(Messages.GameProposalProvider_WinnerPitecherIs,
+					pitcher.getPlayerDescription().getName());
+			acceptor.accept(createCompletionProposal(
+					OPEN_STRING + pitcher.getPlayerDescription().getName() + CLOSE_STRING, message, null, context));
 		}
+	}
 
-	@Override 
-	public void completeGameResume_Lose(EObject model, Assignment assignment, ContentAssistContext context,	ICompletionProposalAcceptor acceptor) {
+	@Override
+	public void completeGameResume_Lose(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
 		Game game = (Game) model.eContainer().eContainer();
 		StatisticEngine statEngine = new StatisticEngine();
 		statEngine.setGame(game);
@@ -159,9 +167,11 @@ public class GameProposalProvider extends AbstractGameProposalProvider {
 		TeamStatistic hometeamStats = statEngine.getStatisticManager().getStats().getHometeam();
 		TeamStatistic visitorStats = statEngine.getStatisticManager().getStats().getVisitor();
 
-		InninStatictic hometeamStat = hometeamStats.getGeneralInningStats().get(hometeamStats.getGeneralInningStats().size() - 1);
+		InninStatictic hometeamStat = hometeamStats.getGeneralInningStats()
+				.get(hometeamStats.getGeneralInningStats().size() - 1);
 		int hometeamRuns = hometeamStat.getCumulativeInningStat().getRuns();
-		InninStatictic visitorStat = visitorStats.getGeneralInningStats().get(visitorStats.getGeneralInningStats().size() - 1);
+		InninStatictic visitorStat = visitorStats.getGeneralInningStats()
+				.get(visitorStats.getGeneralInningStats().size() - 1);
 		int visitorRuns = visitorStat.getCumulativeInningStat().getRuns();
 
 		EList<LineupEntry> pitchers = visitorStats.getPitchers();
@@ -170,79 +180,79 @@ public class GameProposalProvider extends AbstractGameProposalProvider {
 		}
 
 		for (LineupEntry pitcher : pitchers) {
-			String message = NLS.bind(Messages.GameProposalProvider_LooserPitecherIs, pitcher.getPlayerDescription().getName());	
-			acceptor.accept(
-					createCompletionProposal(OPEN_STRING + pitcher.getPlayerDescription().getName() + CLOSE_STRING,
-							message, null, context));
-			}
+			String message = NLS.bind(Messages.GameProposalProvider_LooserPitecherIs,
+					pitcher.getPlayerDescription().getName());
+			acceptor.accept(createCompletionProposal(
+					OPEN_STRING + pitcher.getPlayerDescription().getName() + CLOSE_STRING, message, null, context));
+		}
+	}
+
+	@Override
+	public void completeGameResume_Save(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		Game game = (Game) model.eContainer().eContainer();
+		Actions actions = (Actions) model.eContainer();
+
+		StatisticEngine statEngine = new StatisticEngine();
+		statEngine.setGame(game);
+		statEngine.run();
+
+		TeamStatistic hometeamStats = statEngine.getStatisticManager().getStats().getHometeam();
+		TeamStatistic visitorStats = statEngine.getStatisticManager().getStats().getVisitor();
+
+		InninStatictic hometeamStat = hometeamStats.getGeneralInningStats()
+				.get(hometeamStats.getGeneralInningStats().size() - 1);
+		int hometeamRuns = hometeamStat.getCumulativeInningStat().getRuns();
+		InninStatictic visitorStat = visitorStats.getGeneralInningStats()
+				.get(visitorStats.getGeneralInningStats().size() - 1);
+		int visitorRuns = visitorStat.getCumulativeInningStat().getRuns();
+
+		EList<LineupEntry> pitchers = visitorStats.getPitchers();
+		if (hometeamRuns > visitorRuns) {
+			pitchers = hometeamStats.getPitchers();
 		}
 
-		@Override
-		public void completeGameResume_Save(EObject model, Assignment assignment, ContentAssistContext context,
-				ICompletionProposalAcceptor acceptor) {
-			Game game = (Game) model.eContainer().eContainer();
-			Actions actions = (Actions) model.eContainer();
+		String winnerPitcher = actions.getGameResume().getWin();
+		boolean winnerFound = false;
+		for (LineupEntry pitcher : pitchers) {
 
-			StatisticEngine statEngine = new StatisticEngine();
-			statEngine.setGame(game);
-			statEngine.run();
-
-			TeamStatistic hometeamStats = statEngine.getStatisticManager().getStats().getHometeam();
-			TeamStatistic visitorStats = statEngine.getStatisticManager().getStats().getVisitor();
-
-			InninStatictic hometeamStat = hometeamStats.getGeneralInningStats()
-					.get(hometeamStats.getGeneralInningStats().size() - 1);
-			int hometeamRuns = hometeamStat.getCumulativeInningStat().getRuns();
-			InninStatictic visitorStat = visitorStats.getGeneralInningStats()
-					.get(visitorStats.getGeneralInningStats().size() - 1);
-			int visitorRuns = visitorStat.getCumulativeInningStat().getRuns();
-
-			EList<LineupEntry> pitchers = visitorStats.getPitchers();
-			if (hometeamRuns > visitorRuns) {
-				pitchers = hometeamStats.getPitchers();
-			}
-
-			String winnerPitcher = actions.getGameResume().getWin();
-			boolean winnerFound = false;
-			for (LineupEntry pitcher : pitchers) {
-
-				if (winnerFound) {
-					String message = NLS.bind(Messages.GameProposalProvider_SavedPitecherIs,
-							pitcher.getPlayerDescription().getName());
-					acceptor.accept(createCompletionProposal(
-							OPEN_STRING + pitcher.getPlayerDescription().getName() + CLOSE_STRING, message, null,
-							context));
-				} else {
-					if (pitcher.getPlayerDescription().getName().equals(winnerPitcher)) {
-						winnerFound = true;
-					}
+			if (winnerFound) {
+				String message = NLS.bind(Messages.GameProposalProvider_SavedPitecherIs,
+						pitcher.getPlayerDescription().getName());
+				acceptor.accept(createCompletionProposal(
+						OPEN_STRING + pitcher.getPlayerDescription().getName() + CLOSE_STRING, message, null, context));
+			} else {
+				if (pitcher.getPlayerDescription().getName().equals(winnerPitcher)) {
+					winnerFound = true;
 				}
 			}
 		}
-	
-		@Override
-		public void completeSubstitutionEvent_Team(EObject model, Assignment assignment, ContentAssistContext context,
-				ICompletionProposalAcceptor acceptor) {
-			ConfigurableCompletionProposal visitorCompletion = (ConfigurableCompletionProposal) createCompletionProposal(
-					"visitor {\n\t\t\t\t\n\t\t\t}\n", //$NON-NLS-1$
-					Messages.GameProposalProvider_Visitor_Team, null, context);
-			if (visitorCompletion != null) {
-				visitorCompletion.setCursorPosition(14);
-				acceptor.accept(visitorCompletion);
-			}
+	}
 
-			ConfigurableCompletionProposal hometeamCompletion = (ConfigurableCompletionProposal) createCompletionProposal(
-					"hometeam {\n\t\t\t\t\n\t\t\t}\n", //$NON-NLS-1$
-					Messages.GameProposalProvider_Hometeam_Team, null, context);
-			if (hometeamCompletion != null) {
-				hometeamCompletion.setCursorPosition(15);
-				acceptor.accept(hometeamCompletion);
-			}
+	@Override
+	public void completeSubstitutionEvent_Team(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		ConfigurableCompletionProposal visitorCompletion = (ConfigurableCompletionProposal) createCompletionProposal(
+				"visitor {\n\t\t\t\t\n\t\t\t}\n", //$NON-NLS-1$
+				Messages.GameProposalProvider_Visitor_Team, null, context);
+		if (visitorCompletion != null) {
+			visitorCompletion.setCursorPosition(14);
+			acceptor.accept(visitorCompletion);
 		}
 
-	@Override 
-	public void completeReplacement_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		SubstitutionEvent substitution = (SubstitutionEvent) model.eContainer(); 
+		ConfigurableCompletionProposal hometeamCompletion = (ConfigurableCompletionProposal) createCompletionProposal(
+				"hometeam {\n\t\t\t\t\n\t\t\t}\n", //$NON-NLS-1$
+				Messages.GameProposalProvider_Hometeam_Team, null, context);
+		if (hometeamCompletion != null) {
+			hometeamCompletion.setCursorPosition(15);
+			acceptor.accept(hometeamCompletion);
+		}
+	}
+
+	@Override
+	public void completeReplacement_Name(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		SubstitutionEvent substitution = (SubstitutionEvent) model.eContainer();
 		Game game = (Game) substitution.eContainer().eContainer().eContainer();
 
 		ScoreGameEngine scoreGameEngine = new ScoreGameEngine();
@@ -251,96 +261,99 @@ public class GameProposalProvider extends AbstractGameProposalProvider {
 		List<String> playerNames = null;
 		Roster roster = null;
 		LineupManager teamLineup = null;
-			
-		if (substitution.getTeam().equals(EngineConstants.VISITOR)) {
-			playerNames = getPlayerNames(scoreGameEngine.getScoreGameManager().getVisitorLineup());
-			roster = game.getVisitor();
-			teamLineup = scoreGameEngine.getScoreGameManager().getVisitorLineup();
 
-		} else {
-			playerNames = getPlayerNames(scoreGameEngine.getScoreGameManager().getHometeamLineup());
-			roster = game.getHometeam();
-		    teamLineup = scoreGameEngine.getScoreGameManager().getHometeamLineup();
-		}
+		if (substitution.getTeam() != null) {
 
-		for (Player player : roster.getPlayers()) {
-			if (!playerNames.contains(player.getPlayerName())) {
-				String shirtNumber = getShirtNumber(player.getPlayerName(), game, substitution.getTeam());
-				acceptor.accept(
-					createCompletionProposal("\"" + player.getPlayerName() + "\" shirtNumber=\"" + shirtNumber, //$NON-NLS-1$ //$NON-NLS-2$
-						NLS.bind(Messages.GameProposalProvider_SelectPlayer, player.getPlayerName()), 
-						null, context));
+			if (substitution.getTeam().equals(EngineConstants.VISITOR)) {
+				playerNames = getPlayerNames(scoreGameEngine.getScoreGameManager().getVisitorLineup());
+				roster = game.getVisitor();
+				teamLineup = scoreGameEngine.getScoreGameManager().getVisitorLineup();
+
+			} else {
+				playerNames = getPlayerNames(scoreGameEngine.getScoreGameManager().getHometeamLineup());
+				roster = game.getHometeam();
+				teamLineup = scoreGameEngine.getScoreGameManager().getHometeamLineup();
 			}
-		}
-			
-		/* test du cas du replacement du dh par le lanceur courant */
-		if (replaceDhOrDp(substitution)) {
-				
-			 LineupEntry player = teamLineup.getCurrentPitcher();
-				if (isPitcherIsAlreadeyReplaceBefore(substitution)) {
-					player = teamLineup.getPitchers().get(teamLineup.getPitchers().size()-2);						
+			for (Player player : roster.getPlayers()) {
+				if (!playerNames.contains(player.getPlayerName())) {
+					String shirtNumber = getShirtNumber(player.getPlayerName(), game, substitution.getTeam());
+					acceptor.accept(
+							createCompletionProposal("\"" + player.getPlayerName() + "\" shirtNumber=" + shirtNumber, //$NON-NLS-1$ //$NON-NLS-2$
+									NLS.bind(Messages.GameProposalProvider_SelectPlayer, player.getPlayerName()), null,
+									context));
 				}
-				
+			}
+
+			/* test du cas du replacement du dh par le lanceur courant */
+			if (replaceDhOrDp(substitution)) {
+
+				LineupEntry player = teamLineup.getCurrentPitcher();
+				if (isPitcherIsAlreadeyReplaceBefore(substitution)) {
+					player = teamLineup.getPitchers().get(teamLineup.getPitchers().size() - 2);
+				}
+
 				int shirtNumber = player.getPlayerDescription().getShirtNumber();
 
-				acceptor.accept(
-					createCompletionProposal(OPEN_STRING + player.getPlayerDescription().getName() + "\" shirtNumber=" + shirtNumber, //$NON-NLS-1$
-							NLS.bind(Messages.GameProposalProvider_SelectPlayer, player.getPlayerDescription().getName()), 
+				acceptor.accept(createCompletionProposal(
+						OPEN_STRING + player.getPlayerDescription().getName() + "\" shirtNumber=" + shirtNumber, //$NON-NLS-1$
+						NLS.bind(Messages.GameProposalProvider_SelectPlayer, player.getPlayerDescription().getName()),
 						null, context));
 			}
 		}
-		
+	}
+
 	/**
 	 * Check that a pitcher has been replaced before.
-	 *  
-	 * @param substitution Substitution object  
 	 * 
-	 * @return <b>true</b> the the pitcher has been already replaced,<b>false</b> otherwise
+	 * @param substitution Substitution object
+	 * 
+	 * @return <b>true</b> the the pitcher has been already replaced,<b>false</b>
+	 *         otherwise
 	 */
 	private boolean isPitcherIsAlreadeyReplaceBefore(SubstitutionEvent substitution) {
 
 		boolean pitcherIsReplace = false;
 		for (SubstitutionDescription substitutionElement : substitution.getSubstitutions()) {
-			
-			if ( DH.equals(substitutionElement.getCurrentDefensivePosition()) ||
-			     DP.equals(substitutionElement.getCurrentDefensivePosition())) {
-			   return pitcherIsReplace;
-			
+
+			if (DH.equals(substitutionElement.getCurrentDefensivePosition())
+					|| DP.equals(substitutionElement.getCurrentDefensivePosition())) {
+				return pitcherIsReplace;
+
 			} else {
 
 				if (substitutionElement.getSubtitution() instanceof Replacement) {
 					Replacement replacement = (Replacement) substitutionElement.getSubtitution();
-					if ( PITCHER_POSITION.equals(replacement.getNewDefensivePosition()) ) {
+					if (PITCHER_POSITION.equals(replacement.getNewDefensivePosition())) {
 						pitcherIsReplace = true;
 					}
-				
+
 				} else {
 					NewDefensivePosition moveTo = (NewDefensivePosition) substitutionElement.getSubtitution();
 					if (PITCHER_POSITION.equals(moveTo.getNewDefensivePosition())) {
 						pitcherIsReplace = true;
 					}
 				}
-			}			
+			}
 		}
-		return pitcherIsReplace;	
+		return pitcherIsReplace;
 	}
 
 	/**
 	 * Check if replacement replace a DP or DH.
 	 * 
-	 * @param substitution substitution Substitution object  
+	 * @param substitution substitution Substitution object
 	 * @return <b>true</b> replacement concern a DP or a DH,<b>false</b> otherwise
 	 */
 	private boolean replaceDhOrDp(SubstitutionEvent substitution) {
-			
+
 		for (SubstitutionDescription substitutionElement : substitution.getSubstitutions()) {
-			if ( DH.equals(substitutionElement.getCurrentDefensivePosition()) ||
-			     DP.equals(substitutionElement.getCurrentDefensivePosition())) {
-				   return true;
-				}
+			if (DH.equals(substitutionElement.getCurrentDefensivePosition())
+					|| DP.equals(substitutionElement.getCurrentDefensivePosition())) {
+				return true;
 			}
-			return false;
 		}
+		return false;
+	}
 
 	/**
 	 * Get the list of player names contains by a line-up
@@ -350,617 +363,787 @@ public class GameProposalProvider extends AbstractGameProposalProvider {
 	 */
 	private List<String> getPlayerNames(LineupManager lineupManager) {
 		List<String> playerNames = new ArrayList<>();
-		for (Entry<String,LineupEntry> entry : lineupManager.getOffensivePlayers().entrySet()) {
+		for (Entry<String, LineupEntry> entry : lineupManager.getOffensivePlayers().entrySet()) {
 			LineupEntry lineupEntry = entry.getValue();
 			if (!playerNames.contains(lineupEntry.getPlayerDescription().getName())) {
 				playerNames.add(lineupEntry.getPlayerDescription().getName());
-				}
 			}
-			for (Entry<String, LineupEntry> entry : lineupManager.getDefensivePlayers().entrySet()) {
+		}
+		for (Entry<String, LineupEntry> entry : lineupManager.getDefensivePlayers().entrySet()) {
 			LineupEntry lineupEntry = entry.getValue();
-				if (!playerNames.contains(lineupEntry.getPlayerDescription().getName())) {
-					playerNames.add(lineupEntry.getPlayerDescription().getName());
-				}
-			}
-			return playerNames;
-		}
-
-		@Override 
-		public void complete_Game(EObject model, RuleCall ruleCall, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-			StringBuilder strProposal = new StringBuilder();
-
-			IWorkbench wb = PlatformUI.getWorkbench();
-			IWorkbenchWindow window = wb.getActiveWorkbenchWindow();
-			IWorkbenchPage page = window.getActivePage();
-			IEditorPart editor = page.getActiveEditor();
-			IEditorInput input = editor.getEditorInput();
-			IPath path = ((FileEditorInput)input).getPath();
-
-			String[] segments = path.toString().split(SEGMENT_SEPARATOR);  //$NON-NLS-1$
-			String last = segments[segments.length-1];
-			String[] parts = last.split("[\\.]"); //$NON-NLS-1$ 
-			String gameName = parts[0];
-
-			Locale locale = Locale.getDefault(); // Langue actuelle.
-			DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.FULL, locale);
-			String currentDate = dateFormat.format(new Date());
-
-			strProposal.append("/***********************************************************************************/\n"); //$NON-NLS-1$
-			strProposal.append("/* Automatic parse of game : " + String.format("%-54s", gameName) + "*/\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			strProposal.append("/* Date                    : " + String.format("%-54s", currentDate) + "*/\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			strProposal.append("/***********************************************************************************/\n"); //$NON-NLS-1$
-			strProposal.append(NEW_LINE);
-			strProposal.append("/* start of game description */\n"); //$NON-NLS-1$
-			strProposal.append("game \"" + gameName + ACCOLADE_NEW_LINE); //$NON-NLS-1$ //$NON-NLS-2$
-			strProposal.append(NEW_LINE);
-			strProposal.append("\t/* description of the game */\n"); //$NON-NLS-1$
-			strProposal.append("\theader {\n"); //$NON-NLS-1$
-			strProposal.append("\t\ttournament = ;\n"); //$NON-NLS-1$
-			int offset = strProposal.toString().length() - 2;
-			strProposal.append("\t\tstadium = \"\";\n"); //$NON-NLS-1$
-			strProposal.append("\t\tplace = \"\";\n"); //$NON-NLS-1$
-			strProposal.append("\t\tdate = \"\";\n"); //$NON-NLS-1$
-			strProposal.append("\t\tstartTime = \"\";\n"); //$NON-NLS-1$
-			strProposal.append("\t\tendTime = \"\";\n"); //$NON-NLS-1$
-			strProposal.append("\t\tduration = \"\";\n"); //$NON-NLS-1$
-			strProposal.append("\t\ttype = ;\n"); //$NON-NLS-1$
-			strProposal.append("\t\tcategory = ;\n"); //$NON-NLS-1$
-			strProposal.append("\t\tscorekeepers = ;\n"); //$NON-NLS-1$
-			strProposal.append("\t\tumpires = ;\n"); //$NON-NLS-1$
-			strProposal.append(TAB_ACCOLADE_NEW_LINE); //$NON-NLS-1$
-			strProposal.append(NEW_LINE);
-			strProposal.append("\t/* Roster of the visitor team */\n"); //$NON-NLS-1$
-			strProposal.append(NEW_LINE);
-			strProposal.append("\t/* Roster of the hometeam team */\n"); //$NON-NLS-1$
-			strProposal.append(NEW_LINE);
-			strProposal.append("\t/* Game description ' + gameName + ' */\n"); //$NON-NLS-1$
-			strProposal.append("\tgameEntry {\n"); //$NON-NLS-1$
-			strProposal.append(NEW_LINE);
-			strProposal.append(TAB_ACCOLADE_NEW_LINE); //$NON-NLS-1$
-			strProposal.append(NEW_LINE);
-			strProposal.append("}\n"); //$NON-NLS-1$
-			
-			ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(strProposal.toString(), Messages.GameProposalProvider_NewGameCreation, null,context);
-			completion.setCursorPosition(offset);
-			
-			acceptor.accept(completion);
-		}
-
-		@Override 
-		public void complete_Player(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-			Roster roster = (Roster) model;
-			if (roster.eContainer() instanceof Game) {
-				Game game = (Game) roster.eContainer();
-				String tournament = game.getDescription().getTournament();
-
-				/* Get all player defined in the roster */
-				List<String> playersDefined = new ArrayList<>();
-				for (Player player : roster.getPlayers()) {
-					playersDefined.add(player.getPlayerName());
-				}
-
-				IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
-				XtextResourceSet resourceSet = resourceSetProvider.get();
-
-				for (IEObjectDescription exportedObject : index.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
-					ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(), resourceSet);
-					if (clubDescription.getName().equals(roster.getName())) {
-						for (Team team : clubDescription.getTeams()) {
-							if (team.getName().equals(tournament)) {
-
-								for (org.bpy.score.club.club.Player player : team.getPlayers()) {
-									if (!playersDefined.contains(player.getPlayerName().getName())) {
-										acceptor.accept(
-											createCompletionProposal("player \"" + player.getPlayerName().getName() + "\",\n\t\t", //$NON-NLS-1$  //$NON-NLS-2$
-													NLS.bind(Messages.GameProposalProvider_AddPlayerInRoster, player.getPlayerName().getName()), null, context));
-									}
-								}
-							}
-						}
-					}
-				}
+			if (!playerNames.contains(lineupEntry.getPlayerDescription().getName())) {
+				playerNames.add(lineupEntry.getPlayerDescription().getName());
 			}
 		}
+		return playerNames;
+	}
 
-		@Override 
-		public void completeGame_Visitor(EObject model, Assignment assignment, ContentAssistContext context,
+	@Override
+	public void complete_Game(EObject model, RuleCall ruleCall, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
-			Game game = (Game) model;
+		StringBuilder strProposal = new StringBuilder();
+
+		IWorkbench wb = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = wb.getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		IEditorPart editor = page.getActiveEditor();
+		IEditorInput input = editor.getEditorInput();
+		IPath path = ((FileEditorInput) input).getPath();
+
+		String[] segments = path.toString().split(SEGMENT_SEPARATOR); // $NON-NLS-1$
+		String last = segments[segments.length - 1];
+		String[] parts = last.split("[\\.]"); //$NON-NLS-1$
+		String gameName = parts[0];
+
+		Locale locale = Locale.getDefault(); // Langue actuelle.
+		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.FULL, locale);
+		String currentDate = dateFormat.format(new Date());
+
+		strProposal.append("/***********************************************************************************/\n"); //$NON-NLS-1$
+		strProposal.append("/* Automatic parse of game : " + String.format("%-54s", gameName) + "*/\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		strProposal.append("/* Date                    : " + String.format("%-54s", currentDate) + "*/\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		strProposal.append("/***********************************************************************************/\n"); //$NON-NLS-1$
+		strProposal.append(NEW_LINE);
+		strProposal.append("/* start of game description */\n"); //$NON-NLS-1$
+		strProposal.append("game \"" + gameName + ACCOLADE_NEW_LINE); //$NON-NLS-1$ //$NON-NLS-2$
+		strProposal.append(NEW_LINE);
+		strProposal.append("\t/* description of the game */\n"); //$NON-NLS-1$
+		strProposal.append("\theader {\n"); //$NON-NLS-1$
+		strProposal.append("\t\ttournament = ;\n"); //$NON-NLS-1$
+		int offset = strProposal.toString().length() - 2;
+		strProposal.append("\t\tstadium = \"\";\n"); //$NON-NLS-1$
+		strProposal.append("\t\tplace = \"\";\n"); //$NON-NLS-1$
+		strProposal.append("\t\tdate = \"\";\n"); //$NON-NLS-1$
+		strProposal.append("\t\tstartTime = \"\";\n"); //$NON-NLS-1$
+		strProposal.append("\t\tendTime = \"\";\n"); //$NON-NLS-1$
+		strProposal.append("\t\tduration = \"\";\n"); //$NON-NLS-1$
+		strProposal.append("\t\ttype = ;\n"); //$NON-NLS-1$
+		strProposal.append("\t\tcategory = ;\n"); //$NON-NLS-1$
+		strProposal.append("\t\tscorekeepers = ;\n"); //$NON-NLS-1$
+		strProposal.append("\t\tumpires = ;\n"); //$NON-NLS-1$
+		strProposal.append(TAB_ACCOLADE_NEW_LINE); // $NON-NLS-1$
+		strProposal.append(NEW_LINE);
+		strProposal.append("\t/* Roster of the visitor team */\n"); //$NON-NLS-1$
+		strProposal.append(NEW_LINE);
+		strProposal.append("\t/* Roster of the hometeam team */\n"); //$NON-NLS-1$
+		strProposal.append(NEW_LINE);
+		strProposal.append("\t/* Game description ' + gameName + ' */\n"); //$NON-NLS-1$
+		strProposal.append("\tgameEntry {\n"); //$NON-NLS-1$
+		strProposal.append(NEW_LINE);
+		strProposal.append(TAB_ACCOLADE_NEW_LINE); // $NON-NLS-1$
+		strProposal.append(NEW_LINE);
+		strProposal.append("}\n"); //$NON-NLS-1$
+
+		ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(
+				strProposal.toString(), Messages.GameProposalProvider_NewGameCreation, null, context);
+		completion.setCursorPosition(offset);
+
+		acceptor.accept(completion);
+	}
+
+	@Override
+	public void complete_Player(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		Roster roster = (Roster) model;
+		if (roster.eContainer() instanceof Game) {
+			Game game = (Game) roster.eContainer();
 			String tournament = game.getDescription().getTournament();
+
+			/* Get all player defined in the roster */
+			List<String> playersDefined = new ArrayList<>();
+			for (Player player : roster.getPlayers()) {
+				playersDefined.add(player.getPlayerName());
+			}
 
 			IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
 			XtextResourceSet resourceSet = resourceSetProvider.get();
 
-			for (IEObjectDescription exportedObject : index.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
-				ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(), resourceSet);
-				for (Team team : clubDescription.getTeams()) {
-					if (team.getName().equals(tournament)) {
-
-						StringBuilder strProposal = new StringBuilder("\troster visitor \"" + clubDescription.getName() + ACCOLADE_NEW_LINE); //$NON-NLS-1$  //$NON-NLS-2$
-						StringBuilder strEmptyProposal = new StringBuilder("\troster visitor \"" + clubDescription.getName() + "\" {\n\t\t"); //$NON-NLS-1$  //$NON-NLS-2$
-						int position = strEmptyProposal.length();
-
-						int count = 0;
-						for (org.bpy.score.club.club.Player player: team.getPlayers()) {
-							strProposal.append("\t\tplayer \"" + player.getPlayerName().getName() + "\"");//$NON-NLS-1$  //$NON-NLS-2$
-							count += 1;
-							if (count < team.getPlayers().size()) {
-								strProposal.append(",\n"); //$NON-NLS-1$
-							} else {
-								strProposal.append(NEW_LINE);
-							}
-						}
-						strProposal.append(TAB_ACCOLADE_NEW_LINE);//$NON-NLS-1$ 
-						strEmptyProposal.append("\n\t}\n");//$NON-NLS-1$ 
-
-						acceptor.accept(
-							createCompletionProposal(strProposal.toString(),
-								NLS.bind(Messages.GameProposalProvider_FullTeamInVisitorRoster, clubDescription.getName()), null, context));
-
-						ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(strEmptyProposal.toString(),
-								NLS.bind(Messages.GameProposalProvider_EmptyTeamInVisitorRoster, clubDescription.getName()), null,
-							context);
-							completion.setCursorPosition(position);
-							acceptor.accept(completion);
-						}
-					}
-				}
-			}
-
-			@Override
-			public void completeGame_Hometeam(EObject model, Assignment assignment, ContentAssistContext context,
-					ICompletionProposalAcceptor acceptor) {
-				Game game = (Game) model;
-				String tournament = game.getDescription().getTournament();
-
-				IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
-				XtextResourceSet resourceSet = resourceSetProvider.get();
-
-				for (IEObjectDescription exportedObject : index.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
-					ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(), resourceSet);
+			for (IEObjectDescription exportedObject : index
+					.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
+				ClubDescription clubDescription = (ClubDescription) EcoreUtil
+						.resolve(exportedObject.getEObjectOrProxy(), resourceSet);
+				if (clubDescription.getName().equals(roster.getName())) {
 					for (Team team : clubDescription.getTeams()) {
 						if (team.getName().equals(tournament)) {
 
-							StringBuilder strProposal = new StringBuilder("\troster hometeam \"" + clubDescription.getName() + ACCOLADE_NEW_LINE); //$NON-NLS-1$ //$NON-NLS-2$
-							StringBuilder strEmptyProposal = new StringBuilder("\troster hometeam \"" + clubDescription.getName() + "\" {\n\t\t"); //$NON-NLS-1$ //$NON-NLS-2$
-							int position = strEmptyProposal.length();
-
-							int count = 0;
 							for (org.bpy.score.club.club.Player player : team.getPlayers()) {
-								strProposal.append("\t\tplayer \"" + player.getPlayerName().getName() + "\"");//$NON-NLS-1$ //$NON-NLS-2$
-								count += 1;
-								if (count < team.getPlayers().size()) {
-									strProposal.append(",\n"); //$NON-NLS-1$
-								} else {
-									strProposal.append(NEW_LINE);
-								}
-							}
-							strProposal.append(TAB_ACCOLADE_NEW_LINE);//$NON-NLS-1$
-							strEmptyProposal.append("\n\t}\n");//$NON-NLS-1$
-
-							acceptor.accept(createCompletionProposal(strProposal.toString(),
-									NLS.bind(Messages.GameProposalProvider_FullTeamInHometeamRoster,	clubDescription.getName()),
-									null, context));
-
-							ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(
-									strEmptyProposal.toString(),
-									NLS.bind(Messages.GameProposalProvider_EmptyTeamInHometeamRoster,	clubDescription.getName()),
-									null, context);
-							completion.setCursorPosition(position);
-							acceptor.accept(completion);
-						}
-					}
-				}
-			}
-
-		@Override 
-		public void completeUmpires_Umpires(EObject model, Assignment assignment, ContentAssistContext context,	ICompletionProposalAcceptor acceptor) {
-			EList<String> umpires = null;
-			if (model instanceof ScoreKeepers) {
-				umpires = ((Umpires)model).getUmpires();
-			} else if (model instanceof Description) {
-				Description description = (Description) model;
-				if (description.getUmpires() != null) {
-					umpires = description.getUmpires().getUmpires();
-				}
-			}
-
-			IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
-			XtextResourceSet resourceSet = resourceSetProvider.get();
-			String modelPath = model.eResource().getURI().path().replaceFirst(model.eResource().getURI().lastSegment(), ""); //$NON-NLS1$ //$NON-NLS-1$
-			modelPath = modelPath.replaceFirst(model.eResource().getURI().segment(model.eResource().getURI().segmentCount() - 2) + SEGMENT_SEPARATOR, ""); //$NON-NLS1$ //$NON-NLS2$  //$NON-NLS-1$
-
-			for (IEObjectDescription exportedObject : index.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
-				ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(),resourceSet);
-				String clubPath = clubDescription.eResource().getURI().path().replaceFirst(clubDescription.eResource().getURI().lastSegment(), "");  //$NON-NLS1$ //$NON-NLS-1$
-
-				if (clubPath.equals(modelPath) && (clubDescription.getOfficials() != null)) {
-					for (Official official : clubDescription.getOfficials().getOfficials()) {
-						if ((official instanceof Umpire) && ((umpires == null) || !umpires.contains(official.getName().getName()))) {
-							String message = NLS.bind(Messages.GameProposalProvider_AddUmpire,official.getName().getName());
-							acceptor.accept(createCompletionProposal(OPEN_STRING + official.getName().getName() + OPEN_STRING, message,null, context));
-						}
-					}
-				}
-			}
-		}
-
-		@Override 
-		public void completeScoreKeepers_Scorekeepers(EObject model, Assignment assignment,
-			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-			EList<String> scoreKeeppers = null;
-			if (model instanceof ScoreKeepers) {
-				scoreKeeppers = ((ScoreKeepers)model).getScorekeepers();
-			} else if (model instanceof Description) {
-				Description description = (Description) model;
-				if (description.getScorekeepers() != null) {
-					scoreKeeppers = description.getScorekeepers().getScorekeepers();
-				}
-			}
-
-			IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
-			XtextResourceSet resourceSet = resourceSetProvider.get();
-			String modelPath = model.eResource().getURI().path().replaceFirst(model.eResource().getURI().lastSegment(), ""); //$NON-NLS1$ //$NON-NLS-1$
-			modelPath = modelPath.replaceFirst(model.eResource().getURI().segment(model.eResource().getURI().segmentCount() - 2) + SEGMENT_SEPARATOR, ""); //$NON-NLS1$ //$NON-NLS2$  //$NON-NLS-1$
-
-			for (IEObjectDescription exportedObject : index.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
-				ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(),resourceSet);
-				String clubPath = clubDescription.eResource().getURI().path().replaceFirst(clubDescription.eResource().getURI().lastSegment(), "");  //$NON-NLS1$ //$NON-NLS-1$
-
-				if (clubPath.equals(modelPath) && (clubDescription.getOfficials() != null)) {
-					for (Official official : clubDescription.getOfficials().getOfficials()) {
-						if ((official instanceof ScoreKeeper) && ((scoreKeeppers == null) || !scoreKeeppers.contains(official.getName().getName()))) {
-							String message = NLS.bind(Messages.GameProposalProvider_AddScoreKeeper,official.getName().getName());
-							acceptor.accept(createCompletionProposal(OPEN_STRING + official.getName().getName() + OPEN_STRING, message,null, context));
-						}
-					}
-				}
-			}
-		}
-
-		@Override 
-		public void completeDescription_Tournament(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-			IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
-			XtextResourceSet resourceSet = resourceSetProvider.get();
-
-			List<String> championats = new ArrayList<>();
-			for (IEObjectDescription exportedObject : index.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
-				ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(),	resourceSet);
-				for (Team team : clubDescription.getTeams()) {
-					if (!championats.contains(team.getName())) {
-						championats.add(team.getName());
-					}
-				}
-			}
-			for (String championat : championats) {
-				acceptor.accept(createCompletionProposal(OPEN_STRING + championat + OPEN_STRING, 
-						NLS.bind(Messages.GameProposalProvider_SetChampionatName, championat), null, context));
-			}
-		}
-
-		@Override 
-		public void completeDescription_Category(EObject model, Assignment assignment, ContentAssistContext context,ICompletionProposalAcceptor acceptor) {
-			acceptor.accept(createCompletionProposal(OPEN_STRING + "Senior" + OPEN_STRING, //$NON-NLS-1$
-					NLS.bind(Messages.GameProposalProvider_SetCategoryName, "Senior"), null, context)); //$NON-NLS-1$ //$NON-NLS-2$ 
-			acceptor.accept(createCompletionProposal(OPEN_STRING + "18U" + OPEN_STRING, //$NON-NLS-1$
-					NLS.bind(Messages.GameProposalProvider_SetCategoryName, "18U"), null, context)); //$NON-NLS-1$ //$NON-NLS-2$
-			acceptor.accept(createCompletionProposal(OPEN_STRING + "15U" + OPEN_STRING,  //$NON-NLS-1$
-					NLS.bind(Messages.GameProposalProvider_SetCategoryName, "15U"), null, context)); //$NON-NLS-1$ //$NON-NLS-2$
-			acceptor.accept(createCompletionProposal(OPEN_STRING + "12U" + OPEN_STRING,  //$NON-NLS-1$
-					NLS.bind(Messages.GameProposalProvider_SetCategoryName, "12U"), null, context)); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-
-		@Override 
-		public void completeDescription_Type(EObject model, Assignment assignment, ContentAssistContext context,ICompletionProposalAcceptor acceptor) {
-			acceptor.accept(createCompletionProposal("baseball", "baseball", null, context)); //$NON-NLS-1$ //$NON-NLS-2$
-			acceptor.accept(createCompletionProposal("softball", "softball", null, context)); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-
-		@Override 
-		public void completeRoster_Players(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-			String name = ((Roster)model).getName();
-			if (model.eContainer() instanceof Game) {
-				Game game = (Game) model.eContainer();
-				if (game != null) {
-					String tournament = game.getDescription().getTournament();
-					if (name != null && tournament != null) {
-						List<String> possiblePeoples = getListOfPeople(name,tournament);
-						StringBuilder strProposal = new StringBuilder();
-						int counter = 0;
-						for (String people : possiblePeoples) {
-							strProposal.append("\t\t player \"" + people + OPEN_STRING); //$NON-NLS-1$
-							if (counter < possiblePeoples.size() - 1) {
-								strProposal.append(",\n"); //$NON-NLS-1$
-							} else {
-								strProposal.append("\n"); //$NON-NLS-1$
-							}
-							counter++;
-						}
-						acceptor.accept(
-									createCompletionProposal(strProposal.toString(), Messages.GameProposalProvider_AllTheTeam, null, context));
-							}
-						}
-					}
-				}
-
-				/**
-				 * Get list of member for a team in a category
-				 * 
-				 * @param city Name of the city
-				 * @param championat Name of championnat
-				 * @return List of player names
-				 */
-				private List<String> getListOfPeople(String city, String championat) {
-
-					List<String> players = new ArrayList<>();
-					IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
-					XtextResourceSet resourceSet = resourceSetProvider.get();
-
-					for (IEObjectDescription exportedObject : index.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
-						ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(),resourceSet);
-						if (clubDescription.getName().equals(city)) {
-							for (Team team : clubDescription.getTeams()) {
-								if (team.getName().equals(championat)) {
-									for (org.bpy.score.club.club.Player player : team.getPlayers()) {
-										players.add(player.getPlayerName().getName());
-									}
+								if (!playersDefined.contains(player.getPlayerName().getName())) {
+									acceptor.accept(createCompletionProposal(
+											"player \"" + player.getPlayerName().getName() + "\",\n\t\t", //$NON-NLS-1$ //$NON-NLS-2$
+											NLS.bind(Messages.GameProposalProvider_AddPlayerInRoster,
+													player.getPlayerName().getName()),
+											null, context));
 								}
 							}
 						}
 					}
-					return players;
 				}
+			}
+		}
+	}
 
-				@Override 
-				public void completeActions_HalfInnings(EObject model, Assignment assignment, ContentAssistContext context,	ICompletionProposalAcceptor acceptor) {
-					Actions actions = (Actions) model;
+	@Override
+	public void completeGame_Visitor(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		Game game = (Game) model;
+		String tournament = game.getDescription().getTournament();
 
-					if (actions.getHalfInnings() != null) {
-						int inningNumber = (actions.getHalfInnings().size() / 2) + 1;
-						int index = actions.getHalfInnings().size() % 2;
+		IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
+		XtextResourceSet resourceSet = resourceSetProvider.get();
 
-						if (index == 0) {
-							
-							String proposaltext = "\n\t\t/* Inning " + inningNumber + " : visitor */\n\t\tinning visitor number " + inningNumber + " {\n\t\t\t\n\t\t}"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-							
-							ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(proposaltext, 
-									Messages.GameProposalProvider_InsertNewInning, null,context);
-							
-							if (completion != null) {
-								completion.setCursorPosition(proposaltext.length() - 4);
-								acceptor.accept(completion);
-							}
-							
+		for (IEObjectDescription exportedObject : index
+				.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
+			ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(),
+					resourceSet);
+			for (Team team : clubDescription.getTeams()) {
+				if (team.getName().equals(tournament)) {
+
+					StringBuilder strProposal = new StringBuilder(
+							"\troster visitor \"" + clubDescription.getName() + ACCOLADE_NEW_LINE); //$NON-NLS-1$ //$NON-NLS-2$
+					StringBuilder strEmptyProposal = new StringBuilder(
+							"\troster visitor \"" + clubDescription.getName() + "\" {\n\t\t"); //$NON-NLS-1$ //$NON-NLS-2$
+					int position = strEmptyProposal.length();
+
+					int count = 0;
+					for (org.bpy.score.club.club.Player player : team.getPlayers()) {
+						strProposal.append("\t\tplayer \"" + player.getPlayerName().getName() + "\"");//$NON-NLS-1$ //$NON-NLS-2$
+						count += 1;
+						if (count < team.getPlayers().size()) {
+							strProposal.append(",\n"); //$NON-NLS-1$
 						} else {
-							
-							String proposaltext = "\n\t\t/* Inning " + inningNumber + " : hometeam */\n\t\tinning hometeam number " + inningNumber + " {\n\t\t\t\n\t\t}"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-							ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(proposaltext, 
-									Messages.GameProposalProvider_InsertNewInning, null,	context);
-							
-							if (completion != null) {
-								completion.setCursorPosition(proposaltext.length() - 4);
-								acceptor.accept(completion);
-							}
+							strProposal.append(NEW_LINE);
 						}
 					}
-				}
+					strProposal.append(TAB_ACCOLADE_NEW_LINE);// $NON-NLS-1$
+					strEmptyProposal.append("\n\t}\n");//$NON-NLS-1$
 
-				@Override 
-				public void complete_LineUp(EObject model, RuleCall ruleCall, ContentAssistContext context,
-					ICompletionProposalAcceptor acceptor) {
-					StringBuilder str = new StringBuilder("\t\t");  //$NON-NLS-1$ 
-					str.append("\n\t\t/* Lineup description for the visitor */\n"); //$NON-NLS-1$ 
-					str.append("\t\tlineup visitor {\n\t\t\t"); //$NON-NLS-1$ 
-					int position = str.toString().length();
-					str.append("\n\t\t}\n\n");  //$NON-NLS-1$ 
+					acceptor.accept(createCompletionProposal(strProposal.toString(),
+							NLS.bind(Messages.GameProposalProvider_FullTeamInVisitorRoster, clubDescription.getName()),
+							null, context));
 
-					str.append("\t\t/* Lineup description for the hometeam */\n"); //$NON-NLS-1$ 
-					str.append("\t\tlineup hometeam {\n"); //$NON-NLS-1$ 
-					str.append("\t\t\t\n\t\t}\n\n"); //$NON-NLS-1$ 
-
-					ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(str.toString(), 
-							Messages.GameProposalProvider_DefineLineUp, null,	context);
+					ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(
+							strEmptyProposal.toString(),
+							NLS.bind(Messages.GameProposalProvider_EmptyTeamInVisitorRoster, clubDescription.getName()),
+							null, context);
 					completion.setCursorPosition(position);
 					acceptor.accept(completion);
 				}
+			}
+		}
+	}
 
-				@Override 
-				public void complete_LineUpEntry(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-					LineUp lineup = (LineUp) model;
-					Game game = (Game) model.eContainer().eContainer();
+	@Override
+	public void completeGame_Hometeam(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		Game game = (Game) model;
+		String tournament = game.getDescription().getTournament();
 
-					EList<Player> playerNames = game.getHometeam().getPlayers();
-					if (game.getVisitor().getWho().equals(lineup.getTeamType())) {
-						playerNames = game.getVisitor().getPlayers();
-					}
+		IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
+		XtextResourceSet resourceSet = resourceSetProvider.get();
 
-					List<String> possibilities = new ArrayList<>();
-					for (Player playerName : playerNames) {
-						boolean found = false;
-						for (LineUpEntry entry : lineup.getLineUpEntries()) {
-							if (playerName.getPlayerName().equals(entry.getName())) {
-								found = true;
-							}
-						}
+		for (IEObjectDescription exportedObject : index
+				.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
+			ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(),
+					resourceSet);
+			for (Team team : clubDescription.getTeams()) {
+				if (team.getName().equals(tournament)) {
 
-						if (!found) {
-							possibilities.add(playerName.getPlayerName());
-						}
-					}
+					StringBuilder strProposal = new StringBuilder(
+							"\troster hometeam \"" + clubDescription.getName() + ACCOLADE_NEW_LINE); //$NON-NLS-1$ //$NON-NLS-2$
+					StringBuilder strEmptyProposal = new StringBuilder(
+							"\troster hometeam \"" + clubDescription.getName() + "\" {\n\t\t"); //$NON-NLS-1$ //$NON-NLS-2$
+					int position = strEmptyProposal.length();
 
-					Collections.sort(possibilities);
-					for (String possibility : possibilities) {
-						String size = String.format("%02d", (lineup.getLineUpEntries().size() + 1)); //$NON-NLS-1$
-						StringBuilder str = new StringBuilder("/* " + size + " */\tname= \"" + possibility + "\" defensivePosition = "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						int position = str.toString().length();
-
-						String shirtNumber = getShirtNumber(possibility, game, lineup.getTeamType());
-
-						// str.append(' shirtNumber = ;')
-						ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(
-							"/* " + size + " */\tname= \"" + possibility + "\" defensivePosition =  shirtNumber=" + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-								shirtNumber + " ;",  //$NON-NLS-1$
-								NLS.bind(Messages.GameProposalProvider_AddPLayerInLineUp, possibility) , null, context);
-						completion.setCursorPosition(position);
-						acceptor.accept(completion);
-					}
-				}
-
-				/**
-				 * Return the shirt number of a player.
-				 * 
-				 * @param playerName Name of player
-				 * @param game reference on the game
-				 * @param teamType type of team (visitor or hometeam)
-				 * 
-				 * @return shirt Number value if found,<b>empty string</b> if not found
-				 */
-				private String getShirtNumber(String playerName, Game game, String teamType) {
-					String teamName = ""; //$NON-NLS-1$
-					if (EngineConstants.HOMETEAM.equals(teamType)) {
-						teamName = game.getHometeam().getName();
-					} else {
-						teamName = game.getVisitor().getName();
-					}
-
-					IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
-					XtextResourceSet resourceSet = resourceSetProvider.get();
-
-					for (IEObjectDescription exportedObject : index.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
-						ClubDescription club = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(), resourceSet);
-						if (club.getName().equals(teamName)) {
-							for (Member member : club.getMembers().getMembers()) {
-								if (member.getName().equals(playerName)) {
-									return "" + member.getShirtNumber(); //$NON-NLS-1$
-								}
-							}
+					int count = 0;
+					for (org.bpy.score.club.club.Player player : team.getPlayers()) {
+						strProposal.append("\t\tplayer \"" + player.getPlayerName().getName() + "\"");//$NON-NLS-1$ //$NON-NLS-2$
+						count += 1;
+						if (count < team.getPlayers().size()) {
+							strProposal.append(",\n"); //$NON-NLS-1$
+						} else {
+							strProposal.append(NEW_LINE);
 						}
 					}
-					return ""; //$NON-NLS-1$
-				}
+					strProposal.append(TAB_ACCOLADE_NEW_LINE);// $NON-NLS-1$
+					strEmptyProposal.append("\n\t}\n");//$NON-NLS-1$
 
-				@Override 
-				public void complete_Action(EObject model, RuleCall ruleCall, ContentAssistContext context,
-					ICompletionProposalAcceptor acceptor) {
-					acceptor.accept(createCompletionProposal("action { ", Messages.GameProposalProvider_NewAction, null, context)); //$NON-NLS-1$
-				}
+					acceptor.accept(createCompletionProposal(strProposal.toString(),
+							NLS.bind(Messages.GameProposalProvider_FullTeamInHometeamRoster, clubDescription.getName()),
+							null, context));
 
-				@Override 
-				public void complete_BATTER(EObject model, RuleCall ruleCall, ContentAssistContext context,	ICompletionProposalAcceptor acceptor) {
-
-					Game game = ScoreGameUtil.getGame(model);
-					ScoreGameEngine scoreGameEngine = new ScoreGameEngine();
-					scoreGameEngine.runEngine(game);
-
-					String batterName = scoreGameEngine.getCurrentBatter();
-
-					String proposal = STARTING_BATTER_STRING + batterName + "\") -> }"; //$NON-NLS-1$
-					
-					ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(proposal,
-							new StyledString(NLS.bind(Messages.GameProposalProvider_CurrentActiveBatter, batterName)), null,500, "",	context); //$NON-NLS-1$
-					
-					completion.setCursorPosition(proposal.length() - 1);
+					ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(
+							strEmptyProposal.toString(),
+							NLS.bind(Messages.GameProposalProvider_EmptyTeamInHometeamRoster,
+									clubDescription.getName()),
+							null, context);
+					completion.setCursorPosition(position);
 					acceptor.accept(completion);
+				}
+			}
+		}
+	}
 
-				    String[] runners = scoreGameEngine.getCurrentRunners();
-					List<String> propositions = createRunnersProposition(runners);
+	@Override
+	public void completeUmpires_Umpires(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		EList<String> umpires = null;
+		if (model instanceof ScoreKeepers) {
+			umpires = ((Umpires) model).getUmpires();
+		} else if (model instanceof Description) {
+			Description description = (Description) model;
+			if (description.getUmpires() != null) {
+				umpires = description.getUmpires().getUmpires();
+			}
+		}
 
-						
-						for (String propositon : propositions) {
-							String[] parts = propositon.split(":"); //$NON-NLS-1$
-							StringBuilder str = new StringBuilder(STARTING_BATTER_STRING + batterName + "\") -> "); //$NON-NLS-1$  //$NON-NLS-2$
-							int position = str.toString().length();
-							str.append(", " + parts[0] + "}"); //$NON-NLS-1$ //$NON-NLS-2$
-							ConfigurableCompletionProposal completion2 = (ConfigurableCompletionProposal) createCompletionProposal(str.toString(), 
-									new StyledString(NLS.bind(Messages.GameProposalProvider_BatterAnd, parts[1])), null,450, "",context); //$NON-NLS-1$
-							completion2.setCursorPosition(position);
-							acceptor.accept(completion2);
+		IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
+		XtextResourceSet resourceSet = resourceSetProvider.get();
+		String modelPath = model.eResource().getURI().path().replaceFirst(model.eResource().getURI().lastSegment(), ""); // $NON-NLS1$ //$NON-NLS-1$
+		modelPath = modelPath.replaceFirst(
+				model.eResource().getURI().segment(model.eResource().getURI().segmentCount() - 2) + SEGMENT_SEPARATOR,
+				""); // $NON-NLS1$ //$NON-NLS2$ //$NON-NLS-1$
+
+		for (IEObjectDescription exportedObject : index
+				.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
+			ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(),
+					resourceSet);
+			String clubPath = clubDescription.eResource().getURI().path()
+					.replaceFirst(clubDescription.eResource().getURI().lastSegment(), ""); // $NON-NLS1$ //$NON-NLS-1$
+
+			if (clubPath.equals(modelPath) && (clubDescription.getOfficials() != null)) {
+				for (Official official : clubDescription.getOfficials().getOfficials()) {
+					if ((official instanceof Umpire)
+							&& ((umpires == null) || !umpires.contains(official.getName().getName()))) {
+						String message = NLS.bind(Messages.GameProposalProvider_AddUmpire,
+								official.getName().getName());
+						acceptor.accept(createCompletionProposal(
+								OPEN_STRING + official.getName().getName() + OPEN_STRING, message, null, context));
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void completeScoreKeepers_Scorekeepers(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		EList<String> scoreKeeppers = null;
+		if (model instanceof ScoreKeepers) {
+			scoreKeeppers = ((ScoreKeepers) model).getScorekeepers();
+		} else if (model instanceof Description) {
+			Description description = (Description) model;
+			if (description.getScorekeepers() != null) {
+				scoreKeeppers = description.getScorekeepers().getScorekeepers();
+			}
+		}
+
+		IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
+		XtextResourceSet resourceSet = resourceSetProvider.get();
+		String modelPath = model.eResource().getURI().path().replaceFirst(model.eResource().getURI().lastSegment(), ""); // $NON-NLS1$ //$NON-NLS-1$
+		modelPath = modelPath.replaceFirst(
+				model.eResource().getURI().segment(model.eResource().getURI().segmentCount() - 2) + SEGMENT_SEPARATOR,
+				""); // $NON-NLS1$ //$NON-NLS2$ //$NON-NLS-1$
+
+		for (IEObjectDescription exportedObject : index
+				.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
+			ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(),
+					resourceSet);
+			String clubPath = clubDescription.eResource().getURI().path()
+					.replaceFirst(clubDescription.eResource().getURI().lastSegment(), ""); // $NON-NLS1$ //$NON-NLS-1$
+
+			if (clubPath.equals(modelPath) && (clubDescription.getOfficials() != null)) {
+				for (Official official : clubDescription.getOfficials().getOfficials()) {
+					if ((official instanceof ScoreKeeper)
+							&& ((scoreKeeppers == null) || !scoreKeeppers.contains(official.getName().getName()))) {
+						String message = NLS.bind(Messages.GameProposalProvider_AddScoreKeeper,
+								official.getName().getName());
+						acceptor.accept(createCompletionProposal(
+								OPEN_STRING + official.getName().getName() + OPEN_STRING, message, null, context));
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void completeDescription_Tournament(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
+		XtextResourceSet resourceSet = resourceSetProvider.get();
+
+		List<String> championats = new ArrayList<>();
+		for (IEObjectDescription exportedObject : index
+				.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
+			ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(),
+					resourceSet);
+			for (Team team : clubDescription.getTeams()) {
+				if (!championats.contains(team.getName())) {
+					championats.add(team.getName());
+				}
+			}
+		}
+		for (String championat : championats) {
+			acceptor.accept(createCompletionProposal(OPEN_STRING + championat + OPEN_STRING,
+					NLS.bind(Messages.GameProposalProvider_SetChampionatName, championat), null, context));
+		}
+	}
+
+	@Override
+	public void completeDescription_Category(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal(OPEN_STRING + "Senior" + OPEN_STRING, //$NON-NLS-1$
+				NLS.bind(Messages.GameProposalProvider_SetCategoryName, "Senior"), null, context)); //$NON-NLS-1$ //$NON-NLS-2$
+		acceptor.accept(createCompletionProposal(OPEN_STRING + "18U" + OPEN_STRING, //$NON-NLS-1$
+				NLS.bind(Messages.GameProposalProvider_SetCategoryName, "18U"), null, context)); //$NON-NLS-1$ //$NON-NLS-2$
+		acceptor.accept(createCompletionProposal(OPEN_STRING + "15U" + OPEN_STRING, //$NON-NLS-1$
+				NLS.bind(Messages.GameProposalProvider_SetCategoryName, "15U"), null, context)); //$NON-NLS-1$ //$NON-NLS-2$
+		acceptor.accept(createCompletionProposal(OPEN_STRING + "12U" + OPEN_STRING, //$NON-NLS-1$
+				NLS.bind(Messages.GameProposalProvider_SetCategoryName, "12U"), null, context)); //$NON-NLS-1$ //$NON-NLS-2$
+	}
+
+	@Override
+	public void completeDescription_Type(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("baseball", "baseball", null, context)); //$NON-NLS-1$ //$NON-NLS-2$
+		acceptor.accept(createCompletionProposal("softball", "softball", null, context)); //$NON-NLS-1$ //$NON-NLS-2$
+	}
+
+	@Override
+	public void completeRoster_Players(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		String name = ((Roster) model).getName();
+		if (model.eContainer() instanceof Game) {
+			Game game = (Game) model.eContainer();
+			if (game != null) {
+				String tournament = game.getDescription().getTournament();
+				if (name != null && tournament != null) {
+					List<String> possiblePeoples = getListOfPeople(name, tournament);
+					StringBuilder strProposal = new StringBuilder();
+					int counter = 0;
+					for (String people : possiblePeoples) {
+						strProposal.append("\t\t player \"" + people + OPEN_STRING); //$NON-NLS-1$
+						if (counter < possiblePeoples.size() - 1) {
+							strProposal.append(",\n"); //$NON-NLS-1$
+						} else {
+							strProposal.append("\n"); //$NON-NLS-1$
 						}
+						counter++;
+					}
+					acceptor.accept(createCompletionProposal(strProposal.toString(),
+							Messages.GameProposalProvider_AllTheTeam, null, context));
+				}
+			}
+		}
+	}
 
-						for (String propositon : propositions) {
-							String[] parts = propositon.split(":"); //$NON-NLS-1$
-							int position = parts[0].indexOf(',');
-							if (position == -1) {
-								position = parts[0].length();
-							}
-							ConfigurableCompletionProposal completion3 = (ConfigurableCompletionProposal) createCompletionProposal(parts[0] + "}",  //$NON-NLS-1$
-									new StyledString(parts[1]), null,410,"",context); //$NON-NLS-1$
-							completion3.setCursorPosition(position);
-							acceptor.accept(completion3);
+	/**
+	 * Get list of member for a team in a category
+	 * 
+	 * @param city       Name of the city
+	 * @param championat Name of championnat
+	 * @return List of player names
+	 */
+	private List<String> getListOfPeople(String city, String championat) {
+
+		List<String> players = new ArrayList<>();
+		IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
+		XtextResourceSet resourceSet = resourceSetProvider.get();
+
+		for (IEObjectDescription exportedObject : index
+				.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
+			ClubDescription clubDescription = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(),
+					resourceSet);
+			if (clubDescription.getName().equals(city)) {
+				for (Team team : clubDescription.getTeams()) {
+					if (team.getName().equals(championat)) {
+						for (org.bpy.score.club.club.Player player : team.getPlayers()) {
+							players.add(player.getPlayerName().getName());
 						}
 					}
-
-		/**
-		 * Create the list of runners propositions which may advance.
-		 * 		
-		 * @param runners Runner list
-		 * 
-		 * @return List of proposition
-		 */
-		public List<String> createRunnersProposition(String[] runners) {
-			List<String> runnerPropositions = new ArrayList<>();
-
-			if (runners[1] != null) {
-				String proposition = getRunnerProposition(runners,1) + DOUBLE_DOT + 
-						NLS.bind(Messages.GameProposalProvider_OneRunnerAdvance, runners[1]);
-				runnerPropositions.add(proposition);
+				}
 			}
-			
-			if (runners[2] != null) {
-				String proposition = getRunnerProposition(runners,2) + DOUBLE_DOT + 
-						NLS.bind(Messages.GameProposalProvider_OneRunnerAdvance, runners[2]);
-				runnerPropositions.add(proposition);
-			}
-			
-			if (runners[3] != null) {
-				String proposition = getRunnerProposition(runners,3) + DOUBLE_DOT + 
-						NLS.bind(Messages.GameProposalProvider_OneRunnerAdvance, runners[3]);
-				runnerPropositions.add(proposition);
-			}
+		}
+		return players;
+	}
 
-			if (runners[1] != null && runners[2] != null) {
-				String proposition = getRunnerProposition(runners,1) + COMMA + 
-						getRunnerProposition(runners,2) + DOUBLE_DOT + 
-						NLS.bind(Messages.GameProposalProvider_TwoRunnersAdvance, new Object[] {runners[1],runners[2]});
-				runnerPropositions.add(proposition);
-			}
-			
-			if (runners[1] != null && runners[3] != null) {
-				String proposition = getRunnerProposition(runners,1) + COMMA + 
-						getRunnerProposition(runners,3) + DOUBLE_DOT + 
-						NLS.bind(Messages.GameProposalProvider_TwoRunnersAdvance, new Object[] {runners[1],runners[3]});
-				runnerPropositions.add(proposition);
-			}
+	@Override
+	public void completeActions_HalfInnings(EObject model, Assignment assignment, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		Actions actions = (Actions) model;
 
-			if (runners[2] != null && runners[3] != null) {
-				String proposition = getRunnerProposition(runners,2) + COMMA + 
-						getRunnerProposition(runners,3) + DOUBLE_DOT + 
-						NLS.bind(Messages.GameProposalProvider_TwoRunnersAdvance, new Object[] {runners[2],runners[3]});
-				runnerPropositions.add(proposition);
+		if (actions.getHalfInnings() != null) {
+			int inningNumber = (actions.getHalfInnings().size() / 2) + 1;
+			int index = actions.getHalfInnings().size() % 2;
+
+			if (index == 0) {
+
+				String proposaltext = "\n\t\t/* Inning " + inningNumber + " : visitor */\n\t\tinning visitor number " //$NON-NLS-1$ //$NON-NLS-2$
+						+ inningNumber + " {\n\t\t\t\n\t\t}"; //$NON-NLS-1$
+
+				ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(
+						proposaltext, Messages.GameProposalProvider_InsertNewInning, null, context);
+
+				if (completion != null) {
+					completion.setCursorPosition(proposaltext.length() - 4);
+					acceptor.accept(completion);
+				}
+
+			} else {
+
+				String proposaltext = "\n\t\t/* Inning " + inningNumber + " : hometeam */\n\t\tinning hometeam number " //$NON-NLS-1$ //$NON-NLS-2$
+						+ inningNumber + " {\n\t\t\t\n\t\t}"; //$NON-NLS-1$
+				ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(
+						proposaltext, Messages.GameProposalProvider_InsertNewInning, null, context);
+
+				if (completion != null) {
+					completion.setCursorPosition(proposaltext.length() - 4);
+					acceptor.accept(completion);
+				}
 			}
+		}
+	}
 
-			if (runners[1] != null && runners[2] != null && runners[3] != null) {
-				 String proposition = getRunnerProposition(runners,1) + COMMA + 
-									getRunnerProposition(runners,2) + COMMA + 
-									getRunnerProposition(runners,3) + DOUBLE_DOT + 
-									NLS.bind(Messages.GameProposalProvider_ThreeRunnersAdvance, new Object[] {runners[1],runners[2],runners[3]});
-									
-  				 runnerPropositions.add(proposition);
-            }
+	@Override
+	public void complete_LineUp(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		StringBuilder str = new StringBuilder("\t\t"); //$NON-NLS-1$
+		str.append("\n\t\t/* Lineup description for the visitor */\n"); //$NON-NLS-1$
+		str.append("\t\tlineup visitor {\n\t\t\t"); //$NON-NLS-1$
+		int position = str.toString().length();
+		str.append("\n\t\t}\n\n"); //$NON-NLS-1$
 
-			return runnerPropositions;
+		str.append("\t\t/* Lineup description for the hometeam */\n"); //$NON-NLS-1$
+		str.append("\t\tlineup hometeam {\n"); //$NON-NLS-1$
+		str.append("\t\t\t\n\t\t}\n\n"); //$NON-NLS-1$
+
+		ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(
+				str.toString(), Messages.GameProposalProvider_DefineLineUp, null, context);
+		completion.setCursorPosition(position);
+		acceptor.accept(completion);
+	}
+
+	@Override
+	public void complete_LineUpEntry(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		LineUp lineup = (LineUp) model;
+		Game game = (Game) model.eContainer().eContainer();
+
+		EList<Player> playerNames = game.getHometeam().getPlayers();
+		if (game.getVisitor().getWho().equals(lineup.getTeamType())) {
+			playerNames = game.getVisitor().getPlayers();
 		}
 
-		/**
-		 * Return the runner string action.
-		 * 			
-		 * @param runners List of possible runners
-		 * @param pos runner position
-		 * @return  runner string action
-		 */
-		private String getRunnerProposition(String[] runners, int pos) {
-			return "runner" + pos + " (\"" + runners[pos] + "\") -> "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		List<String> possibilities = new ArrayList<>();
+		for (Player playerName : playerNames) {
+			boolean found = false;
+			for (LineUpEntry entry : lineup.getLineUpEntries()) {
+				if (playerName.getPlayerName().equals(entry.getName())) {
+					found = true;
+				}
+			}
+
+			if (!found) {
+				possibilities.add(playerName.getPlayerName());
+			}
 		}
+
+		Collections.sort(possibilities);
+		for (String possibility : possibilities) {
+			String size = String.format("%02d", (lineup.getLineUpEntries().size() + 1)); //$NON-NLS-1$
+			StringBuilder str = new StringBuilder(
+					"/* " + size + " */\tname= \"" + possibility + "\" defensivePosition = "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			int position = str.toString().length();
+
+			String shirtNumber = getShirtNumber(possibility, game, lineup.getTeamType());
+
+			// str.append(' shirtNumber = ;')
+			ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(
+					"/* " + size + " */\tname= \"" + possibility + "\" defensivePosition =  shirtNumber=" + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+							shirtNumber + " ;", //$NON-NLS-1$
+					NLS.bind(Messages.GameProposalProvider_AddPLayerInLineUp, possibility), null, context);
+			completion.setCursorPosition(position);
+			acceptor.accept(completion);
+		}
+	}
+
+	/**
+	 * Return the shirt number of a player.
+	 * 
+	 * @param playerName Name of player
+	 * @param game       reference on the game
+	 * @param teamType   type of team (visitor or hometeam)
+	 * 
+	 * @return shirt Number value if found,<b>empty string</b> if not found
+	 */
+	private String getShirtNumber(String playerName, Game game, String teamType) {
+		String teamName = ""; //$NON-NLS-1$
+		if (EngineConstants.HOMETEAM.equals(teamType)) {
+			teamName = game.getHometeam().getName();
+		} else {
+			teamName = game.getVisitor().getName();
+		}
+
+		IResourceDescriptions index = resourceDescriptionsProvider.createResourceDescriptions();
+		XtextResourceSet resourceSet = resourceSetProvider.get();
+
+		for (IEObjectDescription exportedObject : index
+				.getExportedObjectsByType(ClubPackage.Literals.CLUB_DESCRIPTION)) {
+			ClubDescription club = (ClubDescription) EcoreUtil.resolve(exportedObject.getEObjectOrProxy(), resourceSet);
+			if (club.getName().equals(teamName)) {
+				for (Member member : club.getMembers().getMembers()) {
+					if (member.getName().equals(playerName)) {
+						return "" + member.getShirtNumber(); //$NON-NLS-1$
+					}
+				}
+			}
+		}
+		return ""; //$NON-NLS-1$
+	}
+
+	@Override
+	public void complete_Pitch(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+
+		Pitches pitches = null;
+		if (model instanceof Pitches) {
+			pitches = (Pitches) model;
+		}
+
+		acceptor.accept(createCompletionProposal(".\n\t\t\taction { ", //$NON-NLS-1$
+				new StyledString(Messages.GameProposalProvider_PitchPutInPlay), null, 500, "", context)); //$NON-NLS-1$
+
+		if (pitches != null) {
+			int balls = countBalls(pitches);
+			if (balls == 3) {
+				acceptor.accept(createCompletionProposal("B\n\t\t\taction { ", //$NON-NLS-1$
+						new StyledString(Messages.GameProposalProvider_PitchAddBall), null, 450, "", context)); //$NON-NLS-1$
+			} else {
+				acceptor.accept(createCompletionProposal("B,", //$NON-NLS-1$
+						new StyledString(Messages.GameProposalProvider_PitchAddBall), null, 400, "", context)); //$NON-NLS-1$
+			}
+
+			int strikes = countStrikes(pitches);
+			if (strikes == 2) {
+
+				acceptor.accept(createCompletionProposal("K\n\t\t\taction { ", //$NON-NLS-1$
+						new StyledString(Messages.GameProposalProvider_PitchAddStrike), null, 450, "", context)); //$NON-NLS-1$
+				acceptor.accept(createCompletionProposal("S\n\t\t\taction { ", //$NON-NLS-1$
+						new StyledString(Messages.GameProposalProvider_PitchAddSwing), null, 450, "", context)); //$NON-NLS-1$
+
+			} else {
+
+				acceptor.accept(createCompletionProposal("K,", //$NON-NLS-1$
+						new StyledString(Messages.GameProposalProvider_PitchAddStrike), null, 400, "", context)); //$NON-NLS-1$
+				acceptor.accept(createCompletionProposal("S,", //$NON-NLS-1$
+						new StyledString(Messages.GameProposalProvider_PitchAddSwing), null, 400, "", context)); //$NON-NLS-1$
+			}
+			acceptor.accept(createCompletionProposal("F,", //$NON-NLS-1$
+					new StyledString(Messages.GameProposalProvider_PitchAddFouledBall), null, 400, "", context)); //$NON-NLS-1$
+
+			acceptor.accept(createCompletionProposal("H\n\t\t\taction { ", //$NON-NLS-1$
+					new StyledString(Messages.GameProposalProvider_PitchAddHitByPitch), null, 420, "", context)); //$NON-NLS-1$
+
+			acceptor.accept(createCompletionProposal("1,", //$NON-NLS-1$
+					new StyledString(Messages.GameProposalProvider_PitchAddPickOffFirstBase), null, 300, "", context)); //$NON-NLS-1$
+			acceptor.accept(createCompletionProposal("2,", //$NON-NLS-1$
+					new StyledString(Messages.GameProposalProvider_PitchAddPickOffSecondBase), null, 300, "", context)); //$NON-NLS-1$
+			acceptor.accept(createCompletionProposal("3,", //$NON-NLS-1$
+					new StyledString(Messages.GameProposalProvider_PitchAddPickOffThirdBase), null, 300, "", context)); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * Count number of strikes in a list of pitches
+	 * 
+	 * @param pitches list of pitches
+	 * @return number of strikes
+	 */
+	private int countStrikes(Pitches pitches) {
+		int strikeCounter = 0;
+		for (int i = 0; i < pitches.getPitches().size(); i++) {
+			Pitch pitch = pitches.getPitches().get(i);
+			if (pitch.getPitch() != null) {
+
+				switch (pitch.getPitch().toLowerCase()) {
+				case "f": //$NON-NLS-1$
+					if (strikeCounter < 2) {
+						strikeCounter++;
+					}
+					break;
+
+				case "k": //$NON-NLS-1$
+				case "s": //$NON-NLS-1$
+					strikeCounter++;
+					break;
+				default:
+				}
+
+			}
+		}
+		return strikeCounter;
+	}
+
+	/**
+	 * Count number of balls in a list of pitches
+	 * 
+	 * @param pitches list of pitches
+	 * @return number of balls
+	 */
+	private int countBalls(Pitches pitches) {
+		int ballsCounter = 0;
+
+		for (Pitch pitch : pitches.getPitches()) {
+			if ("b".equalsIgnoreCase(pitch.getPitch())) { //$NON-NLS-1$
+				ballsCounter++;
+			}
+		}
+		return ballsCounter;
+	}
+
+	@Override
+	public void complete_Action(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+
+		acceptor.accept(createCompletionProposal("action { ", new StyledString(Messages.GameProposalProvider_NewAction), //$NON-NLS-1$
+				null, 500, "", context)); //$NON-NLS-1$
+		acceptor.accept(createCompletionProposal("B,", new StyledString(Messages.GameProposalProvider_PitchAddBall), //$NON-NLS-1$
+				null, 400, "", context)); //$NON-NLS-1$
+		acceptor.accept(createCompletionProposal("K,", new StyledString(Messages.GameProposalProvider_PitchAddStrike), //$NON-NLS-1$
+				null, 400, "", context)); //$NON-NLS-1$
+		acceptor.accept(createCompletionProposal("S,", new StyledString(Messages.GameProposalProvider_PitchAddStrike), //$NON-NLS-1$
+				null, 400, "", context)); //$NON-NLS-1$
+		acceptor.accept(createCompletionProposal("H,", //$NON-NLS-1$
+				new StyledString(Messages.GameProposalProvider_PitchAddHitByPitch), null, 400, "", context)); //$NON-NLS-1$
+		acceptor.accept(createCompletionProposal("F,", //$NON-NLS-1$
+				new StyledString(Messages.GameProposalProvider_PitchAddFouledBall), null, 400, "", context)); //$NON-NLS-1$
+		acceptor.accept(createCompletionProposal("1,", //$NON-NLS-1$
+				new StyledString(Messages.GameProposalProvider_PitchAddPickOffFirstBase), null, 400, "", context)); //$NON-NLS-1$
+		acceptor.accept(createCompletionProposal("2,", //$NON-NLS-1$
+				new StyledString(Messages.GameProposalProvider_PitchAddPickOffSecondBase), null, 400, "", context)); //$NON-NLS-1$
+		acceptor.accept(createCompletionProposal("3,", //$NON-NLS-1$
+				new StyledString(Messages.GameProposalProvider_PitchAddPickOffThirdBase), null, 400, "", context)); //$NON-NLS-1$
+		acceptor.accept(createCompletionProposal(".\n\t\t\taction { ", //$NON-NLS-1$
+				new StyledString(Messages.GameProposalProvider_PitchPutInPlay), null, 450, "", context)); //$NON-NLS-1$
+	}
+
+	@Override
+	public void complete_BATTER(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+
+		Game game = ScoreGameUtil.getGame(model);
+		ScoreGameEngine scoreGameEngine = new ScoreGameEngine();
+		scoreGameEngine.runEngine(game);
+
+		String batterName = scoreGameEngine.getCurrentBatter();
+
+		String proposal = STARTING_BATTER_STRING + batterName + "\") -> }"; //$NON-NLS-1$
+
+		ConfigurableCompletionProposal completion = (ConfigurableCompletionProposal) createCompletionProposal(proposal,
+				new StyledString(NLS.bind(Messages.GameProposalProvider_CurrentActiveBatter, batterName)), null, 500,
+				"", context); //$NON-NLS-1$
+
+		completion.setCursorPosition(proposal.length() - 1);
+		acceptor.accept(completion);
+
+		String[] runners = scoreGameEngine.getCurrentRunners();
+		List<String> propositions = createRunnersProposition(runners);
+
+		for (String propositon : propositions) {
+			String[] parts = propositon.split(":"); //$NON-NLS-1$
+			StringBuilder str = new StringBuilder(STARTING_BATTER_STRING + batterName + "\") -> "); //$NON-NLS-1$ //$NON-NLS-2$
+			int position = str.toString().length();
+			str.append(", " + parts[0] + "}"); //$NON-NLS-1$ //$NON-NLS-2$
+			ConfigurableCompletionProposal completion2 = (ConfigurableCompletionProposal) createCompletionProposal(
+					str.toString(), new StyledString(NLS.bind(Messages.GameProposalProvider_BatterAnd, parts[1])), null,
+					450, "", context); //$NON-NLS-1$
+			completion2.setCursorPosition(position);
+			acceptor.accept(completion2);
+		}
+
+		for (String propositon : propositions) {
+			String[] parts = propositon.split(":"); //$NON-NLS-1$
+			int position = parts[0].indexOf(',');
+			if (position == -1) {
+				position = parts[0].length();
+			}
+			ConfigurableCompletionProposal completion3 = (ConfigurableCompletionProposal) createCompletionProposal(
+					parts[0] + "}", //$NON-NLS-1$
+					new StyledString(parts[1]), null, 410, "", context); //$NON-NLS-1$
+			completion3.setCursorPosition(position);
+			acceptor.accept(completion3);
+		}
+	}
+
+	/**
+	 * Create the list of runners propositions which may advance.
+	 * 
+	 * @param runners Runner list
+	 * 
+	 * @return List of proposition
+	 */
+	public List<String> createRunnersProposition(String[] runners) {
+		List<String> runnerPropositions = new ArrayList<>();
+
+		if (runners[1] != null) {
+			String proposition = getRunnerProposition(runners, 1) + DOUBLE_DOT
+					+ NLS.bind(Messages.GameProposalProvider_OneRunnerAdvance, runners[1]);
+			runnerPropositions.add(proposition);
+		}
+
+		if (runners[2] != null) {
+			String proposition = getRunnerProposition(runners, 2) + DOUBLE_DOT
+					+ NLS.bind(Messages.GameProposalProvider_OneRunnerAdvance, runners[2]);
+			runnerPropositions.add(proposition);
+		}
+
+		if (runners[3] != null) {
+			String proposition = getRunnerProposition(runners, 3) + DOUBLE_DOT
+					+ NLS.bind(Messages.GameProposalProvider_OneRunnerAdvance, runners[3]);
+			runnerPropositions.add(proposition);
+		}
+
+		if (runners[1] != null && runners[2] != null) {
+			String proposition = getRunnerProposition(runners, 1) + COMMA + getRunnerProposition(runners, 2)
+					+ DOUBLE_DOT + NLS.bind(Messages.GameProposalProvider_TwoRunnersAdvance,
+							new Object[] { runners[1], runners[2] });
+			runnerPropositions.add(proposition);
+		}
+
+		if (runners[1] != null && runners[3] != null) {
+			String proposition = getRunnerProposition(runners, 1) + COMMA + getRunnerProposition(runners, 3)
+					+ DOUBLE_DOT + NLS.bind(Messages.GameProposalProvider_TwoRunnersAdvance,
+							new Object[] { runners[1], runners[3] });
+			runnerPropositions.add(proposition);
+		}
+
+		if (runners[2] != null && runners[3] != null) {
+			String proposition = getRunnerProposition(runners, 2) + COMMA + getRunnerProposition(runners, 3)
+					+ DOUBLE_DOT + NLS.bind(Messages.GameProposalProvider_TwoRunnersAdvance,
+							new Object[] { runners[2], runners[3] });
+			runnerPropositions.add(proposition);
+		}
+
+		if (runners[1] != null && runners[2] != null && runners[3] != null) {
+			String proposition = getRunnerProposition(runners, 1) + COMMA + getRunnerProposition(runners, 2) + COMMA
+					+ getRunnerProposition(runners, 3) + DOUBLE_DOT
+					+ NLS.bind(Messages.GameProposalProvider_ThreeRunnersAdvance,
+							new Object[] { runners[1], runners[2], runners[3] });
+
+			runnerPropositions.add(proposition);
+		}
+
+		return runnerPropositions;
+	}
+
+	/**
+	 * Return the runner string action.
+	 * 
+	 * @param runners List of possible runners
+	 * @param pos     runner position
+	 * @return runner string action
+	 */
+	private String getRunnerProposition(String[] runners, int pos) {
+		return "runner" + pos + " (\"" + runners[pos] + "\") -> "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+	}
 
 }

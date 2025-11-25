@@ -27,6 +27,7 @@ import org.bpy.score.game.game.BatterAdvanceOnKWithError;
 import org.bpy.score.game.game.BatterAdvanceOnKWithFielderChoice;
 import org.bpy.score.game.game.BatterAdvanceOnObstruction;
 import org.bpy.score.game.game.BatterAdvanceOnOccupedBall;
+import org.bpy.score.game.game.BatterAdvanceOnPopError;
 import org.bpy.score.game.game.BatterAdvanceOnReceiveError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithFielderChoice;
@@ -872,6 +873,13 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   private EClass batterAdvanceOnFlyErrorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass batterAdvanceOnPopErrorEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -3325,6 +3333,17 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   @Override
+  public EClass getBatterAdvanceOnPopError()
+  {
+    return batterAdvanceOnPopErrorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getBatterAdvanceOnReceiveError()
   {
     return batterAdvanceOnReceiveErrorEClass;
@@ -4043,6 +4062,8 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
 
     batterAdvanceOnFlyErrorEClass = createEClass(BATTER_ADVANCE_ON_FLY_ERROR);
 
+    batterAdvanceOnPopErrorEClass = createEClass(BATTER_ADVANCE_ON_POP_ERROR);
+
     batterAdvanceOnReceiveErrorEClass = createEClass(BATTER_ADVANCE_ON_RECEIVE_ERROR);
 
     batterAdvanceOnThrowErrorEClass = createEClass(BATTER_ADVANCE_ON_THROW_ERROR);
@@ -4219,6 +4240,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     batterAdvanceOnHomeRunEClass.getESuperTypes().add(this.getHit());
     batterAdvanceOnInsideParkEClass.getESuperTypes().add(this.getHit());
     batterAdvanceOnFlyErrorEClass.getESuperTypes().add(this.getDecisiveError());
+    batterAdvanceOnPopErrorEClass.getESuperTypes().add(this.getDecisiveError());
     batterAdvanceOnReceiveErrorEClass.getESuperTypes().add(this.getDecisiveError());
     batterAdvanceOnThrowErrorEClass.getESuperTypes().add(this.getDecisiveError());
     batterAdvanceOnGdpWithErrorEClass.getESuperTypes().add(this.getDecisiveError());
@@ -4548,6 +4570,8 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     initEAttribute(getBatterAdvanceOnInsidePark_IsEarned(), ecorePackage.getEString(), "isEarned", null, 0, 1, BatterAdvanceOnInsidePark.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(batterAdvanceOnFlyErrorEClass, BatterAdvanceOnFlyError.class, "BatterAdvanceOnFlyError", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(batterAdvanceOnPopErrorEClass, BatterAdvanceOnPopError.class, "BatterAdvanceOnPopError", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(batterAdvanceOnReceiveErrorEClass, BatterAdvanceOnReceiveError.class, "BatterAdvanceOnReceiveError", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

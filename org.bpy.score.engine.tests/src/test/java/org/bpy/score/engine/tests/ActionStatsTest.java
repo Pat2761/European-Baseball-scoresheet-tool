@@ -1,11 +1,7 @@
 package org.bpy.score.engine.tests;
 
 
-import org.bpy.score.game.tests.GameInjectorProvider;
-import org.eclipse.xtext.testing.InjectWith;
-import org.eclipse.xtext.testing.extensions.InjectionExtension;
 
-@InjectWith(GameInjectorProvider.class)
 
 public class ActionStatsTest {
 

@@ -31,6 +31,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//GameReport/generalStats"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//GameReport/visitorLineup"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//GameReport/hometeamLineup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute GameReport.ecore#//GameReport/mixed"/>
     </genClasses>
     <genClasses ecoreClass="GameReport.ecore#//TeamStatisitics">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameReport.ecore#//TeamStatisitics/players"/>
@@ -66,6 +67,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/gameLose"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/gameWin"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/gameSave"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/ips"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/pitcherOrder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/flyOuts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//PitcherStatistic/groundedOuts"/>
     </genClasses>
     <genClasses ecoreClass="GameReport.ecore#//DefensiveStatistic">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//DefensiveStatistic/putOut"/>
@@ -136,6 +141,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//ActionDescription/header"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//ActionDescription/content"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//ActionDescription/resume"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameReport.ecore#//ActionDescription/team"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getLineupPlayer()
- * @model extendedMetaData="kind='element' name='LINEUP-PLAYER'"
+ * @model extendedMetaData="kind='elementOnly' name='LINEUP-PLAYER'"
  * @generated
  */
 public interface LineupPlayer extends EObject {

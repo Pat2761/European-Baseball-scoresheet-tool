@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
 
@@ -41,7 +40,7 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -86,7 +85,7 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -114,7 +113,7 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -160,7 +159,7 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -192,7 +191,7 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -236,7 +235,7 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -259,14 +258,14 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_030") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Bateur ne frappant a son tour retiré sur jeu d'appel */\r\n");
+    buf.append("        /* Bateur ne frappant a son tour retirï¿½ sur jeu d'appel */\r\n");
     buf.append("        action { batter -> OBR5-2 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -310,7 +309,7 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -321,7 +320,7 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
    * <tr>
    * <td><img src="./resources/WBSC_2016_Defense_exemple_032.JPG"/></td>
    * <td>Charles, as the regular batter, takes his turn at bat and reaches first base on a base on balls. Abel (irregular batter) and Baker go to bat and are
-   * both struck out. Once the first pitch had been made to Baker, Abel’s situation became legal. At this point Charles should have gone to bat, but since he is
+   * both struck out. Once the first pitch had been made to Baker, Abelï¿½s situation became legal. At this point Charles should have gone to bat, but since he is
    * still on first base he is passed over and Daniel becomes the regular batter.</td>
    * </tr>
    * </table>
@@ -372,7 +371,7 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -424,7 +423,7 @@ public class WBSC_2016_Defense_BattingOutOfTurn extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

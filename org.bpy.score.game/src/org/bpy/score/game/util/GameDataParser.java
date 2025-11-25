@@ -92,7 +92,7 @@ public class GameDataParser {
 				}
 			}
 		} catch (CoreException e) {
-			logger.log(Level.SEVERE,e.getMessage());
+			logger.log(Level.SEVERE,e.getLocalizedMessage());
 		}
 	}
 	

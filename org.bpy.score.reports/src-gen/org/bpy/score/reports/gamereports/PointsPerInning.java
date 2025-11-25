@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getPointsPerInning()
- * @model extendedMetaData="kind='element' name='POINTS-PER-INNING'"
+ * @model extendedMetaData="kind='elementOnly' name='POINTS-PER-INNING'"
  * @generated
  */
 public interface PointsPerInning extends EObject {

@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getDefensiveStatistic()
- * @model extendedMetaData="kind='element' name='DEFENSIVES-STATISTICS'"
+ * @model extendedMetaData="kind='elementOnly' name='DEFENSIVES-STATISTICS'"
  * @generated
  */
 public interface DefensiveStatistic extends EObject {

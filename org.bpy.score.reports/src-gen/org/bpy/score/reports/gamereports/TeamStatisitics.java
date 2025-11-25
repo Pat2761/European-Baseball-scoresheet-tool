@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getTeamStatisitics()
- * @model extendedMetaData="kind='element' name='TEAM-STATISTICS'"
+ * @model extendedMetaData="kind='elementOnly' name='TEAM-STATISTICS'"
  * @generated
  */
 public interface TeamStatisitics extends EObject {

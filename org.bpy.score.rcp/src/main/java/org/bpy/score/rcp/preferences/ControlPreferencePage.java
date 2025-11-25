@@ -19,7 +19,7 @@
 package org.bpy.score.rcp.preferences;
 
 import org.bpy.score.engine.util.EngineConstants;
-import org.bpy.score.internationalization.rcp.Messages;
+import org.bpy.score.internationalization.preferences.Messages;
 import org.bpy.score.rcp.Activator;
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;

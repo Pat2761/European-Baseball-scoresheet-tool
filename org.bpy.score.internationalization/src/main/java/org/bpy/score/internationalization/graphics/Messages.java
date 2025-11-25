@@ -86,6 +86,7 @@ public class Messages extends NLS {
 	/** Total translation */
 	public static String ScoringSheetGraphicalManager_Total;
 	
+
 	/**
 	 * Initialize the internationalization
 	 */

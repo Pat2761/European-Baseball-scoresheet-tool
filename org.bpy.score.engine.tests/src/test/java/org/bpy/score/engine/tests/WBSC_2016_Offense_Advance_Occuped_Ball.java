@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest {
 
@@ -23,7 +22,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
    * <table>
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_052.JPG"/></td>
-   * <td>The “O6” noted in the first base square clearly indicates that if the shortstop had played for the batterrunner, he would certainly have been put out.
+   * <td>The ï¿½O6ï¿½ noted in the first base square clearly indicates that if the shortstop had played for the batterrunner, he would certainly have been put out.
    * </td>
    * </tr>
    * </table>
@@ -34,18 +33,18 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_052") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* le premier batteur gagne la première base un 'base on ball' */\r\n");
+    buf.append("        /* le premier batteur gagne la premiï¿½re base un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
     buf.append(
-        "        /* Le batteur suivant frappe une balle vers l'arret court qui récupéère la balle et la relaie ay défebseur de deuxèlme base pour retirer le coureur */\r\n");
+        "        /* Le batteur suivant frappe une balle vers l'arret court qui rï¿½cupï¿½ï¿½re la balle et la relaie ay dï¿½febseur de deuxï¿½lme base pour retirer le coureur */\r\n");
     buf.append("        action { batter -> O6 , runner1 -> 64 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -91,7 +90,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -112,19 +111,19 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_053") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* le premier batteur gagne la première base un 'base on ball' */\r\n");
+    buf.append("        /* le premier batteur gagne la premiï¿½re base un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
     buf.append(
-        "        /* Le batteur suivant frappe une balle vers l'arret court qui récupéère la balle et la relaie au défebseur de deuxèlme base pour retirer le coureur */\r\n");
-    buf.append("        /* Le défenseur commet une erreur en relachant la balle */\r\n");
+        "        /* Le batteur suivant frappe une balle vers l'arret court qui rï¿½cupï¿½ï¿½re la balle et la relaie au dï¿½febseur de deuxï¿½lme base pour retirer le coureur */\r\n");
+    buf.append("        /* Le dï¿½fenseur commet une erreur en relachant la balle */\r\n");
     buf.append("        action { batter -> O6 , runner1 -> 6E4 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -169,7 +168,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -189,14 +188,14 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_054") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* le premier batteur frappe un hit sur l'arrêt court */\r\n");
+    buf.append("        /* le premier batteur frappe un hit sur l'arrï¿½t court */\r\n");
     buf.append("        action { batter -> 1B6 }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur suivant frappe un simple dans le champ droit, le coureur avance de deux bases */\r\n");
     buf.append("        action { batter -> 1B9 ,  runner1 -> ++ }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le frappeur suivant frappe une fly dans le champs centre qui loupe la balle */\r\n");
-    buf.append("        /* le défenseur récupère la balle et la renvoie à l'arrêt pour retirer e coureur arrivant en 2 */\r\n");
+    buf.append("        /* le dï¿½fenseur rï¿½cupï¿½re la balle et la renvoie ï¿½ l'arrï¿½t pour retirer e coureur arrivant en 2 */\r\n");
     buf.append("        /* le coureur en 3 marque le point */\r\n");
     buf.append("        action { batter -> SFO8 , runner1 -> 86 , runner3 -> + }\r\n");
     buf.append("\r\n");
@@ -204,7 +203,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -250,7 +249,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -271,22 +270,22 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_055") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* le premier batteur frappe un hit sur l'arrêt court */\r\n");
+    buf.append("        /* le premier batteur frappe un hit sur l'arrï¿½t court */\r\n");
     buf.append("        action { batter -> 1B6 }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur suivant frappe un simple dans le champ droit, le coureur avance de deux bases */\r\n");
     buf.append("        action { batter -> 1B9 ,  runner1 -> ++ }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le frappeur suivant frappe une fly dans le champs centre qui loupe la balle */\r\n");
-    buf.append("        /* le défenseur récupère la balle et la renvoie à l'arrêt pour retirer e coureur arrivant en 2 */\r\n");
-    buf.append("        /* le coureur en 3 marque le point en profitant de l'erreur du défenseur du champ centre*/\r\n");
+    buf.append("        /* le dï¿½fenseur rï¿½cupï¿½re la balle et la renvoie ï¿½ l'arrï¿½t pour retirer e coureur arrivant en 2 */\r\n");
+    buf.append("        /* le coureur en 3 marque le point en profitant de l'erreur du dï¿½fenseur du champ centre*/\r\n");
     buf.append("        action { batter -> O8 , runner1 -> 86 , runner3 -> e8 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -332,7 +331,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -343,8 +342,8 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_056.JPG"/></td>
    * <td>With no men out and bases full, the third baseman recovers the ground ball hit by the fourth batter and, after touching his base, assists the second
-   * baseman in closing the double play. The batter-runner’s advance to first base is noted with the “occupied ball” symbol, along with “GDP” for grounded into
-   * double play. The first runner’s advance is entirely legal although the run cannot be counted as having been batted in.</td>
+   * baseman in closing the double play. The batter-runnerï¿½s advance to first base is noted with the ï¿½occupied ballï¿½ symbol, along with ï¿½GDPï¿½ for grounded into
+   * double play. The first runnerï¿½s advance is entirely legal although the run cannot be counted as having been batted in.</td>
    * </tr>
    * </table>
    * 
@@ -354,17 +353,17 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_056") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* le premier batteur arrive sur base sur strike relaché (wild pitch) */\r\n");
+    buf.append("        /* le premier batteur arrive sur base sur strike relachï¿½ (wild pitch) */\r\n");
     buf.append("        action { batter -> KSWP }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur suivant frappe un simple sur le lanceur, le coureur avance */\r\n");
     buf.append("        action { batter -> 1B1 , runner1 -> + }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant gagne la première base sur un 'base on ball', les coureurs avance */\r\n");
+    buf.append("        /* Le batteur suivant gagne la premiï¿½re base sur un 'base on ball', les coureurs avance */\r\n");
     buf.append("        action { batter -> BB , runner1 -> + , runner2 -> + }\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batteur suivant frappe une balle au sol vers le défenseur de la troisème base qui touche sa base */\r\n");
-    buf.append("        /* il relai en suite la balle au défenseur de la deuxèe bas equi retire le coureur arrivant de la 1 */\r\n");
+    buf.append("        /* le batteur suivant frappe une balle au sol vers le dï¿½fenseur de la troisï¿½me base qui touche sa base */\r\n");
+    buf.append("        /* il relai en suite la balle au dï¿½fenseur de la deuxï¿½e bas equi retire le coureur arrivant de la 1 */\r\n");
     buf.append("        /* le coureur en 3 en profite pour marquer */\r\n");
     buf.append("        action { batter -> GDPO5 , runner1 -> 54 , runner2 -> 5 , runner3 -> + }\r\n");
     buf.append("\r\n");
@@ -372,7 +371,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -419,7 +418,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -429,7 +428,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
    * <table>
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_057.JPG"/></td>
-   * <td>The batter-runner, after having reached first base on fielder’s choice, takes advantage of the ongoing rundown play to continue to second. This
+   * <td>The batter-runner, after having reached first base on fielderï¿½s choice, takes advantage of the ongoing rundown play to continue to second. This
    * additional advance is noted with an arrow.</td>
    * </tr>
    * </table>
@@ -440,21 +439,21 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_057") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* le premier batteur arrive sur base sur strike relaché (wild pitch) */\r\n");
+    buf.append("        /* le premier batteur arrive sur base sur strike relachï¿½ (wild pitch) */\r\n");
     buf.append("        action { batter -> KSWP }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le coureur en profite d'un 'apps ball' pour avancer en 2 */\r\n");
     buf.append("        action { runner1 -> PB }\r\n");
     buf.append("\r\n");
     buf.append(
-        "        /* Le frappeur frappe une balle sur le receveur , qui relai en troisème base pour retirer le coureur , une souricièere élimine le coureur */\r\n");
+        "        /* Le frappeur frappe une balle sur le receveur , qui relai en troisï¿½me base pour retirer le coureur , une souriciï¿½ere ï¿½limine le coureur */\r\n");
     buf.append("        action { batter -> O2+ , runner2 -> 2565 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -501,7 +500,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     checkCatcherStat(statisticEngine, 1, 1, 0, 0);
     checkTotalCatcherSt(statisticEngine, 1, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -525,10 +524,10 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     buf.append("        /* Le premier batteur frappe une balle en champ cnetre , le defenseur fait une erreur el la rattrapant */\r\n");
     buf.append("        action { batter -> E8F }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant frappe un hit sur la deuxième base, le coureur avance */\r\n");
+    buf.append("        /* Le batteur suivant frappe un hit sur la deuxiï¿½me base, le coureur avance */\r\n");
     buf.append("        action { batter -> 1B4, runner1 -> + }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant frappe une balle sur l'arrêt court , qui relai au troicème base qui retire le coureur venant de la 2 */\r\n");
+    buf.append("        /* Le batteur suivant frappe une balle sur l'arrï¿½t court , qui relai au troicï¿½me base qui retire le coureur venant de la 2 */\r\n");
     buf.append("        /* Le coureur en 1 et le batteur coureur en profite pour avancer */\r\n");
     buf.append("        action { batter -> O6, runner1 -> O6, runner2 -> 65 }\r\n");
     buf.append("\r\n");
@@ -536,7 +535,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -584,7 +583,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -595,8 +594,8 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_059.JPG"/></td>
    * <td>With runners on second and third, the catcher drops the third strike but recovers it in time to assist the pitcher to put out the runner who has just
-   * left third base. The batter-runner arrives safely on first base, as indicated by “KS1 O2” (assuming that this is the first strikeout for the current
-   * pitcher). The advance by the runner on second is noted with ‘O2’ as the provision of rule 9.13(b) Comment.</td>
+   * left third base. The batter-runner arrives safely on first base, as indicated by ï¿½KS1 O2ï¿½ (assuming that this is the first strikeout for the current
+   * pitcher). The advance by the runner on second is noted with ï¿½O2ï¿½ as the provision of rule 9.13(b) Comment.</td>
    * </tr>
    * </table>
    * 
@@ -610,18 +609,18 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     buf.append("        action { batter -> 2B9 }\r\n");
     buf.append("\r\n");
     buf.append(
-        "        /* Le batteur suivabt frappe un simple dans le champ gauche et profite d'un relai pour gagner le deuxième base, le coureur en 2 avance */\r\n");
+        "        /* Le batteur suivabt frappe un simple dans le champ gauche et profite d'un relai pour gagner le deuxiï¿½me base, le coureur en 2 avance */\r\n");
     buf.append("        action { batter -> 1B7 T75, runner2 -> + }\r\n");
     buf.append("\r\n");
     buf.append(
-        "        /* Le batteur suivant, sur un troisème strike relaché, gagne la une ca rle receveur decide d'éliminer le coureur arrivant de la troisième base */\r\n");
+        "        /* Le batteur suivant, sur un troisï¿½me strike relachï¿½, gagne la une ca rle receveur decide d'ï¿½liminer le coureur arrivant de la troisiï¿½me base */\r\n");
     buf.append("        action { batter -> KSO2 , runner2 -> O2, runner3 -> 21 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -668,7 +667,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -679,7 +678,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_060.JPG"/></td>
    * <td>The batter hits a ground ball to the third baseman, who tags the runner on third as he tries to retouch base. In the encounter, however, the ball is
-   * dropped and the umpire calls “Ball on the ground”. The runner on third returns safely to the base and the third baseman is charged with an error. The error
+   * dropped and the umpire calls ï¿½Ball on the groundï¿½. The runner on third returns safely to the base and the third baseman is charged with an error. The error
    * is decisive and must be noted in small characters in the third base square.</td>
    * </tr>
    * </table>
@@ -693,14 +692,14 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     buf.append("        /* Le premier batteur frappe un triple dna sle champ droit */\r\n");
     buf.append("        action { batter -> 3B9 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batter suivant frappe une balle sur la troisième base, le defénseur aurait du retirer le coureur qui ne bouge pas */\r\n");
+    buf.append("        /* le batter suivant frappe une balle sur la troisiï¿½me base, le defï¿½nseur aurait du retirer le coureur qui ne bouge pas */\r\n");
     buf.append("        action { batter -> O5 , noAdvance on runner3 -> E5 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -745,7 +744,7 @@ public class WBSC_2016_Offense_Advance_Occuped_Ball extends AbstractWBSCUnitTest
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

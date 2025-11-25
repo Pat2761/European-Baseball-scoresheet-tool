@@ -29,10 +29,13 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.navigator.resources,
  org.eclipse.core.commands,
  org.eclipse.osgi;bundle-version="3.16.0",
- org.bpy.score.reports;bundle-version="1.0.0",
  org.bpy.score.graphics;bundle-version="1.0.0",
  org.bpy.score.internationalization;bundle-version="1.0.0",
- org.eclipse.ui.ide.application;bundle-version="1.3.800"
+ org.eclipse.ui.ide.application;bundle-version="1.3.800",
+ org.bpy.score.reports;bundle-version="1.0.0",
+ org.eclipse.core.expressions;bundle-version="3.8.200",
+ org.eclipse.core.variables;bundle-version="3.5.100",
+ org.bpy.score.preferences;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Import-Package: org.bpy.score.club.club,

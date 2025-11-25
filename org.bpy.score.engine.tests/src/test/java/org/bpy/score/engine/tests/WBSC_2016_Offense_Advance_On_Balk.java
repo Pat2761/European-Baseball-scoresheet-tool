@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Advance_On_Balk extends AbstractWBSCUnitTest {
 
@@ -23,8 +22,8 @@ public class WBSC_2016_Offense_Advance_On_Balk extends AbstractWBSCUnitTest {
    * <table>
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_044.JPG"/></td>
-   * <td>The abbreviation used for an advance on a balk is “BK” followed by the batting order number of the player at bat at the time of the balk. If there is
-   * more than one runner on base, “BK” (upper case) is used for the lead runner and “bk” (lower case) for the subsequent runners.</td>
+   * <td>The abbreviation used for an advance on a balk is ï¿½BKï¿½ followed by the batting order number of the player at bat at the time of the balk. If there is
+   * more than one runner on base, ï¿½BKï¿½ (upper case) is used for the lead runner and ï¿½bkï¿½ (lower case) for the subsequent runners.</td>
    * </tr>
    * </table>
    * 
@@ -37,7 +36,7 @@ public class WBSC_2016_Offense_Advance_On_Balk extends AbstractWBSCUnitTest {
     buf.append("        /* Le premier batteur frappe un hit dans le champ gauche */\r\n");
     buf.append("        action { batter -> 1B7 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant gagne la première base sur un 'base on ball', le coureur avance */\r\n");
+    buf.append("        /* Le batteur suivant gagne la premiï¿½re base sur un 'base on ball', le coureur avance */\r\n");
     buf.append("        action { batter -> BB , runner1 -> +}\r\n");
     buf.append("\r\n");
     buf.append("        /* Le lanceur fait un balk, les deux coureurs avance */\r\n");
@@ -47,7 +46,7 @@ public class WBSC_2016_Offense_Advance_On_Balk extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -91,7 +90,7 @@ public class WBSC_2016_Offense_Advance_On_Balk extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

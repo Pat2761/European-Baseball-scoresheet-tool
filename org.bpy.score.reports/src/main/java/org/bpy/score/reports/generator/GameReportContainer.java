@@ -25,6 +25,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -222,6 +223,8 @@ public class GameReportContainer {
 		pitcherStats.setStrikeOut(0);
 		pitcherStats.setTriple(0);
 		pitcherStats.setWildPitches(0);
+		pitcherStats.setFlyOuts(0);
+		pitcherStats.setGroundedOuts(0);
 		
 		return pitcherStats;
 	}
@@ -329,21 +332,42 @@ public class GameReportContainer {
 	 * @param fileName Name of the XML file
 	 * @param xsltFileName path of the XSLT file
 	 */
-	public void saveFile(GameReport gameReport, String fileName, String xsltFileName) {
+	public File saveFile(GameReport gameReport, String fileName) {
+		
+		File tmpFile = null;
+
 		Map<String, Object> options = new HashMap<>();
-		options.put("ENCODING", "UTF-8"); //$NON-NLS-1$
+		options.put("ENCODING", "UTF-8"); //$NON-NLS-1$ //$NON-NLS-2$
 		options.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.FALSE);
 
-		try (
-				BufferedReader reader = new BufferedReader(new FileReader(fileName));	
-		        FileWriter writer = new FileWriter(fileName);
-		){
-			OutputStream outStream = new FileOutputStream(new File(fileName));
+		try {
+			tmpFile = File.createTempFile("Tmp_", "Game"); //$NON-NLS-1$ //$NON-NLS-2$
+			OutputStream outStream = new FileOutputStream(tmpFile);
 			gameReport.eResource().save(outStream, options);
+			outStream.flush();
 			outStream.close();
 			
-	        /* add stylesheet information */
+	        
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, e.getLocalizedMessage());
+		}  
+		
+		return tmpFile;
+	}
+
+	/**
+	 * Add Xslt reference in the Game XML file
+	 * 
+	 * @param tmpFile temporary file which contains the description of the game
+	 * @param fileName File name to generate
+	 * @param xsltFileName name of the XSLT file
+	 */
+	public void setXsltReference(File tmpFile, String fileName, String xsltFileName) {
+		try (	BufferedReader reader = new BufferedReader(new FileReader(tmpFile));	
+		        FileWriter writer = new FileWriter(fileName);
+			) {
 	        ArrayList<String> lines = new ArrayList<>();
+	
 	        String readLine = reader.readLine();
 	        while (readLine != null)
 	        {
@@ -355,9 +379,16 @@ public class GameReportContainer {
 	        {
 	            writer.write(line + "\r\n"); //$NON-NLS-1$
 	        }
-
+	        writer.flush();
+	        
 		} catch (IOException e) {
-			logger.log(Level.SEVERE, e.getMessage());
+			logger.log(Level.SEVERE, e.getLocalizedMessage());
+		}
+		
+        try {
+			Files.delete(tmpFile.toPath());
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, e.getLocalizedMessage());
 		}
 	}
 }

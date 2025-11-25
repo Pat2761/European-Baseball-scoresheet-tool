@@ -24,8 +24,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bpy.score.engine.util.EngineConstants;
+import org.bpy.score.preferences.core.PreferenceConstants;
 import org.bpy.score.rcp.Activator;
-import org.bpy.score.rcp.preferences.PreferenceConstants;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
@@ -57,7 +57,7 @@ import org.eclipse.ui.ide.IDE;
 public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 
 	/** Id of the main perspective */
-	private static final String PERSPECTIVE_ID = "org.bpy.score.rcp.perspective";
+	private static final String PERSPECTIVE_ID = "org.bpy.score.rcp.perspective"; //$NON-NLS-1$
 
 	/** Logger of the class */
 	public static final Logger logger = Logger.getLogger(ApplicationWorkbenchAdvisor.class.getSimpleName());
@@ -111,17 +111,17 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	@Override
 	public void postStartup() {
 		PreferenceManager pm = PlatformUI.getWorkbench().getPreferenceManager();
-		pm.remove("org.eclipse.help.ui.browsersPreferencePage");
-		pm.remove("org.eclipse.m2e.core.preferences.Maven2PreferencePage");
-		pm.remove("org.eclipse.ant.ui.AntPreferencePage");
-		pm.remove("org.eclipse.jdt.ui.preferences.JavaBasePreferencePage");
-		pm.remove("org.eclipse.team.ui.TeamPreferences");
-		pm.remove("org.eclipse.debug.ui.DebugPreferencePage");
+		pm.remove("org.eclipse.help.ui.browsersPreferencePage"); //$NON-NLS-1$
+		pm.remove("org.eclipse.m2e.core.preferences.Maven2PreferencePage"); //$NON-NLS-1$
+		pm.remove("org.eclipse.ant.ui.AntPreferencePage"); //$NON-NLS-1$
+		pm.remove("org.eclipse.jdt.ui.preferences.JavaBasePreferencePage"); //$NON-NLS-1$
+		pm.remove("org.eclipse.team.ui.TeamPreferences"); //$NON-NLS-1$
+		pm.remove("org.eclipse.debug.ui.DebugPreferencePage"); //$NON-NLS-1$
 
-		pm.remove("org.eclipse.ui.preferencePages.Globalization");
-		pm.remove("org.eclipse.ui.preferencePages.Perspectives");
-		pm.remove("org.eclipse.ui.preferencePages.LinkedResources");
-		pm.remove("org.eclipse.ui.preferencePages.BuildOrder");
+		pm.remove("org.eclipse.ui.preferencePages.Globalization"); //$NON-NLS-1$
+		pm.remove("org.eclipse.ui.preferencePages.Perspectives"); //$NON-NLS-1$
+		pm.remove("org.eclipse.ui.preferencePages.LinkedResources"); //$NON-NLS-1$
+		pm.remove("org.eclipse.ui.preferencePages.BuildOrder"); //$NON-NLS-1$
 
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (IProject project : projects) {

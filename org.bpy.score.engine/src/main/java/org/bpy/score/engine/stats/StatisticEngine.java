@@ -66,17 +66,13 @@ public class StatisticEngine extends AbstractEngine {
 
 			try {
 				statisticManager.setupLineUp(game.getActions().getLineup());
-				statisticManager.initStattistic(game.getName(), game.getHometeam().getName(),
-						game.getVisitor().getName());
+				statisticManager.initStattistic(game.getName(), game.getHometeam().getName(), game.getVisitor().getName());
 
 				manageActions(game.getActions().getHalfInnings());
 				manageGameResume(game.getActions().getGameResume());
 
-				
-				
-				
-			} catch (OccupedbaseException|NullPointerException e) {
-				logger.log(Level.SEVERE, e.getMessage());
+			} catch (OccupedbaseException| NullPointerException e) {
+				logger.log(Level.SEVERE, e.getLocalizedMessage());
 			}
 
 		} else if (game != null && game.getForfeitGame() != null) {

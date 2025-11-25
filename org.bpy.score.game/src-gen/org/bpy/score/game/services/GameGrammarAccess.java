@@ -553,17 +553,14 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		// * Add a note
 		// */
 		//Note:
-		////    'note' '=' notes+=STRING ( '+' notes+=STRING)?';'
 		//    'note' '=' notes=STRING ';'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		////    'note' '=' notes+=STRING ( '+' notes+=STRING)?';'
-		//    'note' '=' notes=STRING ';'
+		//'note' '=' notes=STRING ';'
 		public Group getGroup() { return cGroup; }
 		
-		////    'note' '=' notes+=STRING ( '+' notes+=STRING)?';'
-		//    'note'
+		//'note'
 		public Keyword getNoteKeyword_0() { return cNoteKeyword_0; }
 		
 		//'='
@@ -4300,32 +4297,40 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Assignment cBatterAdvanceAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
 		private final RuleCall cBatterAdvanceREACH_ON_FLY_ERRORTerminalRuleCall_0_3_0 = (RuleCall)cBatterAdvanceAssignment_0_3.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cBatterAdvanceOnReceiveErrorAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cBatterAdvanceOnPopErrorAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cCurrentBatterAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cCurrentBatterCurrentBatterParserRuleCall_1_1_0 = (RuleCall)cCurrentBatterAssignment_1_1.eContents().get(0);
 		private final RuleCall cEXECUTETerminalRuleCall_1_2 = (RuleCall)cGroup_1.eContents().get(2);
 		private final Assignment cBatterAdvanceAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final RuleCall cBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_1_3_0 = (RuleCall)cBatterAdvanceAssignment_1_3.eContents().get(0);
+		private final RuleCall cBatterAdvanceREACH_ON_POP_ERRORTerminalRuleCall_1_3_0 = (RuleCall)cBatterAdvanceAssignment_1_3.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Action cBatterAdvanceOnThrowErrorAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Action cBatterAdvanceOnReceiveErrorAction_2_0 = (Action)cGroup_2.eContents().get(0);
 		private final Assignment cCurrentBatterAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cCurrentBatterCurrentBatterParserRuleCall_2_1_0 = (RuleCall)cCurrentBatterAssignment_2_1.eContents().get(0);
 		private final RuleCall cEXECUTETerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
 		private final Assignment cBatterAdvanceAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
-		private final RuleCall cBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_2_3_0 = (RuleCall)cBatterAdvanceAssignment_2_3.eContents().get(0);
+		private final RuleCall cBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_2_3_0 = (RuleCall)cBatterAdvanceAssignment_2_3.eContents().get(0);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Action cBatterAdvanceOnGdpWithErrorAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final Action cBatterAdvanceOnThrowErrorAction_3_0 = (Action)cGroup_3.eContents().get(0);
 		private final Assignment cCurrentBatterAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cCurrentBatterCurrentBatterParserRuleCall_3_1_0 = (RuleCall)cCurrentBatterAssignment_3_1.eContents().get(0);
 		private final RuleCall cEXECUTETerminalRuleCall_3_2 = (RuleCall)cGroup_3.eContents().get(2);
 		private final Assignment cBatterAdvanceAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
-		private final RuleCall cBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_3_3_0 = (RuleCall)cBatterAdvanceAssignment_3_3.eContents().get(0);
+		private final RuleCall cBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_3_3_0 = (RuleCall)cBatterAdvanceAssignment_3_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cBatterAdvanceOnGdpWithErrorAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Assignment cCurrentBatterAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cCurrentBatterCurrentBatterParserRuleCall_4_1_0 = (RuleCall)cCurrentBatterAssignment_4_1.eContents().get(0);
+		private final RuleCall cEXECUTETerminalRuleCall_4_2 = (RuleCall)cGroup_4.eContents().get(2);
+		private final Assignment cBatterAdvanceAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
+		private final RuleCall cBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_4_3_0 = (RuleCall)cBatterAdvanceAssignment_4_3.eContents().get(0);
 		
 		///**
 		// * Batter advance on decisive error action
 		// */
 		//DecisiveError:
 		//    ({BatterAdvanceOnFlyError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_FLY_ERROR) |
+		//    ({BatterAdvanceOnPopError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_POP_ERROR) |
 		//    ({BatterAdvanceOnReceiveError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_RECEIVE_ERROR) |
 		//    ({BatterAdvanceOnThrowError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_THROW_ERROR) |
 		//    ({BatterAdvanceOnGdpWithError} currentBatter=CurrentBatter EXECUTE batterAdvance=GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR)
@@ -4333,6 +4338,7 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		@Override public ParserRule getRule() { return rule; }
 		
 		//({BatterAdvanceOnFlyError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_FLY_ERROR) |
+		//({BatterAdvanceOnPopError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_POP_ERROR) |
 		//({BatterAdvanceOnReceiveError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_RECEIVE_ERROR) |
 		//({BatterAdvanceOnThrowError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_THROW_ERROR) |
 		//({BatterAdvanceOnGdpWithError} currentBatter=CurrentBatter EXECUTE batterAdvance=GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR)
@@ -4359,11 +4365,11 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//REACH_ON_FLY_ERROR
 		public RuleCall getBatterAdvanceREACH_ON_FLY_ERRORTerminalRuleCall_0_3_0() { return cBatterAdvanceREACH_ON_FLY_ERRORTerminalRuleCall_0_3_0; }
 		
-		//({BatterAdvanceOnReceiveError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_RECEIVE_ERROR)
+		//({BatterAdvanceOnPopError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_POP_ERROR)
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{BatterAdvanceOnReceiveError}
-		public Action getBatterAdvanceOnReceiveErrorAction_1_0() { return cBatterAdvanceOnReceiveErrorAction_1_0; }
+		//{BatterAdvanceOnPopError}
+		public Action getBatterAdvanceOnPopErrorAction_1_0() { return cBatterAdvanceOnPopErrorAction_1_0; }
 		
 		//currentBatter=CurrentBatter
 		public Assignment getCurrentBatterAssignment_1_1() { return cCurrentBatterAssignment_1_1; }
@@ -4374,17 +4380,17 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//EXECUTE
 		public RuleCall getEXECUTETerminalRuleCall_1_2() { return cEXECUTETerminalRuleCall_1_2; }
 		
-		//batterAdvance=REACH_ON_RECEIVE_ERROR
+		//batterAdvance=REACH_ON_POP_ERROR
 		public Assignment getBatterAdvanceAssignment_1_3() { return cBatterAdvanceAssignment_1_3; }
 		
-		//REACH_ON_RECEIVE_ERROR
-		public RuleCall getBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_1_3_0() { return cBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_1_3_0; }
+		//REACH_ON_POP_ERROR
+		public RuleCall getBatterAdvanceREACH_ON_POP_ERRORTerminalRuleCall_1_3_0() { return cBatterAdvanceREACH_ON_POP_ERRORTerminalRuleCall_1_3_0; }
 		
-		//({BatterAdvanceOnThrowError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_THROW_ERROR)
+		//({BatterAdvanceOnReceiveError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_RECEIVE_ERROR)
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//{BatterAdvanceOnThrowError}
-		public Action getBatterAdvanceOnThrowErrorAction_2_0() { return cBatterAdvanceOnThrowErrorAction_2_0; }
+		//{BatterAdvanceOnReceiveError}
+		public Action getBatterAdvanceOnReceiveErrorAction_2_0() { return cBatterAdvanceOnReceiveErrorAction_2_0; }
 		
 		//currentBatter=CurrentBatter
 		public Assignment getCurrentBatterAssignment_2_1() { return cCurrentBatterAssignment_2_1; }
@@ -4395,17 +4401,17 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//EXECUTE
 		public RuleCall getEXECUTETerminalRuleCall_2_2() { return cEXECUTETerminalRuleCall_2_2; }
 		
-		//batterAdvance=REACH_ON_THROW_ERROR
+		//batterAdvance=REACH_ON_RECEIVE_ERROR
 		public Assignment getBatterAdvanceAssignment_2_3() { return cBatterAdvanceAssignment_2_3; }
 		
-		//REACH_ON_THROW_ERROR
-		public RuleCall getBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_2_3_0() { return cBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_2_3_0; }
+		//REACH_ON_RECEIVE_ERROR
+		public RuleCall getBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_2_3_0() { return cBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_2_3_0; }
 		
-		//({BatterAdvanceOnGdpWithError} currentBatter=CurrentBatter EXECUTE batterAdvance=GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR)
+		//({BatterAdvanceOnThrowError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_THROW_ERROR)
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//{BatterAdvanceOnGdpWithError}
-		public Action getBatterAdvanceOnGdpWithErrorAction_3_0() { return cBatterAdvanceOnGdpWithErrorAction_3_0; }
+		//{BatterAdvanceOnThrowError}
+		public Action getBatterAdvanceOnThrowErrorAction_3_0() { return cBatterAdvanceOnThrowErrorAction_3_0; }
 		
 		//currentBatter=CurrentBatter
 		public Assignment getCurrentBatterAssignment_3_1() { return cCurrentBatterAssignment_3_1; }
@@ -4416,11 +4422,32 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//EXECUTE
 		public RuleCall getEXECUTETerminalRuleCall_3_2() { return cEXECUTETerminalRuleCall_3_2; }
 		
-		//batterAdvance=GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR
+		//batterAdvance=REACH_ON_THROW_ERROR
 		public Assignment getBatterAdvanceAssignment_3_3() { return cBatterAdvanceAssignment_3_3; }
 		
+		//REACH_ON_THROW_ERROR
+		public RuleCall getBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_3_3_0() { return cBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_3_3_0; }
+		
+		//({BatterAdvanceOnGdpWithError} currentBatter=CurrentBatter EXECUTE batterAdvance=GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR)
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//{BatterAdvanceOnGdpWithError}
+		public Action getBatterAdvanceOnGdpWithErrorAction_4_0() { return cBatterAdvanceOnGdpWithErrorAction_4_0; }
+		
+		//currentBatter=CurrentBatter
+		public Assignment getCurrentBatterAssignment_4_1() { return cCurrentBatterAssignment_4_1; }
+		
+		//CurrentBatter
+		public RuleCall getCurrentBatterCurrentBatterParserRuleCall_4_1_0() { return cCurrentBatterCurrentBatterParserRuleCall_4_1_0; }
+		
+		//EXECUTE
+		public RuleCall getEXECUTETerminalRuleCall_4_2() { return cEXECUTETerminalRuleCall_4_2; }
+		
+		//batterAdvance=GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR
+		public Assignment getBatterAdvanceAssignment_4_3() { return cBatterAdvanceAssignment_4_3; }
+		
 		//GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR
-		public RuleCall getBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_3_3_0() { return cBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_3_3_0; }
+		public RuleCall getBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_4_3_0() { return cBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_4_3_0; }
 	}
 	public class BatterOutElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.bpy.score.game.Game.BatterOut");
@@ -6090,6 +6117,7 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	private final TerminalRule tLOST_TURN;
 	private final TerminalRule tK_WITH_ERROR;
 	private final TerminalRule tREACH_ON_FLY_ERROR;
+	private final TerminalRule tREACH_ON_POP_ERROR;
 	private final TerminalRule tREACH_ON_THROW_ERROR;
 	private final TerminalRule tREACH_ON_RECEIVE_ERROR;
 	private final TerminalRule tMUST_BE_OUT_ON_ERROR;
@@ -6229,6 +6257,7 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		this.tLOST_TURN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.bpy.score.game.Game.LOST_TURN");
 		this.tK_WITH_ERROR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.bpy.score.game.Game.K_WITH_ERROR");
 		this.tREACH_ON_FLY_ERROR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.bpy.score.game.Game.REACH_ON_FLY_ERROR");
+		this.tREACH_ON_POP_ERROR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.bpy.score.game.Game.REACH_ON_POP_ERROR");
 		this.tREACH_ON_THROW_ERROR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.bpy.score.game.Game.REACH_ON_THROW_ERROR");
 		this.tREACH_ON_RECEIVE_ERROR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.bpy.score.game.Game.REACH_ON_RECEIVE_ERROR");
 		this.tMUST_BE_OUT_ON_ERROR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.bpy.score.game.Game.MUST_BE_OUT_ON_ERROR");
@@ -6456,7 +6485,6 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	// * Add a note
 	// */
 	//Note:
-	////    'note' '=' notes+=STRING ( '+' notes+=STRING)?';'
 	//    'note' '=' notes=STRING ';'
 	//;
 	public NoteElements getNoteAccess() {
@@ -6917,6 +6945,7 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	// */
 	//DecisiveError:
 	//    ({BatterAdvanceOnFlyError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_FLY_ERROR) |
+	//    ({BatterAdvanceOnPopError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_POP_ERROR) |
 	//    ({BatterAdvanceOnReceiveError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_RECEIVE_ERROR) |
 	//    ({BatterAdvanceOnThrowError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_THROW_ERROR) |
 	//    ({BatterAdvanceOnGdpWithError} currentBatter=CurrentBatter EXECUTE batterAdvance=GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR)
@@ -7339,6 +7368,11 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return tREACH_ON_FLY_ERROR;
 	}
 	
+	//terminal REACH_ON_POP_ERROR : 'E' INT 'P' ADVANCE?;
+	public TerminalRule getREACH_ON_POP_ERRORRule() {
+		return tREACH_ON_POP_ERROR;
+	}
+	
 	//terminal REACH_ON_THROW_ERROR : INT? 'E' INT 'T' ADVANCE? 'b'?;
 	public TerminalRule getREACH_ON_THROW_ERRORRule() {
 		return tREACH_ON_THROW_ERROR;
@@ -7445,7 +7479,7 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return tINFIELD_FLY;
 	}
 	
-	//terminal SACRIFICE_BUNT_WITH_ERROR : ('SH' REACH_ON_RECEIVE_ERROR) | ('SH' REACH_ON_THROW_ERROR) | ('SH' REACH_ON_FLY_ERROR) ;
+	//terminal SACRIFICE_BUNT_WITH_ERROR : ('SH' REACH_ON_RECEIVE_ERROR) | ('SH' REACH_ON_THROW_ERROR) | ('SH' REACH_ON_FLY_ERROR) | ('SH' REACH_ON_POP_ERROR) ;
 	public TerminalRule getSACRIFICE_BUNT_WITH_ERRORRule() {
 		return tSACRIFICE_BUNT_WITH_ERROR;
 	}
@@ -7470,7 +7504,7 @@ public class GameGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return tSACRIFICE_FLY_WITH_FIELDER_CHOICE;
 	}
 	
-	//terminal SACRIFICE_FLY_WITH_ERROR : 'SF' (REACH_ON_RECEIVE_ERROR | REACH_ON_FLY_ERROR);
+	//terminal SACRIFICE_FLY_WITH_ERROR : 'SF' (REACH_ON_RECEIVE_ERROR | REACH_ON_FLY_ERROR | REACH_ON_POP_ERROR);
 	public TerminalRule getSACRIFICE_FLY_WITH_ERRORRule() {
 		return tSACRIFICE_FLY_WITH_ERROR;
 	}

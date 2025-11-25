@@ -219,6 +219,7 @@ public class GameParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getDecisiveErrorAccess().getGroup_1(), "rule__DecisiveError__Group_1__0");
 			builder.put(grammarAccess.getDecisiveErrorAccess().getGroup_2(), "rule__DecisiveError__Group_2__0");
 			builder.put(grammarAccess.getDecisiveErrorAccess().getGroup_3(), "rule__DecisiveError__Group_3__0");
+			builder.put(grammarAccess.getDecisiveErrorAccess().getGroup_4(), "rule__DecisiveError__Group_4__0");
 			builder.put(grammarAccess.getBatterOutAccess().getGroup(), "rule__BatterOut__Group__0");
 			builder.put(grammarAccess.getFielderOutAccess().getGroup_0(), "rule__FielderOut__Group_0__0");
 			builder.put(grammarAccess.getFielderOutAccess().getGroup_1(), "rule__FielderOut__Group_1__0");
@@ -504,6 +505,8 @@ public class GameParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceAssignment_2_3(), "rule__DecisiveError__BatterAdvanceAssignment_2_3");
 			builder.put(grammarAccess.getDecisiveErrorAccess().getCurrentBatterAssignment_3_1(), "rule__DecisiveError__CurrentBatterAssignment_3_1");
 			builder.put(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceAssignment_3_3(), "rule__DecisiveError__BatterAdvanceAssignment_3_3");
+			builder.put(grammarAccess.getDecisiveErrorAccess().getCurrentBatterAssignment_4_1(), "rule__DecisiveError__CurrentBatterAssignment_4_1");
+			builder.put(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceAssignment_4_3(), "rule__DecisiveError__BatterAdvanceAssignment_4_3");
 			builder.put(grammarAccess.getBatterOutAccess().getNotInDoublePlayAssignment_1(), "rule__BatterOut__NotInDoublePlayAssignment_1");
 			builder.put(grammarAccess.getFielderOutAccess().getCurrentBatterAssignment_0_1(), "rule__FielderOut__CurrentBatterAssignment_0_1");
 			builder.put(grammarAccess.getFielderOutAccess().getBatterOutAssignment_0_3(), "rule__FielderOut__BatterOutAssignment_0_3");

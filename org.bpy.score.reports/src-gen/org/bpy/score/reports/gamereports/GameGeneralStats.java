@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameGeneralStats()
- * @model extendedMetaData="kind='element' name='GAME-GENERAL-STATS'"
+ * @model extendedMetaData="kind='elementOnly' name='GAME-GENERAL-STATS'"
  * @generated
  */
 public interface GameGeneralStats extends EObject {

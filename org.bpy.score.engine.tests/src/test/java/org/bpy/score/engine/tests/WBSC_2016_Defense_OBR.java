@@ -1,16 +1,15 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
 
@@ -34,14 +33,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_OBR_1") + "\r\n");
     buf.append("\r\n");
-    buf.append("  /* Batteur retiré sur une frappe illégale */\r\n");
+    buf.append("  /* Batteur retirï¿½ sur une frappe illï¿½gale */\r\n");
     buf.append("  action { batter -> OBR1-2 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -85,9 +84,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -106,14 +105,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_OBR_2_1") + "\r\n");
     buf.append("\r\n");
-    buf.append("  /* Batteur retiré pour un bunt dans la zone des fausses balles pour son troisième strike */\r\n");
+    buf.append("  /* Batteur retirï¿½ pour un bunt dans la zone des fausses balles pour son troisiï¿½me strike */\r\n");
     buf.append("  action { batter -> OBRKS-2 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -157,9 +156,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -178,14 +177,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_OBR_2_2") + "\r\n");
     buf.append("\r\n");
-    buf.append("  /* Batteur retiré pour un bunt dans la zone des fausses balles pour son troisième strike */\r\n");
+    buf.append("  /* Batteur retirï¿½ pour un bunt dans la zone des fausses balles pour son troisiï¿½me strike */\r\n");
     buf.append("  action { batter -> OBR2-2 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -229,9 +228,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -250,14 +249,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_OBR_3") + "\r\n");
     buf.append("\r\n");
-    buf.append("  /* Batteur retiré pour avoir touché la balle qu'il vient de frapper */\r\n");
+    buf.append("  /* Batteur retirï¿½ pour avoir touchï¿½ la balle qu'il vient de frapper */\r\n");
     buf.append("  action { batter -> OBR3-2 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -301,9 +300,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -322,14 +321,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_OBR_4") + "\r\n");
     buf.append("\r\n");
-    buf.append("  /* Batteur retiré pour interference avec la receveur */\r\n");
+    buf.append("  /* Batteur retirï¿½ pour interference avec la receveur */\r\n");
     buf.append("  action { batter -> OBR4-2 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -373,9 +372,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect",true,  graphicalResult);
+    assertEquals(true, graphicalResult, "graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -394,14 +393,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_OBR_5") + "\r\n");
     buf.append("\r\n");
-    buf.append("  /* Batteur retiré pour ne pas avoir respecté l'ordre au baton */\r\n");
+    buf.append("  /* Batteur retirï¿½ pour ne pas avoir respectï¿½ l'ordre au baton */\r\n");
     buf.append("  action { batter -> OBR5-53 } \r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -446,9 +445,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -457,7 +456,7 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
    * <table>
    * <tr>
    * <td><img src="./resources/WBSC_2016_Defense_OBR_6.JPG"/></td>
-   * <td>Batter called out for refusing to touch first base after receiving a base on balls, after being hit by a pitch or after a catcher’s interference</td>
+   * <td>Batter called out for refusing to touch first base after receiving a base on balls, after being hit by a pitch or after a catcherï¿½s interference</td>
    * </tr>
    * </table>
    * 
@@ -467,15 +466,15 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_OBR_6") + "\r\n");
     buf.append("\r\n");
-    buf.append("  /* Batteur retiré pour avoir refusé de toucher la première base après un 'base on ball', */\r\n");
-    buf.append("  /* un 'hit by pith' ou après une interférence du catcheur, */\r\n");
+    buf.append("  /* Batteur retirï¿½ pour avoir refusï¿½ de toucher la premiï¿½re base aprï¿½s un 'base on ball', */\r\n");
+    buf.append("  /* un 'hit by pith' ou aprï¿½s une interfï¿½rence du catcheur, */\r\n");
     buf.append("  action { batter -> OBR6-2 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -519,9 +518,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -543,14 +542,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     buf.append("  /* Le batteur frappe un triple hit dans le champ droit */\r\n");
     buf.append("  action { batter -> 3B9 }\r\n");
     buf.append("\r\n");
-    buf.append("  /* coureur retiré pour avoir refusé de marqué le point alors qu'il est forvcé d'avancer, */\r\n");
+    buf.append("  /* coureur retirï¿½ pour avoir refusï¿½ de marquï¿½ le point alors qu'il est forvcï¿½ d'avancer, */\r\n");
     buf.append("  action { runner3 -> OBR7-2 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -594,9 +593,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -615,14 +614,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_OBR_8") + "\r\n");
     buf.append("\r\n");
-    buf.append("  /* Batteur retiré sur un unfield fly qui n'a pas ete rattrapé de volé */\r\n");
+    buf.append("  /* Batteur retirï¿½ sur un unfield fly qui n'a pas ete rattrapï¿½ de volï¿½ */\r\n");
     buf.append("  action { batter -> OBR8-5 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -666,9 +665,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -690,14 +689,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     buf.append("  /* Le premier batteur frappe un hit dans le champ gauche */\r\n");
     buf.append("  action { batter -> 1B7 }\r\n");
     buf.append("\r\n");
-    buf.append("  /* Le deuxième batteur frappe un hit vers la deuxième base, mais sa balle touche le couruer parti de la première base */\r\n");
+    buf.append("  /* Le deuxiï¿½me batteur frappe un hit vers la deuxiï¿½me base, mais sa balle touche le couruer parti de la premiï¿½re base */\r\n");
     buf.append("  action { batter -> 1B4, runner1 -> OBR9-4 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -742,9 +741,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -766,14 +765,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     buf.append("  /* Le premier batteur avnce sur n 'base on ball' */\r\n");
     buf.append("  action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("  /* Le coureur en base 1 tente de voler la base mais est retrié pour etre soorit de son chemin pour éviter d'etre touché */\r\n");
+    buf.append("  /* Le coureur en base 1 tente de voler la base mais est retriï¿½ pour etre soorit de son chemin pour ï¿½viter d'etre touchï¿½ */\r\n");
     buf.append("  action { runner1 -> OBR10-134 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -819,9 +818,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -843,18 +842,18 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     buf.append("  /* Le premier batteur avnce sur n 'base on ball' */\r\n");
     buf.append("  action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("  /* Le deuxième bateur frappe un hit en champ gauche, le coureur avance */\r\n");
+    buf.append("  /* Le deuxiï¿½me bateur frappe un hit en champ gauche, le coureur avance */\r\n");
     buf.append("  action { batter -> 1B7, runner1 -> + }\r\n");
     buf.append("\r\n");
     buf.append(
-        "  /* Le troixième bateur frappe un hit en champ gauche, le coureur en 1 prend la 2 et est retiré car il double le coureur en base 3 qui n'a pas bougé */\r\n");
+        "  /* Le troixiï¿½me bateur frappe un hit en champ gauche, le coureur en 1 prend la 2 et est retirï¿½ car il double le coureur en base 3 qui n'a pas bougï¿½ */\r\n");
     buf.append("  action { batter -> 1B7, runner1 -> + OBR11-6, runner2 -> + }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -900,9 +899,9 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     boolean graphicalResult = true;
-    assertEquals("graphical aspect is not the expected visual aspect", true, graphicalResult);
+    assertEquals(true, graphicalResult,"graphical aspect is not the expected visual aspect");
   }
 
   /**
@@ -924,14 +923,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     buf.append("        /* Le premier batteur frappe un double dans le champs centre */\r\n");
     buf.append("        action { batter -> 2B8 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le coureur en  deuxième base veut tromper le lanceur en courant vers la première base, il est retiré */\r\n");
+    buf.append("        /* Le coureur en  deuxiï¿½me base veut tromper le lanceur en courant vers la premiï¿½re base, il est retirï¿½ */\r\n");
     buf.append("        action { runner2 -> OBR12-4 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -975,7 +974,7 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -995,15 +994,15 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_OBR_13") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le premier batteur frappe un hit dans le champs droit, puis interfere avec le défenseur de la deuxième base */\r\n");
-    buf.append("        /* sur le relias du défenseur du champs droit */\r\n");
+    buf.append("        /* Le premier batteur frappe un hit dans le champs droit, puis interfere avec le dï¿½fenseur de la deuxiï¿½me base */\r\n");
+    buf.append("        /* sur le relias du dï¿½fenseur du champs droit */\r\n");
     buf.append("        action { batter -> 1B9 OBR13-94 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -1048,7 +1047,7 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -1071,14 +1070,14 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     buf.append("        /* Le premier batteur frappe un hit dans le champs centre */\r\n");
     buf.append("        action { batter -> 1B8 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le deuxième batteur interfere avec le coureur */\r\n");
+    buf.append("        /* Le deuxiï¿½me batteur interfere avec le coureur */\r\n");
     buf.append("        action { batter -> OBR14-63 , runner1 -> 46 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -1125,7 +1124,7 @@ public class WBSC_2016_Defense_OBR extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

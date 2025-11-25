@@ -1026,6 +1026,36 @@ public class StatisticPackageImpl extends EPackageImpl implements StatisticPacka
 	 * @generated
 	 */
 	@Override
+	public EAttribute getPitcherStatistic_Ips() {
+		return (EAttribute)pitcherStatisticEClass.getEStructuralFeatures().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPitcherStatistic_FlyOuts() {
+		return (EAttribute)pitcherStatisticEClass.getEStructuralFeatures().get(24);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPitcherStatistic_GroundedOuts() {
+		return (EAttribute)pitcherStatisticEClass.getEStructuralFeatures().get(25);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCatcherStatistic() {
 		return catcherStatisticEClass;
 	}
@@ -1514,6 +1544,9 @@ public class StatisticPackageImpl extends EPackageImpl implements StatisticPacka
 		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__PITCH_COUNT_OTHERS);
 		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__RUNNER_LEFT_ON_BASE);
 		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__CAUGHT_STEALING);
+		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__IPS);
+		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__FLY_OUTS);
+		createEAttribute(pitcherStatisticEClass, PITCHER_STATISTIC__GROUNDED_OUTS);
 
 		catcherStatisticEClass = createEClass(CATCHER_STATISTIC);
 		createEAttribute(catcherStatisticEClass, CATCHER_STATISTIC__PASS_BALL);
@@ -1676,6 +1709,9 @@ public class StatisticPackageImpl extends EPackageImpl implements StatisticPacka
 		initEAttribute(getPitcherStatistic_PitchCountOthers(), ecorePackage.getEInt(), "pitchCountOthers", "0", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPitcherStatistic_RunnerLeftOnBase(), ecorePackage.getEInt(), "runnerLeftOnBase", "0", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPitcherStatistic_CaughtStealing(), ecorePackage.getEInt(), "caughtStealing", "0", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPitcherStatistic_Ips(), ecorePackage.getEDouble(), "ips", "0.0", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPitcherStatistic_FlyOuts(), ecorePackage.getEInt(), "flyOuts", "0", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPitcherStatistic_GroundedOuts(), ecorePackage.getEInt(), "groundedOuts", "0", 1, 1, PitcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(catcherStatisticEClass, CatcherStatistic.class, "CatcherStatistic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCatcherStatistic_PassBall(), ecorePackage.getEInt(), "passBall", "0", 1, 1, CatcherStatistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

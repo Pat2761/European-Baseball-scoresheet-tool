@@ -41,7 +41,7 @@ import org.eclipse.osgi.util.NLS;
  * @author Patrick BRIAND
  *
  */
-public abstract class AbstractActionManager {
+public abstract class AbstractActionManager implements IActionManager {
 	
 	/** Logger of the class */
 	public static final Logger logger = Logger.getLogger(AbstractActionManager.class.getSimpleName());
@@ -129,7 +129,7 @@ public abstract class AbstractActionManager {
 	public void setupLineUp(EList<LineUp> lineUps) {
 		if (lineUps != null) {
 			for (LineUp lineup : lineUps) {
-				if (lineup.getTeamType().equals(EngineConstants.VISITOR)) {
+				if (EngineConstants.VISITOR.equals(lineup.getTeamType())) {
 					visitorLineup = new LineupManager();
 					visitorLineup.init(lineup, visitorIpCounter);
 				} else {
@@ -159,7 +159,7 @@ public abstract class AbstractActionManager {
 		lastCurrentTeam = currentTeam;
 
 		runnerPositionManager.clearField();
-		if (halfInning.getTeam().equals(EngineConstants.HOMETEAM)) {
+		if (EngineConstants.HOMETEAM.equals(halfInning.getTeam())) {
 			currentLineup = hometeamLineup;
 		} else {
 			currentLineup = visitorLineup;
@@ -189,6 +189,12 @@ public abstract class AbstractActionManager {
 		putoutDetected = 0;
 		isGdpAction = false;
 		doublePlayDetection = 0;
+		
+		if (action.getPitches() != null) {
+			for (Pitch pitch : action.getPitches().getPitches()) {
+				manage(pitch, team);
+			}
+		}	
 
 		if ( (action.getBatterAction() != null) && 
 			 ((action.getBatterAction() instanceof BatterOutOnGroundedDoublePlay) || 
@@ -255,7 +261,7 @@ public abstract class AbstractActionManager {
 			
 		} else {
 			
-			logger.log(Level.SEVERE,"AbstractActionManager::isDoublePlayActionForMoreADvanceFail don't manage out of type {0}", out.getClass().getSimpleName() );
+			logger.log(Level.SEVERE,"AbstractActionManager::isDoublePlayActionForMoreADvanceFail do not manage out of type {0}", out.getClass().getSimpleName() ); //$NON-NLS-1$
 			return false;
 		}
 	}
@@ -347,7 +353,7 @@ public abstract class AbstractActionManager {
 	 * @throws OccupedbaseException
 	 */
 	public void manage(Action action) throws OccupedbaseException {
-
+		
 		for (int i = action.getRunnerActions().size() - 1; i >= 0; i--) {
 
 			RunnerAction runnerAction = action.getRunnerActions().get(i);
@@ -399,7 +405,7 @@ public abstract class AbstractActionManager {
 			makeActionOn((RunnerOutOnAppeal) out);
 		} else {
 			String message = NLS.bind(Messages.AbstractActionManager_BadClassMoreAdvanceFail, out.getClass().getSimpleName()); 
-			logger.log(Level.SEVERE, message);
+			logger.log(Level.SEVERE,"AbstractActionManager::MoreAdanceFail::manage {}", message); //$NON-NLS-1$
 		}
 	}
 
@@ -448,7 +454,7 @@ public abstract class AbstractActionManager {
 			makeActionOn((RunnerAdvanceOnStolenBase) moreAdvance);
 		} else {
 			String message = NLS.bind(Messages.AbstractActionManager_AdvanceWithContinuation, moreAdvance.getClass().getSimpleName());
-			logger.log(Level.SEVERE,message);
+			logger.log(Level.SEVERE,"AbstractActionManager::AdvanceWithContinuation::manage {}", message); //$NON-NLS-1$
 		}
 
 	}
@@ -459,7 +465,7 @@ public abstract class AbstractActionManager {
 	 * @param moreAdvance reference on the advance
 	 * @throws OccupedbaseException
 	 */
-	protected void makeActionOn(RunnerAdvanceOnDecisiveObstruction moreAdvance) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnDecisiveObstruction moreAdvance) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, moreAdvance});
 		}
@@ -483,7 +489,7 @@ public abstract class AbstractActionManager {
 	 * @param moreAdvance reference on the advance
 	 * @throws OccupedbaseException
 	 */
-	protected void makeActionOn(RunnerAdvanceOnNoDecisiveObstruction moreAdvance) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNoDecisiveObstruction moreAdvance) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, moreAdvance});
 		}
@@ -502,7 +508,7 @@ public abstract class AbstractActionManager {
 	 * @param moreAdvance reference on the advance
 	 * @throws OccupedbaseException
 	 */
-	protected void makeActionOn(RunnerAdvanceOnDefensiveChoice moreAdvance) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnDefensiveChoice moreAdvance) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, moreAdvance});
 		}
@@ -521,7 +527,7 @@ public abstract class AbstractActionManager {
 	 * @param moreAdvance reference on the advance
 	 * @throws OccupedbaseException
 	 */
-	protected void makeActionOn(RunnerAdvanceOnNonDecisiveFlyError moreAdvance) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNonDecisiveFlyError moreAdvance) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, moreAdvance});
 		}
@@ -607,7 +613,7 @@ public abstract class AbstractActionManager {
 			makeActionOn((RunnerAdvanceOnFielderChoice) action);
 		} else {
 			String message = NLS.bind(Messages.AbstractActionManager_RunnerAction, action.getClass().getSimpleName());
-			logger.log(Level.SEVERE, message); 
+			logger.log(Level.SEVERE, "AbstractActionManager::RunnerAction::manage {}", message);  //$NON-NLS-1$
 		}
 	}
 
@@ -623,7 +629,7 @@ public abstract class AbstractActionManager {
 			makeCommand((SelectedBatterCommand) element.getCommand());
 		} else {
 			String message = NLS.bind(Messages.AbstractActionManager_Commands, element.getCommand().getClass().getSimpleName());
-			logger.log(Level.SEVERE, message); 
+			logger.log(Level.SEVERE, "AbstractActionManager::Commands::manage {}", message);  //$NON-NLS-1$
 		}
 	}
 
@@ -651,7 +657,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerDontAdvanceOnError action) {
+	public void makeActionOn(RunnerDontAdvanceOnError action) {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -662,7 +668,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerDontAdvanceOnPickOffWithError action) {
+	public void makeActionOn(RunnerDontAdvanceOnPickOffWithError action) {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -673,7 +679,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerDontAdvanceOnCaughtStealingWithError action) {
+	public void makeActionOn(RunnerDontAdvanceOnCaughtStealingWithError action) {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -684,7 +690,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerDontAdvanceOnThrowError action) {
+	public void makeActionOn(RunnerDontAdvanceOnThrowError action) {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -695,7 +701,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerDontAdvanceOnReceiveError action) {
+	public void makeActionOn(RunnerDontAdvanceOnReceiveError action) {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -706,7 +712,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerDontAdvanceOnNonDecisiveThrowError action) {
+	public void makeActionOn(RunnerDontAdvanceOnNonDecisiveThrowError action) {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -717,7 +723,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerDontAdvanceOnNonDecisiveReceiveError action) {
+	public void makeActionOn(RunnerDontAdvanceOnNonDecisiveReceiveError action) {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -729,7 +735,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnOtherPlayerError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnOtherPlayerError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -751,7 +757,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnRule action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnRule action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -773,7 +779,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnNonDecisiveReceiveError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNonDecisiveReceiveError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -795,7 +801,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnNonDecisiveThrowError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNonDecisiveThrowError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -817,7 +823,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnReceiveError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnReceiveError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -839,7 +845,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnFielderChoice action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -861,7 +867,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnThrowError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnThrowError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -883,7 +889,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnIndiference action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnIndiference action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -905,7 +911,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnThrow action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnThrow action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -927,7 +933,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnOccupedBall action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnOccupedBall action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -949,7 +955,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnCaughtStealingWithError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnCaughtStealingWithError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -971,7 +977,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnPickOffWithError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnPickOffWithError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -993,7 +999,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnBalk action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnBalk action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1015,7 +1021,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnPassBall action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnPassBall action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1037,7 +1043,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnWildPitch action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnWildPitch action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1059,7 +1065,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnStolenBase action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnStolenBase action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1081,7 +1087,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceOnError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1103,7 +1109,7 @@ public abstract class AbstractActionManager {
 	 * @param action action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(RunnerAdvanceByBatterAction action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceByBatterAction action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1124,7 +1130,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerOutOnAppeal action) {
+	public void makeActionOn(RunnerOutOnAppeal action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1151,7 +1157,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerOutByRules action) {
+	public void makeActionOn(RunnerOutByRules action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1178,7 +1184,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerOutOnFielderAction action) {
+	public void makeActionOn(RunnerOutOnFielderAction action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1205,7 +1211,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerOutOnPickOff action) {
+	public void makeActionOn(RunnerOutOnPickOff action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1232,7 +1238,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerOutOnCaugthStealing action) {
+	public void makeActionOn(RunnerOutOnCaugthStealing action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1260,7 +1266,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action action reference to the action
 	 */
-	protected void makeActionOn(RunnerMustBeOutOnError action){
+	public void makeActionOn(RunnerMustBeOutOnError action){
 
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
@@ -1310,6 +1316,8 @@ public abstract class AbstractActionManager {
 			makeActionOn((BatterOutOnInfieldFly) action);
 		} else if (action instanceof BatterAdvanceOnFlyError) {
 			makeActionOn((BatterAdvanceOnFlyError) action);
+		} else if (action instanceof BatterAdvanceOnPopError) {
+			makeActionOn((BatterAdvanceOnPopError) action);
 		} else if (action instanceof BatterAdvanceOnReceiveError) {
 			makeActionOn((BatterAdvanceOnReceiveError) action);
 		} else if (action instanceof BatterAdvanceOnThrowError) {
@@ -1371,7 +1379,7 @@ public abstract class AbstractActionManager {
 		} else {
 			
 			String message = NLS.bind(Messages.AbstractActionManager_BatterAction, action.getClass().getSimpleName());
-			logger.log(Level.SEVERE,message);
+			logger.log(Level.SEVERE,"AbstractActionManager::BatterAction::manage {}", message); //$NON-NLS-1$
 		}
 	}
 
@@ -1380,7 +1388,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterBalk action) {
+	public void makeActionOn(BatterBalk action) {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1391,7 +1399,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterMustOutOnFlyFoulBall action) {
+	public void makeActionOn(BatterMustOutOnFlyFoulBall action) {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1402,7 +1410,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterLostTurn action) {
+	public void makeActionOn(BatterLostTurn action) {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1416,7 +1424,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnIndiference action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnIndiference action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1433,7 +1441,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnDefensiveChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnDefensiveChoice action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1450,7 +1458,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnOccupedBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnOccupedBall action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1467,7 +1475,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnKWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKWithFielderChoice action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1484,7 +1492,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnObstruction action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnObstruction action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1501,7 +1509,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnCatcherInterference action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnCatcherInterference action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1518,7 +1526,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnSacrificeFlyWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeFlyWithFielderChoice action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1535,7 +1543,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnSacrificeFlyWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeFlyWithError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1552,7 +1560,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnSacrificeHitWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeHitWithFielderChoice action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1569,7 +1577,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnSacrificeHitWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeHitWithError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1586,7 +1594,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnKWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKWithError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1603,7 +1611,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnKAbr action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKAbr action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1620,7 +1628,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnKWildPitch action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKWildPitch action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1637,7 +1645,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnKPassBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKPassBall action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1654,7 +1662,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnHitByPitch action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnHitByPitch action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1671,7 +1679,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnIntentionalBaseOnBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnIntentionalBaseOnBall action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1688,7 +1696,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnBaseOnBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnBaseOnBall action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1705,7 +1713,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnInsidePark action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnInsidePark action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1722,7 +1730,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnHomeRun action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnHomeRun action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1739,7 +1747,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnTripleHit action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnTripleHit action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1756,7 +1764,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnDoubleHit action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnDoubleHit action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1773,7 +1781,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnSingleHit action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSingleHit action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1790,7 +1798,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnGdpWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnGdpWithError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1807,7 +1815,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnGdpWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnGdpWithFielderChoice action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1824,7 +1832,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnThrowError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnThrowError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1841,7 +1849,7 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnReceiveError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnReceiveError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1858,7 +1866,25 @@ public abstract class AbstractActionManager {
 	 * @param action reference to the action
 	 * @throws OccupedbaseException 
 	 */
-	protected void makeActionOn(BatterAdvanceOnFlyError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnFlyError action) throws OccupedbaseException {
+		if (EngineConstants.debugEngine) {
+			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
+		}
+
+		int baseWin = ScoreGameAdvanceUtil.getBaseWin(action);
+
+		runnerPositionManager.runnerAdvance(0, baseWin, action, null);
+
+		setNewBatter();
+	}
+
+	/**
+	 * Manage Batter advance on fly error action.
+	 * 
+	 * @param action reference to the action
+	 * @throws OccupedbaseException 
+	 */
+	public void makeActionOn(BatterAdvanceOnPopError action) throws OccupedbaseException {
 		if (EngineConstants.debugEngine) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
@@ -1875,7 +1901,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnInfieldFly action) {
+	public void makeActionOn(BatterOutOnInfieldFly action) {
 		/* Do specific action in function of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1895,7 +1921,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnSacrificeHit action) {
+	public void makeActionOn(BatterOutOnSacrificeHit action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1915,7 +1941,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnSacrificeFlyFallBall action) {
+	public void makeActionOn(BatterOutOnSacrificeFlyFallBall action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1935,7 +1961,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnSacrificeFly action) {
+	public void makeActionOn(BatterOutOnSacrificeFly action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1955,7 +1981,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnGroundedDoublePlay action) {
+	public void makeActionOn(BatterOutOnGroundedDoublePlay action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1975,7 +2001,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnAppeal action) {
+	public void makeActionOn(BatterOutOnAppeal action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -1995,7 +2021,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutByRule action) {
+	public void makeActionOn(BatterOutByRule action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2015,7 +2041,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnGroundedBall action) {
+	public void makeActionOn(BatterOutOnGroundedBall action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2035,7 +2061,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnLineDriveFallBall action) {
+	public void makeActionOn(BatterOutOnLineDriveFallBall action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2055,7 +2081,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnPoppedFallBall action) {
+	public void makeActionOn(BatterOutOnPoppedFallBall action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2075,7 +2101,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnFlyedFallBall action) {
+	public void makeActionOn(BatterOutOnFlyedFallBall action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2095,7 +2121,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnPopped action) {
+	public void makeActionOn(BatterOutOnPopped action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2115,7 +2141,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnLine action) {
+	public void makeActionOn(BatterOutOnLine action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2135,7 +2161,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnFlyed action) {
+	public void makeActionOn(BatterOutOnFlyed action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2155,7 +2181,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnReleasedStrike action) {
+	public void makeActionOn(BatterOutOnReleasedStrike action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2177,7 +2203,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnLookedStrike action) {
+	public void makeActionOn(BatterOutOnLookedStrike action) {
 		/* Do specific action in funtion of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2199,7 +2225,7 @@ public abstract class AbstractActionManager {
 	 * 
 	 * @param action reference to the action
 	 */
-	protected void makeActionOn(BatterOutOnSwingedStrike action) {
+	public void makeActionOn(BatterOutOnSwingedStrike action) {
 		/* Do specific action in function of the team */
 		if (currentTeam.equals(EngineConstants.HOMETEAM)) {
 			hometeamIpCounter.addPutOut();
@@ -2234,19 +2260,21 @@ public abstract class AbstractActionManager {
 		SubstitutionManager substitutionManager = new SubstitutionManager();
 
 		String team = substitutionEvent.getTeam();
-		substitutionManager.setTeam(team);
-		LineupManager lineupManager = (team.equals(EngineConstants.HOMETEAM) ? hometeamLineup : visitorLineup);
-		IpCounter currentIpCounter = (team.equals(EngineConstants.HOMETEAM) ? visitorIpCounter : hometeamIpCounter);
-
-		substitutionManager.setLineupManager(lineupManager);
-		substitutionManager.setCurrentIpCounter(currentIpCounter);
-
-		for (SubstitutionDescription sub : substitutionEvent.getSubstitutions()) {
-			manageSubstitution(substitutionEvent.getTeam(), substitutionManager, sub);
+		if (team != null) {
+			substitutionManager.setTeam(team);
+			LineupManager lineupManager = (team.equals(EngineConstants.HOMETEAM) ? hometeamLineup : visitorLineup);
+			IpCounter currentIpCounter = (team.equals(EngineConstants.HOMETEAM) ? visitorIpCounter : hometeamIpCounter);
+	
+			substitutionManager.setLineupManager(lineupManager);
+			substitutionManager.setCurrentIpCounter(currentIpCounter);
+	
+			for (SubstitutionDescription sub : substitutionEvent.getSubstitutions()) {
+				manageSubstitution(substitutionEvent.getTeam(), substitutionManager, sub);
+			}
+	
+			substitutionManager.applySubstitution();
+			callCallbackSubstitutionManager(substitutionManager);
 		}
-
-		substitutionManager.applySubstitution();
-		callCallbackSubstitutionManager(substitutionManager);
 	}
 
 	/**
@@ -2265,7 +2293,7 @@ public abstract class AbstractActionManager {
 						runnerPositionManager.setPlayerOut(position);
 						runnerPositionManager.setRunnerAtPosition(playerEntry, position);
 					} catch (OccupedbaseException e) {
-						logger.log(Level.SEVERE,e.getMessage());
+						logger.log(Level.SEVERE,e.getLocalizedMessage());
 						e.printStackTrace();
 					}
 				}

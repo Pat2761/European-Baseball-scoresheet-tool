@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits extends AbstractWBSCUnitTest {
 
@@ -24,7 +23,7 @@ public class WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits extends Abstra
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_003.JPG"/></td>
    * <td>The runner on first base advances to third on the hit. The right fielder tries unsuccessfully to throw to third to put out the runner. Thanks to this
-   * throw, the batter reaches second safely. This is not a double, but a single with an advance by fielder’s choice (throw). The continuation of the
+   * throw, the batter reaches second safely. This is not a double, but a single with an advance by fielderï¿½s choice (throw). The continuation of the
    * batter-runner to second base is noted with a small vertical line joining the first base and second base squares.</td>
    * </tr>
    * </table>
@@ -38,16 +37,16 @@ public class WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits extends Abstra
     buf.append("        /* Le premier frapeur arrive sur base sur un 'Base on Ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le deuxième frappeur frappe un hit sur le champ droit. Le défenseur du champs droit */\r\n");
-    buf.append("        /* relabce la balle vers le défenseur de la cinuième base our tenté de retiré le coureur sans succés */\r\n");
-    buf.append("        /* le batteur en profite alors pour gagner la deuxième base */\r\n");
+    buf.append("        /* Le deuxiï¿½me frappeur frappe un hit sur le champ droit. Le dï¿½fenseur du champs droit */\r\n");
+    buf.append("        /* relabce la balle vers le dï¿½fenseur de la cinuiï¿½me base our tentï¿½ de retirï¿½ le coureur sans succï¿½s */\r\n");
+    buf.append("        /* le batteur en profite alors pour gagner la deuxiï¿½me base */\r\n");
     buf.append("        action { batter -> 1B9 T95, runner1 -> ++ }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -93,7 +92,7 @@ public class WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits extends Abstra
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -114,7 +113,7 @@ public class WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits extends Abstra
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_004") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le premièr batteur frappe un double dans le champ centre */\r\n");
+    buf.append("        /* Le premiï¿½r batteur frappe un double dans le champ centre */\r\n");
     buf.append("        action { batter -> 2B8 }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le second frappeur frappe un double dans le champ droit, le coureur avance */\r\n");
@@ -124,7 +123,7 @@ public class WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits extends Abstra
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -168,7 +167,7 @@ public class WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits extends Abstra
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -189,7 +188,7 @@ public class WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits extends Abstra
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_005") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le premièr batteur frappe un triple dans le champ droit */\r\n");
+    buf.append("        /* Le premiï¿½r batteur frappe un triple dans le champ droit */\r\n");
     buf.append("        action { batter -> 3B9 }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le second frappeur frappe un double dans le champ centre */\r\n");
@@ -199,7 +198,7 @@ public class WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits extends Abstra
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -243,7 +242,7 @@ public class WBSC_2016_Offense_Determining_The_Value_Of_Safe_Hits extends Abstra
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

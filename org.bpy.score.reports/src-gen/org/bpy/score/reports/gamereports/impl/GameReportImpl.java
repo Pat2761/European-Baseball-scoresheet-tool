@@ -22,7 +22,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.BasicFeatureMap;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,30 +53,21 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link org.bpy.score.reports.gamereports.impl.GameReportImpl#getGeneralStats <em>General Stats</em>}</li>
  *   <li>{@link org.bpy.score.reports.gamereports.impl.GameReportImpl#getVisitorLineup <em>Visitor Lineup</em>}</li>
  *   <li>{@link org.bpy.score.reports.gamereports.impl.GameReportImpl#getHometeamLineup <em>Hometeam Lineup</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.impl.GameReportImpl#getMixed <em>Mixed</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class GameReportImpl extends MinimalEObjectImpl.Container implements GameReport {
 	/**
-	 * The default value of the '{@link #getBannerPath() <em>Banner Path</em>}' attribute.
+	 * The cached value of the '{@link #getBannerPath() <em>Banner Path</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBannerPath()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BANNER_PATH_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getBannerPath() <em>Banner Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBannerPath()
-	 * @generated
-	 * @ordered
-	 */
-	protected String bannerPath = BANNER_PATH_EDEFAULT;
+	protected EList<String> bannerPath;
 
 	/**
 	 * The default value of the '{@link #getVisitorSheetPath() <em>Visitor Sheet Path</em>}' attribute.
@@ -336,6 +330,16 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 	protected StartingLineup hometeamLineup;
 
 	/**
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMixed()
+	 * @generated
+	 * @ordered
+	 */
+	protected FeatureMap mixed;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -360,21 +364,11 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 	 * @generated
 	 */
 	@Override
-	public String getBannerPath() {
+	public EList<String> getBannerPath() {
+		if (bannerPath == null) {
+			bannerPath = new EDataTypeUniqueEList<String>(String.class, this, GameReportsPackage.GAME_REPORT__BANNER_PATH);
+		}
 		return bannerPath;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setBannerPath(String newBannerPath) {
-		String oldBannerPath = bannerPath;
-		bannerPath = newBannerPath;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GameReportsPackage.GAME_REPORT__BANNER_PATH, oldBannerPath, bannerPath));
 	}
 
 	/**
@@ -498,7 +492,7 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 	@Override
 	public EList<String> getUmpires() {
 		if (umpires == null) {
-			umpires = new EDataTypeEList<String>(String.class, this, GameReportsPackage.GAME_REPORT__UMPIRES);
+			umpires = new EDataTypeUniqueEList<String>(String.class, this, GameReportsPackage.GAME_REPORT__UMPIRES);
 		}
 		return umpires;
 	}
@@ -511,7 +505,7 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 	@Override
 	public EList<String> getScorekeepers() {
 		if (scorekeepers == null) {
-			scorekeepers = new EDataTypeEList<String>(String.class, this, GameReportsPackage.GAME_REPORT__SCOREKEEPERS);
+			scorekeepers = new EDataTypeUniqueEList<String>(String.class, this, GameReportsPackage.GAME_REPORT__SCOREKEEPERS);
 		}
 		return scorekeepers;
 	}
@@ -886,6 +880,19 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 	 * @generated
 	 */
 	@Override
+	public FeatureMap getMixed() {
+		if (mixed == null) {
+			mixed = new BasicFeatureMap(this, GameReportsPackage.GAME_REPORT__MIXED);
+		}
+		return mixed;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GameReportsPackage.GAME_REPORT__VISITOR_STATS:
@@ -900,6 +907,8 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 				return basicSetVisitorLineup(null, msgs);
 			case GameReportsPackage.GAME_REPORT__HOMETEAM_LINEUP:
 				return basicSetHometeamLineup(null, msgs);
+			case GameReportsPackage.GAME_REPORT__MIXED:
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -948,6 +957,9 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 				return getVisitorLineup();
 			case GameReportsPackage.GAME_REPORT__HOMETEAM_LINEUP:
 				return getHometeamLineup();
+			case GameReportsPackage.GAME_REPORT__MIXED:
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -962,7 +974,8 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GameReportsPackage.GAME_REPORT__BANNER_PATH:
-				setBannerPath((String)newValue);
+				getBannerPath().clear();
+				getBannerPath().addAll((Collection<? extends String>)newValue);
 				return;
 			case GameReportsPackage.GAME_REPORT__VISITOR_SHEET_PATH:
 				setVisitorSheetPath((String)newValue);
@@ -1017,6 +1030,9 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 			case GameReportsPackage.GAME_REPORT__HOMETEAM_LINEUP:
 				setHometeamLineup((StartingLineup)newValue);
 				return;
+			case GameReportsPackage.GAME_REPORT__MIXED:
+				((FeatureMap.Internal)getMixed()).set(newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1030,7 +1046,7 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case GameReportsPackage.GAME_REPORT__BANNER_PATH:
-				setBannerPath(BANNER_PATH_EDEFAULT);
+				getBannerPath().clear();
 				return;
 			case GameReportsPackage.GAME_REPORT__VISITOR_SHEET_PATH:
 				setVisitorSheetPath(VISITOR_SHEET_PATH_EDEFAULT);
@@ -1083,6 +1099,9 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 			case GameReportsPackage.GAME_REPORT__HOMETEAM_LINEUP:
 				setHometeamLineup((StartingLineup)null);
 				return;
+			case GameReportsPackage.GAME_REPORT__MIXED:
+				getMixed().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1096,7 +1115,7 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GameReportsPackage.GAME_REPORT__BANNER_PATH:
-				return BANNER_PATH_EDEFAULT == null ? bannerPath != null : !BANNER_PATH_EDEFAULT.equals(bannerPath);
+				return bannerPath != null && !bannerPath.isEmpty();
 			case GameReportsPackage.GAME_REPORT__VISITOR_SHEET_PATH:
 				return VISITOR_SHEET_PATH_EDEFAULT == null ? visitorSheetPath != null : !VISITOR_SHEET_PATH_EDEFAULT.equals(visitorSheetPath);
 			case GameReportsPackage.GAME_REPORT__VISITOR_STATS:
@@ -1131,6 +1150,8 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 				return visitorLineup != null;
 			case GameReportsPackage.GAME_REPORT__HOMETEAM_LINEUP:
 				return hometeamLineup != null;
+			case GameReportsPackage.GAME_REPORT__MIXED:
+				return mixed != null && !mixed.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1169,6 +1190,8 @@ public class GameReportImpl extends MinimalEObjectImpl.Container implements Game
 		result.append(gameNumber);
 		result.append(", pdfFile: ");
 		result.append(pdfFile);
+		result.append(", mixed: ");
+		result.append(mixed);
 		result.append(')');
 		return result.toString();
 	}

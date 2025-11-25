@@ -49,8 +49,8 @@ public class PlayByPlayEngine extends AbstractEngine {
 			
 			manageActions(game.getActions().getHalfInnings());
 
-		} catch (NullPointerException|OccupedbaseException ex) {
-			logger.log(Level.SEVERE,ex.getMessage());
+		} catch (/*NullPointerException|*/OccupedbaseException ex) {
+			logger.log(Level.SEVERE,ex.getLocalizedMessage());
 		}
 	}
 

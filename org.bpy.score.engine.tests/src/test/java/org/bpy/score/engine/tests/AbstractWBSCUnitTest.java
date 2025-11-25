@@ -1,6 +1,6 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,6 @@ import org.bpy.score.engine.stats.emf.statistic.OffensiveStatistic;
 import org.bpy.score.engine.stats.emf.statistic.PitcherStatistic;
 import org.bpy.score.game.GameStandaloneSetup;
 import org.eclipse.xtext.parser.IParser;
-import org.junit.BeforeClass;
 
 import com.google.inject.Inject;
 
@@ -23,12 +22,7 @@ public abstract class AbstractWBSCUnitTest {
 
   @Inject
   protected IParser parser;
-
-  @BeforeClass
-  public static void onlyOnce() {
-	  // Nothing to do
-  }
-  
+   
   public AbstractWBSCUnitTest() {
     com.google.inject.Injector injector = new GameStandaloneSetup().createInjectorAndDoEMFRegistration();
     injector.injectMembers(this);
@@ -37,53 +31,53 @@ public abstract class AbstractWBSCUnitTest {
   protected void checkGeneralStat(StatisticEngine statisticEngine, int ab, int r, int er, int h, int a, int e, int lob) {
     InninStatictic inningStats = statisticEngine.getStatisticManager().getStats().getVisitor().getGeneralInningStats().get(0);
 
-    assertEquals("Error for At bats", ab, inningStats.getInningStat().getAtBats());
-    assertEquals("Error for Runs", r, inningStats.getInningStat().getRuns());
-    assertEquals("Error for Earned runs", er, inningStats.getInningStat().getEarnedRuns());
-    assertEquals("Error for Hits", h, inningStats.getInningStat().getHits());
-    assertEquals("Error for Assistances", a, inningStats.getInningStat().getAssitances());
-    assertEquals("Error for errors", e, inningStats.getInningStat().getErrors());
-    assertEquals("Error for left on bases", lob, inningStats.getInningStat().getLob());
+    assertEquals(ab, inningStats.getInningStat().getAtBats(),"Error for At bats");
+    assertEquals(r, inningStats.getInningStat().getRuns(),"Error for Runs");
+    assertEquals(er, inningStats.getInningStat().getEarnedRuns(),"Error for Earned runs");
+    assertEquals(h, inningStats.getInningStat().getHits(),"Error for Hits");
+    assertEquals(a, inningStats.getInningStat().getAssitances(),"Error for Assistances");
+    assertEquals(e, inningStats.getInningStat().getErrors(),"Error for errors");
+    assertEquals(lob, inningStats.getInningStat().getLob(),"Error for left on bases");
   }
 
   protected void checkTotalCatcherSt(StatisticEngine statisticEngine, int pb, int sb, int cs) {
     CatcherStatistic catcherStatisitics = statisticEngine.getStatisticManager().getStats().getHometeam().getTotalCatcherStatistic();
 
-    assertEquals("Error for Pass balls", pb, catcherStatisitics.getPassBall());
-    assertEquals("Error for Stolen bases", sb, catcherStatisitics.getStolenBase());
-    assertEquals("Error for Caugth stealing", cs, catcherStatisitics.getCaughtStealing());
+    assertEquals(pb, catcherStatisitics.getPassBall(),"Error for Pass balls");
+    assertEquals(sb, catcherStatisitics.getStolenBase(),"Error for Stolen bases");
+    assertEquals(cs, catcherStatisitics.getCaughtStealing(),"Error for Caugth stealing");
   }
 
   protected void checkCatcherStat(StatisticEngine statisticEngine, int catcherNUlmber, int pb, int sb, int cs) {
     LineupEntry currentCatcher = statisticEngine.getStatisticManager().getHometeamLineup().getCatchers().get(catcherNUlmber - 1);
     CatcherStatistic catcherStatisitics = currentCatcher.getCatcherStatistic();
 
-    assertEquals("Error for Pass balls", pb, catcherStatisitics.getPassBall());
-    assertEquals("Error for Stolen bases", sb, catcherStatisitics.getStolenBase());
-    assertEquals("Error for Caugth stealing", cs, catcherStatisitics.getCaughtStealing());
+    assertEquals(pb, catcherStatisitics.getPassBall(),"Error for Pass balls");
+    assertEquals(sb, catcherStatisitics.getStolenBase(),"Error for Stolen bases");
+    assertEquals(cs, catcherStatisitics.getCaughtStealing(),"Error for Caugth stealing");
   }
 
   protected void checkTotalPitchStat(StatisticEngine statisticEngine, int bf, int ab, int r, int er, int h, int b2, int b3, int hr, int sh, int sf, int bb,
       int ibb, int hp, int io, int k, int wp, int bk) {
     PitcherStatistic pitcherStatisitics = statisticEngine.getStatisticManager().getStats().getHometeam().getTotalPitcherStatistic();
 
-    assertEquals("Error for batter front", bf, pitcherStatisitics.getBatterFront());
-    assertEquals("Error for AtBats", ab, pitcherStatisitics.getAtBats());
-    assertEquals("Error for Runs", r, pitcherStatisitics.getRuns());
-    assertEquals("Error for Earned Runs", er, pitcherStatisitics.getEarnedRuns());
-    assertEquals("Error for Hits", h, pitcherStatisitics.getHits());
-    assertEquals("Error for Double Hits", b2, pitcherStatisitics.getDouble());
-    assertEquals("Error for Triples Hits", b3, pitcherStatisitics.getTriple());
-    assertEquals("Error for Home runs", hr, pitcherStatisitics.getHomerun());
-    assertEquals("Error for Sacrifice hits", sh, pitcherStatisitics.getSacrificeHit());
-    assertEquals("Error for Sacrifice flies", sf, pitcherStatisitics.getSacrificeFly());
-    assertEquals("Error for base on ball", bb, pitcherStatisitics.getBaseOnBall());
-    assertEquals("Error for intentional base on ball", ibb, pitcherStatisitics.getIntentionalbaseOnBall());
-    assertEquals("Error for hit by pitch", hp, pitcherStatisitics.getHitByPitch());
-    assertEquals("Error for Obstruction/Interference", io, pitcherStatisitics.getInterferanceObstruction());
-    assertEquals("Error for Strike out", k, pitcherStatisitics.getStrikeOut());
-    assertEquals("Error for Wild pitch", wp, pitcherStatisitics.getWildPitches());
-    assertEquals("Error for Balk", bk, pitcherStatisitics.getBalks());
+    assertEquals(bf, pitcherStatisitics.getBatterFront(),"Error for batter front");
+    assertEquals(ab, pitcherStatisitics.getAtBats(),"Error for AtBats");
+    assertEquals(r, pitcherStatisitics.getRuns(),"Error for Runs");
+    assertEquals(er, pitcherStatisitics.getEarnedRuns(),"Error for Earned Runs");
+    assertEquals(h, pitcherStatisitics.getHits(),"Error for Hits");
+    assertEquals(b2, pitcherStatisitics.getDouble(),"Error for Double Hits");
+    assertEquals(b3, pitcherStatisitics.getTriple(),"Error for Triples Hits");
+    assertEquals(hr, pitcherStatisitics.getHomerun(),"Error for Home runs");
+    assertEquals(sh, pitcherStatisitics.getSacrificeHit(),"Error for Sacrifice hits");
+    assertEquals(sf, pitcherStatisitics.getSacrificeFly(),"Error for Sacrifice flies");
+    assertEquals(bb, pitcherStatisitics.getBaseOnBall(),"Error for base on ball");
+    assertEquals(ibb, pitcherStatisitics.getIntentionalbaseOnBall(),"Error for intentional base on ball");
+    assertEquals(hp, pitcherStatisitics.getHitByPitch(),"Error for hit by pitch");
+    assertEquals(io, pitcherStatisitics.getInterferanceObstruction(),"Error for Obstruction/Interference");
+    assertEquals(k, pitcherStatisitics.getStrikeOut(),"Error for Strike out");
+    assertEquals(wp, pitcherStatisitics.getWildPitches(),"Error for Wild pitch");
+    assertEquals(bk, pitcherStatisitics.getBalks(),"Error for Balk");
   }
 
   protected void checkPitcherStat(StatisticEngine statisticEngine, int pitcherNumber, int bf, int ab, int r, int er, int h, int b2, int b3, int hr, int sh,
@@ -91,46 +85,46 @@ public abstract class AbstractWBSCUnitTest {
     LineupEntry currentPitcher = statisticEngine.getStatisticManager().getHometeamLineup().getPitchers().get(pitcherNumber - 1);
     PitcherStatistic pitcherStatisitics = currentPitcher.getPitcherStatistic();
 
-    assertEquals("Error for batter front", bf, pitcherStatisitics.getBatterFront());
-    assertEquals("Error for AtBats", ab, pitcherStatisitics.getAtBats());
-    assertEquals("Error for Runs", r, pitcherStatisitics.getRuns());
-    assertEquals("Error for Earned Runs", er, pitcherStatisitics.getEarnedRuns());
-    assertEquals("Error for Hits", h, pitcherStatisitics.getHits());
-    assertEquals("Error for Double Hits", b2, pitcherStatisitics.getDouble());
-    assertEquals("Error for Triples Hits", b3, pitcherStatisitics.getTriple());
-    assertEquals("Error for Home runs", hr, pitcherStatisitics.getHomerun());
-    assertEquals("Error for Sacrifice hits", sh, pitcherStatisitics.getSacrificeHit());
-    assertEquals("Error for Sacrifice flies", sf, pitcherStatisitics.getSacrificeFly());
-    assertEquals("Error for base on ball", bb, pitcherStatisitics.getBaseOnBall());
-    assertEquals("Error for intentional base on ball", ibb, pitcherStatisitics.getIntentionalbaseOnBall());
-    assertEquals("Error for hit by pitch", hp, pitcherStatisitics.getHitByPitch());
-    assertEquals("Error for Obstruction/Interference", io, pitcherStatisitics.getInterferanceObstruction());
-    assertEquals("Error for Strike out", k, pitcherStatisitics.getStrikeOut());
-    assertEquals("Error for Wild pitch", wp, pitcherStatisitics.getWildPitches());
-    assertEquals("Error for Balk", bk, pitcherStatisitics.getBalks());
+    assertEquals(bf, pitcherStatisitics.getBatterFront(),"Error for batter front");
+    assertEquals(ab, pitcherStatisitics.getAtBats(),"Error for AtBats");
+    assertEquals(r, pitcherStatisitics.getRuns(),"Error for Runs");
+    assertEquals(er, pitcherStatisitics.getEarnedRuns(),"Error for Earned Runs");
+    assertEquals(h, pitcherStatisitics.getHits(),"Error for Hits");
+    assertEquals(b2, pitcherStatisitics.getDouble(),"Error for Double Hits");
+    assertEquals(b3, pitcherStatisitics.getTriple(),"Error for Triples Hits");
+    assertEquals(hr, pitcherStatisitics.getHomerun(),"Error for Home runs");
+    assertEquals(sh, pitcherStatisitics.getSacrificeHit(),"Error for Sacrifice hits");
+    assertEquals(sf, pitcherStatisitics.getSacrificeFly(),"Error for Sacrifice flies");
+    assertEquals(bb, pitcherStatisitics.getBaseOnBall(),"Error for base on ball");
+    assertEquals(ibb, pitcherStatisitics.getIntentionalbaseOnBall(),"Error for intentional base on ball");
+    assertEquals(hp, pitcherStatisitics.getHitByPitch(),"Error for hit by pitch");
+    assertEquals(io, pitcherStatisitics.getInterferanceObstruction(),"Error for Obstruction/Interference");
+    assertEquals(k, pitcherStatisitics.getStrikeOut(),"Error for Strike out");
+    assertEquals(wp, pitcherStatisitics.getWildPitches(),"Error for Wild pitch");
+    assertEquals(bk, pitcherStatisitics.getBalks(),"Error for Balk");
   }
 
   protected void checkGeneralDoublePlay(StatisticEngine statisticEngine, int doublePlay) {
-    assertEquals("Error for double plays", doublePlay, statisticEngine.getStatisticManager().getStats().getHometeam().getDoublePlayCounter());
+    assertEquals(doublePlay, statisticEngine.getStatisticManager().getStats().getHometeam().getDoublePlayCounter(),"Error for double plays");
   }
 
   protected void checkTotalDefensivesStatist(StatisticEngine statisticEngine, int po, int a, int e, int dp) {
     DefensiveStatistic defensiveStatisitics = statisticEngine.getStatisticManager().getStats().getHometeam().getTotalDefensiveStatistic();
 
-    assertEquals("Error for put out", po, defensiveStatisitics.getPutOut());
-    assertEquals("Error for assistances", a, defensiveStatisitics.getAssitances());
-    assertEquals("Error for errors", e, defensiveStatisitics.getErrors());
-    assertEquals("Error for double plays", dp, defensiveStatisitics.getDoublePlay());
+    assertEquals(po, defensiveStatisitics.getPutOut(),"Error for put out");
+    assertEquals(a, defensiveStatisitics.getAssitances(),"Error for assistances");
+    assertEquals(e, defensiveStatisitics.getErrors(),"Error for errors");
+    assertEquals(dp, defensiveStatisitics.getDoublePlay(),"Error for double plays");
   }
 
   protected void checkDefensivePlayerStat(StatisticEngine statisticEngine, int defensivePosition, int po, int a, int e, int dp) {
     LineupEntry player = statisticEngine.getStatisticManager().getHometeamLineup().getPlayerForDefensivePosition("" + defensivePosition);
     DefensiveStatistic defensiveStatisitics = player.getDefensiveStatistic();
 
-    assertEquals("Error for put out", po, defensiveStatisitics.getPutOut());
-    assertEquals("Error for assistances", a, defensiveStatisitics.getAssitances());
-    assertEquals("Error for errors", e, defensiveStatisitics.getErrors());
-    assertEquals("Error for double plays", dp, defensiveStatisitics.getDoublePlay());
+    assertEquals(po, defensiveStatisitics.getPutOut(),"Error for put out");
+    assertEquals(a, defensiveStatisitics.getAssitances(),"Error for assistances");
+    assertEquals(e, defensiveStatisitics.getErrors(),"Error for errors");
+    assertEquals(dp, defensiveStatisitics.getDoublePlay(),"Error for double plays");
   }
   
   protected void checkDefensivePlayerStat(StatisticEngine statisticEngine, int defensivePosition, int order, int po, int a, int e, int dp) {
@@ -146,10 +140,10 @@ public abstract class AbstractWBSCUnitTest {
     LineupEntry player = players.get(order-1);
     DefensiveStatistic defensiveStatisitics = player.getDefensiveStatistic();
 
-    assertEquals("Error for put out", po, defensiveStatisitics.getPutOut());
-    assertEquals("Error for assistances", a, defensiveStatisitics.getAssitances());
-    assertEquals("Error for errors", e, defensiveStatisitics.getErrors());
-    assertEquals("Error for double plays", dp, defensiveStatisitics.getDoublePlay());
+    assertEquals(po, defensiveStatisitics.getPutOut(),"Error for put out");
+    assertEquals(a, defensiveStatisitics.getAssitances(),"Error for assistances");
+    assertEquals(e, defensiveStatisitics.getErrors(),"Error for errors");
+    assertEquals(dp, defensiveStatisitics.getDoublePlay(),"Error for double plays");
   }
 
 
@@ -157,23 +151,23 @@ public abstract class AbstractWBSCUnitTest {
       int bb, int ibb, int hp, int io, int sb, int cs, int k, int rbi) {
     OffensiveStatistic offensiveStatistic = statisticEngine.getStatisticManager().getStats().getVisitor().getTotalOffensiveStatistic();
 
-    assertEquals("Error for plate appearance", pa, offensiveStatistic.getPlateAppearances());
-    assertEquals("Error for At Bat", ab, offensiveStatistic.getAtBats());
-    assertEquals("Error for runs", r, offensiveStatistic.getRuns());
-    assertEquals("Error for two bases hits", b2, offensiveStatistic.getDouble());
-    assertEquals("Error for three bases hits", b3, offensiveStatistic.getTriple());
-    assertEquals("Error for home run", hr, offensiveStatistic.getHomerun());
-    assertEquals("Error for Grounded double play", gdp, offensiveStatistic.getGroundedDoublePlay());
-    assertEquals("Error for sacrifice hit", sh, offensiveStatistic.getSacrificeHit());
-    assertEquals("Error for sacrifice fly", sf, offensiveStatistic.getSacrificeFly());
-    assertEquals("Error for base on ball", bb, offensiveStatistic.getBaseOnBall());
-    assertEquals("Error for intentional base on ball", ibb, offensiveStatistic.getIntentionalbaseOnBall());
-    assertEquals("Error for hit by pitch", hp, offensiveStatistic.getHitByPitch());
-    assertEquals("Error for Obstruction/Interference", io, offensiveStatistic.getInterferanceObstruction());
-    assertEquals("Error for Stolen base", sb, offensiveStatistic.getStolenBase());
-    assertEquals("Error for Caugth stealing", cs, offensiveStatistic.getCaughtStealing());
-    assertEquals("Error for Strike out", k, offensiveStatistic.getStrikeOut());
-    assertEquals("Error for Rbi", rbi, offensiveStatistic.getRbi());
+    assertEquals(pa, offensiveStatistic.getPlateAppearances(),"Error for plate appearance");
+    assertEquals(ab, offensiveStatistic.getAtBats(),"Error for At Bat");
+    assertEquals(r, offensiveStatistic.getRuns(),"Error for runs");
+    assertEquals(b2, offensiveStatistic.getDouble(),"Error for two bases hits");
+    assertEquals(b3, offensiveStatistic.getTriple(),"Error for three bases hits");
+    assertEquals(hr, offensiveStatistic.getHomerun(),"Error for home run");
+    assertEquals(gdp, offensiveStatistic.getGroundedDoublePlay(),"Error for Grounded double play");
+    assertEquals(sh, offensiveStatistic.getSacrificeHit(),"Error for sacrifice hit");
+    assertEquals(sf, offensiveStatistic.getSacrificeFly(),"Error for sacrifice fly");
+    assertEquals(bb, offensiveStatistic.getBaseOnBall(),"Error for base on ball");
+    assertEquals(ibb, offensiveStatistic.getIntentionalbaseOnBall(),"Error for intentional base on ball");
+    assertEquals(hp, offensiveStatistic.getHitByPitch(),"Error for hit by pitch");
+    assertEquals(io, offensiveStatistic.getInterferanceObstruction(),"Error for Obstruction/Interference");
+    assertEquals(sb, offensiveStatistic.getStolenBase(),"Error for Stolen base");
+    assertEquals(cs, offensiveStatistic.getCaughtStealing(),"Error for Caugth stealing");
+    assertEquals(k, offensiveStatistic.getStrikeOut(),"Error for Strike out");
+    assertEquals(rbi, offensiveStatistic.getRbi(),"Error for Rbi");
   }
 
   protected void checkOffensivePlayerStat(StatisticEngine statisticEngine, int offensivePosition, int pa, int ab, int r, int h, int b2, int b3, int hr, int gdp,
@@ -181,22 +175,22 @@ public abstract class AbstractWBSCUnitTest {
     LineupEntry player = statisticEngine.getStatisticManager().getVisitorLineup().getPlayerForOffensivePosition("" + offensivePosition);
     OffensiveStatistic offensiveStatistic = player.getOffensiveStatistic();
 
-    assertEquals("Error for plate appearance", pa, offensiveStatistic.getPlateAppearances());
-    assertEquals("Error for At Bat", ab, offensiveStatistic.getAtBats());
-    assertEquals("Error for runs", r, offensiveStatistic.getRuns());
-    assertEquals("Error for two bases hits", b2, offensiveStatistic.getDouble());
-    assertEquals("Error for three bases hits", b3, offensiveStatistic.getTriple());
-    assertEquals("Error for home run", hr, offensiveStatistic.getHomerun());
-    assertEquals("Error for Grounded double play", gdp, offensiveStatistic.getGroundedDoublePlay());
-    assertEquals("Error for sacrifice hit", sh, offensiveStatistic.getSacrificeHit());
-    assertEquals("Error for sacrifice fly", sf, offensiveStatistic.getSacrificeFly());
-    assertEquals("Error for base on ball", bb, offensiveStatistic.getBaseOnBall());
-    assertEquals("Error for intentional base on ball", ibb, offensiveStatistic.getIntentionalbaseOnBall());
-    assertEquals("Error for hit by pitch", hp, offensiveStatistic.getHitByPitch());
-    assertEquals("Error for Obstruction/Interference", io, offensiveStatistic.getInterferanceObstruction());
-    assertEquals("Error for Stolen base", sb, offensiveStatistic.getStolenBase());
-    assertEquals("Error for Caugth stealing", cs, offensiveStatistic.getCaughtStealing());
-    assertEquals("Error for Strike out", k, offensiveStatistic.getStrikeOut());
-    assertEquals("Error for Rbi", rbi, offensiveStatistic.getRbi());
+    assertEquals(pa, offensiveStatistic.getPlateAppearances(),"Error for plate appearance");
+    assertEquals(ab, offensiveStatistic.getAtBats(),"Error for At Bat");
+    assertEquals(r, offensiveStatistic.getRuns(),"Error for runs");
+    assertEquals(b2, offensiveStatistic.getDouble(),"Error for two bases hits");
+    assertEquals(b3, offensiveStatistic.getTriple(),"Error for three bases hits");
+    assertEquals(hr, offensiveStatistic.getHomerun(),"Error for home run");
+    assertEquals(gdp, offensiveStatistic.getGroundedDoublePlay(),"Error for Grounded double play");
+    assertEquals(sh, offensiveStatistic.getSacrificeHit(),"Error for sacrifice hit");
+    assertEquals(sf, offensiveStatistic.getSacrificeFly(),"Error for sacrifice fly");
+    assertEquals(bb, offensiveStatistic.getBaseOnBall(),"Error for base on ball");
+    assertEquals(ibb, offensiveStatistic.getIntentionalbaseOnBall(),"Error for intentional base on ball");
+    assertEquals(hp, offensiveStatistic.getHitByPitch(),"Error for hit by pitch");
+    assertEquals(io, offensiveStatistic.getInterferanceObstruction(),"Error for Obstruction/Interference");
+    assertEquals(sb, offensiveStatistic.getStolenBase(),"Error for Stolen base");
+    assertEquals(cs, offensiveStatistic.getCaughtStealing(),"Error for Caugth stealing");
+    assertEquals(k, offensiveStatistic.getStrikeOut(),"Error for Strike out");
+    assertEquals(rbi, offensiveStatistic.getRbi(),"Error for Rbi");
   }
 }

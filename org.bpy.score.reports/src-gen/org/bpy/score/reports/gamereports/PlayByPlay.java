@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getPlayByPlay()
- * @model extendedMetaData="kind='element' name='PLAY-BY-PLAY'"
+ * @model extendedMetaData="kind='elementOnly' name='PLAY-BY-PLAY'"
  * @generated
  */
 public interface PlayByPlay extends EObject {
@@ -31,6 +31,7 @@ public interface PlayByPlay extends EObject {
 	 * @return the value of the '<em>Actiondescription</em>' containment reference list.
 	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getPlayByPlay_Actiondescription()
 	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='ACTION-DESCRIPTION'"
 	 * @generated
 	 */
 	EList<ActionDescription> getActiondescription();

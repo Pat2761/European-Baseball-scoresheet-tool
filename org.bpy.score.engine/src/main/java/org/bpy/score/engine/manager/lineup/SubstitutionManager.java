@@ -292,35 +292,37 @@ public class SubstitutionManager {
 		String defensivePosition = sub.getCurrentDefensivePosition();
 		replacementData.player = lineupManager.getPlayerForDefensivePosition(defensivePosition);
 		replacementData.currentDefensivePosition = defensivePosition;
-		replacementData.offensivePosition = replacementData.player.getOffensivePosition();
-
-		if ("ph".equals(replacementData.replacement.getNewDefensivePosition()) //$NON-NLS-1$
-				|| "pr".equals(replacementData.replacement.getNewDefensivePosition())) { //$NON-NLS-1$
-			replacementData.replacement.setNewDefensivePosition(
-					replacementData.replacement.getNewDefensivePosition() + replacementData.offensivePosition);
-		}
-
-		if (replacementData.replacement.getDefensivePosition() != 0) {
-
-			replacementData.playerReplaced = lineupManager
-					.getPlayerForDefensivePosition("" + replacementData.replacement.getDefensivePosition()); //$NON-NLS-1$
-		} else {
-			String newDefensivePosition = replacementData.replacement.getNewDefensivePosition();
-			replacementData.playerReplaced = lineupManager.getPlayerForDefensivePosition(newDefensivePosition);
-		}
-
-		if (replacementData.replacement.getNewDefensivePosition() == null) {
-			replacementData.replacement.setNewDefensivePosition(sub.getCurrentDefensivePosition());
-		}
-		substitutions.add(replacementData);
-
-		if (EngineConstants.debugEngine) {
-			StringBuilder strBuilder = new StringBuilder("OFFENSIVE REPLACEMENT:"); //$NON-NLS-1$
-			strBuilder.append(replacementData.player.getPlayerDescription().getName() + "(" //$NON-NLS-1$
-					+ replacementData.currentDefensivePosition + ") replace by "); //$NON-NLS-1$
-			strBuilder.append(replacementData.replacement.getName() + " at " //$NON-NLS-1$
-					+ replacementData.replacement.getNewDefensivePosition());
-			logger.log(Level.FINE,"{0}",strBuilder); //$NON-NLS-1$
+		if (replacementData.player != null) {
+			replacementData.offensivePosition = replacementData.player.getOffensivePosition();
+	
+			if ("ph".equals(replacementData.replacement.getNewDefensivePosition()) //$NON-NLS-1$
+					|| "pr".equals(replacementData.replacement.getNewDefensivePosition())) { //$NON-NLS-1$
+				replacementData.replacement.setNewDefensivePosition(
+						replacementData.replacement.getNewDefensivePosition() + replacementData.offensivePosition);
+			}
+	
+			if (replacementData.replacement.getDefensivePosition() != 0) {
+	
+				replacementData.playerReplaced = lineupManager
+						.getPlayerForDefensivePosition("" + replacementData.replacement.getDefensivePosition()); //$NON-NLS-1$
+			} else {
+				String newDefensivePosition = replacementData.replacement.getNewDefensivePosition();
+				replacementData.playerReplaced = lineupManager.getPlayerForDefensivePosition(newDefensivePosition);
+			}
+	
+			if (replacementData.replacement.getNewDefensivePosition() == null) {
+				replacementData.replacement.setNewDefensivePosition(sub.getCurrentDefensivePosition());
+			}
+			substitutions.add(replacementData);
+	
+			if (EngineConstants.debugEngine) {
+				StringBuilder strBuilder = new StringBuilder("OFFENSIVE REPLACEMENT:"); //$NON-NLS-1$
+				strBuilder.append(replacementData.player.getPlayerDescription().getName() + "(" //$NON-NLS-1$
+						+ replacementData.currentDefensivePosition + ") replace by "); //$NON-NLS-1$
+				strBuilder.append(replacementData.replacement.getName() + " at " //$NON-NLS-1$
+						+ replacementData.replacement.getNewDefensivePosition());
+				logger.log(Level.FINE,"{0}",strBuilder); //$NON-NLS-1$
+			}
 		}
 	}
 

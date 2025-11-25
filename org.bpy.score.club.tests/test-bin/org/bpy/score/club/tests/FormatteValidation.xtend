@@ -1,17 +1,17 @@
 package org.bpy.score.club.tests
 
+import org.junit.jupiter.api.^extension.ExtendWith
 import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.extensions.InjectionExtension
+import org.junit.jupiter.api.Test
 import com.google.inject.Inject
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.bpy.score.club.club.Club
+import org.junit.jupiter.api.Assertions
 import org.eclipse.xtext.serializer.ISerializer
 import org.eclipse.xtext.resource.SaveOptions
-import org.junit.Test
-import org.junit.Assert
-import org.junit.runner.RunWith
-import org.eclipse.xtext.testing.XtextRunner;
 
-@RunWith(XtextRunner)
+@ExtendWith(InjectionExtension)
 @InjectWith(ClubInjectorProvider)
 
 class FormatteValidation {
@@ -36,7 +36,7 @@ class FormatteValidation {
 		}
 		'''
 		
-		Assert.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
+		Assertions.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
 	}
 
 	@Test
@@ -56,7 +56,7 @@ class FormatteValidation {
 		}
 		'''
 		
-		Assert.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
+		Assertions.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
 	}
 
 	@Test
@@ -77,7 +77,7 @@ class FormatteValidation {
 		}
 		'''
 		
-		Assert.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
+		Assertions.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
 	}
 
 	@Test
@@ -99,7 +99,7 @@ class FormatteValidation {
 		}
 		'''
 		
-		Assert.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
+		Assertions.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
 	}
 
 	@Test
@@ -119,7 +119,7 @@ class FormatteValidation {
 		
 		}'''
 		
-		Assert.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
+		Assertions.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
 	}
 	
 	@Test
@@ -154,7 +154,7 @@ class FormatteValidation {
 		
 		}'''
 		
-		Assert.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
+		Assertions.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
 	}
 
 	@Test
@@ -187,7 +187,7 @@ class FormatteValidation {
 		
 		}'''
 		
-		Assert.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
+		Assertions.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
 	}
 
 	
@@ -232,6 +232,6 @@ class FormatteValidation {
 			}
 		}'''
 		
-		Assert.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
+		Assertions.assertEquals(expectedFormat , input.parse.serialize(SaveOptions.newBuilder.format().getOptions()))
 	}
 }

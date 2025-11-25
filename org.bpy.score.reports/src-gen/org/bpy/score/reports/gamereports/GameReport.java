@@ -6,6 +6,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.util.FeatureMap;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Game Report</b></em>'.
@@ -33,34 +35,25 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.bpy.score.reports.gamereports.GameReport#getGeneralStats <em>General Stats</em>}</li>
  *   <li>{@link org.bpy.score.reports.gamereports.GameReport#getVisitorLineup <em>Visitor Lineup</em>}</li>
  *   <li>{@link org.bpy.score.reports.gamereports.GameReport#getHometeamLineup <em>Hometeam Lineup</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.GameReport#getMixed <em>Mixed</em>}</li>
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport()
- * @model extendedMetaData="kind='element' name='GAME-REPORT'"
+ * @model extendedMetaData="kind='elementOnly' name='GAME-REPORT'"
  * @generated
  */
 public interface GameReport extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Banner Path</b></em>' attribute.
+	 * Returns the value of the '<em><b>Banner Path</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Banner Path</em>' attribute.
-	 * @see #setBannerPath(String)
+	 * @return the value of the '<em>Banner Path</em>' attribute list.
 	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport_BannerPath()
 	 * @model extendedMetaData="kind='element' name='BANNER-PATH'"
 	 * @generated
 	 */
-	String getBannerPath();
-
-	/**
-	 * Sets the value of the '{@link org.bpy.score.reports.gamereports.GameReport#getBannerPath <em>Banner Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Banner Path</em>' attribute.
-	 * @see #getBannerPath()
-	 * @generated
-	 */
-	void setBannerPath(String value);
+	EList<String> getBannerPath();
 
 	/**
 	 * Returns the value of the '<em><b>Visitor Sheet Path</b></em>' attribute.
@@ -92,7 +85,7 @@ public interface GameReport extends EObject {
 	 * @return the value of the '<em>Visitor Stats</em>' containment reference.
 	 * @see #setVisitorStats(TeamStatisitics)
 	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport_VisitorStats()
-	 * @model containment="true" required="true"
+	 * @model containment="true" derived="true"
 	 *        extendedMetaData="kind='element' name='VISITOR-STATS'"
 	 * @generated
 	 */
@@ -115,7 +108,7 @@ public interface GameReport extends EObject {
 	 * @return the value of the '<em>Hometeam Stats</em>' containment reference.
 	 * @see #setHometeamStats(TeamStatisitics)
 	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport_HometeamStats()
-	 * @model containment="true" required="true"
+	 * @model containment="true" derived="true"
 	 *        extendedMetaData="kind='element' name='HOMETEAM-STATS'"
 	 * @generated
 	 */
@@ -138,8 +131,7 @@ public interface GameReport extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Umpires</em>' attribute list.
 	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport_Umpires()
-	 * @model unique="false"
-	 *        extendedMetaData="kind='element' name='UMPIRE'"
+	 * @model extendedMetaData="kind='element' name='UMPIRE'"
 	 * @generated
 	 */
 	EList<String> getUmpires();
@@ -151,8 +143,7 @@ public interface GameReport extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scorekeepers</em>' attribute list.
 	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport_Scorekeepers()
-	 * @model unique="false"
-	 *        extendedMetaData="kind='element' name='SCOREKEEPER'"
+	 * @model extendedMetaData="kind='element' name='SCOREKEEPER'"
 	 * @generated
 	 */
 	EList<String> getScorekeepers();
@@ -325,7 +316,7 @@ public interface GameReport extends EObject {
 	 * @return the value of the '<em>Play By Play</em>' containment reference.
 	 * @see #setPlayByPlay(PlayByPlay)
 	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport_PlayByPlay()
-	 * @model containment="true" required="true"
+	 * @model containment="true" derived="true"
 	 *        extendedMetaData="kind='element' name='PLAY-BY-PLAY'"
 	 * @generated
 	 */
@@ -370,7 +361,7 @@ public interface GameReport extends EObject {
 	 * @return the value of the '<em>General Stats</em>' containment reference.
 	 * @see #setGeneralStats(GameGeneralStats)
 	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport_GeneralStats()
-	 * @model containment="true" required="true"
+	 * @model containment="true" derived="true"
 	 *        extendedMetaData="kind='element' name='GAME-GENERAL-STATS'"
 	 * @generated
 	 */
@@ -393,7 +384,7 @@ public interface GameReport extends EObject {
 	 * @return the value of the '<em>Visitor Lineup</em>' containment reference.
 	 * @see #setVisitorLineup(StartingLineup)
 	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport_VisitorLineup()
-	 * @model containment="true"
+	 * @model containment="true" derived="true"
 	 *        extendedMetaData="kind='element' name='STARTING-VISITOR-LINEUP'"
 	 * @generated
 	 */
@@ -416,7 +407,7 @@ public interface GameReport extends EObject {
 	 * @return the value of the '<em>Hometeam Lineup</em>' containment reference.
 	 * @see #setHometeamLineup(StartingLineup)
 	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport_HometeamLineup()
-	 * @model containment="true"
+	 * @model containment="true" derived="true"
 	 *        extendedMetaData="kind='element' name='STARTING-HOMETEAM-LINEUP'"
 	 * @generated
 	 */
@@ -431,5 +422,18 @@ public interface GameReport extends EObject {
 	 * @generated
 	 */
 	void setHometeamLineup(StartingLineup value);
+
+	/**
+	 * Returns the value of the '<em><b>Mixed</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mixed</em>' attribute list.
+	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getGameReport_Mixed()
+	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="false" transient="true" derived="true"
+	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
+	 * @generated
+	 */
+	FeatureMap getMixed();
 
 } // GameReport

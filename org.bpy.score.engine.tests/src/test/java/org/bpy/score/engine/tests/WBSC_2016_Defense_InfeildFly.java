@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
 
@@ -23,7 +22,7 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
    * <table>
    * <tr>
    * <td><img src="./resources/WBSC_2016_Defense_exemple_020.JPG"/></td>
-   * <td>With bases loaded and one out, the batter hits a high ball to shortstop, which the umpire declares `infield fly´. The fly ball is caught by the
+   * <td>With bases loaded and one out, the batter hits a high ball to shortstop, which the umpire declares `infield flyï¿½. The fly ball is caught by the
    * shortstop.</td>
    * </tr>
    * </table>
@@ -34,14 +33,14 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_020") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur frappe un cloche be condition d'infield fly et la balle est rattrapée de volée par l'arrêt court  */\r\n");
+    buf.append("        /* Le batteur frappe un cloche be condition d'infield fly et la balle est rattrapï¿½e de volï¿½e par l'arrï¿½t court  */\r\n");
     buf.append("        action { batter -> IF6 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -85,7 +84,7 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -95,8 +94,8 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
    * <table>
    * <tr>
    * <td><img src="./resources/WBSC_2016_Defense_exemple_021.JPG"/></td>
-   * <td>With bases loaded and one out, the batter hits a high ball to third, which the umpire declares “Infield fly if fair”. As it falls, the ball hits the
-   * runner touching third base. The batter is declared out under “Out By Rule” rule 8, and the putout is credited to the third baseman. The runner who was hit
+   * <td>With bases loaded and one out, the batter hits a high ball to third, which the umpire declares ï¿½Infield fly if fairï¿½. As it falls, the ball hits the
+   * runner touching third base. The batter is declared out under ï¿½Out By Ruleï¿½ rule 8, and the putout is credited to the third baseman. The runner who was hit
    * is not out, and remains on the same base.</td>
    * </tr>
    * </table>
@@ -108,14 +107,14 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_021") + "\r\n");
     buf.append("\r\n");
     buf.append(
-        "        /* Le batteur frappe un cloche be condition d'infield fly et la balle en retombant touche le coureur qui etait sur la troisième base  */\r\n");
+        "        /* Le batteur frappe un cloche be condition d'infield fly et la balle en retombant touche le coureur qui etait sur la troisiï¿½me base  */\r\n");
     buf.append("        action { batter -> OBR8-5 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -159,7 +158,7 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -170,8 +169,8 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
    * <tr>
    * <td><img src="./resources/WBSC_2016_Defense_exemple_022.JPG"/></td>
    * <td>With first and second bases occupied the batter hits a high ball along the line between first base and home plate, and the umpire therefore declares
-   * “Infield fly if fair”; the first baseman goes for the ball but fails to catch it. The runner on second base, seeing the bad play, tries to advance to third
-   * base, but the first baseman recovers the ball and assists the third baseman in a putout. The batter is automatically put out under ‘Out By Rule” 8
+   * ï¿½Infield fly if fairï¿½; the first baseman goes for the ball but fails to catch it. The runner on second base, seeing the bad play, tries to advance to third
+   * base, but the first baseman recovers the ball and assists the third baseman in a putout. The batter is automatically put out under ï¿½Out By Ruleï¿½ 8
    * [9.09(c)(1)] (Infield Fly), while the runner is tagged out.</td>
    * </tr>
    * </table>
@@ -185,20 +184,20 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
     buf.append("        /* Le premier batteur frappe un double dans le champs centre */\r\n");
     buf.append("        action { batter -> 2B8 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le deuième batteur arrive sur base sur 'base on Ball' */\r\n");
+    buf.append("        /* Le deuiï¿½me batteur arrive sur base sur 'base on Ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le troisième batteur frappe une cloche dans le champ interne et un Infeild fly est annoncé par l'arbitre */\r\n");
-    buf.append("        /* le défenseur de la troisième base tente de rattraper la balle de volée, mais commet une erreur et la balle tomne au sol */\r\n");
+    buf.append("        /* Le troisiï¿½me batteur frappe une cloche dans le champ interne et un Infeild fly est annoncï¿½ par l'arbitre */\r\n");
+    buf.append("        /* le dï¿½fenseur de la troisiï¿½me base tente de rattraper la balle de volï¿½e, mais commet une erreur et la balle tomne au sol */\r\n");
     buf.append(
-        "        /* le coureur en deuxième base, voyant l'erreur, tente de gagner la treoisième base mais se fait tagger par le défenseur de la troisième base */\r\n");
+        "        /* le coureur en deuxiï¿½me base, voyant l'erreur, tente de gagner la treoisiï¿½me base mais se fait tagger par le dï¿½fenseur de la troisiï¿½me base */\r\n");
     buf.append("        action { batter -> OBR8-3 dontCountAsDoublePlay , runner2 -> 35 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -245,7 +244,7 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -256,7 +255,7 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
    * <tr>
    * <td><img src="./resources/WBSC_2016_Defense_exemple_023.JPG"/></td>
    * <td>With first and second bases occupied and one out, the batter hits a fly ball along the line between first base and home plate, and the umpire therefore
-   * calls “Infield fly if fair”; the ball lands in foul territory and bounces fair before being touched by a fielder: charge a putout by infield fly to the
+   * calls ï¿½Infield fly if fairï¿½; the ball lands in foul territory and bounces fair before being touched by a fielder: charge a putout by infield fly to the
    * batter and credit a putout to the fielder nearest the ball (in this case the first baseman)</td>
    * </tr>
    * </table>
@@ -267,15 +266,15 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "DEFENSE_023") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le premier batteur frappe une cloche le long de la ligne entre le marbre et la première base. */\r\n");
-    buf.append("        /* Infiled fly est annoncé, mais la balle tombe dans la zone des fausses balles mais roule en zone des bonnes balles */\r\n");
+    buf.append("        /* Le premier batteur frappe une cloche le long de la ligne entre le marbre et la premiï¿½re base. */\r\n");
+    buf.append("        /* Infiled fly est annoncï¿½, mais la balle tombe dans la zone des fausses balles mais roule en zone des bonnes balles */\r\n");
     buf.append("        action { batter -> OBR8-3 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -319,7 +318,7 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -342,15 +341,15 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
     buf.append("        /* le premier batteur frappe un hit dans le champs droit */\r\n");
     buf.append("        action { batter -> 1B9 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le deuxième bateyr frappe une cloche et l'infield fly est appellé. le défeseur */\r\n");
-    buf.append("        /* de la deuxième base laisse tombée la balle, a cause d'une interférnce du coureur en première base. */\r\n");
+    buf.append("        /* Le deuxiï¿½me bateyr frappe une cloche et l'infield fly est appellï¿½. le dï¿½feseur */\r\n");
+    buf.append("        /* de la deuxiï¿½me base laisse tombï¿½e la balle, a cause d'une interfï¿½rnce du coureur en premiï¿½re base. */\r\n");
     buf.append("        action { batter -> OBR8-4 , runner1 -> OBR13-4 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -395,7 +394,7 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -425,7 +424,7 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -469,7 +468,7 @@ public class WBSC_2016_Defense_InfeildFly extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

@@ -21,6 +21,8 @@ package org.bpy.score.rcp.wizard;
 import java.util.HashMap;
 import java.util.List;
 
+import org.bpy.score.preferences.core.PreferenceConstants;
+import org.bpy.score.preferences.core.PreferenceManager;
 import org.bpy.score.reports.generator.GameReportGenerator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -50,7 +52,6 @@ public class GenerateGameReportWizard extends Wizard {
 		setWindowTitle("New Wizard"); //$NON-NLS-1$
 		
 		currentFolder = folder;
-		
 	}
 
 	/**
@@ -64,6 +65,8 @@ public class GenerateGameReportWizard extends Wizard {
 	
 	@Override
 	public void addPages() {
+		getShell().setSize(600, 530);
+
 		gameReportWizardPageOne = new GameReportWizardPageOne();
 		gameReportWizardPageOne.setParent(this);
 		addPage(gameReportWizardPageOne);
@@ -88,12 +91,14 @@ public class GenerateGameReportWizard extends Wizard {
 		HashMap<String,Object> options = new HashMap<>();
 		
 		options.put(GameReportGenerator.OUTPUT_FOLDER_KEY, gameReportWizardPageOne.getPath());
-		options.put(GameReportGenerator.STANDARD_CONFIGURATION_FLAG, gameReportWizardPageTwo.isStandardConf());
+		options.put(GameReportGenerator.STANDARD_PREDEFINED_FLAG, gameReportWizardPageTwo.isStandardConf());
 		if (!gameReportWizardPageTwo.isStandardConf()) {
 			options.put(GameReportGenerator.CSS_FILE_PATH, gameReportWizardPageTwo.getCssFilePath());
 			options.put(GameReportGenerator.XSLT_FILE_PATH, gameReportWizardPageTwo.getXsltFilePath());
 			options.put(GameReportGenerator.BANNER_FILE_PATH, gameReportWizardPageTwo.getBannerFilePath());
 		}
+		String typeOfFile = PreferenceManager.getPreferenceValue(currentFolder.getProject(), PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE, PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML);
+		options.put(GameReportGenerator.HTML_GENERATION, (PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML.equals(typeOfFile)? Boolean.TRUE : Boolean.FALSE));
 		
 		List<IFile> selectedGames = gameReportWizardPageOne.getSelectedGames();
 		gameReportGenerator.generateReport(selectedGames, options);

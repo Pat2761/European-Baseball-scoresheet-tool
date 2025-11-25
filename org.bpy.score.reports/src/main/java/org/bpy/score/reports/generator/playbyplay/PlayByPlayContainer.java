@@ -18,6 +18,8 @@
  */
 package org.bpy.score.reports.generator.playbyplay;
 
+import org.bpy.score.reports.gamereports.TEAM;
+
 /**
  * Data class which contains the description of the play by play inning
  * 
@@ -32,6 +34,8 @@ public class PlayByPlayContainer {
 	private String content;
 	/** resume of the inning */
 	private String resume;
+	/** team concerned */
+	private TEAM team;
 
 	/**
 	 * Constructor of the class
@@ -93,6 +97,24 @@ public class PlayByPlayContainer {
 	 */
 	public void setResume(String resume) {
 		this.resume = resume;
+	}
+
+	/**
+	 * get the team
+	 * 
+	 * @return a team
+	 */
+	public TEAM getTeam() {
+		return team;
+	}
+
+	/**
+	 * Set the team
+	 * 
+	 * @param team  team
+	 */
+	public void setTeam(TEAM team) {
+		this.team = team;
 	}
 	
 }

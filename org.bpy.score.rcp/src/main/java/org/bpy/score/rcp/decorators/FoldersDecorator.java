@@ -59,7 +59,8 @@ public class FoldersDecorator extends LabelProvider implements ILabelDecorator {
 					return RcpUtils.categoryImage;
 				}
 			}
-		}
+			
+		} 
 		return null;
 	}
 

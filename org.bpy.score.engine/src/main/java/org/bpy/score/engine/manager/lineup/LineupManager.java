@@ -367,11 +367,14 @@ public class LineupManager {
 	public void applySubstitution(MoveToData substitution, IpCounter currentIpCounter) {
 
 		String offensivePosition = substitution.player.getOffensivePosition();
-		substitution.player.setActif(false);
-		substitution.playerReplaced.setActif(false);
-		
-		createNewEntry(offensivePosition, substitution.getDefensivePosition().getNewDefensivePosition(),substitution.player.getLaterality(),
-				substitution.player.getPlayerDescription());
+		if (substitution.player != null) {
+			substitution.player.setActif(false);
+			if (substitution.playerReplaced != null) {
+				substitution.playerReplaced.setActif(false);
+				createNewEntry(offensivePosition, substitution.getDefensivePosition().getNewDefensivePosition(),substitution.player.getLaterality(),
+						substitution.player.getPlayerDescription());
+			}	
+		}
 	}
 
 	/**
@@ -475,58 +478,63 @@ public class LineupManager {
 		lineupEntry.setOrderNumber(orderNumber++);
 		lineupEntry.setLaterality(laterality);
 
-		if (lineupEntry.getDefensivePosition().equals("1")) { //$NON-NLS-1$
-
-			/* Le lanceur peut resté lanceur quand il devient batteur */
-			if (getCurrentPitcher() == null) {
-				
-				pitchers.add(lineupEntry);
-			
-			} else {
-				
-				if (getCurrentPitcher().getPlayerDescription() != lineupEntry.getPlayerDescription()) {
+		try {
+		
+			if (lineupEntry.getDefensivePosition().equals("1")) { //$NON-NLS-1$
+	
+				/* Le lanceur peut resté lanceur quand il devient batteur */
+				if (getCurrentPitcher() == null) {
 					
 					pitchers.add(lineupEntry);
-					
+				
 				} else {
 					
-					lineupEntry = getCurrentPitcher();
-					lineupEntry.setOffensivePosition(offensivePosition);
-					lineupEntry.getAssociatedObjects().put(PITCHER_KEEP_ITS_POSITION, true);
+					if (getCurrentPitcher().getPlayerDescription() != lineupEntry.getPlayerDescription()) {
+						
+						pitchers.add(lineupEntry);
+						
+					} else {
+						
+						lineupEntry = getCurrentPitcher();
+						lineupEntry.setOffensivePosition(offensivePosition);
+						lineupEntry.getAssociatedObjects().put(PITCHER_KEEP_ITS_POSITION, true);
+					}
+				}
+	
+			} else if (lineupEntry.getDefensivePosition().equals("2")) { //$NON-NLS-1$
+	
+				if (getCurrentCatcher() == null) {
+					catchers.add(lineupEntry);
+				} else if (getCurrentCatcher().getPlayerDescription() != lineupEntry.getPlayerDescription()) {
+					catchers.add(lineupEntry);
+				} else {
+					// Nothing to do in this case
 				}
 			}
-
-		} else if (lineupEntry.getDefensivePosition().equals("2")) { //$NON-NLS-1$
-
-			if (getCurrentCatcher() == null) {
-				catchers.add(lineupEntry);
-			} else if (getCurrentCatcher().getPlayerDescription() != lineupEntry.getPlayerDescription()) {
-				catchers.add(lineupEntry);
+	
+			players.add(lineupEntry);
+	
+			/* puis on effectue le déplacement */
+			if (defensiveIndexs.containsKey(defensivePosition)) {
+				if (lineupEntry.getDefensivePosition().equals("1")) { //$NON-NLS-1$
+				    if (getCurrentPitcher().getPlayerDescription() != lineupEntry.getPlayerDescription()) {
+				    	defensiveIndexs.put(defensivePosition, defensiveIndexs.get(defensivePosition).intValue() + 1);
+				    }
+				} else {
+					defensiveIndexs.put(defensivePosition, defensiveIndexs.get(defensivePosition).intValue() + 1);
+				}
 			} else {
-				// Nothing to do in this case
+				defensiveIndexs.put(defensivePosition, 0);
 			}
+			lineupEntry.setDefensivePositionIndex("" + defensiveIndexs.get(defensivePosition)); //$NON-NLS-1$
+	
+			defensivePlayers.put(defensivePosition, lineupEntry);
+	
+			addLineEntry(offensivePosition, lineupEntry);
+			addPlayerEntry(player, lineupEntry);
+		} catch (NullPointerException ex) {
+			// POur eviter des erreur en cas de saisie partielle
 		}
-
-		players.add(lineupEntry);
-
-		/* puis on effectue le déplacement */
-		if (defensiveIndexs.containsKey(defensivePosition)) {
-			if (lineupEntry.getDefensivePosition().equals("1")) { //$NON-NLS-1$
-			    if (getCurrentPitcher().getPlayerDescription() != lineupEntry.getPlayerDescription()) {
-			    	defensiveIndexs.put(defensivePosition, defensiveIndexs.get(defensivePosition).intValue() + 1);
-			    }
-			} else {
-				defensiveIndexs.put(defensivePosition, defensiveIndexs.get(defensivePosition).intValue() + 1);
-			}
-		} else {
-			defensiveIndexs.put(defensivePosition, 0);
-		}
-		lineupEntry.setDefensivePositionIndex("" + defensiveIndexs.get(defensivePosition)); //$NON-NLS-1$
-
-		defensivePlayers.put(defensivePosition, lineupEntry);
-
-		addLineEntry(offensivePosition, lineupEntry);
-		addPlayerEntry(player, lineupEntry);
 		return lineupEntry;
 	}
 

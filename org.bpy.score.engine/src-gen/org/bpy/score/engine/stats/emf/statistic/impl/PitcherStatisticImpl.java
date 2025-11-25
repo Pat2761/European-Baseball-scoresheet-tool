@@ -43,6 +43,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link org.bpy.score.engine.stats.emf.statistic.impl.PitcherStatisticImpl#getPitchCountOthers <em>Pitch Count Others</em>}</li>
  *   <li>{@link org.bpy.score.engine.stats.emf.statistic.impl.PitcherStatisticImpl#getRunnerLeftOnBase <em>Runner Left On Base</em>}</li>
  *   <li>{@link org.bpy.score.engine.stats.emf.statistic.impl.PitcherStatisticImpl#getCaughtStealing <em>Caught Stealing</em>}</li>
+ *   <li>{@link org.bpy.score.engine.stats.emf.statistic.impl.PitcherStatisticImpl#getIps <em>Ips</em>}</li>
+ *   <li>{@link org.bpy.score.engine.stats.emf.statistic.impl.PitcherStatisticImpl#getFlyOuts <em>Fly Outs</em>}</li>
+ *   <li>{@link org.bpy.score.engine.stats.emf.statistic.impl.PitcherStatisticImpl#getGroundedOuts <em>Grounded Outs</em>}</li>
  * </ul>
  *
  * @generated
@@ -507,6 +510,66 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected int caughtStealing = CAUGHT_STEALING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIps() <em>Ips</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIps()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double IPS_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getIps() <em>Ips</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIps()
+	 * @generated
+	 * @ordered
+	 */
+	protected double ips = IPS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFlyOuts() <em>Fly Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFlyOuts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int FLY_OUTS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getFlyOuts() <em>Fly Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFlyOuts()
+	 * @generated
+	 * @ordered
+	 */
+	protected int flyOuts = FLY_OUTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getGroundedOuts() <em>Grounded Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroundedOuts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int GROUNDED_OUTS_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getGroundedOuts() <em>Grounded Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroundedOuts()
+	 * @generated
+	 * @ordered
+	 */
+	protected int groundedOuts = GROUNDED_OUTS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1062,6 +1125,75 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
+	public double getIps() {
+		return ips;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIps(double newIps) {
+		double oldIps = ips;
+		ips = newIps;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StatisticPackage.PITCHER_STATISTIC__IPS, oldIps, ips));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getFlyOuts() {
+		return flyOuts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setFlyOuts(int newFlyOuts) {
+		int oldFlyOuts = flyOuts;
+		flyOuts = newFlyOuts;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StatisticPackage.PITCHER_STATISTIC__FLY_OUTS, oldFlyOuts, flyOuts));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getGroundedOuts() {
+		return groundedOuts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setGroundedOuts(int newGroundedOuts) {
+		int oldGroundedOuts = groundedOuts;
+		groundedOuts = newGroundedOuts;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StatisticPackage.PITCHER_STATISTIC__GROUNDED_OUTS, oldGroundedOuts, groundedOuts));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case StatisticPackage.PITCHER_STATISTIC__BATTER_FRONT:
@@ -1110,6 +1242,12 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 				return getRunnerLeftOnBase();
 			case StatisticPackage.PITCHER_STATISTIC__CAUGHT_STEALING:
 				return getCaughtStealing();
+			case StatisticPackage.PITCHER_STATISTIC__IPS:
+				return getIps();
+			case StatisticPackage.PITCHER_STATISTIC__FLY_OUTS:
+				return getFlyOuts();
+			case StatisticPackage.PITCHER_STATISTIC__GROUNDED_OUTS:
+				return getGroundedOuts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1190,6 +1328,15 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case StatisticPackage.PITCHER_STATISTIC__CAUGHT_STEALING:
 				setCaughtStealing((Integer)newValue);
+				return;
+			case StatisticPackage.PITCHER_STATISTIC__IPS:
+				setIps((Double)newValue);
+				return;
+			case StatisticPackage.PITCHER_STATISTIC__FLY_OUTS:
+				setFlyOuts((Integer)newValue);
+				return;
+			case StatisticPackage.PITCHER_STATISTIC__GROUNDED_OUTS:
+				setGroundedOuts((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1272,6 +1419,15 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 			case StatisticPackage.PITCHER_STATISTIC__CAUGHT_STEALING:
 				setCaughtStealing(CAUGHT_STEALING_EDEFAULT);
 				return;
+			case StatisticPackage.PITCHER_STATISTIC__IPS:
+				setIps(IPS_EDEFAULT);
+				return;
+			case StatisticPackage.PITCHER_STATISTIC__FLY_OUTS:
+				setFlyOuts(FLY_OUTS_EDEFAULT);
+				return;
+			case StatisticPackage.PITCHER_STATISTIC__GROUNDED_OUTS:
+				setGroundedOuts(GROUNDED_OUTS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1330,6 +1486,12 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 				return runnerLeftOnBase != RUNNER_LEFT_ON_BASE_EDEFAULT;
 			case StatisticPackage.PITCHER_STATISTIC__CAUGHT_STEALING:
 				return caughtStealing != CAUGHT_STEALING_EDEFAULT;
+			case StatisticPackage.PITCHER_STATISTIC__IPS:
+				return ips != IPS_EDEFAULT;
+			case StatisticPackage.PITCHER_STATISTIC__FLY_OUTS:
+				return flyOuts != FLY_OUTS_EDEFAULT;
+			case StatisticPackage.PITCHER_STATISTIC__GROUNDED_OUTS:
+				return groundedOuts != GROUNDED_OUTS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1390,6 +1552,12 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 		result.append(runnerLeftOnBase);
 		result.append(", caughtStealing: ");
 		result.append(caughtStealing);
+		result.append(", ips: ");
+		result.append(ips);
+		result.append(", flyOuts: ");
+		result.append(flyOuts);
+		result.append(", groundedOuts: ");
+		result.append(groundedOuts);
 		result.append(')');
 		return result.toString();
 	}

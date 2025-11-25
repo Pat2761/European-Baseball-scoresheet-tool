@@ -59,7 +59,7 @@ public class ImportHtmlWizardPage extends WizardPage implements ModifyListener,S
 	 * Create the wizard.
 	 */
 	public ImportHtmlWizardPage() {
-		super("wizardPage"); //$NON-NLS1$
+		super("wizardPage"); //$NON-NLS-1$
 		setTitle(Messages.ImportHtmlWizardPage_PageTitle);
 		setDescription(Messages.ImportHtmlWizardPage_PageDescription);
 		setMessage(Messages.ImportHtmlWizardPage_PageMessage);
@@ -127,7 +127,7 @@ public class ImportHtmlWizardPage extends WizardPage implements ModifyListener,S
 		Button button = new Button(container, SWT.NONE);
 		button.addSelectionListener(this);
 		button.setBounds(321, 45, 75, 21);
-		button.setText("..."); //$NON-NLS1$
+		button.setText("..."); //$NON-NLS-1$
 
 		checkPageComplete(); 
 	}
@@ -156,8 +156,8 @@ public class ImportHtmlWizardPage extends WizardPage implements ModifyListener,S
 	@Override
 	public void widgetSelected(SelectionEvent e) {
 		FileDialog openFile = new FileDialog(new Shell(), SWT.OPEN);
-		openFile.setText("Sélection du fichier HTML");
-		openFile.setFilterExtensions(new String[] {"*.html","*.htm"}); // $NON-NLS-1$
+		openFile.setText(Messages.ImportHtmlWizardPage_SelectHtmlFile);
+		openFile.setFilterExtensions(new String[] {"*.html","*.htm"}); //$NON-NLS-1$ //$NON-NLS-2$
 		String selectedFile = openFile.open();
 		if (selectedFile != null) {
 			text.setText(selectedFile);

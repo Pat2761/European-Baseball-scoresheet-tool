@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getCatcherStatistic()
- * @model extendedMetaData="kind='element' name='CATCHER-STATISTICS'"
+ * @model extendedMetaData="kind='elementOnly' name='CATCHER-STATISTICS'"
  * @generated
  */
 public interface CatcherStatistic extends EObject {

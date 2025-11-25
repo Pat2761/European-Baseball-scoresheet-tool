@@ -48,12 +48,14 @@ public class ScoreGameEngine extends AbstractEngine {
 
 		setActionsManager(scoreGameManager);
 		try {
-			scoreGameManager.setupLineUp(game.getActions().getLineup());
+			if ( (game != null) && (game.getActions() != null) ) {
+				scoreGameManager.setupLineUp(game.getActions().getLineup());
 
-			manageActions(game.getActions().getHalfInnings());
+				manageActions(game.getActions().getHalfInnings());
+			}	
 
-		} catch (NullPointerException|OccupedbaseException ex) {
-			logger.log(Level.SEVERE, ex.getMessage());
+		} catch (/*NullPointerException|*/OccupedbaseException ex) {
+			//logger.log(Level.SEVERE, ex.getMessage());
 		}
 	}
 

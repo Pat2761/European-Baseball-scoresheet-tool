@@ -61,7 +61,7 @@ class DefaultHeaderRenderer extends DefaultTableCellRenderer {
 	private static final long serialVersionUID = 8996176569478567333L;
 
 	{
-		setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+		setBorder(UIManager.getBorder("TableHeader.cellBorder")); //$NON-NLS-1$
 	}
 
 	@Override
@@ -70,7 +70,7 @@ class DefaultHeaderRenderer extends DefaultTableCellRenderer {
 
 		setHorizontalAlignment(CENTER);
 
-		setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+		setBorder(UIManager.getBorder("TableHeader.cellBorder")); //$NON-NLS-1$
 	}
 
 	@Override
@@ -88,17 +88,17 @@ class DefaultHeaderRenderer extends DefaultTableCellRenderer {
 
 			setEnabled(header.isEnabled());
 		} else {
-			setForeground(UIManager.getColor("TableHeader.foreground"));
-			setBackground(UIManager.getColor("TableHeader.background"));
+			setForeground(UIManager.getColor("TableHeader.foreground")); //$NON-NLS-1$
+			setBackground(UIManager.getColor("TableHeader.background")); //$NON-NLS-1$
 
-			setFont(UIManager.getFont("TableHeader.font"));
+			setFont(UIManager.getFont("TableHeader.font")); //$NON-NLS-1$
 
 			setComponentOrientation(ComponentOrientation.UNKNOWN);
 
 			setEnabled(true);
 		}
 
-		setText(value != null ? value.toString() : "");
+		setText(value != null ? value.toString() : ""); //$NON-NLS-1$
 
 		return this;
 	}
@@ -241,9 +241,9 @@ public class TableHeader extends JComponent {
 	 */
 	@Override
 	public void updateUI() {
-		LookAndFeel.installColorsAndFont(this, "TableHeader.background", "TableHeader.foreground", "TableHeader.font");
+		LookAndFeel.installColorsAndFont(this, "TableHeader.background", "TableHeader.foreground", "TableHeader.font"); //$NON-NLS-1$  //$NON-NLS-2$ //$NON-NLS-3$
 
-		LookAndFeel.installBorder(this, "TableHeader.border");
+		LookAndFeel.installBorder(this, "TableHeader.border"); //$NON-NLS-1$
 
 		if (defaultRenderer instanceof JComponent)
 			((JComponent) defaultRenderer).updateUI();
@@ -288,8 +288,8 @@ public class TableHeader extends JComponent {
 		revalidate();
 		repaint();
 
-		firePropertyChange("table", oldTable, table);
-		firePropertyChange("columns", oldColumns, columns);
+		firePropertyChange("table", oldTable, table); //$NON-NLS-1$
+		firePropertyChange("columns", oldColumns, columns); //$NON-NLS-1$
 	}
 
 	/**
@@ -313,7 +313,7 @@ public class TableHeader extends JComponent {
 		revalidate();
 		repaint();
 
-		firePropertyChange("defaultRenderer", oldRenderer, defaultRenderer);
+		firePropertyChange("defaultRenderer", oldRenderer, defaultRenderer); //$NON-NLS-1$
 	}
 
 	/**
@@ -460,8 +460,8 @@ public class TableHeader extends JComponent {
 				span = ((XTableColumn) c).headerSpan();
 
 				if (j + span > count) {
-					System.err.println("column: " + j + " span: " + span + " > " + count);
-					System.err.println("This state of TableColumnModel is forbidden!");
+					System.err.println("column: " + j + " span: " + span + " > " + count); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+					System.err.println("This state of TableColumnModel is forbidden!"); //$NON-NLS-1$
 					span = count - j;
 				}
 
@@ -520,7 +520,7 @@ public class TableHeader extends JComponent {
 	 */
 	private class Listener implements TableColumnModelListener, PropertyChangeListener {
 		public void propertyChange(PropertyChangeEvent e) {
-			if (e.getPropertyName().equals("columnModel")) {
+			if (e.getPropertyName().equals("columnModel")) { //$NON-NLS-1$
 				TableColumnModel oldColumns = columns;
 
 				columns.removeColumnModelListener(this);
@@ -532,7 +532,7 @@ public class TableHeader extends JComponent {
 				revalidate();
 				repaint();
 
-				firePropertyChange("columns", oldColumns, columns);
+				firePropertyChange("columns", oldColumns, columns); //$NON-NLS-1$
 			}
 		}
 

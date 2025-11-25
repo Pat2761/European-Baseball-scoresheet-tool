@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Advance_On_Hit extends AbstractWBSCUnitTest {
 
@@ -25,7 +24,7 @@ public class WBSC_2016_Offense_Advance_On_Hit extends AbstractWBSCUnitTest {
    * <td><img src="./resources/WBSC_2016_offense_exemple_026.JPG"/></td>
    * <td>When a runner advances on a hit, it is recorded by writing the batting order number of the batter who was awarded a base hit in the square
    * corresponding to the base reached. Thus, (example 26) if first and second bases are occupied and the third batter in the batting order hits a single,
-   * allowing the runners to reach second and third respectively, the runners’ arrival at second and third bases is recorded with a number three in the squares
+   * allowing the runners to reach second and third respectively, the runnersï¿½ arrival at second and third bases is recorded with a number three in the squares
    * corresponding to those bases.</td>
    * </tr>
    * </table>
@@ -49,7 +48,7 @@ public class WBSC_2016_Offense_Advance_On_Hit extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -93,7 +92,7 @@ public class WBSC_2016_Offense_Advance_On_Hit extends AbstractWBSCUnitTest {
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -124,7 +123,7 @@ public class WBSC_2016_Offense_Advance_On_Hit extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -167,7 +166,7 @@ public class WBSC_2016_Offense_Advance_On_Hit extends AbstractWBSCUnitTest {
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -198,7 +197,7 @@ public class WBSC_2016_Offense_Advance_On_Hit extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -241,7 +240,7 @@ public class WBSC_2016_Offense_Advance_On_Hit extends AbstractWBSCUnitTest {
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

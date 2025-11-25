@@ -48,7 +48,7 @@ public class ImportTournamentWizard extends Wizard implements IImportWizard {
 
 	@Override
 	public void addPages() {
-		pageOne = new ImportTournamentWizardPageOne("wizardExternalProjectsPage", null, currentSelection);
+		pageOne = new ImportTournamentWizardPageOne("wizardExternalProjectsPage", null, currentSelection); //$NON-NLS-1$
 		addPage(pageOne);
 	}
 

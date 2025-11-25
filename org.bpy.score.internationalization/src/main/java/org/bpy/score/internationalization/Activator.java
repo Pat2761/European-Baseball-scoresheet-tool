@@ -18,12 +18,12 @@
  */
 package org.bpy.score.internationalization;
 
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
+ * 
  */
 public class Activator extends AbstractUIPlugin {
 
@@ -40,10 +40,6 @@ public class Activator extends AbstractUIPlugin {
 		// Nothing to do
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
-	 */
 	@Override
 	@SuppressWarnings("java:S2696")
 	public void start(BundleContext context) throws Exception {
@@ -51,10 +47,6 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
-	 */
 	@Override
 	@SuppressWarnings("java:S2696")
 	public void stop(BundleContext context) throws Exception {

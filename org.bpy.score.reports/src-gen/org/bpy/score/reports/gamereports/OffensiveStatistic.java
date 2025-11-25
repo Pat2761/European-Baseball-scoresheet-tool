@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getOffensiveStatistic()
- * @model extendedMetaData="kind='element' name='OFFENSIVE-STATISTICS'"
+ * @model extendedMetaData="kind='elementOnly' name='OFFENSIVE-STATISTICS'"
  * @generated
  */
 public interface OffensiveStatistic extends EObject {

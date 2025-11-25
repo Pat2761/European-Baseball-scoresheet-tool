@@ -307,6 +307,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEarned" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnFlyError" eSuperTypes="#//DecisiveError"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnPopError" eSuperTypes="#//DecisiveError"/>
   <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnReceiveError" eSuperTypes="#//DecisiveError"/>
   <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnThrowError" eSuperTypes="#//DecisiveError"/>
   <eClassifiers xsi:type="ecore:EClass" name="BatterAdvanceOnGdpWithError" eSuperTypes="#//DecisiveError"/>

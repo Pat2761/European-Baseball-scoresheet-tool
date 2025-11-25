@@ -31,5 +31,6 @@ Export-Package: org.bpy.score.game,
  org.bpy.score.game.serializer,
  org.bpy.score.game.services,
  org.bpy.score.game.util,
- org.bpy.score.game.validation
+ org.bpy.score.game.validation,
+ org.bpy.score.game.formatting2
 Import-Package: org.apache.log4j

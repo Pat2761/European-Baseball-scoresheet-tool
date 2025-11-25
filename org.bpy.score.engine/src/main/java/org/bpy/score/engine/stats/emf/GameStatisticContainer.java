@@ -251,39 +251,40 @@ public class GameStatisticContainer {
 		TeamStatistic oppositeTeamStatictic = getOppositeTeamStatistic(stats, teamType);
 		LineupEntry pitcher = getCurrentPitcher(oppositeTeamStatictic);
 
-		switch (pitch.getPitch()) {
-		case "k": //$NON-NLS-1$
-		case "K": //$NON-NLS-1$
-		case "s": //$NON-NLS-1$
-		case "S": //$NON-NLS-1$
-			pitcher.getPitcherStatistic().setPitchCountK(pitcher.getPitcherStatistic().getPitchCountK() + 1);
-			pitcher.getPitcherStatistic().setPitchCount(pitcher.getPitcherStatistic().getPitchCount() + 1);
-			break;
-
-		case "b": //$NON-NLS-1$
-		case "B": //$NON-NLS-1$
-			pitcher.getPitcherStatistic().setPitchCountB(pitcher.getPitcherStatistic().getPitchCountB() + 1);
-			pitcher.getPitcherStatistic().setPitchCount(pitcher.getPitcherStatistic().getPitchCount() + 1);
-			break;
-
-		case "h": //$NON-NLS-1$
-		case "H": //$NON-NLS-1$
-			pitcher.getPitcherStatistic().setPitchCount(pitcher.getPitcherStatistic().getPitchCount() + 1);
-			break;
-
-		case "f": //$NON-NLS-1$
-		case "F": //$NON-NLS-1$
-			pitcher.getPitcherStatistic().setPitchCount(pitcher.getPitcherStatistic().getPitchCount() + 1);
-			break;
-
-		case ".": //$NON-NLS-1$
-			pitcher.getPitcherStatistic().setPitchCount(pitcher.getPitcherStatistic().getPitchCount() + 1);
-			break;
-
-		default:
-			pitcher.getPitcherStatistic().setPitchCountOthers(pitcher.getPitcherStatistic().getPitchCountOthers() + 1);
+		if (pitch != null) {
+			switch (pitch.getPitch()) {
+			case "k": //$NON-NLS-1$
+			case "K": //$NON-NLS-1$
+			case "s": //$NON-NLS-1$
+			case "S": //$NON-NLS-1$
+				pitcher.getPitcherStatistic().setPitchCountK(pitcher.getPitcherStatistic().getPitchCountK() + 1);
+				pitcher.getPitcherStatistic().setPitchCount(pitcher.getPitcherStatistic().getPitchCount() + 1);
+				break;
+	
+			case "b": //$NON-NLS-1$
+			case "B": //$NON-NLS-1$
+				pitcher.getPitcherStatistic().setPitchCountB(pitcher.getPitcherStatistic().getPitchCountB() + 1);
+				pitcher.getPitcherStatistic().setPitchCount(pitcher.getPitcherStatistic().getPitchCount() + 1);
+				break;
+	
+			case "h": //$NON-NLS-1$
+			case "H": //$NON-NLS-1$
+				pitcher.getPitcherStatistic().setPitchCount(pitcher.getPitcherStatistic().getPitchCount() + 1);
+				break;
+	
+			case "f": //$NON-NLS-1$
+			case "F": //$NON-NLS-1$
+				pitcher.getPitcherStatistic().setPitchCount(pitcher.getPitcherStatistic().getPitchCount() + 1);
+				break;
+	
+			case ".": //$NON-NLS-1$
+				pitcher.getPitcherStatistic().setPitchCount(pitcher.getPitcherStatistic().getPitchCount() + 1);
+				break;
+	
+			default:
+				pitcher.getPitcherStatistic().setPitchCountOthers(pitcher.getPitcherStatistic().getPitchCountOthers() + 1);
+			}
 		}
-
 	}
 
 	/**
@@ -1004,18 +1005,28 @@ public class GameStatisticContainer {
 		TeamStatistic teamStatictic = getTeamStatistic(stats, teamType);
 		LineupEntry playerStatisticEntry = getPlayerAtOffensivePosition(teamStatictic, offensivePosition);
 
-		playerStatisticEntry.getOffensiveStatistic()
-				.setStrikeOut(playerStatisticEntry.getOffensiveStatistic().getStrikeOut() + 1);
-		teamStatictic.getTotalOffensiveStatistic()
-				.setStrikeOut(teamStatictic.getTotalOffensiveStatistic().getStrikeOut() + 1);
+		playerStatisticEntry.getOffensiveStatistic().setStrikeOut(playerStatisticEntry.getOffensiveStatistic().getStrikeOut() + 1);
+		teamStatictic.getTotalOffensiveStatistic().setStrikeOut(teamStatictic.getTotalOffensiveStatistic().getStrikeOut() + 1);
 
 		TeamStatistic oppositeTeamStatictic = getOppositeTeamStatistic(stats, teamType);
 		LineupEntry pitcher = getCurrentPitcher(oppositeTeamStatictic);
 		pitcher.getPitcherStatistic().setStrikeOut(pitcher.getPitcherStatistic().getStrikeOut() + 1);
-		oppositeTeamStatictic.getTotalPitcherStatistic()
-				.setStrikeOut(oppositeTeamStatictic.getTotalPitcherStatistic().getStrikeOut() + 1);
+		oppositeTeamStatictic.getTotalPitcherStatistic().setStrikeOut(oppositeTeamStatictic.getTotalPitcherStatistic().getStrikeOut() + 1);
 	}
 
+	public void incFlyout(GameStatistic stats, String teamType) {
+		TeamStatistic oppositeTeamStatictic = getOppositeTeamStatistic(stats, teamType);
+		LineupEntry pitcher = getCurrentPitcher(oppositeTeamStatictic);
+		pitcher.getPitcherStatistic().setFlyOuts(pitcher.getPitcherStatistic().getFlyOuts()+1);
+	}
+
+	public void incGrounedOut(GameStatistic stats, String teamType) {
+		TeamStatistic oppositeTeamStatictic = getOppositeTeamStatistic(stats, teamType);
+		LineupEntry pitcher = getCurrentPitcher(oppositeTeamStatictic);
+		pitcher.getPitcherStatistic().setGroundedOuts(pitcher.getPitcherStatistic().getGroundedOuts()+1);
+	}
+
+	
 	/**
 	 * Increment the number of stolen base for a runner.
 	 * <ul>
@@ -1182,8 +1193,7 @@ public class GameStatisticContainer {
 		TeamStatistic oppositeTeamStatictic = getOppositeTeamStatistic(stats, teamType);
 		LineupEntry pitcher = getCurrentPitcher(oppositeTeamStatictic);
 		pitcher.getPitcherStatistic().setBalks(pitcher.getPitcherStatistic().getBalks() + 1);
-		oppositeTeamStatictic.getTotalPitcherStatistic()
-				.setBalks(oppositeTeamStatictic.getTotalPitcherStatistic().getBalks() + 1);
+		oppositeTeamStatictic.getTotalPitcherStatistic().setBalks(oppositeTeamStatictic.getTotalPitcherStatistic().getBalks() + 1);
 	}
 
 	/**
@@ -1216,7 +1226,7 @@ public class GameStatisticContainer {
 		oppositeTeamStatictic.getTotalPitcherStatistic()
 				.setEarnedRuns(oppositeTeamStatictic.getTotalPitcherStatistic().getEarnedRuns() + 1);
 	}
-
+	
 	/**
 	 * Management of a put out
 	 * <ul>
@@ -1468,7 +1478,7 @@ public class GameStatisticContainer {
 	 * @return Reference to the TeamStatistic container of a team
 	 */
 	private TeamStatistic getTeamStatistic(GameStatistic stats, String teamType) {
-		if (teamType.equals(EngineConstants.VISITOR)) {
+		if (EngineConstants.VISITOR.equals(teamType)) {
 			return getVisitorStatistic(stats);
 		} else {
 			return getHomeTeamStatistic(stats);
@@ -1484,7 +1494,7 @@ public class GameStatisticContainer {
 	 * @return Reference to the TeamStatistic container of the opposite team
 	 */
 	private TeamStatistic getOppositeTeamStatistic(GameStatistic stats, String teamType) {
-		if (teamType.equals(EngineConstants.VISITOR)) {
+		if (EngineConstants.VISITOR.equals(teamType)) {
 			return getHomeTeamStatistic(stats);
 		} else {
 			return getVisitorStatistic(stats);
@@ -1596,8 +1606,6 @@ public class GameStatisticContainer {
 					pl.append(EMPTY_DEFENSIVE);
 					pl.append(CLOSE_EMPTY_DEFENSIVE);
 				}
-
-				logger.log(Level.SEVERE,"{0}",pl);  //$NON-NLS-1$
 			}
 		}
 		logger.log(Level.FINE,DELIMITER_133);
@@ -1730,4 +1738,5 @@ public class GameStatisticContainer {
 		logger.log(Level.FINE,"{0}",pl); //$NON-NLS-1$
 		header.append(DELIMITER_32);
 	}
+
 }

@@ -203,7 +203,7 @@ public class NewTeamPageThreeWizard extends WizardPage implements Listener,Selec
 		}
 		
 		ElementListSelectionDialog dialog = new ElementListSelectionDialog(new Shell(), new LabelProvider());
-		dialog.setTitle("Ajout d'un nouvel officiel");
+		dialog.setTitle(Messages.NewTeamPageThreeWizard_AddOfficialLabel);
 		dialog.setElements(potientalOfficials.keySet().toArray(new String[potientalOfficials.size()]));
 		if (dialog.open() == Window.OK) {
 			String officialName = (String) dialog.getFirstResult();
@@ -230,8 +230,8 @@ public class NewTeamPageThreeWizard extends WizardPage implements Listener,Selec
 	 */
 	private void removeSelectedOfficial(List officialList, HashMap<String, Member> definedOfficials, java.util.List<Member> officials) {
 		MessageBox dialog = new MessageBox(new Shell(), SWT.ICON_QUESTION | SWT.OK | SWT.CANCEL);
-		dialog.setText("Suppression de membres");
-		dialog.setMessage("Etes vous sur de vouloir supprimer les membres qui ont été sélectionnés");
+		dialog.setText(Messages.NewTeamPageThreeWizard_RemoveTeamMemberTitle);
+		dialog.setMessage(Messages.NewTeamPageThreeWizard_RemoveTeamMemberMessage);
 		if (dialog.open() == SWT.OK) {
 			
 			for (int selectionIndice : officialList.getSelectionIndices()) {

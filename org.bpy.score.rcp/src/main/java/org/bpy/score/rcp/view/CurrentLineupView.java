@@ -121,7 +121,7 @@ public class CurrentLineupView extends AbstractContextualPanel implements Select
 	}
 	
 	/** Constant for no position (defensive or offensive */
-	public static final String NO_POSITION = "-1";
+	public static final String NO_POSITION = "-1"; //$NON-NLS-1$
 	
 	/** Id of the view */
     public static final String ID = "org.bpy.score.rcp.currentlineup.view"; //$NON-NLS-1$

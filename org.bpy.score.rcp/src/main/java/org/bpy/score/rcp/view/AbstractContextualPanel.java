@@ -59,6 +59,7 @@ public abstract class AbstractContextualPanel extends ViewPart {
 	
 	/** XText parser reference */
 	@Inject	protected IParser parser;
+	
 	/** Caret Listener */
 	private CaretListener caretListener;
 
@@ -139,8 +140,7 @@ public abstract class AbstractContextualPanel extends ViewPart {
 
 			@Override
 			public void partClosed(IWorkbenchPart part) {
-				IEditorPart currentEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-						.getActiveEditor();
+				IEditorPart currentEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 				if (currentEditor != null) {
 					Control control = currentEditor.getAdapter(Control.class);
 					if (control instanceof StyledText) {

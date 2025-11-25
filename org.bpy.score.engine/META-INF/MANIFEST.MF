@@ -14,9 +14,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit,
  org.apache.batik.css,
- org.bpy.score.game,
  org.bpy.score.internationalization;bundle-version="1.0.0",
- org.junit
+ org.junit,
+ org.bpy.score.game;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.bpy.score.engine.events,

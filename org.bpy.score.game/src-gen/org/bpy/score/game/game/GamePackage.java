@@ -5148,6 +5148,61 @@ public interface GamePackage extends EPackage
   int BATTER_ADVANCE_ON_FLY_ERROR_FEATURE_COUNT = DECISIVE_ERROR_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link org.bpy.score.game.game.impl.BatterAdvanceOnPopErrorImpl <em>Batter Advance On Pop Error</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.bpy.score.game.game.impl.BatterAdvanceOnPopErrorImpl
+   * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterAdvanceOnPopError()
+   * @generated
+   */
+  int BATTER_ADVANCE_ON_POP_ERROR = 104;
+
+  /**
+   * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BATTER_ADVANCE_ON_POP_ERROR__CURRENT_BATTER = DECISIVE_ERROR__CURRENT_BATTER;
+
+  /**
+   * The feature id for the '<em><b>More Advances</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BATTER_ADVANCE_ON_POP_ERROR__MORE_ADVANCES = DECISIVE_ERROR__MORE_ADVANCES;
+
+  /**
+   * The feature id for the '<em><b>Out</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BATTER_ADVANCE_ON_POP_ERROR__OUT = DECISIVE_ERROR__OUT;
+
+  /**
+   * The feature id for the '<em><b>Batter Advance</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BATTER_ADVANCE_ON_POP_ERROR__BATTER_ADVANCE = DECISIVE_ERROR__BATTER_ADVANCE;
+
+  /**
+   * The number of structural features of the '<em>Batter Advance On Pop Error</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BATTER_ADVANCE_ON_POP_ERROR_FEATURE_COUNT = DECISIVE_ERROR_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.bpy.score.game.game.impl.BatterAdvanceOnReceiveErrorImpl <em>Batter Advance On Receive Error</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5155,7 +5210,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterAdvanceOnReceiveError()
    * @generated
    */
-  int BATTER_ADVANCE_ON_RECEIVE_ERROR = 104;
+  int BATTER_ADVANCE_ON_RECEIVE_ERROR = 105;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5210,7 +5265,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterAdvanceOnThrowError()
    * @generated
    */
-  int BATTER_ADVANCE_ON_THROW_ERROR = 105;
+  int BATTER_ADVANCE_ON_THROW_ERROR = 106;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5265,7 +5320,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterAdvanceOnGdpWithError()
    * @generated
    */
-  int BATTER_ADVANCE_ON_GDP_WITH_ERROR = 106;
+  int BATTER_ADVANCE_ON_GDP_WITH_ERROR = 107;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5320,7 +5375,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnFlyed()
    * @generated
    */
-  int BATTER_OUT_ON_FLYED = 107;
+  int BATTER_OUT_ON_FLYED = 108;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5366,7 +5421,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnLine()
    * @generated
    */
-  int BATTER_OUT_ON_LINE = 108;
+  int BATTER_OUT_ON_LINE = 109;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5412,7 +5467,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnPopped()
    * @generated
    */
-  int BATTER_OUT_ON_POPPED = 109;
+  int BATTER_OUT_ON_POPPED = 110;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5458,7 +5513,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnFlyedFallBall()
    * @generated
    */
-  int BATTER_OUT_ON_FLYED_FALL_BALL = 110;
+  int BATTER_OUT_ON_FLYED_FALL_BALL = 111;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5504,7 +5559,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnPoppedFallBall()
    * @generated
    */
-  int BATTER_OUT_ON_POPPED_FALL_BALL = 111;
+  int BATTER_OUT_ON_POPPED_FALL_BALL = 112;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5550,7 +5605,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnLineDriveFallBall()
    * @generated
    */
-  int BATTER_OUT_ON_LINE_DRIVE_FALL_BALL = 112;
+  int BATTER_OUT_ON_LINE_DRIVE_FALL_BALL = 113;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5596,7 +5651,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnGroundedBall()
    * @generated
    */
-  int BATTER_OUT_ON_GROUNDED_BALL = 113;
+  int BATTER_OUT_ON_GROUNDED_BALL = 114;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5651,7 +5706,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutByRule()
    * @generated
    */
-  int BATTER_OUT_BY_RULE = 114;
+  int BATTER_OUT_BY_RULE = 115;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5697,7 +5752,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnAppeal()
    * @generated
    */
-  int BATTER_OUT_ON_APPEAL = 115;
+  int BATTER_OUT_ON_APPEAL = 116;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5743,7 +5798,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnGroundedDoublePlay()
    * @generated
    */
-  int BATTER_OUT_ON_GROUNDED_DOUBLE_PLAY = 116;
+  int BATTER_OUT_ON_GROUNDED_DOUBLE_PLAY = 117;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5789,7 +5844,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnSacrificeFly()
    * @generated
    */
-  int BATTER_OUT_ON_SACRIFICE_FLY = 117;
+  int BATTER_OUT_ON_SACRIFICE_FLY = 118;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5835,7 +5890,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnSacrificeFlyFallBall()
    * @generated
    */
-  int BATTER_OUT_ON_SACRIFICE_FLY_FALL_BALL = 118;
+  int BATTER_OUT_ON_SACRIFICE_FLY_FALL_BALL = 119;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5881,7 +5936,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnSacrificeHit()
    * @generated
    */
-  int BATTER_OUT_ON_SACRIFICE_HIT = 119;
+  int BATTER_OUT_ON_SACRIFICE_HIT = 120;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5927,7 +5982,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnInfieldFly()
    * @generated
    */
-  int BATTER_OUT_ON_INFIELD_FLY = 120;
+  int BATTER_OUT_ON_INFIELD_FLY = 121;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -5973,7 +6028,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnSwingedStrike()
    * @generated
    */
-  int BATTER_OUT_ON_SWINGED_STRIKE = 121;
+  int BATTER_OUT_ON_SWINGED_STRIKE = 122;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -6019,7 +6074,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnLookedStrike()
    * @generated
    */
-  int BATTER_OUT_ON_LOOKED_STRIKE = 122;
+  int BATTER_OUT_ON_LOOKED_STRIKE = 123;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -6065,7 +6120,7 @@ public interface GamePackage extends EPackage
    * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterOutOnReleasedStrike()
    * @generated
    */
-  int BATTER_OUT_ON_RELEASED_STRIKE = 123;
+  int BATTER_OUT_ON_RELEASED_STRIKE = 124;
 
   /**
    * The feature id for the '<em><b>Current Batter</b></em>' containment reference.
@@ -8243,6 +8298,16 @@ public interface GamePackage extends EPackage
    * @generated
    */
   EClass getBatterAdvanceOnFlyError();
+
+  /**
+   * Returns the meta object for class '{@link org.bpy.score.game.game.BatterAdvanceOnPopError <em>Batter Advance On Pop Error</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Batter Advance On Pop Error</em>'.
+   * @see org.bpy.score.game.game.BatterAdvanceOnPopError
+   * @generated
+   */
+  EClass getBatterAdvanceOnPopError();
 
   /**
    * Returns the meta object for class '{@link org.bpy.score.game.game.BatterAdvanceOnReceiveError <em>Batter Advance On Receive Error</em>}'.
@@ -10471,6 +10536,16 @@ public interface GamePackage extends EPackage
      * @generated
      */
     EClass BATTER_ADVANCE_ON_FLY_ERROR = eINSTANCE.getBatterAdvanceOnFlyError();
+
+    /**
+     * The meta object literal for the '{@link org.bpy.score.game.game.impl.BatterAdvanceOnPopErrorImpl <em>Batter Advance On Pop Error</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.bpy.score.game.game.impl.BatterAdvanceOnPopErrorImpl
+     * @see org.bpy.score.game.game.impl.GamePackageImpl#getBatterAdvanceOnPopError()
+     * @generated
+     */
+    EClass BATTER_ADVANCE_ON_POP_ERROR = eINSTANCE.getBatterAdvanceOnPopError();
 
     /**
      * The meta object literal for the '{@link org.bpy.score.game.game.impl.BatterAdvanceOnReceiveErrorImpl <em>Batter Advance On Receive Error</em>}' class.

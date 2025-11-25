@@ -6802,7 +6802,7 @@ ruleDecisiveError returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnReceiveErrorAction_1_0(),
+						grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnPopErrorAction_1_0(),
 						$current);
 				}
 			)
@@ -6831,9 +6831,9 @@ ruleDecisiveError returns [EObject current=null]
 			}
 			(
 				(
-					lv_batterAdvance_7_0=RULE_REACH_ON_RECEIVE_ERROR
+					lv_batterAdvance_7_0=RULE_REACH_ON_POP_ERROR
 					{
-						newLeafNode(lv_batterAdvance_7_0, grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_1_3_0());
+						newLeafNode(lv_batterAdvance_7_0, grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_POP_ERRORTerminalRuleCall_1_3_0());
 					}
 					{
 						if ($current==null) {
@@ -6843,7 +6843,7 @@ ruleDecisiveError returns [EObject current=null]
 							$current,
 							"batterAdvance",
 							lv_batterAdvance_7_0,
-							"org.bpy.score.game.Game.REACH_ON_RECEIVE_ERROR");
+							"org.bpy.score.game.Game.REACH_ON_POP_ERROR");
 					}
 				)
 			)
@@ -6853,7 +6853,7 @@ ruleDecisiveError returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnThrowErrorAction_2_0(),
+						grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnReceiveErrorAction_2_0(),
 						$current);
 				}
 			)
@@ -6882,9 +6882,9 @@ ruleDecisiveError returns [EObject current=null]
 			}
 			(
 				(
-					lv_batterAdvance_11_0=RULE_REACH_ON_THROW_ERROR
+					lv_batterAdvance_11_0=RULE_REACH_ON_RECEIVE_ERROR
 					{
-						newLeafNode(lv_batterAdvance_11_0, grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_2_3_0());
+						newLeafNode(lv_batterAdvance_11_0, grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_2_3_0());
 					}
 					{
 						if ($current==null) {
@@ -6894,7 +6894,7 @@ ruleDecisiveError returns [EObject current=null]
 							$current,
 							"batterAdvance",
 							lv_batterAdvance_11_0,
-							"org.bpy.score.game.Game.REACH_ON_THROW_ERROR");
+							"org.bpy.score.game.Game.REACH_ON_RECEIVE_ERROR");
 					}
 				)
 			)
@@ -6904,7 +6904,7 @@ ruleDecisiveError returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnGdpWithErrorAction_3_0(),
+						grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnThrowErrorAction_3_0(),
 						$current);
 				}
 			)
@@ -6933,9 +6933,9 @@ ruleDecisiveError returns [EObject current=null]
 			}
 			(
 				(
-					lv_batterAdvance_15_0=RULE_GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR
+					lv_batterAdvance_15_0=RULE_REACH_ON_THROW_ERROR
 					{
-						newLeafNode(lv_batterAdvance_15_0, grammarAccess.getDecisiveErrorAccess().getBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_3_3_0());
+						newLeafNode(lv_batterAdvance_15_0, grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_3_3_0());
 					}
 					{
 						if ($current==null) {
@@ -6945,6 +6945,57 @@ ruleDecisiveError returns [EObject current=null]
 							$current,
 							"batterAdvance",
 							lv_batterAdvance_15_0,
+							"org.bpy.score.game.Game.REACH_ON_THROW_ERROR");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnGdpWithErrorAction_4_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDecisiveErrorAccess().getCurrentBatterCurrentBatterParserRuleCall_4_1_0());
+					}
+					lv_currentBatter_17_0=ruleCurrentBatter
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDecisiveErrorRule());
+						}
+						set(
+							$current,
+							"currentBatter",
+							lv_currentBatter_17_0,
+							"org.bpy.score.game.Game.CurrentBatter");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			this_EXECUTE_18=RULE_EXECUTE
+			{
+				newLeafNode(this_EXECUTE_18, grammarAccess.getDecisiveErrorAccess().getEXECUTETerminalRuleCall_4_2());
+			}
+			(
+				(
+					lv_batterAdvance_19_0=RULE_GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR
+					{
+						newLeafNode(lv_batterAdvance_19_0, grammarAccess.getDecisiveErrorAccess().getBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_4_3_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getDecisiveErrorRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"batterAdvance",
+							lv_batterAdvance_19_0,
 							"org.bpy.score.game.Game.GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR");
 					}
 				)
@@ -9429,6 +9480,8 @@ RULE_K_WITH_ERROR : ('KS' RULE_REACH_ON_RECEIVE_ERROR|'KS' RULE_REACH_ON_THROW_E
 
 RULE_REACH_ON_FLY_ERROR : 'E' RULE_INT 'F' RULE_ADVANCE?;
 
+RULE_REACH_ON_POP_ERROR : 'E' RULE_INT 'P' RULE_ADVANCE?;
+
 RULE_REACH_ON_THROW_ERROR : RULE_INT? 'E' RULE_INT 'T' RULE_ADVANCE? 'b'?;
 
 RULE_REACH_ON_RECEIVE_ERROR : RULE_INT? 'E' RULE_INT RULE_ADVANCE? 'b'?;
@@ -9471,7 +9524,7 @@ RULE_RELEASED_STRIKE_OUT : 'K' ('S'|'L')? RULE_INT;
 
 RULE_INFIELD_FLY : 'IF' RULE_INT;
 
-RULE_SACRIFICE_BUNT_WITH_ERROR : ('SH' RULE_REACH_ON_RECEIVE_ERROR|'SH' RULE_REACH_ON_THROW_ERROR|'SH' RULE_REACH_ON_FLY_ERROR);
+RULE_SACRIFICE_BUNT_WITH_ERROR : ('SH' RULE_REACH_ON_RECEIVE_ERROR|'SH' RULE_REACH_ON_THROW_ERROR|'SH' RULE_REACH_ON_FLY_ERROR|'SH' RULE_REACH_ON_POP_ERROR);
 
 RULE_SACRIFICE_BUNT_WITH_FIELDER_CHOICE : 'SH' (RULE_FIELDER_CHOICE|RULE_FIELDER_CHOICE_WITH_PUTOUT);
 
@@ -9481,7 +9534,7 @@ RULE_SACRIFICE_FLY_FOUL_BALL : 'FSF' RULE_INT;
 
 RULE_SACRIFICE_FLY_WITH_FIELDER_CHOICE : 'SF' (RULE_FIELDER_CHOICE|RULE_FIELDER_CHOICE_WITH_PUTOUT);
 
-RULE_SACRIFICE_FLY_WITH_ERROR : 'SF' (RULE_REACH_ON_RECEIVE_ERROR|RULE_REACH_ON_FLY_ERROR);
+RULE_SACRIFICE_FLY_WITH_ERROR : 'SF' (RULE_REACH_ON_RECEIVE_ERROR|RULE_REACH_ON_FLY_ERROR|RULE_REACH_ON_POP_ERROR);
 
 RULE_SACRIFICE_FLY : 'SF' RULE_INT;
 

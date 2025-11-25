@@ -39,10 +39,14 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.bpy.score.reports.gamereports.PitcherStatistic#getGameLose <em>Game Lose</em>}</li>
  *   <li>{@link org.bpy.score.reports.gamereports.PitcherStatistic#getGameWin <em>Game Win</em>}</li>
  *   <li>{@link org.bpy.score.reports.gamereports.PitcherStatistic#getGameSave <em>Game Save</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.PitcherStatistic#getIps <em>Ips</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.PitcherStatistic#getPitcherOrder <em>Pitcher Order</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.PitcherStatistic#getFlyOuts <em>Fly Outs</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.PitcherStatistic#getGroundedOuts <em>Grounded Outs</em>}</li>
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getPitcherStatistic()
- * @model extendedMetaData="kind='element' name='PITCHER-STATISTICS'"
+ * @model extendedMetaData="kind='elementOnly' name='PITCHER-STATISTICS'"
  * @generated
  */
 public interface PitcherStatistic extends EObject {
@@ -669,5 +673,100 @@ public interface PitcherStatistic extends EObject {
 	 * @generated
 	 */
 	void setGameSave(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Ips</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ips</em>' attribute.
+	 * @see #setIps(double)
+	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getPitcherStatistic_Ips()
+	 * @model required="true"
+	 *        extendedMetaData="kind='element' name='IPS'"
+	 * @generated
+	 */
+	double getIps();
+
+	/**
+	 * Sets the value of the '{@link org.bpy.score.reports.gamereports.PitcherStatistic#getIps <em>Ips</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ips</em>' attribute.
+	 * @see #getIps()
+	 * @generated
+	 */
+	void setIps(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Pitcher Order</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pitcher Order</em>' attribute.
+	 * @see #setPitcherOrder(int)
+	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getPitcherStatistic_PitcherOrder()
+	 * @model default="-1" required="true"
+	 *        extendedMetaData="kind='element' name='PITCHER-ORDER'"
+	 * @generated
+	 */
+	int getPitcherOrder();
+
+	/**
+	 * Sets the value of the '{@link org.bpy.score.reports.gamereports.PitcherStatistic#getPitcherOrder <em>Pitcher Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pitcher Order</em>' attribute.
+	 * @see #getPitcherOrder()
+	 * @generated
+	 */
+	void setPitcherOrder(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Fly Outs</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Fly Outs</em>' attribute.
+	 * @see #setFlyOuts(int)
+	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getPitcherStatistic_FlyOuts()
+	 * @model default="-1" required="true"
+	 *        extendedMetaData="kind='element' name='FLY-OUTS'"
+	 * @generated
+	 */
+	int getFlyOuts();
+
+	/**
+	 * Sets the value of the '{@link org.bpy.score.reports.gamereports.PitcherStatistic#getFlyOuts <em>Fly Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fly Outs</em>' attribute.
+	 * @see #getFlyOuts()
+	 * @generated
+	 */
+	void setFlyOuts(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Grounded Outs</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Grounded Outs</em>' attribute.
+	 * @see #setGroundedOuts(int)
+	 * @see org.bpy.score.reports.gamereports.GameReportsPackage#getPitcherStatistic_GroundedOuts()
+	 * @model default="-1" required="true"
+	 *        extendedMetaData="kind='element' name='GROUNDED-OUTS'"
+	 * @generated
+	 */
+	int getGroundedOuts();
+
+	/**
+	 * Sets the value of the '{@link org.bpy.score.reports.gamereports.PitcherStatistic#getGroundedOuts <em>Grounded Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Grounded Outs</em>' attribute.
+	 * @see #getGroundedOuts()
+	 * @generated
+	 */
+	void setGroundedOuts(int value);
 
 } // PitcherStatistic

@@ -20,10 +20,13 @@ package org.bpy.score.game.util;
 
 import org.bpy.score.game.game.BatterAdvanceOnCatcherInterference;
 import org.bpy.score.game.game.BatterAdvanceOnDefensiveChoice;
+import org.bpy.score.game.game.BatterAdvanceOnDoubleHit;
 import org.bpy.score.game.game.BatterAdvanceOnFlyError;
 import org.bpy.score.game.game.BatterAdvanceOnGdpWithError;
 import org.bpy.score.game.game.BatterAdvanceOnGdpWithFielderChoice;
+import org.bpy.score.game.game.BatterAdvanceOnHomeRun;
 import org.bpy.score.game.game.BatterAdvanceOnIndiference;
+import org.bpy.score.game.game.BatterAdvanceOnInsidePark;
 import org.bpy.score.game.game.BatterAdvanceOnKAbr;
 import org.bpy.score.game.game.BatterAdvanceOnKPassBall;
 import org.bpy.score.game.game.BatterAdvanceOnKWildPitch;
@@ -31,12 +34,15 @@ import org.bpy.score.game.game.BatterAdvanceOnKWithError;
 import org.bpy.score.game.game.BatterAdvanceOnKWithFielderChoice;
 import org.bpy.score.game.game.BatterAdvanceOnObstruction;
 import org.bpy.score.game.game.BatterAdvanceOnOccupedBall;
+import org.bpy.score.game.game.BatterAdvanceOnPopError;
 import org.bpy.score.game.game.BatterAdvanceOnReceiveError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithFielderChoice;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeHitWithError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeHitWithFielderChoice;
+import org.bpy.score.game.game.BatterAdvanceOnSingleHit;
 import org.bpy.score.game.game.BatterAdvanceOnThrowError;
+import org.bpy.score.game.game.BatterAdvanceOnTripleHit;
 import org.bpy.score.game.game.BatterBalk;
 import org.bpy.score.game.game.BatterOutByRule;
 import org.bpy.score.game.game.BatterOutOnAppeal;
@@ -570,6 +576,16 @@ public class ScoreGameDisplay {
 	}
 
 	/**
+	 * Get string to display for a Batter Advance On Pop Error.
+	 * 
+	 * @param action String of the action
+	 * @return String to display
+	 */
+	public static String getDisplayCode(BatterAdvanceOnPopError action) {
+		return action.getBatterAdvance().replaceAll(PATTERN_REMOVE_MORE_ADVANCE,""); //$NON-NLS-1$
+	}
+
+	/**
 	 * Get string to display for a Batter Advance On K Pass Ball.
 	 * 
 	 * @param action String of the action
@@ -702,6 +718,56 @@ public class ScoreGameDisplay {
 	 */
 	public static String getDisplayCode(BatterOutOnFlyedFallBall action) {
 		return action.getBatterOut();
+	}
+
+	/**
+	 * Get string to display for a single hit
+	 * 
+	 * @param action String of the action
+	 * @return String to display
+	 */
+	public static String getDisplayCode(BatterAdvanceOnSingleHit action) {
+		return action.getHit().replace("1B", ""); //$NON-NLS-1$ //$NON-NLS-2$
+	}
+
+	/**
+	 * Get string to display for a double hit
+	 * 
+	 * @param action String of the action
+	 * @return String to display
+	 */
+	public static String getDisplayCode(BatterAdvanceOnDoubleHit action) {
+		return action.getHit().replace("2B", ""); //$NON-NLS-1$ //$NON-NLS-2$
+	}
+
+	/**
+	 * Get string to display for a triple hit
+	 * 
+	 * @param action String of the action
+	 * @return String to display
+	 */
+	public static String getDisplayCode(BatterAdvanceOnTripleHit action) {
+		return action.getHit().replace("3B", ""); //$NON-NLS-1$ //$NON-NLS-2$
+	}
+
+	/**
+	 * Get string to display for a homerun
+	 * 
+	 * @param action String of the action
+	 * @return String to display
+	 */
+	public static String getDisplayCode(BatterAdvanceOnHomeRun action) {
+		return action.getHit().replace("HR", ""); //$NON-NLS-1$ //$NON-NLS-2$
+	}
+
+	/**
+	 * Get string to display for a inside park
+	 * 
+	 * @param action String of the action
+	 * @return String to display
+	 */
+	public static String getDisplayCode(BatterAdvanceOnInsidePark action) {
+		return action.getHit().replace("IHR", ""); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 }

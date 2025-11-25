@@ -270,7 +270,7 @@ public class RunnerPositionManager {
 				logger.log(Level.WARNING,messages);
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
-			logger.log(Level.SEVERE, e.getMessage());
+			logger.log(Level.SEVERE, e.getLocalizedMessage());
 		}
 	}
 

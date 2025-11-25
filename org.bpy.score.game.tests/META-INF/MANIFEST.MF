@@ -6,10 +6,14 @@ Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.bpy.score.game.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.junit;bundle-version="4.12.0",
- org.eclipse.xtext.testing,
+Require-Bundle: org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
- org.bpy.score.game;bundle-version="1.0.0"
+ org.bpy.score.game;bundle-version="1.0.0",
+ junit-jupiter-api;bundle-version="5.9.0",
+ junit-platform-suite-api;bundle-version="1.9.0",
+ junit-platform-runner;bundle-version="1.9.0",
+ org.bpy.score.internationalization;bundle-version="1.0.0",
+ org.eclipse.osgi;bundle-version="3.18.100"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.bpy.score.game.tests;x-internal=true

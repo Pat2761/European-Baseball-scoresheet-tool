@@ -261,6 +261,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//BatterAdvanceOnInsidePark/isEarned"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//BatterAdvanceOnFlyError"/>
+    <genClasses ecoreClass="Game.ecore#//BatterAdvanceOnPopError"/>
     <genClasses ecoreClass="Game.ecore#//BatterAdvanceOnReceiveError"/>
     <genClasses ecoreClass="Game.ecore#//BatterAdvanceOnThrowError"/>
     <genClasses ecoreClass="Game.ecore#//BatterAdvanceOnGdpWithError"/>

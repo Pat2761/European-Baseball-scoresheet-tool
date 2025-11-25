@@ -106,7 +106,7 @@ public class ScoringSheetManager extends ScoringSheetGraphicalManager {
 			document.open();
 
 		} catch (DocumentException|FileNotFoundException e) {
-			logger.log(Level.SEVERE,e.getMessage());
+			logger.log(Level.SEVERE,e.getLocalizedMessage());
 		}
 	}
 
@@ -176,7 +176,7 @@ public class ScoringSheetManager extends ScoringSheetGraphicalManager {
 
 		if (game.getForfeitGame() != null) {
 
-			setWaterMarked(rootCause + " " + game.getForfeitGame().getTeam().toUpperCase());
+			setWaterMarked(rootCause + " " + game.getForfeitGame().getTeam().toUpperCase()); //$NON-NLS-1$
 
 			if (game.getForfeitGame().getTeam().equals(EngineConstants.HOMETEAM)) {
 				setGeneralScore(9, 0);
@@ -253,7 +253,7 @@ public class ScoringSheetManager extends ScoringSheetGraphicalManager {
 		createEmptyHomeTeamPage();
 		fillHeaderHomeTeamPage(game);
 
-		setWaterMarked(rootCause + " " + game.getForfeitGame().getTeam().toUpperCase());
+		setWaterMarked(rootCause + " " + game.getForfeitGame().getTeam().toUpperCase()); //$NON-NLS-1$
 
 		releaseGraphicalContext();
 	}

@@ -66,7 +66,7 @@ public class ClubDataParser {
 	public static final Logger logger = Logger.getLogger(ClubDataParser.class.getSimpleName());
 
 	/** End of line with "*/ 
-	public static final String END_OF_LINE_WITH_COMMA = "\";\r\n";
+	public static final String END_OF_LINE_WITH_COMMA = "\";\r\n"; //$NON-NLS-1$
 	
 	/** Google injector for the XText resources*/
 	@Inject 
@@ -302,7 +302,7 @@ public class ClubDataParser {
 			membersByTeamsAndCategory = new HashMap<>();
 		}
 		
-		String key = teamName+ ":" + compName;
+		String key = teamName+ ":" + compName; //$NON-NLS-1$
 		if (membersByTeamsAndCategory.containsKey(key)) {
 			return membersByTeamsAndCategory.get(key);
 		} else {
@@ -313,7 +313,7 @@ public class ClubDataParser {
 					manageClubResource(resource);
 					
 					if (resource instanceof IFile) {
-						if ((resource.getFileExtension() != null) && resource.getFileExtension().equalsIgnoreCase("club")) {
+						if ((resource.getFileExtension() != null) && resource.getFileExtension().equalsIgnoreCase("club")) { //$NON-NLS-1$
 							URI modelURI = URI.createPlatformResourceURI(resource.getFullPath().toString(), true);
 							Resource xtextResource = resourceSet.getResource(modelURI, true);
 				
@@ -342,7 +342,7 @@ public class ClubDataParser {
 					}
 				}
 			} catch (CoreException e) {
-				logger.log(Level.SEVERE, e.getMessage());
+				logger.log(Level.SEVERE, e.getLocalizedMessage());
 			}
 		}
 		return players;
@@ -368,7 +368,7 @@ public class ClubDataParser {
 				}
 			}
 		} catch (CoreException e) {
-			logger.log(Level.SEVERE, e.getMessage());
+			logger.log(Level.SEVERE, e.getLocalizedMessage());
 		}
 	}
 
@@ -378,7 +378,7 @@ public class ClubDataParser {
 	 * @param iFile reference to file
 	 */
 	public void parseData(IFile iFile) {
-		if ((iFile.getFileExtension() != null) && iFile.getFileExtension().equalsIgnoreCase("club")) {
+		if ((iFile.getFileExtension() != null) && iFile.getFileExtension().equalsIgnoreCase("club")) { //$NON-NLS-1$
 
 			URI modelURI = URI.createPlatformResourceURI(iFile.getFullPath().toString(), true);
 			Resource xtextResource = resourceSet.getResource(modelURI, true);
@@ -464,27 +464,27 @@ public class ClubDataParser {
 	 * @param rootFolder where to export the file
 	 */
 	public void exportAsFile(IFolder rootFolder) {
-		StringBuilder strBuffer = new StringBuilder("club \"" + getClubName() + "\" {\r\n");
-		strBuffer.append("\tcity = \"" + getCityName() + "\";\r\n\r\n");
-		strBuffer.append("\tmembers {\r\n");
+		StringBuilder strBuffer = new StringBuilder("club \"" + getClubName() + "\" {\r\n"); //$NON-NLS-1$ //$NON-NLS-2$
+		strBuffer.append("\tcity = \"" + getCityName() + "\";\r\n\r\n"); //$NON-NLS-1$ //$NON-NLS-2$
+		strBuffer.append("\tmembers {\r\n"); //$NON-NLS-1$
 		for (Member member : getMembers()) {
-			strBuffer.append("\t\tmember name = \"" + member.getName() + "\"");
-			if (member.getShortName() != null && !"".equals(member.getShortName())) {
-				strBuffer.append(" shortName = \"" + member.getShortName() + "\"");
+			strBuffer.append("\t\tmember name = \"" + member.getName() + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+			if (member.getShortName() != null && !"".equals(member.getShortName())) { //$NON-NLS-1$
+				strBuffer.append(" shortName = \"" + member.getShortName() + "\""); //$NON-NLS-1$ //$NON-NLS-2$
 			}
-			strBuffer.append(" licenceNumber = \"" + member.getLicenceNumber() + "\"");
-			strBuffer.append(";\r\n");
+			strBuffer.append(" licenceNumber = \"" + member.getLicenceNumber() + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+			strBuffer.append(";\r\n"); //$NON-NLS-1$
 			
 		}
-		strBuffer.append("\t}\r\n");
-		strBuffer.append("\r\n");
+		strBuffer.append("\t}\r\n"); //$NON-NLS-1$
+		strBuffer.append("\r\n"); //$NON-NLS-1$
 
 		exportCategories(strBuffer);
 		exportOfficials(strBuffer);
 
-		strBuffer.append("}\r\n");
+		strBuffer.append("}\r\n"); //$NON-NLS-1$
 
-		IFile clubFile = rootFolder.getFile(getClubName() + ".club");
+		IFile clubFile = rootFolder.getFile(getClubName() + ".club"); //$NON-NLS-1$
 		if (!clubFile.exists()) {
 			try {
 				clubFile.create(new ByteArrayInputStream(strBuffer.toString().getBytes()), true,
@@ -494,7 +494,7 @@ public class ClubDataParser {
 				IDE.openEditor(page, clubFile);
 
 			} catch (CoreException e) {
-				logger.log(Level.SEVERE, e.getMessage());
+				logger.log(Level.SEVERE, e.getLocalizedMessage());
 			}
 		}
 	}
@@ -506,17 +506,17 @@ public class ClubDataParser {
 	 */
 	private void exportOfficials(StringBuilder strBuffer) {
 		if (!scoreKeepers.isEmpty() || !umpires.isEmpty() ) {
-			strBuffer.append("\tofficials {\r\n");
+			strBuffer.append("\tofficials {\r\n"); //$NON-NLS-1$
 			
 			for (Member scoreKeeper : scoreKeepers) {
-				strBuffer.append("\t\tscoreKeeper name = \"" + scoreKeeper.getName() + END_OF_LINE_WITH_COMMA);
+				strBuffer.append("\t\tscoreKeeper name = \"" + scoreKeeper.getName() + END_OF_LINE_WITH_COMMA); //$NON-NLS-1$
 			}
 			for (Member umpire : umpires) {
-				strBuffer.append("\t\tumpire name = \"" + umpire.getName() + END_OF_LINE_WITH_COMMA);
+				strBuffer.append("\t\tumpire name = \"" + umpire.getName() + END_OF_LINE_WITH_COMMA); //$NON-NLS-1$
 			}
 			
-			strBuffer.append("\t}");
-			strBuffer.append("\r\n");
+			strBuffer.append("\t}"); //$NON-NLS-1$
+			strBuffer.append("\r\n"); //$NON-NLS-1$
 		}
 	}
 
@@ -528,12 +528,12 @@ public class ClubDataParser {
 	private void exportCategories(StringBuilder strBuffer) {
 		if (!categories.isEmpty()) {
 			for (Entry<String, List<Member>> catgoryEntry : categories.entrySet()) {
-				strBuffer.append("\tteam \"" + catgoryEntry.getKey() +"\" {\r\n");
+				strBuffer.append("\tteam \"" + catgoryEntry.getKey() +"\" {\r\n"); //$NON-NLS-1$ //$NON-NLS-2$
 				for (Member member : catgoryEntry.getValue()) {
-					strBuffer.append("\t\tplayer name = \"" + member.getName() + END_OF_LINE_WITH_COMMA);
+					strBuffer.append("\t\tplayer name = \"" + member.getName() + END_OF_LINE_WITH_COMMA); //$NON-NLS-1$
 				}									
-				strBuffer.append("\t}\r\n");
-				strBuffer.append("\r\n");
+				strBuffer.append("\t}\r\n"); //$NON-NLS-1$
+				strBuffer.append("\r\n"); //$NON-NLS-1$
 			}	
 		}
 	}

@@ -59,9 +59,9 @@ public class NewGamePageOneWizard extends WizardPage implements SelectionListene
 	public static final Logger logger = Logger.getLogger(NewGamePageOneWizard.class.getSimpleName());
 	
 	/** Date format */
-	private static final String DATE_FORMAT = "%02d/%02d/%04d";
+	private static final String DATE_FORMAT = "%02d/%02d/%04d"; //$NON-NLS-1$
 	/** Time format */
-	private static final String TIME_FORMAT = "%02d:%02d";
+	private static final String TIME_FORMAT = "%02d:%02d"; //$NON-NLS-1$
 	
 	/** Text widget for the game name */
 	private Text gameName;
@@ -265,7 +265,7 @@ public class NewGamePageOneWizard extends WizardPage implements SelectionListene
 
 		Label lblDate = new Label(container, SWT.NONE);
 		lblDate.setBounds(371, 10, 133, 16);
-		lblDate.setText("Date :");
+		lblDate.setText(Messages.NewGamePageOneWizard_DateLabel);
 
 		Label lblStartingTable = new Label(container, SWT.NONE);
 		lblStartingTable.setText(Messages.NewGamePageOneWizard_StartTime);
@@ -470,7 +470,7 @@ public class NewGamePageOneWizard extends WizardPage implements SelectionListene
 		}
 
 		if (categoryTxt.getText().isBlank()) {
-			setErrorMessage("Le champs 'Catégorie' ne peut pas être vide");
+			setErrorMessage(Messages.NewGamePageOneWizard_EmptyCategoryFileError);
 			setPageComplete(false);
 			return;
 		}

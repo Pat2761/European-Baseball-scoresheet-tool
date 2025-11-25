@@ -7,5 +7,6 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.bpy.score.internationalization.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.bpy.score.internationalization;bundle-version="1.0.0",
- org.junit
+ org.junit,
+ junit-jupiter-api;bundle-version="5.9.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17

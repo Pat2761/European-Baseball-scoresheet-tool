@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Hit_By_Pitch extends AbstractWBSCUnitTest {
 
@@ -37,14 +36,14 @@ public class WBSC_2016_Offense_Hit_By_Pitch extends AbstractWBSCUnitTest {
     buf.append("        /* Le premier batteur frappe un hit en champ centre */\r\n");
     buf.append("        action { batter -> 1B8 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant est touché par un lancer régulier, il gagne la première base et le coureur avance */\r\n");
+    buf.append("        /* Le batteur suivant est touchï¿½ par un lancer rï¿½gulier, il gagne la premiï¿½re base et le coureur avance */\r\n");
     buf.append("        action { batter -> HP, runner1 -> + }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -87,7 +86,7 @@ public class WBSC_2016_Offense_Hit_By_Pitch extends AbstractWBSCUnitTest {
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

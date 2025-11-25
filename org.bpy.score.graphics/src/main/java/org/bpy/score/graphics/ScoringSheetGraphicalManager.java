@@ -644,6 +644,8 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 
 	/** Font  size 4 bold */
 	protected Font bold4Font;
+	/** Font  size 5 bold */
+	protected Font bold5Font;
 	/** Font  size 6 bold */
 	protected Font bold6Font;
 	/** Font  size 7 bold */
@@ -722,6 +724,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 		normal7Font = new Font(FONT_NAME, 0, 7);
 		normal8Font = new Font(FONT_NAME, 0, 8);
 		bold4Font = new Font(FONT_NAME, Font.BOLD, 4);
+		bold5Font = new Font(FONT_NAME, Font.BOLD, 5);
 		bold6Font = new Font(FONT_NAME, Font.BOLD, 6);
 		bold7Font = new Font(FONT_NAME, Font.BOLD, 7);
 		bold10Font = new Font(FONT_NAME, Font.BOLD, 10);
@@ -936,7 +939,6 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 
 	@Override
 	public void startInning(HalfInning halfInning) {
-
 		countSubsByColumn = new HashMap<>();
 
 		if (sheetTeam.equals(halfInning.getTeam())) {
@@ -1036,7 +1038,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 
 	@Override
 	public void closeGame() {
-
+		
 		LineupManager lineup = (sheetTeam.equals(EngineConstants.HOMETEAM) ? hometeamLineup : visitorLineup);
 		for (Entry<String, LineupEntry> entry : lineup.getOffensivePlayers().entrySet()) {
 			LineupEntry player = entry.getValue();
@@ -1117,7 +1119,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnOtherPlayerError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnOtherPlayerError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			int runnerPosition;
@@ -1147,7 +1149,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnNoDecisiveObstruction action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNoDecisiveObstruction action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			int runnerPosition = runnerPositionManager.getLastPlayerPositionSetted();
@@ -1174,33 +1176,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnDefensiveChoice moreAdvance) throws OccupedbaseException {
-		if (currentTeam.equals(sheetTeam)) {
-			int runnerPosition = runnerPositionManager.getLastPlayerPositionSetted();
-
-			int baseWin = ScoreGameAdvanceUtil.getBaseWin(moreAdvance);
-
-			Point point = (Point) runnerPositionManager.getPlayerAssociatedObject(runnerPosition, SQUARE_POSITION);
-			Point pointDrawPosition = getPosition(point.x, point.y);
-
-			drawStringInSquarePosition(bold7Font, ScoreGameDisplay.getDisplayCode(moreAdvance), pointDrawPosition,
-					runnerPosition + 1);
-
-			if (!(moreAdvance.eContainer() instanceof Action)) {
-				drawContinuation(runnerPosition, pointDrawPosition);
-			}
-			if (baseWin > 1) {
-				drawMoreAdvanceArrow(runnerPosition + 1, runnerPosition + baseWin, pointDrawPosition);
-			}
-
-			drawAdvance(runnerPosition, baseWin, point, moreAdvance.getIsEarned());
-
-			super.makeActionOn(moreAdvance);
-		}
-	}
-
-	@Override
-	protected void makeActionOn(RunnerAdvanceOnNonDecisiveFlyError moreAdvance) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnDefensiveChoice moreAdvance) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition = runnerPositionManager.getLastPlayerPositionSetted();
 
@@ -1226,7 +1202,33 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnRule action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNonDecisiveFlyError moreAdvance) throws OccupedbaseException {
+		if (currentTeam.equals(sheetTeam)) {
+			int runnerPosition = runnerPositionManager.getLastPlayerPositionSetted();
+
+			int baseWin = ScoreGameAdvanceUtil.getBaseWin(moreAdvance);
+
+			Point point = (Point) runnerPositionManager.getPlayerAssociatedObject(runnerPosition, SQUARE_POSITION);
+			Point pointDrawPosition = getPosition(point.x, point.y);
+
+			drawStringInSquarePosition(bold7Font, ScoreGameDisplay.getDisplayCode(moreAdvance), pointDrawPosition,
+					runnerPosition + 1);
+
+			if (!(moreAdvance.eContainer() instanceof Action)) {
+				drawContinuation(runnerPosition, pointDrawPosition);
+			}
+			if (baseWin > 1) {
+				drawMoreAdvanceArrow(runnerPosition + 1, runnerPosition + baseWin, pointDrawPosition);
+			}
+
+			drawAdvance(runnerPosition, baseWin, point, moreAdvance.getIsEarned());
+
+			super.makeActionOn(moreAdvance);
+		}
+	}
+
+	@Override
+	public void makeActionOn(RunnerAdvanceOnRule action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -1257,7 +1259,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnNonDecisiveReceiveError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNonDecisiveReceiveError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			int runnerPosition;
@@ -1289,7 +1291,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnNonDecisiveThrowError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnNonDecisiveThrowError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -1320,7 +1322,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnReceiveError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnReceiveError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -1351,7 +1353,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnThrowError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnThrowError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -1382,7 +1384,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnIndiference action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnIndiference action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			int runnerPosition;
@@ -1408,37 +1410,9 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnThrow action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnThrow action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
-			int runnerPosition;
-			if (action.eContainer() instanceof Action) {
-				runnerPosition = ScoreGameUtil.getRunnerNumber(action.getRunner());
-			} else {
-				runnerPosition = runnerPositionManager.getLastPlayerPositionSetted();
-			}
-
-			int baseWin = ScoreGameAdvanceUtil.getBaseWin(action);
-
-			Point point = (Point) runnerPositionManager.getPlayerAssociatedObject(runnerPosition, SQUARE_POSITION);
-			Point pointDrawPosition = getPosition(point.x, point.y);
-
-			drawStringInSquarePosition(bold7Font, ScoreGameDisplay.getDisplayCode(action), pointDrawPosition,
-					runnerPosition + baseWin);
-
-			if (!(action.eContainer() instanceof Action)) {
-				drawContinuation(runnerPosition, pointDrawPosition);
-			}
-
-			drawAdvance(runnerPosition, baseWin, point, action.getIsEarned());
-
-			super.makeActionOn(action);
-		}
-	}
-
-	@Override
-	protected void makeActionOn(RunnerAdvanceOnOccupedBall action) throws OccupedbaseException {
-		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
 				runnerPosition = ScoreGameUtil.getRunnerNumber(action.getRunner());
@@ -1465,7 +1439,35 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnCaughtStealingWithError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnOccupedBall action) throws OccupedbaseException {
+		if (currentTeam.equals(sheetTeam)) {
+			int runnerPosition;
+			if (action.eContainer() instanceof Action) {
+				runnerPosition = ScoreGameUtil.getRunnerNumber(action.getRunner());
+			} else {
+				runnerPosition = runnerPositionManager.getLastPlayerPositionSetted();
+			}
+
+			int baseWin = ScoreGameAdvanceUtil.getBaseWin(action);
+
+			Point point = (Point) runnerPositionManager.getPlayerAssociatedObject(runnerPosition, SQUARE_POSITION);
+			Point pointDrawPosition = getPosition(point.x, point.y);
+
+			drawStringInSquarePosition(bold7Font, ScoreGameDisplay.getDisplayCode(action), pointDrawPosition,
+					runnerPosition + baseWin);
+
+			if (!(action.eContainer() instanceof Action)) {
+				drawContinuation(runnerPosition, pointDrawPosition);
+			}
+
+			drawAdvance(runnerPosition, baseWin, point, action.getIsEarned());
+
+			super.makeActionOn(action);
+		}
+	}
+
+	@Override
+	public void makeActionOn(RunnerAdvanceOnCaughtStealingWithError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -1498,7 +1500,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnPickOffWithError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnPickOffWithError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -1531,7 +1533,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnBalk action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnBalk action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1562,7 +1564,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnDecisiveObstruction action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnDecisiveObstruction action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1594,7 +1596,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnPassBall action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnPassBall action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1629,7 +1631,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnWildPitch action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnWildPitch action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1664,7 +1666,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnStolenBase action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnStolenBase action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1692,7 +1694,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnFielderChoice action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1718,7 +1720,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceOnError action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceOnError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1744,7 +1746,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerAdvanceByBatterAction action) throws OccupedbaseException {
+	public void makeActionOn(RunnerAdvanceByBatterAction action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			int runnerPosition;
@@ -1771,7 +1773,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerOutOnAppeal action) {
+	public void makeActionOn(RunnerOutOnAppeal action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1796,7 +1798,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerOutByRules action) {
+	public void makeActionOn(RunnerOutByRules action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1820,7 +1822,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerOutOnFielderAction action) {
+	public void makeActionOn(RunnerOutOnFielderAction action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -1842,7 +1844,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerOutOnPickOff action) {
+	public void makeActionOn(RunnerOutOnPickOff action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1864,7 +1866,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerOutOnCaugthStealing action) {
+	public void makeActionOn(RunnerOutOnCaugthStealing action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1886,7 +1888,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerMustBeOutOnError action) {
+	public void makeActionOn(RunnerMustBeOutOnError action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 
@@ -1921,7 +1923,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	 * ------------------------------
 	 */
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnError action) {
+	public void makeActionOn(RunnerDontAdvanceOnError action) {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 			Point pointDrawPosition = getPosition(point.x, point.y);
@@ -1933,7 +1935,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnPickOffWithError action) {
+	public void makeActionOn(RunnerDontAdvanceOnPickOffWithError action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			int runnerPosition;
@@ -1953,7 +1955,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnCaughtStealingWithError action) {
+	public void makeActionOn(RunnerDontAdvanceOnCaughtStealingWithError action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -1974,7 +1976,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnThrowError action) {
+	public void makeActionOn(RunnerDontAdvanceOnThrowError action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -1993,7 +1995,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnReceiveError action) {
+	public void makeActionOn(RunnerDontAdvanceOnReceiveError action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -2012,7 +2014,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnNonDecisiveThrowError action) {
+	public void makeActionOn(RunnerDontAdvanceOnNonDecisiveThrowError action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -2031,7 +2033,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(RunnerDontAdvanceOnNonDecisiveReceiveError action) {
+	public void makeActionOn(RunnerDontAdvanceOnNonDecisiveReceiveError action) {
 		if (currentTeam.equals(sheetTeam)) {
 			int runnerPosition;
 			if (action.eContainer() instanceof Action) {
@@ -2059,7 +2061,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	 * ------------------------------
 	 */
 	@Override
-	protected void makeActionOn(BatterMustOutOnFlyFoulBall action) {
+	public void makeActionOn(BatterMustOutOnFlyFoulBall action) {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 			Point pointDrawPosition = getPosition(point.x, point.y);
@@ -2071,7 +2073,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterLostTurn action) {
+	public void makeActionOn(BatterLostTurn action) {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2084,7 +2086,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnDefensiveChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnDefensiveChoice action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2105,7 +2107,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 	
 	@Override
-	protected void makeActionOn(BatterAdvanceOnIndiference action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnIndiference action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2122,7 +2124,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterBalk action) {
+	public void makeActionOn(BatterBalk action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2139,7 +2141,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnOccupedBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnOccupedBall action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2164,7 +2166,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnKWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKWithFielderChoice action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2185,7 +2187,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnObstruction action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnObstruction action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2205,7 +2207,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnCatcherInterference action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnCatcherInterference action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2225,7 +2227,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnSacrificeFlyWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeFlyWithFielderChoice action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2245,7 +2247,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnSacrificeFlyWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeFlyWithError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2270,7 +2272,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnSacrificeHitWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeHitWithFielderChoice action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2289,7 +2291,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnSacrificeHitWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSacrificeHitWithError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2313,7 +2315,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnKWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKWithError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2338,7 +2340,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnKAbr action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKAbr action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2358,7 +2360,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnKWildPitch action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKWildPitch action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2383,7 +2385,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnKPassBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnKPassBall action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2408,7 +2410,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnHitByPitch action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnHitByPitch action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2428,7 +2430,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnIntentionalBaseOnBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnIntentionalBaseOnBall action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2448,7 +2450,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnBaseOnBall action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnBaseOnBall action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2468,13 +2470,13 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnInsidePark action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnInsidePark action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
 			Point pointDrawPosition = getPosition(point.x, point.y);
-			drawHomeRunHit("IHR", pointDrawPosition, ScoreGameUtil.getHitLocation(action)); //$NON-NLS-1$
+			drawHomeRunHit("IHR", pointDrawPosition, ScoreGameDisplay.getDisplayCode(action)); //$NON-NLS-1$
 			drawAdvance(0, 4, point, action.getIsEarned());
 
 			super.makeActionOn(action);
@@ -2485,13 +2487,13 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnHomeRun action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnHomeRun action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
 			Point pointDrawPosition = getPosition(point.x, point.y);
-			drawHomeRunHit("HR", pointDrawPosition, ScoreGameUtil.getHitLocation(action)); //$NON-NLS-1$
+			drawHomeRunHit("HR", pointDrawPosition, ScoreGameDisplay.getDisplayCode(action)); //$NON-NLS-1$
 			drawAdvance(0, 4, point, action.getIsEarned());
 
 			super.makeActionOn(action);
@@ -2502,12 +2504,12 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnTripleHit action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnTripleHit action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 			Point pointDrawPosition = getPosition(point.x, point.y);
-			drawTripleHit(pointDrawPosition, ScoreGameUtil.getHitLocation(action));
+			drawTripleHit(pointDrawPosition, ScoreGameDisplay.getDisplayCode(action));
 			drawAdvance(0, 3, point, null);
 
 			if (action.getOut() != null) {
@@ -2521,12 +2523,12 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnDoubleHit action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnDoubleHit action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 			Point pointDrawPosition = getPosition(point.x, point.y);
-			drawDoubleHit(pointDrawPosition, ScoreGameUtil.getHitLocation(action));
+			drawDoubleHit(pointDrawPosition, ScoreGameDisplay.getDisplayCode(action));
 			drawAdvance(0, 2, point, null);
 
 			if (action.getOut() != null) {
@@ -2540,12 +2542,12 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnSingleHit action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnSingleHit action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 			Point pointDrawPosition = getPosition(point.x, point.y);
-			drawSingleHit(pointDrawPosition, ScoreGameUtil.getHitLocation(action));
+			drawSingleHit(pointDrawPosition, ScoreGameDisplay.getDisplayCode(action));
 			drawAdvance(0, 1, point, null);
 
 			if (action.getOut() != null) {
@@ -2559,7 +2561,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnGdpWithError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnGdpWithError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 			int baseWin = ScoreGameAdvanceUtil.getBaseWin(action);
@@ -2582,7 +2584,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnGdpWithFielderChoice action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnGdpWithFielderChoice action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 			int baseWin = ScoreGameAdvanceUtil.getBaseWin(action);
@@ -2605,7 +2607,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnThrowError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnThrowError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2630,31 +2632,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterAdvanceOnReceiveError action) throws OccupedbaseException {
-		if (currentTeam.equals(sheetTeam)) {
-			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
-
-			int baseWin = ScoreGameAdvanceUtil.getBaseWin(action);
-
-			Point pointDrawPosition = getPosition(point.x, point.y);
-			drawBatterGenericAction(ScoreGameDisplay.getDisplayCode(action), pointDrawPosition);
-			drawAdvance(0, baseWin, point, null);
-			if (baseWin > 1) {
-				drawMoreAdvanceArrow(1, baseWin, pointDrawPosition);
-			}
-
-			if (action.getOut() != null) {
-				drawContinuation(baseWin, pointDrawPosition);
-			}
-			super.makeActionOn(action);
-
-			runnerPositionManager.linkObjectToPlayer(baseWin, SQUARE_POSITION, new Point(point.x, point.y));
-			playerSquareManagers.get(currentTeam).setNextBatterPosition();
-		}
-	}
-
-	@Override
-	protected void makeActionOn(BatterAdvanceOnFlyError action) throws OccupedbaseException {
+	public void makeActionOn(BatterAdvanceOnReceiveError action) throws OccupedbaseException {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2678,7 +2656,55 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnInfieldFly action) {
+	public void makeActionOn(BatterAdvanceOnFlyError action) throws OccupedbaseException {
+		if (currentTeam.equals(sheetTeam)) {
+			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
+
+			int baseWin = ScoreGameAdvanceUtil.getBaseWin(action);
+
+			Point pointDrawPosition = getPosition(point.x, point.y);
+			drawBatterGenericAction(ScoreGameDisplay.getDisplayCode(action), pointDrawPosition);
+			drawAdvance(0, baseWin, point, null);
+			if (baseWin > 1) {
+				drawMoreAdvanceArrow(1, baseWin, pointDrawPosition);
+			}
+
+			if (action.getOut() != null) {
+				drawContinuation(baseWin, pointDrawPosition);
+			}
+			super.makeActionOn(action);
+
+			runnerPositionManager.linkObjectToPlayer(baseWin, SQUARE_POSITION, new Point(point.x, point.y));
+			playerSquareManagers.get(currentTeam).setNextBatterPosition();
+		}
+	}
+
+	@Override
+	public void makeActionOn(BatterAdvanceOnPopError action) throws OccupedbaseException {
+		if (currentTeam.equals(sheetTeam)) {
+			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
+
+			int baseWin = ScoreGameAdvanceUtil.getBaseWin(action);
+
+			Point pointDrawPosition = getPosition(point.x, point.y);
+			drawBatterGenericAction(ScoreGameDisplay.getDisplayCode(action), pointDrawPosition);
+			drawAdvance(0, baseWin, point, null);
+			if (baseWin > 1) {
+				drawMoreAdvanceArrow(1, baseWin, pointDrawPosition);
+			}
+
+			if (action.getOut() != null) {
+				drawContinuation(baseWin, pointDrawPosition);
+			}
+			super.makeActionOn(action);
+
+			runnerPositionManager.linkObjectToPlayer(baseWin, SQUARE_POSITION, new Point(point.x, point.y));
+			playerSquareManagers.get(currentTeam).setNextBatterPosition();
+		}
+	}
+
+	@Override
+	public void makeActionOn(BatterOutOnInfieldFly action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2691,7 +2717,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnSacrificeHit action) {
+	public void makeActionOn(BatterOutOnSacrificeHit action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2704,7 +2730,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnSacrificeFlyFallBall action) {
+	public void makeActionOn(BatterOutOnSacrificeFlyFallBall action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2717,7 +2743,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnSacrificeFly action) {
+	public void makeActionOn(BatterOutOnSacrificeFly action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2730,7 +2756,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnGroundedDoublePlay action) {
+	public void makeActionOn(BatterOutOnGroundedDoublePlay action) {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 			drawBatterPutOut(point.x, point.y, ScoreGameDisplay.getDisplayCode(action), !action.isNotInDoublePlay());
@@ -2742,7 +2768,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnAppeal action) {
+	public void makeActionOn(BatterOutOnAppeal action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2755,7 +2781,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutByRule action) {
+	public void makeActionOn(BatterOutByRule action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2781,7 +2807,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnGroundedBall action) {
+	public void makeActionOn(BatterOutOnGroundedBall action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2798,7 +2824,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnLineDriveFallBall action) {
+	public void makeActionOn(BatterOutOnLineDriveFallBall action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2811,7 +2837,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnPoppedFallBall action) {
+	public void makeActionOn(BatterOutOnPoppedFallBall action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2824,7 +2850,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnFlyedFallBall action) {
+	public void makeActionOn(BatterOutOnFlyedFallBall action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2837,7 +2863,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnPopped action) {
+	public void makeActionOn(BatterOutOnPopped action) {
 		if (currentTeam.equals(sheetTeam)) {
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
 
@@ -2850,7 +2876,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnLine action) {
+	public void makeActionOn(BatterOutOnLine action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2863,7 +2889,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnFlyed action) {
+	public void makeActionOn(BatterOutOnFlyed action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2876,7 +2902,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnReleasedStrike action) {
+	public void makeActionOn(BatterOutOnReleasedStrike action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2890,7 +2916,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnLookedStrike action) {
+	public void makeActionOn(BatterOutOnLookedStrike action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2903,7 +2929,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	}
 
 	@Override
-	protected void makeActionOn(BatterOutOnSwingedStrike action) {
+	public void makeActionOn(BatterOutOnSwingedStrike action) {
 		if (currentTeam.equals(sheetTeam)) {
 
 			Point point = playerSquareManagers.get(currentTeam).getCurrentPosition();
@@ -2974,7 +3000,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 						}	
 					}
 
-				} else if ((sub instanceof MoveToData) &&
+				} else if ((sub instanceof MoveToData) && (((MoveToData) sub).getDefensivePosition() != null) && (((MoveToData) sub).getDefensivePosition().getNewDefensivePosition() != null) && 
 						(((MoveToData) sub).getDefensivePosition().getNewDefensivePosition().equals("1"))) { //$NON-NLS-1$
 						
 					Object pitcherKeepPosition = ((MoveToData) sub).getPlayerReplaced().getAssociatedObjects().get(LineupManager.PITCHER_KEEP_ITS_POSITION);
@@ -4694,15 +4720,19 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 				pitcherCounter++;
 	
 				if (EngineConstants.graphicsShowWinLoseSave) {
-					if (statistiqueEngine.getStatisticManager().getStats().getLoosingPitcher() == pitcher) {
-						putString(bold6Font, EngineConstants.graphicsColorPencil, "L", HORIZONTAL_008, position, //$NON-NLS-1$
-								STAT_PITCHER_001 - HORIZONTAL_008, HEIGHT_LINE * FACTOR_CORRECTIF);
-					} else if (statistiqueEngine.getStatisticManager().getStats().getWinningPitcher() == pitcher) {
-						putString(bold6Font, EngineConstants.graphicsColorPencil, "W", HORIZONTAL_008, position, //$NON-NLS-1$
-								STAT_PITCHER_001 - HORIZONTAL_008, HEIGHT_LINE * FACTOR_CORRECTIF);
-					} else if (statistiqueEngine.getStatisticManager().getStats().getSavePitcher() == pitcher) {
-						putString(bold6Font, EngineConstants.graphicsColorPencil, "Sa", HORIZONTAL_008, position, //$NON-NLS-1$
-								STAT_PITCHER_001 - HORIZONTAL_008, HEIGHT_LINE * FACTOR_CORRECTIF);
+					try {
+						if (statistiqueEngine.getStatisticManager().getStats().getLoosingPitcher() == pitcher) {
+							putString(bold6Font, EngineConstants.graphicsColorPencil, "L", HORIZONTAL_008, position, //$NON-NLS-1$
+									STAT_PITCHER_001 - HORIZONTAL_008, HEIGHT_LINE * FACTOR_CORRECTIF);
+						} else if (statistiqueEngine.getStatisticManager().getStats().getWinningPitcher() == pitcher) {
+							putString(bold6Font, EngineConstants.graphicsColorPencil, "W", HORIZONTAL_008, position, //$NON-NLS-1$
+									STAT_PITCHER_001 - HORIZONTAL_008, HEIGHT_LINE * FACTOR_CORRECTIF);
+						} else if (statistiqueEngine.getStatisticManager().getStats().getSavePitcher() == pitcher) {
+							putString(bold6Font, EngineConstants.graphicsColorPencil, "Sa", HORIZONTAL_008, position, //$NON-NLS-1$
+									STAT_PITCHER_001 - HORIZONTAL_008, HEIGHT_LINE * FACTOR_CORRECTIF);
+						}
+					} catch (NullPointerException ex) {
+						
 					}
 				}
 			}
@@ -5036,34 +5066,44 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	public void fillHeaderHomeTeamPage(Game game) {
 		g2.setColor(EngineConstants.graphicsColorPencil);
 		Font currentFont = g2.getFont();
+		
+		g2.setFont(normal7Font);
+		Rectangle2D headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Tournament, g2); 
+		double tournametOffet = (HORIZONTAL_005 + (WIDTH_LINE / 2 * FACTOR_CORRECTIF)) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Category, g2); 
+		double categoryOffset = (HORIZONTAL_005 + (WIDTH_LINE / 2 * FACTOR_CORRECTIF)) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Visitor, g2); 
+		double visitorOffset = (HORIZONTAL_005 + (WIDTH_LINE / 2 * FACTOR_CORRECTIF)) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Hometeam, g2); 
+		double hometeamOffset = (HORIZONTAL_005 + (WIDTH_LINE / 2 * FACTOR_CORRECTIF)) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Date, g2); 
+		double dateOffset = (int) (82 * FACTOR_CORRECTIF) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Start, g2); 
+		double startOffset = (82 * FACTOR_CORRECTIF) + headerSize.getWidth();
+	
+		
 		g2.setFont(bold6Font);
 
 		/* remplissage de l'entête */
 		Description description = game.getDescription();
 		if (description != null) {
 			if (description.getTournament() != null) {
-				g2.drawString(description.getTournament().toUpperCase(), HOMETEAM_TOURNAMENT_TEXT_X,
-						HOMETEAM_TOURNAMENT_TEXT_Y);
+				g2.drawString(description.getTournament().toUpperCase(), (int)tournametOffet+1,	HOMETEAM_TOURNAMENT_TEXT_Y);
 			}
 			if (description.getCategory() != null) {
-				g2.drawString(description.getCategory().toUpperCase(), HOMETEAM_CATEGORY_TEXT_X,
-						HOMETEAM_CATEGORY_TEXT_Y);
+				g2.drawString(description.getCategory().toUpperCase(), (int)categoryOffset+1, HOMETEAM_CATEGORY_TEXT_Y);
 			}
 			if (game.getVisitor() != null && game.getVisitor().getName() != null) {
-				g2.drawString(game.getVisitor().getName().toUpperCase(), HOMETEAM_VISITOR_TEXT_X,
-						HOMETEAM_VISITOR_TEXT_Y);
+				g2.drawString(game.getVisitor().getName().toUpperCase(), (int)visitorOffset+1,HOMETEAM_VISITOR_TEXT_Y);
 			}
 			if (game.getHometeam() != null && game.getHometeam().getName() != null) {
-				g2.drawString(game.getHometeam().getName().toUpperCase(), HOMETEAM_HOMETEAM_TEXT_X,
-						HOMETEAM_HOMETEAM_TEXT_Y);
-				g2.drawString(game.getHometeam().getName().toUpperCase(), HOMETEAM_HOMETEAM_TEXT_X,
-						HOMETEAM_HOMETEAM_TEXT_Y);
+				g2.drawString(game.getHometeam().getName().toUpperCase(), (int)hometeamOffset+1,	HOMETEAM_HOMETEAM_TEXT_Y);
 			}
 			if (description.getDate() != null) {
-				g2.drawString(description.getDate(), HOMETEAM_DATE_TEXT_X, HOMETEAM_DATE_TEXT_Y);
+				g2.drawString(description.getDate(), (int)dateOffset+1, HOMETEAM_DATE_TEXT_Y);
 			}
 			if (description.getStartTime() != null) {
-				g2.drawString(description.getStartTime(), HOMETEAM_START_TEXT_X, HOMETEAM_START_TEXT_Y);
+				g2.drawString(description.getStartTime(), (int)startOffset+1, HOMETEAM_START_TEXT_Y);
 			}
 
 			String gameNumber = game.getName();
@@ -5103,36 +5143,59 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 	protected void fillHeaderVisitorPage(Game game) {
 		g2.setColor(EngineConstants.graphicsColorPencil);
 		Font currentFont = g2.getFont();
+		
+		g2.setFont(normal7Font);
+		Rectangle2D headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_ScoreKeeper, g2); 
+		double scoreKeeperOffset = (HORIZONTAL_005 + (WIDTH_LINE / 2 * FACTOR_CORRECTIF)) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Umpires, g2); 
+		double umpireOffset = (HORIZONTAL_005 + (WIDTH_LINE / 2 * FACTOR_CORRECTIF)) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Tournament, g2); 
+		double tournamentOffset = (HORIZONTAL_005 + (WIDTH_LINE / 2 * FACTOR_CORRECTIF)) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Category, g2); 
+		double catgoryOffset = (HORIZONTAL_MARGE + 102.8 * FACTOR_CORRECTIF) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Date, g2); 
+		double catgoryDate = (HORIZONTAL_MARGE + 155.6 * FACTOR_CORRECTIF) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Stadium, g2); 
+		double catgoryStadium = (HORIZONTAL_MARGE + 79.7 * FACTOR_CORRECTIF) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Start, g2); 
+		double catgoryStart = (HORIZONTAL_MARGE + 128.8 * FACTOR_CORRECTIF) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_End, g2); 
+		double catgoryEnd = (HORIZONTAL_MARGE + 147.3 * FACTOR_CORRECTIF) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Duration, g2); 
+		double catgoryDuration = (HORIZONTAL_MARGE + 166.2 * FACTOR_CORRECTIF) + headerSize.getWidth();
+		headerSize = g2.getFontMetrics().getStringBounds(Messages.ScoringSheetGraphicalManager_Town, g2); 
+		double catgoryTown = (HORIZONTAL_005 + (WIDTH_LINE / 2 * FACTOR_CORRECTIF)) + headerSize.getWidth();
+		
 		g2.setFont(bold6Font);
 		/* remplissage de l'entête */
 		Description description = game.getDescription();
 		if (description != null) {
 			if (description.getTournament() != null) {
-				g2.drawString(description.getTournament(), VISITOR_TOURNAMENT_TEXT_X, VISITOR_TOURNAMENT_TEXT_Y);
+				g2.drawString(description.getTournament(), (int)tournamentOffset+1, VISITOR_TOURNAMENT_TEXT_Y);
 			}
 			if (description.getCategory() != null) {
-				g2.drawString(description.getCategory(), VISITOR_CATEGORY_TEXT_X, VISITOR_CATEGORY_TEXT_Y);
+				g2.drawString(description.getCategory(), (int)catgoryOffset+1, VISITOR_CATEGORY_TEXT_Y);
 			}
 			if (description.getPlace() != null) {
-				g2.drawString(description.getPlace(), VISITOR_CITY_TEXT_X, VISITOR_CITY_TEXT_Y);
+				g2.drawString(description.getPlace(), (int)catgoryTown+1, VISITOR_CITY_TEXT_Y);
 			}
 			if (description.getStadium() != null) {
-				g2.drawString(description.getStadium(), VISITOR_PLACE_TEXT_X, VISITOR_PLACE_TEXT_Y);
+				g2.drawString(description.getStadium(), (int)catgoryStadium+1, VISITOR_PLACE_TEXT_Y);
 			}
 			if (description.getDate() != null) {
-				g2.drawString(description.getDate(), VISITOR_DATE_TEXT_X, VISITOR_DATE_TEXT_Y);
+				g2.drawString(description.getDate(), (int)catgoryDate+1, VISITOR_DATE_TEXT_Y);
 			}
 			if (description.getStartTime() != null) {
-				g2.drawString(description.getStartTime(), VISITOR_START_TIME_TEXT_X, VISITOR_START_TIME_TEXT_Y);
+				g2.drawString(description.getStartTime(), (int)catgoryStart+1, VISITOR_START_TIME_TEXT_Y);
 			}
 			if (description.getEndTime() != null) {
-				g2.drawString(description.getEndTime(), VISITOR_END_TIME_TEXT_X, VISITOR_END_TIME_TEXT_Y);
+				g2.drawString(description.getEndTime(), (int)catgoryEnd+1, VISITOR_END_TIME_TEXT_Y);
 			}
 			if (description.getDuration() != null) {
-				g2.drawString(description.getDuration(), VISITOR_DURATION_TEXT_X, VISITOR_DURATION_TEXT_Y);
+				g2.drawString(description.getDuration(), (int)catgoryDuration+1, VISITOR_DURATION_TEXT_Y);
 			}
-			g2.drawString(getUmpireList(description), VISITOR_UMPIRES_TEXT_X, VISITOR_UMPIRES_TEXT_Y);
-			g2.drawString(getScoreKeepersList(description), VISITOR_SCOREKEEPERS_TEXT_X, VISITOR_SCOREKEEPERS_TEXT_Y);
+			g2.drawString(getUmpireList(description), (int)umpireOffset+1, VISITOR_UMPIRES_TEXT_Y);
+			g2.drawString(getScoreKeepersList(description), (int)scoreKeeperOffset+1, VISITOR_SCOREKEEPERS_TEXT_Y);
 
 			String gameNumber = game.getName();
 			if (gameNumber != null) {

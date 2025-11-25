@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.bpy.score.reports.gamereports.GameReportsPackage#getPlayer()
- * @model extendedMetaData="kind='element' name='PLAYER'"
+ * @model extendedMetaData="kind='elementOnly' name='PLAYER'"
  * @generated
  */
 public interface Player extends EObject {

@@ -26,6 +26,7 @@ import org.bpy.score.game.game.BatterAdvanceOnFlyError;
 import org.bpy.score.game.game.BatterAdvanceOnGdpWithError;
 import org.bpy.score.game.game.BatterAdvanceOnKWithError;
 import org.bpy.score.game.game.BatterAdvanceOnObstruction;
+import org.bpy.score.game.game.BatterAdvanceOnPopError;
 import org.bpy.score.game.game.BatterAdvanceOnReceiveError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeHitWithError;
@@ -322,6 +323,16 @@ public class ScoreGameError {
 	}
 
 	/**
+	 * extract the defender number in case of Batter Advance On Pop Error.
+	 * 
+	 * @param action String of the action
+	 * @return defender number who make the error
+	 */
+	public static String getDefensivePosition(BatterAdvanceOnPopError action) {
+		return getDefensivePositionForError(action.getBatterAdvance());
+	}
+
+	/**
 	 * extract the defender number in case of Batter Advance On Receive Error.
 	 * 
 	 * @param action String of the action
@@ -361,6 +372,8 @@ public class ScoreGameError {
 
 		if (newCode.endsWith("F")) { //$NON-NLS-1$
 			return getDefensivePositionForFlyError(newCode);
+		} else if (newCode.endsWith("P")) { //$NON-NLS-1$
+			return getDefensivePositionForPopError(newCode);
 		} else if (newCode.startsWith("EF")) { //$NON-NLS-1$
 			return getDefensivePositionMustBeError(newCode);
 		} else if (newCode.endsWith("t") || newCode.endsWith("T")) { //$NON-NLS-1$ //$NON-NLS-2$
@@ -399,6 +412,17 @@ public class ScoreGameError {
 	private static String getDefensivePositionForFlyError(String code) {
 		return code.toUpperCase().replaceAll(MORE_ADVANCE_PATTERN, "").replaceFirst("E", "").replaceFirst("F", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 	}
+	
+	/**
+	 * extract the defender number in case of Pop Error.
+	 * 
+	 * @param code Code to analyze
+	 * @return defender number who make the error
+	 */
+	private static String getDefensivePositionForPopError(String code) {
+		return code.toUpperCase().replaceAll(MORE_ADVANCE_PATTERN, "").replaceFirst("E", "").replaceFirst("P", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+	}
+
 
 	/**
 	 * extract the defender number in case of Throw Error.

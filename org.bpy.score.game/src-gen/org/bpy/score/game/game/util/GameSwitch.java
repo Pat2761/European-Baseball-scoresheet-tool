@@ -979,6 +979,16 @@ public class GameSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GamePackage.BATTER_ADVANCE_ON_POP_ERROR:
+      {
+        BatterAdvanceOnPopError batterAdvanceOnPopError = (BatterAdvanceOnPopError)theEObject;
+        T result = caseBatterAdvanceOnPopError(batterAdvanceOnPopError);
+        if (result == null) result = caseDecisiveError(batterAdvanceOnPopError);
+        if (result == null) result = caseBatterAdvance(batterAdvanceOnPopError);
+        if (result == null) result = caseBatterAction(batterAdvanceOnPopError);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GamePackage.BATTER_ADVANCE_ON_RECEIVE_ERROR:
       {
         BatterAdvanceOnReceiveError batterAdvanceOnReceiveError = (BatterAdvanceOnReceiveError)theEObject;
@@ -2843,6 +2853,22 @@ public class GameSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBatterAdvanceOnFlyError(BatterAdvanceOnFlyError object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Batter Advance On Pop Error</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Batter Advance On Pop Error</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBatterAdvanceOnPopError(BatterAdvanceOnPopError object)
   {
     return null;
   }

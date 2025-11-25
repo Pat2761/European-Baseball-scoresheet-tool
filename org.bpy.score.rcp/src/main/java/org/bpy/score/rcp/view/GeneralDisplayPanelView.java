@@ -549,8 +549,7 @@ public class GeneralDisplayPanelView extends AbstractContextualPanel {
 		String currentTeam = scoreGameEngine.getScoreGameManager().getLastCurrentTeam();
 		if (currentTeam != null) {
 			GameStatistic stats = statisticEngine.getStatisticManager().getStats();
-			TeamStatistic teamStats = (EngineConstants.HOMETEAM.equals(currentTeam) ? stats.getVisitor()
-					: stats.getHometeam());
+			TeamStatistic teamStats = (EngineConstants.HOMETEAM.equals(currentTeam) ? stats.getVisitor() : stats.getHometeam());
 			LineupEntry pitcher = teamStats.getCurrentPitcher();
 			if (pitcher != null) {
 				setLabelValue(pitchesCounter, "" + pitcher.getPitcherStatistic().getPitchCount()); //$NON-NLS-1$

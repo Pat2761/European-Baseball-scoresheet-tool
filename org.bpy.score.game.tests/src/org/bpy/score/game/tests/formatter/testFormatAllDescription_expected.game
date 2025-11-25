@@ -1,0 +1,24 @@
+game "WCF1D007" {
+
+  header {
+    tournament = "SF1";
+    stadium = "Tienmou";
+    place = "Taipei City";
+    date = "18/11/2007";
+    startTime = "14:00";
+    endTime = "17:30";
+    duration = "03:30";
+    type = baseball;
+    category = "Senior";
+    scorekeepers = "BRIAND Patrick";
+    umpires = "TAPPI Bernard", "TITI toto";
+  }
+
+  roster visitor "Cuba" {
+  }
+
+  roster hometeam "La Havane" {
+  }
+
+  forfeit hometeam;
+}

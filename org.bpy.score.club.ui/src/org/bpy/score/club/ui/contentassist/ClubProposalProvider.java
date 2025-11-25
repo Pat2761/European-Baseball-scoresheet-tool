@@ -32,8 +32,10 @@ import org.bpy.score.club.club.Player;
 import org.bpy.score.club.club.ScoreKeeper;
 import org.bpy.score.club.club.Team;
 import org.bpy.score.club.club.Umpire;
+import org.bpy.score.internationalization.club.Messages;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
@@ -54,8 +56,8 @@ public class ClubProposalProvider extends AbstractClubProposalProvider {
 	 */
 	@Override
 	public void complete_Member(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal("member name = \"\" licenceNumber = \"\";\n",
-		"Add a new member to the club", null, context));
+		acceptor.accept(createCompletionProposal("member name = \"\" licenceNumber = \"\";\n", //$NON-NLS-1$
+		Messages.ClubProposalProvider_AddNewMember, null, context));
 	}
 
 	/**
@@ -79,8 +81,8 @@ public class ClubProposalProvider extends AbstractClubProposalProvider {
 		for (Member member : clubDescription.getMembers().getMembers()) {
 			if (!playersInTheTeam.contains(member.getName())) {
 
-				acceptor.accept(createCompletionProposal("player name = \"" + member.getName() + "\";\n",
-				"Add a "+ member.getName() +" to the team", null, context));
+				acceptor.accept(createCompletionProposal("player name = \"" + member.getName() + "\";\n", //$NON-NLS-1$ //$NON-NLS-2$
+				NLS.bind(Messages.ClubProposalProvider_AddNewMemberToTeam, new String[] {member.getName()}),null, context));
 			}
 		}
 	}
@@ -111,21 +113,21 @@ public class ClubProposalProvider extends AbstractClubProposalProvider {
 		}
 		
 		ClubDescription club = (ClubDescription)model.eContainer();
- 		if (context.getPrefix().startsWith("s")) {
+ 		if (context.getPrefix().startsWith("s")) { //$NON-NLS-1$
 			List<String> possibleScoreKeepers = getPossibleMembers(club.getMembers().getMembers(), scoreKeepers);
-			accept(acceptor, "scoreKeeper",possibleScoreKeepers,context);
+			accept(acceptor, "scoreKeeper",possibleScoreKeepers,context); //$NON-NLS-1$
 			
 
-		} else if (context.getPrefix().startsWith("u")) {
+		} else if (context.getPrefix().startsWith("u")) { //$NON-NLS-1$
 			List<String> possibleUmpires = getPossibleMembers(club.getMembers().getMembers(),umpires);
-			accept(acceptor, "umpire", possibleUmpires,context);
+			accept(acceptor, "umpire", possibleUmpires,context); //$NON-NLS-1$
 
 		} else {
 			List<String> possibleScoreKeepers = getPossibleMembers(club.getMembers().getMembers(), scoreKeepers);
-			accept(acceptor, "scoreKeeper",possibleScoreKeepers,context);
+			accept(acceptor, "scoreKeeper",possibleScoreKeepers,context); //$NON-NLS-1$
 			
 			List<String> possibleUmpires = getPossibleMembers(club.getMembers().getMembers(), umpires);
-			accept(acceptor, "umpire", possibleUmpires,context);
+			accept(acceptor, "umpire", possibleUmpires,context); //$NON-NLS-1$
 		}
 	}
 	
@@ -141,8 +143,8 @@ public class ClubProposalProvider extends AbstractClubProposalProvider {
 		Collections.sort(possibleMembers);
 		
 		for (String possibleMember : possibleMembers) {
-			acceptor.accept(createCompletionProposal(role  + " name=\"" + possibleMember + "\";\n",
-							"define " + possibleMember + " as " + role,null,context));
+			acceptor.accept(createCompletionProposal(role  + " name=\"" + possibleMember + "\";\n", //$NON-NLS-1$ //$NON-NLS-2$
+							NLS.bind(Messages.ClubProposalProvider_SetMemberAsRole, new String[] {possibleMember, role}),null,context));
 		}
 	}
 	

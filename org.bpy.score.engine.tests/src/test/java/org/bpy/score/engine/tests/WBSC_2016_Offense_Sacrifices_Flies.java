@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
 
@@ -37,14 +36,14 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
     buf.append("        /* Le premier batteur frappe un triple dans le champ droit */\r\n");
     buf.append("        action { batter -> 3BRC }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le frappeur frappe une fly ans le champs centre qui est rattrapée de volé par le défenseur, le coureur marque le point */\r\n");
+    buf.append("        /* Le frappeur frappe une fly ans le champs centre qui est rattrapï¿½e de volï¿½ par le dï¿½fenseur, le coureur marque le point */\r\n");
     buf.append("        action { batter -> SF8 , runner3 -> + }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -89,7 +88,7 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -114,17 +113,17 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
     buf.append("        /* Le premier batteur frappe un double dans le champs gauche */\r\n");
     buf.append("        action { batter -> 2B7 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le coureur en 2 vole la troisième base */\r\n");
+    buf.append("        /* Le coureur en 2 vole la troisiï¿½me base */\r\n");
     buf.append("        action { runner2 -> SB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batteur frappe une fly dans le champs. Le défenseur commet un erreur en rattrapant la balle, le coureur marque le point */\r\n");
+    buf.append("        /* le batteur frappe une fly dans le champs. Le dï¿½fenseur commet un erreur en rattrapant la balle, le coureur marque le point */\r\n");
     buf.append("        action { batter -> SFE7 , runner3 -> +}\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -169,7 +168,7 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 1, 0);
     checkTotalCatcherSt(statisticEngine, 0, 1, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -180,7 +179,7 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_017.JPG"/></td>
    * <td>A sacrifice fly also occurs when the ball is hit into foul territory in the outfield. Indeed, a catch by an outfielder in foul territory puts the
-   * runners back into play, and they may try to advance. The abbreviation “FSF” is used to designate a sacrifice fly in foul territory.</td>
+   * runners back into play, and they may try to advance. The abbreviation ï¿½FSFï¿½ is used to designate a sacrifice fly in foul territory.</td>
    * </tr>
    * </table>
    * 
@@ -194,14 +193,14 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
     buf.append("        action { batter -> 3B9 }\r\n");
     buf.append("\r\n");
     buf.append(
-        "        /* le deuxième frappeur frappe une fly dans le champ droit dans la zone des fausses balles, et le défenseur rattrapae la balle de volé  */\r\n");
+        "        /* le deuxiï¿½me frappeur frappe une fly dans le champ droit dans la zone des fausses balles, et le dï¿½fenseur rattrapae la balle de volï¿½  */\r\n");
     buf.append("        action { batter -> FSF9 , runner3 -> + }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -246,7 +245,7 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -271,19 +270,19 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
     buf.append("        /*  le premier frappeur frappe un triple dans le champ droit */\r\n");
     buf.append("        action { batter -> 3B9 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le deuxième frappeur arrive sur bse su un 'base on ball' */\r\n");
+    buf.append("        /* Le deuxiï¿½me frappeur arrive sur bse su un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le frappeur frappe une fly dans le champs centre, le défenseur attrape la balle de volée */\r\n");
-    buf.append("        /* le défenseur renvoie la balle au défenseur de la deuxième base pour retirer le coureur arrivant de la 1 */\r\n");
-    buf.append("        /* le coureur en troisième abse en profite pour marquer le point */\r\n");
+    buf.append("        /* Le frappeur frappe une fly dans le champs centre, le dï¿½fenseur attrape la balle de volï¿½e */\r\n");
+    buf.append("        /* le dï¿½fenseur renvoie la balle au dï¿½fenseur de la deuxiï¿½me base pour retirer le coureur arrivant de la 1 */\r\n");
+    buf.append("        /* le coureur en troisiï¿½me abse en profite pour marquer le point */\r\n");
     buf.append("        action { batter -> SF8 , runner1 -> 84 , runner3 -> + }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -330,7 +329,7 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -354,19 +353,19 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
     buf.append("        /*  le premier frappeur frappe un triple dans le champ droit */\r\n");
     buf.append("        action { batter -> 3B9 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le deuxième frappeur arrive sur bse su un 'base on ball' */\r\n");
+    buf.append("        /* Le deuxiï¿½me frappeur arrive sur bse su un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le frappeur frappe une fly dans le champs centre, le défenseur attrape la balle de volée mais ma laisse retomber */\r\n");
-    buf.append("        /* le défenseur renvoie la balle au défenseur de la deuxième base pour retirer le coureur arrivant de la 1 */\r\n");
-    buf.append("        /* le coureur en troisième abse en profite pour marquer le point */\r\n");
+    buf.append("        /* Le frappeur frappe une fly dans le champs centre, le dï¿½fenseur attrape la balle de volï¿½e mais ma laisse retomber */\r\n");
+    buf.append("        /* le dï¿½fenseur renvoie la balle au dï¿½fenseur de la deuxiï¿½me base pour retirer le coureur arrivant de la 1 */\r\n");
+    buf.append("        /* le coureur en troisiï¿½me abse en profite pour marquer le point */\r\n");
     buf.append("        action { batter -> SFO8 , runner1 -> 84 , runner3 -> + }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -413,7 +412,7 @@ public class WBSC_2016_Offense_Sacrifices_Flies extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

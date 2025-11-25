@@ -35,7 +35,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 public class SeasonFolderDecorator extends LabelProvider implements ILightweightLabelDecorator {
 
 	/** Id of the decorator */
-	public static final String ID = "org.bpy.score.rcp.season.decorator";
+	public static final String ID = "org.bpy.score.rcp.season.decorator";  //$NON-NLS-1$
 
 	/** Reference on the decorator image */
 	private ImageDescriptor imgDescSeason;
@@ -59,7 +59,7 @@ public class SeasonFolderDecorator extends LabelProvider implements ILightweight
 		if (IFolder.class.isInstance(element)) {
 
 			if (imgDescSeason == null) {
-				URL imgURL = getClass().getClassLoader().getResource("icons/season.png");
+				URL imgURL = getClass().getClassLoader().getResource("icons/season.png"); //$NON-NLS-1$
 				imgDescSeason = ImageDescriptor.createFromURL(imgURL);
 			}
 

@@ -107,7 +107,7 @@ public class ScoreSheetEngine extends AbstractEngine {
 				scoringSheetManager.releaseGraphicalContext();
 
 			} catch (OccupedbaseException e) {
-				logger.log(Level.SEVERE,e.getMessage());
+				logger.log(Level.SEVERE,e.getLocalizedMessage());
 			}
 		} else {
 

@@ -6,7 +6,9 @@ Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: org.bpy.score.graphics.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.bpy.score.game,
- org.junit;bundle-version="4.13.0",
- org.bpy.score.internationalization;bundle-version="1.0.0"
+Require-Bundle: org.bpy.score.internationalization;bundle-version="1.0.0",
+ org.bpy.score.game;bundle-version="1.0.0",
+ org.bpy.score.graphics;bundle-version="1.0.0",
+ junit-jupiter-api;bundle-version="5.9.0",
+ org.bpy.score.engine;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17

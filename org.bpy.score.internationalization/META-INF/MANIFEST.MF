@@ -13,5 +13,6 @@ Export-Package: org.bpy.score.internationalization.club,
  org.bpy.score.internationalization.engine,
  org.bpy.score.internationalization.game,
  org.bpy.score.internationalization.graphics,
+ org.bpy.score.internationalization.preferences,
  org.bpy.score.internationalization.rcp,
  org.bpy.score.internationalization.reports

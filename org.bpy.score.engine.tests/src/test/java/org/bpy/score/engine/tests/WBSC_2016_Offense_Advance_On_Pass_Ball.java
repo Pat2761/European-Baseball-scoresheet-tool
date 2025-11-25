@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest {
 
@@ -23,7 +22,7 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
    * <table>
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_049.JPG"/></td>
-   * <td>In the event that more than one runner advances, the abbreviation “PB” (upper case) is used for the lead runner and “pb” (lower case) for subsequent
+   * <td>In the event that more than one runner advances, the abbreviation ï¿½PBï¿½ (upper case) is used for the lead runner and ï¿½pbï¿½ (lower case) for subsequent
    * runners</td>
    * </tr>
    * </table>
@@ -37,7 +36,7 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
     buf.append("        /* Le premier batteur frappe un double dans le champ droit */\r\n");
     buf.append("        action { batter -> 2B9 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant gagne la première base sur un 'base on ball' */\r\n");
+    buf.append("        /* Le batteur suivant gagne la premiï¿½re base sur un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le deux coureur avancent sur un 'pass ball' */\r\n");
@@ -47,7 +46,7 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -91,7 +90,7 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
     checkCatcherStat(statisticEngine, 1, 1, 0, 0);
     checkTotalCatcherSt(statisticEngine, 1, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -121,7 +120,7 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -164,7 +163,7 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
     checkCatcherStat(statisticEngine, 1, 1, 0, 0);
     checkTotalCatcherSt(statisticEngine, 1, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -175,8 +174,8 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_051.JPG"/></td>
    * <td>As the game continues the same runner takes advantage of a further passed ball to advance to third base, and at the same time the batter reaches first
-   * base safely. For this latter phase the abbreviation “PB” (upper case) is recorded in the first base box, while “pb” (lower case) is used to signal the
-   * runner’s arrival on third base.</td>
+   * base safely. For this latter phase the abbreviation ï¿½PBï¿½ (upper case) is recorded in the first base box, while ï¿½pbï¿½ (lower case) is used to signal the
+   * runnerï¿½s arrival on third base.</td>
    * </tr>
    * </table>
    * 
@@ -192,14 +191,14 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
     buf.append("        /* Le coureur profite d'un 'pass ball' pour gagner une base */\r\n");
     buf.append("        action { runner1 -> PB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* troisème strike relaché sur un pass ball, le batteur coureur gagne la première base, le coureur avance  */\r\n");
+    buf.append("        /* troisï¿½me strike relachï¿½ sur un pass ball, le batteur coureur gagne la premiï¿½re base, le coureur avance  */\r\n");
     buf.append("        action { batter -> KSPB , runner2 -> pb }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -243,7 +242,7 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
     checkCatcherStat(statisticEngine, 1, 2, 0, 0);
     checkTotalCatcherSt(statisticEngine, 2, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -254,8 +253,8 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_051.JPG"/></td>
    * <td>As the game continues the same runner takes advantage of a further passed ball to advance to third base, and at the same time the batter reaches first
-   * base safely. For this latter phase the abbreviation “PB” (upper case) is recorded in the first base box, while “pb” (lower case) is used to signal the
-   * runner’s arrival on third base.</td>
+   * base safely. For this latter phase the abbreviation ï¿½PBï¿½ (upper case) is recorded in the first base box, while ï¿½pbï¿½ (lower case) is used to signal the
+   * runnerï¿½s arrival on third base.</td>
    * </tr>
    * </table>
    * 
@@ -271,14 +270,14 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
     buf.append("        /* Le coureur profite d'un 'pass ball' pour gagner une base */\r\n");
     buf.append("        action { runner1 -> PB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* troisème strike relaché sur un pass ball, le batteur coureur gagne la première base, le coureur avance  */\r\n");
+    buf.append("        /* troisï¿½me strike relachï¿½ sur un pass ball, le batteur coureur gagne la premiï¿½re base, le coureur avance  */\r\n");
     buf.append("        action { batter -> KSPB , runner2 -> pb+ }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -322,7 +321,7 @@ public class WBSC_2016_Offense_Advance_On_Pass_Ball extends AbstractWBSCUnitTest
     checkCatcherStat(statisticEngine, 1, 2, 0, 0);
     checkTotalCatcherSt(statisticEngine, 2, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

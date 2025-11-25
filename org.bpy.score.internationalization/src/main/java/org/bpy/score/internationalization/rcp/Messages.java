@@ -100,6 +100,25 @@ public class Messages extends NLS {
 	public static String NewGamePageOneWizard_MissingTeamSelectionError;
 	/** New Game Page One Wizard Error : Duplicate Team selection error */ 
 	public static String NewGamePageOneWizard_DuplicateTeamSelectionError;
+	/** New Game Page One Wizard Error : Duplicate Team selection error */ 
+	public static String NewGamePageOneWizard_EmptyCategoryFileError;
+	/** New Game Page One Wizard UI : Text for date label */ 
+	public static String NewGamePageOneWizard_DateLabel;
+	
+	
+	/** Dialog title for select a relative path (message)*/ 
+	public static String GameReportWizardPageOne_DialogRelativePath_Title;
+	/** Dialog error 1 for select a relative path */ 
+	public static String GameReportWizardPageOne_DialogError1_Title;
+	/** Dialog error 2 for select a relative path */ 
+	public static String GameReportWizardPageOne_DialogError2_Title;
+	/** Dialog error 3 for select a relative path */ 
+	public static String GameReportWizardPageOne_DialogError3_Title;
+	/** Dialog no error for select a relative path */ 
+	public static String GameReportWizardPageOne_DialogRelativePath_Message;
+	/** Dialog no error for select a relative path */ 
+	public static String GameReportWizardPageOne_DialogNoError_Title;
+	
 
 	/*----------------------------------------------------------------------- */
 	/* GameReportWizardPageOne class                                          */
@@ -124,6 +143,14 @@ public class Messages extends NLS {
 	public static String GameReportWizardPageOne_ApplyButton;
 	/** New Game Page One Wizard : Regular selection for games display */ 
 	public static String GameReportWizardPageOne_RegularExpressionGameDisplay;
+	/** New Game Page One Wizard : Report absolute path generation folder  */ 
+	public static String GameReportWizardPageOne_GenereationAbsolutePathTextButton;
+	/** New Game Page One Wizard : Report relative path generation folder  */ 
+	public static String GameReportWizardPageOne_GenereationRelativePathTextButton;
+	/** New Game Page One Wizard : Report absolute path generation folder (tooltip) */ 
+	public static String GameReportWizardPageOne_GenereationAbsolutePathToolTip;
+	/** New Game Page One Wizard : Report absolute path generation folder (tooltip) */ 
+	public static String GameReportWizardPageOne_GenereationRelativeToolTip;
 
 	/*----------------------------------------------------------------------- */
 	/* GameReportWizardPageTwo class                                          */
@@ -148,7 +175,10 @@ public class Messages extends NLS {
 	public static String GameReportWizardPageTwo_XSLTSelectionMessage;
 	/** New Game Page Two Wizard : Banner file Selection message */ 
 	public static String GameReportWizardPageTwo_BannerSelectionMessage;
-
+	/** Error message if no games are selected */
+	public static String GameReportWizardPageOne_OneGameMustBeSeelcted;
+	/** Error message if not a valid folder for the genereation of the reports */
+	public static String GameReportWizardPageOne_NotAValidFolder;
 	/*----------------------------------------------------------------------- */
 	/* ImportHtmlWizard class                                                 */
 	/*----------------------------------------------------------------------- */
@@ -168,7 +198,8 @@ public class Messages extends NLS {
 	public static String ImportHtmlWizardPage_FileSelectionLabel;
 	/** Import Html Wizard Page : File Path error */ 
 	public static String ImportHtmlWizardPage_FilePathNotValidError;
-	
+	/** Message for request selection of HTML file */ 
+	public static String ImportHtmlWizardPage_SelectHtmlFile;
 
 	/*----------------------------------------------------------------------- */
 	/* NewCategoryWizardPage class                                            */
@@ -354,6 +385,12 @@ public class Messages extends NLS {
 	public static String NewTeamPageThreeWizard_AddScoreKeeperButton;
 	/** New Team Page Three Wizard : Remove an score keeper button */ 
 	public static String NewTeamPageThreeWizard_RemoveScoreKeepereButton;
+	/** New Team Page Three Wizard : Add official label */ 
+	public static String NewTeamPageThreeWizard_AddOfficialLabel;
+	/** New Team Page Three Wizard : Dialog box title for removing team member confirmation */ 
+	public static String NewTeamPageThreeWizard_RemoveTeamMemberTitle;
+	/** New Team Page Three Wizard : Dialog box message for removing team member confirmation */ 
+	public static String NewTeamPageThreeWizard_RemoveTeamMemberMessage;
 
 	/*----------------------------------------------------------------------- */
 	/* NewTeamPageTwoWizard class                                             */
@@ -493,14 +530,6 @@ public class Messages extends NLS {
 	public static String ApplicationWorkbenchWindowAdvisor_RcpTitle;
 	
 	/*----------------------------------------------------------------------- */
-	/* ControlPreferencePage class                                               */
-	/*----------------------------------------------------------------------- */
-	/** Control Preference Page : Fly out location label */
-	public static String ControlPreferencePage_FlyOutLocationlabel;
-	/** Control Preference Page : Missing Earned point label */
-	public static String ControlPreferencePage_MissingEarnedPointlabel;
-	
-	/*----------------------------------------------------------------------- */
 	/* GraphicalPreferencePage class                                               */
 	/*----------------------------------------------------------------------- */
 	/** Graphical Preference Page : Line Color label */
@@ -543,7 +572,25 @@ public class Messages extends NLS {
 	/*----------------------------------------------------------------------- */
 	/** Workbench Preference Page : Page message */
 	public static String WorkbenchPreferencePage_Message;
+	public static String GameReportWizardPageTwo_btnNewButton_text;
+	public static String GameReportWizardPageTwo_btnNewButton_1_text;
+	public static String GameReportWizardPageTwo_lblNewLabel_text;
+	public static String GameReportWizardPageTwo_btnNewButton_2_text;
+	public static String GameReportWizardPageTwo_btnNewButton_3_text;
+	public static String GameReportWizardPageTwo_btnNewButton_4_text;
+	public static String GameReportWizardPageTwo_btnNewButton_5_text;
+	public static String GameReportWizardPageTwo_cssRelativePath_toolTipText;
+	public static String GameReportWizardPageTwo_xsltRelativePath_toolTipText;
+	public static String GameReportWizardPageTwo_bannerRelativePath_toolTipText;
+	public static String GameReportWizardPageTwo_cssAbsolutePath_toolTipText;
+	public static String GameReportWizardPageTwo_xlstAbsolutePath_toolTipText;
+	public static String GameReportWizardPageTwo_bannerAbsolutePath_toolTipText;
+	public static String GameReportWizardPageTwo_MissingFileError;
 	
+	/*----------------------------------------------------------------------- */
+	/* ApplicationActionBarAdvisor class                                      */
+	/*----------------------------------------------------------------------- */
+	public static String ApplicationActionBarAdvisor_HelpMenu;
 	
 	/**
 	 * Initialize the internationalization

@@ -154,21 +154,21 @@ public class ScoreSheetEditor extends EditorPart implements MouseWheelListener {
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		int count = e.getWheelRotation() * 5;
 
-//		if (!e.isControlDown()) {
-//			int maxValue = scrollPane.getVerticalScrollBar().getMaximum();
-//			int position = scrollPane.getVerticalScrollBar().getValue();
-//
-//			if ((count > 0) && (position < maxValue)) {
-//				int newPosition = (position + count) > maxValue ? maxValue : position + count;
-//				scrollPane.getVerticalScrollBar().setValue(newPosition);
-//
-//			} else if ((count < 0) && position > 0) {
-//				int newPosition = (position + count) >= 0 ? position + count : 0;
-//				scrollPane.getVerticalScrollBar().setValue(newPosition);
-//			}
-//
-//			panel.repaint();
-//		}
+		if (!e.isControlDown()) {
+			int maxValue = scrollPane.getVerticalScrollBar().getMaximum();
+			int position = scrollPane.getVerticalScrollBar().getValue();
+
+			if ((count > 0) && (position < maxValue)) {
+				int newPosition = (position + count) > maxValue ? maxValue : position + count;
+				scrollPane.getVerticalScrollBar().setValue(newPosition);
+
+			} else if ((count < 0) && position > 0) {
+				int newPosition = (position + count) >= 0 ? position + count : 0;
+				scrollPane.getVerticalScrollBar().setValue(newPosition);
+			}
+
+			panel.repaint();
+		}
 	}
 
 }

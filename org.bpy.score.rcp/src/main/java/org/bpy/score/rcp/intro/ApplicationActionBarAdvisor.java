@@ -18,6 +18,7 @@
  */
 package org.bpy.score.rcp.intro;
 
+import org.bpy.score.internationalization.rcp.Messages;
 import org.eclipse.jface.action.ICoolBarManager;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -66,7 +67,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	@Override
 	protected void fillMenuBar(IMenuManager menuBar) {
 		
-		MenuManager helpMenu = new MenuManager("&Help", IWorkbenchActionConstants.M_HELP);
+		MenuManager helpMenu = new MenuManager("&" + Messages.ApplicationActionBarAdvisor_HelpMenu, IWorkbenchActionConstants.M_HELP); //$NON-NLS-1$
 		menuBar.add(helpMenu);
 
 		// Help

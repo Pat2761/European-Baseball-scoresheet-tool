@@ -87,7 +87,7 @@ public class GeneralStatisitcView extends AbstractContextualPanel {
 	public static final Logger logger = Logger.getLogger(GeneralStatisitcView.class.getSimpleName());
 	
 	/** Inning string constants */
-	public static final String INNING = "Inning ";
+	public static final String INNING = "Inning "; //$NON-NLS-1$
 
 	/** Serial ID*/
 	public static final String ID = "org.bpy.score.rcp.view.GeneralStatisitcView"; //$NON-NLS-1$
@@ -125,8 +125,8 @@ public class GeneralStatisitcView extends AbstractContextualPanel {
 		table.setDefaultRenderer(Object.class, new GeneralStatisitcCellRenderer());
 
 		model = new DefaultTableModel();
-		model.setDataVector(new Object[][] { { "AB" }, { "R" }, { "ER" }, { "H" }, { "A" }, { "E" }, { "LOB" } },
-				new String[] { " " });
+		model.setDataVector(new Object[][] { { "AB" }, { "R" }, { "ER" }, { "H" }, { "A" }, { "E" }, { "LOB" } },  //$NON-NLS-1$ //$NON-NLS-2$  //$NON-NLS-3$  //$NON-NLS-4$  //$NON-NLS-5$  //$NON-NLS-6$ //$NON-NLS-7$
+				new String[] { " " }); //$NON-NLS-1$
 
 		table.setModel(model);
 		table.getColumnModel().getColumn(0).setPreferredWidth(30);
@@ -161,8 +161,7 @@ public class GeneralStatisitcView extends AbstractContextualPanel {
 		try {
 
 			if (!game.getActions().getHalfInnings().isEmpty()) {
-				HalfInning inning = game.getActions().getHalfInnings()
-						.get(game.getActions().getHalfInnings().size() - 1);
+				HalfInning inning = game.getActions().getHalfInnings().get(game.getActions().getHalfInnings().size() - 1);
 				if (inning.getTeam().equals(EngineConstants.HOMETEAM)) {
 					displayGeneralStatistics(statisticEngine.getStatisticManager().getStats().getHometeam());
 				} else {
@@ -191,7 +190,7 @@ public class GeneralStatisitcView extends AbstractContextualPanel {
 		for (int i = 0; i <= inningStats.size(); i++) {
 			switch (counter) {
 			case 0:
-				dataModel.addColumn(" ");
+				dataModel.addColumn(" "); //$NON-NLS-1$
 				counter++;
 				break;
 
@@ -211,7 +210,7 @@ public class GeneralStatisitcView extends AbstractContextualPanel {
 
 			if (counter == 0) {
 				TableHeader.XTableColumn col0 = new TableHeader.XTableColumn();
-				col0.setHeaderValue(" ");
+				col0.setHeaderValue(" "); //$NON-NLS-1$
 				col0.setHeaderSpan(1);
 				col0.setModelIndex(0);
 				columns.addColumn(col0);
@@ -240,14 +239,14 @@ public class GeneralStatisitcView extends AbstractContextualPanel {
 		Object[][] data = new Object[7][size];
 		String[] header = new String[size];
 
-		data[0][0] = "AB";
-		data[1][0] = "R";
-		data[2][0] = "ER";
-		data[3][0] = "H";
-		data[4][0] = "A";
-		data[5][0] = "E";
-		data[6][0] = "LOB";
-		header[0] = " ";
+		data[0][0] = "AB"; //$NON-NLS-1$
+		data[1][0] = "R"; //$NON-NLS-1$
+		data[2][0] = "ER"; //$NON-NLS-1$
+		data[3][0] = "H"; //$NON-NLS-1$
+		data[4][0] = "A"; //$NON-NLS-1$
+		data[5][0] = "E"; //$NON-NLS-1$
+		data[6][0] = "LOB"; //$NON-NLS-1$
+		header[0] = " "; //$NON-NLS-1$
 
 		int i = 1;
 		for (InninStatictic inningStat : inningStats) {
@@ -273,7 +272,7 @@ public class GeneralStatisitcView extends AbstractContextualPanel {
 		}
 
 		for (i = 0; i < headerSize; i++) {
-			header[i] = " ";
+			header[i] = " "; //$NON-NLS-1$
 		}
 
 		model.setDataVector(data, header);
@@ -303,7 +302,7 @@ public class GeneralStatisitcView extends AbstractContextualPanel {
 	 */
 	private String convertValue(int value) {
 
-		return (value == 0 ? "-" : "" + value); //$NON-NLS-1$
+		return (value == 0 ? "-" : "" + value); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	@Override

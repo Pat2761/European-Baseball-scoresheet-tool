@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
 
@@ -24,8 +23,8 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_031.JPG"/></td>
    * <td>With a runner on first base the batter hits towards the third baseman, who muffs an assist to first base, enabling the batter to reach second base and
-   * the runner to reach third. The runner’s arrival on second base is recorded with the number two, without parentheses, since he reached it on the play (the
-   * runner would have reached the base even if the throw by the third baseman had been perfect), and the runner’s arrival on third base is noted with the
+   * the runner to reach third. The runnerï¿½s arrival on second base is recorded with the number two, without parentheses, since he reached it on the play (the
+   * runner would have reached the base even if the throw by the third baseman had been perfect), and the runnerï¿½s arrival on third base is noted with the
    * number two in parentheses, as the base was reached thanks to the error committed against the batter who was second in the batting order</td>
    * </tr>
    * </table>
@@ -39,15 +38,15 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
     buf.append("        /* Le premier batteur gagne la premire base sur un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le deuxème batteur frappe une balle vers le défenseur de troisième abse */\r\n");
-    buf.append("        /* Le défenseur récupère la balle mais commet une erreur en la relayant */\r\n");
+    buf.append("        /* Le deuxï¿½me batteur frappe une balle vers le dï¿½fenseur de troisiï¿½me abse */\r\n");
+    buf.append("        /* Le dï¿½fenseur rï¿½cupï¿½re la balle mais commet une erreur en la relayant */\r\n");
     buf.append("        action { batter -> E5T+ , runner1 -> + (2) }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -92,7 +91,7 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -119,18 +118,18 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
     buf.append("        /* Le premier batteur frappe un triple dans le champ droit */\r\n");
     buf.append("        action { batter -> 3B9 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le deuxième batteur arrive sur base sur un 'Base on bell' */\r\n");
+    buf.append("        /* Le deuxiï¿½me batteur arrive sur base sur un 'Base on bell' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le lanceur tente un PickOff sur le coureur en 1, maais manque sont lancé */\r\n");
-    buf.append("        /* Le coureur en profite pour gagner la deuxième et le coureur en marque */\r\n");
+    buf.append("        /* Le lanceur tente un PickOff sur le coureur en 1, maais manque sont lancï¿½ */\r\n");
+    buf.append("        /* Le coureur en profite pour gagner la deuxiï¿½me et le coureur en marque */\r\n");
     buf.append("        action { runner1 -> POe1T , runner3 -> (2) }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -175,7 +174,7 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -203,7 +202,7 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
     buf.append("        /* Le batteur suivant arrive sur base sur un 'Base on bell' */\r\n");
     buf.append("        action { batter -> BB , runner1 -> + }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant frappe une balle vers le défenseur de la troisième base qui commet une erreur en récupèrant la balle */\r\n");
+    buf.append("        /* Le batteur suivant frappe une balle vers le dï¿½fenseur de la troisiï¿½me base qui commet une erreur en rï¿½cupï¿½rant la balle */\r\n");
     buf.append("        /* Les autre coureur avance sur la frappe  sans tenir compte de l'erreur */\r\n");
     buf.append("        action { batter -> E5 , runner1 -> +, runner2 -> +}\r\n");
     buf.append("\r\n");
@@ -211,7 +210,7 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -257,7 +256,7 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -268,7 +267,7 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_034.JPG"/></td>
    * <td>f it is judged that the third baseman could more easily have played for the runner on second base, the action is recorded in this example, but even
-   * here there are no parentheses for the runner on third base, and the batterrunner is recorded as having reached first on fielder’s choice.</td>
+   * here there are no parentheses for the runner on third base, and the batterrunner is recorded as having reached first on fielderï¿½s choice.</td>
    * </tr>
    * </table>
    * 
@@ -284,14 +283,14 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
     buf.append("        /* Le batteur suivant arrive sur base sur un 'Base on bell' */\r\n");
     buf.append("        action { batter -> BB , runner1 -> + }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant frppa une balle vers le déefnseur de la troisième abse, qui ciommet une erreur */\r\n");
+    buf.append("        /* Le batteur suivant frppa une balle vers le dï¿½efnseur de la troisiï¿½me abse, qui ciommet une erreur */\r\n");
     buf.append("        action { batter -> O5, runner1 -> E5 , runner2 -> + }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -337,7 +336,7 @@ public class WBSC_2016_Offense_Advance_On_Errors extends AbstractWBSCUnitTest {
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

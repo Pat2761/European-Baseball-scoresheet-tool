@@ -28,6 +28,8 @@ import org.bpy.score.club.club.ClubPackage;
 import org.bpy.score.club.club.Member;
 import org.bpy.score.club.club.Members;
 import org.bpy.score.club.club.Team;
+import org.bpy.score.internationalization.club.Messages;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.xtext.validation.Check;
 
 /**
@@ -38,17 +40,17 @@ import org.eclipse.xtext.validation.Check;
 public class ClubValidator extends AbstractClubValidator {
 	
 	/** Invalid name key for quick fix */
-	public static final String DUPLICATE_NAME = "invalidName";
+	public static final String DUPLICATE_NAME = "invalidName"; //$NON-NLS-1$
 	/** Missing license number key for quick fix */
-	public static final String MISSING_LICENCE_NUMBER = "missingLicenceNumber";
+	public static final String MISSING_LICENCE_NUMBER = "missingLicenceNumber"; //$NON-NLS-1$
 	/** Bad license number key for quick fix */
-	public static final String BAD_LICENCE_NUMBER = "badLicenceNumber";
+	public static final String BAD_LICENCE_NUMBER = "badLicenceNumber"; //$NON-NLS-1$
 	/** Duplicate license number key for quick fix */
-	public static final String DUPLICATE_LICENCE_NUMBER = "duplicateLicenceNumber";
+	public static final String DUPLICATE_LICENCE_NUMBER = "duplicateLicenceNumber"; //$NON-NLS-1$
 	/** Bad shirt number key for quick fix */
-	public static final String BAD_SHIRT_NUMBER = "badShirtNumber";
+	public static final String BAD_SHIRT_NUMBER = "badShirtNumber"; //$NON-NLS-1$
 	/** Duplicate category name key for quick fix */
-	public static final String DUPLICATE_CATEGORY = "duplicateCategory";
+	public static final String DUPLICATE_CATEGORY = "duplicateCategory"; //$NON-NLS-1$
 
 	/**
 	 * Check that for each member that the license number is defined
@@ -59,20 +61,20 @@ public class ClubValidator extends AbstractClubValidator {
 	public void checkMissingLicenceNumber(Member member) {
 		String licenceNumber = member.getLicenceNumber();
 		if (licenceNumber == null) {
-			error("No license number for player " + member.getName(),
+			error(NLS.bind(Messages.ClubValidator_MissingLicence, new String[] {member.getName()}),
 				ClubPackage.Literals.MEMBER__LICENCE_NUMBER,
 				MISSING_LICENCE_NUMBER);
 		} else {
 			try {
 				int value = Integer.parseInt(licenceNumber);
 				if (value == 0) {
-					error("0 isn't a valid license number for player " + member.getName(),
+					error(NLS.bind(Messages.ClubValidator_InvalidLicence, new String[] {"0" , member.getName()}) , //$NON-NLS-1$ 
 						ClubPackage.Literals.MEMBER__LICENCE_NUMBER,
 						BAD_LICENCE_NUMBER);
 				}
 
 			} catch (NumberFormatException ex) {
-				error(licenceNumber + " isn't a valid license number for player " + member.getName(),
+				error(NLS.bind(Messages.ClubValidator_InvalidLicence, new String[] {licenceNumber , member.getName()}),
 					ClubPackage.Literals.MEMBER__LICENCE_NUMBER,
 					BAD_LICENCE_NUMBER);
 			}
@@ -91,13 +93,13 @@ public class ClubValidator extends AbstractClubValidator {
 			if (memberCheck != member) {
 
 				if (memberCheck.getName().equals(member.getName())) {
-					error(member.getName() + " is already defined in the members",
+					error(NLS.bind(Messages.ClubValidator_DuplicateMember, new String[] {member.getName()}),
 						ClubPackage.Literals.MEMBER__NAME,
 						BAD_LICENCE_NUMBER);
 				}
 
 				if (memberCheck.getLicenceNumber().equals(member.getLicenceNumber())) {
-					error("Duplicate license number for player " + member.getName(),
+					error(NLS.bind(Messages.ClubValidator_DuplicateLicenceMember, new String[] {member.getName()}),
 						ClubPackage.Literals.MEMBER__LICENCE_NUMBER,
 						DUPLICATE_LICENCE_NUMBER);
 				}
@@ -116,7 +118,7 @@ public class ClubValidator extends AbstractClubValidator {
 		for (Member memberCheck : members.getMembers()) {
 			int shirtNumberValue = memberCheck.getShirtNumber();
 			if (shirtNumberValue <0 || shirtNumberValue>99) {
-				error("Shirt Number " + shirtNumberValue + " isn't valid for " + member.getName(),
+				error(NLS.bind(Messages.ClubValidator_InvalidShirtNumber, new String[] {""+shirtNumberValue, member.getName()}), //$NON-NLS-1$
 						ClubPackage.Literals.MEMBER__SHIRT_NUMBER,
 						BAD_SHIRT_NUMBER);
 			}
@@ -141,7 +143,7 @@ public class ClubValidator extends AbstractClubValidator {
 		}
 		
 		if (teamNames.contains(team.getName())) {
-			error("Team name " + team.getName() + " is duplicated ",
+			error(NLS.bind(Messages.ClubValidator_DuplicateTeamName, new String[] {team.getName()}),
 					ClubPackage.Literals.TEAM__NAME,
 					DUPLICATE_CATEGORY);
 		}	

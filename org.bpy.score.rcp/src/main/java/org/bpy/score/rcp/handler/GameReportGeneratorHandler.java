@@ -18,7 +18,6 @@
  */
 package org.bpy.score.rcp.handler;
 
-import org.bpy.score.internationalization.rcp.Messages;
 import org.bpy.score.rcp.utils.RcpUtils;
 import org.bpy.score.rcp.wizard.GenerateGameReportWizard;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -29,8 +28,6 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.PlatformUI;
@@ -64,10 +61,6 @@ public class GameReportGeneratorHandler implements IHandler {
 		WizardDialog wizardDialog = new WizardDialog(new Shell(), wizard);
 		wizardDialog.open();
 		
-		MessageBox messageBox = new MessageBox(new Shell(), SWT.ICON_INFORMATION | SWT.OK );
-		messageBox.setText(Messages.GameReportGeneratorHandler_DialogTitle);
-		messageBox.setMessage(Messages.GameReportGeneratorHandler_DialogText);
-		messageBox.open();
 		return null;
 	}
 

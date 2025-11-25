@@ -45,6 +45,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.texteditor.ITextEditor;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.parser.IParseResult;
 
 /**
@@ -92,7 +93,6 @@ public abstract class AbstractScoreSheetView extends AbstractContextualPanel imp
 
 		scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setViewportView(panel);
-		panel.setScrollPane(scrollPane);
 		panel.addMouseWheelListener(this);
 		frame.add(scrollPane);
 		frame.pack();
@@ -179,21 +179,21 @@ public abstract class AbstractScoreSheetView extends AbstractContextualPanel imp
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		int count = e.getWheelRotation() * 5;
 
-//		if (!e.isControlDown()) {
-//			int maxValue = scrollPane.getVerticalScrollBar().getMaximum();
-//			int position = scrollPane.getVerticalScrollBar().getValue();
-//
-//			if ((count > 0) && (position < maxValue)) {
-//				int newPosition = (position + count) > maxValue ? maxValue : position + count;
-//				scrollPane.getVerticalScrollBar().setValue(newPosition);
-//
-//			} else if ((count < 0) && position > 0) {
-//				int newPosition = (position + count) >= 0 ? position + count : 0;
-//				scrollPane.getVerticalScrollBar().setValue(newPosition);
-//			}
-//
-//			panel.repaint();
-//		}
+		if (!e.isControlDown()) {
+			int maxValue = scrollPane.getVerticalScrollBar().getMaximum();
+			int position = scrollPane.getVerticalScrollBar().getValue();
+
+			if ((count > 0) && (position < maxValue)) {
+				int newPosition = (position + count) > maxValue ? maxValue : position + count;
+				scrollPane.getVerticalScrollBar().setValue(newPosition);
+
+			} else if ((count < 0) && position > 0) {
+				int newPosition = (position + count) >= 0 ? position + count : 0;
+				scrollPane.getVerticalScrollBar().setValue(newPosition);
+			}
+
+			panel.repaint();
+		}
 	}
 
 	@Override

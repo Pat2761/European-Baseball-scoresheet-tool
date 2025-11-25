@@ -596,6 +596,11 @@ public class GameAdapterFactory extends AdapterFactoryImpl
         return createBatterAdvanceOnFlyErrorAdapter();
       }
       @Override
+      public Adapter caseBatterAdvanceOnPopError(BatterAdvanceOnPopError object)
+      {
+        return createBatterAdvanceOnPopErrorAdapter();
+      }
+      @Override
       public Adapter caseBatterAdvanceOnReceiveError(BatterAdvanceOnReceiveError object)
       {
         return createBatterAdvanceOnReceiveErrorAdapter();
@@ -2273,6 +2278,21 @@ public class GameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBatterAdvanceOnFlyErrorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.bpy.score.game.game.BatterAdvanceOnPopError <em>Batter Advance On Pop Error</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.bpy.score.game.game.BatterAdvanceOnPopError
+   * @generated
+   */
+  public Adapter createBatterAdvanceOnPopErrorAdapter()
   {
     return null;
   }

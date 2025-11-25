@@ -2999,6 +2999,12 @@ rule__DecisiveError__Alternatives
 		(rule__DecisiveError__Group_3__0)
 		{ after(grammarAccess.getDecisiveErrorAccess().getGroup_3()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getDecisiveErrorAccess().getGroup_4()); }
+		(rule__DecisiveError__Group_4__0)
+		{ after(grammarAccess.getDecisiveErrorAccess().getGroup_4()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -15407,9 +15413,9 @@ rule__DecisiveError__Group_1__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnReceiveErrorAction_1_0()); }
+	{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnPopErrorAction_1_0()); }
 	()
-	{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnReceiveErrorAction_1_0()); }
+	{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnPopErrorAction_1_0()); }
 )
 ;
 finally {
@@ -15515,9 +15521,9 @@ rule__DecisiveError__Group_2__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnThrowErrorAction_2_0()); }
+	{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnReceiveErrorAction_2_0()); }
 	()
-	{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnThrowErrorAction_2_0()); }
+	{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnReceiveErrorAction_2_0()); }
 )
 ;
 finally {
@@ -15623,9 +15629,9 @@ rule__DecisiveError__Group_3__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnGdpWithErrorAction_3_0()); }
+	{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnThrowErrorAction_3_0()); }
 	()
-	{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnGdpWithErrorAction_3_0()); }
+	{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnThrowErrorAction_3_0()); }
 )
 ;
 finally {
@@ -15706,6 +15712,114 @@ rule__DecisiveError__Group_3__3__Impl
 	{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceAssignment_3_3()); }
 	(rule__DecisiveError__BatterAdvanceAssignment_3_3)
 	{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceAssignment_3_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DecisiveError__Group_4__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DecisiveError__Group_4__0__Impl
+	rule__DecisiveError__Group_4__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DecisiveError__Group_4__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnGdpWithErrorAction_4_0()); }
+	()
+	{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceOnGdpWithErrorAction_4_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DecisiveError__Group_4__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DecisiveError__Group_4__1__Impl
+	rule__DecisiveError__Group_4__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DecisiveError__Group_4__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDecisiveErrorAccess().getCurrentBatterAssignment_4_1()); }
+	(rule__DecisiveError__CurrentBatterAssignment_4_1)
+	{ after(grammarAccess.getDecisiveErrorAccess().getCurrentBatterAssignment_4_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DecisiveError__Group_4__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DecisiveError__Group_4__2__Impl
+	rule__DecisiveError__Group_4__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DecisiveError__Group_4__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDecisiveErrorAccess().getEXECUTETerminalRuleCall_4_2()); }
+	RULE_EXECUTE
+	{ after(grammarAccess.getDecisiveErrorAccess().getEXECUTETerminalRuleCall_4_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DecisiveError__Group_4__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DecisiveError__Group_4__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DecisiveError__Group_4__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceAssignment_4_3()); }
+	(rule__DecisiveError__BatterAdvanceAssignment_4_3)
+	{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceAssignment_4_3()); }
 )
 ;
 finally {
@@ -24295,9 +24409,9 @@ rule__DecisiveError__BatterAdvanceAssignment_1_3
 	}
 :
 	(
-		{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_1_3_0()); }
-		RULE_REACH_ON_RECEIVE_ERROR
-		{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_1_3_0()); }
+		{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_POP_ERRORTerminalRuleCall_1_3_0()); }
+		RULE_REACH_ON_POP_ERROR
+		{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_POP_ERRORTerminalRuleCall_1_3_0()); }
 	)
 ;
 finally {
@@ -24325,9 +24439,9 @@ rule__DecisiveError__BatterAdvanceAssignment_2_3
 	}
 :
 	(
-		{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_2_3_0()); }
-		RULE_REACH_ON_THROW_ERROR
-		{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_2_3_0()); }
+		{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_2_3_0()); }
+		RULE_REACH_ON_RECEIVE_ERROR
+		{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_2_3_0()); }
 	)
 ;
 finally {
@@ -24355,9 +24469,39 @@ rule__DecisiveError__BatterAdvanceAssignment_3_3
 	}
 :
 	(
-		{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_3_3_0()); }
+		{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_3_3_0()); }
+		RULE_REACH_ON_THROW_ERROR
+		{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_3_3_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DecisiveError__CurrentBatterAssignment_4_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getDecisiveErrorAccess().getCurrentBatterCurrentBatterParserRuleCall_4_1_0()); }
+		ruleCurrentBatter
+		{ after(grammarAccess.getDecisiveErrorAccess().getCurrentBatterCurrentBatterParserRuleCall_4_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DecisiveError__BatterAdvanceAssignment_4_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_4_3_0()); }
 		RULE_GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR
-		{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_3_3_0()); }
+		{ after(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_4_3_0()); }
 	)
 ;
 finally {
@@ -25449,6 +25593,8 @@ RULE_K_WITH_ERROR : ('KS' RULE_REACH_ON_RECEIVE_ERROR|'KS' RULE_REACH_ON_THROW_E
 
 RULE_REACH_ON_FLY_ERROR : 'E' RULE_INT 'F' RULE_ADVANCE?;
 
+RULE_REACH_ON_POP_ERROR : 'E' RULE_INT 'P' RULE_ADVANCE?;
+
 RULE_REACH_ON_THROW_ERROR : RULE_INT? 'E' RULE_INT 'T' RULE_ADVANCE? 'b'?;
 
 RULE_REACH_ON_RECEIVE_ERROR : RULE_INT? 'E' RULE_INT RULE_ADVANCE? 'b'?;
@@ -25491,7 +25637,7 @@ RULE_RELEASED_STRIKE_OUT : 'K' ('S'|'L')? RULE_INT;
 
 RULE_INFIELD_FLY : 'IF' RULE_INT;
 
-RULE_SACRIFICE_BUNT_WITH_ERROR : ('SH' RULE_REACH_ON_RECEIVE_ERROR|'SH' RULE_REACH_ON_THROW_ERROR|'SH' RULE_REACH_ON_FLY_ERROR);
+RULE_SACRIFICE_BUNT_WITH_ERROR : ('SH' RULE_REACH_ON_RECEIVE_ERROR|'SH' RULE_REACH_ON_THROW_ERROR|'SH' RULE_REACH_ON_FLY_ERROR|'SH' RULE_REACH_ON_POP_ERROR);
 
 RULE_SACRIFICE_BUNT_WITH_FIELDER_CHOICE : 'SH' (RULE_FIELDER_CHOICE|RULE_FIELDER_CHOICE_WITH_PUTOUT);
 
@@ -25501,7 +25647,7 @@ RULE_SACRIFICE_FLY_FOUL_BALL : 'FSF' RULE_INT;
 
 RULE_SACRIFICE_FLY_WITH_FIELDER_CHOICE : 'SF' (RULE_FIELDER_CHOICE|RULE_FIELDER_CHOICE_WITH_PUTOUT);
 
-RULE_SACRIFICE_FLY_WITH_ERROR : 'SF' (RULE_REACH_ON_RECEIVE_ERROR|RULE_REACH_ON_FLY_ERROR);
+RULE_SACRIFICE_FLY_WITH_ERROR : 'SF' (RULE_REACH_ON_RECEIVE_ERROR|RULE_REACH_ON_FLY_ERROR|RULE_REACH_ON_POP_ERROR);
 
 RULE_SACRIFICE_FLY : 'SF' RULE_INT;
 

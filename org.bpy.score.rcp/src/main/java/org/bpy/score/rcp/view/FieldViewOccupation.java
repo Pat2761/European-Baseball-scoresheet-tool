@@ -50,9 +50,9 @@ import org.eclipse.swt.layout.FormAttachment;
 public class FieldViewOccupation extends AbstractContextualPanel {
 
 	/** Bundle name */
-	public static final String BUNDLE_NAME = "org.bpy.score.rcp";
+	public static final String BUNDLE_NAME = "org.bpy.score.rcp"; //$NON-NLS-1$
 	/** Font name */
-	public static final String ARIAL_FONT = "Arial Black";
+	public static final String ARIAL_FONT = "Arial Black"; //$NON-NLS-1$
 	
 	/** ID of the view */
 	public static final String ID = "org.bpy.score.rcp.view.FeildViewOccupation"; //$NON-NLS-1$
@@ -177,7 +177,7 @@ public class FieldViewOccupation extends AbstractContextualPanel {
 		marblePosition.setFont(SWTResourceManager.getFont(ARIAL_FONT, 9, SWT.BOLD));
 		marblePosition.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		marblePosition.setAlignment(SWT.CENTER);
-		marblePosition.setText("");
+		marblePosition.setText(""); //$NON-NLS-1$
 
 		secondBasePosition = new Label(fieldOccupationPane, SWT.NONE);
 		secondBasePosition.setLocation(0, 37);
@@ -185,14 +185,14 @@ public class FieldViewOccupation extends AbstractContextualPanel {
 		secondBasePosition.setFont(SWTResourceManager.getFont(ARIAL_FONT, 9, SWT.BOLD));
 		secondBasePosition.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
 		secondBasePosition.setAlignment(SWT.CENTER);
-		secondBasePosition.setText("");
+		secondBasePosition.setText(""); //$NON-NLS-1$
 
 		thirdBasePosition = new Label(fieldOccupationPane, SWT.NONE);
 		thirdBasePosition.setLocation(0, 120);
 		thirdBasePosition.setSize(137, 22);
 		thirdBasePosition.setFont(SWTResourceManager.getFont(ARIAL_FONT, 9, SWT.BOLD));
 		thirdBasePosition.setBackground(SWTResourceManager.getColor(SWT.COLOR_TRANSPARENT));
-		thirdBasePosition.setText("");
+		thirdBasePosition.setText(""); //$NON-NLS-1$
 
 		firstBasePosition = new Label(fieldOccupationPane, SWT.NONE);
 		firstBasePosition.setLocation(153, 120);
@@ -205,10 +205,10 @@ public class FieldViewOccupation extends AbstractContextualPanel {
 		pitcherName.setFont(SWTResourceManager.getFont(ARIAL_FONT, 9, SWT.BOLD));
 		pitcherName.setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_MAGENTA));
 		pitcherName.setBounds(0, 171, 300, 22);
-		pitcherName.setText("Pitcher");
+		pitcherName.setText(""); //$NON-NLS-1$
 
 		catcherName = new Label(fieldOccupationPane, SWT.CENTER);
-		catcherName.setText("Catcher");
+		catcherName.setText(""); //$NON-NLS-1$
 		catcherName.setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_MAGENTA));
 		catcherName.setFont(SWTResourceManager.getFont(ARIAL_FONT, 9, SWT.BOLD));
 		catcherName.setBounds(0, 253, 300, 22);
@@ -270,8 +270,8 @@ public class FieldViewOccupation extends AbstractContextualPanel {
 				setLabelValue(catcherName, name);
 			}	
 		} else {
-			setLabelValue(pitcherName, "");
-			setLabelValue(catcherName, "");
+			setLabelValue(pitcherName, ""); //$NON-NLS-1$
+			setLabelValue(catcherName, ""); //$NON-NLS-1$
 		}
 	}
 

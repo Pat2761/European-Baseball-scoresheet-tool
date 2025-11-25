@@ -169,6 +169,7 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
       case GamePackage.BATTER_ADVANCE_ON_HOME_RUN: return createBatterAdvanceOnHomeRun();
       case GamePackage.BATTER_ADVANCE_ON_INSIDE_PARK: return createBatterAdvanceOnInsidePark();
       case GamePackage.BATTER_ADVANCE_ON_FLY_ERROR: return createBatterAdvanceOnFlyError();
+      case GamePackage.BATTER_ADVANCE_ON_POP_ERROR: return createBatterAdvanceOnPopError();
       case GamePackage.BATTER_ADVANCE_ON_RECEIVE_ERROR: return createBatterAdvanceOnReceiveError();
       case GamePackage.BATTER_ADVANCE_ON_THROW_ERROR: return createBatterAdvanceOnThrowError();
       case GamePackage.BATTER_ADVANCE_ON_GDP_WITH_ERROR: return createBatterAdvanceOnGdpWithError();
@@ -1440,6 +1441,18 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
   {
     BatterAdvanceOnFlyErrorImpl batterAdvanceOnFlyError = new BatterAdvanceOnFlyErrorImpl();
     return batterAdvanceOnFlyError;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BatterAdvanceOnPopError createBatterAdvanceOnPopError()
+  {
+    BatterAdvanceOnPopErrorImpl batterAdvanceOnPopError = new BatterAdvanceOnPopErrorImpl();
+    return batterAdvanceOnPopError;
   }
 
   /**

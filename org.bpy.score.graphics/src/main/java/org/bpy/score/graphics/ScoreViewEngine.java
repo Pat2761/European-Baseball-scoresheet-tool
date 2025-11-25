@@ -105,7 +105,7 @@ public class ScoreViewEngine extends AbstractEngine {
 
 			}
 
-		} catch (OccupedbaseException|NullPointerException e) {
+		} catch (OccupedbaseException/*|NullPointerException*/ e) {
 			logger.log(Level.SEVERE,e.getMessage());
 		}
 

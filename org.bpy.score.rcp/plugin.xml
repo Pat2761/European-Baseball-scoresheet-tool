@@ -3,7 +3,7 @@
 <plugin>
    <extension
          id="org.bpy.score.rcp.projectNature"
-         name="Scorekeeper Tool project"
+         name="%rcp.project.nature.extension.name"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
@@ -35,6 +35,10 @@
                value="Euroopean Scoring Tool For Baseball">
          </property>
          <property
+               name="startupProgressRect"
+               value="5,275,445,15">
+         </property>
+         <property
                name="startupForegroundColor"
                value="000000">
          </property>
@@ -43,21 +47,10 @@
                value="7,252,445,20">
          </property>
          <property
-               name="startupProgressRect"
-               value="5,275,445,15">
-         </property>
-         <property
                name="preferenceCustomization"
                value="plugin_customization.ini">
          </property>
       </product>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.preferences">
-      <scope
-            class="org.eclipse.core.internal.resources.ProjectPreferences"
-            name="org.bpy.score.rcp.preference.scope">
-      </scope>
    </extension>
    <extension
          point="org.eclipse.ui.editors">
@@ -66,12 +59,12 @@
             default="true"
             extensions="game"
             id="org.bpy.score.rcp.editor1"
-            name="Game editor and scoresheet view">
+            name="%rcp.editor.name">
       </editor>
       <editor
             class="org.bpy.score.rcp.editor.ScoreSheetEditor"
             id="org.bpy.score.rcp.editor.ScoreSheetEditor"
-            name="New EditorPart">
+            name="%rcp.scoresheet.editor.name">
       </editor>
    </extension>
    <extension
@@ -172,6 +165,18 @@
             class="org.bpy.score.rcp.handler.ShowOutlineViewHandler"
             commandId="org.bpy.score.rcp.menu.showview.outline">
       </handler>
+      <handler
+            class="org.bpy.score.rcp.handler.SetProjectScoreNatureHandler"
+            commandId="org.bpy.score.rcp.command.configure.setscorenature">
+      </handler>
+      <handler
+            class="org.bpy.score.rcp.handler.UnsetProjectScoreNatureHandler"
+            commandId="org.bpy.score.rcp.command.configure.unsetscorenature">
+      </handler>
+      <handler
+            class="org.bpy.score.rcp.handler.SetFolderAsSeasonFolderHandler"
+            commandId="org.bpy.score.rcp.command.configure.setseasonfolder">
+      </handler>
    </extension>
    <extension
          point="org.eclipse.ui.intro.config">
@@ -192,24 +197,24 @@
          point="org.eclipse.ui.commands">
       <command
             id="org.bpy.score.rcp.command.new.championat"
-            name="%org.bpy.score.internationalization:rcp_new_tournament">
+            name="%org.bpy.score.rcp.new_tournament">
       </command>
       <command
             id="org.bpy.score.rcp.command.newseason"
-            name="New season">
+            name="%rcp.command.new_season">
       </command>
       <command
             id="org.bpy.score.rcp.command.newcategory"
-            name="Nouvelle catégorie">
+            name="%rcp.command.new_category">
       </command>
       <command
             defaultHandler="org.bpy.score.rcp.handler.NewClubHandler"
             id="org.bpy.score.rcp.command.clubdescription"
-            name="New club">
+            name="%rcp.command.new_club">
       </command>
       <command
             id="org.bpy.score.rcp.command.newgame"
-            name="Add a new game">
+            name="%rcp.command.new_game">
       </command>
       <!--<command
             defaultHandler="org.bpy.score.rcp.handler.NewProjectHandler"
@@ -218,64 +223,76 @@
       </command>-->
       <command
             id="org.bpy.score.rcp.exportpdf"
-            name="Export as PDF file">
+            name="%rcp.command_export_as_pdf">
       </command>
       <command
             id="org.bpy.score.rcp.command.example.project.scenario"
-            name="Create sample project">
+            name="%rcp.command.create_sample_project">
       </command>
       <command
             defaultHandler="org.bpy.score.rcp.handler.ExitHandler"
             id="org.bpy.score.rcp.command.exit"
-            name="Quit">
+            name="%rcp.command.quit">
       </command>
       <command
             id="org.bpy.score.rcp.menu.showview.console"
-            name="Show console">
+            name="%rcp.command.show_console">
       </command>
       <command
             id="org.bpy.score.rcp.menu.showview.problem"
-            name="Show problem">
+            name="%rcp.command.show_problem">
       </command>
       <command
             id="org.bpy.score.rcp.menu.showview.visitorsheet"
-            name="Show visitor score sheet">
+            name="%rcp.command.show_visitor_sheet">
       </command>
       <command
             id="org.bpy.score.rcp.menu.showview.hometeamsheet"
-            name="Show hometeam score sheet">
+            name="%rcp.command.show_hometeam_sheet">
       </command>
       <command
             id="org.bpy.score.rcp.menu.showview.occupationfield"
-            name="Show occupation field">
+            name="%rcp.command.show_occupation_field">
       </command>
       <command
             id="org.bpy.score.rcp.menu.showview.generaldisplay"
-            name="Show general display">
+            name="%rcp.command.show_general_display">
       </command>
       <command
             id="org.bpy.score.rcp.report.game"
-            name="Generate game reports">
+            name="%rcp.command.show_game_reports">
       </command>
       <command
             id="org.bpy.score.rcp.import.html"
-            name="Import actions">
+            name="%rcp.command.import_actions">
       </command>
       <command
             id="org.bpy.score.rcp.search.team"
-            name="Seach games by teams">
+            name="%rcp.command.search_game_by_team">
       </command>
       <command
             id="org.bpy.score.rcp.search.date"
-            name="Seaech games by date">
+            name="%rcp.command.search_game_by_date">
       </command>
       <command
             id="org.bpy.score.rcp.menu.showview.lineupview"
-            name="Show line-up">
+            name="%rcp.command.show_lineup">
       </command>
       <command
             id="org.bpy.score.rcp.menu.showview.outline"
-            name="Show outline">
+            name="%rcp.command.show_outline">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.configure.setscorenature"
+            name="%rcp.command.set_score_nature">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.configure.unsetscorenature"
+            name="%rcp.command.unset_score_nature">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.configure.setseasonfolder"
+            name="%rcp.command.set_as_season_nature">
       </command>
    </extension>
    <extension
@@ -296,9 +313,9 @@
             locationURI="menu:org.eclipse.ui.main.menu">
          <menu
                id="org.bpy.score.rcp.menu.file"
-               label="File">
+               label="%rcp.menu.file">
             <menu
-                  label="New">
+                  label="%rcp.menu.new">
                <!--<command
                      commandId="org.bpy.score.rcp.command.newproject"
                      label="Project"
@@ -307,35 +324,35 @@
                <command
                      commandId="org.bpy.score.rcp.command.new.championat"
                      icon="icons/tournament.png"
-                     label="Nouveau championat"
+                     label="%rcp.menu.new_tournament"
                      style="push">
                </command>
                <command
                      commandId="org.bpy.score.rcp.command.newseason"
                      icon="icons/season.png"
-                     label="New season"
+                     label="%rcp.menu.new_season"
                      style="push">
                </command>
                <command
                      commandId="org.bpy.score.rcp.command.newcategory"
                      icon="icons/category.png"
-                     label="Nouvelle catégorie"
+                     label="%rcp.menu.new_category"
                      style="push">
                </command>
                <command
                      commandId="org.bpy.score.rcp.command.newgame"
-                     label="New game"
+                     label="%rcp.menu.new_game"
                      style="push">
                </command>
                <command
                      commandId="org.bpy.score.rcp.command.clubdescription"
-                     label="New club"
+                     label="%rcp.menu.new_club"
                      style="push">
                </command>
             </menu>
             <command
                   commandId="org.bpy.score.rcp.command.openfile"
-                  label="Open file"
+                  label="%rcp.menu.open_file"
                   style="push">
             </command>
             <separator
@@ -344,7 +361,7 @@
             </separator>
             <command
                   commandId="org.bpy.score.rcp.exportpdf"
-                  label="Export as PDF"
+                  label="%rcp.menu.export_as_pdf"
                   style="push">
             </command>
             <separator
@@ -353,6 +370,7 @@
             </separator>
             <command
                   commandId="org.eclipse.ui.file.openWorkspace"
+                  label="%rcp.menu.openworkspace"
                   style="push">
             </command>
             <separator
@@ -361,10 +379,12 @@
             </separator>
             <command
                   commandId="org.eclipse.ui.file.import"
+                  label="%rcp.menu.import"
                   style="push">
             </command>
             <command
                   commandId="org.eclipse.ui.file.export"
+                  label="%rcp.menu.export"
                   style="push">
             </command>
             <separator
@@ -372,22 +392,22 @@
             </separator>
             <command
                   commandId="org.bpy.score.rcp.command.exit"
-                  label="Quit"
+                  label="%rcp.menu.quit"
                   style="push"
-                  tooltip="Quit the application">
+                  tooltip="%rcp.menu.quit_application">
             </command>
          </menu>
          <menu
                id="org.bpy.score.rcp.menu.edit"
-               label="Edition">
+               label="%rcp.menu.edition">
             <command
                   commandId="org.eclipse.ui.edit.undo"
-                  label="Undo"
+                  label="%rcp.menu.undo"
                   style="push">
             </command>
             <command
                   commandId="org.eclipse.ui.edit.redo"
-                  label="Redo"
+                  label="%rcp.menu.redo"
                   style="push">
             </command>
             <separator
@@ -396,17 +416,17 @@
             </separator>
             <command
                   commandId="org.eclipse.ui.edit.cut"
-                  label="Cut"
+                  label="%rcp.menu.cut"
                   style="push">
             </command>
             <command
                   commandId="org.eclipse.ui.edit.copy"
-                  label="Copy"
+                  label="%rcp.menu.copy"
                   style="push">
             </command>
             <command
                   commandId="org.eclipse.ui.edit.paste"
-                  label="paste"
+                  label="%rcp.menu.paste"
                   style="push">
             </command>
             <separator
@@ -415,12 +435,12 @@
             </separator>
             <command
                   commandId="org.eclipse.ui.edit.delete"
-                  label="Delete"
+                  label="%rcp.menu.delete"
                   style="push">
             </command>
             <command
                   commandId="org.eclipse.ui.edit.selectAll"
-                  label="Select all"
+                  label="%rcp.menu.select_all"
                   style="push">
             </command>
             <separator
@@ -429,10 +449,10 @@
             </separator>
          </menu>
          <menu
-               label="Recherche">
+               label="%rcp.menu.search">
             <command
                   commandId="org.eclipse.ui.edit.findReplace"
-                  label="Trouver/Remplacer"
+                  label="%rcp.menu.find_replace"
                   style="push">
             </command>
             <separator
@@ -441,34 +461,34 @@
             </separator>
             <command
                   commandId="org.bpy.score.rcp.search.team"
-                  label="Rechercher les matchs d&apos;une équipe"
+                  label="%rcp.menu.search_game_by_team"
                   style="push">
             </command>
             <command
                   commandId="org.bpy.score.rcp.search.date"
-                  label="Recherche par date"
+                  label="%rcp.menu.search_game_by_date"
                   style="push">
             </command>
             <command
                   commandId="org.bpy.score.rcp.search.official"
-                  label="Rechercher un  match pour un officiel"
+                  label="%rcp.menu.search_game_by_official"
                   style="push">
             </command>
          </menu>
          <menu
-               label="Rapports">
+               label="%rcp.menu.reports">
             <command
                   commandId="org.bpy.score.rcp.report.game"
-                  label="Générer les rapports des matchs"
+                  label="%rcp.menu.generate_game_reports"
                   style="push">
             </command>
          </menu>
          <menu
                id="org.bpy.score.rcp.menu.window"
-               label="Window">
+               label="%rcp.menu.window">
             <command
                   commandId="org.eclipse.ui.window.newWindow"
-                  label="New window"
+                  label="%rcp.menu.new_window"
                   style="push">
             </command>
             <separator
@@ -477,17 +497,17 @@
             </separator>
             <command
                   commandId="org.eclipse.ui.window.resetPerspective"
-                  label="Reset perspective"
+                  label="%rcp.menu.reset_perspective"
                   style="push">
             </command>
             <command
                   commandId="org.eclipse.ui.window.savePerspective"
-                  label="Save perspective"
+                  label="%rcp.menu.save_perspectives"
                   style="push">
             </command>
             <command
                   commandId="org.bpy.score.rcp.command3"
-                  label="Restore perspective"
+                  label="%rcp.menu.restore_perspectives"
                   style="push">
             </command>
             <separator
@@ -496,15 +516,15 @@
             </separator>
             <menu
                   id="org.bpy.score.rcp.menu.window.showview"
-                  label="Show view">
+                  label="%rcp.menu.show_views">
                <command
                      commandId="org.bpy.score.rcp.menu.showview.console"
-                     label="Console"
+                     label="%rcp.menu.console"
                      style="push">
                </command>
                <command
                      commandId="org.bpy.score.rcp.menu.showview.problem"
-                     label="Problems"
+                     label="%rcp.menu.problems"
                      style="push">
                </command>
                <separator
@@ -513,32 +533,32 @@
                </separator>
                <command
                      commandId="org.bpy.score.rcp.menu.showview.generaldisplay"
-                     label="General display"
+                     label="%rcp.menu.general_display"
                      style="push">
                </command>
                <command
                      commandId="org.bpy.score.rcp.menu.showview.occupationfield"
-                     label="Occupation field"
+                     label="%rcp.menu.occupation_field"
                      style="push">
                </command>
                <command
                      commandId="org.bpy.score.rcp.menu.showview.visitorsheet"
-                     label="Visitor sheet"
+                     label="%rcp.menu.visitor_sheet"
                      style="push">
                </command>
                <command
                      commandId="org.bpy.score.rcp.menu.showview.hometeamsheet"
-                     label="Home team sheet"
+                     label="%rcp.menu.hometeeam_sheet"
                      style="push">
                </command>
                <command
                      commandId="org.bpy.score.rcp.menu.showview.lineupview"
-                     label="Line-up"
+                     label="%rcp.menu.line_up"
                      style="push">
                </command>
                <command
                      commandId="org.bpy.score.rcp.menu.showview.outline"
-                     label="Outline"
+                     label="%rcp.menu.outline"
                      style="push">
                </command>
             </menu>
@@ -548,26 +568,26 @@
             </separator>
             <command
             	  commandId="org.eclipse.ui.window.preferences"
-                  label="Preferences"
+                  label="%rcp.menu.preferences"
                   style="push">
             </command>
             <command
                   commandId="org.eclipse.ui.window.closePerspective"
-                  label="Close perspective"
+                  label="%rcp.menu.perspectives"
                   style="push">
             </command>
          </menu>
          <menu
                id="org.bpy.score.rcp.menu.help"
-               label="Help">
+               label="%rcp.menu.help">
             <command
                   commandId="org.eclipse.ui.help.quickStartAction"
-                  label="Welcome"
+                  label="%rcp.menu.welcome"
                   style="push">
             </command>
             <command
                   commandId="org.eclipse.ui.help.helpContents"
-                  label="Help contents"
+                  label="%rcp.menu.help_contents"
                   style="push">
             </command>
             <separator
@@ -576,7 +596,7 @@
             </separator>
             <command
                   commandId="org.eclipse.ui.help.aboutAction"
-                  label="About this tool"
+                  label="%rcp.menuabout_this_tool"
                   style="push">
             </command>
          </menu>
@@ -585,7 +605,7 @@
             <command
                   commandId="org.bpy.score.rcp.command.new.championat"
                   icon="icons/tournament.png"
-                  label="Nouveau championat"
+                  label="%rcp.toolbar.new_tournament"
                   style="push">
             </command>
          </toolbar>
@@ -597,18 +617,26 @@
          <command
                commandId="org.bpy.score.rcp.command.new.championat"
                icon="icons/tournament.png"
-               label="Nouveau championat"
+               label="%rcp.popup.new_tournament"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command1"
+               icon="icons/season.png"
                id="org.bpy.score.rcp.newseaason"
-               label="Season"
+               label="%rcp.popup.new_season"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command.newgame"
-               label="Game"
+               icon="icons/game.png"
+               label="%rcp.popup.new_game"
+               style="push">
+         </command>
+         <command
+               commandId="org.bpy.score.rcp.command.configure.setseasonfolder"
+               icon="icons/season.png"
+               label="%rcp.popup.set_as_season_folder"
                style="push">
          </command>
       </menuContribution>
@@ -620,29 +648,29 @@
                visible="true">
          </separator>
          <menu
-               label="New">
+               label="%rcp.popup.new">
             <command
                   commandId="org.bpy.score.rcp.command.new.championat"
                   icon="icons/full/obj16/OpenTournamentFolder.png"
-                  label="Tournament"
+                  label="%rcp.popup2.new_tournament"
                   style="push">
             </command>
             <command
                   commandId="org.bpy.score.rcp.command.newseason"
                   icon="icons/full/obj16/SeasonFolder.png"
-                  label="Season"
+                  label="%rcp.popup2.new_season"
                   style="push">
             </command>
             <command
                   commandId="org.bpy.score.rcp.command.clubdescription"
                   icon="icons/full/obj16/club.png"
-                  label="Club"
+                  label="%rcp.popup2.new_club"
                   style="push">
             </command>
             <command
                   commandId="org.bpy.score.rcp.command.newgame"
                   icon="icons/full/obj16/game.png"
-                  label="Game"
+                  label="%rcp.popup2.new_game"
                   style="push">
             </command>
          </menu>
@@ -654,19 +682,19 @@
                commandId="org.eclipse.ui.edit.copy"
                icon="icons/copy_edit.png"
                id="org.eclipse.ui.edit.copy"
-               label="Copier"
+               label="%rcp.popup2.copy"
                style="push">
          </command>
          <command
                commandId="org.eclipse.ui.edit.paste"
                icon="icons/paste_edit.png"
-               label="Coller"
+               label="%rcp.popup2.paste"
                style="push">
          </command>
          <command
                commandId="org.eclipse.ui.edit.delete"
                icon="icons/delete_edit.png"
-               label="Supprimer"
+               label="%rcp.popup2.remove"
                style="push">
          </command>
          <separator
@@ -675,7 +703,7 @@
          </separator>
          <command
                commandId="org.eclipse.ui.edit.rename"
-               label="Renommer"
+               label="%rcp.popup2.rename"
                style="push">
          </command>
          <separator
@@ -685,7 +713,7 @@
          <command
                commandId="org.bpy.score.rcp.command1"
                icon="icons/refresh_nav.png"
-               label="Rafraichir"
+               label="%rcp.popup2.refresh"
                style="push">
          </command>
       </menuContribution>
@@ -695,29 +723,29 @@
          <command
                commandId="org.bpy.score.rcp.command.new.championat"
                icon="icons/tournament.png"
-               label="Nouveau championat"
+               label="%rcp.popup3.new_tournament"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command.newseason"
                icon="icons/season.png"
-               label="New season"
+               label="%rcp.popup3.new_season"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command.newcategory"
                icon="icons/category.png"
-               label="Nouvelle catégorie"
+               label="%rcp.popup3.new_category"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command.newgame"
-               label="New game"
+               label="%rcp.popup3.new_game"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command.clubdescription"
-               label="New club"
+               label="%rcp.popup3.new_club"
                style="push">
          </command>
       </menuContribution>
@@ -735,11 +763,92 @@
             </visibleWhen>
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.projectConfigure">
+         <command
+               commandId="org.bpy.score.rcp.command.configure.setscorenature"
+               icon="icons/tournament.png"
+               label="%rcp.popup3.set_as_tournament_nature"
+               style="push">
+            <visibleWhen>
+               <with
+                     variable="selection">
+                  <test
+                        args="org.bpy.score.rcp.projectNature"
+                        forcePluginActivation="true"
+                        property="org.bpy.score.rcp.propertytester.natureId"
+                        value="false">
+                  </test>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.bpy.score.rcp.command.configure.unsetscorenature"
+               icon="icons/prj_obj.png"
+               label="%rcp.popup3.unset_as_tournament_nature"
+               style="push">
+            <visibleWhen>
+               <with
+                     variable="selection">
+                  <test
+                        args="org.bpy.score.rcp.projectNature"
+                        forcePluginActivation="true"
+                        property="org.bpy.score.rcp.propertytester.natureId"
+                        value="false">
+                  </test>
+               </with>
+            </visibleWhen>
+            <visibleWhen>
+               <with
+                     variable="selection">
+                  <test
+                        args="org.bpy.score.rcp.projectNature"
+                        forcePluginActivation="true"
+                        property="org.bpy.score.rcp.propertytester.natureId"
+                        value="true">
+                  </test>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="org.bpy.score.rcp.toolbar1">
+            <command
+                  commandId="org.bpy.score.rcp.command.new.championat"
+                  icon="icons/tournament.png"
+                  label="%rcp.popup.new_tournament"
+                  style="push"
+                  tooltip="%rcp.popup.new_tournament">
+            </command>
+            <command
+                  commandId="org.bpy.score.rcp.command.newseason"
+                  icon="icons/season.png"
+                  style="push"
+                  tooltip="%rcp.popup.new_season">
+            </command>
+            <command
+                  commandId="org.bpy.score.rcp.command.newgame"
+                  icon="icons/game.png"
+                  style="push"
+                  tooltip="%rcp.popup.new_game">
+            </command>
+            <separator
+                  name="org.bpy.score.rcp.separator1">
+            </separator>
+            <control
+                  class="org.bpy.score.rcp.contribution.CategorySelectionToolbar">
+            </control>
+         </toolbar>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            name="ScoreKeeper perspective"
+            name="%rcp.perspective.name"
             class="org.bpy.score.rcp.intro.Perspective"
             id="org.bpy.score.rcp.perspective">
       </perspective>
@@ -842,79 +951,57 @@
       </perspectiveExtension>
    </extension>
    <extension
-         name="Score"
-         point="org.eclipse.ui.preferencePages">
-      <page
-            category="org.eclipse.ui.preferencePages.General"
-            class="org.bpy.score.rcp.preferences.WorkbenchPreferencePage"
-            id="org.bpy.score.rcp.preferences"
-            name="ScoreSheet tool ">
-      </page>
-      <page
-            category="org.bpy.score.rcp.preferences"
-            class="org.bpy.score.rcp.preferences.GraphicalPreferencePage"
-            id="org.bpy.score.rcp.preferences.graphics"
-            name="Graphics">
-      </page>
-      <page
-            category="org.bpy.score.rcp.preferences"
-            class="org.bpy.score.rcp.preferences.ControlPreferencePage"
-            id="org.bpy.score.rcp.preferences.controls"
-            name="Controls">
-      </page>
-   </extension>
-   <extension
          point="org.eclipse.ui.views">
       <view
             allowMultiple="false"
             class="org.eclipse.ui.navigator.CommonNavigator"
             id="org.bpy.score.rcp.view.season"
-            name="Tournament manager">
+            name="%rcp.view.tournament_manager">
       </view>
       <view
             class="org.bpy.score.rcp.view.FieldViewOccupation"
             id="org.bpy.score.rcp.view.FeildViewOccupation"
-            name="Field occupation">
+            name="%rcp.view.field_occupation">
       </view>
       <view
             class="org.bpy.score.rcp.view.GeneralStatisitcView"
             id="org.bpy.score.rcp.view.GeneralStatisitcView"
-            name="billboard">
+            name="%rcp.view.billboard">
       </view>
       <view
             class="org.bpy.score.rcp.view.GeneralDisplayPanelView"
             id="org.bpy.score.rcp.view.GeneralDisplayPanelView"
-            name="Score box">
+            name="%rcp.view.score_box">
       </view>
       <view
             class="org.bpy.score.rcp.editor.ScoreSheetView"
             id="org.bpy.score.rcp.editor.ScoreSheetView"
-            name="Score sheet">
+            name="%rcp.view.score_sheet">
       </view>
       <view
             class="org.bpy.score.rcp.view.VisitorScoreSheetView"
             id="org.bpy.score.rcp.view.VisitorGraphicalView"
-            name="Visitor scoresheet">
+            name="%rcp.view.visitor_score_sheet">
       </view>
       <view
             class="org.bpy.score.rcp.view.HometeamScoreSheetView"
             id="org.bpy.score.rcp.view.HometeamScoreSheetView"
-            name="Home team scoresheet">
+            name="%rcp.view.hometeam_score_sheet">
       </view>
       <category
             id="org.bpy.score.rcp.navigator.category"
-            name="Category">
+            name="%rcp.view.cateogry">
       </category>
       <view
             class="org.bpy.score.rcp.navigator.TournamentNavigator"
             icon="icons/tournament.png"
             id="org.bpy.game.rcp.ui.navigator"
-            name="Tournament navigator">
+            name="%rcp.view.tournament_navigator">
       </view>
       <view
             class="org.bpy.score.rcp.view.CurrentLineupView"
             id="org.bpy.score.rcp.currentlineup.view"
-            name="Lineup actif"
+            name="%rcp.view.activ_lineup"
             restorable="true">
       </view>
    </extension>
@@ -922,7 +1009,7 @@
          point="org.eclipse.ui.activities">
       <activity
             id="org.bpy.score.rcp.disable.maven"
-            name="disableMaven">
+            name="%activity.name">
          <enabledWhen>
             <with
                   variable="true">
@@ -942,7 +1029,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.pde"
-            name="disablePDE">
+            name="%activity.name.0">
          <enabledWhen>
             <with
                   variable="true">
@@ -958,7 +1045,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.ecore"
-            name="disableEcore">
+            name="%activity.name.1">
          <enabledWhen>
             <with
                   variable="true">
@@ -974,7 +1061,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.java"
-            name="disableJava">
+            name="%activity.name.2">
          <enabledWhen>
             <with
                   variable="true">
@@ -1042,7 +1129,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.mwe"
-            name="DisableMWE">
+            name="%activity.name.3">
          <enabledWhen>
             <with
                   variable="true">
@@ -1058,7 +1145,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.debug.core"
-            name="DisableDebugCore">
+            name="%activity.name.4">
          <enabledWhen>
             <with
                   variable="true">
@@ -1075,7 +1162,7 @@
 
       <activity
             id="org.bpy.score.rcp.disable.team"
-            name="DisableTeam">
+            name="%activity.name.5">
          <enabledWhen>
             <with
                   variable="true">
@@ -1099,7 +1186,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.pde"
-            name="Disable PDE ">
+            name="%activity.name.6">
       </activity>
       <activityPatternBinding
             activityId="org.bpy.score.rcp.pde"
@@ -1107,7 +1194,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.annotation"
-            name="DisableAnnotation">
+            name="%activity.name.7">
       </activity>
       <activityPatternBinding
             activityId="org.bpy.score.rcp.disable.annotation"
@@ -1115,7 +1202,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.externaltools"
-            name="External tools">
+            name="%activity.name.8">
       </activity>
       <activityPatternBinding
             activityId="org.bpy.score.rcp.externaltools"
@@ -1135,7 +1222,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.importExport"
-            name="Import Export">
+            name="%activity.name.9">
       </activity>
       <activityPatternBinding
             activityId="org.bpy.score.rcp.importExport"
@@ -1181,8 +1268,17 @@
             class="org.bpy.score.rcp.decorators.FoldersDecorator"
             icon="icons/season.png"
             id="org.bpy.score.rcp.folder.decorator"
-            label="folder decorator"
+            label="%decorator.label"
             objectClass="org.eclipse.core.resources.IFolder"
+            state="true">
+      </decorator>
+      <decorator
+            adaptable="true"
+            class="org.bpy.score.rcp.decorators.ProjectsDecorators"
+            icon="icons/tournament.png"
+            id="org.bpy.score.rcp.project.decorator"
+            label="%decorator.label.0"
+            objectClass="org.eclipse.core.resources.IProject"
             state="true">
       </decorator>
    </extension>
@@ -1198,16 +1294,8 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="org.bpy.score.rcp.categogry.wizards"
-            name="Score game editor">
+            name="%category.name">
       </category>
-      <wizard
-            category="org.bpy.score.rcp.categogry.wizards"
-            class="org.bpy.score.rcp.wizard.ScoreGameProjectNewWizard"
-            finalPerspective="org.bpy.score.rcp.perspective"
-            icon="icons/full/obj16/OpenTournamentFolder.png"
-            id="org.bpy.score.rcp.new.project.wizard"
-            name="Create a new tournament">
-      </wizard>
    </extension>
    <extension
          id="navigator-viewbinding"
@@ -1223,7 +1311,7 @@
             activeByDefault="true"
             id="org.bpy.score.rcp.navigatorContent1"
             labelProvider="org.bpy.score.rcp.decorators.FoldersDecorator"
-            name="Project Explorer Decorator"
+            name="%navigatorContent.name"
             priority="normal">
          <triggerPoints>
             <instanceof
@@ -1239,12 +1327,22 @@
             class="org.bpy.score.rcp.wizard.ImportTournamentWizard"
             icon="icons/IconTournament.jpg"
             id="org.bpy.score.rcp.wizard1"
-            name="Import tournament">
+            name="%rcp.wizard.import_tournament">
       </wizard>
       <category
             id="org.bpy.score.rcp.scoreSheetTool"
-            name="Score sheet">
+            name="%category.name.0">
       </category>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.bpy.score.rcp.testers.RcpMenuTester"
+            id="org.bpy.score.rcp.propertytester"
+            namespace="org.bpy.score.rcp.propertytester"
+            properties="natureId"
+            type="java.lang.Object">
+      </propertyTester>
    </extension>
 <!--   <extension
          point="org.eclipse.ui.navigator.viewer">

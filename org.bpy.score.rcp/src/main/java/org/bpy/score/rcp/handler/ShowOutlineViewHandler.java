@@ -28,7 +28,7 @@ public class ShowOutlineViewHandler extends AbstractShowViewHandler  {
 
 	@Override
 	public String getID() {
-		return "org.eclipse.ui.views.ContentOutline";
+		return "org.eclipse.ui.views.ContentOutline"; //$NON-NLS-1$
 	}
 
 }

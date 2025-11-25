@@ -69,7 +69,7 @@ public interface GameReportsPackage extends EPackage {
 	int GAME_REPORT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Banner Path</b></em>' attribute.
+	 * The feature id for the '<em><b>Banner Path</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -231,13 +231,22 @@ public interface GameReportsPackage extends EPackage {
 	int GAME_REPORT__HOMETEAM_LINEUP = 17;
 
 	/**
+	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GAME_REPORT__MIXED = 18;
+
+	/**
 	 * The number of structural features of the '<em>Game Report</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GAME_REPORT_FEATURE_COUNT = 18;
+	int GAME_REPORT_FEATURE_COUNT = 19;
 
 	/**
 	 * The number of operations of the '<em>Game Report</em>' class.
@@ -566,13 +575,49 @@ public interface GameReportsPackage extends EPackage {
 	int PITCHER_STATISTIC__GAME_SAVE = 25;
 
 	/**
+	 * The feature id for the '<em><b>Ips</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PITCHER_STATISTIC__IPS = 26;
+
+	/**
+	 * The feature id for the '<em><b>Pitcher Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PITCHER_STATISTIC__PITCHER_ORDER = 27;
+
+	/**
+	 * The feature id for the '<em><b>Fly Outs</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PITCHER_STATISTIC__FLY_OUTS = 28;
+
+	/**
+	 * The feature id for the '<em><b>Grounded Outs</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PITCHER_STATISTIC__GROUNDED_OUTS = 29;
+
+	/**
 	 * The number of structural features of the '<em>Pitcher Statistic</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PITCHER_STATISTIC_FEATURE_COUNT = 26;
+	int PITCHER_STATISTIC_FEATURE_COUNT = 30;
 
 	/**
 	 * The number of operations of the '<em>Pitcher Statistic</em>' class.
@@ -1296,13 +1341,22 @@ public interface GameReportsPackage extends EPackage {
 	int ACTION_DESCRIPTION__RESUME = 2;
 
 	/**
+	 * The feature id for the '<em><b>Team</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_DESCRIPTION__TEAM = 3;
+
+	/**
 	 * The number of structural features of the '<em>Action Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_DESCRIPTION_FEATURE_COUNT = 3;
+	int ACTION_DESCRIPTION_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Action Description</em>' class.
@@ -1335,10 +1389,10 @@ public interface GameReportsPackage extends EPackage {
 	EClass getGameReport();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.bpy.score.reports.gamereports.GameReport#getBannerPath <em>Banner Path</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.bpy.score.reports.gamereports.GameReport#getBannerPath <em>Banner Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Banner Path</em>'.
+	 * @return the meta object for the attribute list '<em>Banner Path</em>'.
 	 * @see org.bpy.score.reports.gamereports.GameReport#getBannerPath()
 	 * @see #getGameReport()
 	 * @generated
@@ -1531,6 +1585,17 @@ public interface GameReportsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getGameReport_HometeamLineup();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.bpy.score.reports.gamereports.GameReport#getMixed <em>Mixed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Mixed</em>'.
+	 * @see org.bpy.score.reports.gamereports.GameReport#getMixed()
+	 * @see #getGameReport()
+	 * @generated
+	 */
+	EAttribute getGameReport_Mixed();
 
 	/**
 	 * Returns the meta object for class '{@link org.bpy.score.reports.gamereports.TeamStatisitics <em>Team Statisitics</em>}'.
@@ -1892,6 +1957,50 @@ public interface GameReportsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPitcherStatistic_GameSave();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.bpy.score.reports.gamereports.PitcherStatistic#getIps <em>Ips</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ips</em>'.
+	 * @see org.bpy.score.reports.gamereports.PitcherStatistic#getIps()
+	 * @see #getPitcherStatistic()
+	 * @generated
+	 */
+	EAttribute getPitcherStatistic_Ips();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.bpy.score.reports.gamereports.PitcherStatistic#getPitcherOrder <em>Pitcher Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pitcher Order</em>'.
+	 * @see org.bpy.score.reports.gamereports.PitcherStatistic#getPitcherOrder()
+	 * @see #getPitcherStatistic()
+	 * @generated
+	 */
+	EAttribute getPitcherStatistic_PitcherOrder();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.bpy.score.reports.gamereports.PitcherStatistic#getFlyOuts <em>Fly Outs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fly Outs</em>'.
+	 * @see org.bpy.score.reports.gamereports.PitcherStatistic#getFlyOuts()
+	 * @see #getPitcherStatistic()
+	 * @generated
+	 */
+	EAttribute getPitcherStatistic_FlyOuts();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.bpy.score.reports.gamereports.PitcherStatistic#getGroundedOuts <em>Grounded Outs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Grounded Outs</em>'.
+	 * @see org.bpy.score.reports.gamereports.PitcherStatistic#getGroundedOuts()
+	 * @see #getPitcherStatistic()
+	 * @generated
+	 */
+	EAttribute getPitcherStatistic_GroundedOuts();
 
 	/**
 	 * Returns the meta object for class '{@link org.bpy.score.reports.gamereports.DefensiveStatistic <em>Defensive Statistic</em>}'.
@@ -2544,6 +2653,17 @@ public interface GameReportsPackage extends EPackage {
 	EAttribute getActionDescription_Resume();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.bpy.score.reports.gamereports.ActionDescription#getTeam <em>Team</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Team</em>'.
+	 * @see org.bpy.score.reports.gamereports.ActionDescription#getTeam()
+	 * @see #getActionDescription()
+	 * @generated
+	 */
+	EAttribute getActionDescription_Team();
+
+	/**
 	 * Returns the meta object for enum '{@link org.bpy.score.reports.gamereports.TEAM <em>TEAM</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2587,7 +2707,7 @@ public interface GameReportsPackage extends EPackage {
 		EClass GAME_REPORT = eINSTANCE.getGameReport();
 
 		/**
-		 * The meta object literal for the '<em><b>Banner Path</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Banner Path</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2729,6 +2849,14 @@ public interface GameReportsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GAME_REPORT__HOMETEAM_LINEUP = eINSTANCE.getGameReport_HometeamLineup();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GAME_REPORT__MIXED = eINSTANCE.getGameReport_Mixed();
 
 		/**
 		 * The meta object literal for the '{@link org.bpy.score.reports.gamereports.impl.TeamStatisiticsImpl <em>Team Statisitics</em>}' class.
@@ -2997,6 +3125,38 @@ public interface GameReportsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PITCHER_STATISTIC__GAME_SAVE = eINSTANCE.getPitcherStatistic_GameSave();
+
+		/**
+		 * The meta object literal for the '<em><b>Ips</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PITCHER_STATISTIC__IPS = eINSTANCE.getPitcherStatistic_Ips();
+
+		/**
+		 * The meta object literal for the '<em><b>Pitcher Order</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PITCHER_STATISTIC__PITCHER_ORDER = eINSTANCE.getPitcherStatistic_PitcherOrder();
+
+		/**
+		 * The meta object literal for the '<em><b>Fly Outs</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PITCHER_STATISTIC__FLY_OUTS = eINSTANCE.getPitcherStatistic_FlyOuts();
+
+		/**
+		 * The meta object literal for the '<em><b>Grounded Outs</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PITCHER_STATISTIC__GROUNDED_OUTS = eINSTANCE.getPitcherStatistic_GroundedOuts();
 
 		/**
 		 * The meta object literal for the '{@link org.bpy.score.reports.gamereports.impl.DefensiveStatisticImpl <em>Defensive Statistic</em>}' class.
@@ -3497,6 +3657,14 @@ public interface GameReportsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ACTION_DESCRIPTION__RESUME = eINSTANCE.getActionDescription_Resume();
+
+		/**
+		 * The meta object literal for the '<em><b>Team</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTION_DESCRIPTION__TEAM = eINSTANCE.getActionDescription_Team();
 
 		/**
 		 * The meta object literal for the '{@link org.bpy.score.reports.gamereports.TEAM <em>TEAM</em>}' enum.

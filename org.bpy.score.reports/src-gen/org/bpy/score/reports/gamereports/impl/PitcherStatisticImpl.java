@@ -46,6 +46,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link org.bpy.score.reports.gamereports.impl.PitcherStatisticImpl#getGameLose <em>Game Lose</em>}</li>
  *   <li>{@link org.bpy.score.reports.gamereports.impl.PitcherStatisticImpl#getGameWin <em>Game Win</em>}</li>
  *   <li>{@link org.bpy.score.reports.gamereports.impl.PitcherStatisticImpl#getGameSave <em>Game Save</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.impl.PitcherStatisticImpl#getIps <em>Ips</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.impl.PitcherStatisticImpl#getPitcherOrder <em>Pitcher Order</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.impl.PitcherStatisticImpl#getFlyOuts <em>Fly Outs</em>}</li>
+ *   <li>{@link org.bpy.score.reports.gamereports.impl.PitcherStatisticImpl#getGroundedOuts <em>Grounded Outs</em>}</li>
  * </ul>
  *
  * @generated
@@ -570,6 +574,86 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected int gameSave = GAME_SAVE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIps() <em>Ips</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIps()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double IPS_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getIps() <em>Ips</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIps()
+	 * @generated
+	 * @ordered
+	 */
+	protected double ips = IPS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPitcherOrder() <em>Pitcher Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPitcherOrder()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PITCHER_ORDER_EDEFAULT = -1;
+
+	/**
+	 * The cached value of the '{@link #getPitcherOrder() <em>Pitcher Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPitcherOrder()
+	 * @generated
+	 * @ordered
+	 */
+	protected int pitcherOrder = PITCHER_ORDER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFlyOuts() <em>Fly Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFlyOuts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int FLY_OUTS_EDEFAULT = -1;
+
+	/**
+	 * The cached value of the '{@link #getFlyOuts() <em>Fly Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFlyOuts()
+	 * @generated
+	 * @ordered
+	 */
+	protected int flyOuts = FLY_OUTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getGroundedOuts() <em>Grounded Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroundedOuts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int GROUNDED_OUTS_EDEFAULT = -1;
+
+	/**
+	 * The cached value of the '{@link #getGroundedOuts() <em>Grounded Outs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroundedOuts()
+	 * @generated
+	 * @ordered
+	 */
+	protected int groundedOuts = GROUNDED_OUTS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1194,6 +1278,98 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
+	public double getIps() {
+		return ips;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIps(double newIps) {
+		double oldIps = ips;
+		ips = newIps;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GameReportsPackage.PITCHER_STATISTIC__IPS, oldIps, ips));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getPitcherOrder() {
+		return pitcherOrder;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setPitcherOrder(int newPitcherOrder) {
+		int oldPitcherOrder = pitcherOrder;
+		pitcherOrder = newPitcherOrder;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GameReportsPackage.PITCHER_STATISTIC__PITCHER_ORDER, oldPitcherOrder, pitcherOrder));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getFlyOuts() {
+		return flyOuts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setFlyOuts(int newFlyOuts) {
+		int oldFlyOuts = flyOuts;
+		flyOuts = newFlyOuts;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GameReportsPackage.PITCHER_STATISTIC__FLY_OUTS, oldFlyOuts, flyOuts));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getGroundedOuts() {
+		return groundedOuts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setGroundedOuts(int newGroundedOuts) {
+		int oldGroundedOuts = groundedOuts;
+		groundedOuts = newGroundedOuts;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GameReportsPackage.PITCHER_STATISTIC__GROUNDED_OUTS, oldGroundedOuts, groundedOuts));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GameReportsPackage.PITCHER_STATISTIC__BATTER_FRONT:
@@ -1248,6 +1424,14 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 				return getGameWin();
 			case GameReportsPackage.PITCHER_STATISTIC__GAME_SAVE:
 				return getGameSave();
+			case GameReportsPackage.PITCHER_STATISTIC__IPS:
+				return getIps();
+			case GameReportsPackage.PITCHER_STATISTIC__PITCHER_ORDER:
+				return getPitcherOrder();
+			case GameReportsPackage.PITCHER_STATISTIC__FLY_OUTS:
+				return getFlyOuts();
+			case GameReportsPackage.PITCHER_STATISTIC__GROUNDED_OUTS:
+				return getGroundedOuts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1337,6 +1521,18 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case GameReportsPackage.PITCHER_STATISTIC__GAME_SAVE:
 				setGameSave((Integer)newValue);
+				return;
+			case GameReportsPackage.PITCHER_STATISTIC__IPS:
+				setIps((Double)newValue);
+				return;
+			case GameReportsPackage.PITCHER_STATISTIC__PITCHER_ORDER:
+				setPitcherOrder((Integer)newValue);
+				return;
+			case GameReportsPackage.PITCHER_STATISTIC__FLY_OUTS:
+				setFlyOuts((Integer)newValue);
+				return;
+			case GameReportsPackage.PITCHER_STATISTIC__GROUNDED_OUTS:
+				setGroundedOuts((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1428,6 +1624,18 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 			case GameReportsPackage.PITCHER_STATISTIC__GAME_SAVE:
 				setGameSave(GAME_SAVE_EDEFAULT);
 				return;
+			case GameReportsPackage.PITCHER_STATISTIC__IPS:
+				setIps(IPS_EDEFAULT);
+				return;
+			case GameReportsPackage.PITCHER_STATISTIC__PITCHER_ORDER:
+				setPitcherOrder(PITCHER_ORDER_EDEFAULT);
+				return;
+			case GameReportsPackage.PITCHER_STATISTIC__FLY_OUTS:
+				setFlyOuts(FLY_OUTS_EDEFAULT);
+				return;
+			case GameReportsPackage.PITCHER_STATISTIC__GROUNDED_OUTS:
+				setGroundedOuts(GROUNDED_OUTS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1492,6 +1700,14 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 				return gameWin != GAME_WIN_EDEFAULT;
 			case GameReportsPackage.PITCHER_STATISTIC__GAME_SAVE:
 				return gameSave != GAME_SAVE_EDEFAULT;
+			case GameReportsPackage.PITCHER_STATISTIC__IPS:
+				return ips != IPS_EDEFAULT;
+			case GameReportsPackage.PITCHER_STATISTIC__PITCHER_ORDER:
+				return pitcherOrder != PITCHER_ORDER_EDEFAULT;
+			case GameReportsPackage.PITCHER_STATISTIC__FLY_OUTS:
+				return flyOuts != FLY_OUTS_EDEFAULT;
+			case GameReportsPackage.PITCHER_STATISTIC__GROUNDED_OUTS:
+				return groundedOuts != GROUNDED_OUTS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1558,6 +1774,14 @@ public class PitcherStatisticImpl extends MinimalEObjectImpl.Container implement
 		result.append(gameWin);
 		result.append(", gameSave: ");
 		result.append(gameSave);
+		result.append(", ips: ");
+		result.append(ips);
+		result.append(", pitcherOrder: ");
+		result.append(pitcherOrder);
+		result.append(", flyOuts: ");
+		result.append(flyOuts);
+		result.append(", groundedOuts: ");
+		result.append(groundedOuts);
 		result.append(')');
 		return result.toString();
 	}

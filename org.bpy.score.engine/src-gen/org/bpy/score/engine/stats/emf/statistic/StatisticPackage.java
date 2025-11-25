@@ -874,13 +874,40 @@ public interface StatisticPackage extends EPackage {
 	int PITCHER_STATISTIC__CAUGHT_STEALING = 22;
 
 	/**
+	 * The feature id for the '<em><b>Ips</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PITCHER_STATISTIC__IPS = 23;
+
+	/**
+	 * The feature id for the '<em><b>Fly Outs</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PITCHER_STATISTIC__FLY_OUTS = 24;
+
+	/**
+	 * The feature id for the '<em><b>Grounded Outs</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PITCHER_STATISTIC__GROUNDED_OUTS = 25;
+
+	/**
 	 * The number of structural features of the '<em>Pitcher Statistic</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PITCHER_STATISTIC_FEATURE_COUNT = 23;
+	int PITCHER_STATISTIC_FEATURE_COUNT = 26;
 
 	/**
 	 * The number of operations of the '<em>Pitcher Statistic</em>' class.
@@ -2211,6 +2238,39 @@ public interface StatisticPackage extends EPackage {
 	EAttribute getPitcherStatistic_CaughtStealing();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getIps <em>Ips</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ips</em>'.
+	 * @see org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getIps()
+	 * @see #getPitcherStatistic()
+	 * @generated
+	 */
+	EAttribute getPitcherStatistic_Ips();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getFlyOuts <em>Fly Outs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fly Outs</em>'.
+	 * @see org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getFlyOuts()
+	 * @see #getPitcherStatistic()
+	 * @generated
+	 */
+	EAttribute getPitcherStatistic_FlyOuts();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getGroundedOuts <em>Grounded Outs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Grounded Outs</em>'.
+	 * @see org.bpy.score.engine.stats.emf.statistic.PitcherStatistic#getGroundedOuts()
+	 * @see #getPitcherStatistic()
+	 * @generated
+	 */
+	EAttribute getPitcherStatistic_GroundedOuts();
+
+	/**
 	 * Returns the meta object for class '{@link org.bpy.score.engine.stats.emf.statistic.CatcherStatistic <em>Catcher Statistic</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3301,6 +3361,30 @@ public interface StatisticPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PITCHER_STATISTIC__CAUGHT_STEALING = eINSTANCE.getPitcherStatistic_CaughtStealing();
+
+		/**
+		 * The meta object literal for the '<em><b>Ips</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PITCHER_STATISTIC__IPS = eINSTANCE.getPitcherStatistic_Ips();
+
+		/**
+		 * The meta object literal for the '<em><b>Fly Outs</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PITCHER_STATISTIC__FLY_OUTS = eINSTANCE.getPitcherStatistic_FlyOuts();
+
+		/**
+		 * The meta object literal for the '<em><b>Grounded Outs</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PITCHER_STATISTIC__GROUNDED_OUTS = eINSTANCE.getPitcherStatistic_GroundedOuts();
 
 		/**
 		 * The meta object literal for the '{@link org.bpy.score.engine.stats.emf.statistic.impl.CatcherStatisticImpl <em>Catcher Statistic</em>}' class.

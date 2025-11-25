@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest {
 
@@ -26,9 +25,9 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
    * <td>The first batter hits a fly ball and is put out by the left fielder. The next batter reaches second base safely on a catching error by the center
    * fielder. The third batter hits a single to the right field, sending the runner to third base. The fourth batter hits a sacrifice fly that enables the
    * runner on third to score the first run (the runner on first base stays put). After a pitching change, the fifth batter hits a home run that brings in two
-   * runs. The first pitcher is charged with two unearned runs (there had been three fielding chances at the time the home run was hit: ‘F7’, ‘E8F’ and ‘SF8’).
-   * The second pitcher is charged with one earned run (only two fielding chances were transferred by the previous pitcher: ‘F7’ and ‘SF8’). The team is charged
-   * with three runs, none of which is earned, as the team had three fielding chances: ‘F7’, ‘E8F’ and ‘SF8’. This example shows that the third run is a run
+   * runs. The first pitcher is charged with two unearned runs (there had been three fielding chances at the time the home run was hit: ï¿½F7ï¿½, ï¿½E8Fï¿½ and ï¿½SF8ï¿½).
+   * The second pitcher is charged with one earned run (only two fielding chances were transferred by the previous pitcher: ï¿½F7ï¿½ and ï¿½SF8ï¿½). The team is charged
+   * with three runs, none of which is earned, as the team had three fielding chances: ï¿½F7ï¿½, ï¿½E8Fï¿½ and ï¿½SF8ï¿½. This example shows that the third run is a run
    * unearned against the team, but earned against the pitcher.</td>
    * </tr>
    * </table>
@@ -39,10 +38,10 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "PITCHER_Exemple_034") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur est retiré sur un fly dans le champ gauche */\r\n");
+    buf.append("        /* Le batteur est retirï¿½ sur un fly dans le champ gauche */\r\n");
     buf.append("        action { batter -> F7 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur arrive sur base sur une erreur du champ centre et profite de l'erreur pour prendre la deuxième base */\r\n");
+    buf.append("        /* Le batteur arrive sur base sur une erreur du champ centre et profite de l'erreur pour prendre la deuxiï¿½me base */\r\n");
     buf.append("        action { batter -> E8F+ }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur frappe un simple dans le champ droit, le coureur avance d'une base */\r\n");
@@ -56,14 +55,14 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     buf.append("           player 1 replaceBy \"CAMBUZAT Valerian\" shirtNumber=32 at 1\r\n");
     buf.append("        }\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batteur frappe un home run, deux points sont marqués */\r\n");
+    buf.append("        /* le batteur frappe un home run, deux points sont marquï¿½s */\r\n");
     buf.append("        action { batter -> HR8 unEarnedForTeam , runner1 -> +++ }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -112,7 +111,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -137,13 +136,13 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     buf.append("        /* Le batteur est strike out */\r\n");
     buf.append("        action { batter -> KS }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur est retiré sur une frappe au sol */\r\n");
+    buf.append("        /* Le batteur est retirï¿½ sur une frappe au sol */\r\n");
     buf.append("        action { batter -> 63 }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur arrive sur base sur un  'base on ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur arrive sur sur une ereur de réception du première base, le coureur avane sur l'erreur */\r\n");
+    buf.append("        /* Le batteur arrive sur sur une ereur de rï¿½ception du premiï¿½re base, le coureur avane sur l'erreur */\r\n");
     buf.append("        action { batter -> 6E3 , runner1 -> (4) }\r\n");
     buf.append("\r\n");
     buf.append("        /* Remplacement du lanceur */ \r\n");
@@ -158,7 +157,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -208,7 +207,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -232,10 +231,10 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "PITCHER_Exemple_037") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batteur est retiré sur une frappe au sol */\r\n");
+    buf.append("        /* le batteur est retirï¿½ sur une frappe au sol */\r\n");
     buf.append("        action { batter -> 63 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batteur est retiré sur un fly dans le champ centre */\r\n");
+    buf.append("        /* le batteur est retirï¿½ sur un fly dans le champ centre */\r\n");
     buf.append("        action { batter -> F8 }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur arrive sur base sur 'base on ball' */\r\n");
@@ -259,7 +258,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -310,7 +309,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -321,8 +320,8 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
    * <tr>
    * <td><img src="./resources/WBSC_2016_pitcher_exemple_038.JPG"/></td>
    * <td>In this inning, after a putout, with the batterrunner on first base because of an error, the third batter is awarded a base on balls. The fourth batter
-   * reaches first base safely on a fielder’s choice, as on the hit the pitcher tried unsuccessfully to put out the runner heading for second. Bearing in mind
-   * that fielder’s choice is not a fielding chance, the runs by the third, fourth and fifth batters are earned runs, both for the team and the relief pitchers,
+   * reaches first base safely on a fielderï¿½s choice, as on the hit the pitcher tried unsuccessfully to put out the runner heading for second. Bearing in mind
+   * that fielderï¿½s choice is not a fielding chance, the runs by the third, fourth and fifth batters are earned runs, both for the team and the relief pitchers,
    * because team and pitchers only have two and one fielding chances respectively at this moment.</td>
    * </tr>
    * </table>
@@ -336,13 +335,13 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     buf.append("        /* Le batteur est strike out */\r\n");
     buf.append("        action { batter -> KS }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant arrive sur base sur une arreur de deuxième base */\r\n");
+    buf.append("        /* Le batteur suivant arrive sur base sur une arreur de deuxiï¿½me base */\r\n");
     buf.append("        action { batter -> E4 }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur arrive sur base sur un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB , runner1 -> + }\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batteur arrive sur base sur un choix défensif */\r\n");
+    buf.append("        /* le batteur arrive sur base sur un choix dï¿½fensif */\r\n");
     buf.append("        action { batter -> FC14 , runner1 -> + , runner2 -> + }\r\n");
     buf.append("\r\n");
     buf.append("        /* Remplacement du lanceur */ \r\n");
@@ -357,7 +356,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -406,7 +405,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -433,7 +432,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     buf.append("        /* Le batteur arriv sur base sur un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur arrive sur base sur une erreur de rattrapé de fly */\r\n");
+    buf.append("        /* Le batteur arrive sur base sur une erreur de rattrapï¿½ de fly */\r\n");
     buf.append("        action { batter -> E8F , runner1 -> (2) }\r\n");
     buf.append("\r\n");
     buf.append("        /* Remplacement du lanceur */ \r\n");
@@ -450,14 +449,14 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     buf.append("        /* le batteur est strike out */\r\n");
     buf.append("        action { batter -> KS }\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batteur arrive sur base sur une erreur de l'arrêt court */\r\n");
+    buf.append("        /* le batteur arrive sur base sur une erreur de l'arrï¿½t court */\r\n");
     buf.append("        action { batter -> E6 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -508,7 +507,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -532,7 +531,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "PITCHER_Exemple_040") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur arrive sur base sur eune erreur du défenseur de la troisième base */\r\n");
+    buf.append("        /* Le batteur arrive sur base sur eune erreur du dï¿½fenseur de la troisiï¿½me base */\r\n");
     buf.append("        action { batter -> E5 }\r\n");
     buf.append("\r\n");
     buf.append("        /* Remplacement du lanceur */ \r\n");
@@ -543,7 +542,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     buf.append("        /* le batteur arrive sur base sur un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB, runner1 -> + }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le bateeur arrive sur base sur un choix défensif de l'arrêt court */\r\n");
+    buf.append("        /* Le bateeur arrive sur base sur un choix dï¿½fensif de l'arrï¿½t court */\r\n");
     buf.append("        action { batter -> O6, runner1 -> O6 , runner2 -> 65 }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur frappe un simplpe dans le champ droit */\r\n");
@@ -553,7 +552,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -601,7 +600,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -625,7 +624,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "PITCHER_Exemple_041") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batteur arrive sur base sur une erreur de lancer de l'arrêt court */\r\n");
+    buf.append("        /* le batteur arrive sur base sur une erreur de lancer de l'arrï¿½t court */\r\n");
     buf.append("        action { batter -> E6T }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur arrive sur base sur un 'base on ball' */\r\n");
@@ -648,14 +647,14 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     buf.append("        /* Le batteur suivant frappe un home run */\r\n");
     buf.append("        action { batter -> HR7 unEarnedForTeam , runner1 -> +++ unEarnedForTeam , runner2 -> ++ , runner3 -> + }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant est retiré sur strike out */\r\n");
+    buf.append("        /* Le batteur suivant est retirï¿½ sur strike out */\r\n");
     buf.append("        action { batter -> KL }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -707,7 +706,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -728,14 +727,14 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "PITCHER_Exemple_042") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batteur frappe un simple dans le champ gauche et profite de l'erreur pour gagner une base suplémentiare */\r\n");
+    buf.append("        /* le batteur frappe un simple dans le champ gauche et profite de l'erreur pour gagner une base suplï¿½mentiare */\r\n");
     buf.append("        action { batter -> 1B7 e7 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -778,7 +777,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -790,8 +789,8 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
    * <td><img src="./resources/WBSC_2016_pitcher_exemple_043.JPG"/></td>
    * <td>The first batter hits to the right field and, thanks to an error by the outfielder, reaches third base. The second batter walks and goes on to steal
    * second base. The third batter hits to the left field, enabling both runners to score. Up to this moment, the first run is earned, but not the second, since
-   * if it had not been for the outfielder’s error, the lead runner would have remained on second base, thus removing from the other runner any possibility of
-   * stealing, and the third batter’s safe hit would have sent home only the first runner, while the second runner would have stopped at third base.</td>
+   * if it had not been for the outfielderï¿½s error, the lead runner would have remained on second base, thus removing from the other runner any possibility of
+   * stealing, and the third batterï¿½s safe hit would have sent home only the first runner, while the second runner would have stopped at third base.</td>
    * </tr>
    * </table>
    * 
@@ -801,7 +800,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "PITCHER_Exemple_043") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* le batteur frappe un simple dans le champ droit et profite de l'erreur pour gagner deux bases suplémentiares */\r\n");
+    buf.append("        /* le batteur frappe un simple dans le champ droit et profite de l'erreur pour gagner deux bases suplï¿½mentiares */\r\n");
     buf.append("        action { batter -> 1B9 e9+ }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur arrive sur base sur un 'base on ball' */\r\n");
@@ -817,7 +816,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -863,7 +862,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     checkCatcherStat(statisticEngine, 1, 0, 1, 0);
     checkTotalCatcherSt(statisticEngine, 0, 1, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -886,13 +885,13 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "PITCHER_Exemple_044") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur gagne la première base sur un 'base on ball' */\r\n");
+    buf.append("        /* Le batteur gagne la premiï¿½re base sur un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le coureur gagne la deuxième base sur 'pick off' raté */\r\n");
+    buf.append("        /* Le coureur gagne la deuxiï¿½me base sur 'pick off' ratï¿½ */\r\n");
     buf.append("        action { runner1 -> PO1e3 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur arrive sur base sur un troisième strike relaché */\r\n");
+    buf.append("        /* Le batteur arrive sur base sur un troisiï¿½me strike relachï¿½ */\r\n");
     buf.append("        action { batter -> KSWP , runner2 -> wp }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur frappe un home run */\r\n");
@@ -902,7 +901,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -948,7 +947,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -973,7 +972,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "PITCHER_Exemple_045") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur arrive sur base sur une erreur sur une fly et progite de l'erreur pour gangner une base supplémentaire */\r\n");
+    buf.append("        /* Le batteur arrive sur base sur une erreur sur une fly et progite de l'erreur pour gangner une base supplï¿½mentaire */\r\n");
     buf.append("        action { batter -> E9F+ }\r\n");
     buf.append("\r\n");
     buf.append("        /* le batteur frappe un simple dans le champ cnetre et profite du relai pour ganger la 2, le coureur marque */\r\n");
@@ -989,7 +988,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -1036,7 +1035,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -1058,7 +1057,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "PITCHER_Exemple_046") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le bztteur est retiré sur une fly */\r\n");
+    buf.append("        /* Le bztteur est retirï¿½ sur une fly */\r\n");
     buf.append("        action { batter -> F9 }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le batteur frappe un simple dans le champ centre */\r\n");
@@ -1074,7 +1073,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -1121,7 +1120,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -1146,7 +1145,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     buf.append("        /* Le batteur frappe un simple dans le champ gauche */\r\n");
     buf.append("        action { batter -> 1B7 }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur aurait du être retiré sur une fly dans les fausses balles */\r\n");
+    buf.append("        /* Le batteur aurait du ï¿½tre retirï¿½ sur une fly dans les fausses balles */\r\n");
     buf.append("        action { batter -> EF3 }\r\n");
     buf.append("\r\n");
     buf.append("        /* La batteur frappe un home run dans le champ centre */\r\n");
@@ -1156,7 +1155,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -1200,7 +1199,7 @@ public class WBSC_2016_Pitcher_Not_Earned_For_Team extends AbstractWBSCUnitTest 
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

@@ -44,6 +44,7 @@ import org.bpy.score.game.game.BatterAdvanceOnKWithError;
 import org.bpy.score.game.game.BatterAdvanceOnKWithFielderChoice;
 import org.bpy.score.game.game.BatterAdvanceOnObstruction;
 import org.bpy.score.game.game.BatterAdvanceOnOccupedBall;
+import org.bpy.score.game.game.BatterAdvanceOnPopError;
 import org.bpy.score.game.game.BatterAdvanceOnReceiveError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithFielderChoice;
@@ -287,6 +288,9 @@ public class ScoreGameAdvanceUtil {
 		} else if (advance instanceof BatterAdvanceOnFlyError) {
 			return getBaseWin((BatterAdvanceOnFlyError) advance);
 
+		} else if (advance instanceof BatterAdvanceOnPopError) {
+			return getBaseWin((BatterAdvanceOnPopError) advance);
+			
 		} else if (advance instanceof BatterAdvanceOnGdpWithError) {
 			return getBaseWin((BatterAdvanceOnGdpWithError) advance);
 
@@ -917,6 +921,16 @@ public class ScoreGameAdvanceUtil {
 	}
 
 	/**
+	 * 'E' INT 'F' ADVANCE? 1 + moreAdvance
+	 * 
+	 * @param advance Object describing the advance 
+	 * @return return number of base win
+	 */
+	public static int getBaseWin(BatterAdvanceOnPopError advance) {
+		return ONE_BASE_WIN + getMoreAdvance(advance.getBatterAdvance());
+	}
+
+	/**
 	 * INT? 'E' INT ADVANCE? 1 + moreAdvance
 	 * 
 	 * @param advance Object describing the advance 
@@ -1204,7 +1218,7 @@ public class ScoreGameAdvanceUtil {
 	 * @return char which represent the player implicated in the action 
 	 */
 	public static String getDefensivePosition(BatterAdvanceOnDefensiveChoice advance) {
-		return "" + advance.getBatterAdvance().charAt(2);//$NON-NLS-1$
+		return "" + advance.getBatterAdvance().charAt(advance.getBatterAdvance().length()-1);//$NON-NLS-1$
 	}
 
 	/**
@@ -1223,8 +1237,19 @@ public class ScoreGameAdvanceUtil {
 	 * @param advance Code of the action
 	 * @return char which represent the player implicated in the action 
 	 */
+	public static String getDefensivePosition(RunnerAdvanceOnOccupedBall advance) {
+		return "" + advance.getRunnerAdvance().charAt(1);//$NON-NLS-1$
+	}
+
+	
+	/**
+	 * Return the defensive position of player who make the choice.
+	 * 
+	 * @param advance Code of the action
+	 * @return char which represent the player implicated in the action 
+	 */
 	public static String getDefensivePosition(BatterAdvanceOnKWithFielderChoice advance) {
-		return "" + advance.getBatterAdvance().charAt(2);//$NON-NLS-1$
+		return "" + advance.getBatterAdvance().charAt(3);//$NON-NLS-1$
 	}
 
 	/**
@@ -1234,7 +1259,7 @@ public class ScoreGameAdvanceUtil {
 	 * @return char which represent the player implicated in the action 
 	 */
 	public static String getDefensivePosition(BatterAdvanceOnSacrificeFlyWithFielderChoice advance) {
-		return "" + advance.getBatterAdvance().charAt(2);//$NON-NLS-1$
+		return "" + advance.getBatterAdvance().charAt(3);//$NON-NLS-1$
 	}
 
 	/**
@@ -1244,7 +1269,7 @@ public class ScoreGameAdvanceUtil {
 	 * @return char which represent the player implicated in the action 
 	 */
 	public static String getDefensivePosition(BatterAdvanceOnSacrificeHitWithFielderChoice advance) {
-		return "" + advance.getBatterAdvance().charAt(2);//$NON-NLS-1$
+		return "" + advance.getBatterAdvance().charAt(3);//$NON-NLS-1$
 	}
 
 	/**
@@ -1286,4 +1311,5 @@ public class ScoreGameAdvanceUtil {
 		}
 		return size;
 	}
+
 }

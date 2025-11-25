@@ -312,7 +312,7 @@ public class HtmlStatcrewImporter {
 
 		} else if (stateReader == STATE_READER.VISITOR_INNING) {
 			
-			if (line.contains(visitorName)) {
+			if (line.toLowerCase().contains(visitorName.toLowerCase())) {
 				String[] parts = line.split(HTML_END_FONT);
 				strBuffer = new StringBuilder();
 				strBuffer.append(parts[1] + " "); //$NON-NLS-1$
@@ -337,7 +337,7 @@ public class HtmlStatcrewImporter {
 
 		} else if (stateReader == STATE_READER.HOMETEAM_INNING) {
 			
-			if (line.contains(hometeamName)) {
+			if (line.toLowerCase().contains(hometeamName.toLowerCase())) {
 				String[] parts = line.split(HTML_END_FONT);
 				strBuffer = new StringBuilder();
 				strBuffer.append(parts[1] + " "); //$NON-NLS-1$

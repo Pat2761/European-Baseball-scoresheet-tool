@@ -110,7 +110,6 @@ SelectedBatterCommand:
  * Add a note 
  */
 Note:
-//	'note' '=' notes+=STRING ( '+' notes+=STRING)?';'
 	'note' '=' notes=STRING ';'
 ;
 
@@ -396,6 +395,7 @@ NoDecisiveError:
  */
 DecisiveError:
 	({BatterAdvanceOnFlyError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_FLY_ERROR) |
+	({BatterAdvanceOnPopError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_POP_ERROR) |
 	({BatterAdvanceOnReceiveError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_RECEIVE_ERROR) |
 	({BatterAdvanceOnThrowError} currentBatter=CurrentBatter EXECUTE batterAdvance=REACH_ON_THROW_ERROR) |
 	({BatterAdvanceOnGdpWithError} currentBatter=CurrentBatter EXECUTE batterAdvance=GROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERROR)
@@ -603,6 +603,7 @@ terminal CATCHER_INTERFERENCE : 'CI' ;
 terminal LOST_TURN : 'LT';
 terminal K_WITH_ERROR : ('KS' REACH_ON_RECEIVE_ERROR) | ('KS' REACH_ON_THROW_ERROR);
 terminal REACH_ON_FLY_ERROR : 'E' INT 'F' ADVANCE?;
+terminal REACH_ON_POP_ERROR : 'E' INT 'P' ADVANCE?;
 terminal REACH_ON_THROW_ERROR : INT? 'E' INT 'T' ADVANCE? 'b'?;
 terminal REACH_ON_RECEIVE_ERROR : INT? 'E' INT ADVANCE? 'b'?;
 terminal MUST_BE_OUT_ON_ERROR : 'EF' INT ;
@@ -625,12 +626,12 @@ terminal K_ADVANCE_BY_RULE : 'KABR' ;
 terminal K_ADVANCE_BY_FIELDER_CHOCE : ('KS' | 'KL') (FIELDER_CHOICE|FIELDER_CHOICE_WITH_PUTOUT) ;
 terminal RELEASED_STRIKE_OUT : 'K'('S'|'L')?INT;
 terminal INFIELD_FLY : 'IF' INT ;
-terminal SACRIFICE_BUNT_WITH_ERROR : ('SH' REACH_ON_RECEIVE_ERROR) | ('SH' REACH_ON_THROW_ERROR) | ('SH' REACH_ON_FLY_ERROR) ;
+terminal SACRIFICE_BUNT_WITH_ERROR : ('SH' REACH_ON_RECEIVE_ERROR) | ('SH' REACH_ON_THROW_ERROR) | ('SH' REACH_ON_FLY_ERROR) | ('SH' REACH_ON_POP_ERROR) ;
 terminal SACRIFICE_BUNT_WITH_FIELDER_CHOICE : 'SH' (FIELDER_CHOICE|FIELDER_CHOICE_WITH_PUTOUT);
 terminal SACRIFICE_BUNT : 'SH' INT;
 terminal SACRIFICE_FLY_FOUL_BALL : 'FSF' INT;
 terminal SACRIFICE_FLY_WITH_FIELDER_CHOICE : 'SF' (FIELDER_CHOICE|FIELDER_CHOICE_WITH_PUTOUT);
-terminal SACRIFICE_FLY_WITH_ERROR : 'SF' (REACH_ON_RECEIVE_ERROR | REACH_ON_FLY_ERROR);
+terminal SACRIFICE_FLY_WITH_ERROR : 'SF' (REACH_ON_RECEIVE_ERROR | REACH_ON_FLY_ERROR | REACH_ON_POP_ERROR);
 terminal SACRIFICE_FLY : 'SF' INT;
 terminal DOUBLE_PLAY : 'DP';
 terminal TRIPLE_PLAY : 'TP';

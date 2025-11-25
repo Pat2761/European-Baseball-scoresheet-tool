@@ -25,6 +25,7 @@ import org.bpy.score.game.game.BatterAdvanceOnKWithError;
 import org.bpy.score.game.game.BatterAdvanceOnKWithFielderChoice;
 import org.bpy.score.game.game.BatterAdvanceOnObstruction;
 import org.bpy.score.game.game.BatterAdvanceOnOccupedBall;
+import org.bpy.score.game.game.BatterAdvanceOnPopError;
 import org.bpy.score.game.game.BatterAdvanceOnReceiveError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithError;
 import org.bpy.score.game.game.BatterAdvanceOnSacrificeFlyWithFielderChoice;
@@ -351,6 +352,17 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else if (rule == grammarAccess.getDefensiveChoiceForBatterRule()) {
 					sequence_DefensiveChoiceForBatter(context, (BatterAdvanceOnOccupedBall) semanticObject); 
+					return; 
+				}
+				else break;
+			case GamePackage.BATTER_ADVANCE_ON_POP_ERROR:
+				if (rule == grammarAccess.getBatterActionRule()
+						|| rule == grammarAccess.getBatterAdvanceRule()) {
+					sequence_BatterAdvance_DecisiveError(context, (BatterAdvanceOnPopError) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getDecisiveErrorRule()) {
+					sequence_DecisiveError(context, (BatterAdvanceOnPopError) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1346,6 +1358,21 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     BatterAction returns BatterAdvanceOnPopError
+	 *     BatterAdvance returns BatterAdvanceOnPopError
+	 *
+	 * Constraint:
+	 *     (currentBatter=CurrentBatter batterAdvance=REACH_ON_POP_ERROR moreAdvances+=AdvanceWithContinuation* out=MoreAdanceFail?)
+	 * </pre>
+	 */
+	protected void sequence_BatterAdvance_DecisiveError(ISerializationContext context, BatterAdvanceOnPopError semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     BatterAction returns BatterAdvanceOnReceiveError
 	 *     BatterAdvance returns BatterAdvanceOnReceiveError
 	 *
@@ -2149,8 +2176,31 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.DECISIVE_ERROR__BATTER_ADVANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDecisiveErrorAccess().getCurrentBatterCurrentBatterParserRuleCall_3_1_0(), semanticObject.getCurrentBatter());
-		feeder.accept(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_3_3_0(), semanticObject.getBatterAdvance());
+		feeder.accept(grammarAccess.getDecisiveErrorAccess().getCurrentBatterCurrentBatterParserRuleCall_4_1_0(), semanticObject.getCurrentBatter());
+		feeder.accept(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceGROUNDED_DOUBLE_PLAY_ADVANCE_WITH_ERRORTerminalRuleCall_4_3_0(), semanticObject.getBatterAdvance());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     DecisiveError returns BatterAdvanceOnPopError
+	 *
+	 * Constraint:
+	 *     (currentBatter=CurrentBatter batterAdvance=REACH_ON_POP_ERROR)
+	 * </pre>
+	 */
+	protected void sequence_DecisiveError(ISerializationContext context, BatterAdvanceOnPopError semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GamePackage.Literals.BATTER_ACTION__CURRENT_BATTER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.BATTER_ACTION__CURRENT_BATTER));
+			if (transientValues.isValueTransient(semanticObject, GamePackage.Literals.DECISIVE_ERROR__BATTER_ADVANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.DECISIVE_ERROR__BATTER_ADVANCE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDecisiveErrorAccess().getCurrentBatterCurrentBatterParserRuleCall_1_1_0(), semanticObject.getCurrentBatter());
+		feeder.accept(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_POP_ERRORTerminalRuleCall_1_3_0(), semanticObject.getBatterAdvance());
 		feeder.finish();
 	}
 	
@@ -2172,8 +2222,8 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.DECISIVE_ERROR__BATTER_ADVANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDecisiveErrorAccess().getCurrentBatterCurrentBatterParserRuleCall_1_1_0(), semanticObject.getCurrentBatter());
-		feeder.accept(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_1_3_0(), semanticObject.getBatterAdvance());
+		feeder.accept(grammarAccess.getDecisiveErrorAccess().getCurrentBatterCurrentBatterParserRuleCall_2_1_0(), semanticObject.getCurrentBatter());
+		feeder.accept(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_RECEIVE_ERRORTerminalRuleCall_2_3_0(), semanticObject.getBatterAdvance());
 		feeder.finish();
 	}
 	
@@ -2195,8 +2245,8 @@ public class GameSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GamePackage.Literals.DECISIVE_ERROR__BATTER_ADVANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getDecisiveErrorAccess().getCurrentBatterCurrentBatterParserRuleCall_2_1_0(), semanticObject.getCurrentBatter());
-		feeder.accept(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_2_3_0(), semanticObject.getBatterAdvance());
+		feeder.accept(grammarAccess.getDecisiveErrorAccess().getCurrentBatterCurrentBatterParserRuleCall_3_1_0(), semanticObject.getCurrentBatter());
+		feeder.accept(grammarAccess.getDecisiveErrorAccess().getBatterAdvanceREACH_ON_THROW_ERRORTerminalRuleCall_3_3_0(), semanticObject.getBatterAdvance());
 		feeder.finish();
 	}
 	

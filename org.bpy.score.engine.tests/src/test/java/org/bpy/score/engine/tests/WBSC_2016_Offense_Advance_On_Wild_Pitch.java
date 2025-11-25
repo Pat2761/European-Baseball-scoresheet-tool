@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTest {
 
@@ -23,7 +22,7 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
    * <table>
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_045.JPG"/></td>
-   * <td>The abbreviation used for a wild pitch is “WP” followed by the batting order number of the player who is on the plate at the time of the wild pitch.
+   * <td>The abbreviation used for a wild pitch is ï¿½WPï¿½ followed by the batting order number of the player who is on the plate at the time of the wild pitch.
    * The official scorer shall charge a pitcher with a wild pitch when a legally delivered ball is so high, so wide, or so low that the catcher does not stop
    * and control the ball by ordinary effort, thereby permitting a runner or runners to advance.</td>
    * </tr>
@@ -38,7 +37,7 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
     buf.append("        /*  Le premier batteur frappe un triple dans le champs droit */\r\n");
     buf.append("        action { batter -> 3BRC }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant gagne la première base sur un 'base on ball' */\r\n");
+    buf.append("        /* Le batteur suivant gagne la premiï¿½re base sur un 'base on ball' */\r\n");
     buf.append("        action { batter -> BB }\r\n");
     buf.append("\r\n");
     buf.append("        /* Le lanceur fait un lancer fou, les deux coureurs avance */\r\n");
@@ -48,7 +47,7 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -92,7 +91,7 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -103,8 +102,8 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_046.JPG"/></td>
    * <td>In the event that the third strike is a wild pitch, permitting the batter to reach first base, the official scorer shall score a strikeout and a wild
-   * pitch [OBR 9.13(a)]. The abbreviation “WP” (upper case) along with a “K” for strikeout (followed, naturally, by the cumulative number of the strikeout for
-   * that pitcher) should be used for the batter. The abbreviation “wp” (lower case) is used for any runners who advance.</td>
+   * pitch [OBR 9.13(a)]. The abbreviation ï¿½WPï¿½ (upper case) along with a ï¿½Kï¿½ for strikeout (followed, naturally, by the cumulative number of the strikeout for
+   * that pitcher) should be used for the batter. The abbreviation ï¿½wpï¿½ (lower case) is used for any runners who advance.</td>
    * </tr>
    * </table>
    * 
@@ -117,14 +116,14 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
     buf.append("        /* Le premier batteur frappe un doube dans le champ gauche */\r\n");
     buf.append("        action { batter -> 2BLC }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Sur le strike le batteur suivant swing et appteind la première base, le coureur avance */\r\n");
+    buf.append("        /* Sur le strike le batteur suivant swing et appteind la premiï¿½re base, le coureur avance */\r\n");
     buf.append("        action { batter -> KSWP , runner2 -> wp }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -168,7 +167,7 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -198,7 +197,7 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -241,7 +240,7 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
     checkCatcherStat(statisticEngine, 1, 0, 0, 0);
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -251,7 +250,7 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
    * <table>
    * <tr>
    * <td><img src="./resources/WBSC_2016_offense_exemple_048.JPG"/></td>
-   * <td>If a runner advances more than one base on more than one wild pitch to the same batter, the abbreviation “WP” is used for each wild pitch.</td>
+   * <td>If a runner advances more than one base on more than one wild pitch to the same batter, the abbreviation ï¿½WPï¿½ is used for each wild pitch.</td>
    * </tr>
    * </table>
    * 
@@ -267,14 +266,14 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
     buf.append("        /* Le coureur profite d'un lancer fou pour gagner une base */\r\n");
     buf.append("        action { runner1 -> WP }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le coureur profite d'un deuxième lancer fou pour gagner une base */\r\n");
+    buf.append("        /* Le coureur profite d'un deuxiï¿½me lancer fou pour gagner une base */\r\n");
     buf.append("        action { runner2 -> WP }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -316,7 +315,7 @@ public class WBSC_2016_Offense_Advance_On_Wild_Pitch extends AbstractWBSCUnitTes
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

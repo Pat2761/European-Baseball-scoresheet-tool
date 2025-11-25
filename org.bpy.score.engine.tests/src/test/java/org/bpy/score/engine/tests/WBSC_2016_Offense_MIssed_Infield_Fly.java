@@ -1,15 +1,14 @@
 package org.bpy.score.engine.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.StringReader;
 
 import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.game.game.Game;
-import org.bpy.score.game.tests.CommonResources;
 import org.eclipse.xtext.parser.IParseResult;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class WBSC_2016_Offense_MIssed_Infield_Fly extends AbstractWBSCUnitTest {
 
@@ -35,20 +34,20 @@ public class WBSC_2016_Offense_MIssed_Infield_Fly extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_121") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le premier batter gagne la première base sur un 'hit by pitch' */\r\n");
+    buf.append("        /* Le premier batter gagne la premiï¿½re base sur un 'hit by pitch' */\r\n");
     buf.append("        action { batter -> HP }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant frappe un hit sur la troisème base, le coureur avance  */\r\n");
+    buf.append("        /* Le batteur suivant frappe un hit sur la troisï¿½me base, le coureur avance  */\r\n");
     buf.append("        action { batter -> 1B5, runner1 -> + }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le frappe un infield fly, mais l'arrêt court commet une erreur, les coureur avance sur l'erreur */\r\n");
+    buf.append("        /* Le frappe un infield fly, mais l'arrï¿½t court commet une erreur, les coureur avance sur l'erreur */\r\n");
     buf.append("        action { batter -> OBR8-6 , runner1 -> (1) , runner2 -> e6 }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -93,7 +92,7 @@ public class WBSC_2016_Offense_MIssed_Infield_Fly extends AbstractWBSCUnitTest {
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 
@@ -115,20 +114,20 @@ public class WBSC_2016_Offense_MIssed_Infield_Fly extends AbstractWBSCUnitTest {
 
     StringBuffer buf = new StringBuffer(CommonResources.BASEBALL_STARTING_GAME.replaceAll("J4R115", "OFFENSE_Exemple_122") + "\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le premier batter gagne la première base sur un 'hit by pitch' */\r\n");
+    buf.append("        /* Le premier batter gagne la premiï¿½re base sur un 'hit by pitch' */\r\n");
     buf.append("        action { batter -> HP }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le batteur suivant frappe un hit sur la troisème base, le coureur avance  */\r\n");
+    buf.append("        /* Le batteur suivant frappe un hit sur la troisï¿½me base, le coureur avance  */\r\n");
     buf.append("        action { batter -> 1B5, runner1 -> + }\r\n");
     buf.append("\r\n");
-    buf.append("        /* Le frappe un infield fly, le deux coureur avance quand même */\r\n");
+    buf.append("        /* Le frappe un infield fly, le deux coureur avance quand mï¿½me */\r\n");
     buf.append("        action { batter -> OBR8-6 , runner1 -> + , runner2 -> + }\r\n");
     buf.append("\r\n");
     buf.append(CommonResources.ENDING_GAME);
     
 
     IParseResult parserResult = parser.parse(new StringReader(buf.toString()));
-    assertNotNull("Parser result can't be null", parserResult);
+    assertNotNull(parserResult,"Parser result can't be null");
     Game game = (Game) parserResult.getRootASTElement();
 
     /* create statistiques */
@@ -173,7 +172,7 @@ public class WBSC_2016_Offense_MIssed_Infield_Fly extends AbstractWBSCUnitTest {
     /* ----------------------------------------------------------------------------------------------------------------------- */
     checkTotalCatcherSt(statisticEngine, 0, 0, 0);
 
-    /* On met ce boolean à vrai si le résultat attenedu est conforme à l'image défini dans le commentaire ci dessus */
+    /* On met ce boolean ï¿½ vrai si le rï¿½sultat attenedu est conforme ï¿½ l'image dï¿½fini dans le commentaire ci dessus */
     
   }
 

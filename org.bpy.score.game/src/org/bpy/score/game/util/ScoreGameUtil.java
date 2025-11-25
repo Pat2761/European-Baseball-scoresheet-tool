@@ -92,7 +92,8 @@ public class ScoreGameUtil {
 	 * @return hit position
 	 */
 	public static String getHitLocation(BatterAdvanceOnSingleHit advance) {
-		return advance.getHit().replaceFirst("1B",""); //$NON-NLS-1$ //$NON-NLS-2$
+		String hitLocation = advance.getHit().replaceAll("b", ""); //$NON-NLS-1$ //$NON-NLS-2$
+		return hitLocation.replaceFirst("1B",""); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -398,6 +399,17 @@ public class ScoreGameUtil {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Check if a single hit is a bunt.
+	 * 
+	 * @param action single hit action
+	 * 
+	 * @return <b>true</b> it is a bunt, <b>false</b> otherwise
+	 */
+	public static boolean isBunt(BatterAdvanceOnSingleHit action) {
+		return action.getHit().contains("b"); //$NON-NLS-1$
 	}
 
 }

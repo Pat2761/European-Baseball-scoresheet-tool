@@ -93,7 +93,7 @@ public class ExportAsPdfHandler implements IHandler {
             scoreSheetEngine.setStatisticEngine(statisticEngine);
             scoreSheetEngine.run();
             
-            String fileName = ((XtextEditor) editor).getPartName().replace(".game", ".pdf"); //$NON-NLS--1$ //$NON-NLS--2$
+            String fileName = ((XtextEditor) editor).getPartName().replace(".game", ".pdf"); //$NON-NLS-1$ //$NON-NLS-2$
             String message = NLS.bind(Messages.ExportAsPdfHandler_ExportResume, new Object[] {fileName,dir});
             
             MessageDialog.openInformation(new Shell(), Messages.ExportAsPdfHandler_ExportSuccesFull, message);
@@ -111,7 +111,7 @@ public class ExportAsPdfHandler implements IHandler {
     if (editor instanceof XtextEditor) {
       XtextEditor xtextEditor = (XtextEditor) editor;
 
-      if ("org.bpy.score.game.Game".equals(xtextEditor.getLanguageName())) { //$NON-NLS--1$
+      if ("org.bpy.score.game.Game".equals(xtextEditor.getLanguageName())) { //$NON-NLS-1$
         return true;
       }
     }

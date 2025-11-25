@@ -6,10 +6,11 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="GameReport">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="GAME-REPORT"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bannerPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bannerPath" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="BANNER-PATH"/>
@@ -22,29 +23,29 @@
         <details key="name" value="VISITOR-SHEET-PATH"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="visitorStats" lowerBound="1"
-        eType="#//TeamStatisitics" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="visitorStats" eType="#//TeamStatisitics"
+        derived="true" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="VISITOR-STATS"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hometeamStats" lowerBound="1"
-        eType="#//TeamStatisitics" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hometeamStats" eType="#//TeamStatisitics"
+        derived="true" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="HOMETEAM-STATS"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="umpires" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="umpires" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="UMPIRE"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scorekeepers" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scorekeepers" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="SCOREKEEPER"/>
@@ -97,8 +98,8 @@
         <details key="name" value="GAME-NUMBER"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="playByPlay" lowerBound="1"
-        eType="#//PlayByPlay" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="playByPlay" eType="#//PlayByPlay"
+        derived="true" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="PLAY-BY-PLAY"/>
@@ -110,31 +111,38 @@
         <details key="name" value="PDF-FILE"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="generalStats" lowerBound="1"
-        eType="#//GameGeneralStats" containment="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generalStats" eType="#//GameGeneralStats"
+        derived="true" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="GAME-GENERAL-STATS"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="visitorLineup" eType="#//StartingLineup"
-        containment="true">
+        derived="true" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="STARTING-VISITOR-LINEUP"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hometeamLineup" eType="#//StartingLineup"
-        containment="true">
+        derived="true" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="STARTING-HOMETEAM-LINEUP"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mixed" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry"
+        transient="true" derived="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="name" value=":mixed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TeamStatisitics">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="TEAM-STATISTICS"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="players" lowerBound="1"
@@ -174,7 +182,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PitcherStatistic">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="PITCHER-STATISTICS"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="batterFront" lowerBound="1"
@@ -361,10 +369,37 @@
         <details key="name" value="GAME-SAVE"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ips" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="IPS"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pitcherOrder" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="-1">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="PITCHER-ORDER"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="flyOuts" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="-1">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="FLY-OUTS"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groundedOuts" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="-1">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="GROUNDED-OUTS"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DefensiveStatistic">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="DEFENSIVES-STATISTICS"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="putOut" lowerBound="1"
@@ -398,7 +433,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CatcherStatistic">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="CATCHER-STATISTICS"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="passBall" lowerBound="1"
@@ -425,7 +460,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OffensiveStatistic">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="OFFENSIVE-STATISTICS"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="plateAppearances" lowerBound="1"
@@ -559,7 +594,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Player">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="PLAYER"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pitcherStatistic" eType="#//PitcherStatistic"
@@ -599,11 +634,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PlayByPlay">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="PLAY-BY-PLAY"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actiondescription" upperBound="-1"
-        eType="#//ActionDescription" containment="true"/>
+        eType="#//ActionDescription" containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="ACTION-DESCRIPTION"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TEAM">
     <eLiterals name="HOMETEAM"/>
@@ -611,7 +651,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameGeneralStats">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="GAME-GENERAL-STATS"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pointsPerInning" lowerBound="1"
@@ -666,7 +706,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PointsPerInning">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="POINTS-PER-INNING"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
@@ -693,7 +733,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StartingLineup">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="STARTING-LINEUP"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teamName" lowerBound="1"
@@ -719,7 +759,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LineupPlayer">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="LINEUP-PLAYER"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -745,7 +785,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActionDescription">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-      <details key="kind" value="element"/>
+      <details key="kind" value="elementOnly"/>
       <details key="name" value="ACTION-DESCRIPTION"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="header" lowerBound="1"
@@ -767,6 +807,12 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="RESUME"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="team" lowerBound="1" eType="#//TEAM">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="TEAM"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>

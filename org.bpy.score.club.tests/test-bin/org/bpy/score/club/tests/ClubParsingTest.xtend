@@ -6,14 +6,14 @@ package org.bpy.score.club.tests
 import com.google.inject.Inject
 import org.bpy.score.club.club.Club
 import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.eclipse.xtext.testing.XtextRunner
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.^extension.ExtendWith
 
-@RunWith(XtextRunner)
+@ExtendWith(InjectionExtension)
 @InjectWith(ClubInjectorProvider)
-
 class ClubParsingTest {
 	@Inject
 	ParseHelper<Club> parseHelper

@@ -101,11 +101,10 @@ public class ScoreSheetImageCreator {
 			}
 	
 			try {
-				ImageIO.write(bImage, "jpg",
-						new File(outputFolder + "/" + game.getName() + "_" + team + "_scoreSheet.jpg"));
-				return "./img/" + game.getName() + "_" + team + "_scoreSheet.jpg";
+				ImageIO.write(bImage, "jpg", new File(outputFolder + "/" + game.getName() + "_" + team + "_scoreSheet.jpg")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+				return "./img/" + game.getName() + "_" + team + "_scoreSheet.jpg"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			} catch (IOException e) {
-				logger.log(Level.SEVERE,e.getMessage());
+				logger.log(Level.SEVERE,e.getLocalizedMessage());
 			}
 		}
 		return null;

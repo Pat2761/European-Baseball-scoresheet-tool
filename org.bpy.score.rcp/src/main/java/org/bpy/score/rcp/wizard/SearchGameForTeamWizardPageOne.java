@@ -73,7 +73,7 @@ public class SearchGameForTeamWizardPageOne extends WizardPage implements Select
 	 * @param currentCategory Current selected category
 	 */
 	public SearchGameForTeamWizardPageOne(SearchGameForTeamWizard searchGameForTeamWizard, String currentCategory) {
-		super("wizardPage"); //$NON-NLS-$
+		super("wizardPage"); //$NON-NLS-1$
 		setTitle(Messages.SearchGameForTeamWizardPageOne_PageTitle);
 		setDescription(Messages.SearchGameForTeamWizardPageOne_PageDescription);
 		setMessage(Messages.SearchGameForTeamWizardPageOne_PageMessage);
@@ -163,7 +163,7 @@ public class SearchGameForTeamWizardPageOne extends WizardPage implements Select
 		clubsDescriptions = new HashMap<>();
 		for (Club club : clubs) {
 			
-			String clubDesc = club.getClubDescription().getName() + " (" + club.getName() + ")"; 
+			String clubDesc = club.getClubDescription().getName() + " (" + club.getName() + ")";  //$NON-NLS-1$ //$NON-NLS-2$
 			clubsDescriptions.put(clubDesc, club);
 		}
 		
@@ -206,8 +206,8 @@ public class SearchGameForTeamWizardPageOne extends WizardPage implements Select
 				SearchGameContainer searchGameContainer = new SearchGameContainer();
 				searchGameContainer.setPlace(game.getDescription().getPlace());
 				searchGameContainer.setCode(game.getName());
-				searchGameContainer.setDateTime(game.getDescription().getDate() + " " + game.getDescription().getStartTime());
-				searchGameContainer.setDescription(hometeamName + " vs " + visitorName);
+				searchGameContainer.setDateTime(game.getDescription().getDate() + " " + game.getDescription().getStartTime()); //$NON-NLS-1$
+				searchGameContainer.setDescription(hometeamName + " vs " + visitorName); //$NON-NLS-1$
 				searchGameContainer.setGame(game);
 				gamesContainer.add(searchGameContainer);
 			}

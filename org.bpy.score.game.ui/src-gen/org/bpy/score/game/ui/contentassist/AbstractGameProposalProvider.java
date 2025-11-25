@@ -560,6 +560,9 @@ public abstract class AbstractGameProposalProvider extends TerminalsProposalProv
 	public void complete_REACH_ON_FLY_ERROR(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
+	public void complete_REACH_ON_POP_ERROR(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
 	public void complete_REACH_ON_THROW_ERROR(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
