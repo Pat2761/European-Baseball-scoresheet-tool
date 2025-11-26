@@ -29,7 +29,9 @@
    </vm>
 
    <plugins>
-      <plugin id="com.google.guava"/>
+      <plugin id="bcpg"/>
+      <plugin id="bcprov"/>
+      <plugin id="com.google.guava" version="31.1.0.jre"/>
       <plugin id="com.google.inject"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="com.sun.jna"/>
@@ -37,7 +39,7 @@
       <plugin id="io.github.classgraph"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
-      <plugin id="org.antlr.runtime"/>
+      <plugin id="org.antlr.runtime" version="3.2.0"/>
       <plugin id="org.aopalliance"/>
       <plugin id="org.apache.batik.constants"/>
       <plugin id="org.apache.batik.css"/>
@@ -49,8 +51,6 @@
       <plugin id="org.apache.felix.scr"/>
       <plugin id="org.apache.log4j"/>
       <plugin id="org.apache.xmlgraphics"/>
-      <plugin id="org.bouncycastle.bcpg"/>
-      <plugin id="org.bouncycastle.bcprov"/>
       <plugin id="org.bpy.score.club"/>
       <plugin id="org.bpy.score.club.ide"/>
       <plugin id="org.bpy.score.club.ui"/>
@@ -128,9 +128,12 @@
       <plugin id="org.eclipse.equinox.p2.metadata.repository"/>
       <plugin id="org.eclipse.equinox.p2.repository"/>
       <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.region" fragment="true"/>
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.equinox.security"/>
       <plugin id="org.eclipse.equinox.security.win32.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.equinox.transforms.hook" fragment="true"/>
+      <plugin id="org.eclipse.equinox.weaving.hook" fragment="true"/>
       <plugin id="org.eclipse.help"/>
       <plugin id="org.eclipse.jface"/>
       <plugin id="org.eclipse.jface.databinding"/>
@@ -151,7 +154,6 @@
       <plugin id="org.eclipse.ui.forms"/>
       <plugin id="org.eclipse.ui.ide"/>
       <plugin id="org.eclipse.ui.ide.application"/>
-      <plugin id="org.eclipse.ui.intro"/>
       <plugin id="org.eclipse.ui.navigator"/>
       <plugin id="org.eclipse.ui.navigator.resources"/>
       <plugin id="org.eclipse.ui.views"/>

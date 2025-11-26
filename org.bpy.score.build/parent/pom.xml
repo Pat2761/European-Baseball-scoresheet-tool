@@ -44,14 +44,14 @@
 	<repositories>
 
 		<!-- Eclipse link -->
- 		<repository>
-			<id>Eclipse-2022-09</id>
-			<url>http://download.eclipse.org/releases/2022-09</url>
+		<repository>
+			<id>Eclipse-2023-06</id>
+			<url>http://download.eclipse.org/releases/2023-06</url>
 			<layout>p2</layout>
 		</repository>
 
 		<!-- Eclipse Nebula -->
- 		<repository>
+		<repository>
 			<id>Nebula</id>
 			<url>https://download.eclipse.org/nebula/releases/latest</url>
 			<layout>p2</layout>
@@ -59,7 +59,8 @@
 
 		<repository>
 			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+			<name>disable dead 'Codehaus Snapshots' repository, see
+				https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
 			<url>http://nexus.codehaus.org/snapshots/</url>
 			<releases>
 				<enabled>false</enabled>
@@ -68,8 +69,9 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		
-		<!-- This must be disabled explicitly, otherwise it is enabled by https://github.com/mojohaus/mojo-parent 
+
+		<!-- This must be disabled explicitly, otherwise it is enabled by
+		https://github.com/mojohaus/mojo-parent 
 			which is taken from exec-maven-plugin from at least version 1.6.0 -->
 		<repository>
 			<id>ossrh-snapshots</id>
@@ -82,7 +84,7 @@
 			</snapshots>
 			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
 		</repository>
-		
+
 		<!-- This is enabled by /org/sonatype/oss/oss-parent/7 used as parent by 
 			org/xtext/antlr-generator/3.2.1 -->
 		<repository>
@@ -103,7 +105,7 @@
 	<properties>
 
 		<!-- Eclipse target version  -->
-		<eclipse.target.version>4.25.0</eclipse.target.version>
+		<eclipse.target.version>4.28.0</eclipse.target.version>
 
 		<!-- Source encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -111,9 +113,9 @@
 		<!-- Plugins versions settings -->
 		<tycho.version>3.0.1</tycho.version>
 		<tycho.surefire.version>3.0.1</tycho.surefire.version>
-		
+
 		<!-- XText version -->
-		<xtextVersion>2.28.0</xtextVersion>
+		<xtextVersion>2.31.0</xtextVersion>
 
 		<!-- IText version -->
 		<itextVersion>5.5.13.4</itextVersion>
@@ -126,16 +128,18 @@
 
 	</properties>
 
+
 	<dependencyManagement>
 		<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-			<!-- https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-p2-publisher-plugin -->
+			<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+			<!--
+			https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-p2-publisher-plugin -->
 			<dependency>
-			    <groupId>org.eclipse.tycho</groupId>
-			    <artifactId>tycho-p2-publisher-plugin</artifactId>
-			    <version>${tycho.version}</version>
-			</dependency>	
-		
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-publisher-plugin</artifactId>
+				<version>${tycho.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>xtext-dev-bom</artifactId>
@@ -188,7 +192,7 @@
 						</filesets>
 					</configuration>
 				</plugin>
-			
+
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -222,7 +226,7 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
-				
+
 				<plugin>
 					<!--
 						Can be removed after first generator execution
@@ -236,8 +240,9 @@
 						<useProjectSettings>false</useProjectSettings>
 					</configuration>
 				</plugin>
-				
-				<!-- to skip running (and compiling) tests use commandline flag: -Dmaven.test.skip
+
+				<!-- to skip running (and compiling) tests use commandline flag:
+				-Dmaven.test.skip
 					To skip tests, but still compile them, use: -DskipTests
 					To allow all tests in a pom to pass/fail, use commandline flag: -fae (fail
 					at end) -->
@@ -259,7 +264,7 @@
 						<includeGraph>true</includeGraph>
 						<generateTreeview>true</generateTreeview>
 					</configuration>
-				</plugin>				
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -272,14 +277,16 @@
 				<version>${tycho.version}</version>
 				<configuration>
 					<archive>
-						<!-- which indicates whether the generated archive will contain the 
+						<!-- which indicates whether the generated archive will
+						contain the 
 							pom.xml and pom.properties file -->
 						<addMavenDescriptor>false</addMavenDescriptor>
 					</archive>
 				</configuration>
 			</plugin>
 
-			<!-- Permet d'ajouter les fonctionalité de creation de plugins eclipse -->
+			<!-- Permet d'ajouter les fonctionalité de creation de plugins
+			eclipse -->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
@@ -298,8 +305,8 @@
 					<pomDependencies>consider</pomDependencies>
 					<target>
 						<artifact>
-							<groupId>org.bpy.electronics.mc6809</groupId>
-							<artifactId>Eclipse-2022-09</artifactId>
+							<groupId>org.bpy.score</groupId>
+							<artifactId>Eclipse-2023-06</artifactId>
 							<version>${eclipse.target.version}</version>
 						</artifact>
 					</target>
@@ -317,7 +324,8 @@
 								<id>org.eclipse.xtext.logging</id>
 								<versionRange>1.2.19</versionRange>
 							</requirement>
-							<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target
+							<!-- to get the org.eclipse.osgi.compatibility.state
+							plugin if the target
 								platform is Luna or later. (backward compatible with kepler and previous
 								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
 							<requirement>
@@ -325,7 +333,8 @@
 								<id>org.eclipse.rcp</id>
 								<versionRange>0.0.0</versionRange>
 							</requirement>
-							<!-- to force the same version of jdt.compiler.apt and jdt.core
+							<!-- to force the same version of jdt.compiler.apt
+							and jdt.core
 								(for xtext-maven-plugin)
 								see https://github.com/eclipse/xtext-maven/issues/146 -->
 							<requirement>
@@ -341,17 +350,18 @@
 						</extraRequirements>
 					</dependency-resolution>
 				</configuration>
-				
+
 			</plugin>
 
 		</plugins>
 	</build>
-	
+
 	<pluginRepositories>
 
 		<pluginRepository>
 			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+			<name>disable dead 'Codehaus Snapshots' repository, see
+				https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
 			<url>http://nexus.codehaus.org/snapshots/</url>
 			<releases>
 				<enabled>false</enabled>
@@ -386,8 +396,8 @@
 		</pluginRepository>
 
 	</pluginRepositories>
-	
-		<profiles>
+
+	<profiles>
 		<profile>
 			<id>macos</id>
 			<activation>
