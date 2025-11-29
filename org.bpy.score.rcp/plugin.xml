@@ -921,14 +921,14 @@
          <newWizardShortcut
                id="org.bpy.score.rcp.new.custom">
          </newWizardShortcut>
-         <view
+ <!--        <view
                closeable="false"
-               id="org.eclipse.ui.navigator.ProjectExplorer"
+               id="org.bpy.game.rcp.ui.navigator"
                minimized="false"
                relationship="bottom"
                relative="org.bpy.score.rcp.view.FeildViewOccupation"
                visible="true">
-         </view>
+         </view> -->
          <view
                closeable="false"
                id="org.bpy.score.rcp.currentlineup.view"

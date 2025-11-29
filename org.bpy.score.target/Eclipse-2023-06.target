@@ -1,34 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <target name="Eclipse 2023-06" sequenceNumber="1">
-            
+                
+    
     
     
     <locations>
-                        
+                                
+        
         
         <location type="InstallableUnit">
-                                    
+                                                
+            
             
             <repository location="https://download.eclipse.org/releases/2023-06/"/>
-                                    
+                                                
+            
             
             <unit id="org.eclipse.jdt.feature.group" version="3.19.100.v20230605-0440"/>
-                                    
+                                                
+            
             
             <unit id="org.eclipse.xtext.sdk.feature.group" version="2.31.0.v20230529-0659"/>
-                                    
+                                                
+            
             
             <unit id="org.eclipse.xtend.sdk.feature.group" version="2.31.0.v20230529-0659"/>
-                                    
+                                                
+            
             
             <unit id="org.eclipse.emf.sdk.feature.group" version="2.34.0.v20230406-1334"/>
-                                    
+                                                
+            
             
             <unit id="org.eclipse.equinox.sdk.feature.group" version="3.23.800.v20230523-2142"/>
-                                    
+                                                
+            
             
             <unit id="org.eclipse.equinox.sdk.feature.group" version="3.23.800.v20230523-2142"/>
-                        &gt;
+                                    &gt;
+        
+        
+        </location>
+                        	    
+        
+        
+        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
+                                    		    
+            
+            
+            <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository"/>
+                                    		    
+            
+            
+            <unit id="ch.qos.logback.classic" version="1.2.3.v20221112-0806"/>
+                                    		    
+            
+            
+            <unit id="ch.qos.logback.core" version="1.2.3.v20221112-0806"/>
+                                    	    
+        
         
         </location>
                 	    
@@ -36,42 +66,45 @@
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
                         		    
             
-            <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository"/>
+            <repository location="https://download.eclipse.org/releases/2023-06/"/>
                         		    
             
-            <unit id="ch.qos.logback.classic" version="1.2.3.v20221112-0806"/>
-                        		    
-            
-            <unit id="ch.qos.logback.core" version="1.2.3.v20221112-0806"/>
+            <unit id="org.eclipse.sdk.feature.group" version="4.28.0.v20230605-0440"/>
                         	    
         
         </location>
         	    
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
             		    
-            <repository location="https://download.eclipse.org/releases/2023-06/"/>
+            <repository location="https://download.eclipse.org/technology/babel/update-site/latest/"/>
             		    
-            <unit id="org.eclipse.sdk.feature.group" version="4.28.0.v20230605-0440"/>
+            <unit id="org.eclipse.babel.nls_eclipse_fr.feature.group" version="4.26.0.v20230220105658"/>
             	    
         </location>
             
     </locations>
-            
+                
+    
     
     
     <environment>
-                        
+                                
+        
         
         <os>win32</os>
-                        
+                                
+        
         
         <ws>win32</ws>
-                        
+                                
+        
         
         <arch>x86_64</arch>
-                    
+                            
+    
     
     </environment>
-        
+            
+
 
 </target>
