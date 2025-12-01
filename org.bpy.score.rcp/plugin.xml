@@ -617,20 +617,20 @@
          <command
                commandId="org.bpy.score.rcp.command.new.championat"
                icon="icons/tournament.png"
-               label="%rcp.popup.new_tournament"
+               label="%rcp.menu.new_tournament"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command1"
                icon="icons/season.png"
                id="org.bpy.score.rcp.newseaason"
-               label="%rcp.popup.new_season"
+               label="%rcp.menu.new_season"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command.newgame"
                icon="icons/game.png"
-               label="%rcp.popup.new_game"
+               label="%rcp.menu.new_game"
                style="push">
          </command>
          <command
@@ -652,25 +652,25 @@
             <command
                   commandId="org.bpy.score.rcp.command.new.championat"
                   icon="icons/full/obj16/OpenTournamentFolder.png"
-                  label="%rcp.popup2.new_tournament"
+                  label="%rcp.menu.new_tournament"
                   style="push">
             </command>
             <command
                   commandId="org.bpy.score.rcp.command.newseason"
                   icon="icons/full/obj16/SeasonFolder.png"
-                  label="%rcp.popup2.new_season"
+                  label="%rcp.menu.new_season"
                   style="push">
             </command>
             <command
                   commandId="org.bpy.score.rcp.command.clubdescription"
                   icon="icons/full/obj16/club.png"
-                  label="%rcp.popup2.new_club"
+                  label="%rcp.menu.new_club"
                   style="push">
             </command>
             <command
                   commandId="org.bpy.score.rcp.command.newgame"
                   icon="icons/full/obj16/game.png"
-                  label="%rcp.popup2.new_game"
+                  label="%rcp.menu.new_game"
                   style="push">
             </command>
          </menu>
@@ -723,29 +723,29 @@
          <command
                commandId="org.bpy.score.rcp.command.new.championat"
                icon="icons/tournament.png"
-               label="%rcp.popup3.new_tournament"
+               label="%rcp.menu.new_tournament"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command.newseason"
                icon="icons/season.png"
-               label="%rcp.popup3.new_season"
+               label="%rcp.menu.new_season"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command.newcategory"
                icon="icons/category.png"
-               label="%rcp.popup3.new_category"
+               label="%rcp.menu.new_category"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command.newgame"
-               label="%rcp.popup3.new_game"
+               label="%rcp.menu.new_game"
                style="push">
          </command>
          <command
                commandId="org.bpy.score.rcp.command.clubdescription"
-               label="%rcp.popup3.new_club"
+               label="%rcp.menu.new_club"
                style="push">
          </command>
       </menuContribution>
@@ -769,7 +769,7 @@
          <command
                commandId="org.bpy.score.rcp.command.configure.setscorenature"
                icon="icons/tournament.png"
-               label="%rcp.popup3.set_as_tournament_nature"
+               label="%rcp.set_as_tournament_nature"
                style="push">
             <visibleWhen>
                <with
@@ -786,7 +786,7 @@
          <command
                commandId="org.bpy.score.rcp.command.configure.unsetscorenature"
                icon="icons/prj_obj.png"
-               label="%rcp.popup3.unset_as_tournament_nature"
+               label="%rcp.unset_as_tournament_nature"
                style="push">
             <visibleWhen>
                <with
@@ -820,19 +820,21 @@
             <command
                   commandId="org.bpy.score.rcp.command.new.championat"
                   icon="icons/tournament.png"
-                  label="%rcp.popup.new_tournament"
+                  label="%rcp.menu.new_tournament"
                   style="push"
                   tooltip="%rcp.popup.new_tournament">
             </command>
             <command
                   commandId="org.bpy.score.rcp.command.newseason"
                   icon="icons/season.png"
+                  label="%rcp.menu.new_season"
                   style="push"
                   tooltip="%rcp.popup.new_season">
             </command>
             <command
                   commandId="org.bpy.score.rcp.command.newgame"
                   icon="icons/game.png"
+                  label="%rcp.menu.new_game"
                   style="push"
                   tooltip="%rcp.popup.new_game">
             </command>
@@ -857,13 +859,6 @@
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
             targetID="org.bpy.score.rcp.perspective">
- <!--        <view
-               id="org.bpy.game.rcp.ui.navigator"
-               ratio="0.25"
-               relationship="left"
-               relative="org.eclipse.ui.editorss"
-               visible="true">
-         </view>-->
          <view
                closeable="true"
                id="org.bpy.score.rcp.view.FeildViewOccupation"
@@ -921,14 +916,14 @@
          <newWizardShortcut
                id="org.bpy.score.rcp.new.custom">
          </newWizardShortcut>
- <!--        <view
+         <view
                closeable="false"
-               id="org.bpy.game.rcp.ui.navigator"
+               id="org.eclipse.ui.navigator.ProjectExplorer"
                minimized="false"
                relationship="bottom"
                relative="org.bpy.score.rcp.view.FeildViewOccupation"
                visible="true">
-         </view> -->
+         </view>
          <view
                closeable="false"
                id="org.bpy.score.rcp.currentlineup.view"
