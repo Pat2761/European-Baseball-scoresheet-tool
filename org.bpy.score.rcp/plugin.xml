@@ -1334,7 +1334,7 @@
       </wizard>
       <category
             id="org.bpy.score.rcp.scoreSheetTool"
-            name="%category.name.0">
+            name="%import.catagory.scoreSheetTool">
       </category>
    </extension>
    <extension
