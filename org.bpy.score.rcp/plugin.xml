@@ -1255,6 +1255,14 @@
             activityId="org.bpy.score.rcp.importExport"
             pattern="org.eclipse.ui.wizards.export.ZipFile">
       </activityPatternBinding>
+      <activity
+            id="org.bpy.score.rcp.activity.xtextNature"
+            name="Hide XText nature">
+      </activity>
+      <activityPatternBinding
+            activityId="org.bpy.score.rcp.activity.xtextNature"
+            pattern=".*/org.eclipse.xtext.ui.*">
+      </activityPatternBinding>
    </extension>
    <extension
          point="org.eclipse.ui.decorators">
