@@ -13,6 +13,7 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="lib" path="lib/commons-lang3-3.17.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

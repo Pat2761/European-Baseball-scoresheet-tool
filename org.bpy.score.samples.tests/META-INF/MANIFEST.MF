@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests
+Bundle-SymbolicName: org.bpy.score.samples.tests
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: junit-jupiter-api;bundle-version="5.9.3"
+Automatic-Module-Name: org.bpy.score.samples.tests
+Bundle-RequiredExecutionEnvironment: JavaSE-17

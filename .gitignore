@@ -3,6 +3,8 @@ bin/
 tmp/
 target/
 win32-64/
+xtend-gen/
+src-gen/
 *.tmp
 *.bak
 *.swp

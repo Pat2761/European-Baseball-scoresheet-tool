@@ -54,6 +54,8 @@
 		<module>../org.bpy.score.preferences.tests</module>
 		<module>../org.bpy.score.reports</module>
 		<module>../org.bpy.score.reports.tests</module>
+		<module>../org.bpy.score.samples</module>
+		<module>../org.bpy.score.samples.tests</module>
 		<module>../org.bpy.score.rcp</module> 
 		<module>../org.bpy.score.rcp.tests</module> 
 	</modules>
