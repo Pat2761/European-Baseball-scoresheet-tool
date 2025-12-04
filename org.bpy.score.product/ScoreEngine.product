@@ -63,6 +63,7 @@
       <plugin id="org.bpy.score.preferences"/>
       <plugin id="org.bpy.score.rcp"/>
       <plugin id="org.bpy.score.reports"/>
+      <plugin id="org.bpy.score.samples"/>
       <plugin id="org.eclipse.compare"/>
       <plugin id="org.eclipse.compare.core"/>
       <plugin id="org.eclipse.compare.nl_fr" fragment="true"/>
@@ -138,6 +139,7 @@
       <plugin id="org.eclipse.help"/>
       <plugin id="org.eclipse.jface"/>
       <plugin id="org.eclipse.jface.databinding"/>
+      <plugin id="org.eclipse.jface.nl_fr" fragment="true"/>
       <plugin id="org.eclipse.jface.text"/>
       <plugin id="org.eclipse.ltk.core.refactoring"/>
       <plugin id="org.eclipse.ltk.ui.refactoring"/>

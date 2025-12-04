@@ -1,11 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Samples
-Bundle-SymbolicName: org.bpy.score.samples
+Bundle-SymbolicName: org.bpy.score.samples;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.bpy.score.samples.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.bpy.score.internationalization;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: org.bpy.score.samples
 Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin

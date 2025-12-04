@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <wizard
+            category="org.bpy.score.rcp.scoreSheetTool"
+            class="org.bpy.score.samples.wizard.ImportSamplesWizard"
+            icon="icons/tournament.png"
+            id="org.bpy.score.samples.importSamples"
+            name="%org.bpy.score.samples.importSamples">
+      </wizard>
+   </extension>
+
+</plugin>

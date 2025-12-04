@@ -1336,12 +1336,6 @@
             id="org.bpy.score.rcp.scoreSheetTool"
             name="%import.catagory.scoreSheetTool">
       </category>
-      <wizard
-            category="org.bpy.score.rcp.scoreSheetTool"
-            class="org.bpy.score.rcp.importer.ProjectSampleImport"
-            id="org.bpy.score.rcp.wizard1"
-            name="%rcp.wizard.import.sample">
-      </wizard>
    </extension>
    <extension
          point="org.eclipse.core.expressions.propertyTesters">
