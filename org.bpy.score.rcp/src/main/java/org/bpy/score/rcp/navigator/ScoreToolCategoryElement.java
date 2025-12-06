@@ -135,7 +135,7 @@ public class ScoreToolCategoryElement implements IScoreToolProjectElement {
 				IScopeContext projectScope = new ProjectScope(folder.getProject());
 				IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
 				if (projectNode != null) {
-					projectNode.put(categoryFolder.toString(), RcpUtils.CATEGORY_CATEGORY);
+					projectNode.put(categoryFolder.getFullPath().toPortableString(), RcpUtils.CATEGORY_CATEGORY);
 					projectNode.flush();
 				}
 

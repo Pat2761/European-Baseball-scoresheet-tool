@@ -6,8 +6,16 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.bpy.score.samples.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.bpy.score.internationalization;bundle-version="1.0.0"
+ org.bpy.score.internationalization;bundle-version="1.0.0",
+ org.eclipse.xtext;bundle-version="2.31.0",
+ org.eclipse.xtext.ui;bundle-version="2.31.0",
+ org.eclipse.xtext.ui.shared;bundle-version="2.31.0",
+ org.eclipse.xtext.common.types;bundle-version="2.31.0",
+ org.eclipse.xtext.ui.codetemplates.ui;bundle-version="2.31.0",
+ org.eclipse.xtext.builder;bundle-version="2.31.0",
+ org.eclipse.core.resources;bundle-version="3.19.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: org.bpy.score.samples
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
+Import-Package: org.eclipse.core.resources

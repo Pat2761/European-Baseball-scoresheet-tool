@@ -146,7 +146,7 @@ public class ScoreToolSeasonElement extends Folder implements IScoreToolProjectE
 				IScopeContext projectScope = new ProjectScope(project);
 				IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
 				if (projectNode != null) {
-					projectNode.put(seasonFolder.toString(), RcpUtils.SEASON_CATEGORY);
+					projectNode.put(seasonFolder.getFullPath().toPortableString(), RcpUtils.SEASON_CATEGORY);
 					projectNode.flush();
 				}
 

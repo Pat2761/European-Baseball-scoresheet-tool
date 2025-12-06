@@ -112,7 +112,7 @@ public class RcpUtils {
 		IScopeContext projectScope = new ProjectScope(folder.getProject());
 		IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
 		if (projectNode != null) {
-			String property = projectNode.get(folder.toString().replaceAll("\\s+","_"), ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			String property = projectNode.get(folder.getFullPath().toPortableString(), ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			return SEASON_CATEGORY.equals(property);
 		} else {
 			return false;
@@ -129,7 +129,7 @@ public class RcpUtils {
 		IScopeContext projectScope = new ProjectScope(folder.getProject());
 		IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
 		if (projectNode != null) {
-			String property = projectNode.get(folder.toString().replaceAll("\\s+","_"), ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			String property = projectNode.get(folder.getFullPath().toPortableString(), ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			return CATEGORY_CATEGORY.equals(property);
 		} else {
 			return false;

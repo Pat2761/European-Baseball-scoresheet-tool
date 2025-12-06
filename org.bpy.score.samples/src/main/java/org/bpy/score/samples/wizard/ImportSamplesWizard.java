@@ -21,6 +21,7 @@ package org.bpy.score.samples.wizard;
 import java.util.List;
 
 import org.bpy.score.internationalization.samples.Messages;
+import org.bpy.score.samples.core.ProjectImporter;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IImportWizard;
@@ -53,7 +54,10 @@ public class ImportSamplesWizard extends Wizard implements IImportWizard {
 	@Override
 	public boolean performFinish() {
 		List<String> selectedProjects = pageOne.getSelectedExamples();
-		System.out.println(selectedProjects);
+		ProjectImporter projectImporter = new ProjectImporter();
+		for (String projectName : selectedProjects) {
+			projectImporter.importProject(projectName);
+		}
 		return true;
 	}
 }

@@ -51,7 +51,7 @@ public class FoldersDecorator extends LabelProvider implements ILabelDecorator {
 			IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
 			if (projectNode != null) {
 
-				String value = projectNode.get(folder.toString().replaceAll("\\s+", "_"), ""); //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$
+				String value = projectNode.get(folder.getFullPath().toPortableString(),""); //$NON-NLS-1$  //$NON-NLS-2$  //$NON-NLS-3$
 				
 				if (RcpUtils.SEASON_CATEGORY.equals(value)) {
 					return RcpUtils.seasonImage;
