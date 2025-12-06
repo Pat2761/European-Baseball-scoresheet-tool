@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.bpy.score.internationalization.samples.Messages;
 import org.bpy.score.samples.core.ProjectImporter;
+import org.bpy.score.samples.wizard.ImportSamplesWizardPageOne.SampleDescription;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IImportWizard;
@@ -45,7 +46,6 @@ public class ImportSamplesWizard extends Wizard implements IImportWizard {
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		// TODO Auto-generated method stub
 		setWindowTitle(Messages.importWizardWindowTitle);
 		pageOne = new ImportSamplesWizardPageOne();
 		addPage(pageOne);
@@ -53,10 +53,10 @@ public class ImportSamplesWizard extends Wizard implements IImportWizard {
 
 	@Override
 	public boolean performFinish() {
-		List<String> selectedProjects = pageOne.getSelectedExamples();
+		List<SampleDescription> selectedProjects = pageOne.getSelectedExamples();
 		ProjectImporter projectImporter = new ProjectImporter();
-		for (String projectName : selectedProjects) {
-			projectImporter.importProject(projectName);
+		for (SampleDescription sampleDescription : selectedProjects) {
+			projectImporter.importProject(sampleDescription.getZipName(), sampleDescription.getCharset());
 		}
 		return true;
 	}

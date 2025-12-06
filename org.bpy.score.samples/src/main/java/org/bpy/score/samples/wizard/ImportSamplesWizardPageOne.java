@@ -40,11 +40,64 @@ import org.eclipse.swt.events.SelectionEvent;
  */
 public class ImportSamplesWizardPageOne extends WizardPage {
 
+	/**
+	 * Contains the description and the charset used for an example
+	 */
+	public class SampleDescription {
+		
+		/** Contains the name of the zip file */
+		private String zipName;
+		/** Contains the description of the sample */
+		private String description;
+		/** Contains the charset used by the sample */
+		private String charset;
+
+		/**
+		 * Constructor of the class.
+		 * 
+		 * @param zipName name of the zip file
+		 * @param description description of the sample
+		 * @param charset charset used by the sample
+		 */
+		public SampleDescription(String zipName, String description, String charset) {
+			this.zipName = zipName;
+			this.description = description;
+			this.charset = charset;
+		}
+
+		/**
+		 * Get the name of sample file.
+		 * 
+		 * @return name of sample file
+		 */
+		public String getZipName() {
+			return zipName;
+		}
+
+		/**
+		 * Get the description of the sample.
+		 * 
+		 * @return description of the sample
+		 */
+		public String getDescription() {
+			return description;
+		}
+
+		/**
+		 * Get the charset used by the sample.
+		 * 
+		 * @return charset used by the sample
+		 */
+		public String getCharset() {
+			return charset;
+		}
+	}
+	
 	/** Contains the list of sample projects */
-	private static final Map<String,String> samplesCollection;
+	private final Map<String,SampleDescription> samplesCollection;
 	
 	/** Contains the list of selected samples */
-	private java.util.List<String> selectedExamples;
+	private java.util.List<SampleDescription> selectedExamples;
 	
 	/** SWT Widget which display the list os sample projects */
 	private List list;
@@ -53,18 +106,17 @@ public class ImportSamplesWizardPageOne extends WizardPage {
 	/** SWT Button for select all projects in the list */
 	private Button btnSelectAll;
 	
-	/** Static initialization */
-	static {
-		samplesCollection = new HashMap<>();
-		
-		samplesCollection.put("Championat de france", Messages.frenchD1TournamentDescription);
-	}
 	
 	/**
 	 * Constructor of the class
 	 */
 	public ImportSamplesWizardPageOne() {
-		super("ImportSamplesWizardPageOne"); // //$NON-NLS-N$
+		super("ImportSamplesWizardPageOne"); //$NON-NLS-N$ //$NON-NLS-1$ //$NON-NLS-1$
+
+		samplesCollection = new HashMap<>();
+		
+		SampleDescription sample1 = new SampleDescription("Championat de france", Messages.frenchD1TournamentDescription,"ISO-8859-1"); //$NON-NLS-1$ //$NON-NLS-2$
+		samplesCollection.put("Championat de france", sample1); //$NON-NLS-N$ //$NON-NLS-1$ //$NON-NLS-1$
 
 		setTitle(Messages.importWizardPageOneTitle);
 		setDescription(Messages.importWizardPageOneDescription);
@@ -120,7 +172,7 @@ public class ImportSamplesWizardPageOne extends WizardPage {
 	 * 
 	 * @return list of selected projects
 	 */
-	public java.util.List<String> getSelectedExamples() {
+	public java.util.List<SampleDescription> getSelectedExamples() {
 		return selectedExamples;
 	}
 
@@ -142,7 +194,7 @@ public class ImportSamplesWizardPageOne extends WizardPage {
 			setErrorMessage(null);
 
 			for (String selection : list.getSelection()) {
-				selectedExamples.add((String) list.getData(selection));
+				selectedExamples.add((SampleDescription) list.getData(selection));
 			}
 		}
 	}
@@ -152,9 +204,9 @@ public class ImportSamplesWizardPageOne extends WizardPage {
 	 * 
 	 */
 	private void initData() {
-		for (Entry<String, String> sampleEntry : samplesCollection.entrySet()) {
-			list.add(sampleEntry.getValue());
-			list.setData(sampleEntry.getValue(), sampleEntry.getKey());
+		for (Entry<String, SampleDescription> sampleEntry : samplesCollection.entrySet()) {
+			list.add(sampleEntry.getValue().getDescription());
+			list.setData(sampleEntry.getValue().getDescription(), sampleEntry.getValue());
 		}
 	}
 }

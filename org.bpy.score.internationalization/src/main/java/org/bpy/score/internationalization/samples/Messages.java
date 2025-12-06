@@ -28,7 +28,10 @@ public class Messages {
 	// ###################################################################"
 	// Sample project description
 	// ###################################################################"
+	/** Name of the sample */
 	public static String frenchD1TournamentDescription;
+	/** Ttile of error while importing */
+	public static String errorWhileImportingSample;
 	
 	/**
 	 * Initialize the internationalization
