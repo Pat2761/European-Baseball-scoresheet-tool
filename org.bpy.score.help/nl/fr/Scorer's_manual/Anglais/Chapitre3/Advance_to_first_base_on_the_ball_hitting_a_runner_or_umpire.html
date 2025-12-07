@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="..\..\..\ScoreToolHelpStyleSheet.css">
+	</head>
+	<body>
+		<p class="Titre">
+			<span style="">Advance to first base on the ball hitting a runner or umpire</span>
+		</p>
+		<p class="NormalAnglais">
+			<br>		</p>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">The batter becomes a runner and is entitled to first base without liability to be put out (provided he advances to and touches first base) when … a fair ball touches an umpire or a runner on fair territory before touching a fielder </span>
+			<span style="font-family: Times New Roman;">[OBR 5.05(b)(4)]. </span>
+		</p>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">If this happens, the ball is dead, the batter-runner is credited with a base hit, and if a runner was hit, he is automatically called out (Out by Rule 9).</span>
+			<span style="font-family: Times New Roman;"> Even if this is the third putout, the batter-runner is entitled to a hit. </span>
+		</p>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">As the ball is dead, no runners may advance unless forced. </span>
+		</p>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">However, </span>
+			<span style="font-family: Times New Roman;">if a fair ball touches an umpire after having passed a fielder other than the pitcher, or having touched a fielder, including the pitcher, the ball is in play </span>
+			<span style="font-family: Times New Roman;">[OBR 5.05(b)(4)]</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 24:</span>
+						<span style=""> With runners on first and third, the fair ball hit by the eighth batter in the line-up hits the second base umpire. The ball is dead. The batter is credited with a hit (the number alongside the symbol identifies the area where the hit occurred). Of the runners on base, only the forced runner to second base advances.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Advance_to_first_base_on_the_ball_hitting_a_runner_or_umpire_0.jpg" height="269" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur gagne la première base sur un 'Base on </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">ball</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le second batteur frappe un hit dans le champ droit, le coureur avance de deux bases */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B9</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>++</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant frappe une balle vers la deuxième base qui touche l'arbitre.  */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B4</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="Exemple">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Advance_to_first_base_on_the_ball_hitting_a_runner_or_umpire_1.jpg" height="265" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 25:</span>
+						<span style=""> With less than two out and runners on first and third, the hindmost runner is hit by a ground ball from the third batter. </span>
+					</p>
+					<p class="Exemple">
+						<span style="">The hit runner is called out (Out by Rule 9). </span>
+					</p>
+					<p class="Exemple">
+						<span style="">The batter-runner is awarded first base on the hit. If a run is scored as a result of this action by the unforced runner it does not count, and the player therefore has to return to the base he occupied previously.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Advance_to_first_base_on_the_ball_hitting_a_runner_or_umpire_2.jpg" height="264" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un hit en champ droit */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B9</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* le batteur suivant frappe une balle vers le défenseur de la troisième base qui récupère la balle ais commet une erreur en la relayant */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le coureur avance sur la frappe et gagne une base supplémentaire sur l'erreur */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>E5T</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>(2)}</b></span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant frappe une balle qui touche le coureur venant de la première base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B4</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>OBR9-4</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="Exemple">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Advance_to_first_base_on_the_ball_hitting_a_runner_or_umpire_3.jpg" height="274" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<span style="font-family: Calibri-Bold;"><b>ATTENTION: </b></span>
+			<span style="">If a runner not touching a base is hit by an infield fly, the batter is called out (Out by Rule 8) as well as the runner (Out by Rule 9). This is a double play. </span>
+		</p>
+		<p class="Texte">
+			<span style="">If, on the other hand, the runner is hit by an infield fly while in contact with the base, only the batter is declared out. </span>
+		</p>
+		<p class="Texte">
+			<span style="">Note that in an infield fly situation the ball is </span>
+			<span style="">live</span>
+			<span style=""> and in play, and therefore all runners may advance at their own risk.</span>
+		</p>
+		<p class="Exemple">
+			<br>		</p>
+		<p class="Exemple">
+			<br>		</p>
+		<p class="Exemple">
+			<br>		</p>
+		<p class="Exemple">
+			<br>		</p>
+	</body>
+</html>

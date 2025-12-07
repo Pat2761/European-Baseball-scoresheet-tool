@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="..\..\..\ScoreToolHelpStyleSheet.css">
+	</head>
+	<body>
+		<p class="Titre">
+			<span style="">Wild pitch</span>
+		</p>
+		<p class="GameEditorCopy">
+			<br>		</p>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">A wild pitch is one so high, so low or so wide of the plate that it cannot be handled with ordinary effort by the catcher [OBR Definition of Terms] </span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="font-family: Times New Roman;">Example 45:</span>
+						<span style="font-family: Times New Roman;"> The abbreviation used for a wild pitch is "WP" followed by the batting order number of the player who is on the plate at the time of the wild pitch. </span>
+					</p>
+					<p class="Exemple">
+						<span style="font-family: Times New Roman;">The official scorer shall charge a pitcher with a wild pitch when a legally delivered ball is so high, so wide, or so low that the catcher does not stop and control the ball by ordinary effort, thereby permitting a runner or runners to advance.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Wild_pitch_0.jpg" height="179" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/*  Le premier batteur frappe un triple dans le champ droit */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>3BRC</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant gagne la première base sur un 'base on </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">ball</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le lanceur fait un lancer fou, les deux coureurs avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>wp</b></span>
+						<span style="font-family: Consolas;"> , runner3 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>WP</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Wild_pitch_1.jpg" height="178" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">The official scorer shall charge a pitcher with a wild pitch when a legally delivered ball touches the ground or home plate before reaching the catcher and is not handled by the catcher, thereby permitting a runner or runners to advance </span>
+			<span style="font-family: Times New Roman;">[OBR 9.13(a)]. </span>
+		</p>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">If more than one runner advances on a wild pitch, the abbreviation "WP" (upper case) is used for the lead runner, with "</span>
+			<span style="font-family: Times New Roman;">wp</span>
+			<span style="font-family: Times New Roman;">" (lower case) for the subsequent runners.</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style=""><b>EXCEPTION:</b></span>
+						<span style=""> </span>
+						<span style="">Example 46:</span>
+						<span style=""> In the event that the third strike is a wild pitch, permitting the batter to reach first base, the official scorer shall score a strikeout and a wild pitch [OBR 9.13(a)].</span>
+						<span style="">
+</span>
+						<span style="">The abbreviation "WP" (upper case) along with a "K" for strikeout (followed, naturally, by the cumulative number of the strikeout for that pitcher) should be used for the batter.</span>
+						<span style="">
+</span>
+						<span style="">The abbreviation "wp" (lower case) is used for any runners who advance. </span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Wild_pitch_2.jpg" height="179" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un double dans le champ gauche */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>2BLC</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Sur le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">strike</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le batteur suivant swing et atteint la première base, le coureur avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>KSWP</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>wp</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Wild_pitch_3.jpg" height="181" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 47:</span>
+						<span style=""> If a runner advances more than one base on a wild pitch, an arrow is used to indicate the continued advance. </span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Wild_pitch_4.jpg" height="95" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur bagne la première base sur un 'base on </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">ball</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le coureur profite d'un lancer fou pour gagner deux base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ runner1</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>WP+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Wild_pitch_5.jpg" height="95" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 48:</span>
+						<span style=""> If a runner advances more than one base on more than one wild pitch to the same batter, the abbreviation "WP" is used for each wild pitch.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Wild_pitch_6.jpg" height="96" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur bagne la première base sur un 'base on </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">ball</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le coureur profite d'un lancer fou pour gagner une base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ runner1</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>WP</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le coureur profite d'un deuxième lancer fou pour gagner une base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ runner2</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>WP</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Wild_pitch_7.jpg" height="91" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<span style="">The official scorer shall not charge a wild pitch […] if the defensive team makes an out before any runners advance. For example, if a pitch touches the ground and eludes the catcher with a runner on first base, but the catcher recovers the ball and throws to second base in time to retire the runner, the official scorer shall not charge the pitcher with a wild </span>
+			<span style="">pitch. The official scorer shall credit the advancement of any other runner on the play as a fielder’s choice. </span>
+			<span style="">[OBR 9.13 Comment]</span>
+		</p>
+		<p class="Texte">
+			<br>		</p>
+	</body>
+</html>

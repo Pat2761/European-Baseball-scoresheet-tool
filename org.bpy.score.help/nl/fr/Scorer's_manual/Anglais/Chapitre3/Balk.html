@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="..\..\..\ScoreToolHelpStyleSheet.css">
+	</head>
+	<body>
+		<p class="Titre">
+			<span style="">Balk</span>
+		</p>
+		<p class="GameEditorCopy">
+			<br>		</p>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">A BALK is an illegal act by the pitcher with a runner or runners on base, entitling all runners to advance one base </span>
+			<span style="font-family: Times New Roman;">[OBR Definition of Terms]. </span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="font-family: Times New Roman;">Example 44:</span>
+						<span style="font-family: Times New Roman;"> The abbreviation used for an advance on a balk is "BK" followed by the batting order number of the player at bat at the time of the balk. If there is more than one runner on base, "BK" (upper case) is used for the lead runner and "bk" (lower case) for the subsequent runners.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Balk_0.jpg" height="183" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un hit dans le champ gauche */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B7</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant gagne la première base sur un 'base on </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">ball</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">', le coureur avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;">}</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le lanceur fait un </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balk</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">, les deux coureurs avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>bk</b></span>
+						<span style="font-family: Consolas;">, runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BK</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="Exemple">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Balk_1.jpg" height="181" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<br>		</p>
+		<p class="Exemple">
+			<br>		</p>
+		<p class="NormalAnglais">
+			<br>		</p>
+	</body>
+</html>

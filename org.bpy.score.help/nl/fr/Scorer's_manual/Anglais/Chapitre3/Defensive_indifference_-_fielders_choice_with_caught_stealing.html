@@ -1,0 +1,1325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="..\..\..\ScoreToolHelpStyleSheet.css">
+	</head>
+	<body>
+		<p class="Titre">
+			<span style="">Defensive indifference / fielder’s choice with caught stealing</span>
+		</p>
+		<p class="GameEditorCopy">
+			<br>		</p>
+		<p class="Texte">
+			<span style="">The notation "O/" is used to account for any advance by a runner at</span>
+			<span style=""> </span>
+			<span style="">the choice of the defending team. "O/" is followed by the identifying</span>
+			<span style=""> </span>
+			<span style="">number of the fielder who made the choice.</span>
+		</p>
+		<p class="Texte">
+			<span style="">According to OBR 9.07(g): </span>
+			<span style="font-family: Calibri-Italic;">"The official scorer shall not score a stolen</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">base when a runner advances solely because of the defensive team's</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">indifference to the runner's advance.</span>
+			<span style="font-family: Calibri-Italic;"> The official scorer shall score such a</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">play as a fielder's choice.</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="font-family: Calibri-Italic;">Comment: The scorer shall consider, in judging whether the defensive team has been indifferent to a runner's advance, the totality of the circumstances, including the inning and score of the game, whether the defensive team had held the runner on base, whether the pitcher had made any pickoff attempts on that runner before the runner's advance, whether the fielder ordinarily expected to cover the base to which the runner advanced made a move to cover such base, whether the defensive team had a legitimate strategic motive to not contest the runner's advance or whether the defensive team might be trying impermissibly to deny the runner credit for a stolen base. For example, with runners on first and third bases, the official scorer should ordinarily credit a stolen base when the runner on first advances to second, if, in the scorer’s judgment, the defensive team had a legitimate strategic motive namely, preventing the runner on third base from scoring on the throw to second base not to contest the runner’s advance to second base. The official scorer may conclude that the defensive team is impermissibly trying to deny a runner credit for a stolen base if, for example, the defensive team fails to defend the advance of a runner approaching a […]statistical title. </span>
+						<span style="">(</span>
+						<span style="">Example 61</span>
+						<span style="">)</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_0.jpg" height="185" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe une </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">fly</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> dans le champ droit qui est mal attrapée */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>E8F</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant frappe un simple dans le champ droit, le coureur gagne deux bases */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B9</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>++</b></span>
+						<span style="font-family: Consolas;">}</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le coureur en 1 vole la deuxième base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ runner1</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>SB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_1.jpg" height="175" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 62:</span>
+						<span style=""> Despite having seen that the runner on first is</span>
+						<span style=""> </span>
+						<span style="">attempting to steal a base, the </span>
+						<span style="">catcher makes no attempt to</span>
+						<span style=""> </span>
+						<span style="">oppose it. The official scorer judges that there is no legitimate</span>
+						<span style=""> </span>
+						<span style="">strategic motive not to make the throw, so it is a defensive</span>
+						<span style=""> </span>
+						<span style="">indifference (undefended steal). The runner advances to</span>
+						<span style=""> </span>
+						<span style="">second and the play is therefore recorded with "O/2".</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_2.jpg" height="185" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe une </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">fly</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> dans le champ droit qui est mal attrapée */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>E8F</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant frappe un simple en champ droit, le coureur en première gagne deux bases */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B9</b></span>
+						<span style="font-family: Consolas;">, runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>++</b></span>
+						<span style="font-family: Consolas;">  }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Il vole la base, mais la défense ne fait rien pour l'empêcher */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ runner1</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/2</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_3.jpg" height="180" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 63:</span>
+						<span style=""> With runners on second and third, the catcher</span>
+						<span style=""> </span>
+						<span style="">drops the third strike.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">He succeeds in recovering it and putting out the batter-runner,but the other runners reach base safely.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">According to rule 9.12(f)(2) this will be scored as a fielder’schoice.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_4.jpg" height="272" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un triple dans le champ droit */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>3B9</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant gagne la première base sur un 'base on </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">ball</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le coureur en première base vole la deuxième base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ runner1</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>SB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Troisième </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">strike</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> relâché, le receveur récupère la balle et relai en première base pour retirer le batteur coureur, les deux autres coureurs avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter-> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>KS23</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/2</b></span>
+						<span style="font-family: Consolas;"> , runner3 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/2</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_5.jpg" height="265" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<span style="font-family: Calibri-Italic;">When the catcher recovers the ball after a wild pitch or</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">passed ball on the third strike, and throws out the batter-runner at first</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">base, or tags out the batter-runner, but another </span>
+			<span style="font-family: Calibri-Italic;">runner or runners advance,</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">the official scorer shall score the strikeout, the putout and assists, if any,</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">and credit the advance of the other runner or runners on the play as a</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">fielder’s choice </span>
+			<span style="">[OBR 9.12(f)(2)]</span>
+			<span style="">.</span>
+		</p>
+		<p class="Exemple">
+			<span style="font-family: Calibri-Italic;">The official scorer shall not charge a passed ball if the defensive team</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">makes an out before any runners advance. For example, (…) if a catcher</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">drops a pitch, for example, with a runner on first base, but the catcher</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">recovers the ball and throws to second base in time to retire</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">the runner, the official scorer shall not charge the catcher witha passed ball. The official scorer shall credit the advancement</span>
+			<span style="font-family: Calibri-Italic;"> </span>
+			<span style="font-family: Calibri-Italic;">of any other runner on the play as a fielder’s choice. </span>
+			<span style="">[OBR 9.13Comment].</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 64:</span>
+						<span style=""> It follows that the fielder’s choice would also be</span>
+						<span style=""> </span>
+						<span style="">used when, in a similar action, the batter-runner reaches base</span>
+						<span style=""> </span>
+						<span style="">safely on "KS E2T" or "KS 2E3".</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_6.jpg" height="268" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un triple dans le champ droit */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>3B9</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant gagne la première base sur un 'base on </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">ball</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le coureur en première base vole la deuxième base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ runner1</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>SB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Troisième </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">strike</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> relâché, le receveur récupère la balle et relai en première base mais effectue une erreur de lancé, les deux autres coureurs avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter-> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>KSE2T</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/2</b></span>
+						<span style="font-family: Consolas;"> , runner3 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/2</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_7.jpg" height="265" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<span style="font-family: Calibri-Bold;"><b>IMPORTANT: </b></span>
+			<span style="">As a general rule, a runner’s advance on a hit or a put out</span>
+			<span style=""> </span>
+			<span style="">is recorded with the batting order number of the batter. An advance on an</span>
+			<span style=""> </span>
+			<span style="">error committed against the batter or another runner is recorded with the</span>
+			<span style=""> </span>
+			<span style="">batting order number of the batter, if the runners would have advanced</span>
+			<span style=""> </span>
+			<span style="">anyway. When a runner’s advance should not have happened thanks to an</span>
+			<span style=""> </span>
+			<span style="">error, write the number of the batter or runner in parentheses.</span>
+		</p>
+		<p class="Texte">
+			<span style="">Another action where the symbol "O/" would be used is when, in the</span>
+			<span style=""> </span>
+			<span style="">course of multiple attempts to steal (simultaneous or not), one of the</span>
+			<span style=""> </span>
+			<span style="">runners is put out (or reaches base safely on an error), while the others</span>
+			<span style=""> </span>
+			<span style="">reach the next base. To account for these latter advances, the symbol "O/"is used, followed by the number two, if the defensive play was initiated by</span>
+			<span style=""> </span>
+			<span style="">the catcher, or one if it was initiated by the pitcher.</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 65:</span>
+						<span style=""> The attempted steal fails because of the putouton third base. The other runner’s advance is therefore annotated with the symbol "O/2".</span>
+					</p>
+					<p class="Exemple">
+						<span style="">The same notation would be made even if the putout had failed because of an error.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">Put an arrow between the attempted steal and the O/2 to show that it happened during the same play.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_8.jpg" height="187" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un simple sur l'arrêt court */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B6</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant gagne la première base sur un 'base on </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">ball</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;">}</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Les coureur coureurs tente de voler une base, mais le coureur en deux se fait retirer */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/2</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>CS25</b></span>
+						<span style="font-family: Consolas;">  }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_9.jpg" height="180" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 66:</span>
+						<span style=""> The runner on first base is put out in a rundown play following a pickoff. The symbol "O/1" records the other runner’s advance to third base.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_10.jpg" height="186" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>HP</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B3</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;">}</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { runner1 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>CS1364</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/1</b></span>
+						<span style="font-family: Consolas;">  }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_11.jpg" height="183" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 67:</span>
+						<span style=""> There is one man out and a runner on second base.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">The ground ball to the infield by the third man in the line-up is run down and recovered by the pitcher, who quickly assists the first baseman to make a very close putout of the  batter-runner.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">In the head long rush the first baseman hits his foot hard against the base and is seriously </span>
+						<span style="">hurt.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">The incident prevents him from stopping the runner from advancing, and the runner subsequently runs home.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_12.jpg" height="276" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur gagne la première base sur un 'base on </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">ball</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant frappe une balle sur le défenseur de la deuxième base qui relai en première base pour faire le retrait, le coureur avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>43</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant frappe une balle sur le lanceur qui relai en première base pour faire le retrait, le coureur avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>13</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/3 </b></span>
+						<span style="font-family: Consolas;">}</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_13.jpg" height="264" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<span style="">It should be noted that the umpire, after having called out the batter</span>
+			<span style=""> </span>
+			<span style="">runner,did not feel it necessary to suspend the game, not having noticed</span>
+			<span style=""> </span>
+			<span style="">any reason to blame any particular player.</span>
+		</p>
+		<p class="Texte">
+			<span style="">The example clearly shows the runners’ advances according to the</span>
+			<span style=""> </span>
+			<span style="">various phases of the game from which they originated: the advance to</span>
+			<span style=""> </span>
+			<span style="">third on a hit and the continuation to home base due to the fielder’s</span>
+			<span style=""> </span>
+			<span style="">indifference (in this case he was not in a position to check the advance,</span>
+			<span style=""> </span>
+			<span style="">and it was certainly not through his own technical failings or errors).</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 68:</span>
+						<span style=""> With no men out and second base occupied, the pitcher deflects the ground ball hit by the batter, forcing the shortstop who was running up to intervene, off course.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">The shortstop nevertheless recovers the ball and throws to first base, where the batter-runner arrives safely.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">The first baseman, considering the decision unfair, strenuously contests the umpire’s decision, ignoring the fact that the lead runner takes the opportunity to run home. This advance, which is entirely legal, is recorded with "O/3" as it was determined by the first  baseman’s </span>
+						<span style="font-family: Calibri-Bold;"><b>indifference</b></span>
+						<span style="">.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_14.jpg" height="184" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur gagne la première base sur un 'base on </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">ball</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* le coureur en première base vole la deuxième base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ runner1</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>SB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant frappe un simple sur l'arrêt court, le coureur avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B6</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/3 </b></span>
+						<span style="font-family: Consolas;">}</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_15.jpg" height="177" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<span style="">It may happen that, during an appeal play, as the ball is live and in play,</span>
+			<span style=""> </span>
+			<span style="">one or more runners take advantage of the action to run to the next base.</span>
+			<span style=""> </span>
+			<span style="">Such advances should also be recorded with the O/ symbol, followed by</span>
+			<span style=""> </span>
+			<span style="">the number of the fielder who was the focus of the appeal play.</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 69:</span>
+						<span style=""> With no men out and runners on first and third,</span>
+						<span style=""> </span>
+						<span style="">the fifth batter hits a fly ball to the right field, allowing the</span>
+						<span style=""> </span>
+						<span style="">runner on third to score.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">Before making the first pitch to the next batter, the defense</span>
+						<span style=""> </span>
+						<span style="">appeals on the grounds that he left the base early.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">In the course of the appeal, which is upheld by the umpire</span>
+						<span style=""> </span>
+						<span style="">concerned, the runner on first advances to second: "O/1".Also note the double play and the arrow to connect the</span>
+						<span style=""> </span>
+						<span style="">appeal with the indifference.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_16.jpg" height="274" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un simple dans le champ gauche */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B7</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le coureur en vole la 2 */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ runner1</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>SB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le frappeur suivant frappe un simple en champ centre, le coureur avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B8</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le frappeur suivant frappe une </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">fly</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> dans le champ droit qui est rattrapé. Le coureur en trois gagne le marbre mais oublie de la toucher. Le coureur en 1 avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>F9</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/1</b></span>
+						<span style="font-family: Consolas;"> , runner3 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>A15</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_17.jpg" height="263" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<br>		</p>
+		<p class="Exemple">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 70:</span>
+						<span style=""> This differs from the previous example only in</span>
+						<span style=""> </span>
+						<span style="">that the appeal is overturned. The run counts, the runner on</span>
+						<span style=""> </span>
+						<span style="">first advances with "O/1" and the fifth man in the line-up is</span>
+						<span style=""> </span>
+						<span style="">credited with a sacrifice fly.</span>
+					</p>
+					<p class="Exemple">
+						<span style="font-family: Calibri-Bold;"><b>NOTE: </b></span>
+						<span style="">Unlike the frequent cases in which the notation "O/" isused to account for advances which it is not possible underthe rules to consider "stolen", all other advances for which"O/" is used must have the circumstances noted in the</span>
+						<span style=""> </span>
+						<span style="">appropriate place on the score card.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_18.jpg" height="276" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un simple dans le champ gauche */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B7</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le coureur en 1 vole la deuxième base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ runner1</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>SB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant frappe un simple dans le champ centre, le coureur en 2 avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B8</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le batteur suivant frappe un sacrifice </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">fly</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> dans le champ droit, le coureur en 3 marque le point, le coureur en 1 avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>SF9</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O/1</b></span>
+						<span style="font-family: Consolas;"> , runner3 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;">  }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Defensive_indifference_-_fielders_choice_with_caught_stealing_19.jpg" height="269" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<br>		</p>
+	</body>
+</html>

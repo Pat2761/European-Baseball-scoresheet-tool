@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="..\..\..\ScoreToolHelpStyleSheet.css">
+	</head>
+	<body>
+		<p class="Titre">
+			<span style="">Determining the value of safe hits</span>
+		</p>
+		<p class="Texte">
+			<br>		</p>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">According to rule 9.06 of the OBR, a safe hit shall be scored as a one</span>
+			<span style="font-family: Times New Roman;"> </span>
+			<span style="font-family: Times New Roman;">base hit, two-base hit, three-base hit or home run when the batter reaches the corresponding base when no error, putout or fielder’s choice results. </span>
+		</p>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">When, with one or more runners on base, the batter advances more than one base on a safe hit and the defensive team makes an attempt to put out a preceding runner, the scorer shall determine whether the batter made a legitimate two-base hit or three-base hit, or whether the batter</span>
+			<span style="font-family: Times New Roman;"> </span>
+			<span style="font-family: Times New Roman;">runner advanced beyond first base on the fielder’s choice </span>
+			<span style="font-family: Times New Roman;">[OBR 9.06(b)].</span>
+		</p>
+		<p class="Texte">
+			<span style="font-family: Times New Roman;">It should also be borne in mind that a batter cannot be awarded a </span>
+			<span style="font-family: Times New Roman;">three-base hit when a preceding runner is put out on home plate, or would have been put out but for an error. Nor may the batter be credited with a two-base hit when a preceding runner is put out at third base or would have been out but for an error. In both cases the batter-runner’s last advance must be recorded as a fielder’s choice.</span>
+		</p>
+		<p class="Texte">
+			<span style="">In any case, the value of a hit should not be determined from the number of bases advanced by a preceding runner. A batter may deserve a two-base hit even though a preceding runner advances only one base, or even none, just as he may deserve only a one-base hit even though he reaches second base, and a preceding runner advances two bases [OBR 10.06 comment]. The following examples should help to clarify this. </span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 3:</span>
+						<span style=""> The runner on first base advances to third on the hit. The right fielder tries unsuccessfully to throw to third to put out the runner. Thanks to this throw, the batter reaches second safely. </span>
+					</p>
+					<p class="Texte">
+						<span style="">This is not a double, but a single with an advance by fielder’s choice (throw). The continuation of the batter-runner to second base is noted with a small vertical line joining the first base and second base squares.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Determining_the_value_of_safe_hits_0.jpg" height="183" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier frappeur arrive sur base sur un 'Base on Ball' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le deuxième frappeur frappe un hit sur le champ droit. Le défenseur du champ droit relance la balle vers le défenseur de la cinquième base pour essayé de retirer le coureur sans succès. Le batteur en profite alors pour gagner la deuxième base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B9</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>T95,</b></span>
+						<span style="font-family: Consolas;"> runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>++</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri;"><img src="./images/Determining_the_value_of_safe_hits_1.jpg" height="178" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="font-family: Times New Roman;">Example 4:</span>
+						<span style="font-family: Times New Roman;"> The runner on second advances only one base because he holds back to see if the fly ball is caught. The batter, however, reaches second base normally. This is a double even though the runner advanced only one base.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Determining_the_value_of_safe_hits_2.jpg" height="185" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un double dans le champ centre */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>2B8</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le second frappeur frappe un double dans le champ droit, le coureur avance */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>2BRC</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri;"><img src="./images/Determining_the_value_of_safe_hits_3.jpg" height="185" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="font-family: Times New Roman;">Example 5:</span>
+						<span style="font-family: Times New Roman;"> On the hit, the runner on third base moves away then turns back to touch the base, thinking that the ball might be caught on the fly. The ball nevertheless falls to the ground, becoming a safe hit, and the batter reaches second base without the runner daring to score. </span>
+					</p>
+					<p class="Exemple">
+						<span style="font-family: Times New Roman;">This is also a two-base hit.</span>
+						<span style=""> </span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Determining_the_value_of_safe_hits_4.jpg" height="181" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un triple dans le champ droit */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>3B9</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le second frappeur frappe un double dans le champ centre */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>2B8</b></span>
+						<span style="font-family: Consolas;">}</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri;"><img src="./images/Determining_the_value_of_safe_hits_5.jpg" height="177" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<span style="">When the batter attempts to make a two-base hit or a three-base hit by sliding, he must hold the last base to which he advances. If a batter-runner over</span>
+			<span style=""> </span>
+			<span style="">slides and is tagged out before getting back to the base safely, he shall be credited with only as many bases as he attained safely. If a batter</span>
+			<span style=""> </span>
+			<span style="">runner over</span>
+			<span style=""> </span>
+			<span style="">slides second base and is tagged out, the official scorer shall credit him with a one-base hit; if the batter-runner over</span>
+			<span style=""> </span>
+			<span style="">slides third base and is tagged out, the official scorer shall credit him with a two-base hit [OBR 9.06(c)]. </span>
+		</p>
+		<p class="Texte">
+			<span style="">It is important to note the difference between reaching a base by sliding and by running. If a runner overruns a base, he is considered to have safely reached that base, and is credited with a hit corresponding to the number of that base, even if he is subsequently tagged out trying to return. </span>
+		</p>
+		<p class="Texte">
+			<span style="">However, if he over</span>
+			<span style=""> </span>
+			<span style="">slides a base, he has not safely reached that base, and the hit will therefore be scored according to the number of the previous base.</span>
+		</p>
+		<p class="Texte">
+			<span style="">When the batter, after making a safe hit, is called out for having failed to touch a base, the last base he reached safely shall determine if the official scorer shall credit him with a one-base hit, a two-base hit or a three-base hit. If a batter-runner is called out after missing home plate, the official scorer shall credit him with a three-base hit. If a batter-runner is</span>
+			<span style="">
+</span>
+			<span style="">called out for missing third base, the official scorer shall credit him with a two-base hit.</span>
+		</p>
+		<p class="Texte">
+			<span style="">If a batter-runner is called out for missing second base, the official scorer shall credit him with a one-base hit. If a batter-runner is called out for missing first base, the official scorer shall credit him with a time at bat, but no hit [OBR 9.06(d)].</span>
+		</p>
+		<p class="Texte">
+			<span style=""> When a batter-runner is awarded two bases, three bases or a home run under the provisions of Rules 5.06(b)(4) or 6.01(h)(1), the official scorer shall credit the batter-runner with a two-base hit, a three-base hit or a home run, as the case may be [OBR 9.06(e)]. </span>
+		</p>
+		<p class="Texte">
+			<span style=""><b>NOTE:</b></span>
+			<span style=""> A batter, who has made a safe hit and, despite being trapped between bases, safely reaches the next base without any defensive errors, shall be awarded a hit corresponding to the last base he reached safely.</span>
+		</p>
+	</body>
+</html>

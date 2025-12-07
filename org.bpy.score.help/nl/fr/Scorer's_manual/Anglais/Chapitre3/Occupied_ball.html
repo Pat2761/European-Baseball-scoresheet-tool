@@ -1,0 +1,1471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="..\..\..\ScoreToolHelpStyleSheet.css">
+	</head>
+	<body>
+		<p class="Titre">
+			<span style="">Occupied ball</span>
+		</p>
+		<p class="GameEditorCopy">
+			<br>		</p>
+		<p class="Texte">
+			<span style="">The abbreviation "O" is usually used to confirm that the batter-runner’s</span>
+			<span style=""> </span>
+			<span style="">advance to first base occurred as a result of the fielder’s choice to</span>
+			<span style=""> </span>
+			<span style="">put out a preceding runner. </span>
+			<span style="font-family: Calibri-Bold;"><b>An essential prerequisite is that, during the</b></span>
+			<span style="font-family: Calibri-Bold;"><b> </b></span>
+			<span style="font-family: Calibri-Bold;"><b>action, the chosen runner is put out or saved only by an error.</b></span>
+		</p>
+		<p class="Texte">
+			<span style="">In fact, "occupied ball" always follows a fielding chance, whether</span>
+			<span style=""> </span>
+			<span style="">the outcome is a putout or an error.</span>
+		</p>
+		<p class="Texte">
+			<span style="">The "O" for "occupied ball" is followed by the number of the fielder</span>
+			<span style=""> </span>
+			<span style="">who, once the hit ball has been recovered, initiates the alternative play.</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 52:</span>
+						<span style=""> The "O6" noted in the first base square clearly indicates that if the shortstop had played for the batter-runner,he would certainly have been put out.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction</span>
+						<span style=""> </span>
+						<span style="">dans</span>
+						<span style=""> </span>
+						<span style="">l’outil</span>
+						<span style=""> de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Occupied_ball_0.jpg" height="186" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* le premier </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">gagne</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> la première base un 'base on ball' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">vers</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">l'arrêt</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> court qui </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">récupère</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> et la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">relaie</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> ay </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">défenseur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> de </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">deuxième</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base pour </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">retirer</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O6</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>64</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Occupied_ball_1.jpg" height="177" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 53</span>
+						<span style="">: The forced runner reaches base safely thanks to a catching error by the second baseman receiving a throw from the shortstop. In both cases the occupied ball notation is used</span>
+						<span style=""> </span>
+						<span style="">after a fielding chance.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction</span>
+						<span style=""> </span>
+						<span style="">dans</span>
+						<span style=""> </span>
+						<span style="">l’outil</span>
+						<span style=""> de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Occupied_ball_2.jpg" height="185" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* le premier </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">gagne</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> la première base un 'base on ball' */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">vers</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">l'arrêt</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> court qui </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">récupère</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> et la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">relaie</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> au </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">défenseur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> de </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">deuxième</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base pour </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">retirer</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">le .</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">  Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">défenseur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">commet</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">erreur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">relâchant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O6</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>6E4</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Occupied_ball_3.jpg" height="177" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 54:</span>
+						<span style=""> With less than two out and runners on first and</span>
+						<span style=""> </span>
+						<span style="">third, the third batter hits a fly ball to the center fielder, who</span>
+						<span style=""> </span>
+						<span style="">muffs an easy catch.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">While the lead runner scores, the outfielder recovers the ball</span>
+						<span style=""> </span>
+						<span style="">and assists the shortstop in putting out the next runner, who is</span>
+						<span style=""> </span>
+						<span style="">forced to advance by the error.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">Since OBR 9.12(d)(4) states that no error is charged when a</span>
+						<span style=""> </span>
+						<span style="">runner is subsequently forced out, the batter-runner’s advance</span>
+						<span style=""> </span>
+						<span style="">to first base is recorded as an occupied ball.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">The sacrifice fly in the example indicates that the run would</span>
+						<span style=""> </span>
+						<span style="">have been scored even without the outfielder’s error.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction</span>
+						<span style=""> </span>
+						<span style="">dans</span>
+						<span style=""> </span>
+						<span style="">l’outil</span>
+						<span style=""> de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Occupied_ball_4.jpg" height="273" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* le premier </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe un hit </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">l'arrêt</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> court */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B6</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe un simple </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">dans</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le champ </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">droit</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">, le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">avance</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> de </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">deux</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> bases */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B9</b></span>
+						<span style="font-family: Consolas;"> ,  runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>++</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">frappeur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> fly </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">dans</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le champ centre qui loupe la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">. Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">défenseur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">récupère</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> et la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">renvoie</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> à </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">l'arrêt</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> pour </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">retirer</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> e </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">arrivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en 2. Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en 3 </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">marque</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le point */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>SFO8</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>86</b></span>
+						<span style="font-family: Consolas;"> , runner3 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Occupied_ball_5.jpg" height="269" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">This is not the case for the </span>
+						<span style="">example 55</span>
+						<span style="">, where the absence of any notation of the sacrifice fly and the error for the arrival on home base demonstrates clearly that without the error </span>
+						<span style="">no run would have been scored [OBR 9.12].</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction</span>
+						<span style=""> </span>
+						<span style="">dans</span>
+						<span style=""> </span>
+						<span style="">l’outil</span>
+						<span style=""> de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Occupied_ball_6.jpg" height="272" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* le premier </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe un hit </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">l'arrêt</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> court */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B6</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe un simple </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">dans</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le champ </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">droit</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">, le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">avance</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> de </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">deux</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> bases */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B9</b></span>
+						<span style="font-family: Consolas;"> ,  runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>++</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">frappeur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> fly </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">dans</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le champ centre qui loupe la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">. Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">défenseur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">récupère</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> et la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">renvoie</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> à </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">l'arrêt</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> pour </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">retirer</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> e </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">arrivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en 2. Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en 3 </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">marque</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le point en </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">profitant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> de </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">l'erreur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> du </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">défenseur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> du champ centre*/</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O8</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>86</b></span>
+						<span style="font-family: Consolas;"> , runner3 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>e8</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Occupied_ball_7.jpg" height="268" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 56:</span>
+						<span style=""> With no men out and bases full, the third baseman recovers the ground ball hit by the fourth batter and, after touching his base, assists the second baseman inclosing the double play.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">The batter-runner’s advance to first base is noted with the"occupied ball" symbol, along with "GDP" for grounded into</span>
+						<span style=""> </span>
+						<span style="">double play.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">The first runner’s advance is entirely legal although the run</span>
+						<span style=""> </span>
+						<span style="">cannot be counted as having been batted in.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction</span>
+						<span style=""> </span>
+						<span style="">dans</span>
+						<span style=""> </span>
+						<span style="">l’outil</span>
+						<span style=""> de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Occupied_ball_8.jpg" height="368" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* le premier </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> arrive </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> strike </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">relâché</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> (wild pitch) */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>KSWP</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe un simple </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">lanceur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">, le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">avance</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B1</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">gagne</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> la première base </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> un 'base on ball', les </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureurs</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">avance</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>BB</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> au sol </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">vers</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">défenseur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> de la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">troisième</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base qui </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">touche</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sa</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base. Il </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">relai</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en suite la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> au </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">défenseur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> de la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">deuxième</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base qui retire le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">arrivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> de la 1. Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en 3 en </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">profite</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> pour </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">marquer</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>GDPO5</b></span>
+						<span style="font-family: Consolas;"> , runner1 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>54</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>5</b></span>
+						<span style="font-family: Consolas;"> , runner3 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Occupied_ball_9.jpg" height="354" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 57:</span>
+						<span style=""> The batter-runner, after having reached first baseon fielder’s choice, takes advantage of the ongoing rundown</span>
+						<span style=""> </span>
+						<span style="">play to continue to second.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">This additional advance is noted with an arrow.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction</span>
+						<span style=""> </span>
+						<span style="">dans</span>
+						<span style=""> </span>
+						<span style="">l’outil</span>
+						<span style=""> de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Occupied_ball_10.jpg" height="189" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* le premier </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> arrive </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> strike </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">relâché</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> (wild pitch) */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>KSWP</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">profite</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> d'un 'pass ball' pour </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">avancer</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en 2 */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>PB</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">frappeur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">receveur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">, qui </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">relaie</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">troisième</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base pour </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">retirer</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">, </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">souricière</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">élimine</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O2+</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>2565</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Occupied_ball_11.jpg" height="180" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<span style="">In the examples given hitherto, the symbol for "occupied ball" has onlybeen used to account for a batter-runner’s advance to first base. We shallnow look at how it may be used to account for advances by base runners.</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 58:</span>
+						<span style=""> The first batter reaches base thanks to a bungled</span>
+						<span style=""> </span>
+						<span style="">catch by an outfielder, and </span>
+						<span style="">is forced to second when the next</span>
+						<span style=""> </span>
+						<span style="">batter hits a single.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">On a batted ball from the third batter, the shortstop assists</span>
+						<span style=""> </span>
+						<span style="">the third baseman in putting out the first runner.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">In this case also, the way the action developed gave the scorer</span>
+						<span style=""> </span>
+						<span style="">the absolute certainty that the fielder could have put out the</span>
+						<span style=""> </span>
+						<span style="">runner who was forced to second, rather than the first runner.</span>
+						<span style=""> </span>
+						<span style="">For this reason, the runner’s advance to second base is</span>
+						<span style=""> </span>
+						<span style="">recorded as a fielder’s choice, rather than with the batting</span>
+						<span style=""> </span>
+						<span style="">order number of the batter.</span>
+					</p>
+					<p class="Exemple">
+						<br>					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction</span>
+						<span style=""> </span>
+						<span style="">dans</span>
+						<span style=""> </span>
+						<span style="">l’outil</span>
+						<span style=""> de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Occupied_ball_12.jpg" height="272" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en champ centre, le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">défenseur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> fait </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">erreur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> el la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">rattrapant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>E8F</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe un hit </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">deuxième</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base, le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">avance</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B4</b></span>
+						<span style="font-family: Consolas;">, runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">balle</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">l'arrêt</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> court, qui </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">relai</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> au </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">troisième</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base qui retire le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">venant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> de la 2. Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en 1 et le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">profite</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> pour </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">avancer</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O6</b></span>
+						<span style="font-family: Consolas;">, runner1 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O6</b></span>
+						<span style="font-family: Consolas;">, runner2 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>65</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Occupied_ball_13.jpg" height="268" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<span style="">There is another kind of occupied ball, as in "KO2".</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 59: With runners on second and third, the catcher</span>
+						<span style=""> </span>
+						<span style="">drops the third strike but recovers it in time to assist the</span>
+						<span style=""> </span>
+						<span style="">pitcher to put out the runner who has just left third base.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">The batter-runner arrives safely on first base, as indicated by"KS1 O2" (assuming that this is the first strikeout for the</span>
+						<span style=""> </span>
+						<span style="">current pitcher).</span>
+					</p>
+					<p class="Exemple">
+						<span style="">The advance by the runner on second is noted with ‘O2’ as the</span>
+						<span style=""> </span>
+						<span style="">provision of rule 9.13(b)  Comment.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction</span>
+						<span style=""> </span>
+						<span style="">dans</span>
+						<span style=""> </span>
+						<span style="">l’outil</span>
+						<span style=""> de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Occupied_ball_14.jpg" height="278" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">frappeur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe un double </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">dans</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le champ </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">droit</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>2B9</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> frappe un simple </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">dans</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le champ gauche et </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">profite</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> d'un </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">relai</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> pour </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">gagner</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">deuxième</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base, le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> en 2 </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">avance</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>1B7</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>T75,</b></span>
+						<span style="font-family: Consolas;"> runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>+</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">batteur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">suivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">, </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">sur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> un </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">troisième</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> strike </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">relâché</span>
+						<span style="font-family: Consolas;color:#3F7F5F;">, </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">gagne</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">une</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> car</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">receveur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">décide</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">d'éliminer</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> le </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">coureur</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">arrivant</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> de la </span>
+						<span style="font-family: Consolas;color:#3F7F5F;">troisième</span>
+						<span style="font-family: Consolas;color:#3F7F5F;"> base */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>KSO2</b></span>
+						<span style="font-family: Consolas;"> , runner2 -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O2</b></span>
+						<span style="font-family: Consolas;">, runner3 -> </span>
+						<span style="font-family: Consolas;color:#FF0000;"><b>21</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Occupied_ball_15.jpg" height="267" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Texte">
+			<br>		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="630" colspan="5" valign="top" style="border-left:2px solid black;border-right:2px solid black;border-top:2px solid black;border-bottom:1px solid black;">					<p class="Exemple">
+						<span style="">Example 60: The batter hits a ground ball to the third baseman, who tags the runner on third as he tries to retouch base.</span>
+					</p>
+					<p class="Exemple">
+						<span style="">In the encounter, however, the ball is dropped and the umpire calls "Ball on the ground". The runner on third returns safely to the base and the third baseman is charged with an error.The error is decisive and must be noted in small characters in the third base square.</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  bgcolor="#C5E0B3" width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">WBSC</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="">Traduction dans l’outil de scorage</span>
+					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<br>					</center>
+					</p>
+			</td>
+					<td  bgcolor="#C5E0B3" width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:1px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;">Outil</span>
+					</center>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="114" valign="top" style="border-left:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Times New Roman;"><img src="./images/Occupied_ball_16.jpg" height="185" width="86" ></span>
+					</center>
+					</p>
+			</td>
+					<td  width="15" valign="top" style="border-right:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="387" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* Le premier batteur frappe un triple dans le champ droit */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;">{ </span>
+						<span style="font-family: Consolas;">batter</span>
+						<span style="font-family: Consolas;"> -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>3B9</b></span>
+						<span style="font-family: Consolas;"> }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#3F7F5F;">/* le batteur suivant frappe une balle sur la troisième base, le défenseur aurait du retirer le coureur qui ne bouge pas */</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="font-family: Consolas;color:#7F0055;"><b>action</b></span>
+						<span style="font-family: Consolas;"> { batter -> </span>
+						<span style="font-family: Consolas;color:#008000;"><b>O5</b></span>
+						<span style="font-family: Consolas;"> , </span>
+						<span style="font-family: Consolas;color:#7F0055;"><b>noAdvance</b></span>
+						<span style="font-family: Consolas;"> </span>
+						<span style="font-family: Consolas;color:#7F0055;"><b>on</b></span>
+						<span style="font-family: Consolas;"> runner3 -> E5 }</span>
+					</p>
+					<p class="GameEditorCopy">
+						<br>					</p>
+			</td>
+					<td  width="18" valign="top" style="border-left:1px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+						<br>					</p>
+			</td>
+					<td  width="94" valign="top" style="border-right:2px solid black;border-top:1px solid black;border-bottom:2px solid black;">					<p class="Texte">
+					<center>
+						<span style="font-family: Calibri-Italic;"><img src="./images/Occupied_ball_17.jpg" height="177" width="86" ></span>
+					</center>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="Exemple">
+			<br>		</p>
+		<p class="Texte">
+			<span style="">This type of error will always be encountered on third or second base,</span>
+			<span style=""> </span>
+			<span style="">and should not be confused with an error that prolongs a time at bat</span>
+			<span style=""> </span>
+			<span style="">which, although it is recorded in the same manner, is written in the first</span>
+			<span style=""> </span>
+			<span style="">base square.</span>
+		</p>
+		<p class="Texte">
+			<span style="font-family: Calibri-Bold;"><b>ATTENTION: </b></span>
+			<span style="">To account for a runner’s advance on a fielder’s choice rather</span>
+			<span style=""> </span>
+			<span style="">than on a hit, the scorer must be absolutely convinced that an alternative</span>
+			<span style=""> </span>
+			<span style="">play on that player would have led to his being put out.</span>
+		</p>
+	</body>
+</html>

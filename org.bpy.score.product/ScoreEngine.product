@@ -25,7 +25,7 @@
    </launcher>
 
    <vm>
-      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17</windows>
+      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/OSGi%Minimum-1.2</windows>
    </vm>
 
    <plugins>
@@ -39,8 +39,11 @@
       <plugin id="com.sun.jna"/>
       <plugin id="com.sun.jna.platform"/>
       <plugin id="io.github.classgraph"/>
+      <plugin id="jakarta.servlet-api"/>
       <plugin id="javax.annotation"/>
+      <plugin id="javax.el-api"/>
       <plugin id="javax.inject"/>
+      <plugin id="javax.servlet.jsp-api"/>
       <plugin id="org.antlr.runtime" version="3.2.0"/>
       <plugin id="org.aopalliance"/>
       <plugin id="org.apache.ant"/>
@@ -52,7 +55,11 @@
       <plugin id="org.apache.commons.jxpath"/>
       <plugin id="org.apache.commons.logging"/>
       <plugin id="org.apache.felix.scr"/>
+      <plugin id="org.apache.jasper.glassfish"/>
       <plugin id="org.apache.log4j"/>
+      <plugin id="org.apache.lucene.analysis-common"/>
+      <plugin id="org.apache.lucene.analysis-smartcn"/>
+      <plugin id="org.apache.lucene.core"/>
       <plugin id="org.apache.xmlgraphics"/>
       <plugin id="org.bpy.score.club"/>
       <plugin id="org.bpy.score.club.ide"/>
@@ -62,6 +69,7 @@
       <plugin id="org.bpy.score.game.ide"/>
       <plugin id="org.bpy.score.game.ui"/>
       <plugin id="org.bpy.score.graphics"/>
+      <plugin id="org.bpy.score.help"/>
       <plugin id="org.bpy.score.internationalization"/>
       <plugin id="org.bpy.score.preferences"/>
       <plugin id="org.bpy.score.rcp"/>
@@ -183,6 +191,11 @@
       <plugin id="org.eclipse.equinox.frameworkadmin.equinox"/>
       <plugin id="org.eclipse.equinox.frameworkadmin.equinox.nl_fr" fragment="true"/>
       <plugin id="org.eclipse.equinox.frameworkadmin.nl_fr" fragment="true"/>
+      <plugin id="org.eclipse.equinox.http.jetty"/>
+      <plugin id="org.eclipse.equinox.http.registry"/>
+      <plugin id="org.eclipse.equinox.http.servlet"/>
+      <plugin id="org.eclipse.equinox.jsp.jasper"/>
+      <plugin id="org.eclipse.equinox.jsp.jasper.registry"/>
       <plugin id="org.eclipse.equinox.p2.artifact.repository"/>
       <plugin id="org.eclipse.equinox.p2.artifact.repository.nl_fr" fragment="true"/>
       <plugin id="org.eclipse.equinox.p2.core"/>
@@ -230,7 +243,13 @@
       <plugin id="org.eclipse.equinox.transforms.hook" fragment="true"/>
       <plugin id="org.eclipse.equinox.weaving.hook" fragment="true"/>
       <plugin id="org.eclipse.help"/>
+      <plugin id="org.eclipse.help.base"/>
+      <plugin id="org.eclipse.help.base.nl_fr" fragment="true"/>
       <plugin id="org.eclipse.help.nl_fr" fragment="true"/>
+      <plugin id="org.eclipse.help.ui"/>
+      <plugin id="org.eclipse.help.ui.nl_fr" fragment="true"/>
+      <plugin id="org.eclipse.help.webapp"/>
+      <plugin id="org.eclipse.help.webapp.nl_fr" fragment="true"/>
       <plugin id="org.eclipse.jdt.core"/>
       <plugin id="org.eclipse.jdt.core.compiler.batch"/>
       <plugin id="org.eclipse.jdt.core.manipulation"/>
@@ -250,6 +269,12 @@
       <plugin id="org.eclipse.jdt.launching.nl_fr" fragment="true"/>
       <plugin id="org.eclipse.jdt.ui"/>
       <plugin id="org.eclipse.jdt.ui.nl_fr" fragment="true"/>
+      <plugin id="org.eclipse.jetty.http"/>
+      <plugin id="org.eclipse.jetty.io"/>
+      <plugin id="org.eclipse.jetty.security"/>
+      <plugin id="org.eclipse.jetty.server"/>
+      <plugin id="org.eclipse.jetty.servlet"/>
+      <plugin id="org.eclipse.jetty.util"/>
       <plugin id="org.eclipse.jface"/>
       <plugin id="org.eclipse.jface.databinding"/>
       <plugin id="org.eclipse.jface.databinding.nl_fr" fragment="true"/>
@@ -262,6 +287,7 @@
       <plugin id="org.eclipse.ltk.ui.refactoring.nl_fr" fragment="true"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
+      <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.osgi.util"/>
       <plugin id="org.eclipse.pde.build"/>
       <plugin id="org.eclipse.pde.build.nl_fr" fragment="true"/>
@@ -325,6 +351,9 @@
       <plugin id="org.eclipse.xtext"/>
       <plugin id="org.eclipse.xtext.builder"/>
       <plugin id="org.eclipse.xtext.common.types"/>
+      <plugin id="org.eclipse.xtext.common.types.shared"/>
+      <plugin id="org.eclipse.xtext.common.types.shared.jdt38" fragment="true"/>
+      <plugin id="org.eclipse.xtext.common.types.ui"/>
       <plugin id="org.eclipse.xtext.ide"/>
       <plugin id="org.eclipse.xtext.logging" fragment="true"/>
       <plugin id="org.eclipse.xtext.smap"/>
@@ -337,13 +366,22 @@
       <plugin id="org.eclipse.xtext.xbase"/>
       <plugin id="org.eclipse.xtext.xbase.ide"/>
       <plugin id="org.eclipse.xtext.xbase.lib"/>
+      <plugin id="org.eclipse.xtext.xbase.ui"/>
+      <plugin id="org.glassfish.web.javax.servlet.jsp"/>
       <plugin id="org.hamcrest.core"/>
       <plugin id="org.junit"/>
       <plugin id="org.objectweb.asm"/>
+      <plugin id="org.osgi.service.cm"/>
       <plugin id="org.osgi.service.component"/>
+      <plugin id="org.osgi.service.device"/>
       <plugin id="org.osgi.service.event"/>
+      <plugin id="org.osgi.service.metatype"/>
       <plugin id="org.osgi.service.prefs"/>
+      <plugin id="org.osgi.service.provisioning"/>
       <plugin id="org.osgi.service.repository"/>
+      <plugin id="org.osgi.service.upnp"/>
+      <plugin id="org.osgi.service.useradmin"/>
+      <plugin id="org.osgi.service.wireadmin"/>
       <plugin id="org.osgi.util.function"/>
       <plugin id="org.osgi.util.measurement"/>
       <plugin id="org.osgi.util.position"/>

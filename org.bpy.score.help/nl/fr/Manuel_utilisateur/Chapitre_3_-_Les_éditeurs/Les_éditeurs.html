@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="..\..\ScoreToolHelpStyleSheet.css">
+	</head>
+	<body>
+		<p class="Titre">
+			<span style="">Les éditeurs</span>
+		</p>
+		<p class="Texte">
+			<br>		</p>
+		<p class="Texte">
+			<span style="">L’outil comporte deux éditeurs,</span>
+		</p>
+		<ul style="1">
+		<li>
+		<p class="Texte">
+			<span style="">Le premier permet de décrire un club engagé dans une saison. Il permet de définir la liste des membres d’un club, d’indiquer à quelle catégorie ils vont jouer, et pour finir quel sont les officiels et leur rôles dans les match</span>
+			<span style="">s</span>
+			<span style="">.</span>
+		</p>
+		</li>
+		<li>
+		<p class="Texte">
+			<span style="">Le second permet de décrire un  match. Le fichier qui est édit</span>
+			<span style="">é</span>
+			<span style=""> contient toutes les informations nécessaires pour remplir une feuille de </span>
+			<span style="">scorage</span>
+			<span style=""> officiel.  </span>
+		</p>
+		</li>
+		</ul>
+		<p class="GameEditorCopy">
+			<span style="">Les deux éditeurs sont des éditeurs de texte qui doivent respecter une grammaire et un vocabulaire. Ce</span>
+			<span style="">s</span>
+			<span style=""> vocabulaire</span>
+			<span style="">s</span>
+			<span style=""> et ce</span>
+			<span style="">s</span>
+			<span style=""> grammaire</span>
+			<span style="">s</span>
+			<span style=""> vont être décrits dans les chapitres suivant. Un diagramme de syntaxe permet de décrire graphique la syntaxe du langage et sera utilisé pour décrire le langage. Ces diagrammes de syntaxe ressemblent à ceci :</span>
+		</p>
+		<p class="GameEditorCopy">
+			<span style=""><img src="./images/Les_�diteurs_0.jpg" height="61" width="602" ></span>
+		</p>
+		<p class="GameEditorCopy">
+			<span style="">L’élément</span>
+			<span style=""> </span>
+			<span style="">Game </span>
+			<span style="">doit être lu de la manière suivante :</span>
+		</p>
+		<ul style="1">
+		<li>
+		<p class="Paragraphedeliste">
+			<span style="">Il commence par le mot clef ‘</span>
+			<span style="">game</span>
+			<span style="">’</span>
+		</p>
+		</li>
+		<li>
+		<p class="Paragraphedeliste">
+			<span style="">Il est suivi par une valeur de type String</span>
+		</p>
+		</li>
+		<li>
+		<p class="Paragraphedeliste">
+			<span style="">Puis d’une accolade ‘{‘</span>
+		</p>
+		</li>
+		<li>
+		<p class="Paragraphedeliste">
+			<span style="">Puis d’un élément ‘Description’</span>
+		</p>
+		</li>
+		<li>
+		<p class="Paragraphedeliste">
+			<span style="">Puis d’un élément ‘</span>
+			<span style="">Roster</span>
+			<span style="">’</span>
+		</p>
+		</li>
+		<li>
+		<p class="Paragraphedeliste">
+			<span style="">Puis d’un élément ‘</span>
+			<span style="">Roster</span>
+			<span style="">’</span>
+		</p>
+		</li>
+		<li>
+		<p class="Paragraphedeliste">
+			<span style="">Puis, au choix, d’un élément ‘</span>
+			<span style="">ForfaitGame</span>
+			<span style="">’ ou d’un élément ‘Actions’</span>
+		</p>
+		</li>
+		<li>
+		<p class="Paragraphedeliste">
+			<span style="">Et doit finir par une accolade ‘}‘</span>
+		</p>
+		</li>
+		</ul>
+		<p class="GameEditorCopy">
+			<span style="">Le tableau suivant décrit les symboles utilisés par ces diagrammes</span>
+		</p>
+		<table cellspacing="0" cellpadding="0">
+			<tbody>
+				<tr>
+					<td  width="158" valign="top">					<p class="GameEditorCopy">
+						<span style="">Le symbole</span>
+					</p>
+			</td>
+					<td  width="478" valign="top">					<p class="GameEditorCopy">
+						<span style="">Description</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="158" valign="top">					<p class="GameEditorCopy">
+						<span style=""><img src="./images/Les_�diteurs_1.jpg" height="57" width="49" ></span>
+					</p>
+			</td>
+					<td  width="478" valign="top">					<p class="GameEditorCopy">
+						<span style="">C’est le nom de l’élément qui est décrit par le diagramme</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="158" valign="top">					<p class="GameEditorCopy">
+						<span style=""><img src="./images/Les_�diteurs_2.jpg" height="36" width="51" ></span>
+					</p>
+			</td>
+					<td  width="478" valign="top">					<p class="GameEditorCopy">
+						<span style="">Un mot clef du langage</span>
+					</p>
+			</td>
+				</tr>
+				<tr>
+					<td  width="158" valign="top">					<p class="GameEditorCopy">
+						<span style=""><img src="./images/Les_�diteurs_3.jpg" height="36" width="64" ></span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style=""><img src="./images/Les_�diteurs_4.jpg" height="42" width="107" ></span>
+					</p>
+			</td>
+					<td  width="478" valign="top">					<p class="GameEditorCopy">
+						<span style="">C’est une référence à un sous élément du langage</span>
+					</p>
+					<p class="GameEditorCopy">
+						<span style="">Il existe deux sous types prédéfinies de valeurs. </span>
+					</p>
+					<ul style="1">
+					<li>
+					<p class="Paragraphedeliste">
+						<span style="">Le type ‘</span>
+						<span style=""><b>STRING</b></span>
+						<span style="">’ permet de définir une valeur sous la forme d’une chaine de caractères  et se décrit sous la forme d’un ‘</span>
+						<span style="">"</span>
+						<span style=""> ’  suivi d »une liste de caractères et qui se termine par un ‘</span>
+						<span style="">"</span>
+						<span style=""> </span>
+						<span style="">’ ,</span>
+						<span style=""> comme par exemple </span>
+						<span style="">"</span>
+						<span style="">J1R14</span>
+						<span style="">"</span>
+						<span style=""> </span>
+					</p>
+					</li>
+					<li>
+					<p class="Paragraphedeliste">
+						<span style="">Le type ‘</span>
+						<span style=""><b>INT</b></span>
+						<span style="">’ permet de définir une valeur numérique comme par exemple 1, 123, 12543.</span>
+					</p>
+					</li>
+			</td>
+				</tr>
+				<tr>
+					<td  width="158" valign="top">					</ul>
+					<p class="GameEditorCopy">
+						<span style=""><img src="./images/Les_�diteurs_5.jpg" height="64" width="110" ></span>
+					</p>
+			</td>
+					<td  width="478" valign="top">					<p class="GameEditorCopy">
+						<span style="">C’est un choix entre rien et un sous élément de type </span>
+						<span style="">LineUp</span>
+					</p>
+			</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="GameEditorCopy">
+			<span style=""> </span>
+		</p>
+		<p class="GameEditorCopy">
+			<span style="">L’exemple suivant décrit donne un aperçu du texte correspondant au diagramme présenté plus haut dans ce document </span>
+		</p>
+		<p class="GameEditorCopy">
+		<center>
+			<span style=""><img src="./images/Les_�diteurs_6.jpg" height="357" width="392" ></span>
+		</center>
+		</p>
+		<p class="Texte">
+			<span style="">Les chapitres suivant vont décrire plus précisément les différents éléments du langage utilisé pour décrire les clubs et les matchs.</span>
+		</p>
+		<p class="Texte">
+			<span style="">Dans l’exemple ci-dessus, on remarque la coloration syntaxique des différents éléments du langage.   En bleu, on retrouve les éléments de type STRING, en violet les mot clef du langage. </span>
+		</p>
+		<p class="Texte">
+			<span style="">IL est aussi possible d’ajouter des commentaires n’ importe où dans le texte. </span>
+			<span style="">Ces commentaires ne sont pas exploité par l’outil, par contre ils permettent à l’utilisateur d’ajouter des informations qui pourront être utile pour la lecture de match. Il existe deux types de commentaires :</span>
+		</p>
+		<ul style="1">
+		<li>
+		<p class="Texte">
+			<span style="">Le commentaire sur une seule ligne : Il commence toujours par // et finie à  la fin de ligne.</span>
+		</p>
+		</li>
+		</ul>
+		<p class="Texte">
+		<center>
+			<span style=""><img src="./images/Les_�diteurs_7.jpg" height="34" width="416" ></span>
+		</center>
+		</p>
+		<ul style="1">
+		<li>
+		<p class="Texte">
+			<span style="">Le commentaire multi ligne : il commence par un /* et finit par */</span>
+		</p>
+		</li>
+		</ul>
+		<p class="Texte">
+		<center>
+			<span style=""><img src="./images/Les_�diteurs_8.jpg" height="61" width="275" ></span>
+		</center>
+		</p>
+		<p class="Texte">
+			<span style="">Dans ces deux exemples, les commentaires sont  reconnaissables par leur couleur verte.</span>
+		</p>
+		<p class="Texte">
+			<span style="">Pour finir, les espaces et tabulations sont ignorées par l’outil. Par contre, ces espaces ou tabulation sont très utiles pour la lecture du texte car ils permettent d’architecturer le texte en bloc facilement identifiable. </span>
+		</p>
+		<p class="Texte">
+			<span style=""> </span>
+		</p>
+	</body>
+</html>
