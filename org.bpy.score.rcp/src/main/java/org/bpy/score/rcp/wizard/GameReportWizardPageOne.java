@@ -31,9 +31,10 @@ import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.StringUtils;
 import org.bpy.score.internationalization.rcp.Messages;
-import org.bpy.score.preferences.Activator;
 import org.bpy.score.preferences.core.PreferenceConstants;
 import org.bpy.score.preferences.core.PreferenceManager;
+import org.bpy.score.preferences.ui.PathSelectionComposite;
+import org.bpy.score.rcp.Activator;
 import org.bpy.score.rcp.utils.RcpUtils;
 import org.bpy.score.reports.generator.GameReportGenerator;
 import org.eclipse.core.resources.IFile;
@@ -65,6 +66,10 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.custom.ScrolledComposite;
 
 /**
  * This class is the page one of generation report wizard.
@@ -73,20 +78,18 @@ import org.eclipse.swt.events.SelectionListener;
  *
  */
 public class GameReportWizardPageOne extends WizardPage implements SelectionListener {
-	
+
 	/** Logger of the class */
 	public static final Logger logger = Logger.getLogger(GameReportWizardPageOne.class.getSimpleName());
-	
+
 	/** Game extension constant */
 	public static final String GAME_FILE_EXTENSION = ".game"; //$NON-NLS-1$
-	
+
 	/** Reference on the game report wizard */
 	private GenerateGameReportWizard generateGameReportWizard;
 
 	/** Select all game reports button */
 	private Button allGameButton;
-	/** Text widget for the output folder */
-	private Text outputFoldePath;
 	/** List of game to select */
 	private List matchsSelector;
 	/** Button for remove games selection */
@@ -99,16 +102,13 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 	private Button regExDisplayButton;
 	/** Button for apply regex game selector */
 	private Button regExSelButton;
-	/** Button for select the output folder (absolute path)*/
-	private Button genereationAbsolutePathBtn;
-	/** Button for select the output folder (relative path)*/
-	private Button genereationRelativePathBtn;
 
 	/** List of displayed game elements */
 	private HashMap<String, IFile> displayedElements;
 	/** state of the page one */
 	private boolean isValid;
-
+	private PathSelectionComposite pathSelectionComposite;
+	private ScrolledComposite scrolledComposite;
 
 	/**
 	 * Create the wizard.
@@ -126,9 +126,9 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 	 * @param generateGameReportWizard Reference on the game report wizard
 	 */
 	public void setParent(GenerateGameReportWizard generateGameReportWizard) {
-		this.generateGameReportWizard = generateGameReportWizard; 
+		this.generateGameReportWizard = generateGameReportWizard;
 	}
-	
+
 	/**
 	 * Return the state of the page one
 	 * 
@@ -142,10 +142,10 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 	 * Get the list of selected games.
 	 * 
 	 * @return list of selected games
-	 */ 
+	 */
 	public java.util.List<IFile> getSelectedGames() {
 		int[] indices = matchsSelector.getSelectionIndices();
-		
+
 		java.util.List<IFile> selectedFiles = new ArrayList<>();
 		for (int indice : indices) {
 			String key = matchsSelector.getItem(indice);
@@ -160,7 +160,7 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 	 * @return generation folder path
 	 */
 	public String getPath() {
-		return outputFoldePath.getText();
+		return pathSelectionComposite.getResolvedAbsolutePath();
 	}
 
 	/**
@@ -172,107 +172,111 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 		Composite container = new Composite(parent, SWT.NONE);
 
 		setControl(container);
-		
+		container.setLayout(new GridLayout(4, false));
+
 		Label lblSlectionDesMatchs = new Label(container, SWT.NONE);
-		lblSlectionDesMatchs.setBounds(10, 10, 224, 15);
+		lblSlectionDesMatchs.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
 		lblSlectionDesMatchs.setText(Messages.GameReportWizardPageOne_GameSelection);
-		
-		matchsSelector = new List(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
-		matchsSelector.setBounds(10, 31, 157, 236);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+
+		scrolledComposite = new ScrolledComposite(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		scrolledComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 7));
+		scrolledComposite.setExpandHorizontal(true);
+		scrolledComposite.setExpandVertical(true);
+
+		matchsSelector = new List(scrolledComposite, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
+		matchsSelector.setItems(new String[] { "test.game" });
+		scrolledComposite.setContent(matchsSelector);
+		scrolledComposite.setMinSize(matchsSelector.computeSize(SWT.DEFAULT, SWT.DEFAULT));
 		matchsSelector.addSelectionListener(this);
-		
-		Label lblRpertoireDeGnration = new Label(container, SWT.NONE);
-		lblRpertoireDeGnration.setBounds(10, 273, 224, 15);
-		lblRpertoireDeGnration.setText(Messages.GameReportWizardPageOne_ReportGenerationFolder);
-		
-		outputFoldePath = new Text(container, SWT.BORDER);
-		outputFoldePath.setBounds(10, 294, 401, 21);
-		outputFoldePath.addModifyListener(event -> checkIsvalid());
-		
+
 		allGameButton = new Button(container, SWT.NONE);
-		allGameButton.setBounds(177, 31, 125, 25);
+		GridData gd_allGameButton = new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1);
+		allGameButton.setLayoutData(gd_allGameButton);
 		allGameButton.setText(Messages.GameReportWizardPageOne_AllGameSelection);
 		allGameButton.addSelectionListener(this);
-		
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+
 		clearGameSelectionBtn = new Button(container, SWT.NONE);
-		clearGameSelectionBtn.setBounds(177, 62, 125, 25);
+		GridData gd_clearGameSelectionBtn = new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1);
+		clearGameSelectionBtn.setLayoutData(gd_clearGameSelectionBtn);
 		clearGameSelectionBtn.setText(Messages.GameReportWizardPageOne_ClearGameSelection);
 		clearGameSelectionBtn.addSelectionListener(this);
-		
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+
 		Label lblExpressionRgulireDe = new Label(container, SWT.NONE);
-		lblExpressionRgulireDe.setBounds(177, 100, 204, 15);
+		lblExpressionRgulireDe.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 3, 1));
 		lblExpressionRgulireDe.setText(Messages.GameReportWizardPageOne_RegularExpressionGameSelection);
-		
+
 		regExSelectionText = new Text(container, SWT.BORDER);
-		regExSelectionText.setBounds(173, 121, 277, 21);
-		
+		regExSelectionText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 2, 1));
+
 		regExSelButton = new Button(container, SWT.NONE);
-		regExSelButton.setBounds(388, 94, 62, 21);
+		regExSelButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		regExSelButton.setText(Messages.GameReportWizardPageOne_ApplyButton);
 		regExSelButton.addSelectionListener(this);
-		
+
 		Label lblExpressionRgulireDaffichage = new Label(container, SWT.NONE);
+		lblExpressionRgulireDaffichage.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 3, 1));
 		lblExpressionRgulireDaffichage.setText(Messages.GameReportWizardPageOne_RegularExpressionGameDisplay);
-		lblExpressionRgulireDaffichage.setBounds(173, 167, 204, 15);
-		
+
 		regExDisplayText = new Text(container, SWT.BORDER);
+		regExDisplayText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 2, 1));
 		regExDisplayText.setText(StringUtils.EMPTY);
-		regExDisplayText.setBounds(173, 188, 277, 21);
-		
+
 		regExDisplayButton = new Button(container, SWT.NONE);
+		regExDisplayButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		regExDisplayButton.setText(Messages.GameReportWizardPageOne_ApplyButton);
-		regExDisplayButton.setBounds(388, 164, 62, 21);
-		
-		genereationAbsolutePathBtn = new Button(container, SWT.NONE);
-		genereationAbsolutePathBtn.setToolTipText(Messages.GameReportWizardPageOne_GenereationAbsolutePathToolTip);
-		genereationAbsolutePathBtn.setText(Messages.GameReportWizardPageOne_GenereationAbsolutePathTextButton );
-		genereationAbsolutePathBtn.setBounds(10, 321, 86, 25);
-		genereationAbsolutePathBtn.addSelectionListener(this);
-		
-		genereationRelativePathBtn = new Button(container, SWT.NONE);
-		genereationRelativePathBtn.setToolTipText(Messages.GameReportWizardPageOne_GenereationRelativeToolTip);
-		genereationRelativePathBtn.setText(Messages.GameReportWizardPageOne_GenereationRelativePathTextButton);
-		genereationRelativePathBtn.setBounds(102, 321, 80, 25);
-		genereationRelativePathBtn.addSelectionListener(this);
-		
+
 		regExDisplayButton.addSelectionListener(this);
-		
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+
+		pathSelectionComposite = new PathSelectionComposite(container, SWT.NONE);
+		pathSelectionComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 4, 1));
+		pathSelectionComposite.setMessage("Path de génération");
+
 		checkIsvalid();
 	}
 
-
 	@Override
 	public void setVisible(boolean visible) {
-		
-		String displayRegularExpression = RcpUtils.getPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.DISPLAY_REGULAR_EXPRESSION_KEY);
-		String selectionRegularExpression = RcpUtils.getPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.SELECTION_REGULAR_EXPRESSION_KEY);
-		String outputPath = RcpUtils.getPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.OUTPUT_FOLDER_KEY);
-		 
+
+		String displayRegularExpression = RcpUtils.getPreferenceValue(generateGameReportWizard.getCurrentFolder(),
+				GameReportGenerator.DISPLAY_REGULAR_EXPRESSION_KEY);
+		String selectionRegularExpression = RcpUtils.getPreferenceValue(generateGameReportWizard.getCurrentFolder(),
+				GameReportGenerator.SELECTION_REGULAR_EXPRESSION_KEY);
+		String outputPath = RcpUtils.getPreferenceValue(generateGameReportWizard.getCurrentFolder(),
+				GameReportGenerator.OUTPUT_FOLDER_KEY);
+
 		regExDisplayText.setText(displayRegularExpression);
 		regExSelectionText.setText(selectionRegularExpression);
-		outputFoldePath.setText(outputPath);
-		
+
 		displayedElements = new HashMap<>();
 		try {
 			for (IResource member : generateGameReportWizard.getCurrentFolder().members()) {
-				if ( (member instanceof IFile) && 
-					 (member.getRawLocation().lastSegment().toLowerCase().endsWith(GAME_FILE_EXTENSION))) {
+				if ((member instanceof IFile)
+						&& (member.getRawLocation().lastSegment().toLowerCase().endsWith(GAME_FILE_EXTENSION))) {
 					String key = member.getRawLocation().lastSegment().replace(GAME_FILE_EXTENSION, ""); //$NON-NLS-1$
 					displayedElements.put(key, (IFile) member);
 				}
 			}
-			
+
 			java.util.List<String> toDisplayed = new ArrayList<>(displayedElements.keySet());
 			Collections.sort(toDisplayed);
-			
+
 			for (String toDisplay : toDisplayed) {
 				matchsSelector.add(toDisplay);
 			}
-			
+
 		} catch (CoreException e) {
-			logger.log(Level.SEVERE,e.getMessage());
+			logger.log(Level.SEVERE, e.getMessage());
 		}
-		
+
 		super.setVisible(visible);
 	}
 
@@ -283,18 +287,12 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 
 		} else if (e.getSource() == regExSelButton) {
 			selectFilesFromRegularExpression();
-			
+
 		} else if (e.getSource() == clearGameSelectionBtn) {
 			matchsSelector.deselectAll();
-			
+
 		} else if (e.getSource() == allGameButton) {
 			matchsSelector.selectAll();
-			
-		} else if (e.getSource() == genereationAbsolutePathBtn) {
-			getSelectedOutputFolder();
-
-		} else if (e.getSource() == genereationRelativePathBtn) {
-			getSelectedRelativeOutputFolder(outputFoldePath, IResource.FOLDER);
 		}
 		checkIsvalid();
 	}
@@ -304,51 +302,49 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 	 */
 	private void checkIsvalid() {
 		boolean atLeastOneMatch = matchsSelector.getItems().length > 0;
-		
+		String outputFolderPath = pathSelectionComposite.getResolvedAbsolutePath();
 		boolean folderExist = false;
-		try {
-			String outputFolderPath = VariablesPlugin.getDefault().getStringVariableManager().performStringSubstitution(outputFoldePath.getText());
-			File folder = new File(outputFolderPath);
-			folderExist = folder.exists() && folder.isDirectory();
 
-		} catch (CoreException e) {
+		File folder = new File(outputFolderPath);
+		folderExist = folder.exists() && folder.isDirectory();
+		if (!folderExist) {
 			isValid = false;
-			setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_NotAValidFolder, outputFoldePath.getText()));
+			setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_NotAValidFolder, outputFolderPath));
 			setPageComplete(false);
 			return;
 		}
-		
+
 		if (!atLeastOneMatch) {
 			isValid = false;
 			setErrorMessage(Messages.GameReportWizardPageOne_OneGameMustBeSeelcted);
 			setPageComplete(false);
 			return;
 		}
-		
+
 		if (!folderExist) {
 			isValid = false;
-			setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_NotAValidFolder, outputFoldePath.getText()));
+			setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_NotAValidFolder, outputFolderPath));
 			setPageComplete(false);
 			return;
 		}
-		
+
 		isValid = true;
 		setErrorMessage(null);
 		setPageComplete(true);
 	}
 
 	/**
-	 * Set list of game extract with the regular expression 
+	 * Set list of game extract with the regular expression
 	 */
 	private void setListOfFilesFromRegularExpression() {
 		matchsSelector.removeAll();
-		
+
 		Pattern pattern = Pattern.compile(regExDisplayText.getText());
 		java.util.List<String> filesToDisplay = new ArrayList<>();
 		for (Entry<String, IFile> entry : displayedElements.entrySet()) {
 
 			String gameName = entry.getKey().replaceAll(GAME_FILE_EXTENSION, ""); //$NON-NLS-1$
-			
+
 			Matcher matcher = pattern.matcher(gameName);
 			if (matcher.matches()) {
 				filesToDisplay.add(gameName);
@@ -357,8 +353,8 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 		Collections.sort(filesToDisplay);
 		for (String fileToDisplay : filesToDisplay) {
 			matchsSelector.add(fileToDisplay);
-		}	
-		
+		}
+
 	}
 
 	/**
@@ -366,25 +362,26 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 	 */
 	private void selectFilesFromRegularExpression() {
 		matchsSelector.deselectAll();
-		
+
 		Pattern pattern = Pattern.compile(regExSelectionText.getText());
 		java.util.List<Integer> selectedItems = new ArrayList<>();
-		for (int index=0 ; index<matchsSelector.getItemCount() ; index++) {
-			
+		for (int index = 0; index < matchsSelector.getItemCount(); index++) {
+
 			String gameName = matchsSelector.getItem(index).replaceAll(GAME_FILE_EXTENSION, ""); //$NON-NLS-1$
-			
+
 			Matcher matcher = pattern.matcher(gameName);
 			if (matcher.matches()) {
 				selectedItems.add(index);
 			}
 		}
-		IntStream values = selectedItems.stream().mapToInt(Integer::intValue) ;
-		
+		IntStream values = selectedItems.stream().mapToInt(Integer::intValue);
+
 		matchsSelector.select(values.toArray());
 	}
 
 	private void getSelectedRelativeOutputFolder(Text textToUpdate, int type) {
-		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(getShell(), new WorkbenchLabelProvider(),new WorkbenchContentProvider());
+		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(getShell(), new WorkbenchLabelProvider(),
+				new WorkbenchContentProvider());
 		dialog.addFilter(new ViewerFilter() {
 
 			@Override
@@ -402,13 +399,17 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 		dialog.setValidator(selection -> {
 
 			if (selection.length == 0) {
-				return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, Messages.GameReportWizardPageOne_DialogError1_Title, null);
+				return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
+						Messages.GameReportWizardPageOne_DialogError1_Title, null);
 			} else if (selection.length > 1) {
-				return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, Messages.GameReportWizardPageOne_DialogError2_Title, null);
+				return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
+						Messages.GameReportWizardPageOne_DialogError2_Title, null);
 			} else if ((type == IResource.FILE) && !(selection[0] instanceof IFile)) {
-				return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0, Messages.GameReportWizardPageOne_DialogError3_Title, null);
+				return new Status(IStatus.ERROR, Activator.PLUGIN_ID, 0,
+						Messages.GameReportWizardPageOne_DialogError3_Title, null);
 			}
-			return new Status(IStatus.OK, Activator.PLUGIN_ID, 0, Messages.GameReportWizardPageOne_DialogNoError_Title, null);
+			return new Status(IStatus.OK, Activator.PLUGIN_ID, 0, Messages.GameReportWizardPageOne_DialogNoError_Title,
+					null);
 		});
 
 		dialog.setMessage(Messages.GameReportWizardPageOne_DialogRelativePath_Message);
@@ -417,29 +418,12 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 			IResource resource = (IResource) dialog.getFirstResult();
 			if (resource != null) {
 				String arg = resource.getFullPath().toString();
-				String fileLoc = VariablesPlugin.getDefault().getStringVariableManager().generateVariableExpression("workspace_loc", arg); //$NON-NLS-1$
+				String fileLoc = VariablesPlugin.getDefault().getStringVariableManager()
+						.generateVariableExpression("workspace_loc", arg); //$NON-NLS-1$
 				textToUpdate.setText(fileLoc);
 			}
 		}
 
-	}
-	
-	/**
-	 * Get selected output folder
-	 * 
-	 */
-	private void getSelectedOutputFolder() {
-		DirectoryDialog  dialog = new DirectoryDialog (new Shell());
-		
-		if (outputFoldePath.getText().isBlank()) {
-			dialog.setFilterPath(generateGameReportWizard.getCurrentFolder().getProject().getLocationURI().getRawFragment() );
-		} else {
-			dialog.setFilterPath(outputFoldePath.getText());
-		}
-		String result = dialog.open();
-		if (result != null) {
-			outputFoldePath.setText(result);
-		}
 	}
 
 	@Override
@@ -451,8 +435,11 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 	 * Save configuration in the preference for the next call
 	 */
 	public void savePreferences() {
-		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.SELECTION_REGULAR_EXPRESSION_KEY, regExSelectionText.getText());
-		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.DISPLAY_REGULAR_EXPRESSION_KEY, regExDisplayText.getText());
-		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.OUTPUT_FOLDER_KEY, outputFoldePath.getText());
+		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(),
+				GameReportGenerator.SELECTION_REGULAR_EXPRESSION_KEY, regExSelectionText.getText());
+		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(),
+				GameReportGenerator.DISPLAY_REGULAR_EXPRESSION_KEY, regExDisplayText.getText());
+		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.OUTPUT_FOLDER_KEY,
+				pathSelectionComposite.getDisplayPath());
 	}
 }

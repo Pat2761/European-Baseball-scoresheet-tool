@@ -150,6 +150,16 @@ public class Messages extends NLS {
 	/*------------------------------------------------------------------------------*/
 	public static String ProcessThread_PleaseWaiting;
 
+	/*------------------------------------------------------------------------------*/
+	/* class PathSelectionComposite                                                      */ 
+	/*------------------------------------------------------------------------------*/
+	public static String workspaceSelectorButton;
+	public static String fillSystemButton;
+	public static String variableButton;
+	public static String pathSelectionCompositeTitle;
+	public static String pathSelectionCompositeMessage;
+	
+	
 	/**
 	 * Initialize the internationalization
 	 */

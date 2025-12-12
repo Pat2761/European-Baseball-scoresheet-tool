@@ -591,6 +591,8 @@ public class Messages extends NLS {
 	/* ApplicationActionBarAdvisor class                                      */
 	/*----------------------------------------------------------------------- */
 	public static String ApplicationActionBarAdvisor_HelpMenu;
+	public static String GameReportWizardPageOne_lblNewLabel_text;
+	public static String GameReportWizardPageOne_lblNewLabel_1_text;
 	
 	/**
 	 * Initialize the internationalization

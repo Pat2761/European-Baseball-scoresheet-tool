@@ -30,6 +30,8 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
 
 /**
  * his class is the page for the wizard which allow to create a new category folder in a project
@@ -74,13 +76,14 @@ public class NewCategoryWizardPage extends WizardPage implements ModifyListener 
 		Composite container = new Composite(parent, SWT.NONE);
 
 		setControl(container);
+		container.setLayout(new GridLayout(1, false));
 		
 		Label lblSlectionDuNom = new Label(container, SWT.NONE);
-		lblSlectionDuNom.setBounds(10, 10, 322, 33);
+		lblSlectionDuNom.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		lblSlectionDuNom.setText(Messages.NewCategoryWizardPage_CategorySelectionLabel);
 		
 		combo = new Combo(container, SWT.NONE);
-		combo.setBounds(10, 65, 179, 23);
+		combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		for (String value : possibleCategories) {
 			combo.add(value);
 		}
