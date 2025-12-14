@@ -27,6 +27,7 @@ import org.bpy.score.reports.generator.GameReportGenerator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.swt.widgets.Composite;
 
 /**
  * This class is the wizard which allow to export game files into HTML files
@@ -75,6 +76,15 @@ public class GenerateGameReportWizard extends Wizard {
 		gameReportWizardPageTwo.setParent(this);
 		addPage(gameReportWizardPageTwo);
 	}
+
+//	@Override
+//	public void createPageControls(Composite pageContainer) {
+//		// TODO Auto-generated method stub
+//		super.createPageControls(pageContainer);
+//		
+//		getShell().setSize(700, 700);
+//		getShell().layout(true, true);
+//	}
 
 	@Override
 	public boolean canFinish() {

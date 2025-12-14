@@ -18,6 +18,9 @@
  */
 package org.bpy.score.preferences.ui;
 
+import java.io.File;
+import java.io.FileFilter;
+
 import org.bpy.score.internationalization.preferences.Messages;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -30,6 +33,12 @@ import org.eclipse.core.variables.VariablesPlugin;
 import org.eclipse.debug.ui.StringVariableSelectionDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DropTarget;
+import org.eclipse.swt.dnd.DropTargetAdapter;
+import org.eclipse.swt.dnd.DropTargetEvent;
+import org.eclipse.swt.dnd.FileTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -55,6 +64,10 @@ public class PathSelectionComposite extends Composite {
 	private Text txtPath;
 	/** Reference on the label widget which define the purpose of the path */
 	private Label label;
+	/** type of file: can be File.FILE or File.FOLDER */
+	private int category;
+	/** File filter definition */ 
+	private FileFilter fileFilter;
 
 	/**
 	 * Constructor of the class.
@@ -64,7 +77,37 @@ public class PathSelectionComposite extends Composite {
 	 */
 	public PathSelectionComposite(Composite parent, int style) {
 		super(parent, style);
+		category = IResource.HIDDEN;
 		createControls();
+	}
+
+	/**
+	 * Define type of file of folder to select
+	 * 
+	 * @param category can be File.FILE or File.FOLDER
+	 */
+	public void setFeatures(int category) {
+		this.category = category;
+	}
+
+	/**
+	 * Define type of file of folder to select
+	 * 
+	 * @param category can be IResource.FILE or IResource.FOLDER
+	 * @param fileFilter A file filter , can be null
+	 */
+	public void setFeatures(int category, FileFilter fileFilter) {
+		this.category = category;
+		this.fileFilter = fileFilter;
+	}
+
+	/**
+	 * Set a predefined value.
+	 * 
+	 * @param predefinedValue predefined Value
+	 */
+	public void setPredefinedValue(String predefinedValue) {
+		txtPath.setText(predefinedValue);
 	}
 	
 	/**
@@ -76,6 +119,15 @@ public class PathSelectionComposite extends Composite {
 		label.setText(message + ":"); //$NON-NLS-1$ 
 	}
 
+	/**
+	 * Check if the selection is valid
+	 * 
+	 * @return <b>true</b> the selection is valid, <b>false</b> otherwise
+	 */
+	public boolean idValid() {
+		return isValidSelection(txtPath.getText());
+	}
+	
 	/**
 	 * Set the contents of the path selector.
 	 * 
@@ -94,7 +146,45 @@ public class PathSelectionComposite extends Composite {
 			}
 		});
 		txtPath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 4, 1));
+		txtPath.setText("");
 
+		DropTarget cssTarget = new DropTarget(txtPath, DND.DROP_MOVE | DND.DROP_COPY | DND.DROP_DEFAULT);
+		Transfer[] cssTypes = new Transfer[] { FileTransfer.getInstance() };
+		cssTarget.setTransfer(cssTypes);
+		cssTarget.addDropListener(new DropTargetAdapter() {
+			
+			@Override 
+			public void dragOver(DropTargetEvent event) {
+				if (!FileTransfer.getInstance()
+		                .isSupportedType(event.currentDataType)) {
+		            event.detail = DND.DROP_NONE;
+		            return;
+		        }
+				
+		        Object data = FileTransfer.getInstance().nativeToJava(event.currentDataType);
+
+		        if (!(data instanceof String[])) {
+		            event.detail = DND.DROP_NONE;
+		            return;
+		        }
+		        String[] paths = (String[]) data;
+
+		        if (paths.length == 1 && isValidSelection(paths[0])) {
+		            event.detail = DND.DROP_COPY;
+		        } else {
+		            event.detail = DND.DROP_NONE;
+		        }
+		    }
+
+			@Override
+			 public void drop(DropTargetEvent event) {
+				if (event.data instanceof String[]) {
+					txtPath.setText(((String[]) event.data)[0]);
+				}	
+			}	
+		});		
+		
+		
 		Label lblFdfdsfsdfsd = new Label(this, SWT.NONE);
 		lblFdfdsfsdfsd.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
@@ -106,12 +196,41 @@ public class PathSelectionComposite extends Composite {
 		Button btnFile = new Button(this, SWT.PUSH);
 		btnFile.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		btnFile.setText(Messages.fillSystemButton);
-		btnFile.addListener(SWT.Selection, e -> openFilesystemDialog());
+		btnFile.addListener(SWT.Selection, e -> openFileSystemDialog());
 
 		Button btnVar = new Button(this, SWT.PUSH);
 		btnVar.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		btnVar.setText(Messages.variableButton);
 		btnVar.addListener(SWT.Selection, e -> openVariableDialog());
+	}
+
+	/**
+	 * Check if the path is a valid selection.
+	 * 
+	 * @param path String which defined a file or folder selection
+	 * @return <b>true</b> valid selection, <b>false</b> otherwise
+	 */
+	private boolean isValidSelection(String path) {
+		// Check folder
+		if (IResource.FOLDER == category) {
+			File file = new File(path);
+			if (!file.isDirectory()) {
+				return false;
+			}
+		}
+		
+		// Check file
+		else if (IResource.FILE == category) {
+			File file = new File(path);
+			if (!file.isFile() || !file.exists()) {
+				return false;
+			}
+			if (fileFilter==null || !fileFilter.accept(file)) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 
 	/**
@@ -139,7 +258,7 @@ public class PathSelectionComposite extends Composite {
 	 * Open a dialog box for select a folder in the file system.
 	 * 
 	 */
-	private void openFilesystemDialog() {
+	private void openFileSystemDialog() {
 		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
 		String path = dialog.open();
 		if (path != null) {
@@ -165,6 +284,8 @@ public class PathSelectionComposite extends Composite {
 
 	/**
 	 * Return the path.
+	 * 
+	 * @return String value defined
 	 * 
 	 */
 	public String getDisplayPath() {
