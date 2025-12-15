@@ -24,7 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bpy.score.engine.util.EngineConstants;
-import org.bpy.score.preferences.core.PreferenceConstants;
+import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.bpy.score.rcp.Activator;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -84,8 +84,8 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		rgb = PreferenceConverter.getColor(store, EngineConstants.GRAPHIC_COLOR_TEXT);
 		EngineConstants.graphicsColorPencil = new Color(rgb.red, rgb.green, rgb.blue);
 
-		EngineConstants.checkFlyOutLocation = store.getString(PreferenceConstants.CHECK_FLY_OUT_LOCATION);
-		EngineConstants.checkMissingEarnedPoint = store.getString(PreferenceConstants.CHECK_MISSING_EARNED_POINT);
+		EngineConstants.checkFlyOutLocation = store.getString(ScorePreferenceConstants.CHECK_FLY_OUT_LOCATION);
+		EngineConstants.checkMissingEarnedPoint = store.getString(ScorePreferenceConstants.CHECK_MISSING_EARNED_POINT);
 
 		MessageConsole myConsole = new MessageConsole("Console", null); //$NON-NLS-1$
 

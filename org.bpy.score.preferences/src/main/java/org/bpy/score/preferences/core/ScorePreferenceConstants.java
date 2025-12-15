@@ -28,7 +28,7 @@ import org.bpy.score.internationalization.rcp.Messages;
  * @author Patrick BRIAND
  *
  */
-public class PreferenceConstants {
+public class ScorePreferenceConstants {
 
 	/** ID for preference maanager */
 	public static final String PREFERENCE_ID = "org.bpy.score.rcp.preferences"; //$NON-NLS-1$
@@ -115,7 +115,7 @@ public class PreferenceConstants {
 	/**
 	 * Utility classes, which are collections of static members, are not meant to be instantiated. Even abstract utility classes, which can be extended, should not have public constructors.
 	 */
-	private PreferenceConstants() {
+	private ScorePreferenceConstants() {
 		throw new IllegalStateException("Utility class"); //$NON-NLS-1$
 	}
 

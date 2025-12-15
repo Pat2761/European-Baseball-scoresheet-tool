@@ -21,13 +21,14 @@ package org.bpy.score.rcp.wizard;
 import java.util.HashMap;
 import java.util.List;
 
-import org.bpy.score.preferences.core.PreferenceConstants;
+import org.bpy.score.internationalization.rcp.Messages;
+import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.bpy.score.preferences.core.PreferenceManager;
+import org.bpy.score.rcp.Activator;
 import org.bpy.score.reports.generator.GameReportGenerator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.swt.widgets.Composite;
 
 /**
  * This class is the wizard which allow to export game files into HTML files
@@ -37,6 +38,9 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class GenerateGameReportWizard extends Wizard {
 
+	/** Key for the icon of the Report Generation wizard */
+	public static final String REPORT_GENERATION_ICON_NAME = "ReportGenerationIconName";
+	
 	/** Reference to the page one of the wizard */
 	private GameReportWizardPageOne gameReportWizardPageOne;
 	/** Reference to the page two of the wizard */
@@ -50,7 +54,12 @@ public class GenerateGameReportWizard extends Wizard {
 	 * @param folder Reference to the current folder
 	 */
 	public GenerateGameReportWizard(IFolder folder) {
-		setWindowTitle("New Wizard"); //$NON-NLS-1$
+		setWindowTitle(Messages.reportWizardGenerationTitle); 
+		setDefaultPageImageDescriptor(
+	            Activator.getDefault()
+	                     .getImageRegistry()
+	                     .getDescriptor(REPORT_GENERATION_ICON_NAME)
+	        );
 		
 		currentFolder = folder;
 	}
@@ -77,15 +86,6 @@ public class GenerateGameReportWizard extends Wizard {
 		addPage(gameReportWizardPageTwo);
 	}
 
-//	@Override
-//	public void createPageControls(Composite pageContainer) {
-//		// TODO Auto-generated method stub
-//		super.createPageControls(pageContainer);
-//		
-//		getShell().setSize(700, 700);
-//		getShell().layout(true, true);
-//	}
-
 	@Override
 	public boolean canFinish() {
 		return gameReportWizardPageOne.isValid() && gameReportWizardPageTwo.isValid();
@@ -107,13 +107,12 @@ public class GenerateGameReportWizard extends Wizard {
 			options.put(GameReportGenerator.XSLT_FILE_PATH, gameReportWizardPageTwo.getXsltFilePath());
 			options.put(GameReportGenerator.BANNER_FILE_PATH, gameReportWizardPageTwo.getBannerFilePath());
 		}
-		String typeOfFile = PreferenceManager.getPreferenceValue(currentFolder.getProject(), PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE, PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML);
-		options.put(GameReportGenerator.HTML_GENERATION, (PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML.equals(typeOfFile)? Boolean.TRUE : Boolean.FALSE));
+		String typeOfFile = PreferenceManager.getPreferenceValue(currentFolder.getProject(), ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML);
+		options.put(GameReportGenerator.HTML_GENERATION, (ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML.equals(typeOfFile)? Boolean.TRUE : Boolean.FALSE));
 		
 		List<IFile> selectedGames = gameReportWizardPageOne.getSelectedGames();
 		gameReportGenerator.generateReport(selectedGames, options);
 		
 		return true;
 	}
-
 }

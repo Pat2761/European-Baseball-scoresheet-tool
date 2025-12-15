@@ -66,7 +66,7 @@ public class PreferenceManager {
 	 */
 	private static IEclipsePreferences getProjectEclipsePreferences(IProject project){
 		IScopeContext projectScope = new ProjectScope(project);
-		return projectScope.getNode(PreferenceConstants.PREFERENCE_ID);
+		return projectScope.getNode(ScorePreferenceConstants.PREFERENCE_ID);
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class PreferenceManager {
 	public static boolean isProjectUseSpecificProperties(IProject project) {
 		IEclipsePreferences projectNode = getProjectEclipsePreferences(project);
 		if (projectNode != null) {
-			return projectNode.getBoolean(PreferenceConstants.PROPERTIE_USE_PROJECT_SETTINGS,false);
+			return projectNode.getBoolean(ScorePreferenceConstants.PROPERTIE_USE_PROJECT_SETTINGS,false);
 		}
 		return false;
 	}

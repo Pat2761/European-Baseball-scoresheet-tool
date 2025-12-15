@@ -120,6 +120,15 @@ public class PathSelectionComposite extends Composite {
 	}
 
 	/**
+	 * Set text value
+	 * 
+	 * @param text value
+	 */
+	public void setText(String text) {
+		txtPath.setText(text);
+	}
+	
+	/**
 	 * Check if the selection is valid
 	 * 
 	 * @return <b>true</b> the selection is valid, <b>false</b> otherwise

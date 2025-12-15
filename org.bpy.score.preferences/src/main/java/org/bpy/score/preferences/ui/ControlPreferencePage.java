@@ -21,7 +21,7 @@ package org.bpy.score.preferences.ui;
 import org.bpy.score.engine.util.EngineConstants;
 import org.bpy.score.internationalization.preferences.Messages;
 import org.bpy.score.preferences.Activator;
-import org.bpy.score.preferences.core.PreferenceConstants;
+import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferencePage;
@@ -93,8 +93,8 @@ public class ControlPreferencePage extends PreferencePage implements IWorkbenchP
 		EngineConstants.checkMissingEarnedPoint = missingEarnedPointNewValue;
 
 		IPreferenceStore store = getPreferenceStore();
-		store.setValue(PreferenceConstants.CHECK_FLY_OUT_LOCATION, flyOutLocationCheckNewValue);
-		store.setValue(PreferenceConstants.CHECK_MISSING_EARNED_POINT, missingEarnedPointNewValue);
+		store.setValue(ScorePreferenceConstants.CHECK_FLY_OUT_LOCATION, flyOutLocationCheckNewValue);
+		store.setValue(ScorePreferenceConstants.CHECK_MISSING_EARNED_POINT, missingEarnedPointNewValue);
 
 		super.performApply();
 	}
@@ -115,8 +115,8 @@ public class ControlPreferencePage extends PreferencePage implements IWorkbenchP
 		EngineConstants.checkMissingEarnedPoint = missingEarnedPointNewValue;
 
 		IPreferenceStore store = getPreferenceStore();
-		store.setValue(PreferenceConstants.CHECK_FLY_OUT_LOCATION, flyOutLocationCheckNewValue);
-		store.setValue(PreferenceConstants.CHECK_MISSING_EARNED_POINT, missingEarnedPointNewValue);
+		store.setValue(ScorePreferenceConstants.CHECK_FLY_OUT_LOCATION, flyOutLocationCheckNewValue);
+		store.setValue(ScorePreferenceConstants.CHECK_MISSING_EARNED_POINT, missingEarnedPointNewValue);
 
 		return super.performOk();
 	}
@@ -128,19 +128,19 @@ public class ControlPreferencePage extends PreferencePage implements IWorkbenchP
 
 		IPreferenceStore store = getPreferenceStore();
 
-		flyOutLocationCheck = new ComboFieldEditor(PreferenceConstants.CHECK_FLY_OUT_LOCATION,
-				Messages.ControlPreferencePage_FlyOutLocationlabel, PreferenceConstants.errorLevel,
+		flyOutLocationCheck = new ComboFieldEditor(ScorePreferenceConstants.CHECK_FLY_OUT_LOCATION,
+				Messages.ControlPreferencePage_FlyOutLocationlabel, ScorePreferenceConstants.errorLevel,
 				controlPreferencePage);
 		flyOutLocationCheck.setPropertyChangeListener(this);
-		flyOutLocationCheck.setPreferenceName(PreferenceConstants.CHECK_FLY_OUT_LOCATION);
+		flyOutLocationCheck.setPreferenceName(ScorePreferenceConstants.CHECK_FLY_OUT_LOCATION);
 		flyOutLocationCheck.setPreferenceStore(store);
 		flyOutLocationCheck.load();
 
-		missingEarnedPoint = new ComboFieldEditor(PreferenceConstants.CHECK_MISSING_EARNED_POINT,
-				Messages.ControlPreferencePage_MissingEarnedPointlabel, PreferenceConstants.errorLevel, controlPreferencePage);
+		missingEarnedPoint = new ComboFieldEditor(ScorePreferenceConstants.CHECK_MISSING_EARNED_POINT,
+				Messages.ControlPreferencePage_MissingEarnedPointlabel, ScorePreferenceConstants.errorLevel, controlPreferencePage);
 		missingEarnedPoint.setPropertyChangeListener(this);
 		missingEarnedPoint.load();
-		missingEarnedPoint.setPreferenceName(PreferenceConstants.CHECK_MISSING_EARNED_POINT);
+		missingEarnedPoint.setPreferenceName(ScorePreferenceConstants.CHECK_MISSING_EARNED_POINT);
 		missingEarnedPoint.setPreferenceStore(store);
 		missingEarnedPoint.load();
 

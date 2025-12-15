@@ -3,10 +3,9 @@
 <plugin>
    <extension
          point="org.eclipse.core.runtime.preferences">
-      <scope
-            class="org.eclipse.core.internal.resources.ProjectPreferences"
-            name="org.bpy.score.rcp.preference.scope">
-      </scope>
+      <initializer
+            class="org.bpy.score.preferences.core.ScorePreferenceInitializer">
+      </initializer>
    </extension>
    <extension
          name="%rcp.preference_page.score"

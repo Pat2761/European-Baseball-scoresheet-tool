@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 
 import org.bpy.score.internationalization.rcp.Messages;
 import org.bpy.score.preferences.Activator;
+import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.bpy.score.rcp.utils.RcpUtils;
 import org.bpy.score.reports.generator.GameReportGenerator;
 import org.eclipse.core.resources.IResource;
@@ -196,16 +197,13 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
 		
 		
 		btnStandardConf.addSelectionListener(this);
-		Transfer[] cssTypes = new Transfer[] { FileTransfer.getInstance() };
-		Transfer[] xsltTypes = new Transfer[] { FileTransfer.getInstance() };
-		Transfer[] bannerTypes = new Transfer[] { FileTransfer.getInstance() };
 
-//		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-//		generationFolder.setText(store.getDefaultString(PreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER));
-//		cssFilePath.setText(store.getString(PreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH));
-//		xsltFilePath.setText(store.getString(PreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH));
-//		bannerFilePath.setText(store.getString(PreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH));
+		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		cssFilePath.setText(store.getString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH));
+		xsltFilePath.setText(store.getString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH));
+		bannerFilePath.setText(store.getString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH));
 
+		
 		updateButtonState();
 		checkIsvalid();
 	}

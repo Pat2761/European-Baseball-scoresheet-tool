@@ -119,6 +119,10 @@ public class Messages extends NLS {
 	/** Dialog no error for select a relative path */ 
 	public static String GameReportWizardPageOne_DialogNoError_Title;
 	
+	/*----------------------------------------------------------------------- */
+	/* GameReportWizard class                                                 */
+	/*----------------------------------------------------------------------- */
+	public static String reportWizardGenerationTitle;
 
 	/*----------------------------------------------------------------------- */
 	/* GameReportWizardPageOne class                                          */

@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 import org.bpy.score.internationalization.preferences.Messages;
 import org.bpy.score.preferences.Activator;
-import org.bpy.score.preferences.core.PreferenceConstants;
+import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.bpy.score.preferences.core.PreferenceManager;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -377,18 +377,18 @@ public class GameReportPreferencePage extends PropertyAndPreferencePage implemen
 
 	@Override
 	protected void performDefaults() {
-		useCategoryFolderButton.setSelection(store.getDefaultBoolean(PreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER));
-		useStandardXSLT.setSelection(store.getDefaultBoolean(PreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER));
+		useCategoryFolderButton.setSelection(store.getDefaultBoolean(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER));
+		useStandardXSLT.setSelection(store.getDefaultBoolean(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER));
 
-		generationFolder.setText(store.getDefaultString(PreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER));
-		cssFilePath.setText(store.getDefaultString(PreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH));
-		xsltFilePath.setText(store.getDefaultString(PreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH));
-		bannerFilePath.setText(store.getDefaultString(PreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH));
+		generationFolder.setText(store.getDefaultString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER));
+		cssFilePath.setText(store.getDefaultString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH));
+		xsltFilePath.setText(store.getDefaultString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH));
+		bannerFilePath.setText(store.getDefaultString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH));
 		
-		regexselectionFolder.setText(store.getDefaultString(PreferenceConstants.GAME_REPORT_REGEX_SELECTION_FILE));
+		regexselectionFolder.setText(store.getDefaultString(ScorePreferenceConstants.GAME_REPORT_REGEX_SELECTION_FILE));
 
-		String documentStyle = store.getDefaultString(PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE);
-		if (PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_XML.equals(documentStyle)) {
+		String documentStyle = store.getDefaultString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE);
+		if (ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_XML.equals(documentStyle)) {
 			exportAsXmlBtn.setSelection(true);
 			exportAsHtmlBtn.setSelection(false);
 		} else {
@@ -418,24 +418,24 @@ public class GameReportPreferencePage extends PropertyAndPreferencePage implemen
 	 */
 	private void storePreferences() {
 		if (getElement() != null) {
-			storeValue(PreferenceConstants.PROPERTIE_USE_PROJECT_SETTINGS, useProjectSettings());
+			storeValue(ScorePreferenceConstants.PROPERTIE_USE_PROJECT_SETTINGS, useProjectSettings());
 		}
 		
-		storeValue(PreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER, useCategoryFolderButton.getSelection());
-		storeValue(PreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER, useCategoryFolderButton.getSelection());
-		storeValue(PreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER, useStandardXSLT.getSelection());
+		storeValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER, useCategoryFolderButton.getSelection());
+		storeValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER, useCategoryFolderButton.getSelection());
+		storeValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER, useStandardXSLT.getSelection());
 
-		storeValue(PreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER, generationFolder.getText());
-		storeValue(PreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH, cssFilePath.getText());
-		storeValue(PreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH, xsltFilePath.getText());
-		storeValue(PreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH, bannerFilePath.getText());
+		storeValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER, generationFolder.getText());
+		storeValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH, cssFilePath.getText());
+		storeValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH, xsltFilePath.getText());
+		storeValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH, bannerFilePath.getText());
 
-		storeValue(PreferenceConstants.GAME_REPORT_REGEX_SELECTION_FILE, regexselectionFolder.getText());
+		storeValue(ScorePreferenceConstants.GAME_REPORT_REGEX_SELECTION_FILE, regexselectionFolder.getText());
 
 		if (exportAsXmlBtn.getSelection()) {
-			storeValue(PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE, PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_XML);
+			storeValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_XML);
 		} else {
-			storeValue(PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE, PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML);
+			storeValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML);
 		}
 		
 		if (getElement() != null) {
@@ -501,22 +501,22 @@ public class GameReportPreferencePage extends PropertyAndPreferencePage implemen
 	public void setVisible(boolean visible) {
 		
 		if (getElement() != null) {
-			boolean state = getStoreBooleanValue(PreferenceConstants.PROPERTIE_USE_PROJECT_SETTINGS);
+			boolean state = getStoreBooleanValue(ScorePreferenceConstants.PROPERTIE_USE_PROJECT_SETTINGS);
 			enableProjectSpecificSettings(state);
 		}
 		
-		useCategoryFolderButton.setSelection(getStoreBooleanValue(PreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER));
-		useStandardXSLT.setSelection(getStoreBooleanValue(PreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER));
+		useCategoryFolderButton.setSelection(getStoreBooleanValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER));
+		useStandardXSLT.setSelection(getStoreBooleanValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER));
 
-		generationFolder.setText(getStoreStringValue(PreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER));
-		cssFilePath.setText(getStoreStringValue(PreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH));
-		xsltFilePath.setText(getStoreStringValue(PreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH));
+		generationFolder.setText(getStoreStringValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER));
+		cssFilePath.setText(getStoreStringValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH));
+		xsltFilePath.setText(getStoreStringValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH));
 
-		regexselectionFolder.setText(getStoreStringValue(PreferenceConstants.GAME_REPORT_REGEX_SELECTION_FILE));
+		regexselectionFolder.setText(getStoreStringValue(ScorePreferenceConstants.GAME_REPORT_REGEX_SELECTION_FILE));
 
-		String documentStyle = getStoreStringValue(PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE);
+		String documentStyle = getStoreStringValue(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE);
 
-		if (PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_XML.equals(documentStyle)) {
+		if (ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_XML.equals(documentStyle)) {
 			exportAsXmlBtn.setSelection(true);
 			exportAsHtmlBtn.setSelection(false);
 		} else {
