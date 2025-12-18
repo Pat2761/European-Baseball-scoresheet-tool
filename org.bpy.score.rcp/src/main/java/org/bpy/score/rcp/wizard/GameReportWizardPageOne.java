@@ -31,9 +31,9 @@ import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.StringUtils;
 import org.bpy.score.internationalization.rcp.Messages;
+import org.bpy.score.preferences.core.ScorePreferenceConstants;
+import org.bpy.score.preferences.core.ScorePreferencesManager;
 import org.bpy.score.preferences.ui.PathSelectionComposite;
-import org.bpy.score.rcp.utils.RcpUtils;
-import org.bpy.score.reports.generator.GameReportGenerator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -89,12 +89,16 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 	private boolean isValid;
 	/** SWT Widget for the generation path selection */
 	private PathSelectionComposite pathSelectionComposite;
+	/** Reference on the preference manager */
+	private ScorePreferencesManager preferenceManager;
 
 	/**
 	 * Create the wizard.
 	 */
 	public GameReportWizardPageOne() {
-		super("wizardPage"); //$NON-NLS-1$
+		super("GameReportWizardPageOne"); //$NON-NLS-1$
+		preferenceManager = ScorePreferencesManager.getInstance();
+		
 		setMessage(Messages.GameReportWizardPageOne_PageMessage);
 		setTitle(Messages.GameReportWizardPageOne_PageTitle);
 		setDescription(Messages.GameReportWizardPageOne_PageDescription);
@@ -220,31 +224,31 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 
 		pathSelectionComposite = new PathSelectionComposite(container, SWT.NONE);
 		pathSelectionComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 4, 1));
-		pathSelectionComposite.setMessage("Path de génération");
+		pathSelectionComposite.setMessage(Messages.GameReportWizardPageOne_ReportGenerationFolder);
 		pathSelectionComposite.setFeatures(IResource.FOLDER);
 		container.layout(true, true);
 		
 		checkIsvalid();
+		initContent();
 	}
 
-	@Override
-	public void setVisible(boolean visible) {
-
-		String displayRegularExpression = RcpUtils.getPreferenceValue(generateGameReportWizard.getCurrentFolder(),
-				GameReportGenerator.DISPLAY_REGULAR_EXPRESSION_KEY);
-		String selectionRegularExpression = RcpUtils.getPreferenceValue(generateGameReportWizard.getCurrentFolder(),
-				GameReportGenerator.SELECTION_REGULAR_EXPRESSION_KEY);
-		String outputPath = RcpUtils.getPreferenceValue(generateGameReportWizard.getCurrentFolder(),
-				GameReportGenerator.OUTPUT_FOLDER_KEY);
+	/**
+	 * Initialize the content of the page
+	 */
+	private void initContent() {
+		String displayRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY) ;
+		String selectionRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY);
+		String outputPath = preferenceManager.getValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY);
 
 		regExDisplayText.setText(displayRegularExpression);
 		regExSelectionText.setText(selectionRegularExpression);
+		pathSelectionComposite.setText(outputPath);
 
 		displayedElements = new HashMap<>();
 		try {
 			for (IResource member : generateGameReportWizard.getCurrentFolder().members()) {
-				if ((member instanceof IFile)
-						&& (member.getRawLocation().lastSegment().toLowerCase().endsWith(GAME_FILE_EXTENSION))) {
+				if ((member instanceof IFile file)
+						&& (file.getRawLocation().lastSegment().toLowerCase().endsWith(GAME_FILE_EXTENSION))) {
 					String key = member.getRawLocation().lastSegment().replace(GAME_FILE_EXTENSION, ""); //$NON-NLS-1$
 					displayedElements.put(key, (IFile) member);
 				}
@@ -260,8 +264,6 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 		} catch (CoreException e) {
 			logger.log(Level.SEVERE, e.getMessage());
 		}
-
-		super.setVisible(visible);
 	}
 
 	@Override
@@ -300,14 +302,7 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 
 		if (!atLeastOneMatch) {
 			isValid = false;
-			setErrorMessage(Messages.GameReportWizardPageOne_OneGameMustBeSeelcted);
-			setPageComplete(false);
-			return;
-		}
-
-		if (!folderExist) {
-			isValid = false;
-			setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_NotAValidFolder, outputFolderPath));
+			setErrorMessage(Messages.GameReportWizardPageOne_OneGameMustBeSelected);
 			setPageComplete(false);
 			return;
 		}
@@ -372,11 +367,8 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
 	 * Save configuration in the preference for the next call
 	 */
 	public void savePreferences() {
-		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(),
-				GameReportGenerator.SELECTION_REGULAR_EXPRESSION_KEY, regExSelectionText.getText());
-		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(),
-				GameReportGenerator.DISPLAY_REGULAR_EXPRESSION_KEY, regExDisplayText.getText());
-		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.OUTPUT_FOLDER_KEY,
-				pathSelectionComposite.getDisplayPath());
+		preferenceManager.setValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY, pathSelectionComposite.getDisplayPath());
+		preferenceManager.setValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, regExDisplayText.getText());
+		preferenceManager.setValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY, regExSelectionText.getText());
 	}
 }

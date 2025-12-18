@@ -23,6 +23,7 @@ import java.util.List;
 
 import org.bpy.score.internationalization.rcp.Messages;
 import org.bpy.score.preferences.core.ScorePreferenceConstants;
+import org.bpy.score.preferences.core.ScorePreferencesManager;
 import org.bpy.score.preferences.core.PreferenceManager;
 import org.bpy.score.rcp.Activator;
 import org.bpy.score.reports.generator.GameReportGenerator;
@@ -82,7 +83,6 @@ public class GenerateGameReportWizard extends Wizard {
 		addPage(gameReportWizardPageOne);
 		
 		gameReportWizardPageTwo = new GameReportWizardPageTwo();
-		gameReportWizardPageTwo.setParent(this);
 		addPage(gameReportWizardPageTwo);
 	}
 
@@ -95,7 +95,7 @@ public class GenerateGameReportWizard extends Wizard {
 	public boolean performFinish() {
 		
 		gameReportWizardPageOne.savePreferences();
-		gameReportWizardPageTwo.savePreference();
+		gameReportWizardPageTwo.savePreferences();
 		
 		GameReportGenerator gameReportGenerator = new GameReportGenerator();
 		HashMap<String,Object> options = new HashMap<>();

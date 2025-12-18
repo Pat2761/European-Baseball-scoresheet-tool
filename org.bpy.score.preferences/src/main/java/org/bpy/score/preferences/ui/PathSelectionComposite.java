@@ -133,7 +133,7 @@ public class PathSelectionComposite extends Composite {
 	 * 
 	 * @return <b>true</b> the selection is valid, <b>false</b> otherwise
 	 */
-	public boolean idValid() {
+	public boolean isValid() {
 		return isValidSelection(txtPath.getText());
 	}
 	

@@ -33,6 +33,50 @@ public class ScorePreferenceConstants {
 	/** ID for preference maanager */
 	public static final String PREFERENCE_ID = "org.bpy.score.rcp.preferences"; //$NON-NLS-1$
 
+	/* --------------------------------------------------------------------------------------
+	 * GenerateGameReportWizard preferences
+	   ------------------------------------------------------------------------------------- */
+	/** Page name of the Game report wizard */
+	public static final String GAME_REPORT_WIZARD = "GenerateGameReportWizard";
+	/** Page name of the Game report wizard */
+	public static final String GRW_PROJECT_SCOPE = "GRW_projectScope";
+
+	/** Display regular expression key of the Game Report Wizard */
+	public static final String GRW_DISPLAY_REGULAR_EXPRESSION_KEY = "GRW_displayRegularExpressionKey"; //$NON-NLS-1$
+	/** Default value of Display regular expression key of the Game Report Wizard */
+	public static final String GRW_DISPLAY_REGULAR_EXPRESSION_KEY_DEFAULT = ""; //$NON-NLS-1$
+
+	/** Selection regular expression key of the Game Report Wizard  */
+	public static final String GRW_SELECTION_REGULAR_EXPRESSION_KEY = "GRW_selectionRegularExpressionKey"; //$NON-NLS-1$
+	/** Default value of Selection regular expression key of the Game Report Wizard  */
+	public static final String GRW_SELECTION_REGULAR_EXPRESSION_KEY_DEFAULT = ""; //$NON-NLS-1$
+
+	/** Output folder path key of the Game Report Wizard  */
+	public static final String GRW_OUTPUT_FOLDER_KEY = "GRW_outputFolderKey"; //$NON-NLS-1$
+	/** Default value of Output folder path key of the Game Report Wizard  */
+	public static final String GRW_OUTPUT_FOLDER_KEY_DEFAULT = ""; //$NON-NLS-1$
+	
+	/** Use preference configuration for the CSS, XSLT and banner file */
+	public static final String GRW_USE_STANDARD_CONFIGURATION = "GRW_UseStandardConfiguration";
+	/** Use preference configuration for the CSS, XSLT and banner file default value */ 
+	public static final boolean GRW_USE_STANDARD_CONFIGURATION_DEFAULT = true;
+	
+	/** CSS file path for the report generation */
+	public static final String GRW_CSS_FILE_PATH = "GRW_CssFilePath";
+	/** CSS default file path for the report generation */
+	public static final String GRW_CSS_FILE_DEFAULT = "";
+	
+	/** XSLT file path for the report generation */
+	public static final String GRW_XSLT_FILE_PATH = "GRW_XsltFilePath";
+	/** XSLT default file path for the report generation */
+	public static final String GRW_XSLT_FILE_DEFAULT = "";
+	
+	/** Banner file path for the report generation */
+	public static final String GRW_BANNER_FILE_PATH = "GRW_BannerFilePath";
+	/** Banner default file path for the report generation */
+	public static final String GRW_BANNER_FILE_DEFAULT = "";
+	
+	
 	/** Error level preference definition */ 
 	protected static final HashMap<String, String> errorsDefinition = new HashMap<>();
 	/** Reverse Error level preference definition */ 

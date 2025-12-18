@@ -147,14 +147,6 @@ public class Messages extends NLS {
 	public static String GameReportWizardPageOne_ApplyButton;
 	/** New Game Page One Wizard : Regular selection for games display */ 
 	public static String GameReportWizardPageOne_RegularExpressionGameDisplay;
-	/** New Game Page One Wizard : Report absolute path generation folder  */ 
-	public static String GameReportWizardPageOne_GenereationAbsolutePathTextButton;
-	/** New Game Page One Wizard : Report relative path generation folder  */ 
-	public static String GameReportWizardPageOne_GenereationRelativePathTextButton;
-	/** New Game Page One Wizard : Report absolute path generation folder (tooltip) */ 
-	public static String GameReportWizardPageOne_GenereationAbsolutePathToolTip;
-	/** New Game Page One Wizard : Report absolute path generation folder (tooltip) */ 
-	public static String GameReportWizardPageOne_GenereationRelativeToolTip;
 
 	/*----------------------------------------------------------------------- */
 	/* GameReportWizardPageTwo class                                          */
@@ -180,7 +172,7 @@ public class Messages extends NLS {
 	/** New Game Page Two Wizard : Banner file Selection message */ 
 	public static String GameReportWizardPageTwo_BannerSelectionMessage;
 	/** Error message if no games are selected */
-	public static String GameReportWizardPageOne_OneGameMustBeSeelcted;
+	public static String GameReportWizardPageOne_OneGameMustBeSelected;
 	/** Error message if not a valid folder for the genereation of the reports */
 	public static String GameReportWizardPageOne_NotAValidFolder;
 	/*----------------------------------------------------------------------- */
@@ -596,7 +588,6 @@ public class Messages extends NLS {
 	/*----------------------------------------------------------------------- */
 	public static String ApplicationActionBarAdvisor_HelpMenu;
 	public static String GameReportWizardPageOne_lblNewLabel_text;
-	public static String GameReportWizardPageOne_lblNewLabel_1_text;
 	public static String GameReportWizardPageTwo_grpTtt_text;
 	
 	/**

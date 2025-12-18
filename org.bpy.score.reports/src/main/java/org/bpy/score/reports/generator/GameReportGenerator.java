@@ -135,13 +135,13 @@ public class GameReportGenerator extends AbstractReportGenerator {
 
 	private String getGameReportPath(Map<String, Object> options, List<IFile> selectedGames) {
 		
-		String outputFolderPath = (String)options.get(GameReportGenerator.OUTPUT_FOLDER_KEY);
-		try {
-			outputFolderPath = VariablesPlugin.getDefault().getStringVariableManager().performStringSubstitution(outputFolderPath);
-			return outputFolderPath;
-		} catch (CoreException e) {
-			logger.log(Level.SEVERE, e.getMessage());
-		}
+//		String outputFolderPath = (String)options.get(GameReportGenerator.OUTPUT_FOLDER_KEY);
+//		try {
+//			outputFolderPath = VariablesPlugin.getDefault().getStringVariableManager().performStringSubstitution(outputFolderPath);
+//			return outputFolderPath;
+//		} catch (CoreException e) {
+//			logger.log(Level.SEVERE, e.getMessage());
+//		}
 		return null;
 	}
 

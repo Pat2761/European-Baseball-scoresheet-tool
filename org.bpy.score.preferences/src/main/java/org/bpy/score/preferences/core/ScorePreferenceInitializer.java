@@ -18,11 +18,7 @@
  */
 package org.bpy.score.preferences.core;
 
-import org.bpy.score.preferences.Activator;
-import org.eclipse.core.internal.preferences.InstancePreferences;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
-import org.eclipse.core.runtime.preferences.InstanceScope;
-import org.osgi.service.prefs.BackingStoreException;
 
 /**
  * 
@@ -31,19 +27,7 @@ import org.osgi.service.prefs.BackingStoreException;
  * @author Patrick BRIAND
  *
  */
-@SuppressWarnings("restriction")
 public class ScorePreferenceInitializer extends AbstractPreferenceInitializer {
-
-
-	/* -------------------------------------------------------------------------------- */
-	/* Keys and default values for the editor                                           */
-	/* -------------------------------------------------------------------------------- */
-	
-	
-	/* -------------------------------------------------------------------------------- */
-	/* Keys and default values for hieroglyphic view                                    */
-	/* -------------------------------------------------------------------------------- */
-
 
 	/**
 	 * Constructor of the class.
@@ -55,20 +39,5 @@ public class ScorePreferenceInitializer extends AbstractPreferenceInitializer {
 
 	@Override
 	public void initializeDefaultPreferences() {
-		InstancePreferences node = (InstancePreferences) InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
-
-		try {
-//			node.putBoolean(TRANSCRIPTION_SPECIFIC_SETTINGS, false);
-//			node.putBoolean(HIEROGLYPHIC_VIEW_SPECIFIC_SETTINGS, false);
-//			
-//			node.put(PAGE_INFO, PAGE_INFO_DEFAULT_VALUE);
-//			node.put(PAGE_DIRECTION, PAGE_DIRECTION_DEFAULT_VALUE.name());
-//			node.put(PAGE_ORIENTATION, PAGE_ORIENTATION_DEFAULT_VALUE.name());
-//			node.put(STANDARD_SIGN_HEIGHT, "" + STANDARD_SIGN_HEIGHT_DEFAULT_VALUE);
-			
-			node.flush();
-		} catch (BackingStoreException e) {
-			// nothing to do
-		}
 	}
 }

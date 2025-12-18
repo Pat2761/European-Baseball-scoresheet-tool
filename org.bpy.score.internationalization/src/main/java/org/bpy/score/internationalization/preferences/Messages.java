@@ -159,6 +159,15 @@ public class Messages extends NLS {
 	public static String pathSelectionCompositeTitle;
 	public static String pathSelectionCompositeMessage;
 	
+   /*------------------------------------------------------------------------------*/
+   /* class ScorePreferencesManager                                                     */ 
+   /*------------------------------------------------------------------------------*/
+	public static String typeIsNotManageByPreferences;
+   public static String missingDefaultValueForPreferences;
+   public static String noTypeDefinedForPreferenceValue;
+   public static String badTypeElement;
+	public static String cannotFindPropertyPageForKey; 
+	public static String cannotFindSpecificSettingsForKey;
 	
 	/**
 	 * Initialize the internationalization

@@ -18,25 +18,16 @@
  */
 package org.bpy.score.rcp.wizard;
 
-import java.io.File;
-import java.io.FileFilter;
 import java.util.logging.Logger;
 
 import org.bpy.score.internationalization.rcp.Messages;
-import org.bpy.score.preferences.Activator;
 import org.bpy.score.preferences.core.ScorePreferenceConstants;
-import org.bpy.score.rcp.utils.RcpUtils;
-import org.bpy.score.reports.generator.GameReportGenerator;
+import org.bpy.score.preferences.core.ScorePreferencesManager;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.dnd.FileTransfer;
-import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -53,240 +44,205 @@ import org.bpy.score.preferences.ui.PathSelectionComposite;
  * @author Patrick BRIAND
  *
  */
-public class GameReportWizardPageTwo extends WizardPage implements SelectionListener,ModifyListener {
-	
-	
-	/** Logger of the class */
-	public static final Logger logger = Logger.getLogger(GameReportWizardPageOne.class.getSimpleName());
-	
-	/** Select file button text */
-	public static final String SELECT_FILE_BUTTOB_TEXT = "..."; //$NON-NLS-1$
-	
-	/** Game extension constant */
-	private GenerateGameReportWizard generateGameReportWizard;
-	/** Select predefined configuration */
-	private Button btnStandardConf;
+public class GameReportWizardPageTwo extends WizardPage implements SelectionListener, ModifyListener {
 
-	/** state of the page two */
-	private boolean isValid;
+   /** Logger of the class */
+   public static final Logger logger = Logger.getLogger(GameReportWizardPageOne.class.getSimpleName());
 
-	private PathSelectionComposite cssFilePath;
-	private PathSelectionComposite xsltFilePath;
-	private PathSelectionComposite bannerFilePath;
+   /** Select file button text */
+   public static final String SELECT_FILE_BUTTOB_TEXT = "..."; //$NON-NLS-1$
 
-	/**
-	 * Create the wizard.
-	 */
-	public GameReportWizardPageTwo() {
-		super("wizardPage"); //$NON-NLS-1$
-		setMessage(Messages.GameReportWizardPageTwo_PageMessage);
-		setTitle(Messages.GameReportWizardPageTwo_PageTitle);
-		setDescription(Messages.GameReportWizardPageTwo_PageDescription);
-		isValid = false;
-	}
+   /** Select predefined configuration */
+   private Button btnStandardConf;
 
-	/**
-	 * Set Reference on the game report wizard
-	 * 
-	 * @param generateGameReportWizard Reference on the game report wizard
-	 */
-	public void setParent(GenerateGameReportWizard generateGameReportWizard) {
-		this.generateGameReportWizard = generateGameReportWizard; 
-	}
+   /** state of the page two */
+   private boolean isValid;
 
-	/**
-	 * Return the state of the page one
-	 * 
-	 * @return <b>true</b> is valid, <b>false</b> otherwise
-	 */
-	public boolean isValid() {
-		return isValid;
-	}
+   /** SWT composite for select a CSS file */
+   private PathSelectionComposite cssFilePath;
+   /** SWT composite for select a XSLT file */
+   private PathSelectionComposite xsltFilePath;
+   /** SWT Composite for select the banner of the HTML file */
+   private PathSelectionComposite bannerFilePath;
 
-	/**
-	 * Get CSS file path
-	 * 
-	 * @return CSS file path
-	 */
-	public String getCssFilePath() {
-		return cssFilePath.getResolvedAbsolutePath();
-	}
-	
-	/**
-	 * Get Banner file path
-	 * 
-	 * @return banner file path
-	 */
-	public String getBannerFilePath() {
-		return bannerFilePath.getResolvedAbsolutePath();
-	}
-	
-	/**
-	 * Get XSLT file path
-	 * 
-	 * @return XSLT file path
-	 */
-	public String getXsltFilePath() {
-		return xsltFilePath.getResolvedAbsolutePath();
-	}
-	
-	/**
-	 * Get standard configuration (use predefined CSS, XSTL and banner)
-	 * 
-	 * @return <b>true</b> predefined configuration, <b>false</b> otherwise
-	 */
-	public boolean isStandardConf() {
-		return btnStandardConf.getSelection();
-	}
-	
-	/**
-	 * Create contents of the wizard.
-	 * @param parent
-	 */
-	public void createControl(Composite parent) {
-		Composite container = new Composite(parent, SWT.NONE);
+   private Group specificProjectGroup;
 
-		setControl(container);
-		container.setLayout(new GridLayout(1, false));
-		
-		btnStandardConf = new Button(container, SWT.CHECK);
-		btnStandardConf.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		btnStandardConf.addSelectionListener(this);
-		btnStandardConf.setSelection(true);
-		btnStandardConf.setText(Messages.GameReportWizardPageTwo_UseStandardConfiguration);
-		
-		Group grpTtt = new Group(container, SWT.NONE);
-		grpTtt.setLayout(new GridLayout(1, false));
-		grpTtt.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
-		grpTtt.setText(Messages.GameReportWizardPageTwo_grpTtt_text);
-		
-		cssFilePath = new PathSelectionComposite(grpTtt, SWT.NONE);
-		cssFilePath.setMessage(Messages.GameReportWizardPageTwo_CSSPathFile);
-		cssFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		cssFilePath.setFeatures(IResource.FILE, new FileFilter() {
-			
-			@Override
-			public boolean accept(File file) {
-				return file.isFile() && file.getName().toLowerCase().endsWith(".css");
-			}
-		});
-		
-		xsltFilePath = new PathSelectionComposite(grpTtt, SWT.NONE);
-		xsltFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		xsltFilePath.setMessage(Messages.GameReportWizardPageTwo_XSLTPathFile);
-		xsltFilePath.setFeatures(IResource.FILE, new FileFilter() {
-			
-			@Override
-			public boolean accept(File file) {
-				return file.isFile() && file.getName().toLowerCase().endsWith(".xslt");
-			}
-		});
-		 
-		bannerFilePath = new PathSelectionComposite(grpTtt, SWT.NONE);
-		bannerFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		bannerFilePath.setMessage(Messages.GameReportWizardPageTwo_BannerPathFile);
-		bannerFilePath.setFeatures(IResource.FILE, new FileFilter() {
-			
-			@Override
-			public boolean accept(File file) {
-				return file.isFile() && 
-					( file.getName().toLowerCase().endsWith(".jpg") ||
-					  file.getName().toLowerCase().endsWith(".png"));
-			}
-		});
-		
-		
-		btnStandardConf.addSelectionListener(this);
+   /**
+    * Create the wizard.
+    */
+   public GameReportWizardPageTwo() {
+      super("wizardPage"); //$NON-NLS-1$
+      setMessage(Messages.GameReportWizardPageTwo_PageMessage);
+      setTitle(Messages.GameReportWizardPageTwo_PageTitle);
+      setDescription(Messages.GameReportWizardPageTwo_PageDescription);
+      isValid = false;
+   }
 
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-		cssFilePath.setText(store.getString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH));
-		xsltFilePath.setText(store.getString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH));
-		bannerFilePath.setText(store.getString(ScorePreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH));
+   /**
+    * Return the state of the page one
+    * 
+    * @return <b>true</b> is valid, <b>false</b> otherwise
+    */
+   public boolean isValid() {
+      return isValid;
+   }
 
-		
-		updateButtonState();
-		checkIsvalid();
-	}
+   /**
+    * Get CSS file path
+    * 
+    * @return CSS file path
+    */
+   public String getCssFilePath() {
+      return cssFilePath.getResolvedAbsolutePath();
+   }
 
-	@Override
-	public void setVisible(boolean visible) {
-		
-		btnStandardConf.setSelection(("true".equals(RcpUtils.getPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.STANDARD_PREDEFINED_FLAG)))); //$NON-NLS-1$
+   /**
+    * Get Banner file path
+    * 
+    * @return banner file path
+    */
+   public String getBannerFilePath() {
+      return bannerFilePath.getResolvedAbsolutePath();
+   }
 
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+   /**
+    * Get XSLT file path
+    * 
+    * @return XSLT file path
+    */
+   public String getXsltFilePath() {
+      return xsltFilePath.getResolvedAbsolutePath();
+   }
 
-		checkIsvalid();
-		
-		super.setVisible(visible);
-	}
+   /**
+    * Get standard configuration (use predefined CSS, XSTL and banner)
+    * 
+    * @return <b>true</b> predefined configuration, <b>false</b> otherwise
+    */
+   public boolean isStandardConf() {
+      return btnStandardConf.getSelection();
+   }
 
-	/**
-	 * Check if page one is valid
-	 */
-	private void checkIsvalid() {
-		if (btnStandardConf.getSelection()) {
-			isValid = true;
-			
-			setErrorMessage(null);
-			setPageComplete(true);
-			
-		} else {
-//			isValid  = RcpUtils.isPathIsAValidFile(cssFilePath.getText()) 
-//					&& RcpUtils.isPathIsAValidFile(xsltFilePath.getText())
-//					&& RcpUtils.isPathIsAValidFile(bannerFilePath.getText());
-//			if (isValid) {
-//				setErrorMessage(null);
-//				setPageComplete(true);
-//			} else {
-//				setErrorMessage(Messages.GameReportWizardPageTwo_MissingFileError);
-//				setPageComplete(false);
-//			}
-		}
-	}
+   /**
+    * Create contents of the wizard.
+    * 
+    * @param parent
+    */
+   public void createControl(Composite parent) {
+      Composite container = new Composite(parent, SWT.NONE);
 
-	@Override
-	public void widgetSelected(SelectionEvent e) {
-		if (e.getSource() == btnStandardConf) {
-			updateButtonState();
-			checkIsvalid();
-		}	
-	}
+      setControl(container);
+      container.setLayout(new GridLayout(1, false));
 
-	private void updateButtonState() {
-	}
+      btnStandardConf = new Button(container, SWT.CHECK);
+      btnStandardConf.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+      btnStandardConf.addSelectionListener(this);
+      btnStandardConf.setText(Messages.GameReportWizardPageTwo_UseStandardConfiguration);
 
-	/**
-	 * Common file selection
-	 * 
-	 * @param message Message to display
-	 * @param textWidget target text widget 
-	 */
-	private void selectFile(String message, Text textWidget) {
-		FileDialog	fileDialog = new FileDialog(new Shell());
-		fileDialog.setText(message);
-		String path = fileDialog.open();
-		
-		if (path != null) {
-			textWidget.setText(path);
-		}
-	}
+      specificProjectGroup = new Group(container, SWT.NONE);
+      specificProjectGroup.setLayout(new GridLayout(1, false));
+      specificProjectGroup.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
+      specificProjectGroup.setText(Messages.GameReportWizardPageTwo_grpTtt_text);
 
-	@Override
-	public void widgetDefaultSelected(SelectionEvent e) {
-		// not used
-	}
+      cssFilePath = new PathSelectionComposite(specificProjectGroup, SWT.NONE);
+      cssFilePath.setMessage(Messages.GameReportWizardPageTwo_CSSPathFile);
+      cssFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+      cssFilePath.setFeatures(IResource.FILE, file -> file.isFile() && file.getName().toLowerCase().endsWith(".css")); //$NON-NLS-1$
 
-	@Override
-	public void modifyText(ModifyEvent e) {
-	}
+      xsltFilePath = new PathSelectionComposite(specificProjectGroup, SWT.NONE);
+      xsltFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+      xsltFilePath.setMessage(Messages.GameReportWizardPageTwo_XSLTPathFile);
+      xsltFilePath.setFeatures(IResource.FILE, file -> file.isFile() && file.getName().toLowerCase().endsWith(".xslt")); //$NON-NLS-1$
 
-	/**
-	 * Save configuration in the preference for the next call
-	 */
-	public void savePreference() {
-		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.STANDARD_PREDEFINED_FLAG, (btnStandardConf.getSelection()?"true":"false")); //$NON-NLS-1$ //$NON-NLS-2$
-//		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.CSS_FILE_PATH, cssFilePath.getText());
-//		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.XSLT_FILE_PATH, xsltFilePath.getText());
-//		RcpUtils.setPreferenceValue(generateGameReportWizard.getCurrentFolder(), GameReportGenerator.BANNER_FILE_PATH, bannerFilePath.getText());
-	}
+      bannerFilePath = new PathSelectionComposite(specificProjectGroup, SWT.NONE);
+      bannerFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+      bannerFilePath.setMessage(Messages.GameReportWizardPageTwo_BannerPathFile);
+      bannerFilePath.setFeatures(IResource.FILE,
+            file -> file.isFile() && (file.getName().toLowerCase().endsWith(".jpg") || file.getName().toLowerCase().endsWith(".png"))); //$NON-NLS-1$ //$NON-NLS-2$
+
+      btnStandardConf.addSelectionListener(this);
+
+      ScorePreferencesManager preferenceInstance = ScorePreferencesManager.getInstance();
+      btnStandardConf.setSelection(preferenceInstance.getValue(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION));
+      cssFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_CSS_FILE_PATH));
+      xsltFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_XSLT_FILE_PATH));
+      bannerFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_BANNER_FILE_PATH));
+
+      checkIsvalid();
+   }
+
+   /**
+    * Check if page one is valid
+    */
+   private void checkIsvalid() {
+      if (btnStandardConf.getSelection()) {
+         isValid = true;
+
+         setErrorMessage(null);
+         setPageComplete(true);
+
+      } else {
+         if (!cssFilePath.isValid()) {
+            setErrorMessage(Messages.GameReportWizardPageTwo_CSSSelectionMessage);
+            setPageComplete(false);
+            return;
+         }
+         if (!xsltFilePath.isValid()) {
+            setErrorMessage(Messages.GameReportWizardPageTwo_XSLTSelectionMessage);
+            setPageComplete(false);
+            return;
+         }
+         if (!bannerFilePath.isValid()) {
+            setErrorMessage(Messages.GameReportWizardPageTwo_BannerSelectionMessage);
+            setPageComplete(false);
+            return;
+         }
+
+         setErrorMessage(null);
+         setPageComplete(true);
+      }
+   }
+
+   @Override
+   public void widgetSelected(SelectionEvent e) {
+      if (e.getSource() == btnStandardConf) {
+         setEnabledRecursive(specificProjectGroup, btnStandardConf.getSelection());
+         checkIsvalid();
+      }
+   }
+
+   public static void setEnabledRecursive(Composite composite, boolean enabled) {
+      composite.setEnabled(enabled);
+      for (Control child : composite.getChildren()) {
+         if (child instanceof Composite compositeChild) {
+            setEnabledRecursive(compositeChild, enabled);
+         } else {
+            child.setEnabled(enabled);
+         }
+      }
+   }
+
+   @Override
+   public void widgetDefaultSelected(SelectionEvent e) {
+      // not used
+   }
+
+   /**
+    * Save configuration in the preference for the next call
+    */
+   public void savePreferences() {
+
+      if (btnStandardConf.getSelection()) {
+         ScorePreferencesManager preferenceInstance = ScorePreferencesManager.getInstance();
+         preferenceInstance.setValue(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION, btnStandardConf.getSelection());
+         preferenceInstance.setValue(ScorePreferenceConstants.GRW_CSS_FILE_PATH, cssFilePath.getDisplayPath());
+         preferenceInstance.setValue(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, xsltFilePath.getDisplayPath());
+         preferenceInstance.setValue(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, bannerFilePath.getDisplayPath());
+      }
+   }
+
+   @Override
+   public void modifyText(ModifyEvent e) {
+      // Nothing to do
+   }
 }
