@@ -27,13 +27,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.StringUtils;
 import org.bpy.score.internationalization.rcp.Messages;
 import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.bpy.score.preferences.core.ScorePreferencesManager;
+import org.bpy.score.preferences.ui.IPathSelectionCompositeChange;
 import org.bpy.score.preferences.ui.PathSelectionComposite;
+import org.bpy.score.preferences.ui.PathSelectionCompositeStatus;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
@@ -57,318 +60,349 @@ import org.eclipse.swt.custom.ScrolledComposite;
  * @author Patrick BRIAND
  *
  */
-public class GameReportWizardPageOne extends WizardPage implements SelectionListener {
+public class GameReportWizardPageOne extends WizardPage implements SelectionListener, IPathSelectionCompositeChange {
 
-	/** Logger of the class */
-	public static final Logger logger = Logger.getLogger(GameReportWizardPageOne.class.getSimpleName());
+   /** Logger of the class */
+   public static final Logger logger = Logger.getLogger(GameReportWizardPageOne.class.getSimpleName());
 
-	/** Game extension constant */
-	public static final String GAME_FILE_EXTENSION = ".game"; //$NON-NLS-1$
+   /** Game extension constant */
+   public static final String GAME_FILE_EXTENSION = ".game"; //$NON-NLS-1$
 
-	/** Reference on the game report wizard */
-	private GenerateGameReportWizard generateGameReportWizard;
+   /** Reference on the game report wizard */
+   private GenerateGameReportWizard generateGameReportWizard;
 
-	/** Select all game reports button */
-	private Button allGameButton;
-	/** List of game to select */
-	private List matchsSelector;
-	/** Button for remove games selection */
-	private Button clearGameSelectionBtn;
-	/** Text widget for setting the Regex game selector */
-	private Text regExSelectionText;
-	/** Text widget for setting the Regex Display in the list of game */
-	private Text regExDisplayText;
-	/** Button for apply regex Display */
-	private Button regExDisplayButton;
-	/** Button for apply regex game selector */
-	private Button regExSelButton;
+   /** Select all game reports button */
+   private Button allGameButton;
+   /** List of game to select */
+   private List matchsSelector;
+   /** Button for remove games selection */
+   private Button clearGameSelectionBtn;
+   /** Text widget for setting the Regex game selector */
+   private Text regExSelectionText;
+   /** Text widget for setting the Regex Display in the list of game */
+   private Text regExDisplayText;
+   /** Button for apply regex Display */
+   private Button regExDisplayButton;
+   /** Button for apply regex game selector */
+   private Button regExSelButton;
 
-	/** List of displayed game elements */
-	private HashMap<String, IFile> displayedElements;
-	/** state of the page one */
-	private boolean isValid;
-	/** SWT Widget for the generation path selection */
-	private PathSelectionComposite pathSelectionComposite;
-	/** Reference on the preference manager */
-	private ScorePreferencesManager preferenceManager;
+   /** List of displayed game elements */
+   private HashMap<String, IFile> displayedElements;
+   /** state of the page one */
+   private boolean isValid;
+   /** SWT Widget for the generation path selection */
+   private PathSelectionComposite pathSelectionComposite;
+   /** Reference on the preference manager */
+   private ScorePreferencesManager preferenceManager;
 
-	/**
-	 * Create the wizard.
-	 */
-	public GameReportWizardPageOne() {
-		super("GameReportWizardPageOne"); //$NON-NLS-1$
-		preferenceManager = ScorePreferencesManager.getInstance();
-		
-		setMessage(Messages.GameReportWizardPageOne_PageMessage);
-		setTitle(Messages.GameReportWizardPageOne_PageTitle);
-		setDescription(Messages.GameReportWizardPageOne_PageDescription);
-	}
+   /**
+    * Create the wizard.
+    */
+   public GameReportWizardPageOne() {
+      super("GameReportWizardPageOne"); //$NON-NLS-1$
+      preferenceManager = ScorePreferencesManager.getInstance();
 
-	/**
-	 * Set Reference on the game report wizard
-	 * 
-	 * @param generateGameReportWizard Reference on the game report wizard
-	 */
-	public void setParent(GenerateGameReportWizard generateGameReportWizard) {
-		this.generateGameReportWizard = generateGameReportWizard;
-	}
+      setMessage(Messages.GameReportWizardPageOne_PageMessage);
+      setTitle(Messages.GameReportWizardPageOne_PageTitle);
+      setDescription(Messages.GameReportWizardPageOne_PageDescription);
+   }
 
-	/**
-	 * Return the state of the page one
-	 * 
-	 * @return <b>true</b> is valid, <b>false</b> otherwise
-	 */
-	public boolean isValid() {
-		return isValid;
-	}
+   /**
+    * Set Reference on the game report wizard
+    * 
+    * @param generateGameReportWizard Reference on the game report wizard
+    */
+   public void setParent(GenerateGameReportWizard generateGameReportWizard) {
+      this.generateGameReportWizard = generateGameReportWizard;
+   }
 
-	/**
-	 * Get the list of selected games.
-	 * 
-	 * @return list of selected games
-	 */
-	public java.util.List<IFile> getSelectedGames() {
-		int[] indices = matchsSelector.getSelectionIndices();
+   /**
+    * Return the state of the page one
+    * 
+    * @return <b>true</b> is valid, <b>false</b> otherwise
+    */
+   public boolean isValid() {
+      return isValid;
+   }
 
-		java.util.List<IFile> selectedFiles = new ArrayList<>();
-		for (int indice : indices) {
-			String key = matchsSelector.getItem(indice);
-			selectedFiles.add(displayedElements.get(key));
-		}
-		return selectedFiles;
-	}
+   /**
+    * Get the list of selected games.
+    * 
+    * @return list of selected games
+    */
+   public java.util.List<IFile> getSelectedGames() {
+      int[] indices = matchsSelector.getSelectionIndices();
 
-	/**
-	 * Get the generation folder path
-	 * 
-	 * @return generation folder path
-	 */
-	public String getPath() {
-		return pathSelectionComposite.getResolvedAbsolutePath();
-	}
+      java.util.List<IFile> selectedFiles = new ArrayList<>();
+      for (int indice : indices) {
+         String key = matchsSelector.getItem(indice);
+         selectedFiles.add(displayedElements.get(key));
+      }
+      return selectedFiles;
+   }
 
-	/**
-	 * Create contents of the wizard.
-	 * 
-	 * @param parent parent composite
-	 */
-	public void createControl(Composite parent) {
-		Composite container = new Composite(parent, SWT.NONE);
+   /**
+    * Get the generation folder path
+    * 
+    * @return generation folder path
+    */
+   public String getPath() {
+      return pathSelectionComposite.getResolvedAbsolutePath();
+   }
 
-		setControl(container);
-		container.setLayout(new GridLayout(4, false));
+   /**
+    * Create contents of the wizard.
+    * 
+    * @param parent parent composite
+    */
+   public void createControl(Composite parent) {
+      Composite container = new Composite(parent, SWT.NONE);
 
-		Label lblSlectionDesMatchs = new Label(container, SWT.NONE);
-		lblSlectionDesMatchs.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
-		lblSlectionDesMatchs.setText(Messages.GameReportWizardPageOne_GameSelection);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
+      setControl(container);
+      container.setLayout(new GridLayout(4, false));
 
-		ScrolledComposite scrolledComposite = new ScrolledComposite(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
-		scrolledComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 7));
-		scrolledComposite.setExpandHorizontal(true);
-		scrolledComposite.setExpandVertical(true);
+      Label lblSlectionDesMatchs = new Label(container, SWT.NONE);
+      lblSlectionDesMatchs.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
+      lblSlectionDesMatchs.setText(Messages.GameReportWizardPageOne_GameSelection);
+      new Label(container, SWT.NONE);
+      new Label(container, SWT.NONE);
 
-		Composite scContent = new Composite(scrolledComposite, SWT.NONE);
-		scContent.setLayout(new GridLayout());
+      ScrolledComposite scrolledComposite = new ScrolledComposite(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+      scrolledComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 7));
+      scrolledComposite.setExpandHorizontal(true);
+      scrolledComposite.setExpandVertical(true);
 
-		matchsSelector = new List(scContent, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
-		matchsSelector.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+      Composite scContent = new Composite(scrolledComposite, SWT.NONE);
+      scContent.setLayout(new GridLayout());
 
-		scrolledComposite.setContent(scContent);
-		scrolledComposite.setMinSize(scContent.computeSize(SWT.DEFAULT, SWT.DEFAULT));
-		matchsSelector.addSelectionListener(this);
+      matchsSelector = new List(scContent, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
+      matchsSelector.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
-		allGameButton = new Button(container, SWT.NONE);
-		allGameButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-		allGameButton.setText(Messages.GameReportWizardPageOne_AllGameSelection);
-		allGameButton.addSelectionListener(this);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
+      scrolledComposite.setContent(scContent);
+      scrolledComposite.setMinSize(scContent.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+      matchsSelector.addSelectionListener(this);
 
-		clearGameSelectionBtn = new Button(container, SWT.NONE);
-		clearGameSelectionBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-		clearGameSelectionBtn.setText(Messages.GameReportWizardPageOne_ClearGameSelection);
-		clearGameSelectionBtn.addSelectionListener(this);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
+      allGameButton = new Button(container, SWT.NONE);
+      allGameButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+      allGameButton.setText(Messages.GameReportWizardPageOne_AllGameSelection);
+      allGameButton.addSelectionListener(this);
+      new Label(container, SWT.NONE);
+      new Label(container, SWT.NONE);
 
-		Label lblExpressionRgulireDe = new Label(container, SWT.NONE);
-		lblExpressionRgulireDe.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
-		lblExpressionRgulireDe.setText(Messages.GameReportWizardPageOne_RegularExpressionGameSelection);
+      clearGameSelectionBtn = new Button(container, SWT.NONE);
+      clearGameSelectionBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+      clearGameSelectionBtn.setText(Messages.GameReportWizardPageOne_ClearGameSelection);
+      clearGameSelectionBtn.addSelectionListener(this);
+      new Label(container, SWT.NONE);
+      new Label(container, SWT.NONE);
 
-		regExSelectionText = new Text(container, SWT.BORDER);
-		regExSelectionText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+      Label lblExpressionRgulireDe = new Label(container, SWT.NONE);
+      lblExpressionRgulireDe.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+      lblExpressionRgulireDe.setText(Messages.GameReportWizardPageOne_RegularExpressionGameSelection);
 
-		regExSelButton = new Button(container, SWT.NONE);
-		regExSelButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		regExSelButton.setText(Messages.GameReportWizardPageOne_ApplyButton);
-		regExSelButton.addSelectionListener(this);
+      regExSelectionText = new Text(container, SWT.BORDER);
+      regExSelectionText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+      regExSelectionText.addModifyListener(e -> checkIsValid());
 
-		Label lblExpressionRgulireDaffichage = new Label(container, SWT.NONE);
-		lblExpressionRgulireDaffichage.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
-		lblExpressionRgulireDaffichage.setText(Messages.GameReportWizardPageOne_RegularExpressionGameDisplay);
+      regExSelButton = new Button(container, SWT.NONE);
+      regExSelButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+      regExSelButton.setText(Messages.GameReportWizardPageOne_ApplyButton);
+      regExSelButton.addSelectionListener(this);
 
-		regExDisplayText = new Text(container, SWT.BORDER);
-		regExDisplayText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		regExDisplayText.setText(StringUtils.EMPTY);
+      Label lblExpressionRgulireDaffichage = new Label(container, SWT.NONE);
+      lblExpressionRgulireDaffichage.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+      lblExpressionRgulireDaffichage.setText(Messages.GameReportWizardPageOne_RegularExpressionGameDisplay);
 
-		regExDisplayButton = new Button(container, SWT.NONE);
-		regExDisplayButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		regExDisplayButton.setText(Messages.GameReportWizardPageOne_ApplyButton);
+      regExDisplayText = new Text(container, SWT.BORDER);
+      regExDisplayText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+      regExDisplayText.setText(StringUtils.EMPTY);
+      regExDisplayText.addModifyListener(e -> checkIsValid());
 
-		regExDisplayButton.addSelectionListener(this);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
+      regExDisplayButton = new Button(container, SWT.NONE);
+      regExDisplayButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+      regExDisplayButton.setText(Messages.GameReportWizardPageOne_ApplyButton);
 
-		pathSelectionComposite = new PathSelectionComposite(container, SWT.NONE);
-		pathSelectionComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 4, 1));
-		pathSelectionComposite.setMessage(Messages.GameReportWizardPageOne_ReportGenerationFolder);
-		pathSelectionComposite.setFeatures(IResource.FOLDER);
-		container.layout(true, true);
-		
-		checkIsvalid();
-		initContent();
-	}
+      regExDisplayButton.addSelectionListener(this);
+      new Label(container, SWT.NONE);
+      new Label(container, SWT.NONE);
+      new Label(container, SWT.NONE);
 
-	/**
-	 * Initialize the content of the page
-	 */
-	private void initContent() {
-		String displayRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY) ;
-		String selectionRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY);
-		String outputPath = preferenceManager.getValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY);
+      pathSelectionComposite = new PathSelectionComposite(container, SWT.NONE);
+      pathSelectionComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 4, 1));
+      pathSelectionComposite.setMessage(Messages.GameReportWizardPageOne_ReportGenerationFolder);
+      pathSelectionComposite.setFeatures(IResource.FOLDER);
+      pathSelectionComposite.addPathChangerListener(this);
+      container.layout(true, true);
 
-		regExDisplayText.setText(displayRegularExpression);
-		regExSelectionText.setText(selectionRegularExpression);
-		pathSelectionComposite.setText(outputPath);
+      checkIsValid();
+      initContent();
+   }
 
-		displayedElements = new HashMap<>();
-		try {
-			for (IResource member : generateGameReportWizard.getCurrentFolder().members()) {
-				if ((member instanceof IFile file)
-						&& (file.getRawLocation().lastSegment().toLowerCase().endsWith(GAME_FILE_EXTENSION))) {
-					String key = member.getRawLocation().lastSegment().replace(GAME_FILE_EXTENSION, ""); //$NON-NLS-1$
-					displayedElements.put(key, (IFile) member);
-				}
-			}
+   /**
+    * Initialize the content of the page
+    */
+   private void initContent() {
+      String displayRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY);
+      String selectionRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY);
+      String outputPath = preferenceManager.getValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY);
 
-			java.util.List<String> toDisplayed = new ArrayList<>(displayedElements.keySet());
-			Collections.sort(toDisplayed);
+      regExDisplayText.setText(displayRegularExpression);
+      regExSelectionText.setText(selectionRegularExpression);
+      pathSelectionComposite.setText(outputPath);
 
-			for (String toDisplay : toDisplayed) {
-				matchsSelector.add(toDisplay);
-			}
+      displayedElements = new HashMap<>();
+      try {
+         for (IResource member : generateGameReportWizard.getCurrentFolder().members()) {
+            if ((member instanceof IFile file) && (file.getRawLocation().lastSegment().toLowerCase().endsWith(GAME_FILE_EXTENSION))) {
+               String key = member.getRawLocation().lastSegment().replace(GAME_FILE_EXTENSION, ""); //$NON-NLS-1$
+               displayedElements.put(key, (IFile) member);
+            }
+         }
 
-		} catch (CoreException e) {
-			logger.log(Level.SEVERE, e.getMessage());
-		}
-	}
+         java.util.List<String> toDisplayed = new ArrayList<>(displayedElements.keySet());
+         Collections.sort(toDisplayed);
 
-	@Override
-	public void widgetSelected(SelectionEvent e) {
-		if (e.getSource() == regExDisplayButton) {
-			setListOfFilesFromRegularExpression();
+         for (String toDisplay : toDisplayed) {
+            matchsSelector.add(toDisplay);
+         }
 
-		} else if (e.getSource() == regExSelButton) {
-			selectFilesFromRegularExpression();
+      } catch (CoreException e) {
+         logger.log(Level.SEVERE, e.getMessage());
+      }
+   }
 
-		} else if (e.getSource() == clearGameSelectionBtn) {
-			matchsSelector.deselectAll();
+   @Override
+   public void widgetSelected(SelectionEvent e) {
+      if (e.getSource() == regExDisplayButton) {
+         setListOfFilesFromRegularExpression();
 
-		} else if (e.getSource() == allGameButton) {
-			matchsSelector.selectAll();
-		}
-		checkIsvalid();
-	}
+      } else if (e.getSource() == regExSelButton) {
+         selectFilesFromRegularExpression();
 
-	/**
-	 * Check if page one is valid
-	 */
-	private void checkIsvalid() {
-		boolean atLeastOneMatch = matchsSelector.getItems().length > 0;
-		String outputFolderPath = pathSelectionComposite.getResolvedAbsolutePath();
-		boolean folderExist = false;
+      } else if (e.getSource() == clearGameSelectionBtn) {
+         matchsSelector.deselectAll();
 
-		File folder = new File(outputFolderPath);
-		folderExist = folder.exists() && folder.isDirectory();
-		if (!folderExist) {
-			isValid = false;
-			setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_NotAValidFolder, outputFolderPath));
-			setPageComplete(false);
-			return;
-		}
+      } else if (e.getSource() == allGameButton) {
+         matchsSelector.selectAll();
+      }
+      
+      checkIsValid();
+   }
 
-		if (!atLeastOneMatch) {
-			isValid = false;
-			setErrorMessage(Messages.GameReportWizardPageOne_OneGameMustBeSelected);
-			setPageComplete(false);
-			return;
-		}
+   /**
+    * Check if page one is valid
+    */
+   private void checkIsValid() {
+      boolean atLeastOneMatch = matchsSelector.getSelectionCount() > 0;
+      String outputFolderPath = pathSelectionComposite.getResolvedAbsolutePath();
+      boolean folderExist = false;
+      PathSelectionCompositeStatus pathState = pathSelectionComposite.validateSelection();
 
-		isValid = true;
-		setErrorMessage(null);
-		setPageComplete(true);
-	}
+      // check display regex
+      try {
+         if (!regExDisplayText.getText().isBlank()) {
+            Pattern.compile(regExDisplayText.getText());
+         }
+      } catch (PatternSyntaxException ex) {
+         isValid = false;
+         setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_DisplayRegexInvalid, regExDisplayText.getText()));
+         setPageComplete(false);
+         return;
+      }
 
-	/**
-	 * Set list of game extract with the regular expression
-	 */
-	private void setListOfFilesFromRegularExpression() {
-		matchsSelector.removeAll();
+      // check selection regex
+      try {
+         if (!regExSelectionText.getText().isBlank()) {
+            Pattern.compile(regExSelectionText.getText());
+         }
+      } catch (PatternSyntaxException ex) {
+         isValid = false;
+         setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_SelectionRegexInvalid, regExDisplayText.getText()));
+         setPageComplete(false);
+         return;
+      }
 
-		Pattern pattern = Pattern.compile(regExDisplayText.getText());
-		java.util.List<String> filesToDisplay = new ArrayList<>();
-		for (Entry<String, IFile> entry : displayedElements.entrySet()) {
+      if (PathSelectionCompositeStatus.BAD_FILE_NAME.equals(pathState) ||
+          PathSelectionCompositeStatus.NOT_A_DIRECTORY.equals(pathState)  ) {
+         setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_NotAValidFolder, outputFolderPath));
+         setPageComplete(false);
+         return;
+      }
 
-			String gameName = entry.getKey().replaceAll(GAME_FILE_EXTENSION, ""); //$NON-NLS-1$
+      if (!atLeastOneMatch) {
+         isValid = false;
+         setErrorMessage(Messages.GameReportWizardPageOne_OneGameMustBeSelected);
+         setPageComplete(false);
+         return;
+      }
 
-			Matcher matcher = pattern.matcher(gameName);
-			if (matcher.matches()) {
-				filesToDisplay.add(gameName);
-			}
-		}
-		Collections.sort(filesToDisplay);
-		for (String fileToDisplay : filesToDisplay) {
-			matchsSelector.add(fileToDisplay);
-		}
+      isValid = true;
+      setErrorMessage(null);
+      setPageComplete(true);
+   }
 
-	}
+   /**
+    * Set list of game extract with the regular expression
+    */
+   private void setListOfFilesFromRegularExpression() {
+      matchsSelector.removeAll();
 
-	/**
-	 * Select game based which match with the regular expression.
-	 */
-	private void selectFilesFromRegularExpression() {
-		matchsSelector.deselectAll();
+      Pattern pattern = Pattern.compile(regExDisplayText.getText());
+      java.util.List<String> filesToDisplay = new ArrayList<>();
+      for (Entry<String, IFile> entry : displayedElements.entrySet()) {
 
-		Pattern pattern = Pattern.compile(regExSelectionText.getText());
-		java.util.List<Integer> selectedItems = new ArrayList<>();
-		for (int index = 0; index < matchsSelector.getItemCount(); index++) {
+         String gameName = entry.getKey().replaceAll(GAME_FILE_EXTENSION, ""); //$NON-NLS-1$
 
-			String gameName = matchsSelector.getItem(index).replaceAll(GAME_FILE_EXTENSION, ""); //$NON-NLS-1$
+         Matcher matcher = pattern.matcher(gameName);
+         if (matcher.matches()) {
+            filesToDisplay.add(gameName);
+         }
+      }
+      Collections.sort(filesToDisplay);
+      for (String fileToDisplay : filesToDisplay) {
+         matchsSelector.add(fileToDisplay);
+      }
 
-			Matcher matcher = pattern.matcher(gameName);
-			if (matcher.matches()) {
-				selectedItems.add(index);
-			}
-		}
-		IntStream values = selectedItems.stream().mapToInt(Integer::intValue);
+   }
 
-		matchsSelector.select(values.toArray());
-	}
+   /**
+    * Select game based which match with the regular expression.
+    */
+   private void selectFilesFromRegularExpression() {
+      matchsSelector.deselectAll();
 
-	@Override
-	public void widgetDefaultSelected(SelectionEvent e) {
-		// Nothing to do here
-	}
+      Pattern pattern = Pattern.compile(regExSelectionText.getText());
+      java.util.List<Integer> selectedItems = new ArrayList<>();
+      for (int index = 0; index < matchsSelector.getItemCount(); index++) {
 
-	/**
-	 * Save configuration in the preference for the next call
-	 */
-	public void savePreferences() {
-		preferenceManager.setValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY, pathSelectionComposite.getDisplayPath());
-		preferenceManager.setValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, regExDisplayText.getText());
-		preferenceManager.setValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY, regExSelectionText.getText());
-	}
+         String gameName = matchsSelector.getItem(index).replaceAll(GAME_FILE_EXTENSION, ""); //$NON-NLS-1$
+
+         Matcher matcher = pattern.matcher(gameName);
+         if (matcher.matches()) {
+            selectedItems.add(index);
+         }
+      }
+      IntStream values = selectedItems.stream().mapToInt(Integer::intValue);
+
+      matchsSelector.select(values.toArray());
+   }
+
+   @Override
+   public void widgetDefaultSelected(SelectionEvent e) {
+      // Nothing to do here
+   }
+
+   /**
+    * Save configuration in the preference for the next call
+    */
+   public void savePreferences() {
+      preferenceManager.setValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY, pathSelectionComposite.getDisplayPath());
+      preferenceManager.setValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, regExDisplayText.getText());
+      preferenceManager.setValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY, regExSelectionText.getText());
+   }
+
+   @Override
+   public void pathSelectionChanged(PathSelectionCompositeStatus status) {
+      checkIsValid();
+   }
 }

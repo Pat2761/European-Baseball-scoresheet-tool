@@ -16,19 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.bpy.score.preferences.core;
+package org.bpy.score.preferences.ui;
 
 /**
- * Interface used when the preference of the Score tool change.
- *
- * @author Patrick BRIAND
- *
+ * Used when the Path selection change
  */
-public interface IScoreViewPreferenceChangeListener {
+public interface IPathSelectionCompositeChange {
 
-	/**
-	 * Preference change.
-	 * 
-	 */
-	public void preferenceChanged();
+   /**
+    * Target defined by the the path selection change
+    * 
+    * @param status state of the path
+    */
+   public void pathSelectionChanged(PathSelectionCompositeStatus status);
+
 }

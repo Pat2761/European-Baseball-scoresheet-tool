@@ -20,6 +20,10 @@ package org.bpy.score.preferences.ui;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bpy.score.internationalization.preferences.Messages;
 import org.eclipse.core.resources.IProject;
@@ -70,6 +74,11 @@ public class PathSelectionComposite extends Composite {
 	private FileFilter fileFilter;
 
 	/**
+    * Contains the list of listener.
+    */
+   private List<IPathSelectionCompositeChange> listeners;
+
+	/**
 	 * Constructor of the class.
 	 * 
 	 * @param parent reference on the parent composite
@@ -77,11 +86,32 @@ public class PathSelectionComposite extends Composite {
 	 */
 	public PathSelectionComposite(Composite parent, int style) {
 		super(parent, style);
+		
+		listeners = new ArrayList<>();
+		
 		category = IResource.HIDDEN;
 		createControls();
 	}
 
-	/**
+   /**
+    * Add a listener to the change of the path.
+    * 
+    * @param listener
+    */
+   public void addPathChangerListener(IPathSelectionCompositeChange listener) {
+      listeners.add(listener);
+    }
+
+   /**
+    * Remove a listener to the change of the path.
+    * 
+    * @param listener
+    */
+    public void removePathChangerListener(IPathSelectionCompositeChange listener) {
+       listeners.remove(listener);
+    }
+
+    /**
 	 * Define type of file of folder to select
 	 * 
 	 * @param category can be File.FILE or File.FOLDER
@@ -134,7 +164,7 @@ public class PathSelectionComposite extends Composite {
 	 * @return <b>true</b> the selection is valid, <b>false</b> otherwise
 	 */
 	public boolean isValid() {
-		return isValidSelection(txtPath.getText());
+		return isValidSelection();
 	}
 	
 	/**
@@ -156,6 +186,7 @@ public class PathSelectionComposite extends Composite {
 		});
 		txtPath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 4, 1));
 		txtPath.setText("");
+		txtPath.addModifyListener(e -> checkPathDefinition());
 
 		DropTarget cssTarget = new DropTarget(txtPath, DND.DROP_MOVE | DND.DROP_COPY | DND.DROP_DEFAULT);
 		Transfer[] cssTypes = new Transfer[] { FileTransfer.getInstance() };
@@ -178,7 +209,7 @@ public class PathSelectionComposite extends Composite {
 		        }
 		        String[] paths = (String[]) data;
 
-		        if (paths.length == 1 && isValidSelection(paths[0])) {
+		        if (paths.length == 1 && isValidSelection()) {
 		            event.detail = DND.DROP_COPY;
 		        } else {
 		            event.detail = DND.DROP_NONE;
@@ -187,8 +218,8 @@ public class PathSelectionComposite extends Composite {
 
 			@Override
 			 public void drop(DropTargetEvent event) {
-				if (event.data instanceof String[]) {
-					txtPath.setText(((String[]) event.data)[0]);
+				if (event.data instanceof String[] dataArray) {
+					txtPath.setText(dataArray[0]);
 				}	
 			}	
 		});		
@@ -214,32 +245,56 @@ public class PathSelectionComposite extends Composite {
 	}
 
 	/**
+	 * Check the content of the path when content change.
+	 */
+	private void checkPathDefinition() {
+	   PathSelectionCompositeStatus state = validateSelection();
+	   
+	   for (IPathSelectionCompositeChange listener : listeners) {
+	      listener.pathSelectionChanged(state);
+	   }
+   }
+
+	/**
+	 * Validate the selection.
+	 * 
+	 * @return state of the defined path
+	 */
+	public PathSelectionCompositeStatus validateSelection() {
+	   String pathName = getResolvedAbsolutePath();
+	   
+	   if (!isValidFileName(pathName)) {
+	      return PathSelectionCompositeStatus.BAD_FILE_NAME;
+	   }
+
+	   if (IResource.FOLDER == category) {
+         File file = new File(pathName);
+         if (!file.isDirectory()) {
+            return PathSelectionCompositeStatus.NOT_A_DIRECTORY;
+         }
+      }
+
+	   // Check file
+      else if (IResource.FILE == category) {
+         File file = new File(pathName);
+         if (!file.isFile() || !file.exists()) {
+            return PathSelectionCompositeStatus.NOT_A_FILE;
+         }
+         if (fileFilter==null || !fileFilter.accept(file)) {
+            return PathSelectionCompositeStatus.BAD_FILE_TYPE;
+         }
+      }
+	   
+	   return PathSelectionCompositeStatus.OK;
+	}
+	
+   /**
 	 * Check if the path is a valid selection.
 	 * 
-	 * @param path String which defined a file or folder selection
 	 * @return <b>true</b> valid selection, <b>false</b> otherwise
 	 */
-	private boolean isValidSelection(String path) {
-		// Check folder
-		if (IResource.FOLDER == category) {
-			File file = new File(path);
-			if (!file.isDirectory()) {
-				return false;
-			}
-		}
-		
-		// Check file
-		else if (IResource.FILE == category) {
-			File file = new File(path);
-			if (!file.isFile() || !file.exists()) {
-				return false;
-			}
-			if (fileFilter==null || !fileFilter.accept(file)) {
-				return false;
-			}
-		}
-		
-		return true;
+	private boolean isValidSelection() {
+		return (validateSelection() == PathSelectionCompositeStatus.OK);
 	}
 
 	/**
@@ -361,5 +416,25 @@ public class PathSelectionComposite extends Composite {
 		}
 		
 		return raw;
+	}
+	
+	/**
+	 * Check if the String fileName is a valid file name.
+	 * 
+	 * @param filename file name to test
+	 * 
+	 * @return <b>true</b>, the file name is valid, <b>false</b> otherwise
+	 */
+	public static boolean isValidFileName(String filename) {
+	    if (filename == null || filename.isBlank()) {
+	        return false;
+	    }
+
+	    try {
+	        Paths.get(filename);
+	        return true;
+	    } catch (InvalidPathException e) {
+	        return false;
+	    }
 	}
 }

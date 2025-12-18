@@ -145,8 +145,13 @@ public class Messages extends NLS {
 	public static String GameReportWizardPageOne_RegularExpressionGameSelection;
 	/** New Game Page One Wizard : Apply */ 
 	public static String GameReportWizardPageOne_ApplyButton;
-	/** New Game Page One Wizard : Regular selection for games display */ 
-	public static String GameReportWizardPageOne_RegularExpressionGameDisplay;
+   /** New Game Page One Wizard : Regular selection for games display */ 
+   public static String GameReportWizardPageOne_RegularExpressionGameDisplay;
+   /** New Game Page One Wizard : Regular expression for display is invalid */ 
+   public static String GameReportWizardPageOne_DisplayRegexInvalid;
+   /** New Game Page One Wizard : Regular expression for selection is invalid */ 
+   public static String GameReportWizardPageOne_SelectionRegexInvalid;
+	
 
 	/*----------------------------------------------------------------------- */
 	/* GameReportWizardPageTwo class                                          */

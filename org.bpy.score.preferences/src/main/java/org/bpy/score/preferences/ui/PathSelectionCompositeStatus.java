@@ -16,19 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package org.bpy.score.preferences.core;
+package org.bpy.score.preferences.ui;
 
 /**
- * Interface used when the preference of the Score tool change.
- *
- * @author Patrick BRIAND
- *
+ * define the status of the Path selection composite widget
  */
-public interface IScoreViewPreferenceChangeListener {
+public enum PathSelectionCompositeStatus {
 
-	/**
-	 * Preference change.
-	 * 
-	 */
-	public void preferenceChanged();
+   /** No problems */
+   OK,
+   
+   /** The string isn't a valid file of folder name */
+   BAD_FILE_NAME,
+   
+   /** Not a directory */
+   NOT_A_DIRECTORY,
+   
+   /** Not a file */
+   NOT_A_FILE,
+   
+   /** Bad file type */
+   BAD_FILE_TYPE
 }
