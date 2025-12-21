@@ -36,6 +36,7 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.service.prefs.BackingStoreException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -72,10 +73,6 @@ public class ScorePreferencesManager {
     */
    private static final Map<String, Object> defaultValues = new HashMap<>();
 
-   /**
-    * Contains the default values of all parameters
-    */
-   private static final Map<String, Class<?>> parametersType = new HashMap<>();
 
    /** Static code */
    static {
@@ -92,6 +89,7 @@ public class ScorePreferencesManager {
       parameterLocation.put(ScorePreferenceConstants.GRW_CSS_FILE_PATH, ScorePreferenceConstants.GAME_REPORT_WIZARD);
       parameterLocation.put(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, ScorePreferenceConstants.GAME_REPORT_WIZARD);
       parameterLocation.put(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, ScorePreferenceConstants.GAME_REPORT_WIZARD);
+      parameterLocation.put(ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GAME_REPORT_WIZARD);
 
       defaultValues.put(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, ScorePreferenceConstants.GRW_BANNER_FILE_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_CSS_FILE_PATH, ScorePreferenceConstants.GRW_CSS_FILE_DEFAULT);
@@ -100,14 +98,7 @@ public class ScorePreferencesManager {
       defaultValues.put(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY, ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION, ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, ScorePreferenceConstants.GRW_XSLT_FILE_DEFAULT);
-
-      parametersType.put(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, String.class);
-      parametersType.put(ScorePreferenceConstants.GRW_CSS_FILE_PATH, String.class);
-      parametersType.put(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, String.class);
-      parametersType.put(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY, String.class);
-      parametersType.put(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY, String.class);
-      parametersType.put(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION, Boolean.class);
-      parametersType.put(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, String.class);
+      defaultValues.put(ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GRW_TYPE_XML);
 
       useSpecificSettingsParameter.put(ScorePreferenceConstants.GAME_REPORT_WIZARD, ScorePreferenceConstants.GRW_PROJECT_SCOPE);
    }
@@ -116,10 +107,7 @@ public class ScorePreferencesManager {
    private static ScorePreferencesManager instance;
 
    /** instance on the workspace preference values */
-   private InstancePreferences workspaceInstancePreferences;
-
-   /** For the use of the project preference */
-   private boolean useWorkSpacePreference = false;
+   private IEclipsePreferences workspaceInstancePreferences;
 
    /** Map which contains instance preferences by properties page */
    static Map<String, InstancePreferences> propertyInstances = new HashMap<>();
@@ -129,7 +117,7 @@ public class ScorePreferencesManager {
     * 
     */
    private ScorePreferencesManager() {
-      workspaceInstancePreferences = (InstancePreferences) InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+      workspaceInstancePreferences = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
       scoreChangerListeners = new ArrayList<>();
 
       workspaceInstancePreferences.putBoolean(ScorePreferenceConstants.GRW_PROJECT_SCOPE, true);
@@ -148,78 +136,64 @@ public class ScorePreferencesManager {
       return instance;
    }
 
-   /**
-    * Force the usage of the workspace preference.
-    * 
-    * @param state <b>true</b> for workspace preference usage
-    */
-   public void setUseWorkspacePreference(boolean state) {
-      useWorkSpacePreference = state;
+   public IEclipsePreferences getWorkspacePreferenceStore() {
+
+      return workspaceInstancePreferences;
    }
 
-   /**
-    * Save the modification of use standard configuration of the preferences in the
-    * file.
-    * 
-    * @param category category of preferences
-    */
-   public void saveGameReportWizardPreferences(String category) {
-      IEclipsePreferences instancePreferences = getCurrentInstancePreference(ScorePreferenceConstants.GAME_REPORT_WIZARD);
+   public IEclipsePreferences getProjectPreferenceStore(String propertyPage) {
+      IProject project;
+
       try {
-         instancePreferences.flush();
-      } catch (BackingStoreException e) {
+         project = getSelectedProject();
+         if (project != null) {
+            IEclipsePreferences scope = new ProjectScope(project).getNode(project.getName());
+            return scope;
+         }
+
+      } catch (ScorePreferenceManagerException e) {
          logger.log(Level.SEVERE, e.getMessage());
       }
+      return getWorkspacePreferenceStore();
+
    }
 
    /**
     * Return a String value store in the preferences.
     * 
-    * @param key key value of the preferences
-    * 
-    * @return parameter value, defaultValue if not found
+    * @param store preference store
+    * @param key   key value of the preferences
+    * @return String value
     */
-   public <T> T getValue(String key) {
-      IEclipsePreferences instancePreferences = getCurrentInstancePreference(key);
+   public String getValue(IEclipsePreferences store, String key) {
       Object defaultValue = defaultValues.get(key);
-      Class<?> classType = parametersType.get(key);
 
-      Object value;
-      if (classType != null) {
-         if (classType == String.class) {
-            value = instancePreferences.get(key, (String) defaultValue);
-         } else if (classType == Boolean.class) {
-            value = Boolean.valueOf(instancePreferences.getBoolean(key, (Boolean) defaultValue));
-         } else if (classType == Integer.class) {
-            value = Integer.valueOf(instancePreferences.getInt(key, (Integer) defaultValue));
-         } else if (classType == Long.class) {
-            value = Long.valueOf(instancePreferences.getLong(key, (Long) defaultValue));
-         } else if (classType == Double.class) {
-            value = Double.valueOf(instancePreferences.getDouble(key, (Double) defaultValue));
-         } else if (classType == Float.class) {
-            value = Float.valueOf(instancePreferences.getFloat(key, (Float) defaultValue));
-         } else {
-            logger.log(Level.SEVERE, () -> NLS.bind(Messages.typeIsNotManageByPreferences, classType.getSimpleName()));
-            value = "";
-         }
-      } else {
-         logger.log(Level.SEVERE, () -> NLS.bind(Messages.noTypeDefinedForPreferenceValue, key));
-         value = "";
-      }
-      return (T) value;
+      return store.get(key, (String) defaultValue);
+   }
+ 
+   /**
+    * Return the default value of a parameter.
+    * 
+    * @param key   key value of the preferences
+    * @return String value
+    */
+   public String getDefaultValue(String key) {
+      Object defaultValue = defaultValues.get(key);
+
+      return (String) defaultValue;
    }
 
    /**
     * set a string value store in the preferences.
     * 
+    * @param store preference store
     * @param key   key value of the preferences
     * @param value default value linked the the key
     */
-   public void setValue(String key, String value) {
-      IEclipsePreferences instancePreferences = getCurrentInstancePreference(key);
-      instancePreferences.put(key, value);
+   public void setValue(IEclipsePreferences store, String key, String value) {
+      store.put(key, value);
       try {
-         instancePreferences.flush();
+         store.flush();
       } catch (BackingStoreException e) {
          logger.log(Level.SEVERE, e.getMessage());
       }
@@ -228,26 +202,39 @@ public class ScorePreferencesManager {
    /**
     * Return a double value store in the preferences.
     * 
-    * @param key          key value of the preferences
-    * @param defaultValue default value linked the the key
+    * @param store preference store
+    * @param key   key value of the preferences
     * @return double value
     */
-   public double getValue(String key, double defaultValue) {
-      IEclipsePreferences instancePreferences = getCurrentInstancePreference(key);
-      return instancePreferences.getDouble(key, defaultValue);
+   public double getDoubleValue(IEclipsePreferences store, String key) {
+      Object defaultValue = defaultValues.get(key);
+
+      return store.getDouble(key, (double) defaultValue);
+   }
+
+   /**
+    * Return the default value of a parameter.
+    * 
+    * @param key   key value of the preferences
+    * @return double value
+    */
+   public double getDoubleDefaultValue(String key) {
+      Object defaultValue = defaultValues.get(key);
+
+      return (double) defaultValue;
    }
 
    /**
     * Set a double value store in the preferences.
     * 
+    * @param store preference store
     * @param key   key value of the preferences
     * @param value default value linked the the key
     */
-   public void setValue(String key, double value) {
-      IEclipsePreferences instancePreferences = getCurrentInstancePreference(key);
-      instancePreferences.putDouble(key, value);
+   public void setValue(IEclipsePreferences store, String key, double value) {
+      store.putDouble(key, value);
       try {
-         instancePreferences.flush();
+         store.flush();
       } catch (BackingStoreException e) {
          logger.log(Level.SEVERE, e.getMessage());
       }
@@ -256,26 +243,39 @@ public class ScorePreferencesManager {
    /**
     * Return a boolean value store in the preferences.
     * 
-    * @param key          key value of the preferences
-    * @param defaultValue default value linked the the key
+    * @param store preference store
+    * @param key   key value of the preferences
     * @return parameter value, defaultValue if not found
     */
-   public boolean getValue(String key, boolean defaultValue) {
-      IEclipsePreferences instancePreferences = getCurrentInstancePreference(key);
-      return instancePreferences.getBoolean(key, defaultValue);
+   public boolean getBooleanValue(IEclipsePreferences store, String key) {
+       Object defaultValue = defaultValues.get(key);
+      
+      return store.getBoolean(key, (boolean) defaultValue);
    }
 
    /**
+    * Return the default value of a parameter.
+    * 
+    * @param key   key value of the preferences
+    * @return boolean value
+    */
+   public Boolean getBooleanDefaultValue(String key) {
+      Object defaultValue = defaultValues.get(key);
+
+      return (boolean) defaultValue;
+   }
+
+  /**
     * Return a boolean value store in the preferences.
     * 
+    * @param store preference store
     * @param key   key value of the preferences
     * @param value default value linked the the key
     */
-   public void setValue(String key, boolean value) {
-      IEclipsePreferences instancePreferences = getCurrentInstancePreference(key);
-      instancePreferences.putBoolean(key, value);
+   public void setValue(IEclipsePreferences store, String key, boolean value) {
+      store.putBoolean(key, value);
       try {
-         instancePreferences.flush();
+         store.flush();
       } catch (BackingStoreException e) {
          logger.log(Level.SEVERE, e.getMessage());
       }
@@ -299,33 +299,33 @@ public class ScorePreferencesManager {
     * @param key name of preference
     * @return an instance on a preference store
     */
-   private IEclipsePreferences getCurrentInstancePreference(String key) {
-      if (useWorkSpacePreference) {
-         return workspaceInstancePreferences;
-      } else {
-
-         try {
-            IProject currentProject = getSelectedProject();
-            if (currentProject == null) {
-               return workspaceInstancePreferences;
-
-            } else {
-               String propertyPage = getSelectedPropertyPage(key);
-               String specificSettingsName = getSpecificSettingState(propertyPage);
-               boolean useSpecific = getScopeSetting(specificSettingsName);
-
-               if (useSpecific) {
-                  return new ProjectScope(currentProject).getNode(propertyPage);
-               } else {
-                  return workspaceInstancePreferences;
-               }
-            }
-         } catch (ScorePreferenceManagerException ex) {
-            logger.log(Level.SEVERE, ex.getMessage());
-         }
-      }
-      return workspaceInstancePreferences;
-   }
+//   private IEclipsePreferences getCurrentInstancePreference(String key) {
+//      if (useWorkSpacePreference) {
+//         return workspaceInstancePreferences;
+//      } else {
+//
+//         try {
+//            IProject currentProject = getSelectedProject();
+//            if (currentProject == null) {
+//               return workspaceInstancePreferences;
+//
+//            } else {
+//               String propertyPage = getSelectedPropertyPage(key);
+//               String specificSettingsName = getSpecificSettingState(propertyPage);
+//               boolean useSpecific = getScopeSetting(specificSettingsName);
+//
+//               if (useSpecific) {
+//                  return new ProjectScope(currentProject).getNode(propertyPage);
+//               } else {
+//                  return workspaceInstancePreferences;
+//               }
+//            }
+//         } catch (ScorePreferenceManagerException ex) {
+//            logger.log(Level.SEVERE, ex.getMessage());
+//         }
+//      }
+//      return workspaceInstancePreferences;
+//   }
 
    /**
     * Get name of preference which is used for select project properties or
@@ -336,14 +336,14 @@ public class ScorePreferencesManager {
     * @return Preference name
     * @throws ScorePreferenceManagerException if not found
     */
-   private String getSpecificSettingState(String propertyPage) throws ScorePreferenceManagerException {
-      String specificSettings = useSpecificSettingsParameter.get(propertyPage);
-      if (propertyPage == null) {
-         throw new ScorePreferenceManagerException(NLS.bind(Messages.cannotFindSpecificSettingsForKey,propertyPage));
-      }
-
-      return specificSettings;
-   }
+//   private String getSpecificSettingState(String propertyPage) throws ScorePreferenceManagerException {
+//      String specificSettings = useSpecificSettingsParameter.get(propertyPage);
+//      if (propertyPage == null) {
+//         throw new ScorePreferenceManagerException(NLS.bind(Messages.cannotFindSpecificSettingsForKey, propertyPage));
+//      }
+//
+//      return specificSettings;
+//   }
 
    /**
     * Get the property page id in function of the name of the parameter
@@ -352,13 +352,13 @@ public class ScorePreferencesManager {
     * @return name of property page
     * @throws ScorePreferenceManagerException if not found
     */
-   private String getSelectedPropertyPage(String key) throws ScorePreferenceManagerException {
-      String propertyPage = parameterLocation.get(key);
-      if (propertyPage == null) {
-         throw new ScorePreferenceManagerException(NLS.bind(Messages.cannotFindPropertyPageForKey, key));
-      }
-      return propertyPage;
-   }
+//   private String getSelectedPropertyPage(String key) throws ScorePreferenceManagerException {
+//      String propertyPage = parameterLocation.get(key);
+//      if (propertyPage == null) {
+//         throw new ScorePreferenceManagerException(NLS.bind(Messages.cannotFindPropertyPageForKey, key));
+//      }
+//      return propertyPage;
+//   }
 
    /**
     * Retrieve the project linked to a selection.
@@ -403,5 +403,4 @@ public class ScorePreferencesManager {
    public void removeScoreChangerListener(IScoreViewPreferenceChangeListener listener) {
       scoreChangerListeners.remove(listener);
    }
-
 }

@@ -8,6 +8,9 @@ public class Messages extends NLS {
 	/** Name of the bundle */
 	private static final String BUNDLE_NAME = "org.bpy.score.internationalization.preferences.messages"; //$NON-NLS-1$
 
+   public static String EnableProjectSetting;
+   public static String ConfigureWorkspaceSetting;
+	
 	/*----------------------------------------------------------------------- */
 	/* ControlPreferencePage class                                               */
 	/*----------------------------------------------------------------------- */
@@ -138,6 +141,24 @@ public class Messages extends NLS {
 	/** Main report properties page message */  
 	public static String ReportPropertiesPage_Message;
 
+	/** CSS File check */
+   public static String ReportParameterComposite_CSSConfiguration;
+   /** XSLT File check */
+   public static String ReportParameterComposite_XSLTConfiguration;
+   /** Banner File check */
+   public static String ReportParameterComposite_BannerConfiguration;
+	
+   /** Not a valid file name */
+   public static String NotAValidFileName;
+   /** Not a file */ 
+   public static String NotAFile;
+   /** Not a Directory */ 
+   public static String NotAFolder;
+   /** Bad file type */
+   public static String BadFileType;
+   /** Undefined error */
+   public static String undefinedError;
+   
 	/*------------------------------------------------------------------------------*/
 	/* class ProgressBarDialog                                                      */ 
 	/*------------------------------------------------------------------------------*/
@@ -168,6 +189,11 @@ public class Messages extends NLS {
    public static String badTypeElement;
 	public static String cannotFindPropertyPageForKey; 
 	public static String cannotFindSpecificSettingsForKey;
+	public static String GameReportPreferencePage_pathSelectionComposite_text;
+	public static String GameReportPreferencePage_pathSelectionComposite_1_message;
+	public static String GameReportPreferencePage_pathSelectionComposite_message;
+	public static String ReportPropertyPageParameters_btnCheckButton_text;
+	public static String ReportPropertyPageParameters_lblNewLabel_text;
 	
 	/**
 	 * Initialize the internationalization

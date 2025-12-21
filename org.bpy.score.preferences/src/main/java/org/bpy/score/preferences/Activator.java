@@ -74,8 +74,8 @@ public class Activator extends AbstractUIPlugin {
 				true);
 		store.setDefault(
 				org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER, true);
-		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE,
-				org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_XML);
+		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE,
+				org.bpy.score.preferences.core.ScorePreferenceConstants.GRW_TYPE_XML);
 		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER,""); //$NON-NLS-1$
 		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH, ""); //$NON-NLS-1$
 		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH, ""); //$NON-NLS-1$

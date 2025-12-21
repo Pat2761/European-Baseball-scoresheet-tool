@@ -18,7 +18,6 @@
  */
 package org.bpy.score.rcp.wizard;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -242,13 +241,13 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
     * Initialize the content of the page
     */
    private void initContent() {
-      String displayRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY);
-      String selectionRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY);
-      String outputPath = preferenceManager.getValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY);
-
-      regExDisplayText.setText(displayRegularExpression);
-      regExSelectionText.setText(selectionRegularExpression);
-      pathSelectionComposite.setText(outputPath);
+//      String displayRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY);
+//      String selectionRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY);
+//      String outputPath = preferenceManager.getValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY);
+//
+//      regExDisplayText.setText(displayRegularExpression);
+//      regExSelectionText.setText(selectionRegularExpression);
+//      pathSelectionComposite.setText(outputPath);
 
       displayedElements = new HashMap<>();
       try {
@@ -295,7 +294,6 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
    private void checkIsValid() {
       boolean atLeastOneMatch = matchsSelector.getSelectionCount() > 0;
       String outputFolderPath = pathSelectionComposite.getResolvedAbsolutePath();
-      boolean folderExist = false;
       PathSelectionCompositeStatus pathState = pathSelectionComposite.validateSelection();
 
       // check display regex
@@ -396,9 +394,9 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
     * Save configuration in the preference for the next call
     */
    public void savePreferences() {
-      preferenceManager.setValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY, pathSelectionComposite.getDisplayPath());
-      preferenceManager.setValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, regExDisplayText.getText());
-      preferenceManager.setValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY, regExSelectionText.getText());
+//      preferenceManager.setValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY, pathSelectionComposite.getDisplayPath());
+//      preferenceManager.setValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, regExDisplayText.getText());
+//      preferenceManager.setValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY, regExSelectionText.getText());
    }
 
    @Override

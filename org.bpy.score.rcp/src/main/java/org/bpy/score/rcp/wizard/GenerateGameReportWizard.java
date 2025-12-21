@@ -23,7 +23,6 @@ import java.util.List;
 
 import org.bpy.score.internationalization.rcp.Messages;
 import org.bpy.score.preferences.core.ScorePreferenceConstants;
-import org.bpy.score.preferences.core.ScorePreferencesManager;
 import org.bpy.score.preferences.core.PreferenceManager;
 import org.bpy.score.rcp.Activator;
 import org.bpy.score.reports.generator.GameReportGenerator;
@@ -107,8 +106,8 @@ public class GenerateGameReportWizard extends Wizard {
 			options.put(GameReportGenerator.XSLT_FILE_PATH, gameReportWizardPageTwo.getXsltFilePath());
 			options.put(GameReportGenerator.BANNER_FILE_PATH, gameReportWizardPageTwo.getBannerFilePath());
 		}
-		String typeOfFile = PreferenceManager.getPreferenceValue(currentFolder.getProject(), ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML);
-		options.put(GameReportGenerator.HTML_GENERATION, (ScorePreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML.equals(typeOfFile)? Boolean.TRUE : Boolean.FALSE));
+		String typeOfFile = PreferenceManager.getPreferenceValue(currentFolder.getProject(), ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GRW_TYPE_HTML);
+		options.put(GameReportGenerator.HTML_GENERATION, (ScorePreferenceConstants.GRW_TYPE_HTML.equals(typeOfFile)? Boolean.TRUE : Boolean.FALSE));
 		
 		List<IFile> selectedGames = gameReportWizardPageOne.getSelectedGames();
 		gameReportGenerator.generateReport(selectedGames, options);

@@ -30,13 +30,13 @@
       </page>
       <page
             category="org.bpy.score.rcp.preferences"
-            class="org.bpy.score.preferences.ui.ReportPreferencePage"
+            class="org.bpy.score.preferences.ui.ReportPreferencePageIntro"
             id="org.bpy.score.rcp.preference.reports"
             name="%preferences.preference_page.reports">
       </page>
       <page
             category="org.bpy.score.rcp.preference.reports"
-            class="org.bpy.score.preferences.ui.GameReportPreferencePage"
+            class="org.bpy.score.preferences.ui.ReportPreferencePageParameters"
             id="org.bpy.score.preference.reports.game"
             name="%preferences.preference_page.reports.game">
       </page>
@@ -44,7 +44,7 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            class="org.bpy.score.preferences.ui.ReportPropertiesPage"
+            class="org.bpy.score.preferences.ui.ReportPropertiesPageIntro"
             id="org.bpy.score.propertries"
             name="%preferences.preference_page.reports">
          <enabledWhen>
@@ -59,7 +59,7 @@
       </page>
       <page
             category="org.bpy.score.propertries"
-            class="org.bpy.score.preferences.ui.GameReportPreferencePage"
+            class="org.bpy.score.preferences.ui.ReportPropertyPageParameters"
             id="org.bpy.score.property.reports.game"
             name="%preferences.preference_page.reports.game">
       </page>

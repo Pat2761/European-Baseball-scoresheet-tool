@@ -123,16 +123,16 @@ public class ScorePreferenceConstants {
 	public static final String GAME_REPORT_PREFERENCE_BANNER_FILE_PATH = "GameReportPreferenceBannerFilePath"; //$NON-NLS-1$
 
 	/** Key for define the kind of game report file (XML or HTML) */
-	public static final String GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE = "GameReportPreferenceTypeGeneratedFile"; //$NON-NLS-1$
+	public static final String GRW_PREFERENCE_TYPE_GENERATED_FILE = "GameReportPreferenceTypeGeneratedFile"; //$NON-NLS-1$
 
 	/** Constant which contains the last regex for the selection file */
 	public static final String GAME_REPORT_REGEX_SELECTION_FILE = "GameReportPreferenceRegexSelectionFile"; //$NON-NLS-1$
 
 	/** Constant which indicate the game report is an XML file */
-	public static final String GAME_REPORT_PREFERENCE_TYPE_XML = "GameReportPreferenceXMLGeneratedFile"; //$NON-NLS-1$
+	public static final String GRW_TYPE_XML = "GameReportPreferenceXMLGeneratedFile"; //$NON-NLS-1$
 
 	/** Constant which indicate the game report is an HTML file */
-	public static final String GAME_REPORT_PREFERENCE_TYPE_HTML = "GameReportPreferenceHTMLGeneratedFile"; //$NON-NLS-1$
+	public static final String GRW_TYPE_HTML = "GameReportPreferenceHTMLGeneratedFile"; //$NON-NLS-1$
 
 	/** Key for setting the preference linked to use project properties */
 	public static final String PROPERTIE_USE_PROJECT_SETTINGS = "propertiesUseProjectSettings";  //$NON-NLS-1$

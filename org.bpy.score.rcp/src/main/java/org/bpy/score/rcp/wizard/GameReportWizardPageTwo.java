@@ -37,6 +37,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Group;
 import org.bpy.score.preferences.ui.PathSelectionComposite;
+import org.bpy.score.preferences.ui.PathSelectionFileFilter;
 
 /**
  * This class is the page one of generation report wizard.
@@ -64,7 +65,7 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
    private PathSelectionComposite xsltFilePath;
    /** SWT Composite for select the banner of the HTML file */
    private PathSelectionComposite bannerFilePath;
-
+   /** SWT Group widget used for specific project parameters */
    private Group specificProjectGroup;
 
    /**
@@ -147,26 +148,25 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
       cssFilePath = new PathSelectionComposite(specificProjectGroup, SWT.NONE);
       cssFilePath.setMessage(Messages.GameReportWizardPageTwo_CSSPathFile);
       cssFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-      cssFilePath.setFeatures(IResource.FILE, file -> file.isFile() && file.getName().toLowerCase().endsWith(".css")); //$NON-NLS-1$
+      cssFilePath.setFeatures(IResource.FILE, new PathSelectionFileFilter(IResource.FILE, new String[] {"css"})); //$NON-NLS-N$
 
       xsltFilePath = new PathSelectionComposite(specificProjectGroup, SWT.NONE);
       xsltFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
       xsltFilePath.setMessage(Messages.GameReportWizardPageTwo_XSLTPathFile);
-      xsltFilePath.setFeatures(IResource.FILE, file -> file.isFile() && file.getName().toLowerCase().endsWith(".xslt")); //$NON-NLS-1$
+      xsltFilePath.setFeatures(IResource.FILE, new PathSelectionFileFilter(IResource.FILE, new String[] {"xslt"})); //$NON-NLS-1$
 
       bannerFilePath = new PathSelectionComposite(specificProjectGroup, SWT.NONE);
       bannerFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
       bannerFilePath.setMessage(Messages.GameReportWizardPageTwo_BannerPathFile);
-      bannerFilePath.setFeatures(IResource.FILE,
-            file -> file.isFile() && (file.getName().toLowerCase().endsWith(".jpg") || file.getName().toLowerCase().endsWith(".png"))); //$NON-NLS-1$ //$NON-NLS-2$
+      bannerFilePath.setFeatures(IResource.FILE,new PathSelectionFileFilter(IResource.FILE, new String[] {"jpg","png"})); //$NON-NLS-1$ //$NON-NLS-2$
 
       btnStandardConf.addSelectionListener(this);
 
       ScorePreferencesManager preferenceInstance = ScorePreferencesManager.getInstance();
-      btnStandardConf.setSelection(preferenceInstance.getValue(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION));
-      cssFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_CSS_FILE_PATH));
-      xsltFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_XSLT_FILE_PATH));
-      bannerFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_BANNER_FILE_PATH));
+//      btnStandardConf.setSelection(preferenceInstance.getValue(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION));
+//      cssFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_CSS_FILE_PATH));
+//      xsltFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_XSLT_FILE_PATH));
+//      bannerFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_BANNER_FILE_PATH));
 
       checkIsvalid();
    }
@@ -211,6 +211,12 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
       }
    }
 
+   /**
+    * Allow to enable or disable widget in a group of widget
+    * 
+    * @param composite 
+    * @param enabled <b>true</b> enable all widgets,<b>false</b> disable all widgets
+    */
    public static void setEnabledRecursive(Composite composite, boolean enabled) {
       composite.setEnabled(enabled);
       for (Control child : composite.getChildren()) {
@@ -234,10 +240,10 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
 
       if (btnStandardConf.getSelection()) {
          ScorePreferencesManager preferenceInstance = ScorePreferencesManager.getInstance();
-         preferenceInstance.setValue(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION, btnStandardConf.getSelection());
-         preferenceInstance.setValue(ScorePreferenceConstants.GRW_CSS_FILE_PATH, cssFilePath.getDisplayPath());
-         preferenceInstance.setValue(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, xsltFilePath.getDisplayPath());
-         preferenceInstance.setValue(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, bannerFilePath.getDisplayPath());
+//         preferenceInstance.setValue(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION, btnStandardConf.getSelection());
+//         preferenceInstance.setValue(ScorePreferenceConstants.GRW_CSS_FILE_PATH, cssFilePath.getDisplayPath());
+//         preferenceInstance.setValue(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, xsltFilePath.getDisplayPath());
+//         preferenceInstance.setValue(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, bannerFilePath.getDisplayPath());
       }
    }
 

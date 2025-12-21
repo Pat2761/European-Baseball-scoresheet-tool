@@ -19,7 +19,6 @@
 package org.bpy.score.preferences.ui;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -47,6 +46,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.model.WorkbenchContentProvider;
@@ -71,7 +71,7 @@ public class PathSelectionComposite extends Composite {
 	/** type of file: can be File.FILE or File.FOLDER */
 	private int category;
 	/** File filter definition */ 
-	private FileFilter fileFilter;
+	private PathSelectionFileFilter fileFilter;
 
 	/**
     * Contains the list of listener.
@@ -118,6 +118,8 @@ public class PathSelectionComposite extends Composite {
 	 */
 	public void setFeatures(int category) {
 		this.category = category;
+		this.fileFilter = new PathSelectionFileFilter(category, new String[] {});
+		
 	}
 
 	/**
@@ -126,7 +128,7 @@ public class PathSelectionComposite extends Composite {
 	 * @param category can be IResource.FILE or IResource.FOLDER
 	 * @param fileFilter A file filter , can be null
 	 */
-	public void setFeatures(int category, FileFilter fileFilter) {
+	public void setFeatures(int category, PathSelectionFileFilter fileFilter) {
 		this.category = category;
 		this.fileFilter = fileFilter;
 	}
@@ -146,7 +148,7 @@ public class PathSelectionComposite extends Composite {
 	 * @param message
 	 */
 	public void setMessage(String message) {
-		label.setText(message + ":"); //$NON-NLS-1$ 
+		label.setText(message); //$NON-NLS-1$ 
 	}
 
 	/**
@@ -280,7 +282,8 @@ public class PathSelectionComposite extends Composite {
          if (!file.isFile() || !file.exists()) {
             return PathSelectionCompositeStatus.NOT_A_FILE;
          }
-         if (fileFilter==null || !fileFilter.accept(file)) {
+         
+         if (!fileFilter.accept(file)) {
             return PathSelectionCompositeStatus.BAD_FILE_TYPE;
          }
       }
@@ -305,6 +308,9 @@ public class PathSelectionComposite extends Composite {
 		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(getShell(), new WorkbenchLabelProvider(),
 				new WorkbenchContentProvider());
 
+		if (fileFilter != null) {
+		   dialog.addFilter(fileFilter);
+		}
 		dialog.setTitle(Messages.pathSelectionCompositeTitle);
 		dialog.setMessage(Messages.pathSelectionCompositeMessage);
 		dialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
@@ -323,10 +329,35 @@ public class PathSelectionComposite extends Composite {
 	 * 
 	 */
 	private void openFileSystemDialog() {
-		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
-		String path = dialog.open();
-		if (path != null) {
-			txtPath.setText(path);
+	   // case of files
+	   if (IResource.FILE == category) {
+   		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+
+   		String[] extensions = fileFilter.getExtensions();
+
+   		String[] swtExtensions = new String[extensions.length];
+   		for (int i = 0; i < extensions.length; i++) {
+   		    swtExtensions[i] = "*." + extensions[i];
+   		}
+   		
+   		if (fileFilter != null) {
+   		   dialog.setFilterExtensions(swtExtensions);
+   		}
+   		String path = dialog.open();
+   		if (path != null) {
+   			txtPath.setText(path);
+   		}
+   		
+   	// case of folder	
+	   } else if (IResource.FOLDER == category){
+	      DirectoryDialog dialog = new DirectoryDialog(getShell());
+	      dialog.setText("Sélection du répertoire");
+	      dialog.setMessage("Choisissez un répertoire de destination");
+
+	      String selectedDir = dialog.open();
+	      if (selectedDir != null) {
+	          System.out.println("Répertoire choisi : " + selectedDir);
+	      }
 		}
 	}
 

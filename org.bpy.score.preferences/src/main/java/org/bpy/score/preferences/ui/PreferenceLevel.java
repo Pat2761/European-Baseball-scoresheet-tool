@@ -18,36 +18,16 @@
  */
 package org.bpy.score.preferences.ui;
 
-import org.bpy.score.internationalization.preferences.Messages;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.ui.IWorkbenchPropertyPage;
-
 /**
- *  Main property page of the report preference
+ * Preference level.
  * 
  * @author Patrick BRIAND
- *
  */
-public class ReportPropertiesPage extends ReportPreferencePage implements IWorkbenchPropertyPage {
+public enum PreferenceLevel {
 
-	/**
-	 * Create the property page.
-	 */
-	public ReportPropertiesPage() {
-		setMessage(Messages.ReportPropertiesPage_Message);
-		setDescription(Messages.ReportPropertiesPage_Description);
-	}
-
-	@Override
-	public IAdaptable getElement() {
-		// Nothing to do
-		return null;
-	}
-
-	@Override
-	public void setElement(IAdaptable element) {
-		// NBothing to do
-		
-	}
-
+   /** Preference at workspace level */
+   WORKSPACE_LEVEL,
+   
+   /** Preference at project level */
+   PROJECT_LEVEL
 }

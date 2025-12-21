@@ -19,34 +19,35 @@
 package org.bpy.score.preferences.ui;
 
 import org.bpy.score.internationalization.preferences.Messages;
-import org.eclipse.jface.preference.FieldEditorPreferencePage;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.ui.IWorkbenchPropertyPage;
 
 /**
- * Main preference page of the report preference
+ *  Main property page of the report preference
  * 
- * @author Patrick BRAIND
+ * @author Patrick BRIAND
  *
  */
-public class ReportPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+public class ReportPropertiesPageIntro extends ReportPreferencePageIntro implements IWorkbenchPropertyPage {
 
 	/**
-	 * @wbp.parser.constructor
+	 * Create the property page.
 	 */
-	public ReportPreferencePage() {
-		setMessage(Messages.ReportPreferencePage_Message);
-		setDescription(Messages.ReportPreferencePage_Description);
-	}
-	
-	@Override
-	public void init(IWorkbench workbench) {
-		// Nothing to do
+	public ReportPropertiesPageIntro() {
+		setMessage(Messages.ReportPropertiesPage_Message);
+		setDescription(Messages.ReportPropertiesPage_Description);
 	}
 
 	@Override
-	protected void createFieldEditors() {
+	public IAdaptable getElement() {
 		// Nothing to do
+		return null;
+	}
+
+	@Override
+	public void setElement(IAdaptable element) {
+		// NBothing to do
+		
 	}
 
 }
