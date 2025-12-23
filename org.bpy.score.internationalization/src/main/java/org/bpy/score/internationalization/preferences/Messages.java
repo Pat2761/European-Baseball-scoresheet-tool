@@ -18,6 +18,12 @@ public class Messages extends NLS {
 	public static String ControlPreferencePage_FlyOutLocationlabel;
 	/** Control Preference Page : Missing Earned point label */
 	public static String ControlPreferencePage_MissingEarnedPointlabel;
+   /** Control level ignore */
+   public static String Compile_Ignore;
+   /** Control level Warning */
+   public static String Compile_Warning;
+   /** Control level Error */
+   public static String Compile_Error;
 
 	/*----------------------------------------------------------------------- */
 	/* GameReportPreferencePage class                                         */
@@ -214,10 +220,9 @@ public class Messages extends NLS {
    public static String GraphicalPreferencePage_DisplayWinLoseSave;
    /** Graphical Preference Page : New style sheet display */
    public static String GraphicalPreferencePage_NewStyleSheetDisplay;
+   /** Preview label */
    public static String GraphicalPreferencePage_preview;
-   public static String GraphicalPreferencePage_lblPreview_text;
    
-	
 	/**
 	 * Initialize the internationalization
 	 */

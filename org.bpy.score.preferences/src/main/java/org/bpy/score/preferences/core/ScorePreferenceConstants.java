@@ -139,7 +139,7 @@ public class ScorePreferenceConstants {
 
    /* --------------------------------------------------------------------------------------
     * Graphical preferences
-    * ---------------,0,---------------------------------------------------------------------- */
+    * ------------------------------------------------------------------------------------- */
    /** Contains the color line */
    public static final String GPP_GRAPHIC_COLOR_LINE = "graphicalPreferenceColorLine";
    /** Contains the color line default value*/
@@ -168,7 +168,20 @@ public class ScorePreferenceConstants {
    public static final String GPP_DISPLAY_PITCHER_STATE = "graphicalPreferenceDisplayPitcherState";
    /** Parameter key for display the pitcher Win/Lose/Save state default value*/
    public static final boolean GPP_DISPLAY_PITCHER_STATE_DEFAULT_VALUE = true;
-   
+
+   /* --------------------------------------------------------------------------------------
+    * Graphical preferences
+    * ------------------------------------------------------------------------------------- */
+   /** Parameter for memorize the flyout level error */
+   public static final String CPP_FLYOUT_CONTROL = "cppFlyoutControl";
+   /** Parameter for memorize the flyout level error none */
+   public static final String CPP_FLYOUT_CONTROL_NONE = "compileNone";
+   /** Parameter for memorize the flyout level error warning */
+   public static final String CPP_FLYOUT_CONTROL_WARNING = "compileWarning";
+   /** Parameter for memorize the flyout level error error*/
+   public static final String CPP_FLYOUT_CONTROL_ERROR = "compileError";
+   /** Parameter for memorize the flyout level error default value*/
+   public static final String CPP_FLYOUT_CONTROL_DEFAULT_VALUE = CPP_FLYOUT_CONTROL_NONE;
    
 	static {
 

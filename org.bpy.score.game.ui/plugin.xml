@@ -78,9 +78,10 @@
 	<extension
 			point="org.eclipse.ui.preferencePages">
 		<page
-			class="org.bpy.score.game.ui.GameExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="org.bpy.score.game.Game"
-			name="Game">
+        category="org.bpy.score.rcp.preferences"
+        class="org.bpy.score.game.ui.GameExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+        id="org.bpy.score.game.Game"
+        name="Game parameters">
 			<keywordReference id="org.bpy.score.game.ui.keyword_Game"/>
 		</page>
 		<page
