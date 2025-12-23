@@ -180,6 +180,7 @@ public class Messages extends NLS {
 	public static String GameReportWizardPageOne_OneGameMustBeSelected;
 	/** Error message if not a valid folder for the genereation of the reports */
 	public static String GameReportWizardPageOne_NotAValidFolder;
+	
 	/*----------------------------------------------------------------------- */
 	/* ImportHtmlWizard class                                                 */
 	/*----------------------------------------------------------------------- */
@@ -531,26 +532,6 @@ public class Messages extends NLS {
 	public static String ApplicationWorkbenchWindowAdvisor_RcpTitle;
 	
 	/*----------------------------------------------------------------------- */
-	/* GraphicalPreferencePage class                                               */
-	/*----------------------------------------------------------------------- */
-	/** Graphical Preference Page : Line Color label */
-	public static String GraphicalPreferencePage_LineColorLabel;
-	/** Graphical Preference Page : Pencil Color label */
-	public static String GraphicalPreferencePage_PencilColorLabel;
-	/** Graphical Preference Page : No statistics */
-	public static String GraphicalPreferencePage_NoStatistics;
-	/** Graphical Preference Page : SF1 display */
-	public static String GraphicalPreferencePage_Sf1Display;
-	/** Graphical Preference Page : Full display */
-	public static String GraphicalPreferencePage_FullDisplay;
-	/** Graphical Preference Page : Display statistics label */
-	public static String GraphicalPreferencePage_DisplayStatisticsLabel;
-	/** Graphical Preference Page : Display Win/Lose/Save */
-	public static String GraphicalPreferencePage_DisplayWinLoseSave;
-	/** Graphical Preference Page : New style sheet display */
-	public static String GraphicalPreferencePage_NewStyleSheetDisplay;
-	
-	/*----------------------------------------------------------------------- */
 	/* HtmlPreferences class                                               */
 	/*----------------------------------------------------------------------- */
 	/** Html Preferences : Generation folder */
@@ -594,6 +575,8 @@ public class Messages extends NLS {
 	public static String ApplicationActionBarAdvisor_HelpMenu;
 	public static String GameReportWizardPageOne_lblNewLabel_text;
 	public static String GameReportWizardPageTwo_grpTtt_text;
+	public static String GraphicalPreferencePage_lblNewLabel_2_text;
+	public static String GraphicalPreferencePage_btnCheckButton_text;
 	
 	/**
 	 * Initialize the internationalization

@@ -34,8 +34,8 @@ public class ScorePreferenceConstants {
 	public static final String PREFERENCE_ID = "org.bpy.score.rcp.preferences"; //$NON-NLS-1$
 
 	/* --------------------------------------------------------------------------------------
-	 * GenerateGameReportWizard preferences
-	   ------------------------------------------------------------------------------------- */
+	 * GenerateGameReport preferences
+	 * ------------------------------------------------------------------------------------- */
 	/** Page name of the Game report wizard */
 	public static final String GAME_REPORT_WIZARD = "GenerateGameReportWizard";
 	/** Page name of the Game report wizard */
@@ -137,7 +137,39 @@ public class ScorePreferenceConstants {
 	/** Key for setting the preference linked to use project properties */
 	public static final String PROPERTIE_USE_PROJECT_SETTINGS = "propertiesUseProjectSettings";  //$NON-NLS-1$
 
+   /* --------------------------------------------------------------------------------------
+    * Graphical preferences
+    * ---------------,0,---------------------------------------------------------------------- */
+   /** Contains the color line */
+   public static final String GPP_GRAPHIC_COLOR_LINE = "graphicalPreferenceColorLine";
+   /** Contains the color line default value*/
+   public static final String GPP_GRAPHIC_COLOR_LINE_DEFAULT_VALUE = "0,0,0";
+
+   /** Contains the writing color */
+   public static final String GPP_GRAPHIC_WRITING_LINE = "graphicalPreferenceWritingLine";
+   /** Contains the writing color default value*/
+   public static final String GPP_GRAPHIC_WRITING_LINE_DEFAULT_VALUE = "0,0,0";
 	
+   /** Parameter key for specify level of statistic display */
+   public static final String GPP_DISPLAY_STATISTICS = "graphicalPreferenceDisplayStatistic";
+   /** Full display for the statistic display */
+   public static final String GPP_FULL_STATISTC_DISPLAY = "fullStatisticDisplay";
+   /** Full display for the statistic display */
+   public static final String GPP_SF1_STATISTC_DISPLAY = "sf1StatisticDisplay";
+   /** Full display for the statistic display */
+   public static final String GPP_NO_STATISTC_DISPLAY = "noStatisticDisplay";
+	 
+   /** Parameter key for allow the new style sheet */
+   public static final String GPP_USE_NEW_STYLE_SHEET = "graphicalPreferenceDisplayUseNewStyleSheet";
+   /** Parameter key for allow the new style sheet default value */
+   public static final boolean GPP_USE_NEW_STYLE_SHEET_DEFAULT_VALUE = false;
+
+   /** Parameter key for display the pitcher Win/Lose/Save state */
+   public static final String GPP_DISPLAY_PITCHER_STATE = "graphicalPreferenceDisplayPitcherState";
+   /** Parameter key for display the pitcher Win/Lose/Save state default value*/
+   public static final boolean GPP_DISPLAY_PITCHER_STATE_DEFAULT_VALUE = true;
+   
+   
 	static {
 
 		errorsDefinition.put(IGNORE, IGNORE_STR_TO_DISPLAY);

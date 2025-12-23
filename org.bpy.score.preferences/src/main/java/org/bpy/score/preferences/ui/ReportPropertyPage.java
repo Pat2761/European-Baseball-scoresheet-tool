@@ -37,18 +37,16 @@ import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
-public class ReportPropertyPageParameters extends PropertyPage implements IWorkbenchPropertyPage, IPathSelectionCompositeChange {
+public class ReportPropertyPage extends PropertyPage implements IWorkbenchPropertyPage, IPathSelectionCompositeChange {
 
-   private IEclipsePreferences store;
    private ReportParameterComposite reportParameterComposite;
    
-   public ReportPropertyPageParameters() {
+   public ReportPropertyPage() {
       // Nothing to do
    }
 
    @Override
    protected Control createContents(Composite parent) {
-      store = ScorePreferencesManager.getInstance().getWorkspacePreferenceStore();
       
       Composite composite = new Composite(parent, SWT.NONE);
       composite.setLayout(new GridLayout(1, false));
@@ -75,7 +73,7 @@ public class ReportPropertyPageParameters extends PropertyPage implements IWorkb
       link.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
       link.setText("<a>" + Messages.ConfigureWorkspaceSetting + "</a>");//$NON-NLS-1$ //$NON-NLS-2$
       
-      IEclipsePreferences store = ScorePreferencesManager.getInstance().getProjectPreferenceStore("ddd");
+      IEclipsePreferences store = ScorePreferencesManager.getInstance().getProjectPreferenceStore();
       reportParameterComposite = new ReportParameterComposite(this, composite, store);
       reportParameterComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
       return composite;
@@ -89,6 +87,24 @@ public class ReportPropertyPageParameters extends PropertyPage implements IWorkb
          if (dialog != null) {
             dialog.open();
          }
+   }
+
+   @Override
+   protected void performApply() {
+      reportParameterComposite.performApply();
+      super.performApply();
+   }
+
+   @Override
+   protected void performDefaults() {
+      reportParameterComposite.performDefaults();
+      super.performDefaults();
+   }
+
+   @Override
+   public boolean performOk() {
+      reportParameterComposite.performOk();
+      return super.performOk();
    }
 
    @Override

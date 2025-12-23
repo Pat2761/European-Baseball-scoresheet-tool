@@ -33,7 +33,7 @@ import org.eclipse.swt.layout.GridLayout;
  * 
  * @author Patrick BRIAND
  */
-public class ReportPreferencePageParameters extends PreferencePage implements IWorkbenchPreferencePage, IPathSelectionCompositeChange {
+public class ReportPreferencePage extends PreferencePage implements IWorkbenchPreferencePage, IPathSelectionCompositeChange {
 
    /** Reference on the page which allow to configure the parameters */
    private ReportParameterComposite reportParameterComposite;
@@ -43,7 +43,7 @@ public class ReportPreferencePageParameters extends PreferencePage implements IW
     * 
     * @wbp.parser.constructor
     */
-   public ReportPreferencePageParameters() {
+   public ReportPreferencePage() {
       // Nothing to do
    }
 
@@ -52,7 +52,7 @@ public class ReportPreferencePageParameters extends PreferencePage implements IW
     * 
     * @param title title of the panel
     */
-   public ReportPreferencePageParameters(String title) {
+   public ReportPreferencePage(String title) {
       super(title);
       // Nothing to do
    }
@@ -63,7 +63,7 @@ public class ReportPreferencePageParameters extends PreferencePage implements IW
     * @param title title of the panel
     * @param image image to display
     */
-   public ReportPreferencePageParameters(String title, ImageDescriptor image) {
+   public ReportPreferencePage(String title, ImageDescriptor image) {
       super(title, image);
       // Nothing to do
    }
@@ -77,7 +77,6 @@ public class ReportPreferencePageParameters extends PreferencePage implements IW
    protected Control createContents(Composite parent) {
       IEclipsePreferences store = ScorePreferencesManager.getInstance().getWorkspacePreferenceStore();
       reportParameterComposite = new ReportParameterComposite(this, parent, store);
-      reportParameterComposite.setLayout(new GridLayout(1, false));
       return reportParameterComposite;
    }
 

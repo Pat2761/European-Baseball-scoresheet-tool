@@ -36,7 +36,7 @@
       </page>
       <page
             category="org.bpy.score.rcp.preference.reports"
-            class="org.bpy.score.preferences.ui.ReportPreferencePageParameters"
+            class="org.bpy.score.preferences.ui.ReportPreferencePage"
             id="org.bpy.score.preference.reports.game"
             name="%preferences.preference_page.reports.game">
       </page>
@@ -59,7 +59,7 @@
       </page>
       <page
             category="org.bpy.score.propertries"
-            class="org.bpy.score.preferences.ui.ReportPropertyPageParameters"
+            class="org.bpy.score.preferences.ui.ReportPropertyPage"
             id="org.bpy.score.property.reports.game"
             name="%preferences.preference_page.reports.game">
       </page>

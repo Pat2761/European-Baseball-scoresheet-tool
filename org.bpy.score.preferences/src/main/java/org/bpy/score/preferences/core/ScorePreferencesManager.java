@@ -33,10 +33,12 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.service.prefs.BackingStoreException;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -54,9 +56,6 @@ public class ScorePreferencesManager {
    /** Logger of the class */
    public static final Logger logger = Logger.getLogger(ScorePreferencesManager.class.getSimpleName());
 
-   /** Collection which define the page which contains a property */
-   private static final Map<String, String> parameterLocation = new HashMap<>();
-
    /**
     * Contains the list of listener.
     */
@@ -73,24 +72,8 @@ public class ScorePreferencesManager {
     */
    private static final Map<String, Object> defaultValues = new HashMap<>();
 
-
    /** Static code */
    static {
-      /*
-       * ----------------------------------------------------------------------
-       * Declare parameters of the Game report wizard
-       * ----------------------------------------------------------------------
-       */
-      parameterLocation.put(ScorePreferenceConstants.GAME_REPORT_WIZARD, ScorePreferenceConstants.GAME_REPORT_WIZARD);
-      parameterLocation.put(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, ScorePreferenceConstants.GAME_REPORT_WIZARD);
-      parameterLocation.put(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY, ScorePreferenceConstants.GAME_REPORT_WIZARD);
-      parameterLocation.put(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY, ScorePreferenceConstants.GAME_REPORT_WIZARD);
-      parameterLocation.put(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION, ScorePreferenceConstants.GAME_REPORT_WIZARD);
-      parameterLocation.put(ScorePreferenceConstants.GRW_CSS_FILE_PATH, ScorePreferenceConstants.GAME_REPORT_WIZARD);
-      parameterLocation.put(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, ScorePreferenceConstants.GAME_REPORT_WIZARD);
-      parameterLocation.put(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, ScorePreferenceConstants.GAME_REPORT_WIZARD);
-      parameterLocation.put(ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GAME_REPORT_WIZARD);
-
       defaultValues.put(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, ScorePreferenceConstants.GRW_BANNER_FILE_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_CSS_FILE_PATH, ScorePreferenceConstants.GRW_CSS_FILE_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY_DEFAULT);
@@ -99,6 +82,12 @@ public class ScorePreferencesManager {
       defaultValues.put(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION, ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, ScorePreferenceConstants.GRW_XSLT_FILE_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GRW_TYPE_XML);
+
+      defaultValues.put(ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE, ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE_DEFAULT_VALUE);
+      defaultValues.put(ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE, ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE_DEFAULT_VALUE);
+      defaultValues.put(ScorePreferenceConstants.GPP_DISPLAY_STATISTICS, ScorePreferenceConstants.GPP_FULL_STATISTC_DISPLAY);
+      defaultValues.put(ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE, ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE_DEFAULT_VALUE);
+      defaultValues.put(ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET, ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET_DEFAULT_VALUE);
 
       useSpecificSettingsParameter.put(ScorePreferenceConstants.GAME_REPORT_WIZARD, ScorePreferenceConstants.GRW_PROJECT_SCOPE);
    }
@@ -136,19 +125,28 @@ public class ScorePreferencesManager {
       return instance;
    }
 
+   /**
+    * Get the workspace preferences.
+    * 
+    * @return worksapce preferences
+    */
    public IEclipsePreferences getWorkspacePreferenceStore() {
 
       return workspaceInstancePreferences;
    }
 
-   public IEclipsePreferences getProjectPreferenceStore(String propertyPage) {
+   /**
+    * Get the project preferences.
+    * 
+    * @return project preferences
+    */
+   public IEclipsePreferences getProjectPreferenceStore() {
       IProject project;
 
       try {
          project = getSelectedProject();
          if (project != null) {
-            IEclipsePreferences scope = new ProjectScope(project).getNode(project.getName());
-            return scope;
+            return new ProjectScope(project).getNode(project.getName());
          }
 
       } catch (ScorePreferenceManagerException e) {
@@ -170,11 +168,11 @@ public class ScorePreferencesManager {
 
       return store.get(key, (String) defaultValue);
    }
- 
+
    /**
     * Return the default value of a parameter.
     * 
-    * @param key   key value of the preferences
+    * @param key key value of the preferences
     * @return String value
     */
    public String getDefaultValue(String key) {
@@ -215,7 +213,7 @@ public class ScorePreferencesManager {
    /**
     * Return the default value of a parameter.
     * 
-    * @param key   key value of the preferences
+    * @param key key value of the preferences
     * @return double value
     */
    public double getDoubleDefaultValue(String key) {
@@ -248,15 +246,15 @@ public class ScorePreferencesManager {
     * @return parameter value, defaultValue if not found
     */
    public boolean getBooleanValue(IEclipsePreferences store, String key) {
-       Object defaultValue = defaultValues.get(key);
-      
+      Object defaultValue = defaultValues.get(key);
+
       return store.getBoolean(key, (boolean) defaultValue);
    }
 
    /**
     * Return the default value of a parameter.
     * 
-    * @param key   key value of the preferences
+    * @param key key value of the preferences
     * @return boolean value
     */
    public Boolean getBooleanDefaultValue(String key) {
@@ -265,7 +263,7 @@ public class ScorePreferencesManager {
       return (boolean) defaultValue;
    }
 
-  /**
+   /**
     * Return a boolean value store in the preferences.
     * 
     * @param store preference store
@@ -274,6 +272,78 @@ public class ScorePreferencesManager {
     */
    public void setValue(IEclipsePreferences store, String key, boolean value) {
       store.putBoolean(key, value);
+      try {
+         store.flush();
+      } catch (BackingStoreException e) {
+         logger.log(Level.SEVERE, e.getMessage());
+      }
+   }
+
+   /**
+    * Get a RGB value form the preferences.
+    * 
+    * @param store Preference store where is defined the parameter
+    * @param key Parameter key
+    * 
+    * @return value of the parameter is found, the default value otherwise
+    */
+   public RGB getRGBValue(IEclipsePreferences store, String key) {
+
+      Object defaultValue = defaultValues.get(key);
+      String rgbString = store.get(key, (String) defaultValue);
+      String[] parts = rgbString.split(",");
+
+      try {
+         return new RGB(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
+      } catch (NumberFormatException ex) {
+         return Display.getCurrent().getSystemColor(SWT.COLOR_BLACK).getRGB();
+      }
+   }
+
+   /**
+    * Get a RGB value default value .
+    * 
+    * @param key Parameter key
+    * 
+    * @return value of the parameter is found, the default value otherwise
+    */
+   public RGB getDefaultRGBValue(String key) {
+
+      Object defaultValue = defaultValues.get(key);
+      String[] parts = ((String)defaultValue).split(",");
+
+      try {
+         return new RGB(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
+      } catch (NumberFormatException ex) {
+         return Display.getCurrent().getSystemColor(SWT.COLOR_BLACK).getRGB();
+      }
+   }
+
+   /**
+    * Set the default value of the parameter in the preference.
+    * 
+    * @param store Preference store where is defined the parameter
+    * @param key Parameter key
+    */
+   public void setDefaultValue(IEclipsePreferences store, String key) {
+      Object defaultValue = defaultValues.get(key);
+      store.put(key, (String) defaultValue);
+      try {
+         store.flush();
+      } catch (BackingStoreException e) {
+         logger.log(Level.SEVERE, e.getMessage());
+      }
+   }
+
+   /**
+    * Set the value of the parameter in the preference.
+    * 
+    * @param store Preference store where is defined the parameter
+    * @param key Parameter key
+    */
+   public void setValue(IEclipsePreferences store, String key, RGB rgb) {
+      String value = rgb.red + "," + rgb.green + "," + rgb.blue;
+      store.put(key, value);
       try {
          store.flush();
       } catch (BackingStoreException e) {

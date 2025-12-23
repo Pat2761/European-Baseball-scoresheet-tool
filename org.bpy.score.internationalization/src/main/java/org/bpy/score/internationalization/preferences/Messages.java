@@ -194,6 +194,29 @@ public class Messages extends NLS {
 	public static String GameReportPreferencePage_pathSelectionComposite_message;
 	public static String ReportPropertyPageParameters_btnCheckButton_text;
 	public static String ReportPropertyPageParameters_lblNewLabel_text;
+
+	/*----------------------------------------------------------------------- */
+   /* GraphicalPreferencePage class                                               */
+   /*----------------------------------------------------------------------- */
+   /** Graphical Preference Page : Line Color label */
+   public static String GraphicalPreferencePage_LineColorLabel;
+   /** Graphical Preference Page : Pencil Color label */
+   public static String GraphicalPreferencePage_PencilColorLabel;
+   /** Graphical Preference Page : No statistics */
+   public static String GraphicalPreferencePage_NoStatistics;
+   /** Graphical Preference Page : SF1 display */
+   public static String GraphicalPreferencePage_Sf1Display;
+   /** Graphical Preference Page : Full display */
+   public static String GraphicalPreferencePage_FullDisplay;
+   /** Graphical Preference Page : Display statistics label */
+   public static String GraphicalPreferencePage_DisplayStatisticsLabel;
+   /** Graphical Preference Page : Display Win/Lose/Save */
+   public static String GraphicalPreferencePage_DisplayWinLoseSave;
+   /** Graphical Preference Page : New style sheet display */
+   public static String GraphicalPreferencePage_NewStyleSheetDisplay;
+   public static String GraphicalPreferencePage_preview;
+   public static String GraphicalPreferencePage_lblPreview_text;
+   
 	
 	/**
 	 * Initialize the internationalization
