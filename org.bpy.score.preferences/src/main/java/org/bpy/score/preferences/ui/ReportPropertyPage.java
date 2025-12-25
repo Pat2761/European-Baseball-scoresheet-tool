@@ -91,7 +91,7 @@ public class ReportPropertyPage extends PropertyPage implements IWorkbenchProper
       link.setText("<a>" + Messages.ConfigureWorkspaceSetting + "</a>");//$NON-NLS-1$ //$NON-NLS-2$
       
       IEclipsePreferences store = ScorePreferencesManager.getInstance().getProjectPreferenceStore();
-      reportParameterComposite = new ReportParameterComposite(this, composite, store);
+      reportParameterComposite = new ReportParameterComposite(composite, store, this);
       reportParameterComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 
       initContent();
@@ -198,10 +198,13 @@ public class ReportPropertyPage extends PropertyPage implements IWorkbenchProper
 
    @Override
    public void pathSelectionChanged(PathSelectionCompositeStatus status) {
-      String resultValue = reportParameterComposite.validate();
-      if (resultValue != null) {
-         setValid(false);
-         setErrorMessage(resultValue);
+      if (reportParameterComposite != null) {
+         String resultValue = reportParameterComposite.validate();
+         if (resultValue != null) {
+            setValid(false);
+            setErrorMessage(resultValue);
+            return;
+         }
       }
       setValid(true);
       setErrorMessage(null);

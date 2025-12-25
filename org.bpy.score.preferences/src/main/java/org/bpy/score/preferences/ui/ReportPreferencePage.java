@@ -75,7 +75,7 @@ public class ReportPreferencePage extends PreferencePage implements IWorkbenchPr
    @Override
    protected Control createContents(Composite parent) {
       IEclipsePreferences store = ScorePreferencesManager.getInstance().getWorkspacePreferenceStore();
-      reportParameterComposite = new ReportParameterComposite(this, parent, store);
+      reportParameterComposite = new ReportParameterComposite(parent, store, this);
       return reportParameterComposite;
    }
 

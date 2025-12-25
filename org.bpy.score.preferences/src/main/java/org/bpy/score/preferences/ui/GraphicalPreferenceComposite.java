@@ -40,7 +40,7 @@ import org.eclipse.swt.custom.ScrolledComposite;
  * @author Patrick BRIAND
  *
  */
-public class GraphicalPreferenceComposite extends Composite {
+public class GraphicalPreferenceComposite extends Composite implements IScopePreferenceChange {
 
    /** Logger of the class */
    public static final Logger logger = Logger.getLogger(GraphicalPreferenceComposite.class.getCanonicalName());
@@ -230,5 +230,11 @@ public class GraphicalPreferenceComposite extends Composite {
     */
    public void performOk() {
       performApply();
+   }
+
+   @Override
+   public void storePreferenceChange(IEclipsePreferences preferenceScope) {
+      this.preferenceStore = preferenceScope;
+      initContent();
    }
 }

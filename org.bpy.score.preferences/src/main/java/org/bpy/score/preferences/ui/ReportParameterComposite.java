@@ -37,13 +37,11 @@ import org.eclipse.swt.layout.GridData;
  * 
  * @author Patrick BRIAND
  */
-public class ReportParameterComposite extends Composite implements IPathSelectionCompositeChange, IScopePreferenceChange {
+public class ReportParameterComposite extends AbstractScorePreferenceComposite implements IPathSelectionCompositeChange {
 
    /** Logger of the class */
    public static final Logger logger = Logger.getLogger(ReportParameterComposite.class.getCanonicalName());
 
-   /** reference on the preference store */
-   private IEclipsePreferences store;
    /** SWT composite for select CSS file */
    private PathSelectionComposite cssFileSelector;
    /** SWT Composite for select XSLT file */
@@ -54,27 +52,26 @@ public class ReportParameterComposite extends Composite implements IPathSelectio
    private Button exportAsXmlBtn;
    /** Check box for export the report in a HTML File */
    private Button exportAsHtmlBtn;
-   /** Owner of the composite */
-   private IPathSelectionCompositeChange owner;
+   /** property or preference page which is using the composite */
+   private IPathSelectionCompositeChange listener;
 
    /**
     * Constructor of the page.
-    * @param owner 
     * 
     * @param parent parent composite
     * @param store  preference store used
+    * @param listener property or preference page which is using the composite
     */
-   public ReportParameterComposite(IPathSelectionCompositeChange owner, Composite parent, IEclipsePreferences store) {
-      super(parent, SWT.NONE);
-      this.owner = owner;
-      this.store = store;
-      createPreferenceContent();
+   public ReportParameterComposite(Composite parent, IEclipsePreferences store, IPathSelectionCompositeChange listener) {
+      super(parent, store);
+      this.listener = listener;
    }
 
    /**
     * Populate the panel.
     */
-   protected void createPreferenceContent() {
+   @Override
+   public void createPreferenceContent() {
       setLayout(new GridLayout(1, false));
 
       cssFileSelector = new PathSelectionComposite(this, SWT.NONE);
@@ -82,19 +79,19 @@ public class ReportParameterComposite extends Composite implements IPathSelectio
       cssFileSelector.setMessage("Define the CSS file:");
       cssFileSelector.setFeatures(IResource.FILE, new PathSelectionFileFilter(IResource.FILE, new String[] { "css" }));
       cssFileSelector.addPathChangerListener(this);
-      
+
       xsltFileSelector = new PathSelectionComposite(this, SWT.NONE);
       xsltFileSelector.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
       xsltFileSelector.setMessage(Messages.GameReportPreferencePage_pathSelectionComposite_1_message);
       xsltFileSelector.setFeatures(IResource.FILE, new PathSelectionFileFilter(IResource.FILE, new String[] { "xslt" }));
       xsltFileSelector.addPathChangerListener(this);
-      
+
       bannerFileSelector = new PathSelectionComposite(this, SWT.NONE);
       bannerFileSelector.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
       bannerFileSelector.setMessage(Messages.GameReportPreferencePage_pathSelectionComposite_message);
       bannerFileSelector.setFeatures(IResource.FILE, new PathSelectionFileFilter(IResource.FILE, new String[] { "jpg", "png" }));
       bannerFileSelector.addPathChangerListener(this);
-      
+
       exportAsHtmlBtn = new Button(this, SWT.RADIO);
       exportAsHtmlBtn.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
       exportAsHtmlBtn.setSelection(true);
@@ -112,7 +109,8 @@ public class ReportParameterComposite extends Composite implements IPathSelectio
    /**
     * Initialize the content of panel.
     */
-   private void initContent() {
+   @Override
+   protected void initContent() {
       ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
 
       cssFileSelector.setText(preferenceManager.getValue(store, ScorePreferenceConstants.GRW_CSS_FILE_PATH));
@@ -157,27 +155,26 @@ public class ReportParameterComposite extends Composite implements IPathSelectio
    /**
     * Build the error message.
     * 
-    * @param reportParameterComposite_rootMessage
-    * @param status
+    * @param rootMessage Message to display
+    * @param status status to add to the message
+    * 
     * @return String which contains the error message
     */
-   private String buildErrorMessage(String reportParameterComposite_rootMessage, PathSelectionCompositeStatus status) {
+   private String buildErrorMessage(String rootMessage, PathSelectionCompositeStatus status) {
       switch (status) {
       case BAD_FILE_NAME:
-         return NLS.bind(reportParameterComposite_rootMessage, Messages.NotAValidFileName);
+         return NLS.bind(rootMessage, Messages.NotAValidFileName);
       case NOT_A_FILE:
-         return NLS.bind(reportParameterComposite_rootMessage, Messages.NotAFile);
+         return NLS.bind(rootMessage, Messages.NotAFile);
       case BAD_FILE_TYPE:
-         return NLS.bind(reportParameterComposite_rootMessage, Messages.BadFileType);
+         return NLS.bind(rootMessage, Messages.BadFileType);
       default:
-         return NLS.bind(reportParameterComposite_rootMessage, Messages.undefinedError);
+         return NLS.bind(rootMessage, Messages.undefinedError);
       }
    }
 
-   /**
-    * Save values in the preferences
-    */
-   private void savePreferences() {
+   @Override
+   protected void savePreferences() {
       ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
 
       preferenceManager.setValue(store, ScorePreferenceConstants.GRW_CSS_FILE_PATH, cssFileSelector.getDisplayPath());
@@ -191,39 +188,18 @@ public class ReportParameterComposite extends Composite implements IPathSelectio
       }
    }
 
-   /**
-    * Perform apply button.
-    */
-   public void performApply() {
-      savePreferences();
-   }
-
-   /**
-    * Perform defaults button.
-    */
-   public void performDefaults() {
+   @Override
+   protected void setDefaultValues() {
       ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
-
       cssFileSelector.setText(preferenceManager.getDefaultValue(ScorePreferenceConstants.GRW_CSS_FILE_PATH));
       xsltFileSelector.setText(preferenceManager.getDefaultValue(ScorePreferenceConstants.GRW_XSLT_FILE_PATH));
       bannerFileSelector.setText(preferenceManager.getDefaultValue(ScorePreferenceConstants.GRW_BANNER_FILE_PATH));
    }
 
-   /**
-    * perform Ok button.
-    */
-   public void performOk() {
-      savePreferences();
-   }
-
    @Override
    public void pathSelectionChanged(PathSelectionCompositeStatus status) {
-      owner.pathSelectionChanged(status);
-   }
-
-   @Override
-   public void storePreferenceChange(IEclipsePreferences preferenceScope) {
-      store = preferenceScope;
-      initContent();
+      if (listener != null) {
+         listener.pathSelectionChanged(status);
+      }
    }
 }
