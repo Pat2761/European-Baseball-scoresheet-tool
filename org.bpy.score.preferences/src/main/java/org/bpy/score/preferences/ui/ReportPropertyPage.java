@@ -19,8 +19,8 @@
 package org.bpy.score.preferences.ui;
 
 import org.bpy.score.internationalization.preferences.Messages;
+import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.bpy.score.preferences.core.ScorePreferencesManager;
-import org.eclipse.core.internal.preferences.InstancePreferences;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.swt.widgets.Composite;
@@ -37,10 +37,21 @@ import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
+/**
+ * Class which manage the report generation property page.
+ * 
+ * @author Patrick BRIAND
+ */
 public class ReportPropertyPage extends PropertyPage implements IWorkbenchPropertyPage, IPathSelectionCompositeChange {
 
+   /** Reference on the SWT Composite for define the parameters */
    private ReportParameterComposite reportParameterComposite;
+   /** Button which specify is we are using project configuration */
+   private Button useProjectConfiguration;
    
+   /**
+    * Constructor of the class.
+    */
    public ReportPropertyPage() {
       // Nothing to do
    }
@@ -51,19 +62,25 @@ public class ReportPropertyPage extends PropertyPage implements IWorkbenchProper
       Composite composite = new Composite(parent, SWT.NONE);
       composite.setLayout(new GridLayout(1, false));
       
-      Composite composite_1 = new Composite(composite, SWT.NONE);
-      composite_1.setLayout(new GridLayout(3, false));
-      composite_1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+      Composite composite1 = new Composite(composite, SWT.NONE);
+      composite1.setLayout(new GridLayout(3, false));
+      composite1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
       
-      Button btnCheckButton = new Button(composite_1, SWT.CHECK);
-      btnCheckButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-      btnCheckButton.setText(Messages.EnableProjectSetting);
+      useProjectConfiguration = new Button(composite1, SWT.CHECK);
+      useProjectConfiguration.addSelectionListener(new SelectionAdapter() {
+         @Override
+         public void widgetSelected(SelectionEvent e) {
+            changeScopeLevel(useProjectConfiguration.getSelection());
+         }
+      });
+      useProjectConfiguration.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+      useProjectConfiguration.setText(Messages.EnableProjectSetting);
       
-      Label lblNewLabel = new Label(composite_1, SWT.NONE);
+      Label lblNewLabel = new Label(composite1, SWT.NONE);
       lblNewLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
-      lblNewLabel.setText(Messages.ReportPropertyPageParameters_lblNewLabel_text);
+      lblNewLabel.setText(""); //$NON-NLS-1$
       
-      Link link = new Link(composite_1, SWT.NONE);
+      Link link = new Link(composite1, SWT.NONE);
       link.addSelectionListener(new SelectionAdapter() {
          @Override
          public void widgetSelected(SelectionEvent e) {
@@ -76,9 +93,66 @@ public class ReportPropertyPage extends PropertyPage implements IWorkbenchProper
       IEclipsePreferences store = ScorePreferencesManager.getInstance().getProjectPreferenceStore();
       reportParameterComposite = new ReportParameterComposite(this, composite, store);
       reportParameterComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+
+      initContent();
       return composite;
    }
 
+   /**
+    * Initialize the content of the panel.
+    */
+   private void initContent() {
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+      IEclipsePreferences store = preferenceManager.getProjectPreferenceStore();
+      
+      Boolean useProjectSettings = preferenceManager.getBooleanValue(store, ScorePreferenceConstants.GRW_USE_REPORT_PROJECT_SETTING);
+      useProjectConfiguration.setSelection(useProjectSettings);
+      changeScopeLevel(useProjectSettings);
+   }
+
+   /**
+    * Change the scope level.
+    * @param projectScope scope level
+    */
+   protected void changeScopeLevel(boolean projectScope) {
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+      
+      IEclipsePreferences preferenceScope;
+      if (projectScope) {
+         preferenceScope = preferenceManager.getProjectPreferenceStore();
+      } else {
+         preferenceScope = preferenceManager.getWorkspacePreferenceStore();
+      }
+
+      if (preferenceScope != null) {
+         reportParameterComposite.storePreferenceChange(preferenceScope);
+      }
+      
+      setState(reportParameterComposite, projectScope);
+   }
+
+   /** 
+    * Change the state of parameter composite.
+    * 
+    * @param swtElement composite eelement
+    * @param projectScope state of the composite
+    */
+   private void setState(Composite swtElement, boolean projectScope) {
+      swtElement.setEnabled(projectScope);
+      for (Control child : swtElement.getChildren()) {
+         if (child instanceof Composite subComposite) {
+            setState(subComposite, projectScope);
+         } else {
+            child.setEnabled(projectScope);
+         }
+      }
+   }
+
+   /**
+    * Display the preference panel.
+    * 
+    * @param parent Parent composite
+    */
    protected void displayPreferencePage(Composite parent) {
       PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(parent.getShell(),
             "org.bpy.score.preference.reports.game", //$NON-NLS-N$
@@ -91,6 +165,7 @@ public class ReportPropertyPage extends PropertyPage implements IWorkbenchProper
 
    @Override
    protected void performApply() {
+      saveValues();
       reportParameterComposite.performApply();
       super.performApply();
    }
@@ -103,8 +178,22 @@ public class ReportPropertyPage extends PropertyPage implements IWorkbenchProper
 
    @Override
    public boolean performOk() {
+      saveValues();
       reportParameterComposite.performOk();
       return super.performOk();
+   }
+
+   /** 
+    * Memorize the parameters specific to this panel
+    * 
+    */
+   private void saveValues() {
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+      
+      boolean projectScope = useProjectConfiguration.getSelection();
+      IEclipsePreferences preferenceScope;
+      preferenceScope = preferenceManager.getProjectPreferenceStore();
+      preferenceManager.setValue(preferenceScope, ScorePreferenceConstants.GRW_USE_REPORT_PROJECT_SETTING, projectScope);
    }
 
    @Override

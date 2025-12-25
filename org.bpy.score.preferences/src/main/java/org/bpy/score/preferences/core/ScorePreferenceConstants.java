@@ -183,6 +183,14 @@ public class ScorePreferenceConstants {
    /** Parameter for memorize the flyout level error default value*/
    public static final String CPP_FLYOUT_CONTROL_DEFAULT_VALUE = CPP_FLYOUT_CONTROL_NONE;
    
+   /* --------------------------------------------------------------------------------------
+    * Project property used
+    * ------------------------------------------------------------------------------------- */
+   /** Parameter for memorize the use of the project setting for the report generation */
+   public static final String GRW_USE_REPORT_PROJECT_SETTING = "useReportProjectSetting";
+   /** Default value for : Parameter for memorize the use of the project setting for the report generation */
+   public static final boolean GRW_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE = false;
+   
 	static {
 
 		errorsDefinition.put(IGNORE, IGNORE_STR_TO_DISPLAY);

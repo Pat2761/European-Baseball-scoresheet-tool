@@ -102,9 +102,10 @@
 	<extension
 			point="org.eclipse.ui.propertyPages">
 		<page
-			class="org.bpy.score.club.ui.ClubExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="org.bpy.score.club.Club"
-			name="Club">
+        category="org.bpy.score.preferences.mainProperyPage"
+        class="org.bpy.score.club.ui.ClubExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+        id="org.bpy.score.club.Club"
+        name="Club">
 			<keywordReference id="org.bpy.score.club.ui.keyword_Club"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>

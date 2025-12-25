@@ -37,7 +37,7 @@ import org.eclipse.swt.layout.GridData;
  * 
  * @author Patrick BRIAND
  */
-public class ReportParameterComposite extends Composite implements IPathSelectionCompositeChange {
+public class ReportParameterComposite extends Composite implements IPathSelectionCompositeChange, IScopePreferenceChange {
 
    /** Logger of the class */
    public static final Logger logger = Logger.getLogger(ReportParameterComposite.class.getCanonicalName());
@@ -219,5 +219,11 @@ public class ReportParameterComposite extends Composite implements IPathSelectio
    @Override
    public void pathSelectionChanged(PathSelectionCompositeStatus status) {
       owner.pathSelectionChanged(status);
+   }
+
+   @Override
+   public void storePreferenceChange(IEclipsePreferences preferenceScope) {
+      store = preferenceScope;
+      initContent();
    }
 }

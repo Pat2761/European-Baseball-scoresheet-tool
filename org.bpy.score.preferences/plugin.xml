@@ -44,6 +44,7 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
+            category="org.bpy.score.preferences.mainProperyPage"
             class="org.bpy.score.preferences.ui.ReportPropertiesPageIntro"
             id="org.bpy.score.propertries"
             name="%preferences.preference_page.reports">
@@ -58,10 +59,15 @@
          </filter>
       </page>
       <page
-            category="org.bpy.score.propertries"
+            category="org.bpy.score.preferences.mainProperyPage"
             class="org.bpy.score.preferences.ui.ReportPropertyPage"
             id="org.bpy.score.property.reports.game"
             name="%preferences.preference_page.reports.game">
+      </page>
+      <page
+            class="org.bpy.score.preferences.ui.MainPropertyPage"
+            id="org.bpy.score.preferences.mainProperyPage"
+            name="%preferences.preference_page.score_sheet_tool">
       </page>
    </extension>
 

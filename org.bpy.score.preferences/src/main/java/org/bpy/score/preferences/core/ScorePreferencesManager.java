@@ -74,6 +74,9 @@ public class ScorePreferencesManager {
 
    /** Static code */
    static {
+      defaultValues.put(ScorePreferenceConstants.GRW_USE_REPORT_PROJECT_SETTING, ScorePreferenceConstants.GRW_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE);
+
+      
       defaultValues.put(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, ScorePreferenceConstants.GRW_BANNER_FILE_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_CSS_FILE_PATH, ScorePreferenceConstants.GRW_CSS_FILE_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY_DEFAULT);
@@ -342,6 +345,7 @@ public class ScorePreferencesManager {
     * 
     * @param store Preference store where is defined the parameter
     * @param key Parameter key
+    * @param rgb RGB value to save
     */
    public void setValue(IEclipsePreferences store, String key, RGB rgb) {
       String value = rgb.red + "," + rgb.green + "," + rgb.blue;
@@ -363,74 +367,6 @@ public class ScorePreferencesManager {
       return workspaceInstancePreferences.getBoolean(categoryName, false);
 
    }
-
-   /**
-    * Get preference instance. Return the Workspace preference or the project
-    * instance in function of the context
-    * 
-    * @param key name of preference
-    * @return an instance on a preference store
-    */
-//   private IEclipsePreferences getCurrentInstancePreference(String key) {
-//      if (useWorkSpacePreference) {
-//         return workspaceInstancePreferences;
-//      } else {
-//
-//         try {
-//            IProject currentProject = getSelectedProject();
-//            if (currentProject == null) {
-//               return workspaceInstancePreferences;
-//
-//            } else {
-//               String propertyPage = getSelectedPropertyPage(key);
-//               String specificSettingsName = getSpecificSettingState(propertyPage);
-//               boolean useSpecific = getScopeSetting(specificSettingsName);
-//
-//               if (useSpecific) {
-//                  return new ProjectScope(currentProject).getNode(propertyPage);
-//               } else {
-//                  return workspaceInstancePreferences;
-//               }
-//            }
-//         } catch (ScorePreferenceManagerException ex) {
-//            logger.log(Level.SEVERE, ex.getMessage());
-//         }
-//      }
-//      return workspaceInstancePreferences;
-//   }
-
-   /**
-    * Get name of preference which is used for select project properties or
-    * workspace preference
-    * 
-    * @param propertyPage name of the property page
-    * 
-    * @return Preference name
-    * @throws ScorePreferenceManagerException if not found
-    */
-//   private String getSpecificSettingState(String propertyPage) throws ScorePreferenceManagerException {
-//      String specificSettings = useSpecificSettingsParameter.get(propertyPage);
-//      if (propertyPage == null) {
-//         throw new ScorePreferenceManagerException(NLS.bind(Messages.cannotFindSpecificSettingsForKey, propertyPage));
-//      }
-//
-//      return specificSettings;
-//   }
-
-   /**
-    * Get the property page id in function of the name of the parameter
-    * 
-    * @param key name of the parameter
-    * @return name of property page
-    * @throws ScorePreferenceManagerException if not found
-    */
-//   private String getSelectedPropertyPage(String key) throws ScorePreferenceManagerException {
-//      String propertyPage = parameterLocation.get(key);
-//      if (propertyPage == null) {
-//         throw new ScorePreferenceManagerException(NLS.bind(Messages.cannotFindPropertyPageForKey, key));
-//      }
-//      return propertyPage;
-//   }
 
    /**
     * Retrieve the project linked to a selection.
