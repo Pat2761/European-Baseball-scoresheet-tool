@@ -42,18 +42,18 @@ import org.eclipse.ui.dialogs.PropertyPage;
  * 
  * @author Patrick BRIAND
  */
-public class GraphicalPropertyPage extends PropertyPage implements IWorkbenchPropertyPage {
+public class ControlPropertyPage extends PropertyPage implements IWorkbenchPropertyPage {
 
    /** Button which specify is we are using project configuration */
    private Button useProjectConfiguration;
    /** Reference on the SWT Composite for define the parameters */
-   private GraphicalPreferenceComposite graphicalPreferenceComposite;
+   private ControlPreferenceComposite controlPreferenceComposite;
 
    /**
     * Constructor of the class.
     */
-  public GraphicalPropertyPage() {
-      // Nothing to do
+   public ControlPropertyPage() {
+      // nothing to do
    }
 
    @Override
@@ -89,8 +89,8 @@ public class GraphicalPropertyPage extends PropertyPage implements IWorkbenchPro
       link.setText("<a>" + Messages.ConfigureWorkspaceSetting + "</a>");//$NON-NLS-1$ //$NON-NLS-2$
 
       IEclipsePreferences store = ScorePreferencesManager.getInstance().getProjectPreferenceStore();
-      graphicalPreferenceComposite = new GraphicalPreferenceComposite(composite, store);
-      graphicalPreferenceComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+      controlPreferenceComposite = new ControlPreferenceComposite(composite, store);
+      controlPreferenceComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 
       initContent();
       return composite;
@@ -103,11 +103,10 @@ public class GraphicalPropertyPage extends PropertyPage implements IWorkbenchPro
       ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
       IEclipsePreferences store = preferenceManager.getProjectPreferenceStore();
 
-      Boolean useProjectSettings = preferenceManager.getBooleanValue(store, ScorePreferenceConstants.GPP_USE_REPORT_PROJECT_SETTING);
+      Boolean useProjectSettings = preferenceManager.getBooleanValue(store, ScorePreferenceConstants.CPP_USE_REPORT_PROJECT_SETTING);
       useProjectConfiguration.setSelection(useProjectSettings);
       changeScopeLevel(useProjectSettings);
    }
-
    /**
     * Change the scope level.
     * @param projectScope scope level
@@ -123,10 +122,10 @@ public class GraphicalPropertyPage extends PropertyPage implements IWorkbenchPro
       }
 
       if (preferenceScope != null) {
-         graphicalPreferenceComposite.storePreferenceChange(preferenceScope);
+         controlPreferenceComposite.storePreferenceChange(preferenceScope);
       }
 
-      setState(graphicalPreferenceComposite, projectScope);
+      setState(controlPreferenceComposite, projectScope);
    }
 
    /**
@@ -152,7 +151,7 @@ public class GraphicalPropertyPage extends PropertyPage implements IWorkbenchPro
     * @param parent Parent composite
     */
    protected void displayPreferencePage(Composite parent) {
-      PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(parent.getShell(), "org.bpy.score.rcp.preferences.graphics", //$NON-NLS-1$
+      PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(parent.getShell(), "org.bpy.score.rcp.preferences.controls", //$NON-NLS-1$
             null, null);
       if (dialog != null) {
          dialog.open();
@@ -162,20 +161,20 @@ public class GraphicalPropertyPage extends PropertyPage implements IWorkbenchPro
    @Override
    protected void performApply() {
       saveValues();
-      graphicalPreferenceComposite.performApply();
+      controlPreferenceComposite.performApply();
       super.performApply();
    }
 
    @Override
    protected void performDefaults() {
-      graphicalPreferenceComposite.performDefaults();
+      controlPreferenceComposite.performDefaults();
       super.performDefaults();
    }
 
    @Override
    public boolean performOk() {
       saveValues();
-      graphicalPreferenceComposite.performOk();
+      controlPreferenceComposite.performOk();
       return super.performOk();
    }
 
@@ -189,7 +188,6 @@ public class GraphicalPropertyPage extends PropertyPage implements IWorkbenchPro
       boolean projectScope = useProjectConfiguration.getSelection();
       IEclipsePreferences preferenceScope;
       preferenceScope = preferenceManager.getProjectPreferenceStore();
-      preferenceManager.setValue(preferenceScope, ScorePreferenceConstants.GRW_USE_REPORT_PROJECT_SETTING, projectScope);
+      preferenceManager.setValue(preferenceScope, ScorePreferenceConstants.CPP_USE_REPORT_PROJECT_SETTING, projectScope);
    }
-
 }

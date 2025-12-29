@@ -46,7 +46,7 @@
       <page
             category="org.bpy.score.preferences.mainProperyPage"
             class="org.bpy.score.preferences.ui.ReportPropertiesPageIntro"
-            id="org.bpy.score.propertries"
+            id="org.bpy.score.propertries.report"
             name="%preferences.preference_page.reports">
          <enabledWhen>
             <adapt
@@ -59,7 +59,7 @@
          </filter>
       </page>
       <page
-            category="org.bpy.score.preferences.mainProperyPage"
+            category="org.bpy.score.propertries.report"
             class="org.bpy.score.preferences.ui.ReportPropertyPage"
             id="org.bpy.score.property.reports.game"
             name="%preferences.preference_page.reports.game">
@@ -74,6 +74,12 @@
             class="org.bpy.score.preferences.ui.GraphicalPropertyPage"
             id="org.bpy.score.property.graphics"
             name="%preferences.preference_page.graphics">
+      </page>
+      <page
+            category="org.bpy.score.preferences.mainProperyPage"
+            class="org.bpy.score.preferences.ui.ControlPropertyPage"
+            id="org.bpy.score.preferences.properties.control"
+            name="%preferences.preference_page.controls">
       </page>
    </extension>
 

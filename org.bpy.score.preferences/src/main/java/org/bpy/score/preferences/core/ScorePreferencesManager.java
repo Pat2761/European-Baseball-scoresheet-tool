@@ -91,6 +91,7 @@ public class ScorePreferencesManager {
       defaultValues.put(ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE, ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE_DEFAULT_VALUE);
       defaultValues.put(ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET, ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET_DEFAULT_VALUE);
 
+      defaultValues.put(ScorePreferenceConstants.CPP_USE_REPORT_PROJECT_SETTING, ScorePreferenceConstants.CPP_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE);
       defaultValues.put(ScorePreferenceConstants.CPP_FLYOUT_CONTROL, ScorePreferenceConstants.CPP_FLYOUT_CONTROL_DEFAULT_VALUE);
 
       useSpecificSettingsParameter.put(ScorePreferenceConstants.GAME_REPORT_WIZARD, ScorePreferenceConstants.GRW_PROJECT_SCOPE);

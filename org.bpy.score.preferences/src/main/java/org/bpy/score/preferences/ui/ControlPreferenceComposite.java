@@ -18,8 +18,6 @@
  */
 package org.bpy.score.preferences.ui;
 
-import java.util.Arrays;
-
 import org.bpy.score.internationalization.preferences.Messages;
 import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.bpy.score.preferences.core.ScorePreferencesManager;
@@ -37,10 +35,7 @@ import org.eclipse.swt.layout.GridData;
  * @author Patrick BRIAND
  *
  */
-public class ControlPreferenceComposite extends Composite {
-
-   /** Preference store use for the preferences */
-   private IEclipsePreferences preferenceStore;
+public class ControlPreferenceComposite extends AbstractScorePreferenceComposite implements IScopePreferenceChange {
 
    /** SWT Widget for select compile level error on the fly out */
    private Combo flyOutLocation;
@@ -57,15 +52,14 @@ public class ControlPreferenceComposite extends Composite {
     * @wbp.parser.constructor
     */
    public ControlPreferenceComposite(Composite parent, IEclipsePreferences preferenceStore) {
-      super(parent, SWT.NONE);
-      this.preferenceStore = preferenceStore;
-      createContents();
+      super(parent, preferenceStore);
    }
 
    /**
     * Create the content of the panel.
     */
-   protected void createContents() {
+   @Override
+   public void createPreferenceContent() {
 
       setLayout(new GridLayout(2, false));
 
@@ -85,38 +79,12 @@ public class ControlPreferenceComposite extends Composite {
    /**
     * Initialize the content with the preference values
     */
-   private void initContent() {
+   @Override
+   protected void initContent() {
       ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
 
-      String level = preferenceManager.getValue(preferenceStore, ScorePreferenceConstants.CPP_FLYOUT_CONTROL);
+      String level = preferenceManager.getValue(store, ScorePreferenceConstants.CPP_FLYOUT_CONTROL);
       flyOutLocation.select(getCompileIndexOf(level));
-   }
-
-   /**
-    * Perform the apply button and save values in the preferences.
-    */
-   public void performApply() {
-      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
-
-      String compileLevel = getCompileLevel(flyOutLocation.getSelectionIndex());
-      preferenceManager.setValue(preferenceStore, ScorePreferenceConstants.CPP_FLYOUT_CONTROL, compileLevel);
-   }
-
-   /**
-    * Perform default button and restore defaults values.
-    */
-   public void performDefaults() {
-      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
-
-      String defaultValue = preferenceManager.getDefaultValue(ScorePreferenceConstants.CPP_FLYOUT_CONTROL);
-      flyOutLocation.select(getCompileIndexOf(defaultValue));
-   }
-
-   /**
-    * Perform OK button and apply new values in the preferences.
-    */
-   public void performOk() {
-      performApply();
    }
 
    /**
@@ -156,5 +124,21 @@ public class ControlPreferenceComposite extends Composite {
       } else {
          return 0;
       }
+   }
+
+   @Override
+   protected void savePreferences() {
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+
+      String compileLevel = getCompileLevel(flyOutLocation.getSelectionIndex());
+      preferenceManager.setValue(store, ScorePreferenceConstants.CPP_FLYOUT_CONTROL, compileLevel);
+   }
+
+   @Override
+   protected void setDefaultValues() {
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+
+      String defaultValue = preferenceManager.getDefaultValue(ScorePreferenceConstants.CPP_FLYOUT_CONTROL);
+      flyOutLocation.select(getCompileIndexOf(defaultValue));
    }
 }
