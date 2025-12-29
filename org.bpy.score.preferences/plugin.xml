@@ -69,6 +69,12 @@
             id="org.bpy.score.preferences.mainProperyPage"
             name="%preferences.preference_page.score_sheet_tool">
       </page>
+      <page
+            category="org.bpy.score.preferences.mainProperyPage"
+            class="org.bpy.score.preferences.ui.GraphicalPropertyPage"
+            id="org.bpy.score.property.graphics"
+            name="%preferences.preference_page.graphics">
+      </page>
    </extension>
 
 </plugin>

@@ -190,6 +190,11 @@ public class ScorePreferenceConstants {
    public static final String GRW_USE_REPORT_PROJECT_SETTING = "useReportProjectSetting";
    /** Default value for : Parameter for memorize the use of the project setting for the report generation */
    public static final boolean GRW_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE = false;
+
+   /** Parameter for memorize the use of the project setting for the graphical configuration */
+   public static final String GPP_USE_REPORT_PROJECT_SETTING = "useReportProjectSetting";
+   /** Default value for : Parameter for memorize the use of the project setting for the graphical configuration */
+   public static final boolean GPP_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE = false;
    
 	static {
 

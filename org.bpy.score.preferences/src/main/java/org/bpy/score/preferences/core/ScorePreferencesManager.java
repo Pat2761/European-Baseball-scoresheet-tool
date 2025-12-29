@@ -75,8 +75,6 @@ public class ScorePreferencesManager {
    /** Static code */
    static {
       defaultValues.put(ScorePreferenceConstants.GRW_USE_REPORT_PROJECT_SETTING, ScorePreferenceConstants.GRW_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE);
-
-      
       defaultValues.put(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, ScorePreferenceConstants.GRW_BANNER_FILE_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_CSS_FILE_PATH, ScorePreferenceConstants.GRW_CSS_FILE_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY_DEFAULT);
@@ -86,6 +84,7 @@ public class ScorePreferencesManager {
       defaultValues.put(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, ScorePreferenceConstants.GRW_XSLT_FILE_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GRW_TYPE_XML);
 
+      defaultValues.put(ScorePreferenceConstants.GPP_USE_REPORT_PROJECT_SETTING, ScorePreferenceConstants.GPP_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE);
       defaultValues.put(ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE, ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE_DEFAULT_VALUE);
       defaultValues.put(ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE, ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE_DEFAULT_VALUE);
       defaultValues.put(ScorePreferenceConstants.GPP_DISPLAY_STATISTICS, ScorePreferenceConstants.GPP_FULL_STATISTC_DISPLAY);

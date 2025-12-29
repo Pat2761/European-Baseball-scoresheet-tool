@@ -222,6 +222,7 @@ public class Messages extends NLS {
    public static String GraphicalPreferencePage_NewStyleSheetDisplay;
    /** Preview label */
    public static String GraphicalPreferencePage_preview;
+   public static String GraphicalPropertyPage_lblNewLabel_text;
    
 	/**
 	 * Initialize the internationalization

@@ -40,7 +40,7 @@ import org.eclipse.swt.custom.ScrolledComposite;
  * @author Patrick BRIAND
  *
  */
-public class GraphicalPreferenceComposite extends Composite implements IScopePreferenceChange {
+public class GraphicalPreferenceComposite extends AbstractScorePreferenceComposite implements IScopePreferenceChange {
 
    /** Logger of the class */
    public static final Logger logger = Logger.getLogger(GraphicalPreferenceComposite.class.getCanonicalName());
@@ -49,16 +49,10 @@ public class GraphicalPreferenceComposite extends Composite implements IScopePre
    private ColorSelector lineColorSelector;
    /** SWT composite for select the text color */
    private ColorSelector textColorSelector;
-
-   /** Preference store use for the preferences */
-   private IEclipsePreferences preferenceStore;
-
    /** SWT Combo for select the level of statistics */
    private Combo displayStatistics;
-
    /** SWT Button for define the usage a the new style sheet */
    private Button useNewSheetStyle;
-
    /** SWT Button use for allow the display the pitcher state */
    private Button displayPitcherWinner;
 
@@ -71,15 +65,14 @@ public class GraphicalPreferenceComposite extends Composite implements IScopePre
     * @wbp.parser.constructor
     */
    public GraphicalPreferenceComposite(Composite parent, IEclipsePreferences preferenceStore) {
-      super(parent, SWT.NONE);
-      this.preferenceStore = preferenceStore;
-      createContents();
+      super(parent, preferenceStore);
    }
 
    /**
     * Create the content of the panel.
     */
-   private void createContents() {
+   @Override
+   public void createPreferenceContent() {
 
       this.setLayout(new GridLayout(3, false));
 
@@ -142,12 +135,13 @@ public class GraphicalPreferenceComposite extends Composite implements IScopePre
    /**
     * Initialize the content with the preference values
     */
-   private void initContent() {
+   @Override
+   protected void initContent() {
       ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
 
-      RGB rgb = preferenceManager.getRGBValue(preferenceStore, ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE);
+      RGB rgb = preferenceManager.getRGBValue(store, ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE);
       lineColorSelector.setRGB(rgb);
-      rgb = preferenceManager.getRGBValue(preferenceStore, ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE);
+      rgb = preferenceManager.getRGBValue(store, ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE);
       textColorSelector.setRGB(rgb);
 
       displayStatistics.removeAll();
@@ -158,7 +152,7 @@ public class GraphicalPreferenceComposite extends Composite implements IScopePre
       displayStatistics.setData(Messages.GraphicalPreferencePage_Sf1Display, ScorePreferenceConstants.GPP_SF1_STATISTC_DISPLAY);
       displayStatistics.setData(Messages.GraphicalPreferencePage_FullDisplay, ScorePreferenceConstants.GPP_FULL_STATISTC_DISPLAY);
 
-      String staticticLevel = preferenceManager.getValue(preferenceStore, ScorePreferenceConstants.GPP_DISPLAY_STATISTICS);
+      String staticticLevel = preferenceManager.getValue(store, ScorePreferenceConstants.GPP_DISPLAY_STATISTICS);
       switch (staticticLevel){
       case ScorePreferenceConstants.GPP_NO_STATISTC_DISPLAY:
          displayStatistics.select(0);
@@ -174,31 +168,15 @@ public class GraphicalPreferenceComposite extends Composite implements IScopePre
          break;
       }
       
-      useNewSheetStyle.setSelection(preferenceManager.getBooleanValue(preferenceStore, ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET));
-      displayPitcherWinner.setSelection(preferenceManager.getBooleanValue(preferenceStore, ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE));
-   }
-
-   /**
-    * Perform the apply button and save values in the preferences.
-    */
-   public void performApply() {
-      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
-
-      preferenceManager.setValue(preferenceStore, ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE, lineColorSelector.getRGB());
-      preferenceManager.setValue(preferenceStore, ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE, textColorSelector.getRGB());
-
-      int selectedStatisticIndex = displayStatistics.getSelectionIndex();
-      String selectedValue = displayStatistics.getItem(selectedStatisticIndex);
-      preferenceManager.setValue(preferenceStore, ScorePreferenceConstants.GPP_DISPLAY_STATISTICS, (String) displayStatistics.getData(selectedValue));
-
-      preferenceManager.setValue(preferenceStore, ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE, displayPitcherWinner.getSelection());
-      preferenceManager.setValue(preferenceStore, ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET, useNewSheetStyle.getSelection());
+      useNewSheetStyle.setSelection(preferenceManager.getBooleanValue(store, ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET));
+      displayPitcherWinner.setSelection(preferenceManager.getBooleanValue(store, ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE));
    }
 
    /**
     * Perform default button and restore defaults values.
     */
-   public void performDefaults() {
+   @Override
+   public void setDefaultValues() {
       ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
 
       lineColorSelector.setRGB(preferenceManager.getDefaultRGBValue(ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE));
@@ -222,19 +200,26 @@ public class GraphicalPreferenceComposite extends Composite implements IScopePre
 
       displayPitcherWinner.setSelection(preferenceManager.getBooleanDefaultValue(ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE));
       useNewSheetStyle.setSelection(preferenceManager.getBooleanDefaultValue(ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET));
-      
-   }
-
-   /**
-    * Perform OK button and apply new values in the preferences.
-    */
-   public void performOk() {
-      performApply();
    }
 
    @Override
-   public void storePreferenceChange(IEclipsePreferences preferenceScope) {
-      this.preferenceStore = preferenceScope;
+   public void storePreferenceChange(IEclipsePreferences preferenceScore) {
+      store = preferenceScore;
       initContent();
+   }
+
+   @Override
+   protected void savePreferences() {
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+
+      preferenceManager.setValue(store, ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE, lineColorSelector.getRGB());
+      preferenceManager.setValue(store, ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE, textColorSelector.getRGB());
+
+      int selectedStatisticIndex = displayStatistics.getSelectionIndex();
+      String selectedValue = displayStatistics.getItem(selectedStatisticIndex);
+      preferenceManager.setValue(store, ScorePreferenceConstants.GPP_DISPLAY_STATISTICS, (String) displayStatistics.getData(selectedValue));
+
+      preferenceManager.setValue(store, ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE, displayPitcherWinner.getSelection());
+      preferenceManager.setValue(store, ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET, useNewSheetStyle.getSelection());
    }
 }
