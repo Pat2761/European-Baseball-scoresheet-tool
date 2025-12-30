@@ -103,7 +103,7 @@ public class ControlPropertyPage extends PropertyPage implements IWorkbenchPrope
       ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
       IEclipsePreferences store = preferenceManager.getProjectPreferenceStore();
 
-      Boolean useProjectSettings = preferenceManager.getBooleanValue(store, ScorePreferenceConstants.CPP_USE_REPORT_PROJECT_SETTING);
+      Boolean useProjectSettings = preferenceManager.getBooleanValue(store, ScorePreferenceConstants.CPP_USE_CONTROL_PROJECT_SETTING);
       useProjectConfiguration.setSelection(useProjectSettings);
       changeScopeLevel(useProjectSettings);
    }
@@ -167,6 +167,11 @@ public class ControlPropertyPage extends PropertyPage implements IWorkbenchPrope
 
    @Override
    protected void performDefaults() {
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+      Boolean projectScope = preferenceManager.getDefaultBooleanValue(ScorePreferenceConstants.CPP_USE_CONTROL_PROJECT_SETTING);
+      useProjectConfiguration.setSelection(projectScope);
+      changeScopeLevel(projectScope);
+
       controlPreferenceComposite.performDefaults();
       super.performDefaults();
    }
@@ -188,6 +193,6 @@ public class ControlPropertyPage extends PropertyPage implements IWorkbenchPrope
       boolean projectScope = useProjectConfiguration.getSelection();
       IEclipsePreferences preferenceScope;
       preferenceScope = preferenceManager.getProjectPreferenceStore();
-      preferenceManager.setValue(preferenceScope, ScorePreferenceConstants.CPP_USE_REPORT_PROJECT_SETTING, projectScope);
+      preferenceManager.setValue(preferenceScope, ScorePreferenceConstants.CPP_USE_CONTROL_PROJECT_SETTING, projectScope);
    }
 }

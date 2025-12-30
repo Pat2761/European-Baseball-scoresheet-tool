@@ -84,14 +84,14 @@ public class ScorePreferencesManager {
       defaultValues.put(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, ScorePreferenceConstants.GRW_XSLT_FILE_DEFAULT);
       defaultValues.put(ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GRW_TYPE_XML);
 
-      defaultValues.put(ScorePreferenceConstants.GPP_USE_REPORT_PROJECT_SETTING, ScorePreferenceConstants.GPP_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE);
+      defaultValues.put(ScorePreferenceConstants.GPP_USE_GRAPHICAL_PROJECT_SETTING, ScorePreferenceConstants.GPP_USE_GRAPHICAL_PROJECT_SETTING_DEFAULT_VALUE);
       defaultValues.put(ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE, ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE_DEFAULT_VALUE);
       defaultValues.put(ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE, ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE_DEFAULT_VALUE);
       defaultValues.put(ScorePreferenceConstants.GPP_DISPLAY_STATISTICS, ScorePreferenceConstants.GPP_FULL_STATISTC_DISPLAY);
       defaultValues.put(ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE, ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE_DEFAULT_VALUE);
       defaultValues.put(ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET, ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET_DEFAULT_VALUE);
 
-      defaultValues.put(ScorePreferenceConstants.CPP_USE_REPORT_PROJECT_SETTING, ScorePreferenceConstants.CPP_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE);
+      defaultValues.put(ScorePreferenceConstants.CPP_USE_CONTROL_PROJECT_SETTING, ScorePreferenceConstants.CPP_USE_CONTROL_PROJECT_SETTING_DEFAULT_VALUE);
       defaultValues.put(ScorePreferenceConstants.CPP_FLYOUT_CONTROL, ScorePreferenceConstants.CPP_FLYOUT_CONTROL_DEFAULT_VALUE);
 
       useSpecificSettingsParameter.put(ScorePreferenceConstants.GAME_REPORT_WIZARD, ScorePreferenceConstants.GRW_PROJECT_SCOPE);
@@ -262,7 +262,7 @@ public class ScorePreferencesManager {
     * @param key key value of the preferences
     * @return boolean value
     */
-   public Boolean getBooleanDefaultValue(String key) {
+   public Boolean getDefaultBooleanValue(String key) {
       Object defaultValue = defaultValues.get(key);
 
       return (boolean) defaultValue;

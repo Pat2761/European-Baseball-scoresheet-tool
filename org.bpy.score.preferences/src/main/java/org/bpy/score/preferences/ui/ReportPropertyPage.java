@@ -172,6 +172,11 @@ public class ReportPropertyPage extends PropertyPage implements IWorkbenchProper
 
    @Override
    protected void performDefaults() {
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+      Boolean projectScope = preferenceManager.getDefaultBooleanValue(ScorePreferenceConstants.GRW_USE_REPORT_PROJECT_SETTING);
+      useProjectConfiguration.setSelection(projectScope);
+      changeScopeLevel(projectScope);
+ 
       reportParameterComposite.performDefaults();
       super.performDefaults();
    }

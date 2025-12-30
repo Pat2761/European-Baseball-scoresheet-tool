@@ -103,7 +103,7 @@ public class GraphicalPropertyPage extends PropertyPage implements IWorkbenchPro
       ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
       IEclipsePreferences store = preferenceManager.getProjectPreferenceStore();
 
-      Boolean useProjectSettings = preferenceManager.getBooleanValue(store, ScorePreferenceConstants.GPP_USE_REPORT_PROJECT_SETTING);
+      Boolean useProjectSettings = preferenceManager.getBooleanValue(store, ScorePreferenceConstants.GPP_USE_GRAPHICAL_PROJECT_SETTING);
       useProjectConfiguration.setSelection(useProjectSettings);
       changeScopeLevel(useProjectSettings);
    }
@@ -168,6 +168,11 @@ public class GraphicalPropertyPage extends PropertyPage implements IWorkbenchPro
 
    @Override
    protected void performDefaults() {
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+      Boolean projectScope = preferenceManager.getDefaultBooleanValue(ScorePreferenceConstants.GPP_USE_GRAPHICAL_PROJECT_SETTING);
+      useProjectConfiguration.setSelection(projectScope);
+      changeScopeLevel(projectScope);
+      
       graphicalPreferenceComposite.performDefaults();
       super.performDefaults();
    }
@@ -189,7 +194,7 @@ public class GraphicalPropertyPage extends PropertyPage implements IWorkbenchPro
       boolean projectScope = useProjectConfiguration.getSelection();
       IEclipsePreferences preferenceScope;
       preferenceScope = preferenceManager.getProjectPreferenceStore();
-      preferenceManager.setValue(preferenceScope, ScorePreferenceConstants.GRW_USE_REPORT_PROJECT_SETTING, projectScope);
+      preferenceManager.setValue(preferenceScope, ScorePreferenceConstants.GPP_USE_GRAPHICAL_PROJECT_SETTING, projectScope);
    }
 
 }

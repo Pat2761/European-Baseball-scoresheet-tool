@@ -192,14 +192,14 @@ public class ScorePreferenceConstants {
    public static final boolean GRW_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE = false;
 
    /** Parameter for memorize the use of the project setting for the graphical configuration */
-   public static final String GPP_USE_REPORT_PROJECT_SETTING = "useReportProjectSetting";
+   public static final String GPP_USE_GRAPHICAL_PROJECT_SETTING = "useGraphicalProjectSetting";
    /** Default value for : Parameter for memorize the use of the project setting for the graphical configuration */
-   public static final boolean GPP_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE = false;
+   public static final boolean GPP_USE_GRAPHICAL_PROJECT_SETTING_DEFAULT_VALUE = false;
 
    /** Parameter for memorize the use of the project setting for the control on the game */
-   public static final String CPP_USE_REPORT_PROJECT_SETTING = "useReportProjectSetting";
+   public static final String CPP_USE_CONTROL_PROJECT_SETTING = "useControlProjectSetting";
    /** Default value for : Parameter for memorize the use of the project setting for the control on the game*/
-   public static final boolean CPP_USE_REPORT_PROJECT_SETTING_DEFAULT_VALUE = false;
+   public static final boolean CPP_USE_CONTROL_PROJECT_SETTING_DEFAULT_VALUE = false;
    
 	static {
 

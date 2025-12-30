@@ -198,8 +198,8 @@ public class GraphicalPreferenceComposite extends AbstractScorePreferenceComposi
          break;
       }
 
-      displayPitcherWinner.setSelection(preferenceManager.getBooleanDefaultValue(ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE));
-      useNewSheetStyle.setSelection(preferenceManager.getBooleanDefaultValue(ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET));
+      displayPitcherWinner.setSelection(preferenceManager.getDefaultBooleanValue(ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE));
+      useNewSheetStyle.setSelection(preferenceManager.getDefaultBooleanValue(ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET));
    }
 
    @Override
