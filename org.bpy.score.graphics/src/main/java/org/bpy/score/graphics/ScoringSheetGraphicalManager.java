@@ -68,22 +68,12 @@ import org.bpy.score.graphics.MultiplePlayContainer.DIRECTION;
 import org.bpy.score.internationalization.graphics.Messages;
 import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.bpy.score.preferences.core.ScorePreferencesManager;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.graphics.RGB;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.texteditor.ITextEditor;
 import org.osgi.framework.Bundle;
-import org.eclipse.ui.IFileEditorInput;
 /**
  * This class draw the scoring sheet in a graphical context.
  *
@@ -716,6 +706,9 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
    /** Use or not use the new style sheet */
    private boolean showNewStyleSheet;
 
+   /** Statistic level to display */
+   private String statistiqueLevel;
+
    /**
     * Initialize the class. Create fonts and initialize some fields
     * 
@@ -912,6 +905,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
       colorWriter = new Color(rgbWrite.red, rgbWrite.green, rgbWrite.blue);
 
       showNewStyleSheet  = preferenceManager.getBooleanValue(preferenceStore, ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET);
+      statistiqueLevel = preferenceManager.getValue(preferenceStore, ScorePreferenceConstants.GPP_DISPLAY_STATISTICS);
    }
 
    /**
@@ -3211,7 +3205,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
       g2.setColor(colorWriter);
 
       Point pointDrawPosition = getPosition(graphicalPosition.x, graphicalPosition.y);
-      if ((isEarned != null) && (EngineConstants.FULL_STATS.equals(EngineConstants.graphicsShowStatistiques))) {
+      if ((isEarned != null) && (ScorePreferenceConstants.GPP_FULL_STATISTC_DISPLAY.equals(statistiqueLevel))) {
 
          if ("earned".equals(isEarned)) { //$NON-NLS-1$
             Polygon polygon = new Polygon();
@@ -5099,7 +5093,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
     */
    protected void fillControlPart(TeamStatistic teamStats, TeamStatistic oppositStats) {
 
-      if (!EngineConstants.NO_STATS.equals(EngineConstants.graphicsShowStatistiques)) {
+      if (!ScorePreferenceConstants.GPP_NO_STATISTC_DISPLAY.equals(statistiqueLevel)) {
          OffensiveStatistic offensiveStats = teamStats.getTotalOffensiveStatistic();
          double heigthLine = HEIGHT_LINE * FACTOR_CORRECTIF;
          double widthLine = WIDTH_LINE * FACTOR_CORRECTIF;
@@ -5152,7 +5146,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
     */
    protected void fillTeamStatistics(TeamStatistic teamStats, LineupManager lineup) {
 
-      if (EngineConstants.FULL_STATS.equals(EngineConstants.graphicsShowStatistiques)) {
+      if (ScorePreferenceConstants.GPP_FULL_STATISTC_DISPLAY.equals(statistiqueLevel)) {
          fillOffensiveStatistics(teamStats, teamStats.getTotalOffensiveStatistic(), lineup);
          fillDefensivesStatistics(teamStats.getTotalDefensiveStatistic(), lineup);
          fillPitcherStatistics(teamStats.getPitchers(), teamStats.getTotalPitcherStatistic());
@@ -5520,8 +5514,8 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
     */
    private void fillGeneralStatistics(InninStatictic inningStat, int inningCounter, int columnPosition) {
 
-      if (EngineConstants.FULL_STATS.equals(EngineConstants.graphicsShowStatistiques)
-            || EngineConstants.SF1_STATS.equals(EngineConstants.graphicsShowStatistiques)) {
+      if (ScorePreferenceConstants.GPP_FULL_STATISTC_DISPLAY.equals(statistiqueLevel)
+            || ScorePreferenceConstants.GPP_SF1_STATISTC_DISPLAY.equals(statistiqueLevel)) {
          double offset = 34.6 / 2;
          g2.setColor(colorWriter);
 
@@ -5574,7 +5568,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
             try {
                putInningStatValue(inningStat.getInningStat().getAtBats(), actionAreaHorizontal[columnPosition] + offset, VERTICAL_033);
                putInningStatValue(inningStat.getInningStat().getRuns(), actionAreaHorizontal[columnPosition] + offset, VERTICAL_034);
-               if (EngineConstants.FULL_STATS.equals(EngineConstants.graphicsShowStatistiques)) {
+               if (ScorePreferenceConstants.GPP_FULL_STATISTC_DISPLAY.equals(statistiqueLevel)) {
                   putInningStatValue(inningStat.getInningStat().getEarnedRuns(), actionAreaHorizontal[columnPosition] + offset, VERTICAL_035);
                }
                putInningStatValue(inningStat.getInningStat().getHits(), actionAreaHorizontal[columnPosition] + offset, VERTICAL_036);
@@ -5589,7 +5583,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 
             putInningStatValue(inningStat.getInningStat().getAtBats(), actionAreaHorizontal[columnPosition], VERTICAL_033);
             putInningStatValue(inningStat.getInningStat().getRuns(), actionAreaHorizontal[columnPosition], VERTICAL_034);
-            if (EngineConstants.FULL_STATS.equals(EngineConstants.graphicsShowStatistiques)) {
+            if (ScorePreferenceConstants.GPP_FULL_STATISTC_DISPLAY.equals(statistiqueLevel)) {
                putInningStatValue(inningStat.getInningStat().getEarnedRuns(), actionAreaHorizontal[columnPosition], VERTICAL_035);
             }
             putInningStatValue(inningStat.getInningStat().getHits(), actionAreaHorizontal[columnPosition], VERTICAL_036);
@@ -5599,7 +5593,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 
             putInningStatValue(inningStat.getCumulativeInningStat().getAtBats(), actionAreaHorizontal[columnPosition] + offset, VERTICAL_033);
             putInningStatValue(inningStat.getCumulativeInningStat().getRuns(), actionAreaHorizontal[columnPosition] + offset, VERTICAL_034);
-            if (EngineConstants.FULL_STATS.equals(EngineConstants.graphicsShowStatistiques)) {
+            if (ScorePreferenceConstants.GPP_FULL_STATISTC_DISPLAY.equals(statistiqueLevel)) {
                putInningStatValue(inningStat.getCumulativeInningStat().getEarnedRuns(), actionAreaHorizontal[columnPosition] + offset, VERTICAL_035);
             }
             putInningStatValue(inningStat.getCumulativeInningStat().getHits(), actionAreaHorizontal[columnPosition] + offset, VERTICAL_036);
