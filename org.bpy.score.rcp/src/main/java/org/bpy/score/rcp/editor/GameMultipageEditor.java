@@ -31,15 +31,19 @@ import org.bpy.score.game.ui.internal.GameActivator;
 import org.bpy.score.graphics.ScoreViewEngine;
 import org.bpy.score.graphics.ScoringSheetGraphicalManager;
 import org.bpy.score.internationalization.rcp.Messages;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.part.MultiPageEditorPart;
+import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -57,173 +61,184 @@ import com.google.inject.Injector;
  */
 public class GameMultipageEditor extends MultiPageEditorPart {
 
-	/** Logger of the class */
-	public static final Logger logger = Logger.getLogger(GameMultipageEditor.class.getSimpleName());
+   /** Logger of the class */
+   public static final Logger logger = Logger.getLogger(GameMultipageEditor.class.getSimpleName());
 
-	/** Reference on the game parser */
-	@Inject
-	private IParser parser;
+   /** Reference on the game parser */
+   @Inject
+   private IParser parser;
 
-	/** Id of the editor */
-	public static final String ID = "org.bpy.score.rcp.editor.GameMultipageEditor"; //$NON-NLS-1$
+   /** Id of the editor */
+   public static final String ID = "org.bpy.score.rcp.editor.GameMultipageEditor"; //$NON-NLS-1$
 
-	/** Reference to the game file editor */
-	private XtextEditor editor;
+   /** Reference to the game file editor */
+   private XtextEditor editor;
 
-	/** Current cursor position */
-	private int cursorPosition;
+   /** Current cursor position */
+   private int cursorPosition;
 
-	/**
-	 * Constructor of the class. create the EMF injector
-	 */
-	public GameMultipageEditor() {
-		com.google.inject.Injector injector = new GameStandaloneSetup().createInjectorAndDoEMFRegistration();
-		injector.injectMembers(this);
+   /**
+    * Constructor of the class. create the EMF injector
+    */
+   public GameMultipageEditor() {
+      com.google.inject.Injector injector = new GameStandaloneSetup().createInjectorAndDoEMFRegistration();
+      injector.injectMembers(this);
 
-	}
+   }
 
-	/**
-	 * Get the reference to the game file editor
-	 * 
-	 * @return Reference to the game file editor
-	 */
-	public XtextEditor getGameSourceEditor() {
-		return editor;
-	}
+   /**
+    * Get the reference to the game file editor
+    * 
+    * @return Reference to the game file editor
+    */
+   public XtextEditor getGameSourceEditor() {
+      return editor;
+   }
 
-	@Override
-	protected void createPages() {
-		createXtextPage();
-		try {
-			createVisitorScoresheet();
-			createHometeamScoresheet();
-		} catch (PartInitException e) {
-			logger.log(Level.SEVERE,e.getMessage());
-		}
-	}
+   @Override
+   protected void createPages() {
+      createXtextPage();
+      try {
+         createVisitorScoresheet();
+         createHometeamScoresheet();
+      } catch (PartInitException e) {
+         logger.log(Level.SEVERE, e.getMessage());
+      }
+   }
 
-	/**
-	 * Create the visitor sheet
-	 * 
-	 * @throws PartInitException
-	 */
-	private void createVisitorScoresheet() throws PartInitException {
-		ScoreSheetEditor visitorSheetEditor = new ScoreSheetEditor(editor, EngineConstants.VISITOR);
+   /**
+    * Create the visitor sheet
+    * 
+    * @throws PartInitException
+    */
+   private void createVisitorScoresheet() throws PartInitException {
+      ScoreSheetEditor visitorSheetEditor = new ScoreSheetEditor(editor, EngineConstants.VISITOR);
 
-		addPage(1, visitorSheetEditor, getEditorInput());
-		setPageText(1, "Visitor score sheet"); //$NON-NLS-1$
-	}
+      addPage(1, visitorSheetEditor, getEditorInput());
+      setPageText(1, "Visitor score sheet"); //$NON-NLS-1$
+   }
 
-	/**
-	 * Create the home team sheet
-	 * 
-	 * @throws PartInitException
-	 */
-	private void createHometeamScoresheet() throws PartInitException {
-		ScoreSheetEditor homeTeamSheetEditor = new ScoreSheetEditor(editor, EngineConstants.HOMETEAM);
-		addPage(2, homeTeamSheetEditor, getEditorInput());
-		setPageText(2, "Hometeam score sheet"); //$NON-NLS-1$
-	}
+   /**
+    * Create the home team sheet
+    * 
+    * @throws PartInitException
+    */
+   private void createHometeamScoresheet() throws PartInitException {
+      ScoreSheetEditor homeTeamSheetEditor = new ScoreSheetEditor(editor, EngineConstants.HOMETEAM);
+      addPage(2, homeTeamSheetEditor, getEditorInput());
+      setPageText(2, "Hometeam score sheet"); //$NON-NLS-1$
+   }
 
-	@Override
-	public boolean isSaveAsAllowed() {
-		return true;
-	}
+   @Override
+   public boolean isSaveAsAllowed() {
+      return true;
+   }
 
-	@Override
-	public void doSave(IProgressMonitor monitor) {
-		getEditor(0).doSave(monitor);
-	}
+   @Override
+   public void doSave(IProgressMonitor monitor) {
+      getEditor(0).doSave(monitor);
+   }
 
-	@Override
-	public void doSaveAs() {
-		EditorPart localEditor = (EditorPart) getEditor(0);
-		localEditor.doSaveAs();
-	}
+   @Override
+   public void doSaveAs() {
+      EditorPart localEditor = (EditorPart) getEditor(0);
+      localEditor.doSaveAs();
+   }
 
-	/**
-	 * Create the game editor.
-	 */
-	private void createXtextPage() {
-		try {
+   /**
+    * Create the game editor.
+    */
+   private void createXtextPage() {
+      try {
 
-			GameActivator activator = GameActivator.getInstance();
-			final Injector injector = activator.getInjector(GameActivator.ORG_BPY_SCORE_GAME_GAME);
-			editor = injector.getInstance(XtextEditor.class);
+         GameActivator activator = GameActivator.getInstance();
+         final Injector injector = activator.getInjector(GameActivator.ORG_BPY_SCORE_GAME_GAME);
+         editor = injector.getInstance(XtextEditor.class);
 
-			addPage(0, editor, getEditorInput());
-			this.setPartName(editor.getTitle());
-			setPageText(0, "Game editor"); //$NON-NLS-1$
+         addPage(0, editor, getEditorInput());
+         this.setPartName(editor.getTitle());
+         setPageText(0, "Game editor"); //$NON-NLS-1$
 
-			initializeListener();
+         initializeListener();
 
-		} catch (PartInitException e) {
-			ErrorDialog.openError(getSite().getShell(), Messages.GameMultipageEditor_ErrorOpenEditor, null, e.getStatus());
-		}
-	}
+      } catch (PartInitException e) {
+         ErrorDialog.openError(getSite().getShell(), Messages.GameMultipageEditor_ErrorOpenEditor, null, e.getStatus());
+      }
+   }
 
-	/** 
-	 * Get the current cursor position 
-	 *  
-	 * @return  current cursor position
-	 */
-	protected int getCursorPosition() {
-		return cursorPosition;
-	}
+   /**
+    * Get the current cursor position
+    * 
+    * @return current cursor position
+    */
+   protected int getCursorPosition() {
+      return cursorPosition;
+   }
 
-	/**
-	 * Set the current cursor position 
-	 * 
-	 * @param cursorPosition current cursor position 
-	 */
-	protected void setCursorPosition(int cursorPosition) {
-		this.cursorPosition = cursorPosition;
-	}
+   /**
+    * Set the current cursor position
+    * 
+    * @param cursorPosition current cursor position
+    */
+   protected void setCursorPosition(int cursorPosition) {
+      this.cursorPosition = cursorPosition;
+   }
 
-	/**
-	 * Initialize the page changed listener
-	 * 
-	 */
-	protected void initializeListener() {
+   /**
+    * Initialize the page changed listener
+    * 
+    */
+   protected void initializeListener() {
 
-		this.addPageChangedListener( event -> 
-		{
-			Object page = event.getSelectedPage();
-			if (page instanceof ScoreSheetEditor) {
-				updateScoreSheet((ScoreSheetEditor) page);
-			}
-		});
-	}
+      this.addPageChangedListener(event -> {
+         Object page = event.getSelectedPage();
+         if (page instanceof ScoreSheetEditor) {
+            updateScoreSheet((ScoreSheetEditor) page);
+         }
+      });
+   }
 
-	/**
-	 * Update the score sheet editor
-	 * 
-	 * @param scoreSheetEditor reference to the score sheet editor 
-	 */
-	protected void updateScoreSheet(ScoreSheetEditor scoreSheetEditor) {
-		EditorPart editorPart = (EditorPart) getEditor(0);
-		Control control = editorPart.getAdapter(Control.class);
-		if (control instanceof StyledText) {
-			StyledText text = (StyledText) control;
-			setCursorPosition(text.getCaretOffset());
+   /**
+    * Update the score sheet editor
+    * 
+    * @param scoreSheetEditor reference to the score sheet editor
+    */
+   protected void updateScoreSheet(ScoreSheetEditor scoreSheetEditor) {
+      EditorPart editorPart = (EditorPart) getEditor(0);
+      Control control = editorPart.getAdapter(Control.class);
 
-			IEditorInput input = editor.getEditorInput();
-			IDocument document = editor.getDocumentProvider().getDocument(input);
+      if (control instanceof StyledText text) {
+         
+         if (scoreSheetEditor instanceof ITextEditor textEditor) {
+            IEditorInput input = textEditor.getEditorInput();
 
-			String content = document.get().substring(0, getCursorPosition());
-			IParseResult parserResult = parser.parse(new StringReader(content));
-			Game game = (Game) parserResult.getRootASTElement();
+            IProject project = null;
+            if (input instanceof IFileEditorInput fileInput) {
+               IFile file = fileInput.getFile();
+               project = file.getProject();
 
-			StatisticEngine statisticEngine = new StatisticEngine();
-			statisticEngine.setGame(game);
-			statisticEngine.setActionsManager(new StatisticManager());
-			statisticEngine.run();
+            }
+         }
 
-			ScoreViewEngine scoreViewEngine = new ScoreViewEngine();
-			scoreViewEngine.setGame(game);
-			scoreViewEngine.setActionsManager(new ScoringSheetGraphicalManager());
-			scoreViewEngine.setStatisticEngine(statisticEngine);
-			scoreSheetEditor.updateView(game, scoreViewEngine, statisticEngine);
-		}
-	}
+         setCursorPosition(text.getCaretOffset());
+
+         IEditorInput input = editor.getEditorInput();
+         IDocument document = editor.getDocumentProvider().getDocument(input);
+
+         String content = document.get().substring(0, getCursorPosition());
+         IParseResult parserResult = parser.parse(new StringReader(content));
+         Game game = (Game) parserResult.getRootASTElement();
+
+         StatisticEngine statisticEngine = new StatisticEngine();
+         statisticEngine.setGame(game);
+         statisticEngine.setActionsManager(new StatisticManager());
+         statisticEngine.run();
+
+         ScoreViewEngine scoreViewEngine = new ScoreViewEngine();
+         scoreViewEngine.setGame(game);
+         scoreViewEngine.setActionsManager(new ScoringSheetGraphicalManager());
+         scoreViewEngine.setStatisticEngine(statisticEngine);
+         scoreSheetEditor.updateView(game, scoreViewEngine, statisticEngine);
+      }
+   }
 }

@@ -35,6 +35,8 @@ import org.bpy.score.graphics.ScoreViewEngine;
 import org.bpy.score.graphics.ScoringSheetGraphicalManager;
 import org.bpy.score.rcp.editor.GameMultipageEditor;
 import org.bpy.score.rcp.graphical.ScoreSheetPanel;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
@@ -43,9 +45,12 @@ import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IPartListener2;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.texteditor.ITextEditor;
-import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.parser.IParseResult;
 
 /**
@@ -71,9 +76,24 @@ public abstract class AbstractScoreSheetView extends AbstractContextualPanel imp
 	 * 
 	 * @param currentTeam current team
 	 */
-	public AbstractScoreSheetView(String currentTeam) {
+	protected AbstractScoreSheetView(String currentTeam) {
 		super();
 		this.currentTeam = currentTeam;
+		
+		PlatformUI.getWorkbench()
+	    .getActiveWorkbenchWindow()
+	    .getActivePage()
+	    .addPartListener(new IPartListener2() {
+
+	        @Override
+	        public void partActivated(IWorkbenchPartReference ref) {
+	            IWorkbenchPart part = ref.getPart(false);
+
+	            if (part instanceof IEditorPart ) {
+	               runScoreEngine();
+	            }
+	        }
+	    });
 	}
 
 	/**
@@ -139,14 +159,20 @@ public abstract class AbstractScoreSheetView extends AbstractContextualPanel imp
 	protected void runScoreEngine() {
 		IEditorPart currentEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getActiveEditor();
-		if (currentEditor instanceof GameMultipageEditor) {
-			currentEditor = ((GameMultipageEditor) currentEditor).getGameSourceEditor();
+		if (currentEditor instanceof GameMultipageEditor gameMultiPageEditor) {
+			currentEditor = gameMultiPageEditor.getGameSourceEditor();
 		}
 
-		if (currentEditor instanceof ITextEditor) {
-			IEditorInput input = currentEditor.getEditorInput();
-			IDocument document = (((ITextEditor) currentEditor).getDocumentProvider()).getDocument(input);
+		if (currentEditor instanceof ITextEditor textEditor) {
+			IEditorInput input = textEditor.getEditorInput();
+			IDocument document = textEditor.getDocumentProvider().getDocument(input);
+			
+			IProject project = null;
+			if (input instanceof IFileEditorInput fileInput) {
+		        IFile file = fileInput.getFile();
+		        project = file.getProject();
 
+		    }		
 			String content = document.get();
 			int cursorPosition = getCursorPosition();
 
@@ -166,7 +192,7 @@ public abstract class AbstractScoreSheetView extends AbstractContextualPanel imp
 			scoreViewEngine.setActionsManager(new ScoringSheetGraphicalManager());
 			scoreViewEngine.setStatisticEngine(statisticEngine);
 
-			panel.updateView(game, scoreViewEngine, statisticEngine);
+			panel.updateView(project, game, scoreViewEngine, statisticEngine);
 		}
 	}
 

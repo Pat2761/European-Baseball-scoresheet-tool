@@ -161,6 +161,25 @@ public class ScorePreferencesManager {
 
    }
 
+   public IEclipsePreferences getProjectPreferenceStore(IProject project) {
+      return new ProjectScope(project).getNode(project.getName());
+   }
+
+   /**
+    * return the preference store for a defined flag.
+    * 
+    * @param useProjectFlag preference flag for a category of parameters
+    * @return preference store
+    */
+   public IEclipsePreferences getPreferenceStore(String useProjectFlag) {
+      IEclipsePreferences projectStore = getProjectPreferenceStore();
+      if (getBooleanValue(projectStore, useProjectFlag)) {
+         return projectStore;
+      } else {
+         return getWorkspacePreferenceStore();
+      }
+   }
+
    /**
     * Return a String value store in the preferences.
     * 
@@ -411,4 +430,5 @@ public class ScorePreferencesManager {
    public void removeScoreChangerListener(IScoreViewPreferenceChangeListener listener) {
       scoreChangerListeners.remove(listener);
    }
-}
+
+ }

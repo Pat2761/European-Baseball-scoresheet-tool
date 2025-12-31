@@ -11,11 +11,17 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf;bundle-version="2.6.0",
  org.eclipse.emf.common;bundle-version="2.13.0",
  org.bpy.score.engine;bundle-version="1.0.0",
- org.bpy.score.internationalization;bundle-version="1.0.0"
+ org.bpy.score.internationalization;bundle-version="1.0.0",
+ org.bpy.score.preferences;bundle-version="1.0.0",
+ org.eclipse.text,
+ org.eclipse.ui.workbench,
+ org.eclipse.ui.ide;bundle-version="3.21.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Export-Package: org.bpy.score.graphics
 Import-Package: org.bpy.score.engine.exception,
  org.bpy.score.engine.manager,
  org.bpy.score.engine.stats,
- org.bpy.score.engine.util
+ org.bpy.score.engine.util,
+ org.eclipse.core.resources,
+ org.eclipse.ui.texteditor
