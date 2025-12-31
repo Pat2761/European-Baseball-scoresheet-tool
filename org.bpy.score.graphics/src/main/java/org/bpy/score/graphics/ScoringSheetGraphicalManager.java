@@ -707,9 +707,14 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
    /** HashMap< team , HashMap< OffensivePosition , HashMap< Square, Offset>>> */
    private HashMap<String, HashMap<String, HashMap<String, List<Integer>>>> offensiveSubstitutionGraphicalOffset;
 
+   /** Define the color of an empty sheet */
    private Color colorSheet;
 
+   /** Define the color of the pencil of the score keeper */
    private Color colorWriter;
+   
+   /** Use or not use the new style sheet */
+   private boolean showNewStyleSheet;
 
    /**
     * Initialize the class. Create fonts and initialize some fields
@@ -903,9 +908,10 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
       
       RGB rgbSheet = preferenceManager.getRGBValue(preferenceStore, ScorePreferenceConstants.GPP_GRAPHIC_COLOR_LINE);
       RGB rgbWrite = preferenceManager.getRGBValue(preferenceStore, ScorePreferenceConstants.GPP_GRAPHIC_WRITING_LINE);
-
       colorSheet = new Color(rgbSheet.red, rgbSheet.green, rgbSheet.blue);
       colorWriter = new Color(rgbWrite.red, rgbWrite.green, rgbWrite.blue);
+
+      showNewStyleSheet  = preferenceManager.getBooleanValue(preferenceStore, ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET);
    }
 
    /**
@@ -3744,7 +3750,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
        * gestion des diff�rent type de feuilles , zone des position d�fensive du
        * lineup
        */
-      if (EngineConstants.graphicsShowNewStyleSheet) {
+      if (showNewStyleSheet) {
          g2.drawLine((int) HORIZONTAL_006N, (int) VERTICAL_005, (int) HORIZONTAL_006N, (int) VERTICAL_040);
       } else {
          g2.drawLine((int) HORIZONTAL_006, (int) VERTICAL_005, (int) HORIZONTAL_006, (int) VERTICAL_006);
@@ -3903,7 +3909,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
             ACTION_WIDTH / 3 * FACTOR_CORRECTIF, HEIGHT_LINE * FACTOR_CORRECTIF);
 
       /* ecriture du texte sur la feuille : Diverse */
-      if (EngineConstants.graphicsShowNewStyleSheet) {
+      if (showNewStyleSheet) {
          putString("Pos", normal6Font, colorSheet, HORIZONTAL_005, VERTICAL_005, //$NON-NLS-1$
                (ACTION_WIDTH * 2) / 3 * FACTOR_CORRECTIF, HEIGHT_LINE * FACTOR_CORRECTIF);
       } else {
@@ -4667,7 +4673,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
    private void drawPlayerName(LineupEntry player, LineupEntry lastPlayerDescription, double graphicalPosition, boolean setTilde) {
       if (!isSamePlayer(player, lastPlayerDescription)) {
 
-         if (EngineConstants.graphicsShowNewStyleSheet) {
+         if (showNewStyleSheet) {
             String name = player.getPlayerDescription().getName().substring(0, Math.min(player.getPlayerDescription().getName().length(), 16));
             if (setTilde) {
                name = "-------------------------------"; //$NON-NLS-1$
@@ -4713,7 +4719,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 
       if (Character.isDigit(player.getDefensivePosition().charAt(0)) && (!player.getDefensivePositionIndex().equals("0"))) { //$NON-NLS-1$
 
-         if (EngineConstants.graphicsShowNewStyleSheet) {
+         if (showNewStyleSheet) {
 
             if (isSamePlayer(player, lastPlayerDescription)) {
 
@@ -4781,7 +4787,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
     */
    private void drawDefensivePosition(LineupEntry player, LineupEntry lastPlayerDescription, double graphicalPosition) {
 
-      if (EngineConstants.graphicsShowNewStyleSheet) {
+      if (showNewStyleSheet) {
 
          if (Character.isDigit(player.getDefensivePosition().charAt(0)) || player.getDefensivePosition().equals("dh")) { //$NON-NLS-1$
 
