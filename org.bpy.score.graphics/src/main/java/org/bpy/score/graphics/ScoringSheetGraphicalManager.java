@@ -709,6 +709,9 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
    /** Statistic level to display */
    private String statistiqueLevel;
 
+   /** Allow to display Win, Lose and save statistics. */
+   private boolean displayWinLoseSave;
+
    /**
     * Initialize the class. Create fonts and initialize some fields
     * 
@@ -766,10 +769,10 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 
       playerSquareManagers.put(EngineConstants.HOMETEAM, new PlayerSquareManager());
 
-      playerSquareManagers.get(EngineConstants.HOMETEAM).addChangeRowListener((newRow, motif) -> updateGraphicForNewRow(newRow, motif));
+      playerSquareManagers.get(EngineConstants.HOMETEAM).addChangeRowListener(this::updateGraphicForNewRow);
 
       playerSquareManagers.put(EngineConstants.VISITOR, new PlayerSquareManager());
-      playerSquareManagers.get(EngineConstants.VISITOR).addChangeRowListener((newRow, motif) -> updateGraphicForNewRow(newRow, motif));
+      playerSquareManagers.get(EngineConstants.VISITOR).addChangeRowListener(this::updateGraphicForNewRow);
    }
 
    /**
@@ -884,6 +887,12 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
       releaseGraphicalContext();
    }
 
+   /**
+    * Read graphical preferences for a project.
+    * If nut use the project preference, read the workspace preferences.
+    * 
+    * @param project reference to the current project
+    */
    public void readGraphicalPreferences(IProject project) {
 
       boolean useProjectPreferences = false; 
@@ -906,6 +915,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 
       showNewStyleSheet  = preferenceManager.getBooleanValue(preferenceStore, ScorePreferenceConstants.GPP_USE_NEW_STYLE_SHEET);
       statistiqueLevel = preferenceManager.getValue(preferenceStore, ScorePreferenceConstants.GPP_DISPLAY_STATISTICS);
+      displayWinLoseSave = preferenceManager.getBooleanValue(preferenceStore, ScorePreferenceConstants.GPP_DISPLAY_PITCHER_STATE);
    }
 
    /**
@@ -2928,7 +2938,6 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
    }
 
    @Override
-   @SuppressWarnings("java:S3776")
    protected void callCallbackSubstitutionManager(SubstitutionManager substitutionManager) {
 
       String team = substitutionManager.getTeam();
@@ -2938,9 +2947,8 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
       if (team.equals(sheetTeam)) {
          for (SubstitutionCommonData sub : substitutionManager.getSubstitutions()) {
 
-            if (sub instanceof ReplacementData) {
+            if (sub instanceof ReplacementData replacementData) {
 
-               ReplacementData replacementData = (ReplacementData) sub;
                Point point = (Point) replacementData.getPlayer().getAssociatedObjects().get(SQUARE_POSITION);
                if (replacementData.getReplacement().getNewDefensivePosition().startsWith("pr")) { //$NON-NLS-1$
 
@@ -2968,9 +2976,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
 
          for (SubstitutionCommonData sub : substitutionManager.getSubstitutions()) {
 
-            if (sub instanceof ReplacementData) {
-
-               ReplacementData replacementData = (ReplacementData) sub;
+            if (sub instanceof ReplacementData replacementData) {
 
                if (((replacementData.getReplacement().getNewDefensivePosition() == null) && replacementData.getPlayer().getDefensivePosition().equals("1")) //$NON-NLS-1$
                      || (replacementData.getReplacement().getNewDefensivePosition() != null
@@ -2985,11 +2991,11 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
                   }
                }
 
-            } else if ((sub instanceof MoveToData) && (((MoveToData) sub).getDefensivePosition() != null)
-                  && (((MoveToData) sub).getDefensivePosition().getNewDefensivePosition() != null)
-                  && (((MoveToData) sub).getDefensivePosition().getNewDefensivePosition().equals("1"))) { //$NON-NLS-1$
+            } else if ((sub instanceof MoveToData moveToData) && (moveToData.getDefensivePosition() != null)
+                  && (moveToData.getDefensivePosition().getNewDefensivePosition() != null)
+                  && (moveToData.getDefensivePosition().getNewDefensivePosition().equals("1"))) { //$NON-NLS-1$
 
-               Object pitcherKeepPosition = ((MoveToData) sub).getPlayerReplaced().getAssociatedObjects().get(LineupManager.PITCHER_KEEP_ITS_POSITION);
+               Object pitcherKeepPosition = moveToData.getPlayerReplaced().getAssociatedObjects().get(LineupManager.PITCHER_KEEP_ITS_POSITION);
                if ((subLineup.getCurrentPitcher().getPlayerDescription() != ((MoveToData) sub).getPlayerReplaced().getPlayerDescription())
                      && (pitcherKeepPosition == null)) {
                   picherSubstitution = true;
@@ -3003,8 +3009,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
          /* Puis on construit l'affichage des changements */
          StringBuilder substitutionDescriptor = new StringBuilder();
          for (SubstitutionCommonData sub : substitutionManager.getSubstitutions()) {
-            if (sub instanceof ReplacementData) {
-               ReplacementData replacementData = (ReplacementData) sub;
+            if (sub instanceof ReplacementData replacementData) {
 
                LineupEntry player = subLineup.getPlayerForDefensivePosition(replacementData.getReplacement().getNewDefensivePosition());
                if (!player.getDefensivePosition().equals("dh") && !player.getDefensivePosition().startsWith("pr") //$NON-NLS-1$ //$NON-NLS-2$
@@ -3017,8 +3022,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
                   }
                }
 
-            } else if (sub instanceof MoveToData) {
-               MoveToData moveToData = (MoveToData) sub;
+            } else if (sub instanceof MoveToData moveToData) {
 
                LineupEntry player = subLineup.getPlayerForDefensivePosition(moveToData.getDefensivePosition().getNewDefensivePosition());
                if (!player.getDefensivePosition().equals("dh") && !player.getDefensivePosition().startsWith("pr") //$NON-NLS-1$ //$NON-NLS-2$
@@ -3026,7 +3030,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
                      && !player.getDefensivePosition().startsWith("ph")) { //$NON-NLS-1$
 
                   if (((MoveToData) sub).getDefensivePosition().getNewDefensivePosition().equals("1")) { //$NON-NLS-1$
-                     if (subLineup.getCurrentPitcher().getPlayerDescription() != ((MoveToData) sub).getPlayerReplaced().getPlayerDescription()) {
+                     if (subLineup.getCurrentPitcher().getPlayerDescription() != moveToData.getPlayerReplaced().getPlayerDescription()) {
                         if (!"0".contentEquals(player.getDefensivePositionIndex())) { //$NON-NLS-1$
                            substitutionDescriptor.append(player.getDefensivePosition());
                            substitutionDescriptor.append(player.getDefensivePositionIndex());
@@ -3050,7 +3054,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
             countSubsByColumn.put(EMPTY_STRING + currentPosition.y, countSubsByColumn.get(EMPTY_STRING + currentPosition.y).intValue() + 1);
          }
 
-         if (substitutionDescriptor.toString().length() > 0) {
+         if (!substitutionDescriptor.isEmpty()) {
             drawSubstitutionResume(currentPosition.y, countSubsByColumn.get(EMPTY_STRING + currentPosition.y).intValue(), substitutionDescriptor.toString());
 
             Point pointDrawPosition = getPosition(currentPosition.x, currentPosition.y);
@@ -4603,7 +4607,7 @@ public class ScoringSheetGraphicalManager extends AbstractActionManager {
                   HORIZONTAL_005 - HORIZONTAL_004, HEIGHT_LINE * FACTOR_CORRECTIF);
             pitcherCounter++;
 
-            if (EngineConstants.graphicsShowWinLoseSave) {
+            if (displayWinLoseSave) {
                try {
                   if (statistiqueEngine.getStatisticManager().getStats().getLoosingPitcher() == pitcher) {
                      putString(bold6Font, colorWriter, "L", HORIZONTAL_008, position, //$NON-NLS-1$
