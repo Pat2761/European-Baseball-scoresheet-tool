@@ -73,20 +73,6 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		configurer.setSaveAndRestore(true);
 		IDE.registerAdapters();
 
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-
-		EngineConstants.graphicsShowStatistiques = store.getString(EngineConstants.GRAPHIC_DISPLAY_STATISTICS);
-		EngineConstants.graphicsShowNewStyleSheet = store.getBoolean(EngineConstants.GRAPHIC_NEW_STYLE_SHEET);
-		EngineConstants.graphicsShowWinLoseSave = store.getBoolean(EngineConstants.GRAPHIC_DISPLAY_WIN_LOSE_PITCHER);
-
-		RGB rgb = PreferenceConverter.getColor(store, EngineConstants.GRAPHIC_COLOR_LINE);
-		EngineConstants.graphicsColorSheet = new Color(rgb.red, rgb.green, rgb.blue);
-		rgb = PreferenceConverter.getColor(store, EngineConstants.GRAPHIC_COLOR_TEXT);
-		EngineConstants.graphicsColorPencil = new Color(rgb.red, rgb.green, rgb.blue);
-
-		EngineConstants.checkFlyOutLocation = store.getString(ScorePreferenceConstants.CHECK_FLY_OUT_LOCATION);
-		EngineConstants.checkMissingEarnedPoint = store.getString(ScorePreferenceConstants.CHECK_MISSING_EARNED_POINT);
-
 		MessageConsole myConsole = new MessageConsole("Console", null); //$NON-NLS-1$
 
 		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { myConsole });

@@ -18,19 +18,12 @@
  */
 package org.bpy.score.rcp;
 
-import org.bpy.score.engine.util.EngineConstants;
-import org.bpy.score.rcp.preferences.PreferenceConstants;
 import org.bpy.score.rcp.wizard.GenerateGameReportWizard;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -103,41 +96,6 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
-	}
-
-	@Override
-	@Deprecated
-	protected void initializeDefaultPreferences(IPreferenceStore store) {
-
-		Color defaulLineColor = Display.getDefault().getSystemColor(SWT.COLOR_BLUE);
-		PreferenceConverter.setDefault(store, EngineConstants.GRAPHIC_COLOR_LINE, defaulLineColor.getRGB());
-
-		Color defaultextColor = Display.getDefault().getSystemColor(SWT.COLOR_BLACK);
-		PreferenceConverter.setDefault(store, EngineConstants.GRAPHIC_COLOR_TEXT, defaultextColor.getRGB());
-
-		/** Set preference default values for graphics */
-		store.setDefault(EngineConstants.GRAPHIC_DISPLAY_STATISTICS, true);
-		store.setDefault(EngineConstants.GRAPHIC_DISPLAY_WIN_LOSE_PITCHER, false);
-		store.setDefault(EngineConstants.GRAPHIC_NEW_STYLE_SHEET, false);
-
-		/** Set preference default values for reports */
-		store.setDefault(
-				org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER,
-				true);
-		store.setDefault(
-				org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER, true);
-		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE,
-				org.bpy.score.preferences.core.ScorePreferenceConstants.GRW_TYPE_XML);
-		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER,
-				""); //$NON-NLS-1$
-		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH, ""); //$NON-NLS-1$
-		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH, ""); //$NON-NLS-1$
-		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH,
-				""); //$NON-NLS-1$
-
-		/** Set preference default values for validation */
-		store.setDefault(PreferenceConstants.CHECK_FLY_OUT_LOCATION, PreferenceConstants.WARNING);
-		store.setDefault(PreferenceConstants.CHECK_MISSING_EARNED_POINT, PreferenceConstants.IGNORE);
 	}
 
 	/**

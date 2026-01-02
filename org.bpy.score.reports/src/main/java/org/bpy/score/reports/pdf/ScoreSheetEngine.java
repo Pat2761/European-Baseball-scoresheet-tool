@@ -122,7 +122,7 @@ public class ScoreSheetEngine extends AbstractEngine {
 
 	@Override
 	protected void manageActions(EList<HalfInning> halfInnings) throws OccupedbaseException {
-		if (EngineConstants.pdfMire) {
+		if (EngineConstants.PDF_MIRE) {
 			scoringSheetManager.fillMire();
 		} else {
 			super.manageActions(halfInnings);
