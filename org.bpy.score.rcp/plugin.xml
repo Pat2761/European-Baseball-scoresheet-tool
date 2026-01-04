@@ -795,17 +795,6 @@
                         args="org.bpy.score.rcp.projectNature"
                         forcePluginActivation="true"
                         property="org.bpy.score.rcp.propertytester.natureId"
-                        value="false">
-                  </test>
-               </with>
-            </visibleWhen>
-            <visibleWhen>
-               <with
-                     variable="selection">
-                  <test
-                        args="org.bpy.score.rcp.projectNature"
-                        forcePluginActivation="true"
-                        property="org.bpy.score.rcp.propertytester.natureId"
                         value="true">
                   </test>
                </with>
@@ -1004,7 +993,7 @@
          point="org.eclipse.ui.activities">
       <activity
             id="org.bpy.score.rcp.disable.maven"
-            name="%activity.name">
+            name="%disable.maven.activity">
          <enabledWhen>
             <with
                   variable="true">
@@ -1024,7 +1013,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.pde"
-            name="%activity.name.0">
+            name="%disable.pde.activity">
          <enabledWhen>
             <with
                   variable="true">
@@ -1040,7 +1029,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.ecore"
-            name="%activity.name.1">
+            name="%disable.ecore.activity">
          <enabledWhen>
             <with
                   variable="true">
@@ -1056,7 +1045,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.java"
-            name="%activity.name.2">
+            name="%disable.activity.java">
          <enabledWhen>
             <with
                   variable="true">
@@ -1124,7 +1113,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.mwe"
-            name="%activity.name.3">
+            name="%disable.mwe.activity">
          <enabledWhen>
             <with
                   variable="true">
@@ -1140,7 +1129,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.debug.core"
-            name="%activity.name.4">
+            name="%disable.debug.activity">
          <enabledWhen>
             <with
                   variable="true">
@@ -1157,7 +1146,7 @@
 
       <activity
             id="org.bpy.score.rcp.disable.team"
-            name="%activity.name.5">
+            name="%disable.team.activity">
          <enabledWhen>
             <with
                   variable="true">
@@ -1181,7 +1170,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.pde"
-            name="%activity.name.6">
+            name="%score.rcp.pde.activity">
       </activity>
       <activityPatternBinding
             activityId="org.bpy.score.rcp.pde"
@@ -1189,7 +1178,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.disable.annotation"
-            name="%activity.name.7">
+            name="%disable.annotation">
       </activity>
       <activityPatternBinding
             activityId="org.bpy.score.rcp.disable.annotation"
@@ -1197,7 +1186,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.externaltools"
-            name="%activity.name.8">
+            name="%disable.externaltools.activity">
       </activity>
       <activityPatternBinding
             activityId="org.bpy.score.rcp.externaltools"
@@ -1217,7 +1206,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.importExport"
-            name="%activity.name.9">
+            name="%disable.importExport">
       </activity>
       <activityPatternBinding
             activityId="org.bpy.score.rcp.importExport"
@@ -1257,7 +1246,7 @@
       </activityPatternBinding>
       <activity
             id="org.bpy.score.rcp.activity.xtextNature"
-            name="Hide XText nature">
+            name="%disable.XText.nature">
       </activity>
       <activityPatternBinding
             activityId="org.bpy.score.rcp.activity.xtextNature"
@@ -1271,7 +1260,7 @@
             class="org.bpy.score.rcp.decorators.FoldersDecorator"
             icon="icons/season.png"
             id="org.bpy.score.rcp.folder.decorator"
-            label="%decorator.label"
+            label="%folder.decorator"
             objectClass="org.eclipse.core.resources.IFolder"
             state="true">
       </decorator>
@@ -1280,7 +1269,7 @@
             class="org.bpy.score.rcp.decorators.ProjectsDecorators"
             icon="icons/tournament.png"
             id="org.bpy.score.rcp.project.decorator"
-            label="%decorator.label.0"
+            label="%project.decorator.label"
             objectClass="org.eclipse.core.resources.IProject"
             state="true">
       </decorator>
