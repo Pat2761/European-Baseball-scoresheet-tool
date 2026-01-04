@@ -204,6 +204,8 @@ public class Messages extends NLS {
 	public static String ImportHtmlWizardPage_FilePathNotValidError;
 	/** Message for request selection of HTML file */ 
 	public static String ImportHtmlWizardPage_SelectHtmlFile;
+	/** Message for empty path */
+   public static String ImportHtmlWizardPage_needToDefinedPath;
 
 	/*----------------------------------------------------------------------- */
 	/* NewCategoryWizardPage class                                            */
@@ -579,6 +581,11 @@ public class Messages extends NLS {
 	public static String GameReportWizardPageTwo_grpTtt_text;
 	public static String GraphicalPreferencePage_lblNewLabel_2_text;
 	public static String GraphicalPreferencePage_btnCheckButton_text;
+	
+   /*----------------------------------------------------------------------- */
+   /* ImportHtmlWizardPage class                                      */
+   /*----------------------------------------------------------------------- */
+	public static String ImportHtmlWizardPage_pathSelectionComposite_message;
 	
 	/**
 	 * Initialize the internationalization

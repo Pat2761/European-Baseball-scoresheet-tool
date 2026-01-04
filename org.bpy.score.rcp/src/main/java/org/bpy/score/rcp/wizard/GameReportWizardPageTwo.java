@@ -66,7 +66,7 @@ public class GameReportWizardPageTwo extends WizardPage implements IPathSelectio
     * Create the wizard.
     */
    public GameReportWizardPageTwo() {
-      super("wizardPage"); //$NON-NLS-1$
+      super("GameReportWizardPageTwo"); //$NON-NLS-1$
       setMessage(Messages.GameReportWizardPageTwo_PageMessage);
       setTitle(Messages.GameReportWizardPageTwo_PageTitle);
       setDescription(Messages.GameReportWizardPageTwo_PageDescription);
