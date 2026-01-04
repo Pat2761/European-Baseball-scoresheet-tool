@@ -25,6 +25,9 @@ public enum PathSelectionCompositeStatus {
 
    /** No problems */
    OK,
+
+   /** is empty */
+   IS_EMPTY,
    
    /** The string isn't a valid file of folder name */
    BAD_FILE_NAME,

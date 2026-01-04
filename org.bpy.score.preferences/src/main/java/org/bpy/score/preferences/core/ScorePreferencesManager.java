@@ -161,6 +161,12 @@ public class ScorePreferencesManager {
 
    }
 
+   /**
+    * Return the preference store of a project.
+    * 
+    * @param project reference to the project
+    * @return reference on the project store
+    */
    public IEclipsePreferences getProjectPreferenceStore(IProject project) {
       return new ProjectScope(project).getNode(project.getName());
    }
@@ -271,7 +277,9 @@ public class ScorePreferencesManager {
     */
    public boolean getBooleanValue(IEclipsePreferences store, String key) {
       Object defaultValue = defaultValues.get(key);
-
+      if (defaultValue == null) {
+         defaultValue = Boolean.FALSE;
+      }
       return store.getBoolean(key, (boolean) defaultValue);
    }
 
@@ -283,7 +291,9 @@ public class ScorePreferencesManager {
     */
    public Boolean getDefaultBooleanValue(String key) {
       Object defaultValue = defaultValues.get(key);
-
+      if (defaultValue == null) {
+         defaultValue = Boolean.FALSE;
+      }
       return (boolean) defaultValue;
    }
 
@@ -314,6 +324,9 @@ public class ScorePreferencesManager {
    public RGB getRGBValue(IEclipsePreferences store, String key) {
 
       Object defaultValue = defaultValues.get(key);
+      if (defaultValue == null) {
+         defaultValue = "255,255,255";
+      }
       String rgbString = store.get(key, (String) defaultValue);
       String[] parts = rgbString.split(",");
 
@@ -334,28 +347,15 @@ public class ScorePreferencesManager {
    public RGB getDefaultRGBValue(String key) {
 
       Object defaultValue = defaultValues.get(key);
+      if (defaultValue == null) {
+         defaultValue = "255,255,255";
+      }
       String[] parts = ((String)defaultValue).split(",");
 
       try {
          return new RGB(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
       } catch (NumberFormatException ex) {
          return Display.getCurrent().getSystemColor(SWT.COLOR_BLACK).getRGB();
-      }
-   }
-
-   /**
-    * Set the default value of the parameter in the preference.
-    * 
-    * @param store Preference store where is defined the parameter
-    * @param key Parameter key
-    */
-   public void setDefaultValue(IEclipsePreferences store, String key) {
-      Object defaultValue = defaultValues.get(key);
-      store.put(key, (String) defaultValue);
-      try {
-         store.flush();
-      } catch (BackingStoreException e) {
-         logger.log(Level.SEVERE, e.getMessage());
       }
    }
 

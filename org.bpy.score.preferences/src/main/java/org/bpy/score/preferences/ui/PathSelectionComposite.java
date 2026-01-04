@@ -244,6 +244,8 @@ public class PathSelectionComposite extends Composite {
 		btnVar.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		btnVar.setText(Messages.variableButton);
 		btnVar.addListener(SWT.Selection, e -> openVariableDialog());
+		
+		validateSelection();
 	}
 
 	/**
@@ -264,6 +266,10 @@ public class PathSelectionComposite extends Composite {
 	 */
 	public PathSelectionCompositeStatus validateSelection() {
 	   String pathName = getResolvedAbsolutePath();
+
+	   if (pathName.isBlank() || pathName.isEmpty()) {
+         return PathSelectionCompositeStatus.IS_EMPTY;
+	   }
 	   
 	   if (!isValidFileName(pathName)) {
 	      return PathSelectionCompositeStatus.BAD_FILE_NAME;
@@ -403,7 +409,9 @@ public class PathSelectionComposite extends Composite {
 	 */
 	public String getResolvedAbsolutePath() {
 	    String raw = txtPath.getText();
-	    
+	    if (raw.isEmpty() || raw.isBlank()) {
+	       return raw;
+	    }
 	    String sub;
 	    try {
 	        sub = VariablesPlugin.getDefault()

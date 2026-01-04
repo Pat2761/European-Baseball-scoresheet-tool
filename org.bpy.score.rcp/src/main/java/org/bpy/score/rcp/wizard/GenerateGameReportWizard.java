@@ -87,7 +87,7 @@ public class GenerateGameReportWizard extends Wizard {
 
 	@Override
 	public boolean canFinish() {
-		return gameReportWizardPageOne.isValid() && gameReportWizardPageTwo.isValid();
+		return gameReportWizardPageOne.isPageComplete() && gameReportWizardPageTwo.isPageComplete();
 	}
 
 	@Override

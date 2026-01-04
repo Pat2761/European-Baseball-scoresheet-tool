@@ -39,6 +39,7 @@ import org.bpy.score.preferences.ui.PathSelectionCompositeStatus;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
@@ -91,15 +92,12 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
    private boolean isValid;
    /** SWT Widget for the generation path selection */
    private PathSelectionComposite pathSelectionComposite;
-   /** Reference on the preference manager */
-   private ScorePreferencesManager preferenceManager;
 
    /**
     * Create the wizard.
     */
    public GameReportWizardPageOne() {
       super("GameReportWizardPageOne"); //$NON-NLS-1$
-      preferenceManager = ScorePreferencesManager.getInstance();
 
       setMessage(Messages.GameReportWizardPageOne_PageMessage);
       setTitle(Messages.GameReportWizardPageOne_PageTitle);
@@ -233,21 +231,25 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
       pathSelectionComposite.addPathChangerListener(this);
       container.layout(true, true);
 
-      checkIsValid();
       initContent();
+      checkIsValid();
    }
 
    /**
     * Initialize the content of the page
     */
    private void initContent() {
-//      String displayRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY);
-//      String selectionRegularExpression = preferenceManager.getValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY);
-//      String outputPath = preferenceManager.getValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY);
-//
-//      regExDisplayText.setText(displayRegularExpression);
-//      regExSelectionText.setText(selectionRegularExpression);
-//      pathSelectionComposite.setText(outputPath);
+
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+      IEclipsePreferences store = preferenceManager.getProjectPreferenceStore();
+
+      String displayRegularExpression = preferenceManager.getValue(store, ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY);
+      String selectionRegularExpression = preferenceManager.getValue(store, ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY);
+      String outputPath = preferenceManager.getValue(store, ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY);
+
+      regExDisplayText.setText(displayRegularExpression);
+      regExSelectionText.setText(selectionRegularExpression);
+      pathSelectionComposite.setText(outputPath);
 
       displayedElements = new HashMap<>();
       try {
@@ -284,7 +286,7 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
       } else if (e.getSource() == allGameButton) {
          matchsSelector.selectAll();
       }
-      
+
       checkIsValid();
    }
 
@@ -292,41 +294,47 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
     * Check if page one is valid
     */
    private void checkIsValid() {
-      boolean atLeastOneMatch = matchsSelector.getSelectionCount() > 0;
-      String outputFolderPath = pathSelectionComposite.getResolvedAbsolutePath();
-      PathSelectionCompositeStatus pathState = pathSelectionComposite.validateSelection();
 
       // check display regex
-      try {
-         if (!regExDisplayText.getText().isBlank()) {
+      if (!regExDisplayText.getText().isBlank()) {
+         try {
             Pattern.compile(regExDisplayText.getText());
+         } catch (PatternSyntaxException ex) {
+            isValid = false;
+            setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_DisplayRegexInvalid, regExDisplayText.getText()));
+            setPageComplete(false);
+            return;
          }
-      } catch (PatternSyntaxException ex) {
-         isValid = false;
-         setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_DisplayRegexInvalid, regExDisplayText.getText()));
-         setPageComplete(false);
-         return;
       }
 
       // check selection regex
-      try {
-         if (!regExSelectionText.getText().isBlank()) {
+      if (!regExSelectionText.getText().isBlank()) {
+         try {
             Pattern.compile(regExSelectionText.getText());
+         } catch (PatternSyntaxException ex) {
+            isValid = false;
+            setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_SelectionRegexInvalid, regExDisplayText.getText()));
+            setPageComplete(false);
+            return;
          }
-      } catch (PatternSyntaxException ex) {
-         isValid = false;
-         setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_SelectionRegexInvalid, regExDisplayText.getText()));
+      }
+
+      PathSelectionCompositeStatus pathState = pathSelectionComposite.validateSelection();
+      if (PathSelectionCompositeStatus.IS_EMPTY.equals(pathState)) {
+         String outputFolderPath = pathSelectionComposite.getResolvedAbsolutePath();
+         setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_AFolderMustBeDefined, outputFolderPath));
          setPageComplete(false);
          return;
       }
 
-      if (PathSelectionCompositeStatus.BAD_FILE_NAME.equals(pathState) ||
-          PathSelectionCompositeStatus.NOT_A_DIRECTORY.equals(pathState)  ) {
+      if (PathSelectionCompositeStatus.BAD_FILE_NAME.equals(pathState) || PathSelectionCompositeStatus.NOT_A_DIRECTORY.equals(pathState)) {
+         String outputFolderPath = pathSelectionComposite.getResolvedAbsolutePath();
          setErrorMessage(NLS.bind(Messages.GameReportWizardPageOne_NotAValidFolder, outputFolderPath));
          setPageComplete(false);
          return;
       }
 
+      boolean atLeastOneMatch = matchsSelector.getSelectionCount() > 0;
       if (!atLeastOneMatch) {
          isValid = false;
          setErrorMessage(Messages.GameReportWizardPageOne_OneGameMustBeSelected);
@@ -394,9 +402,12 @@ public class GameReportWizardPageOne extends WizardPage implements SelectionList
     * Save configuration in the preference for the next call
     */
    public void savePreferences() {
-//      preferenceManager.setValue(ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY, pathSelectionComposite.getDisplayPath());
-//      preferenceManager.setValue(ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, regExDisplayText.getText());
-//      preferenceManager.setValue(ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY, regExSelectionText.getText());
+      ScorePreferencesManager preferencesManager = ScorePreferencesManager.getInstance();
+      IEclipsePreferences store = preferencesManager.getProjectPreferenceStore();
+
+      preferencesManager.setValue(store, ScorePreferenceConstants.GRW_OUTPUT_FOLDER_KEY, pathSelectionComposite.getDisplayPath());
+      preferencesManager.setValue(store, ScorePreferenceConstants.GRW_DISPLAY_REGULAR_EXPRESSION_KEY, regExDisplayText.getText());
+      preferencesManager.setValue(store, ScorePreferenceConstants.GRW_SELECTION_REGULAR_EXPRESSION_KEY, regExSelectionText.getText());
    }
 
    @Override

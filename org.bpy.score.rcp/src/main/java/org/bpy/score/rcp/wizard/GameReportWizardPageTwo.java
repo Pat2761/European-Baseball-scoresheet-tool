@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 import org.bpy.score.internationalization.rcp.Messages;
 import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.bpy.score.preferences.core.ScorePreferencesManager;
-import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -35,9 +35,9 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Group;
-import org.bpy.score.preferences.ui.PathSelectionComposite;
-import org.bpy.score.preferences.ui.PathSelectionFileFilter;
+import org.bpy.score.preferences.ui.IPathSelectionCompositeChange;
+import org.bpy.score.preferences.ui.PathSelectionCompositeStatus;
+import org.bpy.score.preferences.ui.ReportParameterComposite;
 
 /**
  * This class is the page one of generation report wizard.
@@ -45,7 +45,7 @@ import org.bpy.score.preferences.ui.PathSelectionFileFilter;
  * @author Patrick BRIAND
  *
  */
-public class GameReportWizardPageTwo extends WizardPage implements SelectionListener, ModifyListener {
+public class GameReportWizardPageTwo extends WizardPage implements IPathSelectionCompositeChange, SelectionListener, ModifyListener {
 
    /** Logger of the class */
    public static final Logger logger = Logger.getLogger(GameReportWizardPageOne.class.getSimpleName());
@@ -59,14 +59,8 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
    /** state of the page two */
    private boolean isValid;
 
-   /** SWT composite for select a CSS file */
-   private PathSelectionComposite cssFilePath;
-   /** SWT composite for select a XSLT file */
-   private PathSelectionComposite xsltFilePath;
-   /** SWT Composite for select the banner of the HTML file */
-   private PathSelectionComposite bannerFilePath;
-   /** SWT Group widget used for specific project parameters */
-   private Group specificProjectGroup;
+   /** Report parameter composite */
+   private ReportParameterComposite reportParameterComposite;
 
    /**
     * Create the wizard.
@@ -94,7 +88,7 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
     * @return CSS file path
     */
    public String getCssFilePath() {
-      return cssFilePath.getResolvedAbsolutePath();
+      return reportParameterComposite.getCSSFileLocation();
    }
 
    /**
@@ -103,7 +97,7 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
     * @return banner file path
     */
    public String getBannerFilePath() {
-      return bannerFilePath.getResolvedAbsolutePath();
+      return reportParameterComposite.getBannerFilePath();
    }
 
    /**
@@ -112,7 +106,7 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
     * @return XSLT file path
     */
    public String getXsltFilePath() {
-      return xsltFilePath.getResolvedAbsolutePath();
+      return reportParameterComposite.getXSLTFileLocation();
    }
 
    /**
@@ -140,82 +134,96 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
       btnStandardConf.addSelectionListener(this);
       btnStandardConf.setText(Messages.GameReportWizardPageTwo_UseStandardConfiguration);
 
-      specificProjectGroup = new Group(container, SWT.NONE);
-      specificProjectGroup.setLayout(new GridLayout(1, false));
-      specificProjectGroup.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
-      specificProjectGroup.setText(Messages.GameReportWizardPageTwo_grpTtt_text);
+      IEclipsePreferences store = ScorePreferencesManager.getInstance().getProjectPreferenceStore();
+      reportParameterComposite = new ReportParameterComposite(container, store, this);
+      reportParameterComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 
-      cssFilePath = new PathSelectionComposite(specificProjectGroup, SWT.NONE);
-      cssFilePath.setMessage(Messages.GameReportWizardPageTwo_CSSPathFile);
-      cssFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-      cssFilePath.setFeatures(IResource.FILE, new PathSelectionFileFilter(IResource.FILE, new String[] {"css"})); //$NON-NLS-N$
-
-      xsltFilePath = new PathSelectionComposite(specificProjectGroup, SWT.NONE);
-      xsltFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-      xsltFilePath.setMessage(Messages.GameReportWizardPageTwo_XSLTPathFile);
-      xsltFilePath.setFeatures(IResource.FILE, new PathSelectionFileFilter(IResource.FILE, new String[] {"xslt"})); //$NON-NLS-1$
-
-      bannerFilePath = new PathSelectionComposite(specificProjectGroup, SWT.NONE);
-      bannerFilePath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-      bannerFilePath.setMessage(Messages.GameReportWizardPageTwo_BannerPathFile);
-      bannerFilePath.setFeatures(IResource.FILE,new PathSelectionFileFilter(IResource.FILE, new String[] {"jpg","png"})); //$NON-NLS-1$ //$NON-NLS-2$
-
-      btnStandardConf.addSelectionListener(this);
-
-      ScorePreferencesManager preferenceInstance = ScorePreferencesManager.getInstance();
-//      btnStandardConf.setSelection(preferenceInstance.getValue(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION));
-//      cssFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_CSS_FILE_PATH));
-//      xsltFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_XSLT_FILE_PATH));
-//      bannerFilePath.setText(preferenceInstance.getValue(ScorePreferenceConstants.GRW_BANNER_FILE_PATH));
-
-      checkIsvalid();
+      initContent();
    }
 
    /**
-    * Check if page one is valid
+    * Initialization of the panel with last options used.
+    * 
     */
-   private void checkIsvalid() {
-      if (btnStandardConf.getSelection()) {
-         isValid = true;
+   private void initContent() {
+      ScorePreferencesManager preferencesManager = ScorePreferencesManager.getInstance();
+      IEclipsePreferences projectStore = preferencesManager.getProjectPreferenceStore();
 
-         setErrorMessage(null);
-         setPageComplete(true);
+      boolean useProjectConfiguration = preferencesManager.getBooleanValue(projectStore, ScorePreferenceConstants.GRW_USE_REPORT_PROJECT_SETTING);
+      btnStandardConf.setSelection(useProjectConfiguration);
+      changeScopeLevel(useProjectConfiguration);
+      
+      validateContent();
+   }
 
+   /**
+    * Validate the content of the page.
+    */
+   private void validateContent() {
+      if (reportParameterComposite != null) {
+         String resultValue = reportParameterComposite.validate();
+         if (resultValue != null) {
+            setPageComplete(false);
+            setErrorMessage(resultValue);
+            return;
+         }
+      }
+      setPageComplete(true);
+      setErrorMessage(null);
+   }
+
+   /**
+    * Change the scope level.
+    * 
+    * @param projectScope scope level
+    */
+   protected void changeScopeLevel(boolean projectScope) {
+      ScorePreferencesManager preferenceManager = ScorePreferencesManager.getInstance();
+
+      IEclipsePreferences preferenceScope;
+      if (projectScope) {
+         preferenceScope = preferenceManager.getProjectPreferenceStore();
       } else {
-         if (!cssFilePath.isValid()) {
-            setErrorMessage(Messages.GameReportWizardPageTwo_CSSSelectionMessage);
-            setPageComplete(false);
-            return;
-         }
-         if (!xsltFilePath.isValid()) {
-            setErrorMessage(Messages.GameReportWizardPageTwo_XSLTSelectionMessage);
-            setPageComplete(false);
-            return;
-         }
-         if (!bannerFilePath.isValid()) {
-            setErrorMessage(Messages.GameReportWizardPageTwo_BannerSelectionMessage);
-            setPageComplete(false);
-            return;
-         }
+         preferenceScope = preferenceManager.getWorkspacePreferenceStore();
+      }
 
-         setErrorMessage(null);
-         setPageComplete(true);
+      if (preferenceScope != null) {
+         reportParameterComposite.storePreferenceChange(preferenceScope);
+      }
+
+      setState(reportParameterComposite, projectScope);
+   }
+
+   /**
+    * Change the state of parameter composite.
+    * 
+    * @param swtElement   composite eelement
+    * @param projectScope state of the composite
+    */
+   private void setState(Composite swtElement, boolean projectScope) {
+      swtElement.setEnabled(projectScope);
+      for (Control child : swtElement.getChildren()) {
+         if (child instanceof Composite subComposite) {
+            setState(subComposite, projectScope);
+         } else {
+            child.setEnabled(projectScope);
+         }
       }
    }
 
    @Override
    public void widgetSelected(SelectionEvent e) {
       if (e.getSource() == btnStandardConf) {
-         setEnabledRecursive(specificProjectGroup, btnStandardConf.getSelection());
-         checkIsvalid();
+         changeScopeLevel(btnStandardConf.getSelection());
       }
    }
 
    /**
     * Allow to enable or disable widget in a group of widget
     * 
-    * @param composite 
-    * @param enabled <b>true</b> enable all widgets,<b>false</b> disable all widgets
+    * @param composite
+    * @param enabled   <b>true</b> enable all widgets,<b>false</b> disable all
+    *                  widgets
     */
    public static void setEnabledRecursive(Composite composite, boolean enabled) {
       composite.setEnabled(enabled);
@@ -237,18 +245,16 @@ public class GameReportWizardPageTwo extends WizardPage implements SelectionList
     * Save configuration in the preference for the next call
     */
    public void savePreferences() {
-
-      if (btnStandardConf.getSelection()) {
-         ScorePreferencesManager preferenceInstance = ScorePreferencesManager.getInstance();
-//         preferenceInstance.setValue(ScorePreferenceConstants.GRW_USE_STANDARD_CONFIGURATION, btnStandardConf.getSelection());
-//         preferenceInstance.setValue(ScorePreferenceConstants.GRW_CSS_FILE_PATH, cssFilePath.getDisplayPath());
-//         preferenceInstance.setValue(ScorePreferenceConstants.GRW_XSLT_FILE_PATH, xsltFilePath.getDisplayPath());
-//         preferenceInstance.setValue(ScorePreferenceConstants.GRW_BANNER_FILE_PATH, bannerFilePath.getDisplayPath());
-      }
+      // Not used
    }
 
    @Override
    public void modifyText(ModifyEvent e) {
       // Nothing to do
+   }
+
+   @Override
+   public void pathSelectionChanged(PathSelectionCompositeStatus status) {
+      validateContent();
    }
 }

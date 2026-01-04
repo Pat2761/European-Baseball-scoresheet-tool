@@ -68,6 +68,33 @@ public class ReportParameterComposite extends AbstractScorePreferenceComposite i
    }
 
    /**
+    * Get the CSS File path
+    * 
+    * @return CSS file path
+    */
+   public String getCSSFileLocation() {
+      return cssFileSelector.getResolvedAbsolutePath();
+   }
+   
+   /**
+    * Get the XSLT File path
+    * 
+    * @return XSLT file path
+    */
+   public String getXSLTFileLocation() {
+      return xsltFileSelector.getResolvedAbsolutePath();
+   }
+   
+   /**
+    * Get the Banner File path
+    * 
+    * @return Banner file path
+    */
+   public String getBannerFilePath() {
+      return bannerFileSelector.getResolvedAbsolutePath();
+   }
+   
+   /**
     * Populate the panel.
     */
    @Override
@@ -133,7 +160,7 @@ public class ReportParameterComposite extends AbstractScorePreferenceComposite i
     * 
     * @return String message
     */
-   protected String validate() {
+   public String validate() {
       PathSelectionCompositeStatus cssStatus = cssFileSelector.validateSelection();
       if (cssStatus != PathSelectionCompositeStatus.OK) {
          return buildErrorMessage(Messages.ReportParameterComposite_CSSConfiguration, cssStatus);

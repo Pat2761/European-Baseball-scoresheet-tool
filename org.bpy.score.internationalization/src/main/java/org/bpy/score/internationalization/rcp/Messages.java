@@ -151,6 +151,8 @@ public class Messages extends NLS {
    public static String GameReportWizardPageOne_DisplayRegexInvalid;
    /** New Game Page One Wizard : Regular expression for selection is invalid */ 
    public static String GameReportWizardPageOne_SelectionRegexInvalid;
+   /** Folder path must be defined */
+   public static String GameReportWizardPageOne_AFolderMustBeDefined;
 	
 
 	/*----------------------------------------------------------------------- */
