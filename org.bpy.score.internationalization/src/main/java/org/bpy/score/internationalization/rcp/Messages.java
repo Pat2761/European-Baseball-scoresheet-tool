@@ -587,6 +587,45 @@ public class Messages extends NLS {
    /*----------------------------------------------------------------------- */
 	public static String ImportHtmlWizardPage_pathSelectionComposite_message;
 	
+   /*----------------------------------------------------------------------- */
+   /* ImportTournamentWizardPageOne class                                      */
+   /*----------------------------------------------------------------------- */
+	public static String WizardProjectsImportPage_CreateProjectsTask;
+	public static String WizardExternalProjectImportPage_errorMessage;
+	public static String WizardProjectsImportPage_projectsInWorkspaceAndInvalid;
+	public static String WizardProjectsImportPage_SelectArchiveDialogTitle;
+	public static String WizardProjectsImportPage_SelectDialogTitle;
+	public static String WizardProjectsImportPage_CheckingMessage;
+	public static String ZipImport_couldNotRead;
+	public static String TarImport_badFormat;
+	public static String WizardProjectsImportPage_invalidProjectName;
+	public static String WizardProjectsImportPage_projectLabel;
+	public static String WizardProjectsImportPage_ImportProjectsTitle;
+	public static String WizardProjectsImportPage_ImportProjectsDescription;
+	public static String WizardProjectsImportPage_ProjectsListTitle;
+	public static String DataTransfer_selectAll;
+	public static String DataTransfer_deselectAll;
+	public static String DataTransfer_refresh;
+	public static String WizardProjectsImportPage_RootSelectTitle;
+	public static String WizardProjectsImportPage_ArchiveSelectTitle;
+	public static String DataTransfer_browse;
+	public static String WizardProjectsImportPage_SearchingMessage;
+	public static String WizardProjectsImportPage_ProcessingMessage;
+	public static String WizardProjectsImportPage_projectsInWorkspace;
+	public static String WizardProjectsImportPage_projectsInvalid;
+	public static String WizardProjectsImportPage_noProjectsToImport;
+	public static String ZipImport_badFormat;
+	
+	public static String ImportTournamentWizardPageOne_Description;
+	public static String ImportTournamentWizardPageOne_SelectAFolder;
+	public static String ImportTournamentWizardPageOne_FolderPath;
+	public static String ImportTournamentWizardPageOne_SelectZipFile;
+	public static String ImportTournamentWizardPageOne_ZipFilePath;
+	public static String ImportTournamentWizardPageOne_ListOfProjects;
+	public static String ImportTournamentWizardPageOne_SelectAll;
+	public static String ImportTournamentWizardPageOne_UnselectAll;
+	public static String ImportTournamentWizardPageOne_lblNewLabel_text;
+	
 	/**
 	 * Initialize the internationalization
 	 */
