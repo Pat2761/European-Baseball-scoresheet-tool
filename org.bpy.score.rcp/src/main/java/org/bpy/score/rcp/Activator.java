@@ -19,6 +19,7 @@
 package org.bpy.score.rcp;
 
 import org.bpy.score.rcp.wizard.GenerateGameReportWizard;
+import org.bpy.score.rcp.wizard.NewChampionatWizard;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -114,8 +115,10 @@ public class Activator extends AbstractUIPlugin {
 	protected void initializeImageRegistry(ImageRegistry registry) {
 		super.initializeImageRegistry(registry);
 		
-		registry.put(GenerateGameReportWizard.REPORT_GENERATION_ICON_NAME, 
-				imageDescriptorFromPlugin(PLUGIN_ID, "icons/report_generation_75.png"));
+      registry.put(GenerateGameReportWizard.REPORT_GENERATION_ICON_NAME, 
+            imageDescriptorFromPlugin(PLUGIN_ID, "icons/report_generation_75.png"));
+      registry.put(NewChampionatWizard.NEW_CHAMPIONAT_WIZARD_ICON_NAME, 
+            imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_tournament_75.jpeg"));
 	}
 
 }
