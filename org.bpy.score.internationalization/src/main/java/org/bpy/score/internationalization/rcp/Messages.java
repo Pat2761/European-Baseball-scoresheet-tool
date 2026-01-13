@@ -631,6 +631,12 @@ public class Messages extends NLS {
    /*----------------------------------------------------------------------- */
 	public static String NewChampionatWizard_Title;
 	public static String NewGamePageTwoWizard_lblNewLabel_text;
+
+	
+   /*----------------------------------------------------------------------- */
+   /* NewSeasonWizard class                                              */
+   /*----------------------------------------------------------------------- */
+	public static String NewSeasonWizard_Title;
 	
 	/**
 	 * Initialize the internationalization

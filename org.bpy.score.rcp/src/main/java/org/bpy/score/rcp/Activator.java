@@ -21,6 +21,7 @@ package org.bpy.score.rcp;
 import org.bpy.score.rcp.wizard.GenerateGameReportWizard;
 import org.bpy.score.rcp.wizard.NewChampionatWizard;
 import org.bpy.score.rcp.wizard.NewGameWizard;
+import org.bpy.score.rcp.wizard.NewSeasonWizard;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -56,7 +57,6 @@ public class Activator extends AbstractUIPlugin {
 	 * BundleContext)
 	 */
 	@Override
-	@SuppressWarnings("java:S2696")
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 
@@ -74,7 +74,6 @@ public class Activator extends AbstractUIPlugin {
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	@Override
-	@SuppressWarnings("java:S2696")
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
@@ -122,6 +121,8 @@ public class Activator extends AbstractUIPlugin {
             imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_tournament_75.jpeg")); //$NON-NLS-1$
       registry.put(NewGameWizard.NEW_GAME_CREATION_ICON_NAME, 
             imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_game_wizard_icon_75.jpeg")); //$NON-NLS-1$
+      registry.put(NewSeasonWizard.NEW_SEASON_WIZARD_ICON_NAME, 
+            imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_season_wizard_icon_75.jpeg")); //$NON-NLS-1$
 	}
 
 }

@@ -18,6 +18,8 @@
  */
 package org.bpy.score.rcp.wizard;
 
+import org.bpy.score.internationalization.rcp.Messages;
+import org.bpy.score.rcp.Activator;
 import org.bpy.score.rcp.navigator.ScoreToolSeasonElement;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.ISelection;
@@ -37,9 +39,25 @@ import org.eclipse.ui.PlatformUI;
  */
 public class NewSeasonWizard extends Wizard implements INewWizard  {
 
-	/** Reference on the page of the wizard */
+   /** Key for the icon of the Report Generation wizard */
+   public static final String NEW_SEASON_WIZARD_ICON_NAME = "NewSeasonWizardIconName";
+
+   /** Reference on the page of the wizard */
   private NewSeasonWizardPage page;
 
+  /**
+   * Constructor of the class
+   * 
+   */
+  public NewSeasonWizard() {
+     setWindowTitle(Messages.NewSeasonWizard_Title);
+     setDefaultPageImageDescriptor(
+           Activator.getDefault()
+                    .getImageRegistry()
+                    .getDescriptor(NEW_SEASON_WIZARD_ICON_NAME)
+       );
+  }
+  
   @Override
   public void init(IWorkbench workbench, IStructuredSelection selection) {
     // nothing to do
