@@ -626,6 +626,12 @@ public class Messages extends NLS {
 	public static String ImportTournamentWizardPageOne_UnselectAll;
 	public static String ImportTournamentWizardPageOne_lblNewLabel_text;
 	
+   /*----------------------------------------------------------------------- */
+   /* NewChampionatWizard class                                              */
+   /*----------------------------------------------------------------------- */
+	public static String NewChampionatWizard_Title;
+	public static String NewGamePageTwoWizard_lblNewLabel_text;
+	
 	/**
 	 * Initialize the internationalization
 	 */

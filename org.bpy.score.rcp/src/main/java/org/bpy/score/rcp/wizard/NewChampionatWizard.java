@@ -20,6 +20,7 @@ package org.bpy.score.rcp.wizard;
 
 import java.io.File;
 
+import org.bpy.score.internationalization.rcp.Messages;
 import org.bpy.score.rcp.Activator;
 import org.bpy.score.rcp.navigator.ScoreToolProjectParent;
 import org.eclipse.core.resources.IProject;
@@ -47,6 +48,7 @@ public class NewChampionatWizard extends Wizard implements INewWizard {
 	 * Constructor of the class.
 	 */
 	public NewChampionatWizard() {
+	   setWindowTitle(Messages.NewChampionatWizard_Title);
       setDefaultPageImageDescriptor(
             Activator.getDefault()
                      .getImageRegistry()
