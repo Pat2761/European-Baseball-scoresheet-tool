@@ -19,9 +19,7 @@
 package org.bpy.score.rcp.wizard;
 
 import java.time.Year;
-import java.util.Calendar;
 
-import org.apache.commons.lang3.StringUtils;
 import org.bpy.score.internationalization.rcp.Messages;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;

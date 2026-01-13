@@ -31,6 +31,8 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
 
 /**
  * Dialog box which allow to create a new member in a team
@@ -142,38 +144,39 @@ public class NewMemberDialog extends Dialog implements ModifyListener {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite container = (Composite) super.createDialogArea(parent);
-		
-		container.setLayout(null);
+		container.setLayout(new GridLayout(2, false));
 		
 		Label lblNomDuMembre = new Label(container, SWT.NONE);
-		lblNomDuMembre.setBounds(10, 10, 185, 15);
+		lblNomDuMembre.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		lblNomDuMembre.setText(Messages.NewMemberDialog_MemberNameLabel);
 		
 		memberNameTxt = new Text(container, SWT.BORDER);
-		memberNameTxt.setBounds(10, 31, 185, 21);
+		memberNameTxt.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		memberNameTxt.addModifyListener(this);
 		
 		Label lblSurnomDuMembre = new Label(container, SWT.NONE);
-		lblSurnomDuMembre.setBounds(240, 76, 185, 15);
+		lblSurnomDuMembre.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		lblSurnomDuMembre.setText(Messages.NewMemberDialog_MemberSurNameLabel);
 		
 		shortNameTxt = new Text(container, SWT.BORDER);
-		shortNameTxt.setBounds(235, 97, 185, 21);
+		shortNameTxt.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		
 		Label lblNumroDeLicense = new Label(container, SWT.NONE);
-		lblNumroDeLicense.setBounds(10, 76, 185, 15);
+		lblNumroDeLicense.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		lblNumroDeLicense.setText(Messages.NewMemberDialog_LicenseNumberLabel);
 		
 		licenceNumberTxt = new Text(container, SWT.BORDER);
-		licenceNumberTxt.setBounds(10, 97, 185, 21);
+		licenceNumberTxt.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		licenceNumberTxt.addModifyListener(this);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
 		
 		isForeignBtn = new Button(container, SWT.CHECK);
-		isForeignBtn.setBounds(235, 31, 176, 16);
+		isForeignBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		isForeignBtn.setText(Messages.NewMemberDialog_ForeignPlayerCheckBox);
 		
 		isMutedBtn = new Button(container, SWT.CHECK);
-		isMutedBtn.setBounds(235, 52, 176, 16);
+		isMutedBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		isMutedBtn.setText(Messages.NewMemberDialog_TransferedPlayerCheckBox);
 
 		return container;
@@ -195,7 +198,7 @@ public class NewMemberDialog extends Dialog implements ModifyListener {
 	 */
 	@Override
 	protected Point getInitialSize() {
-		return new Point(450, 230);
+		return new Point(450, 285);
 	}
 
 	@Override
