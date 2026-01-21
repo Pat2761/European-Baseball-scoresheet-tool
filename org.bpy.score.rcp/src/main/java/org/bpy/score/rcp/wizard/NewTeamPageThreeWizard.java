@@ -40,6 +40,8 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
 
 /**
  * Page one of the New team wizard.
@@ -70,6 +72,7 @@ public class NewTeamPageThreeWizard extends WizardPage implements Listener,Selec
 	private HashMap<String, Member> definedUmpires;
 	/** List of score keepers */
 	private HashMap<String, Member> definedScorekeepers;
+	private Label lblNewLabel;
 
 	/**
 	 * Create the wizard.
@@ -101,42 +104,55 @@ public class NewTeamPageThreeWizard extends WizardPage implements Listener,Selec
 		Composite container = new Composite(parent, SWT.NONE);
 
 		setControl(container);
+		container.setLayout(new GridLayout(5, false));
 		
 		Label lblListeDesArbitres = new Label(container, SWT.NONE);
-		lblListeDesArbitres.setBounds(10, 10, 151, 29);
+		lblListeDesArbitres.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 		lblListeDesArbitres.setText(Messages.NewTeamPageThreeWizard_ListOfUmpiresLabel);
+		new Label(container, SWT.NONE);
 		
 		Label lblListeDesSoceurs = new Label(container, SWT.NONE);
-		lblListeDesSoceurs.setBounds(365, 10, 167, 29);
+		lblListeDesSoceurs.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 		lblListeDesSoceurs.setText(Messages.NewTeamPageThreeWizard_ListOfScoreKeepersLabel);
 		
 		umpireList = new List(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
-		umpireList.setBounds(10, 45, 140, 220);
+		umpireList.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 4));
 		umpireList.addListener(SWT.Selection, this);
 		
-		scorekeeperList = new List(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
-		scorekeeperList.setBounds(365, 45, 140, 220);
-		scorekeeperList.addListener(SWT.Selection, this);
-		
 		newUmpireBtn = new Button(container, SWT.NONE);
-		newUmpireBtn.setBounds(156, 45, 182, 25);
+		newUmpireBtn.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		newUmpireBtn.setText(Messages.NewTeamPageThreeWizard_AddUmpireButton);
 		newUmpireBtn.addSelectionListener(this);
+		new Label(container, SWT.NONE);
 		
-		removeUmpireBtn = new Button(container, SWT.NONE);
-		removeUmpireBtn.setText(Messages.NewTeamPageThreeWizard_RemoveUmpireButton);
-		removeUmpireBtn.setBounds(156, 76, 182, 25);
-		removeUmpireBtn.addSelectionListener(this);
+		scorekeeperList = new List(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
+		scorekeeperList.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 4));
+		scorekeeperList.addListener(SWT.Selection, this);
 		
 		addScorekeeperBtn = new Button(container, SWT.NONE);
+		addScorekeeperBtn.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		addScorekeeperBtn.setText(Messages.NewTeamPageThreeWizard_AddScoreKeeperButton);
-		addScorekeeperBtn.setBounds(511, 53, 173, 25);
 		addScorekeeperBtn.addSelectionListener(this);
 		
+		removeUmpireBtn = new Button(container, SWT.NONE);
+		removeUmpireBtn.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		removeUmpireBtn.setText(Messages.NewTeamPageThreeWizard_RemoveUmpireButton);
+		removeUmpireBtn.addSelectionListener(this);
+		new Label(container, SWT.NONE);
+		
 		removeScorekeeperBtn = new Button(container, SWT.NONE);
+		removeScorekeeperBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		removeScorekeeperBtn.setText(Messages.NewTeamPageThreeWizard_RemoveScoreKeepereButton);
-		removeScorekeeperBtn.setBounds(511, 89, 173, 25);
 		removeScorekeeperBtn.addSelectionListener(this);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		
+		lblNewLabel = new Label(container, SWT.NONE);
+		lblNewLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, true, 1, 1));
+		lblNewLabel.setText(Messages.NewTeamPageThreeWizard_lblNewLabel_text);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
 	}
 
 	@Override

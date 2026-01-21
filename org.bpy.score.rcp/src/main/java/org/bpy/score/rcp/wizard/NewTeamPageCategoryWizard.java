@@ -39,6 +39,8 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
 
 /**
  * Wizard page for add players to a category
@@ -62,12 +64,13 @@ public class NewTeamPageCategoryWizard extends WizardPage implements Listener,Se
 	
 	/** Collection of displayed members */
 	private HashMap<String,Member> displayedMembers;
+	private Label lblNewLabel;
 
 	/**
 	 * Create the wizard.
 	 */
 	public NewTeamPageCategoryWizard() {
-		super("wizardPage"); //$NON-NLS-1$
+		super("NewTeamPageCategoryWizard"); //$NON-NLS-1$
 		setTitle("Wizard Page title"); //$NON-NLS-1$
 		setDescription("Wizard Page description"); //$NON-NLS-1$
 		
@@ -100,25 +103,30 @@ public class NewTeamPageCategoryWizard extends WizardPage implements Listener,Se
 		Composite container = new Composite(parent, SWT.NONE);
 
 		setControl(container);
+		container.setLayout(new GridLayout(2, false));
 		
 		Label lblListeDesMembres = new Label(container, SWT.NONE);
-		lblListeDesMembres.setBounds(10, 10, 271, 15);
+		lblListeDesMembres.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 		lblListeDesMembres.setText(Messages.NewTeamPageCategoryWizard_MembersListLabel);
 		
 		memberList = new List(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
-		memberList.setBounds(10, 34, 173, 289);
+		memberList.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 3));
 		memberList.addListener(SWT.Selection, this);
 		
 		newMemberBtn = new Button(container, SWT.NONE);
-		newMemberBtn.setBounds(189, 41, 240, 25);
+		newMemberBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		newMemberBtn.setText(Messages.NewTeamPageCategoryWizard_AddMemberButton);
 		newMemberBtn.addSelectionListener(this);
 		
 		removeMemberBtn = new Button(container, SWT.NONE);
-		removeMemberBtn.setBounds(189, 72, 240, 25);
+		removeMemberBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		removeMemberBtn.setText(Messages.NewTeamPageCategoryWizard_RemoveMemberButton);
 		removeMemberBtn.addSelectionListener(this);
 		removeMemberBtn.setEnabled(false);
+		
+		lblNewLabel = new Label(container, SWT.NONE);
+		lblNewLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, true, 1, 1));
+		lblNewLabel.setText(" "); //$NON-NLS-1$
 	}
 
 	@Override

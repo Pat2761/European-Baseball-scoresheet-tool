@@ -33,6 +33,7 @@ public class Messages extends NLS {
 	/** Name of the bundle */
 	private static final String BUNDLE_NAME = "org.bpy.score.internationalization.rcp.messages"; //$NON-NLS-1$
 
+
 	/*----------------------------------------------------------------------- */
 	/* GameMultipageEditor class                                              */
 	/*----------------------------------------------------------------------- */
@@ -369,6 +370,9 @@ public class Messages extends NLS {
 	public static String NewTeamPageOneWizard_BlankClubAlreadyDefiendError;
 	/** New Team Page One Wizard : Blank city name error */ 
 	public static String NewTeamPageOneWizard_BlankCityNameError;
+	/** No category defined */
+   public static String NewTeamPageOneWizard_MissingCategories;
+
 
 	/*----------------------------------------------------------------------- */
 	/* NewTeamPageThreeWizard class                                           */
@@ -637,6 +641,8 @@ public class Messages extends NLS {
    /* NewSeasonWizard class                                              */
    /*----------------------------------------------------------------------- */
 	public static String NewSeasonWizard_Title;
+	public static String NewTeamPageTwoWizard_lblNewLabel_text;
+	public static String NewTeamPageThreeWizard_lblNewLabel_text;
 	
 	/**
 	 * Initialize the internationalization

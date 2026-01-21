@@ -22,6 +22,7 @@ import org.bpy.score.rcp.wizard.GenerateGameReportWizard;
 import org.bpy.score.rcp.wizard.NewChampionatWizard;
 import org.bpy.score.rcp.wizard.NewGameWizard;
 import org.bpy.score.rcp.wizard.NewSeasonWizard;
+import org.bpy.score.rcp.wizard.NewTeamWizard;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -123,6 +124,8 @@ public class Activator extends AbstractUIPlugin {
             imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_game_wizard_icon_75.jpeg")); //$NON-NLS-1$
       registry.put(NewSeasonWizard.NEW_SEASON_WIZARD_ICON_NAME, 
             imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_season_wizard_icon_75.jpeg")); //$NON-NLS-1$
+      registry.put(NewTeamWizard.NEW_TEAM_CREATION_ICON_NAME, 
+            imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_team_wizard_icons_75.jpeg")); //$NON-NLS-1$
 	}
 
 }

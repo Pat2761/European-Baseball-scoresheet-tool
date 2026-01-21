@@ -36,6 +36,8 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
 
 /**
  * Page two of the New team wizard.
@@ -59,6 +61,7 @@ public class NewTeamPageTwoWizard extends WizardPage implements Listener,Selecti
 
 	/** Collection of members */
 	private HashMap<String, Member> definedMembers;
+	private Label lblNewLabel;
 
 	/**
 	 * Create the wizard.
@@ -79,24 +82,29 @@ public class NewTeamPageTwoWizard extends WizardPage implements Listener,Selecti
 		Composite container = new Composite(parent, SWT.NONE);
 
 		setControl(container);
+		container.setLayout(new GridLayout(2, false));
 		
 		Label lblListeDesMembres = new Label(container, SWT.NONE);
-		lblListeDesMembres.setBounds(10, 10, 236, 25);
+		lblListeDesMembres.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1));
 		lblListeDesMembres.setText(Messages.NewTeamPageTwoWizard_ListMemberLabel);
 		
 		memberList = new List(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
-		memberList.setBounds(10, 49, 250, 292);
+		memberList.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 3));
 		memberList.addListener(SWT.Selection, this);
 		
 		addMemberButton = new Button(container, SWT.NONE);
-		addMemberButton.setBounds(266, 59, 254, 25);
+		addMemberButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		addMemberButton.setText(Messages.NewTeamPageTwoWizard_AddMemberButton);
 		addMemberButton.addSelectionListener(this);
 		
 		removeElementButton = new Button(container, SWT.NONE);
+		removeElementButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		removeElementButton.setEnabled(false);
-		removeElementButton.setBounds(266, 97, 254, 25);
 		removeElementButton.setText(Messages.NewTeamPageTwoWizard_RemoveMemberButton);
+		
+		lblNewLabel = new Label(container, SWT.NONE);
+		lblNewLabel.setLayoutData(new GridData(SWT.LEFT, SWT.FILL, false, true, 1, 1));
+		lblNewLabel.setText(Messages.NewTeamPageTwoWizard_lblNewLabel_text);
 		removeElementButton.addSelectionListener(this);
 	}
 
