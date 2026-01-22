@@ -72,7 +72,6 @@ public class NewTeamPageThreeWizard extends WizardPage implements Listener,Selec
 	private HashMap<String, Member> definedUmpires;
 	/** List of score keepers */
 	private HashMap<String, Member> definedScorekeepers;
-	private Label lblNewLabel;
 
 	/**
 	 * Create the wizard.
@@ -148,9 +147,9 @@ public class NewTeamPageThreeWizard extends WizardPage implements Listener,Selec
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 		
-		lblNewLabel = new Label(container, SWT.NONE);
+		Label lblNewLabel = new Label(container, SWT.NONE);
 		lblNewLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, true, 1, 1));
-		lblNewLabel.setText(Messages.NewTeamPageThreeWizard_lblNewLabel_text);
+		lblNewLabel.setText(" "); //$NON-NLS-1$
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 	}

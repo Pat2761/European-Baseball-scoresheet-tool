@@ -20,6 +20,8 @@ package org.bpy.score.rcp.wizard;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -29,20 +31,21 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.bpy.score.club.club.Club;
 import org.bpy.score.game.game.Game;
 import org.bpy.score.internationalization.rcp.Messages;
-import org.bpy.score.rcp.containers.SearchGameContainer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DateTime;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.events.SelectionAdapter;
 
 /**
  * Page one of the search function by date
@@ -50,7 +53,7 @@ import org.eclipse.swt.widgets.TableItem;
  * @author Patrick BRIAND
  *
  */
-public class SearchGameByDateWizardPageOne extends WizardPage implements SelectionListener {
+public class SearchGameByDateWizardPageOne extends WizardPage  {
 	
 	/** Logger of the class */
 	public static final Logger logger = Logger.getLogger(SearchGameByDateWizardPageOne.class.getSimpleName());
@@ -61,18 +64,16 @@ public class SearchGameByDateWizardPageOne extends WizardPage implements Selecti
 	private DateTime startDatePicker;
 	/** Table which contains games */
 	private Table table;
-	/** State of the page */
-	private boolean canFinish;
-	/** Current selected category */ 
-	private String currentCategory;
 	
 	/** Reference to the owner of the page */
 	private SearchGameByDateWizard searchGameForDateWizard;
 	
-	/** List of game search container */
-	private List<SearchGameContainer> gamesContainer;
 	/** List of games by date */
 	private HashMap<Date,List<Game>> gamesByDate;
+	/** SWT button for a range selection */
+   private Button btnRangeSelection;
+   /** SWT Label for end date picker */
+   private Label endLabelDatePicker;
 	
 	/**
 	 * Create the wizard.
@@ -87,7 +88,6 @@ public class SearchGameByDateWizardPageOne extends WizardPage implements Selecti
 		setDescription(Messages.SearchGameByDateWizardPageOne_PageDescription);
 		
 		this.searchGameForDateWizard = searchGameForDateWizard;
-		this.currentCategory = currentCategory;
 	}
 
 	/**
@@ -99,26 +99,91 @@ public class SearchGameByDateWizardPageOne extends WizardPage implements Selecti
 		Composite container = new Composite(parent, SWT.NONE);
 
 		setControl(container);
+		container.setLayout(new GridLayout(7, false));
 		
-		startDatePicker = new DateTime(container, SWT.BORDER | SWT.DATE | SWT.DROP_DOWN);
-		startDatePicker.setBounds(20, 37, 80, 24);
+		Label lblDateSelection = new Label(container, SWT.NONE);
+		lblDateSelection.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
+		lblDateSelection.setText(Messages.SearchGameByDateWizardPageOne_dateSelection);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		
+		btnRangeSelection = new Button(container, SWT.CHECK);
+		btnRangeSelection.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
+		btnRangeSelection.setText(Messages.SearchGameByDateWizardPageOne_btnRange_text);
+		btnRangeSelection.setSelection(true);
+      btnRangeSelection.addSelectionListener(new SelectionAdapter() {
+         @Override
+         public void widgetSelected(SelectionEvent e) {
+            manageRangeSelection();
+         }
+      });
+		
+		Label lblNewLabel = new Label(container, SWT.NONE);
+		GridData gdLblNewLabel = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
+		gdLblNewLabel.widthHint = 40;
+		lblNewLabel.setLayoutData(gdLblNewLabel);
+		lblNewLabel.setText(" "); //$NON-NLS-1$
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		
+		Label lblNewLabel2 = new Label(container, SWT.NONE);
+		lblNewLabel2.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+		lblNewLabel2.setText(" "); //$NON-NLS-1$
 		
 		Label lblDbutDeLa = new Label(container, SWT.NONE);
-		lblDbutDeLa.setBounds(20, 16, 138, 15);
+		lblDbutDeLa.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		lblDbutDeLa.setText(Messages.SearchGameByDateWizardPageOne_StartDateLabel);
 		
-		Label lblFinDeLa = new Label(container, SWT.NONE);
-		lblFinDeLa.setText(Messages.SearchGameByDateWizardPageOne_EndDateLabel);
-		lblFinDeLa.setBounds(333, 16, 138, 15);
+		startDatePicker = new DateTime(container, SWT.BORDER | SWT.DATE | SWT.DROP_DOWN);
+		startDatePicker.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		new Label(container, SWT.NONE);
+		
+		endLabelDatePicker = new Label(container, SWT.NONE);
+		endLabelDatePicker.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		endLabelDatePicker.setText(Messages.SearchGameByDateWizardPageOne_EndDateLabel);
 		
 		endDatePicker = new DateTime(container, SWT.BORDER | SWT.DATE | SWT.DROP_DOWN);
-		endDatePicker.setBounds(333, 37, 80, 24);
+		endDatePicker.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		
+		Button btnSearch = new Button(container, SWT.NONE);
+		btnSearch.addSelectionListener(new SelectionAdapter() {
+		   @Override
+		   public void widgetSelected(SelectionEvent e) {
+		      updateTable();
+		   }
+		});
+		btnSearch.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		btnSearch.setText(Messages.SearchGameByDateWizardPageOne_btnSearch_text);
+		new Label(container, SWT.NONE);
+		
+		Label lblNewLabel1 = new Label(container, SWT.NONE);
+		lblNewLabel1.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 5, 1));
+		lblNewLabel1.setText(" ");
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		
+		Label label = new Label(container, SWT.NONE);
+		label.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
+		label.setText(Messages.SearchGameByDateWizardPageOne_listOfGames);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
 		
 		table = new Table(container, SWT.BORDER | SWT.FULL_SELECTION);
-		table.setBounds(20, 84, 544, 225);
+		table.addSelectionListener(new SelectionAdapter() {
+		   @Override
+		   public void widgetSelected(SelectionEvent e) {
+		      checkPageCompleted();
+		   }
+		});
+		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 7, 1));
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
-		table.addSelectionListener(this);
 		
 		TableColumn tblclmnDate = new TableColumn(table, SWT.NONE);
 		tblclmnDate.setWidth(100);
@@ -131,101 +196,116 @@ public class SearchGameByDateWizardPageOne extends WizardPage implements Selecti
 		TableColumn tblclmnDescription = new TableColumn(table, SWT.NONE);
 		tblclmnDescription.setWidth(341);
 		tblclmnDescription.setText(Messages.SearchGameByDateWizardPageOne_DescriptionColumnTable);
-		
+
+		createDataToDisplay();
+		initPageContent();
 		checkPageCompleted();
 	}
 
 	/**
+	 * Call when the button allow range selection is used. 
+	 */
+	protected void manageRangeSelection() {
+	   endDatePicker.setVisible(btnRangeSelection.getSelection());
+	   endLabelDatePicker.setVisible(btnRangeSelection.getSelection());
+	   updateTable();
+   }
+
+   /**
+	 * Populate widgets with data.
+	 * 
+	 */
+	private void initPageContent() {
+	   initDateLimits();
+	   updateTable();
+   }
+
+   /**
+	 * Create a data structure for search games by dates.
+	 */
+	private void createDataToDisplay() {
+      List<Game> games = searchGameForDateWizard.getGameDataParser().getGames();
+      gamesByDate = new HashMap<>();
+      
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); //$NON-NLS-1$
+
+      for (Game game : games) {
+         String strDate = game.getDescription().getDate();
+         try {
+            Date gameDate = dateFormat.parse(strDate);
+            if (gamesByDate.containsKey(gameDate)) {
+               gamesByDate.get(gameDate).add(game);
+            } else {
+               List<Game> listOfGames = new ArrayList<>(); 
+               listOfGames.add(game);
+               gamesByDate.put(gameDate, listOfGames);
+            }
+            
+         } catch (ParseException e) {
+            logger.log(Level.SEVERE, e.getMessage());
+         }
+      }
+	}
+
+   /**
 	 * Check that the page is correctly fill
 	 */
 	private void checkPageCompleted() {
 		if (table.getSelectionIndex() <0) {
 			setErrorMessage(Messages.SearchGameByDateWizardPageOne_MissingGameSelectionError);
 			setPageComplete(false);
-			canFinish = false;
 			return;
 		}
 		
-		canFinish = true;
 		setErrorMessage(null);
 		setPageComplete(true);
 	}
 
-	@Override
-	public void setVisible(boolean visible) {
-		
-		List<Club> clubs = searchGameForDateWizard.getClubDataParser().getDeclaredTeamsForCategory(currentCategory);
-		List<Game> games = searchGameForDateWizard.getGameDataParser().getGames();
-		
-		gamesByDate = new HashMap<>();
-
-		HashMap<String, Club> clubsDescriptions = new HashMap<>();
-		for (Club club : clubs) {
-			
-			String clubDesc = club.getClubDescription().getName() + " (" + club.getName() + ")"; //$NOn-NLS-1$  //$NOn-NLS-2$ //$NON-NLS-1$ //$NON-NLS-2$
-			clubsDescriptions.put(clubDesc, club);
-		}
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); //$NOn-NLS-1$ //$NON-NLS-1$
-		for (Game game : games) {
-			String strDate = game.getDescription().getDate();
-			try {
-				Date gameDate = dateFormat.parse(strDate);
-				if(gamesByDate.containsKey(gameDate)) {
-					List<Game> localGames = gamesByDate.get(gameDate);
-					localGames.add(game);
-					
-				} else {
-					List<Game> localGames = new ArrayList<>();
-					localGames.add(game);
-					gamesByDate.put(gameDate,games);
-				}
-			
-			} catch (ParseException e) {
-				logger.log(Level.SEVERE, e.getMessage());
-			}
-		}
-		
-		initDateLimits();
-		updateTable();
-		
-		super.setVisible(visible);
-	}
-	
 	/**
 	 * Update table display
 	 */
 	private void updateTable() {
 		Date startDate = getDate(startDatePicker,false);
-		Date endDate = getDate(endDatePicker,true);
+		Date endDate = (btnRangeSelection.getSelection() ? getDate(endDatePicker,true) : startDate);
+		
+		LocalDate min = toLocalDate(startDate);
+		LocalDate max = toLocalDate(endDate);
+		
 		table.removeAll();
 		
 		List<Date> dates = new ArrayList<>(gamesByDate.keySet());
 		Collections.sort(dates);
-		gamesContainer = new ArrayList<>();
+		
 		for (Date date : dates) {
-			if ( (date.compareTo(startDate) >= 0) && (date.compareTo(endDate) <=0)) {
+		   LocalDate currentDate = toLocalDate(date);
+		   
+			if ( (!currentDate.isBefore(min)) && (!currentDate.isAfter(max))) {
 
 				List<Game> gamesForDate = gamesByDate.get(date);
-
 				for (Game game : gamesForDate) {
 
 					String hometeamName = game.getHometeam().getName();
 					String visitorName = game.getVisitor().getName();
 					
-					SearchGameContainer searchGameContainer = new SearchGameContainer();
-					searchGameContainer.setPlace(game.getDescription().getPlace());
-					searchGameContainer.setCode(game.getName());
-					searchGameContainer.setDateTime(game.getDescription().getDate() + " " + game.getDescription().getStartTime()); //$NON-NLS-1$ 
-					searchGameContainer.setDescription(hometeamName + " vs " + visitorName); //$NON-NLS-1$
-					searchGameContainer.setGame(game);
-					gamesContainer.add(searchGameContainer);
-					
 					TableItem item = new TableItem(table, SWT.NONE);
-					item.setText(new String[] {searchGameContainer.getDateTime(), searchGameContainer.getCode(), searchGameContainer.getDescription()});
+					item.setData(game);
+					item.setText(new String[] {date.toString(), game.getName(), hometeamName + " vs " + visitorName}); //$NON-NLS-1$
 				}
 			}
 		}
+		checkPageCompleted();
+	}
+
+	/**
+	 * Convert a date to a local date.
+	 * 
+	 * @param date date to convert
+	 * @return converted date
+	 */
+	private LocalDate toLocalDate(Date date) {
+	    return date.toInstant()
+	               .atZone(ZoneId.systemDefault())
+	               .toLocalDate();
 	}
 
 	/**
@@ -268,20 +348,10 @@ public class SearchGameByDateWizardPageOne extends WizardPage implements Selecti
 		Calendar endCalendar = Calendar.getInstance();
 		endCalendar.setTime(endDate);
 		
-		startDatePicker.setDate(startCalendar.get(Calendar.YEAR), startCalendar.get(Calendar.MONTH)+1, startCalendar.get(Calendar.DAY_OF_MONTH));
-		endDatePicker.setDate(endCalendar.get(Calendar.YEAR), endCalendar.get(Calendar.MONTH)+1, endCalendar.get(Calendar.DAY_OF_MONTH));
-
-		startDatePicker.addSelectionListener(this);
-		endDatePicker.addSelectionListener(this);
-	}
-
-	/**
-	 * Return the state of the page
-	 * 
-	 * @return <b>true</b> the page is correctly fill,<b>false</b> otherwise
-	 */
-	public boolean canFinish() {
-		return canFinish;
+      startDatePicker.setDate(startCalendar.get(Calendar.YEAR), startCalendar.get(Calendar.MONTH), startCalendar.get(Calendar.DAY_OF_MONTH));
+      startDatePicker.setTime(0,0,0);
+		endDatePicker.setDate(endCalendar.get(Calendar.YEAR), endCalendar.get(Calendar.MONTH), endCalendar.get(Calendar.DAY_OF_MONTH));
+		endDatePicker.setTime(23,59,59);
 	}
 
 	/**
@@ -292,28 +362,8 @@ public class SearchGameByDateWizardPageOne extends WizardPage implements Selecti
 	public Game getSelectedGame() {
 		int selectedIndex = table.getSelectionIndex();
 		if (selectedIndex >= 0) {
-			String gameName = table.getItem(selectedIndex).getText(1);
-			
-			for (SearchGameContainer gameContainer : gamesContainer) {
-				if (gameContainer.getCode().equals(gameName)) {
-					return gameContainer.getGame();
-				}
-			}
-			
+		   return (Game) table.getItem(selectedIndex).getData();
 		}
 		return null;
-	}
-
-	@Override
-	public void widgetSelected(SelectionEvent e) {
-		if ( (e.getSource() == startDatePicker) || (e.getSource() == endDatePicker)) {
-			updateTable();
-		}
-		checkPageCompleted(); 
-	}
-
-	@Override
-	public void widgetDefaultSelected(SelectionEvent e) {
-		// Not used
 	}
 }

@@ -455,6 +455,14 @@ public class Messages extends NLS {
 	public static String SearchGameByDateWizardPageOne_DescriptionColumnTable;
 	/** Search Game By Date Wizard Page One : Missing game selection error */ 
 	public static String SearchGameByDateWizardPageOne_MissingGameSelectionError;
+   /** Search Game By Date Wizard Page One : date selection label */ 
+   public static String SearchGameByDateWizardPageOne_dateSelection;
+   /** Search Game By Date Wizard Page One : list of selected games */ 
+   public static String SearchGameByDateWizardPageOne_listOfGames;
+   /** Search Game By Date Wizard Page One : search button */ 
+   public static String SearchGameByDateWizardPageOne_btnSearch_text;
+   /** Search Game By Date Wizard Page One : Select range or simple date */ 
+   public static String SearchGameByDateWizardPageOne_btnRange_text;
 	
 	/*----------------------------------------------------------------------- */
 	/* SearchGameForTeamWizardPageOne class                                   */
@@ -641,8 +649,6 @@ public class Messages extends NLS {
    /* NewSeasonWizard class                                              */
    /*----------------------------------------------------------------------- */
 	public static String NewSeasonWizard_Title;
-	public static String NewTeamPageTwoWizard_lblNewLabel_text;
-	public static String NewTeamPageThreeWizard_lblNewLabel_text;
 	
 	/**
 	 * Initialize the internationalization

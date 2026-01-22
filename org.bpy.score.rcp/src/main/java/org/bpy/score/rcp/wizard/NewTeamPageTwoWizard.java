@@ -104,7 +104,7 @@ public class NewTeamPageTwoWizard extends WizardPage implements Listener,Selecti
 		
 		lblNewLabel = new Label(container, SWT.NONE);
 		lblNewLabel.setLayoutData(new GridData(SWT.LEFT, SWT.FILL, false, true, 1, 1));
-		lblNewLabel.setText(Messages.NewTeamPageTwoWizard_lblNewLabel_text);
+		lblNewLabel.setText(" "); //$NON-NLS-1$
 		removeElementButton.addSelectionListener(this);
 	}
 

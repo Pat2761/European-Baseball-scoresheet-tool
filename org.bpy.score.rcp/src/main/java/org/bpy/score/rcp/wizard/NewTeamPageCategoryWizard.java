@@ -64,7 +64,6 @@ public class NewTeamPageCategoryWizard extends WizardPage implements Listener,Se
 	
 	/** Collection of displayed members */
 	private HashMap<String,Member> displayedMembers;
-	private Label lblNewLabel;
 
 	/**
 	 * Create the wizard.
@@ -124,7 +123,7 @@ public class NewTeamPageCategoryWizard extends WizardPage implements Listener,Se
 		removeMemberBtn.addSelectionListener(this);
 		removeMemberBtn.setEnabled(false);
 		
-		lblNewLabel = new Label(container, SWT.NONE);
+		Label lblNewLabel = new Label(container, SWT.NONE);
 		lblNewLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, true, 1, 1));
 		lblNewLabel.setText(" "); //$NON-NLS-1$
 	}
