@@ -129,7 +129,7 @@ public class SearchGameForTeamWizard extends Wizard {
 
 	@Override
 	public boolean canFinish() {
-		return pageOne.canFinish();
+		return pageOne.isPageComplete();
 	}
 
 }

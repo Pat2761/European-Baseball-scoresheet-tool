@@ -61,7 +61,6 @@ public class NewTeamPageTwoWizard extends WizardPage implements Listener,Selecti
 
 	/** Collection of members */
 	private HashMap<String, Member> definedMembers;
-	private Label lblNewLabel;
 
 	/**
 	 * Create the wizard.
@@ -102,7 +101,7 @@ public class NewTeamPageTwoWizard extends WizardPage implements Listener,Selecti
 		removeElementButton.setEnabled(false);
 		removeElementButton.setText(Messages.NewTeamPageTwoWizard_RemoveMemberButton);
 		
-		lblNewLabel = new Label(container, SWT.NONE);
+		Label lblNewLabel = new Label(container, SWT.NONE);
 		lblNewLabel.setLayoutData(new GridData(SWT.LEFT, SWT.FILL, false, true, 1, 1));
 		lblNewLabel.setText(" "); //$NON-NLS-1$
 		removeElementButton.addSelectionListener(this);
