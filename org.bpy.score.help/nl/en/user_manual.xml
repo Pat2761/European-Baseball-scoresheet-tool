@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toc label="Scoring Tool User Manual" topic="nl/fr/Manuel_utilisateur/Manuel utilisateur.html">
+      <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Description_de_l&apos;outil.html" label="Tool description">
+         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Introduction.html" label="Introduction">
+         </topic>
+         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/l&apos;environnement Eclipse..html" label="The Eclipse environment">
+            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les vues.html" label="The views">
+            </topic>
+            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les editeurs.html" label="The editors">
+            </topic>
+            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les perspectives.html" label="The perspective">
+            </topic>
+            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/La gestion des erreurs.html" label="Error management">
+            </topic>
+            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Aide dans l outil.html" label="Tool help">
+            </topic>
+            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les preferences.html" label="The preferences">
+            </topic>
+            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les proprietes.html" label="The properties">
+            </topic>
+         </topic>
+         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les vues specifiques de l outil.html" label="Specific tool views">
+            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/La vue manageur de championnat.html" label="The chnampinship manager view">
+            </topic>
+            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/La vue du champ interieur.html" label="Infeild view">
+            </topic>
+            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les vues des feuilles de scorage visiteur et recevant.html" label="Score sheet view for hometeam and visitor">
+            </topic>
+            <topic label="Main score view">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Console view">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Problem view">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Outline view">
+            </topic>
+         </topic>
+         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les_éditeurs_spécifique_de_l&apos;outil.html" label="The editors">
+            <topic label="The team editor">
+            </topic>
+            <topic label="The game editor">
+            </topic>
+         </topic>
+      </topic>
+      <topic href="nl/fr/InWork.html" label="the edition">
+         <topic href="nl/fr/InWork.html" label="Championship edition">
+            <topic href="nl/fr/InWork.html" label="General view of a championship">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Create a new championship">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Import a championship">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Export a championship">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="remove a championship">
+            </topic>
+         </topic>
+         <topic href="nl/fr/InWork.html" label="The seasons">
+            <topic href="nl/fr/InWork.html" label="Create a new season">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Import a season">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Expoer a season">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Remoce a season">
+            </topic>
+         </topic>
+         <topic href="nl/fr/InWork.html" label="The clubs">
+            <topic href="nl/fr/InWork.html" label="Create a new Club">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Omport a club">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Export a club">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Remove a club">
+            </topic>
+         </topic>
+      </topic>
+      <topic href="nl/fr/InWork.html" label="The editors">
+         <topic href="nl/fr/InWork.html" label="Edit a club">
+            <topic href="nl/fr/InWork.html" label="Structure of a file describing a club">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Create a club">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Define a member">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Define a category and add a player to this category">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Define the officials">
+            </topic>
+         </topic>
+         <topic href="nl/fr/InWork.html" label="Edit a game">
+            <topic href="nl/fr/InWork.html" label="Structure of a file describing a game">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="The header of a match">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Define the team rosters">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Define the starting lineup">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Describe a half inning">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="&apos;Pitch&apos; mode">
+            </topic>
+            <topic href="nl/fr/InWork.html" label="Describe an action">
+            </topic>
+         </topic>
+      </topic>
+      <topic label="Export the results">
+         <topic href="nl/fr/InWork.html" label="Generate the score sheets in PDF format">
+         </topic>
+         <topic href="nl/fr/InWork.html" label="Generation and export of statistics">
+         </topic>
+      </topic>
+      <topic href="nl/fr/InWork.html" label="Miscellaneous information">
+      </topic>
+</toc>

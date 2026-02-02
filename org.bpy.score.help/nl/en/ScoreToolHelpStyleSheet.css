@@ -1,0 +1,27 @@
+.Titre {
+	border-top: 2px solid #1072B8;
+	border-bottom: 2px solid #1072B8;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 1em;
+	padding-top: 1em;
+}
+
+.Texte {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.Exemple {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.GameEditorCopy {
+	line-height: 12pt;
+	margin-top: 0px;
+    margin-bottom: 0px; 
+}	

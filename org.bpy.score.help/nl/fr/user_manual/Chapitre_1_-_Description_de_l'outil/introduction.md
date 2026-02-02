@@ -1,0 +1,6 @@
+## Introduction
+J’ai participé à la saisie des matchs de Baseball pour la ligue de baseball de Normandie. Pour cela, on utilise un logiciel nommé statcrew qui est encore basé sur sur une interface graphique digne du siècle dernier. Ce logiciel étant si ancien, qu’il ne peut pas fonctionner sur les versions actuelles de Windows, et on doit passer par une virtualisation de Windows 98 pour l’installer et l’utiliser.
+
+C’est à partir ce constat que je décidé de développer un logiciel de saisie des feuilles de scorage dans une technologie plus moderne. Ce projet permet de respecter intégralement les règles définies dans le document ‘Scorer Manual 2016’, mais de plus il permet d’imprimer les feuilles de scorages en respectant le format défini par la CEB (Comité européen de Baseball). Il permet aussi une prise en main plus intuitive que le logiciel officiel car il est basé sur une interface graphique classique couramment utilisée sous Windows. Ce logiciel vous permet donc de saisir des matchs de baseball et d’avoir , en temps réel, la vue de la feuille de scorage.
+
+Cette application se présente sous la forme d’une application multi fenêtre dont chaque élément sera décrit plus loin dans le manuel utilisateur. L’application a donc l’aspect suivant, un aspect qui pourras être modifié en fonction des souhaits de l’utilisateur.

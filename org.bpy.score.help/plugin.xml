@@ -4,11 +4,11 @@
    <extension
          point="org.eclipse.help.toc">
       <toc
-            file="nl/fr/Manuel_utilisateur/Manuel Utilisateur.xml"
+            file="user_manual.xml"
             primary="true">
       </toc>
       <toc
-            file="nl/fr/ScoreSheet editor user guide.xml"
+            file="scorers_manual.xml"
             primary="true">
       </toc>
    </extension>
