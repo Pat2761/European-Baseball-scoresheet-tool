@@ -8,7 +8,7 @@
             primary="true">
       </toc>
       <toc
-            file="Scorers_manual/scorers_manual.xml"
+            file="scorers_manual.xml"
             primary="true">
       </toc>
    </extension>

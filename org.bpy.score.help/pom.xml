@@ -16,6 +16,37 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>Clean help directories</id>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<delete
+									dir="${project.basedir}/nl/en/Scorers_manual"
+									includeEmptyDirs="true" failonerror="false" />
+								<delete
+									dir="${project.basedir}/nl/en/User_manual"
+									includeEmptyDirs="true" failonerror="false" />
+								<delete
+									dir="${project.basedir}/nl/fr/Scorers_manual"
+									includeEmptyDirs="true" failonerror="false" />
+								<delete
+									dir="${project.basedir}/nl/fr/User_manual"
+									includeEmptyDirs="true" failonerror="false" />
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>3.1.0</version>
