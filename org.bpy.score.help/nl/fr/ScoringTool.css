@@ -1,0 +1,74 @@
+
+.title2 h2 {
+  font-family: Times New Roman, serif;
+  font-size: 14pt;
+  text-align: left;
+  font-weight: bold;
+}
+
+span.scoringToolWelcomeImage {
+	position: absolute; 
+	top: -0.35cm; 
+	left: 0cm; 
+	width: 605px
+}
+
+p.normalText {
+  color: #000000;
+  font-family: Times New Roman, serif;
+  font-size: 14pt;
+  line-height: 1.2;
+  font-weight: normal;
+  text-align: justify;
+}
+
+span.obrReference {
+	color: #8080ff;
+	font-style: italic;
+}
+
+p.centeredText {
+  color: #000000;
+  font-family: Times New Roman, serif;
+  font-size: 14pt;
+  line-height: 1.2;
+  font-weight: normal;
+  text-align: center;
+}
+
+.ScorerManualSampleTable {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border: 1px solid black;
+}
+
+.ScorerManualSampleTable th,
+.ScorerManualSampleTable td {
+  border: 1px solid;
+  padding: 12px;
+  vertical-align: top;
+  border: 1px solid #666;
+}
+
+.ScorerManualSampleTable thead {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Colonnes */
+.colImage {
+  width: 120px;
+  text-align: center;
+}
+
+.colTexte {
+  width: auto;
+	  text-align: left;
+}
+
+
+🎯
