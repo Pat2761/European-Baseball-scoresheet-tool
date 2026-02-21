@@ -1,5 +1,10 @@
+:root {
+    --main-font-family: "Times New Roman", serif;
+    --main-font-size: 20px;
+}
+
 .title2 h2 {
-	font-family: Times New Roman, serif;
+	font-family: var(--main-font-family);
 	font-size: 14pt;
 	text-align: left;
 	font-weight: bold;
@@ -13,7 +18,7 @@ span.scoringToolWelcomeImage {
 }
 
 p.chapterRef {
-	font-family: Times New Roman, serif;
+	font-family: var(--main-font-family);
 	size: 6;
 	font-size: 22pt;
 	text-align: center;
@@ -21,7 +26,7 @@ p.chapterRef {
 }
 
 p.chapterTitle {
-	font-family: Times New Roman, serif;
+	font-family: var(--main-font-family);
 	size: 6;
 	font-size: 30pt;
 	text-align: center;
@@ -48,11 +53,17 @@ p.chapterTitle {
 
 p.normalText {
 	color: #000000;
-	font-family: Times New Roman, serif;
+	font-family: var(--main-font-family);
 	font-size: 14pt;
 	line-height: 1.2;
 	font-weight: normal;
 	text-align: justify;
+	text-indent: 30px;
+}
+
+span.exposant {
+	vertical-align: super;
+    font-size: 0.75em; 
 }
 
 span.obrReference {
@@ -62,19 +73,101 @@ span.obrReference {
 
 p.centeredText {
 	color: #000000;
-	font-family: Times New Roman, serif;
+	font-family: var(--main-font-family);
 	font-size: 14pt;
 	line-height: 1.2;
 	font-weight: normal;
 	text-align: center;
 }
 
+/*
+.abreviatationTable {
+	width: 100%;
+	margin: 20px 0;
+	border-collapse: collapse;
+	font-family: var(--main-font-family);
+	font-size: 14px;
+	border: 1px solid black;
+}*/
+
+
+table.playerPosition {
+	margin-left: 10%;
+	margin-right: 10%;
+	border-collapse: collapse;
+	width: 80%;
+}
+
+table.playerPosition th,
+table.playerPosition td {
+    width: 33.33%;
+	font-family: var(--main-font-family);
+	font-size: 14pt;
+    padding: 1px ;
+    text-align: left;
+}
+
+table.contentDescription {
+	margin-left: 4%;
+	font-family: var(--main-font-family);
+	font-size: 14pt;
+	border-collapse: collapse;
+	width: 95%;
+    padding: 1px ;
+}
+
+td.contentDescriptionName {
+	text-align: left;
+	table-layout: auto;
+	font-weight: bold;
+	padding-bottom: 15px;
+    vertical-align: top;
+}
+
+td.contentDescriptionDescription {
+	width: auto;
+	text-align: left;
+	padding-bottom: 15px;
+    vertical-align: top;
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+
+table.abreviation {
+	margin-left: 10%;
+	margin-right: 10%;
+	border-collapse: collapse;
+	width: 80%;
+}
+
+table.abreviation th,
+table.abreviation td {
+	font-family: var(--main-font-family);
+	font-size: 14pt;
+    padding: 1px ;
+}
+
+col.abreviationSymbol {
+	text-align: center;
+	font-family: var(--main-font-family);
+	font-size: 14pt;
+	table-layout: auto;
+}
+
+col.abreviationDescription {
+	width: auto;
+	text-align: left;
+	font-family: var(--main-font-family);
+	font-size: 14pt;
+}
+
 .ScorerManualSampleTable {
 	width: 100%;
 	margin: 20px 0;
 	border-collapse: collapse;
-	font-family: Arial, sans-serif;
-	font-size: 14px;
+	font-family: var(--main-font-family);
+	font-size: 14pt;
 	border: 1px solid black;
 }
 
