@@ -1,11 +1,11 @@
 :root {
     --main-font-family: "Times New Roman", serif;
-    --main-font-size: 14pt;
+    --main-font-size: 12pt;
 }
 
 .title2 h2 {
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 	text-align: left;
 	font-weight: bold;
 }
@@ -54,7 +54,7 @@ p.chapterTitle {
 p.normalText {
 	color: #000000;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 	line-height: 1.2;
 	font-weight: normal;
 	text-align: justify;
@@ -69,7 +69,7 @@ p.normalText {
 p.exampleText {
 	color: #000000;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 	line-height: 1.2;
 	font-weight: normal;
 	text-align: justify;
@@ -85,7 +85,7 @@ span.exampleNumber {
 table.exampleDescription {
     margin-left: 4%;
     font-family: var(--main-font-family);
-    font-size: 14pt;
+    font-size: 12pt;
     width: 95%;
     border-collapse: collapse;
     border: 2px solid black;
@@ -116,7 +116,7 @@ td.exampleImage {
 /* Style of the code in the center of the table */
 td.exampleCode {
 	font-family: Consolas, "Courier New", monospace;
-	font-size: 12pt;
+	font-size: 10pt;
 	width: auto;
 	text-align: left;
 	padding-bottom: 15px;
@@ -162,7 +162,7 @@ span.obrReference {
 p.centeredText {
 	color: #000000;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 	line-height: 1.2;
 	font-weight: normal;
 	text-align: center;
@@ -174,7 +174,7 @@ p.centeredText {
 	margin: 20px 0;
 	border-collapse: collapse;
 	font-family: var(--main-font-family);
-	font-size: 14px;
+	font-size: 12pt;
 	border: 1px solid black;
 }*/
 
@@ -190,7 +190,7 @@ table.playerPosition th,
 table.playerPosition td {
     width: 33.33%;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
     padding: 1px ;
     text-align: left;
 }
@@ -198,7 +198,7 @@ table.playerPosition td {
 table.contentDescription {
 	margin-left: 4%;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 	border-collapse: collapse;
 	width: 95%;
     padding: 1px ;
@@ -232,14 +232,14 @@ table.abreviation {
 table.abreviation th,
 table.abreviation td {
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
     padding: 1px ;
 }
 
 col.abreviationSymbol {
 	text-align: center;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 	table-layout: auto;
 }
 
@@ -247,7 +247,7 @@ col.abreviationDescription {
 	width: auto;
 	text-align: left;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 }
 
 .ScorerManualSampleTable {
@@ -255,7 +255,7 @@ col.abreviationDescription {
 	margin: 20px 0;
 	border-collapse: collapse;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 	border: 1px solid black;
 }
 
@@ -286,7 +286,7 @@ col.abreviationDescription {
 .dotList {
 	list-style-type: disc;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 	margin-left: 30px;
 	padding-left: 30px;
 }
@@ -296,7 +296,7 @@ col.abreviationDescription {
 	margin-left: 1px;
 	margin-bottom: 0;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 	line-height: 1;
 }
 
@@ -313,6 +313,6 @@ col.abreviationDescription {
 	margin-left: 1px;
 	margin-bottom: 0;
 	font-family: var(--main-font-family);
-	font-size: 14pt;
+	font-size: 12pt;
 	line-height: 1;
 }
