@@ -283,6 +283,10 @@ col.abreviationDescription {
 	text-align: left;
 }
 
+/* ------------------------------------------------------------------------------ 
+	Styles used for a dot list
+	----------------------------------------------------------------------------- */
+
 .dotList {
 	list-style-type: disc;
 	font-family: var(--main-font-family);
@@ -299,6 +303,10 @@ col.abreviationDescription {
 	font-size: 12pt;
 	line-height: 1;
 }
+
+/* ------------------------------------------------------------------------------ 
+	Styles used for a alphabetical list
+	----------------------------------------------------------------------------- */
 
 .olTypeA {
 	list-style-type:lower-alpha;
