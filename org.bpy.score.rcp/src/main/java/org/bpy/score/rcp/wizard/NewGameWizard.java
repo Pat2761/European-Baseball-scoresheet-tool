@@ -29,6 +29,7 @@ import org.bpy.score.club.club.Team;
 import org.bpy.score.club.util.ClubDataParser;
 import org.bpy.score.game.util.GameDataParser;
 import org.bpy.score.internationalization.rcp.Messages;
+import org.bpy.score.rcp.Activator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.runtime.CoreException;
@@ -46,6 +47,9 @@ import org.eclipse.ui.ide.IDE;
  */
 public class NewGameWizard extends Wizard {
 
+   /** Key for the icon of the New game wizard */
+   public static final String NEW_GAME_CREATION_ICON_NAME = "new_game_wizard_icon_75.jpeg";
+   
 	/** End of line with open accolade constant */
 	public static final String END_LINE_WITH_OPEN_ACCOLADE = "\" {\r\n"; //$NON-NLS-1$
 
@@ -75,6 +79,12 @@ public class NewGameWizard extends Wizard {
 	 */
 	public NewGameWizard(IFolder folder) {
 		setWindowTitle(Messages.NewGameWizard_Title);
+
+		setDefaultPageImageDescriptor(
+            Activator.getDefault()
+                     .getImageRegistry()
+                     .getDescriptor(NEW_GAME_CREATION_ICON_NAME)
+        );
 
 		clubDataParser = new ClubDataParser();
 		gameDataParser = new GameDataParser(); 
@@ -125,8 +135,7 @@ public class NewGameWizard extends Wizard {
 
 	@Override
 	public boolean canFinish() {
-		
-		return newGamePageOneWizard.getPageCompleted() && newGamePageTwoWizard.getPageCompleted();
+		return newGamePageOneWizard.isPageComplete() && newGamePageTwoWizard.isPageComplete();
 	}
 
 	@Override
@@ -223,9 +232,13 @@ public class NewGameWizard extends Wizard {
 			String playerName = players.get(i);
 			
 			if (i<(players.size()-1)) {
-				strBuffer.append("\t\tplayer \"" + playerName + "\",\r\n"); //$NON-NLS-1$ //$NON-NLS-2$
+            strBuffer.append("\t\tplayer \""); //$NON-NLS-1$
+            strBuffer.append(playerName); 
+            strBuffer.append("\",\r\n"); //$NON-NLS-1$
 			} else {
-				strBuffer.append("\t\tplayer \"" + playerName + "\"\r\n"); //$NON-NLS-1$ //$NON-NLS-2$
+            strBuffer.append("\t\tplayer \""); //$NON-NLS-1$
+            strBuffer.append(playerName); 
+            strBuffer.append("\"\r\n"); //$NON-NLS-1$
 			}
 		}
 	}
@@ -241,7 +254,9 @@ public class NewGameWizard extends Wizard {
 		strBuffer.append("\t\t" + key + " = "); //$NON-NLS-1$ //$NON-NLS-2$
 		
 		for (int i=0 ; i<selectedMembers.length; i++) {
-			strBuffer.append("\"" + selectedMembers[i] + "\""); //$NON-NLS-1$ //$NON-NLS-2$
+         strBuffer.append("\""); //$NON-NLS-1$ 
+         strBuffer.append(selectedMembers[i]); 
+         strBuffer.append("\""); //$NON-NLS-1$ 
 			if (i < selectedMembers.length-1) {
 				strBuffer.append(", "); //$NON-NLS-1$
 			}

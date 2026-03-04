@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Retrait automatique prévu par le règlement (“OBR”)</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Retrait automatique prévu par le règlement  (“OBR”).</h2>
+
+	<p class="normalText">Il existe toute une série de retraits, considérés comme des retraits automatiques, listé dans les règles 
+	du baseball <b>[OBR 9.09 (b) (c)]</b>. Ce chapitre va parcourir toutes ces règles, en les illustrant par des exemples si nécessaire. 
+	On utilise la notation ‘OBR’ pour tous ces retraits. Il y en a quatorze au total.
+	</p>
+
+	<p class="normalText">Afin de clarifier l’action qui à mener à ces retraits automatiques, le numéro de l’action doit être notée 
+	à l’extérieur du cercle de retrait en haut et sur le côté droit.
+	</p>
+
+	<p class="normalText">Si le scoreur à un doute sur une action qui a entrainé un retrait, le scoreur doit demander à l’arbitre 
+	la cause de ce retrait à la fin du match (ou de la manche si possible).
+	</p>
+
+	<p class="normalText"><b>NOTE:</b> Certaines actions sur le terrain peuvent ne pas être couvertes exactement par ces quatorze 
+	règles. Dans ce cas, on doit noter l’action avec la règle dont la définition est la plus proche de l’action, et une description 
+	de l’action doit est faite dans la zone ‘Note’ de la feuille de scorage (deuxième feuille de la feuille de scorage).
+	</p>
+	
+		
+	<p class="exampleText">
+		<span>1) <b>Batteur retiré pour une frappe illégale[OBR 9.09(b)(2)]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_5542d83b.gif"
+					alt="OBR 1"
+					width="87"
+					height="96"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batteur retiré sur une frappe illégale */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR1-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_dedd5831.png"
+					alt="OBR 1"
+					width="87"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Pour mémoire, l’arbitre déclare une frappe illégale quand : </p>
+	
+	<ul class="dotList">
+		<li>
+			<p class="dotList">
+				<span class="obrReference">"Il frappe une balle avec un ou deux pieds touchant le sol complètement à 
+				l’extérieur du rectangle du batteur" </span>
+				<span><b>[OBR 6.03(a)(1)]</b>;</span>
+			</p>
+		</li>
+		<li>
+			<p class="dotList">
+				<span class="obrReference">"Il passe d’un rectangle de batteur à l’autre alors que le lanceur est en 
+				position de lancer" </span><span><b> [OBR 6.03(a)(3)]</b>;</span>
+			</p></li>
+		<li>
+			<p class="dotList">
+				<span class="obrReference">"Il utilise ou tente d’utiliser une batte qui, selon l’arbitre, a été 
+				modifiée de quelque façon que ce soit pour améliorer la distance de frappe ou causer des réactions 
+				inhabituelles sur la balle" </span>
+				<span><b>[OBR 6.03(a)(4)]</b></span>
+				<span class="obrReference">. "Un batteur sera considéré comme ayant utilisé ou ayant tenté d’utiliser une batte modifiée 
+				s’il en amène une dans le rectangle du batteur"</span>
+				<span><b> [OBR 6.03(a)(4) Comment]</b>. </span>
+			</p>
+		</li>
+	</ul>
+	
+	<p class="normalText">Dans le cas d’un ‘OBR’ 1, le retrait sera crédité au receveur, ce qui explique le ‘2’ noté dans le cercle 
+	indiquant le retrait.</p>
+	
+		
+	<p class="exampleText">
+		<span>2) <b>Batteur retiré pour avoir effectué un amorti dans la zone des fausses balles pour son troisième ‘strike’ [OBR 5.09(a)(4), 9.09(b)(3)]</b>.</span>
+		<span>Dans ce cas, on doit noter ‘OBR KS’ et, en accord avec les règles du baseball, un ‘strike out’ doit être crédité 
+		au lanceur. Le retrait doit être porté au crédit du receveur. </span>	
+		</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_7b0cf96.gif"
+					alt="OBR 2"
+					width="87"
+					height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batteur retiré pour un bunt dans la zone des fausses balles pour son troisième strike  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBRKS-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_f0530fc6.png"
+					alt="OBR 2"
+					width="85"
+					height="91"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Pour mémoire, comme c’est un ‘Strike Out’, il ne faut oublier de noter le nombre courant de ‘strike out’ 
+	du lanceur. </p>
+
+	<p class="normalText">Cette règle s’applique aussi pour le retrait d’un batteur quand :</p>
+	
+	<ul class="dotList">
+		<li>
+			<p class="dotList">"
+				<span class="obrReference">Un troisième strike n’est pas attrapé par le receveur quand la première base est occupée avant deux retraits </span>
+				<span>” <b>(OBR 5.09(a)(3)]</b>.</span>
+			</p>
+		</li>
+		<li>
+			<p class="dotList">“
+				<span class="obrReference">Il tente de frapper un troisième strike et que la balle le touche </span>
+				<span>” <b>[OBR5.09(a)(6)]</b>.</span>
+			</p>
+		</li>
+		<li>
+			<p class="dotList">“
+				<span class="obrReference">Avec deux retraits et deux strikes au compte du batteur, si le coureur en troisième 
+				base, essaye de voler le marbre lors d’un lancer régulier et que la balle le touche dans la zone de strike, 
+				l’arbitre annonce « troisième strike », le batteur est retiré et le point n’est pas marqué ; avant deux retraits 
+				l’arbitre annonce « troisième strike » la balle est morte et le point compte </span>
+				<span>”. <b>[OBR 5.09(a)(14)]</b></span>
+			</p>
+		</li>
+		<li>
+			<p class="dotList">“
+				<span class="obrReference">Quand, après un troisième strike, le batteur gène le receveur dans son action de 
+				relancer la balle dans le champ </span>
+				<span>". <b>[OBR 6.01(a)(1)]</b></span>
+			</p>
+		</li>
+	</ul>
+ 
+ 		
+	<p class="exampleText">
+		<span>3) <b>Batteur éliminé pour avoir touché la balle frappée.</b></span>
+		<span>Il faut noter qu’un batteur est retiré uniquement s’il est touché par la balle dans le territoire des bonnes balles 
+		quand il est en dehors de sa boite et avant que la balle ne soit touchée par un défenseur. Dans les autre cas, l’arbitre 
+		appel un ‘foul ball’</span>
+		<span><b>[OBR 5.09 (a) (7), 9.09 (b) (4)]</b>. Un batteur est aussi retiré si </span>
+		<span class="obrReference">Après avoir frappé ou amorti la balle en territoire des fausses balles, il fait volontairement 
+		dévier la balle de sa course d’une façon quelconque alors qu’il court vers la première base</span>
+	    <span> <b>[OBR5.09(a)(9)]</b> ou “</span>
+	    <span class="obrReference">Après avoir frappé ou amorti une balle en territoire des bonnes balles, sa batte retouche la balle 
+	    dans ce territoire </span>
+	    <span>" <b>[OBR 5.09(a)(8)]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_a856e9aa.gif"
+					alt="OBR 3"
+					width="87"
+					height="99"/>			
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batteur retiré pour avoir touché la balle qu'il vient de frapper */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR3-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_266adcfa.png"
+					alt="OBR 3"
+					width="84"
+					height="87"/>
+			</td>
+		</tr>
+	</table>				
+
+	
+	<p class="exampleText">
+		<span>4) <b>Batteur éliminé pour interférence avec le receveur [OBR 9.09(b)(5)]</b>. L’arbitre appellera 
+		une interférence quand le batteur-coureur  "</span>
+		<span class="obrReference">gêne le jeu du receveur quand celui-ci attrape ou relaie la balle en sortant du 
+		rectangle du batteur ou en l’empêchant autrement de compléter son jeu au marbre
+		</span>
+		<span>” <b>[OBR 6.03(a)(3)]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_f4c0e49f.gif"
+					alt="OBR 4"
+					width="87"
+					height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batteur retiré pour interférence avec le receveur  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR4-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_23aa246b.png"
+					alt="OBR 4"
+					width="84"
+					height="88"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>5) <b>Batteur éliminé pour avoir oublié son tour de frappe</b>. Dans ce cas, un batteur qui ne passe pas 
+		au bâton alors que c’est son tour est retiré si l’équipe opposé fait appel avant un nouveau jeu <b>[OBR 6.03(b)</b>, <b>9.03(d)</b> 
+		et <b>9.09(b)(6)]</b>.
+		</span><br />
+		<span><b>EXCEPTION</b>: Si un batteur irrégulier est retiré dans l’action liée à sa frappe, et que l’équipe opposée fait 
+		appel, alors le batteur régulier est déclaré retiré, le retrait enregistrer comme un retrait dans le champ, et toutes 
+		les assistances doivent être comptée.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_42bcf89d.gif"
+					alt="OBR 5"
+					width="87"
+					height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batteur retiré pour ne pas avoir respecté l'ordre au baton  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR5-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_9f68812f.png"
+					alt="OBR 5"
+					width="86"
+					height="90"/>
+			</td>
+		</tr>
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_1f352996.gif"
+						alt="OBR 5"
+						width="87"
+						height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batteur retiré pour ne pas avoir respecté l'ordre au baton avec assistance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR5-53</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_98af4dbb.png"
+					alt="OBR 5"
+					width="86"
+					height="90"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>6) <b> Batteur éliminé pour refus d’avancer en 1ère base après un ‘base on ball’, un ‘hit by pitch’ ou après une 
+		interférence du receveur [OBR 9.09(b)(7)</b> and <b>9.14(c)]</b>. "</span>
+		<span class="obrReference">Si le coureur de la troisième base refuse d’avancer et de toucher le marbre dans un 
+		délai raisonnable, l’arbitre doit annuler le point ; le joueur est retiré sur décision de l’arbitre et la rencontre 
+		continue. Si, après deux retraits le batteur coureur refuse d’avancer et de toucher la première base, l’arbitre doit annuler 
+		le point,>[OBR 5.08(b) penalty]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_8f63d15e.gif"
+					alt="OBR 6"
+					width="87"
+					height="95"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batteur retiré pour avoir refusé de toucher la première base après un 'base on ball', 
+				un 'hit by pith' ou après une interférence du catcheur,  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR6-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_8ac821e5.png"
+					alt="OBR 6"
+					width="85"
+					height="90"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>7) <b>Coureur éliminé pour avoir refusé d’avancer de la troisième base vers le marbre (dans le cas où il est 
+		forcé) pour le point gagnant [OBR 9.09(b)(8)]</b>. Pour les règles 7 et 8 du baseball  <b>OBR rule 5.08(b)</b>, les 
+		pénalités disent : Quand le point gagnant est marqué, “</span>
+		<span class="obrReference">Si le coureur de la troisième base refuse d’avancer et de toucher la plaque de but dans un 
+		délai raisonnable, l’arbitre doit annuler le point ; le joueur est retiré sur décision de l’arbitre et la rencontre 
+		continue</span>
+		<span>".</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_5a0f8dd5.gif"
+					alt="OBR 7"
+					width="87"
+					height="96"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe un triple hit dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* coureur retiré pour avoir refusé de marquer le point alors qu'il est forcé d'avancer */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner3 -> </span><span class="codePutout">OBR7-2</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_51fd001.png"
+					alt="OBR 7"
+					width="86"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+
+	
+	<p class="exampleText">
+		<span>8) <b>Batteur éliminé sur ‘Infield Fly’ non réceptionné</b>. Le retrait est crédité au défenseur qui, d’après 
+		l’opinion du scoreur, aurait dû effectuer le rattrapé <b>[OBR 5.09(a)(5)</b>, <b>9.09(c)(1)]</b>. On utilise aussi 
+		l’OBR 8 dans le cas de la règle  <b>5.09(a)(12)</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_6407cdae.gif"
+					alt="OBR 8"
+					width="87"
+					height="99"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batteur retiré sur un infield fly qui n'a pas été rattrapé de volé  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner3 -> </span><span class="codePutout">OBR8-5</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_4409ceb2.png"
+					alt="OBR 8"
+					width="85"
+					height="88"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>9) <b>Coureur éliminé pour avoir touché une balle frappée dans la zone des bonne balles (Incluant un ‘Infield Fly’ 
+		s’il n’est pas en contact avec une base) [OBR9.09(c)(2)]</b>. Le retrait est crédité au défenseur qui est le plus proche de 
+		l’endroit où le coureur se fait toucher par la balle. Le batteur doit être crédité d’un ‘hit’ même s’il y a deux retraits, 
+		à condition qu’un ‘Infied fly’ ne soit pas appelé. Il faut noter que la balle a déjà dépassé un défenseur du champ 
+		intérieur (autre que le lanceur), le coureur n’est pas retiré et la balle reste en jeu.  <b>[OBR 5.09(b)(7)</b> 
+		et <b>6.01(a)(11)]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_91ece41b.gif"
+					alt="OBR 9"
+					width="87"
+					height="184"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe un simple dans le champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième batteur frappe une balle en direction de la deuxième qui va toucher le coureur venant de la première base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">OBR9-4</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_3d59544e.png"
+					alt="OBR 9"
+					width="87"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>10) <b>Coureur éliminé pour être sorti de son couloir de course pour éviter d’être touché</b>. Le retrait est 
+		crédité au défenseur le plus prochce de l’endroit où le coureur est sorti du couloir. Les assistances des autres défenseurs 
+		doivent être notées comme d’habitude  <b>[OBR 5.09(b)(1)</b>, <b>9.09(c)(3)]</b>. 
+		Avec un coureur sur la première base, le lanceur lance une balle qui est renvoyé par le receveur après le lancer. 
+		Le lanceur relaye la balle au défenseur de la première base, tandis que le coureur tente de rejoindre la deuxième 
+		base, le défenseur de première relaye la balle au défenseur de la deuxième base, le coureur est alors retiré pour 
+		être sortie de son couloir pour éviter le défenseur de la deuxième base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_759a6057.gif"
+					alt="OBR 10"
+					width="87"
+					height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* le batteur avance sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* le coureur éliminé pour être sorti de son couloir de course pour éviter d’être touché */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codePutout">OBR10-134</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_b2a84937.png"
+					alt="OBR 10"
+					width="86"
+					height="89"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>11) <b>Coureur éliminé pour avoir doublé un autre coureur</b>. Le retrait est crédité au défenseur qui est le 
+		plus proche de l’endroit ou s’est fait le dépassement  <b>[OBR 5.09(b)(9)</b>, <b>9.09(c)(4)]</b>. Avec la première base 
+		et la deuxième base occupée, le batteur frappe un ‘hit’ dans le champ. Le coureur le plus proche du marbre reste proche 
+        sa base, craignant que la balle ne soit rattrapée de voler. Le coureur en première base effectue une course rapide et dépasse 
+        son équipier au niveau de la deuxième base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_f3399a9d.gif"
+					alt="OBR 11"
+					width="87"
+					height="179"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* le batteur avance sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deucxième batteur frappe une balle dans le champs gauche, les coureurs avancent */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le troisième frappeur frappe un simple dans le champ gauche, Le coureur en première base 
+				avance en deuxième et est éliminé car il double le coureur en troisième base qui n'a pas bougé. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+ </span><span class="codePutout">OBR11-6</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_88aa3180.png"
+					alt="OBR 11"
+					width="84"
+					height="260"
+					/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>12) <b>Coureur éliminé pour course à l’envers sur les bases</b>. Le retrait est crédité au défenseur qui protège 
+		la base au moment où il commence sa course à l’envers <b>[OBR 5.09(b)(10)</b>, <b>9.09(c)(5)]</b>. Un coureur en deuxième 
+		base, avec un lanceur prêt à lancer, le coureur cours vers la première base pour mettre la confusion dans la défense.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_d20cac4d.gif"
+					alt="OBR 12"
+					width="87"
+					height="92"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe un double dans le champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Coureur éliminé pour course à l’envers sur les bases */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codePutout">OBR12-4</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_53e8240c.png"
+					alt="OBR 12"
+					width="85"
+					height="91"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>13) <b>Coureur éliminé pour avoir interféré avec un défenseur</b>. Lorsqu’un coureur interfère avec un défenseur, 
+		le coureur est retiré et le défenseur se voit attribué le retrait, sauf si ce défenseur était en train de relayé une 
+		balle. Dans ce cas, on attribue une assistance au défenseur, et un retrait pour le défenseur qui devait recevoir la 
+		balle  <b>[OBR 5.09(b)(3)</b>, <b>6.01(a)(6)</b>, <b>6.01(a)(19)</b>, <b>09.09(c)(6)]</b>. 
+		Le batteur-coureur, qui frappe un ‘hit’ dans le champ droit, tente de prendre la deuxième base et bouscule le défenseur 
+		de la deuxième base qui était assisté par le défenseur du champ droit. </span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_4c4bf3c3.gif"
+					alt="OBR 13"
+					width="87"
+				height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe un hit dans le champ droit, puis bouscule le défenseur 
+				de la deuxième base qui était assisté par le défenseur du champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9 </span><span class="codePutout">OBR13-94</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_79f57ec9.png"
+					alt="OBR 13"
+					width="86"
+					height="91"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>Avec un coureur sur la première base, le batteur-coureur frappe un ‘hit’ simple sur le champ droit. Le coureur 
+		qui avance interfère avec le défenseur de la deuxième base qui voulait relayer la balle au défenseur de la première 
+		base pour retirer le batteur-coureur. Dans ce cas, on crédite une assistance aux défenseurs du champs droit et de 
+		la deuxième base, et un retrait au défenseur de la première base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_a33faa1d.gif"
+					alt="OBR 13"
+					width="87"
+					height="100"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe un hit dans le champ droit, puis bouscule le défenseur 
+				de la deuxième base qui était assisté par le défenseur du champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9 </span><span class="codePutout">OBR13-943</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_b8a15319.png"
+					alt="OBR 13"
+					width="84"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Cette règle s’applique aussi pour le cas où le batteur-coureur, lorsqu’il parcours la dernière moitié 
+	de la distance entre le marbre et la première base, interfère avec un défenseur <b>[OBR 5.09(a)(11)]</b>.
+	</p>
+
+		
+	<p class="exampleText">
+		<span>14) <b>Batteur-coureur éliminé pour cause d’interférence d’un coureur sur base</b>. On crédite un retrait 
+		au défenseur de la première base. Si le défenseur qui a été gêné était en train de relayé la balle, alors on lui accorde 
+		une assistance <b>[OBR 5.09(a)(13)</b>, <b>6.01(a)(7)</b>, <b>9.09(c)(7)]</b>. Avec une balle frappée au sol vers la 
+		deuxième base, le défenseur de la deuxième base assiste le défenseur de l’arrêt court pour retirer le coureur. Quand ce 
+		défenseur relaye la balle vers le défenseur de première base pour faire un double jeu, il est gêné par le coureur. 
+		L’arbitre retire le batteur-coureur pour interférence à cause de l’interférence du coureur. On attribue donc une 
+		assistance au défenseur de l’arrêt-court même si celui n’a pas relayé la balle vers la première base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_21741a65.gif"
+					alt="OBR 14"
+					width="87"
+					height="186"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe un simple dans le champ centre */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le deuxième batteur interfère avec le coureur */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR14-63</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">46</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_e88e8731.png"
+					alt="OBR 14"
+					width="86"
+					height="172"/>
+			</td>
+		</tr>
+	</table>				
+
+
+
+	<p class="normalText">Il est possible d’avoir un OBR 13 et OBR 14 dans la même action, comme dans l’exemple décrit ci-dessous::</p>
+	
+		
+	<p class="exampleText">
+		<span>Avec moins de deux retraits et un coureur sur la première base, le batteur frappe un ‘hit’ sur le défenseur de la 
+		deuxième base, mais il rattrape la balle à temps pour effectuer un double jeu. Comme il attends pour assister le défenseur 
+		arrêt-court, qui vient couvrir la deuxième base il est bousculé par le coureur. L’arbitre retire le coureur et le 
+		batteur-coureur pour interférence .</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_7b760333.gif"
+					alt="OBR 13 14"
+					width="87"
+					height="185"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe un hit dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le batteur et le coureur sont retirés */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR14-63</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">OBR13-46</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_c18d784a.png"
+					alt="OBR 13 14"
+					width="86"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">
+		<span class="obrReference">Le scoreur ne doit pas attribuer un ‘GDP’ à un batteur si il est retiré à cause d’une interférence faite par un coureur.</span>
+		<span> <b>[OBR 9.02(a)(17) Comment]</b>.</span>
+	</p>
+	
+</body>
+</html>

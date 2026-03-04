@@ -33,6 +33,7 @@ import org.bpy.score.engine.util.EngineConstants;
 import org.bpy.score.game.game.Game;
 import org.bpy.score.graphics.ScoreViewEngine;
 import org.bpy.score.graphics.ScoringSheetGraphicalManager;
+import org.eclipse.core.resources.IProject;
 
 /**
  * This class is the panel for the editor og Game
@@ -78,15 +79,17 @@ public class ScoreSheetPanel extends JPanel implements MouseWheelListener {
 	/**
 	 * Update view when the editor changed
 	 * 
+	 * @param project Project which contains the game to display
 	 * @param game  Reference to the game parsing result
 	 * @param scoreViewEngine Reference to the score view engine
 	 * @param statisticEngine Reference to statistic engine
 	 */
-	public void updateView(Game game, ScoreViewEngine scoreViewEngine, StatisticEngine statisticEngine) {
+	public void updateView(IProject project, Game game, ScoreViewEngine scoreViewEngine, StatisticEngine statisticEngine) {
 		this.game = game;
 		this.statisticEngine = statisticEngine;
 		scoreViewEngine.setCurrentTeam(currentTeam);
 		this.scoreViewEngine = scoreViewEngine;
+		scoringSheetGraphicalManager.readGraphicalPreferences(project);
 		scoreViewEngine.setActionsManager(scoringSheetGraphicalManager);
 		updateUI();
 	}
@@ -124,7 +127,7 @@ public class ScoreSheetPanel extends JPanel implements MouseWheelListener {
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		int count = e.getWheelRotation();
 		if (e.isControlDown()) {
-			zoomValue += (double) count / 50.0;
+			zoomValue += count / 50.0;
 
 			int width = (int) (ScoringSheetGraphicalManager.getBounds().width * zoomValue);
 			int heigth = (int) (ScoringSheetGraphicalManager.getBounds().height * zoomValue);

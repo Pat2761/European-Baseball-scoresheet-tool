@@ -18,9 +18,8 @@
  */
 package org.bpy.score.rcp.wizard;
 
-import java.util.Calendar;
+import java.time.Year;
 
-import org.apache.commons.lang3.StringUtils;
 import org.bpy.score.internationalization.rcp.Messages;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -33,6 +32,9 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Spinner;
 
 /**
  * This class provide a wizard page which allow to create a new tournament.
@@ -42,98 +44,93 @@ import org.eclipse.swt.widgets.Text;
  */
 public class NewChampionatWizardPage extends WizardPage implements ModifyListener {
 
-	/** Name of the tournament widget */
-	private Text tournamentName;
-	/** can finish state */
-	private boolean canFinish = false;
-	/** name of season widget */
-	private Text seasonName;
+   /** Name of the tournament widget */
+   private Text tournamentName;
+   /** Get season name */
+   private Spinner yearSpinner;
 
-	/**
-	 * Create the wizard.
-	 */
-	public NewChampionatWizardPage() {
-		super("wizardPage"); //$NON-NLS-1$
-		setTitle(Messages.NewChampionatWizardPage_NewTournamentWizardPageTitle);
-		setDescription(Messages.NewChampionatWizardPage_NewTournamentWizardPageDescription);
-	}
+   /**
+    * Create the wizard.
+    */
+   public NewChampionatWizardPage() {
+      super("NewChampionatWizardPage"); //$NON-NLS-1$
+      setTitle(Messages.NewChampionatWizardPage_NewTournamentWizardPageTitle);
+      setDescription(Messages.NewChampionatWizardPage_NewTournamentWizardPageDescription);
+   }
 
-	/**
-	 * Create contents of the wizard.
-	 * 
-	 * @param parent
-	 */
-	public void createControl(Composite parent) {
-		Composite container = new Composite(parent, SWT.NONE);
+   /**
+    * Create contents of the wizard.
+    * 
+    * @param parent
+    */
+   public void createControl(Composite parent) {
+      Composite container = new Composite(parent, SWT.NONE);
 
-		setControl(container);
+      setControl(container);
+      container.setLayout(new GridLayout(3, false));
 
-		Label lblNomDuChampionat = new Label(container, SWT.NONE);
-		lblNomDuChampionat.setBounds(10, 10, 359, 23);
-		lblNomDuChampionat.setText(Messages.NewChampionatWizardPage_NameOfNewtournament);
+      Label lblNomDuChampionat = new Label(container, SWT.NONE);
+      lblNomDuChampionat.setText(Messages.NewChampionatWizardPage_NameOfNewtournament);
 
-		tournamentName = new Text(container, SWT.BORDER);
-		tournamentName.setBounds(10, 32, 359, 23);
+      tournamentName = new Text(container, SWT.BORDER);
+      tournamentName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
+      tournamentName.addModifyListener(this);
 
-		Label lblAjoutDuneSaison = new Label(container, SWT.NONE);
-		lblAjoutDuneSaison.setBounds(10, 67, 359, 24);
-		lblAjoutDuneSaison.setText(Messages.NewChampionatWizardPage_AddSeason);
+      Label lblAjoutDuneSaison = new Label(container, SWT.NONE);
+      lblAjoutDuneSaison.setText(Messages.NewChampionatWizardPage_AddSeason);
 
-		seasonName = new Text(container, SWT.BORDER);
-		seasonName.setText(StringUtils.EMPTY + Calendar.getInstance().get(Calendar.YEAR)); 
-		seasonName.setBounds(10, 86, 359, 23);
-		tournamentName.addModifyListener(this);
-	}
+      Label lblNewLabel = new Label(container, SWT.NONE);
+      lblNewLabel.setText(" "); //$NON-NLS-1$
+      lblNewLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+      
+      yearSpinner = new Spinner(container, SWT.BORDER);
+      GridData gdSpinner = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
+      gdSpinner.widthHint = 100;
+      yearSpinner.setLayoutData(gdSpinner);
+      
+      yearSpinner.setDigits(0);
+      yearSpinner.setMinimum(1990);
+      yearSpinner.setMaximum(Year.now().getValue()+10);
+      yearSpinner.setSelection(Year.now().getValue());
+   }
 
-	/**
-	 * Get tournament name.
-	 * 
-	 * @return tournament name
-	 */
-	public String getTournamentName() {
-		return tournamentName.getText();
-	}
+   /**
+    * Get tournament name.
+    * 
+    * @return tournament name
+    */
+   public String getTournamentName() {
+      return tournamentName.getText();
+   }
 
-	/**
-	 * Get season name.
-	 * 
-	 * @return season name
-	 */
-	public String getSeasonName() {
-		return seasonName.getText();
-	}
+   /**
+    * Get season name.
+    * 
+    * @return season name
+    */
+   public String getSeasonName() {
+      return yearSpinner.getText();
+   }
 
-	/**
-	 * return the can finish state
-	 * 
-	 * @return <b>true</b> can finish,<b>false</b> otherwise
-	 */
-	public boolean canFinish() {
-		return canFinish;
-	}
+   @Override
+   public void modifyText(ModifyEvent e) {
+      IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+      IProject[] projects = workspaceRoot.getProjects();
 
-	@Override
-	public void modifyText(ModifyEvent e) {
-		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-		IProject[] projects = workspaceRoot.getProjects();
+      if (tournamentName.getText().isBlank()) { // $NON-NLS-1$
+         setErrorMessage(Messages.NewChampionatWizardPage_BlanckTournamentNameError);
+         setPageComplete(false);
+         return;
+      }
 
-		if (tournamentName.getText().isBlank()) { //$NON-NLS-1$
-			setErrorMessage(Messages.NewChampionatWizardPage_BlanckTournamentNameError);
-			canFinish = false;
-			setPageComplete(false);
-			return;
-		}
-
-		for (IProject project : projects) {
-			if (tournamentName.getText().equalsIgnoreCase(project.getName())) {
-				setErrorMessage(NLS.bind(Messages.NewChampionatWizardPage_TournamentAlreadyExistError, tournamentName.getText()));
-				canFinish = false;
-				setPageComplete(false);
-				return;
-			}
-		}
-		setErrorMessage(null);
-		canFinish = true;
-		setPageComplete(true);
-	}
+      for (IProject project : projects) {
+         if (tournamentName.getText().equalsIgnoreCase(project.getName())) {
+            setErrorMessage(NLS.bind(Messages.NewChampionatWizardPage_TournamentAlreadyExistError, tournamentName.getText()));
+            setPageComplete(false);
+            return;
+         }
+      }
+      setErrorMessage(null);
+      setPageComplete(true);
+   }
 }

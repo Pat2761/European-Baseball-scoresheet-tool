@@ -38,6 +38,8 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
 
 /**
  * New game wizard (Second page)
@@ -112,53 +114,58 @@ public class NewGamePageTwoWizard extends WizardPage implements SelectionListene
 		Composite container = new Composite(parent, SWT.NONE);
 
 		setControl(container);
+		container.setLayout(new GridLayout(2, false));
 		
 		Label lblListeDesArbitres = new Label(container, SWT.NONE);
-		lblListeDesArbitres.setBounds(20, 10, 149, 23);
+		lblListeDesArbitres.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		lblListeDesArbitres.setText(Messages.NewGamePageTwoWizard_ListOfUmpiresLabel);
+		new Label(container, SWT.NONE);
 		
 		umpireList = new List(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
-		umpireList.setBounds(20, 39, 225, 111);
+		umpireList.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 4));
 		umpireList.addSelectionListener(this);
 		
 		newUmpireBtn = new Button(container, SWT.NONE);
-		newUmpireBtn.setBounds(251, 38, 245, 25);
+		newUmpireBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		newUmpireBtn.setText(Messages.NewGamePageTwoWizard_AddUmpireButton);
 		newUmpireBtn.addSelectionListener(this);
 		
 		removeUmpireBtn = new Button(container, SWT.NONE);
+		removeUmpireBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		removeUmpireBtn.setEnabled(false);
-		removeUmpireBtn.setBounds(251, 74, 245, 25);
 		removeUmpireBtn.setText(Messages.NewGamePageTwoWizard_RemoveUmpiresButton);
 		removeUmpireBtn.addSelectionListener(this);
 		
 		createNewUmpire = new Button(container, SWT.NONE);
-		createNewUmpire.setBounds(251, 109, 245, 25);
+		createNewUmpire.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		createNewUmpire.setText(Messages.NewGamePageTwoWizard_DeclareNewUmpireButton);
 		createNewUmpire.addSelectionListener(this);
+		new Label(container, SWT.NONE);
 		
 		Label scorekeeperBtn = new Label(container, SWT.NONE);
+		scorekeeperBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		scorekeeperBtn.setText(Messages.NewGamePageTwoWizard_ListOfScoreKeepersLabel);
-		scorekeeperBtn.setBounds(20, 163, 149, 23);
+		new Label(container, SWT.NONE);
 		
 		scorekeeperList = new List(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI);
-		scorekeeperList.setBounds(20, 192, 225, 111);
+		scorekeeperList.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 3));
 		scorekeeperList.addSelectionListener(this);
 		scorekeeperList.addSelectionListener(this);
 		
 		newScoreKeeperBtn = new Button(container, SWT.NONE);
+		newScoreKeeperBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		newScoreKeeperBtn.setText(Messages.NewGamePageTwoWizard_AddScoreKeeperButton);
-		newScoreKeeperBtn.setBounds(251, 191, 245, 25);
 		newScoreKeeperBtn.addSelectionListener(this);
 		
 		removeScoreKeeperBtn = new Button(container, SWT.NONE);
+		removeScoreKeeperBtn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		removeScoreKeeperBtn.setEnabled(false);
 		removeScoreKeeperBtn.setText(Messages.NewGamePageTwoWizard_RemoveScoreKeepersButton);
-		removeScoreKeeperBtn.setBounds(251, 227, 245, 25);
+		removeScoreKeeperBtn.addSelectionListener(this);
 		
 		createNewScorekeeper = new Button(container, SWT.NONE);
+		createNewScorekeeper.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		createNewScorekeeper.setText(Messages.NewGamePageTwoWizard_DeclareNewScoreKeeperButton);
-		createNewScorekeeper.setBounds(251, 262, 245, 25);
 		createNewScorekeeper.addSelectionListener(this);
 
 		checkPageCompleted();
@@ -178,19 +185,8 @@ public class NewGamePageTwoWizard extends WizardPage implements SelectionListene
 		}
 	}
 
-	/** 
-	 * Check if the page is completed
-	 * 
-	 * @return <b>true</b> page is complete, <b>false</b> otherwise
-	 */
-	public boolean getPageCompleted() {
-		return getErrorMessage()==null;
-	}
-
 	@Override
 	public void widgetSelected(SelectionEvent e) {
-		removeScoreKeeperBtn.setEnabled(scorekeeperList.getSelectionCount()>0);
-		removeUmpireBtn.setEnabled(umpireList.getSelectionCount()>0);
 		
 		if (e.getSource() == newUmpireBtn) {
 			addMember(umpireList, declaredUmpires);
@@ -213,6 +209,8 @@ public class NewGamePageTwoWizard extends WizardPage implements SelectionListene
 			// Not possible
 		}
 		
+      removeScoreKeeperBtn.setEnabled(scorekeeperList.getSelectionCount()>0);
+      removeUmpireBtn.setEnabled(umpireList.getSelectionCount()>0);
 		checkPageCompleted();
 	}
 
@@ -246,7 +244,6 @@ public class NewGamePageTwoWizard extends WizardPage implements SelectionListene
 		dialog.setText(Messages.NewGamePageTwoWizard_RemoveQuestionTitle);
 		dialog.setMessage(Messages.NewGamePageTwoWizard_RemoveQuestionMessage);
 		if (dialog.open() == SWT.OK) {
-			
 			widget.remove(widget.getSelectionIndices());
 		}
 	}

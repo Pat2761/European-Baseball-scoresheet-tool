@@ -33,6 +33,8 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
 
 /**
  * This class provide a wizard page which allow to create a new season folder.
@@ -74,14 +76,15 @@ public class NewSeasonWizardPage extends WizardPage implements ModifyListener {
 		Composite container = new Composite(parent, SWT.NONE);
 
 		setControl(container);
+		container.setLayout(new GridLayout(2, false));
 
 		Label lblDfinirLeNom = new Label(container, SWT.NONE);
-		lblDfinirLeNom.setBounds(10, 10, 171, 15);
+		lblDfinirLeNom.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 		lblDfinirLeNom.setText(Messages.NewSeasonWizardPage_SeasonNameLabel);
-
-		seasonName = new Text(container, SWT.BORDER);
-		seasonName.setBounds(10, 31, 196, 21);
-		seasonName.addModifyListener(this);
+		
+				seasonName = new Text(container, SWT.BORDER);
+				seasonName.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+				seasonName.addModifyListener(this);
 	}
 	
 	/**

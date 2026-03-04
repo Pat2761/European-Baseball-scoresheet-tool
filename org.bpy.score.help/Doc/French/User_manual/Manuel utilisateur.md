@@ -1,0 +1,14 @@
+J’ai participé à la saisie des matchs de Baseball pour la ligue de baseball de Normandie. Pour cela, on utilise un logiciel nommé statcrew qui est encore basé sur sur une interface graphique digne du siècle dernier.  Ce logiciel étant si ancien, qu’il ne peut pas fonctionner sur les versions actuelles de Windows, et on doit passer par une virtualisation de Windows 98 pour l’installer et l’utiliser.
+
+C’est à partir ce constat que je décidé de développer un logiciel de saisie des feuilles de scorage dans une technologie plus moderne. Ce projet permet de respecter intégralement les règles définies dans le document ‘Scorer Manual 2016’, mais de plus il permet d’imprimer les feuilles de scorages en respectant le format défini par la CEB (Comité européen de Baseball). Il permet aussi une prise en main plus intuitive que le logiciel officiel car il est basé sur une interface graphique classique couramment utilisée sous windows. Ce logiciel vous permet donc de saisir des matchs de baseball et d’avoir , en temps réel, la vue de la feuille de scorage.
+
+Cette application se présente sous la forme d’une application multi fenêtre dont chaque élément sera décrit plus loin dans le manuel utilisateur. L’application a donc l’aspect suivant, un aspect qui pourras être modifié en fonction des souhaits de l’utilisateur.
+
+![Aspect général de l'application](images/Aspect general.jpg "Aspect général de l'application") 
+
+Ce manuel utilisateur va être constitué de plusieurs chapitres:
+
+1.  Le premier chapitre va décrire l'environnement de l'outil et les différentes fonctionnalité d'eclipse qui vont aider à la saisie des match. On va aussi décrires les différentes vues et editeurs spécialement conçus pour cette application.
+2.  Le deuxième chapitre va décrire la gestion de ce que l'on va appler un championat, une saison, une catégorie
+3. Le troisième partie va être la description des éditeurs et décrire comment on effectue la saisie d'un match
+4. Le quatrième et dernier chapitre va décrire les différents rappports que l'outil permet de créer

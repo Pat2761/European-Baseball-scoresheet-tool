@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+>
+<title>Appeal plays</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Appeal plays.</h2>
+	<p class="normalText">According to the Definition of Terms of the <b>OBR</b>, an appeal is the act of a fielder in claiming 
+	violation of the rules by the offensive team. Such violations include:</p>
+
+	<ul class="dotList">
+		<li>
+			<p class="dotList">Batting out of turn (this will be discussed in its own chapter) [<b>OBR6.03(b)</b>];
+			</p>
+		</li>
+		<li>
+			<p class="dotList">Runner fails to retouch his original base after a fly ball is caught [<b>OBR5.09(c)(1)</b>];
+			</p>
+		</li>
+		<li>
+			<p class="dotList">Runner fails to touch each base while advancing or returning to a base[<b>OBR 5.09(c)(2)</b>].
+			</p>
+		</li>
+	</ul>
+
+	<p class="normalText">An appeal play may be requested by the defense in two different ways:</p>
+
+	<ol class="olTypeA">
+		<li class="olTypeA">
+			<p><b>During the course of the action in question</b>. In this case it is enough for the fielder covering the base 
+			that is the object of the appeal to tag it, once he is in possession of the ball. The official scorer should 
+			transcribe the action exactly as it occurred.
+			</p>
+		</li>
+		<li class="olTypeA">
+			<p><b>After the action has been completed and before any further play</b>. In this case the pitcher, once he has 
+			regained possession of the ball and is back on his mound, must leave his position and pass the ball to the 
+			fielder covering the base that is the object of the appeal. Once that fielder has the ball, he must tag the base 
+			and address the umpire requesting an appeal play. In the event that more than one runner has passed through that 
+			base, the fielder making the appeal must indicate clearly against which runner he is making the appeal and for 
+			what reason. Otherwise the appeal will not be accepted. At this point the umpire must give his judgment.
+			</p>
+		</li>
+	</ol>
+
+	<p class="normalText">
+		<span class="obrReference">"If a putout results from an appeal play within the natural course of play, the official 
+		scorer shall give assists to each fielder, except the fielder making the putout, whose action led to the putout. If a 
+		putout results from an appeal play initiated by the pitcher throwing to a fielder after the previous play has ended, 
+		the official scorer shall credit the pitcher, and only the pitcher, with an assist"</span>
+		<span>[<b>OBR 9.10(a)(1) Comment</b>].</span></p>
+	
+	<p class="normalText">Runner on second base. The batter hits a single and the runner scores after having failed to touch 
+	third base.</p>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 9:</span>
+		<span>The left fielder catches the ball and throws it to the third baseman, who tags the base in a natural course of 
+		the play. An assist should be credited to the left fielder and a putout to the third baseman.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Appeal%20plays_html_8b635484.gif"
+					alt="Appeal play"
+					width="84"
+					height="179">
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter hits a double to center field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a hit to left field. The runner reaches home plate without touching 
+				third base. The left fielder throws the ball back to the third baseman, who calls an appeal. The umpire upholds the 
+				appeal, and the runner is out. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner -> </span><span class="codePutout">A75</span>			
+				<span>}</span>
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Appeal%20plays_html_c433347b.png"
+					alt="Appeal play"
+					width="87px"
+					height="179px">
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 10:</span>
+		<span>starts with the same initial situation After the action has been completed, the pitcher walks out onto his 
+		mound then leaves it, throws the ball to the fielder on third who tags the base and makes an appeal. There is a 
+		putout for the third baseman, an assist must be credited to the pitcher.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Appeal%20plays_html_a77aafda.gif"
+					alt="Appeal play"
+					width="87"
+					height="181">
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter hits a double to center field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a hit to left field. The runner reaches home plate without 
+				touching third base before the first pitch. The pitcher throws the ball back to the third baseman, who calls 
+				an appeal. The umpire upholds the appeal, and the runner is out. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner -> </span><span class="codePutout">A15</span>			
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Appeal%20plays_html_5821cac5.png"
+					alt="Appeal play"
+					width="86"
+					height="174">
+			</td>
+		</tr>
+	</table>				
+
+
+	<p class="normalText">If there are several motives for appeal because several players have failed to touch base, or failed 
+	to tag up for a fly ball, several appeal plays may be made. The defense must, however, always make the appeal play on the 
+	correct base and the correct runner, since if the defense appeals in error it may not make any further appeals against the 
+	same base or the same runner.
+	</p>
+	
+	<p class="normalText">It should be noted that an appeal is not interpreted as a play or attempted play, which is why it is 
+	perfectly legal to make several appeals in succession.
+	</p>
+	
+	<p class="normalText"><b>NOTE:</b> If the Official Scorer notices during the course of an action that a runner has committed 
+	a violation that could form the basis of an appeal, it is a good idea to wait for the first pitch to the next batter before 
+	recording the action, as he could find that he has to erase what he has just written. It should also be remembered that neither 
+	the Umpire nor the Official Scorer should call the attention of the defense to any suspected violation by a runner.
+	</p>
+	
+	<p class="normalText">It must be the defensive team’s own initiative to make an appeal play. If no appeal is made before the 
+	first pitch is made to the following batter, the violation is ignored.
+	</p>
+	
+</body>
+</html>

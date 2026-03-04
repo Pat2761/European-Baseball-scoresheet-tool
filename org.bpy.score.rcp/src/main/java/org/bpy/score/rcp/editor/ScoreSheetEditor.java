@@ -147,7 +147,7 @@ public class ScoreSheetEditor extends EditorPart implements MouseWheelListener {
 	 * @param statisticEngine Manager of statistics
 	 */
 	public void updateView(Game game, ScoreViewEngine scoreViewEngine, StatisticEngine statisticEngine) {
-		panel.updateView(game, scoreViewEngine, statisticEngine);
+		panel.updateView(null, game, scoreViewEngine, statisticEngine);
 	}
 
 	@Override

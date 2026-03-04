@@ -21,8 +21,10 @@ package org.bpy.score.rcp.wizard;
 import java.util.HashMap;
 import java.util.List;
 
-import org.bpy.score.preferences.core.PreferenceConstants;
+import org.bpy.score.internationalization.rcp.Messages;
+import org.bpy.score.preferences.core.ScorePreferenceConstants;
 import org.bpy.score.preferences.core.PreferenceManager;
+import org.bpy.score.rcp.Activator;
 import org.bpy.score.reports.generator.GameReportGenerator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -36,6 +38,9 @@ import org.eclipse.jface.wizard.Wizard;
  */
 public class GenerateGameReportWizard extends Wizard {
 
+	/** Key for the icon of the Report Generation wizard */
+	public static final String REPORT_GENERATION_ICON_NAME = "ReportGenerationIconName";
+	
 	/** Reference to the page one of the wizard */
 	private GameReportWizardPageOne gameReportWizardPageOne;
 	/** Reference to the page two of the wizard */
@@ -49,7 +54,12 @@ public class GenerateGameReportWizard extends Wizard {
 	 * @param folder Reference to the current folder
 	 */
 	public GenerateGameReportWizard(IFolder folder) {
-		setWindowTitle("New Wizard"); //$NON-NLS-1$
+		setWindowTitle(Messages.reportWizardGenerationTitle); 
+		setDefaultPageImageDescriptor(
+	            Activator.getDefault()
+	                     .getImageRegistry()
+	                     .getDescriptor(REPORT_GENERATION_ICON_NAME)
+	        );
 		
 		currentFolder = folder;
 	}
@@ -72,20 +82,19 @@ public class GenerateGameReportWizard extends Wizard {
 		addPage(gameReportWizardPageOne);
 		
 		gameReportWizardPageTwo = new GameReportWizardPageTwo();
-		gameReportWizardPageTwo.setParent(this);
 		addPage(gameReportWizardPageTwo);
 	}
 
 	@Override
 	public boolean canFinish() {
-		return gameReportWizardPageOne.isValid() && gameReportWizardPageTwo.isValid();
+		return gameReportWizardPageOne.isPageComplete() && gameReportWizardPageTwo.isPageComplete();
 	}
 
 	@Override
 	public boolean performFinish() {
 		
 		gameReportWizardPageOne.savePreferences();
-		gameReportWizardPageTwo.savePreference();
+		gameReportWizardPageTwo.savePreferences();
 		
 		GameReportGenerator gameReportGenerator = new GameReportGenerator();
 		HashMap<String,Object> options = new HashMap<>();
@@ -97,13 +106,12 @@ public class GenerateGameReportWizard extends Wizard {
 			options.put(GameReportGenerator.XSLT_FILE_PATH, gameReportWizardPageTwo.getXsltFilePath());
 			options.put(GameReportGenerator.BANNER_FILE_PATH, gameReportWizardPageTwo.getBannerFilePath());
 		}
-		String typeOfFile = PreferenceManager.getPreferenceValue(currentFolder.getProject(), PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE, PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML);
-		options.put(GameReportGenerator.HTML_GENERATION, (PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_HTML.equals(typeOfFile)? Boolean.TRUE : Boolean.FALSE));
+		String typeOfFile = PreferenceManager.getPreferenceValue(currentFolder.getProject(), ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE, ScorePreferenceConstants.GRW_TYPE_HTML);
+		options.put(GameReportGenerator.HTML_GENERATION, (ScorePreferenceConstants.GRW_TYPE_HTML.equals(typeOfFile)? Boolean.TRUE : Boolean.FALSE));
 		
 		List<IFile> selectedGames = gameReportWizardPageOne.getSelectedGames();
 		gameReportGenerator.generateReport(selectedGames, options);
 		
 		return true;
 	}
-
 }

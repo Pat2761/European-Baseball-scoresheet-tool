@@ -48,7 +48,7 @@ public class ImportHtmlWizard extends Wizard {
 
 	@Override
 	public boolean canFinish() {
-		return importHtmlWizardPage.canFinish();
+		return importHtmlWizardPage.isPageComplete();
 	}
 
 	@Override

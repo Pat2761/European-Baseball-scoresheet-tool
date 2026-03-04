@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.bpy.score.club.util.ClubDataParser;
 import org.bpy.score.internationalization.rcp.Messages;
+import org.bpy.score.rcp.Activator;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
@@ -34,6 +35,9 @@ import org.eclipse.osgi.util.NLS;
  *
  */
 public class NewTeamWizard extends Wizard {
+
+   /** Key for the icon of the New team wizard */
+   public static final String NEW_TEAM_CREATION_ICON_NAME = "new_team_wizard_icon_75.jpeg";
 
 	/** Reference on the first page of the wizard */
 	private NewTeamPageOneWizard newTeamPageOneWizard;
@@ -67,6 +71,13 @@ public class NewTeamWizard extends Wizard {
 	public NewTeamWizard(IFolder container) {
 		setWindowTitle(Messages.NewTeamWizard_Title);
 		this.currentFolder = container;
+  
+		setDefaultPageImageDescriptor(
+            Activator.getDefault()
+                     .getImageRegistry()
+                     .getDescriptor(NEW_TEAM_CREATION_ICON_NAME)
+        );
+
 
 		clubsAlreadyDefined = new ClubDataParser();
 		clubsAlreadyDefined.parseData(container);

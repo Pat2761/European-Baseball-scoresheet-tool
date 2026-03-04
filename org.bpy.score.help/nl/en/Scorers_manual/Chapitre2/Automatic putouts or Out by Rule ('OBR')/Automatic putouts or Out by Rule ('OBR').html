@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Automatic putouts or Out by Rule (“OBR”)</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Automatic putouts or Out by Rule (“OBR”).</h2>
+
+	<p class="normalText">There is a whole series of putouts, considered automatic putouts, listed in the OBR under rule 9.09(b) 
+	and (c). We shall go through them all, illustrating them with examples where necessary. The abbreviation “OBR”is used 
+	for all such automatic putouts. There are fourteen in total.
+	</p>
+
+	<p class="normalText">In order to clarify the actions that led to an automatic putout, the number of the following list 
+	should be noted outside the putout circle at the top of the right side.
+	</p>
+
+	<p class="normalText">Where doubts exist as to the rule that led the umpire to call an out, ask the umpire for clarification 
+	at the end of the game (or inning, if possible).
+	</p>
+
+	<p class="normalText"><b>NOTE:</b> Actions may occur on the field of play that are not covered exactly by these 14 rules. 
+	In such cases the out should be put down to the most similar rule, and the exact circumstances of the putout may be 
+	explained in the notes, if considered necessary (second page of the scoresheet).
+	</p>
+	
+		
+	<p class="exampleText">
+		<span>1) <b>Batter called out for an illegally batted ball [OBR 9.09(b)(2)]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_5542d83b.gif"
+					alt="OBR 1"
+					width="87"
+					height="96"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batter called out for an illegally batted ball */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR1-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_dedd5831.png"
+					alt="OBR 1"
+					width="87"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">As a reminder, a ball is considered to have been illegally batted when the batter:</p>
+	
+	<ul class="dotList">
+		<li>
+			<p class="dotList">
+				<span class="obrReference">"hits a ball with one or both feet on the ground
+					entirely outside the batter’s box"</span>
+				<span><b>[OBR 6.03(a)(1)]</b>;</span>
+			</p>
+		</li>
+		<li>
+			<p class="dotList">
+				<span class="obrReference">"steps from one batter’s box to the other while the
+					pitcher is in position ready to pitch"</span><span><b> [OBR 6.03(a)(3)]</b>;</span>
+			</p></li>
+		<li>
+			<p class="dotList">
+				<span class="obrReference">"uses or attempts to use a bat that, in the umpire’s judgment, has been 
+				altered or tampered with in such a way to improve the distance factor or cause an unusual reaction on the baseball"</span>
+				<span><b>[OBR 6.03(a)(4)]</b></span>
+				<span class="obrReference">. "A batter shall be deemed to have used or attempted to use an illegal bat if he 
+				brings such a bat into the batter’s box"</span>
+				<span><b> [OBR 6.03(a)(4) Comment]</b>. </span>
+			</p>
+		</li>
+	</ul>
+	
+	<p class="normalText">In case of “OBR” 1, the catcher is credited with the put out, hence the 2.</p>
+	
+		
+	<p class="exampleText">
+		<span>2) <b>Batter called out for bunting foul for his third strike [OBR 5.09(a)(4), 9.09(b)(3)]</b>.</span>
+		<span>In this case, “OBR KS” should be noted as, according to the OBR, a strikeout should be credited to the pitcher. 
+		Clearly, the putout should always be credited to the catcher.</span>	
+		</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_7b0cf96.gif"
+					alt="OBR 2"
+					width="87"
+					height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batter called out for bunting foul for his third strike */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBRKS-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_f0530fc6.png"
+					alt="OBR 2"
+					width="85"
+					height="91"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Remember, as it’s a strikeout, put always the progressive number ofthe strikeout.</p>
+
+	<p class="normalText">This rule also governs the case of a batter put out when</p>
+	
+	<ul class="dotList">
+		<li>
+			<p class="dotList">"
+				<span class="obrReference">A third strike is not caught by the catcher when first base is occupied before two
+						are out.</span>
+				<span>” <b>(OBR 5.09(a)(3)]</b>.</span>
+			</p>
+		</li>
+		<li>
+			<p class="dotList">“
+				<span class="obrReference">He attempts to hit a third strike and the ball touches him</span>
+				<span>” <b>[OBR5.09(a)(6)]</b>.</span>
+			</p>
+		</li>
+		<li>
+			<p class="dotList">“
+				<span class="obrReference">With two out, a runner on third base, and two strikes on the batter, the runner attempts 
+				to steal home base on a legal pitch and the ball touches the runner in the batter’s strike zone </span>
+				<span>”. <b>[OBR 5.09(a)(14)]</b></span>
+			</p>
+		</li>
+		<li>
+			<p class="dotList">“
+				<span class="obrReference">After a third strike he hinders the catcher in his attempt to field the ball</span>
+				<span>". <b>[OBR 6.01(a)(1)]</b></span>
+			</p>
+		</li>
+	</ul>
+ 
+ 		
+	<p class="exampleText">
+		<span>3) <b>Batter called out for being touched by his own batted ball.</b></span>
+		<span>Note that the batter is only called out if he is touched by the ball while out of the batter’s box, before 
+		touching a fielder, and in fair territory. Otherwise the umpire calls foul ball. <b>[OBR 5.09(a)(7), 9.09(b)(4)]</b>. 
+		And also the batter is out if "</span>
+		<span class="obrReference">after hitting or bunting a ball that continues to move over foul territory, he intentionally 
+		deflects the course of the ball in any manner while running to first base</span>
+	    <span> <b>[OBR5.09(a)(9)]</b> or “</span>
+	    <span class="obrReference">After hitting or bunting a fair ball, his bat hits the ball a second time in fair territory </span>
+	    <span>" <b>[OBR 5.09(a)(8)]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_a856e9aa.gif"
+					alt="OBR 3"
+					width="87"
+					height="99"/>			
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batter called out for being touched by his own batted ball */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR3-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_266adcfa.png"
+					alt="OBR 3"
+					width="84"
+					height="87"/>
+			</td>
+		</tr>
+	</table>				
+
+	
+	<p class="exampleText">
+		<span>4) <b>Batter called out for interfering with the catcher [OBR 9.09(b)(5)]</b>. The umpire will call interference if the 
+		batter-runner "</span>
+		<span class="obrReference">interferes with the catcher’s fielding or throwing by stepping out of the batter’s box or 
+		making any other movement that hinders the catcher’s play at home base
+		</span>
+		<span>” <b>[OBR 6.03(a)(3)]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_f4c0e49f.gif"
+					alt="OBR 4"
+					width="87"
+					height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batter called out for interfering with the catcher */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR4-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_23aa246b.png"
+					alt="OBR 4"
+					width="84"
+					height="88"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>5) <b>Batter called out for failing to bat in his proper turn</b>. In this case, the batter who has failed to bat in his 
+		proper turn is only called out if the opposing team appeals before any further play <b>[OBR 6.03(b)</b>, <b>9.03(d)</b> 
+		and <b>9.09(b)(6)]</b>.
+		</span><br />
+		<span><b>EXCEPTION</b>: If the batter who batted out of turn is put out in the course of the action that ensues as a 
+		result of his having batted, and the opposing team appeals, as a result of which the proper batter is declared out, 
+		the putout is recorded as if it had occurred on the field, and any assists are therefore also noted, in addition to 
+		the putout.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_42bcf89d.gif"
+					alt="OBR 5"
+					width="87"
+					height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batter called out for failing to bat in his proper turn */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR5-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_9f68812f.png"
+					alt="OBR 5"
+					width="86"
+					height="90"/>
+			</td>
+		</tr>
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_1f352996.gif"
+						alt="OBR 5"
+						width="87"
+						height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batter called out for failing to bat in his proper turn with assist */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR5-53</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_98af4dbb.png"
+					alt="OBR 5"
+					width="86"
+					height="90"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>6) <b>Batter called out for refusing to touch first base after receiving a base on balls, after being hit by a pitch 
+		or after a catcher’s interference. [OBR 9.09(b)(7)</b> and <b>9.14(c)]</b>. When the winning run is scored… "</span>
+		<span class="obrReference">if, with two out, the batter-runner refuses to advance to and touch first base, the umpire 
+		shall disallow the run, call out the offending player, and order the game resumed. If, before two are out, the batter-runner 
+		refuses to advance to and touch first base, the run shall count, but the offending player shall be called out.</span>
+		<span>” <b>[OBR 5.08(b) penalty]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_8f63d15e.gif"
+					alt="OBR 6"
+					width="87"
+					height="95"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batter called out for refusing to touch first base after receiving a base on balls, 
+				after being hit by a pitch or after a catcher’s interference */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR6-2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_8ac821e5.png"
+					alt="OBR 6"
+					width="85"
+					height="90"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>7) <b>Runner called out for refusing to advance from third base [in the event that he was forced] to home 
+		plate [OBR 9.09(b)(8)]</b>. For rules 7 and 8, <b>OBR rule 5.08(b)</b>, Penalty, states: When the winning run is scored…, “</span>
+		<span class="obrReference">if the runner on third refuses to advance to and touch home base in a reasonable time, the 
+		umpire shall disallow the run, call out the offending player and order the game resumed.</span>
+		<span>".</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_5a0f8dd5.gif"
+					alt="OBR 7"
+					width="87"
+					height="96"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The batter hits a triple hit to right field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Runner called out for refusing to advance from third base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner3 -> </span><span class="codePutout">OBR7-2</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_51fd001.png"
+					alt="OBR 7"
+					width="86"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+
+	
+	<p class="exampleText">
+		<span>8) <b>Batter called out on an Infield Fly that is not caught</b>. The putout is credited to the fielder who the scorer 
+		believes could have made the catch <b>[OBR 5.09(a)(5)</b>, <b>9.09(c)(1)]</b>. Also use OBR 8 in case of rule <b>5.09(a)(12)</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_6407cdae.gif"
+					alt="OBR 8"
+					width="87"
+					height="99"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Batter called out on an Infield Fly that is not caught */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner3 -> </span><span class="codePutout">OBR8-5</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_4409ceb2.png"
+					alt="OBR 8"
+					width="85"
+					height="88"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>9) <b>Runner called out for being touched by a fair ball (including an Infield Fly [if not in contact with a base]) 
+		[OBR9.09(c)(2)]</b>. The putout is credited to the fielder nearest the point at which the ball touched the runner. 
+		The batter must be credited with a hit even if there are already two out, so long as an Infield Fly is not declared. 
+		It should be noted that if the ball has already gone past an infielder (other than the pitcher), the runner is not 
+		called out and the ball remains in play <b>[OBR 5.09(b)(7)</b> and <b>6.01(a)(11)]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_91ece41b.gif"
+					alt="OBR 9"
+					width="87"
+					height="184"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The batter hits a single hit to left field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a ball toward second base, but it 
+				touches the runner coming from the first base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">OBR9-4</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_3d59544e.png"
+					alt="OBR 9"
+					width="87"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>10) <b>Runner called out for running out of line to avoid being tagged</b>. The putout is credited to the fielder 
+		whom the runner avoided; any assists by other fielders should be recorded as usual <b>[OBR 5.09(b)(1)</b>, <b>9.09(c)(3)]</b>. 
+		With a runner on first base, the pitcher drops a ball returned by the catcher after a pitch, and the runner tries 
+		to advance to the next base. The pitcher throws to first base, whilst the runner advances to second base and is 
+		called out by the umpire for running out of line to avoid the second baseman.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_759a6057.gif"
+					alt="OBR 10"
+					width="87"
+					height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The batter advance on a 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Runner called out for running out of line to avoid being tagged */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codePutout">OBR10-134</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_b2a84937.png"
+					alt="OBR 10"
+					width="86"
+					height="89"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>11) <b>Runner called out for passing another runner</b>. Credit the putout to the fielder nearest the point of 
+		passing <b>[OBR 5.09(b)(9)</b>, <b>9.09(c)(4)]</b>. With first and second bases occupied, the batter makes a 
+		hit to the edge of the outfield. The leading runner remains near second base, fearing the ball will be caught 
+		on the fly. The runner on first base sets off at great speed and overruns his team-mate just past second base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_f3399a9d.gif"
+					alt="OBR 11"
+					width="87"
+					height="179"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The batter advance on a 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a hit to left field, the runner advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Third batter hits a hit to left field, the runner on first base takes second and 
+				is put out because he doubles up on the runner on third base who hasn't moved. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+ </span><span class="codePutout">OBR11-6</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_88aa3180.png"
+					alt="OBR 11"
+					width="84"
+					height="260"
+					/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>12) <b>Runner called out for running the bases in reverse order</b>. Credit the putout to the fielder covering 
+		the base the runner left in starting his reverse run <b>[OBR 5.09(b)(10)</b>, <b>9.09(c)(5)]</b>. The runner on 
+		second base, with the pitcher ready to pitch, runs towards first base in an attempt to confuse the defense.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_d20cac4d.gif"
+					alt="OBR 12"
+					width="87"
+					height="92"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The batter hits a double in the center field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* The batter hits a double in the center field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codePutout">OBR12-4</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_53e8240c.png"
+					alt="OBR 12"
+					width="85"
+					height="91"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>13) <b>Runner called out for having interfered with a fielder</b>. Credit the putout to the fielder with whom the runner 
+		interfered, unless the fielder was in the act of throwing the ball when the interference occurred, in which case the 
+		official scorer shall credit the putout to the fielder for whom the throw was intended, and shall credit an assist to 
+		the fielder whose throw was interfered with <b>[OBR 5.09(b)(3)</b>, <b>6.01(a)(6)</b>, <b>6.01(a)(19)</b>, <b>09.09(c)(6)]</b>. 
+		The batter-runner, who hit a single to right field, tries to advance to second base and knocks over the second baseman just 
+		as he is about to receive an assist from the outfielder.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_4c4bf3c3.gif"
+					alt="OBR 13"
+					width="87"
+				height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter hits a hit to right field, then interferes with the second baseman 
+				on the right fielder's throw. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9 </span><span class="codePutout">OBR13-94</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_79f57ec9.png"
+					alt="OBR 13"
+					width="86"
+					height="91"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>With a runner on first, the batter-runner hits a single to right field, who throws to second base for 
+		the out. The advancing runner interferes with the second baseman, who wanted to make a throw to first base. 
+		In this case credit an assist to the second baseman and the putout to the first baseman for whom the throw 
+		was intended.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_a33faa1d.gif"
+					alt="OBR 13"
+					width="87"
+					height="100"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter hits a hit to right field, then interferes with the second baseman 
+				on the right fielder's throw. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9 </span><span class="codePutout">OBR13-943</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_b8a15319.png"
+					alt="OBR 13"
+					width="84"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">This rule also covers the case where the batter-runner, in running the last half of the distance from 
+	home base to first base, while the ball is being fielded to first base, runs off-course and in doing so interferes with a 
+	fielder <b>[OBR 5.09(a)(11)]</b>.
+	</p>
+
+		
+	<p class="exampleText">
+		<span>14) <b>Batter-runner called out because of interference by a preceding runner</b>. Credit the putout to the first baseman. 
+		If the fielder interfered with was in the act of throwing the ball, credit him with an assist <b>[OBR 5.09(a)(13)</b>, 
+		<b>6.01(a)(7)</b>, <b>9.09(c)(7)]</b>. With a ground ball to second base, the second baseman assists the shortstop to 
+		put out the runner. When the short stop is in the act of throwing to complete the double play, he is interfered by 
+		the runner. The umpire calls out the batter-runner for interference by the preceding runner. Credit an assist to short stop, 
+		even though he actually didn’t throw to first base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_21741a65.gif"
+					alt="OBR 14"
+					width="87"
+					height="186"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The batter hits a single in the center field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* The second batter interferes with the runner */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR14-63</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">46</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_e88e8731.png"
+					alt="OBR 14"
+					width="86"
+					height="172"/>
+			</td>
+		</tr>
+	</table>				
+
+
+
+	<p class="normalText">It is possible for automatic putouts 13 and 14 to occur in the course of the same action, as can be 
+	seen in the following example:</p>
+	
+		
+	<p class="exampleText">
+		<span>With less than two out and a runner on first base, the batter hits to the second baseman who catches the ball 
+		in time to score a double play. As he waits to assist the shortstop, who has gone to cover second base, he is knocked 
+		over by the runner. The umpire calls out both runners for interference. This is a double play, although no grounded 
+		into double play is charged to the batter, since the action was not completed, and consequently there can be no certainty 
+		that a double play would in fact have occurred.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_7b760333.gif"
+					alt="OBR 13 14"
+					width="87"
+					height="185"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The batter hits a single in the right field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* The second batter interferes with the runner */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR14-63</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">OBR13-46</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Automatic%20putouts%20or%20Out%20by%20Rule%20('OBR')_html_c18d784a.png"
+					alt="OBR 13 14"
+					width="86"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">
+		<span class="obrReference">"The official scorer should not charge a batter with grounding into a double play if 
+		the batter-runner is called out due to interference by a preceding runner"</span>
+		<span> <b>[OBR 9.02(a)(17) Comment]</b>.</span>
+	</p>
+	
+</body>
+</html>

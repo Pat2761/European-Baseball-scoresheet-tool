@@ -1,0 +1,347 @@
+:root {
+    --main-font-family: "Times New Roman", serif;
+    --main-font-size: 12pt;
+}
+
+.title2 h2 {
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	text-align: left;
+	font-weight: bold;
+}
+
+span.scoringToolWelcomeImage {
+	position: absolute;
+	top: -0.35cm;
+	left: 0cm;
+	width: 605px
+}
+
+p.chapterRef {
+	font-family: var(--main-font-family);
+	size: 6;
+	font-size: 22pt;
+	text-align: center;
+	font-weight: bold;
+}
+
+p.chapterTitle {
+	font-family: var(--main-font-family);
+	size: 6;
+	font-size: 30pt;
+	text-align: center;
+	font-weight: bold;
+	color: #4f82be;
+}
+
+.fullWidthLine {
+    width: 100%;
+    border: none;
+    border-top: 6px solid #4f82be;
+    margin: 15px 0;	
+}
+
+.wbscImage {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;	
+	align: bottom;
+	width: 352;
+	height: 300;
+	border: 0;
+}
+
+p.normalText {
+	color: #000000;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	line-height: 1.2;
+	font-weight: normal;
+	text-align: justify;
+	text-indent: 30px;
+}
+
+/* ------------------------------------------------------------------------------ 
+	Styles used for describe the examples
+	----------------------------------------------------------------------------- */
+
+/* Style of the description of the example */
+p.exampleText {
+	color: #000000;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	line-height: 1.2;
+	font-weight: normal;
+	text-align: justify;
+	padding-left: 30px;
+}
+
+/* Style used the title of the example */
+span.exampleNumber {
+	text-decoration: underline;
+}
+
+/* Style of the table */
+table.exampleDescription {
+    margin-left: 4%;
+    font-family: var(--main-font-family);
+    font-size: 12pt;
+    width: 95%;
+    border-collapse: collapse;
+    border: 2px solid black;
+    table-layout: auto;
+}
+
+.exampleDescription th,
+.exampleDescription td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+th.exampleHeader {
+    text-align: center;
+    font-weight: bold;
+    background-color: #c0c0c0;
+}
+
+
+/* Style of the image aroud the code */
+td.exampleImage {
+    vertical-align: top;
+    padding-bottom: 15px;
+    width: 1%;
+    white-space: nowrap;
+}
+
+/* Style of the code in the center of the table */
+td.exampleCode {
+	font-family: Consolas, "Courier New", monospace;
+	font-size: 10pt;
+	width: auto;
+	text-align: left;
+	padding-bottom: 15px;
+    vertical-align: top;
+    padding: 0 20px 15px 20px;
+}
+
+/* Style of coloration syntaxic for comment */
+span.codeComment {
+	color: #c0c0c0;
+}
+
+/* Style of coloration syntaxic for action keyword */
+span.codeAction {
+	color: #7f0055;
+	font-weight: bold;
+}
+
+/* Style of coloration syntaxic for an advance */
+span.codeAdvance {
+	color: #008000;
+}
+
+/* Style of coloration syntaxic for a putout */
+span.codePutout {
+	color: #ff0000
+}
+
+/* ------------------------------------------------------------------------------ 
+	
+	----------------------------------------------------------------------------- */
+
+span.exposant {
+	vertical-align: super;
+    font-size: 0.75em; 
+}
+
+span.obrReference {
+	color: #8080ff;
+	font-style: italic;
+}
+
+p.centeredText {
+	color: #000000;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	line-height: 1.2;
+	font-weight: normal;
+	text-align: center;
+}
+
+/*
+.abreviatationTable {
+	width: 100%;
+	margin: 20px 0;
+	border-collapse: collapse;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	border: 1px solid black;
+}*/
+
+
+table.playerPosition {
+	margin-left: 10%;
+	margin-right: 10%;
+	border-collapse: collapse;
+	width: 80%;
+}
+
+table.playerPosition th,
+table.playerPosition td {
+    width: 33.33%;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+    padding: 1px ;
+    text-align: left;
+}
+
+table.contentDescription {
+	margin-left: 4%;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	border-collapse: collapse;
+	width: 95%;
+    padding: 1px ;
+}
+
+td.contentDescriptionName {
+	text-align: left;
+	table-layout: auto;
+	font-weight: bold;
+	padding-bottom: 15px;
+    vertical-align: top;
+}
+
+td.contentDescriptionDescription {
+	width: auto;
+	text-align: left;
+	padding-bottom: 15px;
+    vertical-align: top;
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+
+table.abreviation {
+	margin-left: 10%;
+	margin-right: 10%;
+	border-collapse: collapse;
+	width: 80%;
+}
+
+table.abreviation th,
+table.abreviation td {
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+    padding: 1px ;
+}
+
+col.abreviationSymbol {
+	text-align: center;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	table-layout: auto;
+}
+
+col.abreviationDescription {
+	width: auto;
+	text-align: left;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+}
+
+.ScorerManualSampleTable {
+	width: 100%;
+	margin: 20px 0;
+	border-collapse: collapse;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	border: 1px solid black;
+}
+
+.ScorerManualSampleTable th, .ScorerManualSampleTable td {
+	border: 1px solid;
+	padding: 12px;
+	vertical-align: top;
+	border: 1px solid #666;
+}
+
+.ScorerManualSampleTable thead {
+	background-color: #f5f5f5;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* Colonnes */
+.colImage {
+	width: 120px;
+	text-align: center;
+}
+
+.colTexte {
+	width: auto;
+	text-align: left;
+}
+
+/* ------------------------------------------------------------------------------ 
+	Styles used for a dot list
+	----------------------------------------------------------------------------- */
+
+.dotList {
+	list-style-type: disc;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	margin-left: 30px;
+	padding-left: 30px;
+}
+
+.dotList p{
+	list-style-type: disc;
+	margin-left: 1px;
+	margin-bottom: 0;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	line-height: 1;
+}
+
+/* ------------------------------------------------------------------------------ 
+	Styles used for a alphabetical list
+	----------------------------------------------------------------------------- */
+
+.olTypeA {
+	list-style-type:lower-alpha;
+}
+
+.olTypeA li::marker {
+	content: counter(list-item, lower-alpha) ") ";
+}
+
+.olTypeA li {
+	list-style-type: disc;
+	margin-left: 1px;
+	margin-bottom: 0;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	line-height: 1;
+}
+
+/* ------------------------------------------------------------------------------ 
+	Styles used for a decimal list
+	----------------------------------------------------------------------------- */
+
+.olTypeNumber {
+	list-style-type:decimal;
+}
+
+.olTypeNumber li::marker {
+	content: "("counter(list-item, decimal) ")";
+}
+
+.olTypeNumber li {
+	list-style-type: disc;
+	margin-left: 1px;
+	margin-bottom: 0;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	line-height: 1;
+}

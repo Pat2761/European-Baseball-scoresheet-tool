@@ -101,7 +101,7 @@ public abstract class AbstractEngine {
       }
 
       for (EObject element : halfInning.getInningElements()) {
-        if (EngineConstants.debugEngine) {
+        if (EngineConstants.DEBUG_ENGINE) {
           logger.log(Level.FINE,"------------------------------------------------------------------------"); //$NON-NLS-1$
         }
 
@@ -127,7 +127,7 @@ public abstract class AbstractEngine {
     
     actionsManager.closeGame();
 
-    if (EngineConstants.debugEngine) {
+    if (EngineConstants.DEBUG_ENGINE) {
       actionsManager.debug();
     }
   }

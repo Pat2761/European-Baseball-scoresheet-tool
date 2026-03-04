@@ -20,6 +20,8 @@ package org.bpy.score.rcp.wizard;
 
 import java.io.File;
 
+import org.bpy.score.internationalization.rcp.Messages;
+import org.bpy.score.rcp.Activator;
 import org.bpy.score.rcp.navigator.ScoreToolProjectParent;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -36,9 +38,24 @@ import org.eclipse.ui.IWorkbench;
  */
 public class NewChampionatWizard extends Wizard implements INewWizard {
 
+   /** Key for the icon of the Report Generation wizard */
+   public static final String NEW_CHAMPIONAT_WIZARD_ICON_NAME = "NewChampionatWizardIconName";
+   
 	/** Reference on the page of the wizard */
 	private NewChampionatWizardPage newChampionatWizardPage;
 
+	/**
+	 * Constructor of the class.
+	 */
+	public NewChampionatWizard() {
+	   setWindowTitle(Messages.NewChampionatWizard_Title);
+      setDefaultPageImageDescriptor(
+            Activator.getDefault()
+                     .getImageRegistry()
+                     .getDescriptor(NEW_CHAMPIONAT_WIZARD_ICON_NAME)
+        );
+   }
+	
 	@Override
 	public void addPages() {
 		newChampionatWizardPage = new NewChampionatWizardPage();
@@ -63,7 +80,7 @@ public class NewChampionatWizard extends Wizard implements INewWizard {
 
 	@Override
 	public boolean canFinish() {
-		return newChampionatWizardPage.canFinish();
+		return newChampionatWizardPage.isPageComplete();
 	}
 
 	@Override

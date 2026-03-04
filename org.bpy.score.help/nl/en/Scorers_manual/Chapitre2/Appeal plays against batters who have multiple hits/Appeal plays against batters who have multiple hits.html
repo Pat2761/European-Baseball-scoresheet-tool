@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Appeal plays against batters who have hit doubles, triples or home</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Appeal plays against batters who have hit doubles, triples or homerun.</h2>
+
+	<p class=normalText>Rule 5.08(a) of the OBR, “HOW A TEAM SCORES”, states: <b>EXCEPTION</b>: A run is not scored if the runner 
+	advances to home base during a play in which the third out is made</p>
+	
+	<ol class="olTypeNumber">
+		<li class="olTypeNumber">by the batter-runner before he touches first base;</li>
+		<li class="olTypeNumber">by any runner being forced out; or</li>
+		<li class="olTypeNumber">by a preceding runner who is declared out because he failed to touch one of the bases.</li>
+	</ol>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 11:</span>
+		<span>With one out and bases loaded, the fourth batter hits a home run.</span><br />
+		<span>Before the pitcher makes his pitch to the new batter, he throws the ball to the first baseman who makes an appeal 
+		on first base on the grounds that the batter-runner missed first base.</span><br />
+		<span>The appeal is sustained by the umpire and the batter is called out.</span><br />
+		<span>In consequence of the appeal play the run scored by the batter who hit the home run is disallowed, but the others, 
+		remain valid, along with the advances.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="24c638ab.gif"
+					alt="Multiple appeals plays"
+					width="87"
+					height="361"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches first base on interference from the catcher */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a hit to third base, the runner advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The runner on 2 steals third base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The third batter is hit by a pitch, the runner on the first base advance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The fourth batter hits a home run and gets all the runners 
+				back in. He hasn't touched first base; the pitcher calls out by throwing the ball back 
+				to the first baseman. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">A13</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span>
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="8dbef452.png"
+					alt="Multiple appeals plays"
+					width="87"
+					height="355"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 12:</span>
+		<span>With one out and bases loaded, the fourth batter hits a home run. The appeal play now is 
+		made on home plate.</span><br />
+		<span>The appeal is sustained and the batter-runner is called out on home plate.</span><br />
+		<span>As a consequence of the appeal, the run scored by the batter who hit a home run is disallowed 
+		and he is credited with a triple.</span><br />
+		<span>The other three, remain valid.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="9f6bfe4b.gif"
+					alt="Multiple appeals plays"
+					width="87"
+					height="359"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches first base on interference from the catcher */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a hit to third base, the runner advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The runner on 2 steals third base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The third batter is hit by a pitch, the runner on the first 
+				base advance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The fourth batter hits a home run to right field, bringing 
+				in all the runners. He hasn't touched home plate; the pitcher calls out the ball to the 
+				catcher. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span> <span class="codePutout">A12</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="47b95a69.png"
+					alt="Multiple appeals plays"
+					width="87"
+					height="353"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 13:</span>
+		<span>With two out and a runner on second base, the batter hits a home run. While running the bases, the batter-runner 
+		misses first base. The home plate umpire gives the new ball to the pitcher and before the first pitch is made to the 
+		next batter, the defending team appeals against the batter-runner from first base.</span><br />
+		<span>The appeal is sustained and the batter-runner is called out on first base. The run scored by the runner who 
+		was on second base is therefore disallowed.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="5bd15277.gif"
+					alt="Multiple appeals plays"
+					width="87"
+					height="182"/>
+		</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches first base on a fly-catching error from center field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E8F</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The runner on first base steals second base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a home run, but misses first base. A calling play is made 
+				and the runner-up is put out. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">A13</span>
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img src="bd6f4143.png"
+					alt="Multiple appeals plays"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText"><b>IMPORTANT:</b> In the event that there are two men out and the hitter of the home run 
+	with runners on base is called out on appeal for having failed to touch a base other than first, the umpire shall 
+	allow the runs scored by those runners who touched the home plate before the batter reached the base that was 
+	the subject of the appeal. The opinion of the scorer in assigning runs should always be subordinate to that of 
+	the umpires.</p>
+
+	<p class="normalText"><b>NOTE:</b> If the hitter of the home run is called out on appeal for having failed to 
+	touch second or third base, he is credited with either a single or a double.</p>
+	
+	<p class="normalText">In the final analysis it must be stated that when a batter, after having made a safe hit, 
+	is called out for having failed to touch a base, the last base he legally touched will determine the value of the 
+	hit that is recognized.</p>
+	
+	<p class="normalText">Thus, if he is called out for having failed to touch home plate, he will be credited with a 
+	triple; if he failed to touch third, a double; second, a single; if he failed to touch first he is called out and 
+	is not credited with a hit.</p>
+	
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 14:</span>
+		<span>With none or one out and bases loaded the batter hits the ball out of the park.</span><br />
+		<span>In the manner provided by the OBR, the defense appeals against the runner who was on third base for having 
+		failed to touch the home plate.</span><br />
+		<span>The appeal is sustained and as a consequence the first run scored is disallowed and the runner who had advanced 
+		is called out.</span><br />
+		<span>As a consequence of this appeal play three runs are scored, all batted in by the batter who hit the home run. 
+		The runners’ advances are all legal.</span><br />
+		<span>The consequences are similar when, with less than two out, any runner, with bases loaded, is called out on 
+		appeal for having missed one of the bases after the one where he started.</span><br />
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="ace2db0c.gif"
+					alt="Multiple appeals plays"
+					width="87"
+					height="356"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches first base on interference from the catcher */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a hit to third base, the runner advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The runner who was on second base steals third base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The third batter is hit by a pitch, the runner on first base advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The fourth batter hits a home run to right field, bringing in all the runners. 
+				The runner starting from third base doesn't touch home plate. The pitcher calls a foul by throwing the ball 
+				back to the catcher; the runner is out. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O1+++</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codePutout">A12</span>	
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="ecc357ab.png"
+					alt="Multiple appeals plays"
+					width="87"
+					height="353"/>
+			</td>
+		</tr>
+	</table>				
+
+
+	<p class="normalText"><b>NOTE to examples 14 and 15:</b> If a runner fails to touch a base to which he has not been 
+	forced to advance, in the event that an appeal is sustained, the batter shall be credited with the value of the base hit 
+	scored, it being understood that the runner is out in any case.</p>
+	
+	<p class="normalText"><span>As regards the case given in the example, in application of rule9.05(b)(2) of the OBR, 
+	which states: "</span>
+	<span class="obrReference">The official scorer shall not credit a base hit when … a batter apparently hits safely 
+	and a runner who is forced to advance by reason of the batter becoming a runner fails to touch the first base to 
+	which such runner is advancing and is called out on appeal,</span>
+	<span>” score a putout for the runner and a fielder’s choice (occupied ball) for the batter-runner.</span></p>
+	
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Example 15:</span>
+		<span> With one out and bases loaded, the fourth batter hits a triple.</span><br />
+		<span>The defense appeals against the runner who was on third base, for having failed to touch home plate. 
+		The appeal is sustained, the first run scored is disallowed, and the lead runner is called out.</span><br />
+		<span>As a consequence of this appeal play, the number of runs scored is reduced to two, both of which were 
+		batted in by the batter who hit the triple. The advances made by the runners are all legal.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="28bbab9b.png"
+					alt="Multiple appeals plays"
+					width="84"
+					height="346"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches first base on interference from the catcher */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a hit to third base, the runner advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The runner who was on second base steals third base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The third batter is hit by a pitch, the runner on first base advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The fourth batter hits a triple to right field, bringing in all the runners. 
+				The runner starting from third base doesn't touch home plate. The pitcher calls a foul by throwing the 
+				ball back to the catcher; the runner is out. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O1++</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codePutout">A12</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c91ccca3.png"
+					alt="Multiple appeals plays"
+					width="76"
+					height="304"/>
+			</td>
+		</tr>
+	</table>				
+	
+	<p class="normalText">The action of the batter-runner is scored as a fielder’s choice (O1), according to the provisions 
+	of rule 9.05(b)(2) of the OBR. It is worth noting that if any of the other runners had been put out it would have had 
+	the same effect on the batter-runner.</p>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 16:</span>
+		<span>With one out and bases loaded, the fourth batter hits a triple.</span><br />
+		<span>The defense appeals against the runner who started from first base, for having failed to touch home plate. 
+		The appeal is sustained and in consequence the final run scored is disallowed and the runner against whom the 
+		appeal was made is called out.</span><br />
+		<span>The effect of this appeal play is that the number of runs scored is reduced to two, both of which were 
+		batted in by the batter who hit the triple. The advances made by the runners are all legal.</span><br />
+		<span>The action of the batter-runner is recorded as a two-base hit, and an fielder’s choice to indicate that he 
+		reached third base <b>[OBR rule 9.06(b) Comment]</b>.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="4c443e7f.gif"
+					alt="Multiple appeals plays"
+					width="87"
+					height="355"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches first base on interference from the catcher */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a hit to third base, the runner advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The two runners steal a base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>
+				<span>, </span>	
+				<span>runner2 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The third batter is hit by a pitch */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The fourth batter hits a triple to right field, bringing in two or three 
+				runners. The runner starting from first base doesn't touch home plate. The right fielder calls, throwing 
+				the ball back to the catcher; the runner is out. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B9 O9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++ </span><span class="codePutout">A92</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="3903680b.png"
+					alt="Multiple appeals plays"
+					width="87"
+					height="353"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Example 17:</span>
+		<span>With two out and runners on first and third, batter hits a double, as a result of which both runners score.</span><br />
+		<span>Before the next pitch is thrown, the pitcher throws the ball to the third baseman and the defense appeals that 
+		the second runner has missed third base. The appeal is sustained and as a consequence the runner is called out.</span><br />
+		<span>Only the first run, which was batted in, is allowed, and the batter-runner is credited with a single.</span><br />
+		<span>A fielder’s choice is written to indicate that he reached second base.</span><br />
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="e9f2b1e4.png"
+					alt="Multiple appeals plays"
+					width="87"
+					height="269"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches first base on interference from the catcher */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Second batter hits a hit to center field, the runner gains two bases */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The third batter hits a double to left field. The runner starting from first base 
+				doesn't reach third. The pitcher calls a back-and-forth to the third baseman, and the runner is out. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7 O1</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+ </span><span class="codePutout">A15</span> 	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="2d609a08.png"
+					alt="Multiple appeals plays"
+					width="87"
+					height="268"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Example 18:</span>
+		<span>With two out and bases full, the batter hits a home run.</span><br />
+		<span>Before the runner who was on first base can touch third, he is overtaken by the batter-runner, who is called 
+		out by virtue of rule 5.09(b)(9) of the OBR.</span><br />
+		<span>Two runs are nevertheless scored: the runner from first base is deemed to have reached second safely and the 
+		batter-runner is credited with a double and an automatic putout.</span><br />
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="ed4e5682.gif"
+					alt="Multiple appeals plays"
+					width="87"
+					height="351"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches first base on interference from the catcher */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a hit to third base, the runner advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The runner who was on second base steals third base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The runner who was on the first base steals the second base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The third batter is hit by a pitch */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The fourth batter hits a home run to center field and gets the first two runners in. 
+				The batter-runner doubles the runner coming from first before he reaches third base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8 </span><span class="codePutout">OBR11-5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span> 	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span> 	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="de251bd6.png"
+					alt="Multiple appeals plays"
+					width="87"
+					height="353"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 19:</span>
+		<span>if, however, the batter-runner is called out before the second runner touches home plate, only one run is 
+		scored, as the second run would have been scored after the third putout.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="c168282.gif"
+					alt="Multiple appeals plays"
+					width="87"
+					height="366"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches first base on interference from the catcher */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a hit to third base, the runner advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The runner who was on second base steals third base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The runner who was on the first base steals the second base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The third batter is hit by a pitch */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The fourth batter hits a home run to center field and gets the first runner in. 
+				The batter-runner doubles the runner coming from first before the latter reaches third base. The example 
+				provided by the document seems incorrect. The last batter would reach second base even though it is 
+				occupied. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8 </span><span class="codePutout">OBR11-5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span> 	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span> 	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="25846957.png"
+					alt="Multiple appeals plays"
+					width="87"
+					height="354"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>

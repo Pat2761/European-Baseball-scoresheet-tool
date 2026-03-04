@@ -466,7 +466,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException
 	 */
 	public void makeActionOn(RunnerAdvanceOnDecisiveObstruction moreAdvance) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, moreAdvance});
 		}
 
@@ -490,7 +490,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException
 	 */
 	public void makeActionOn(RunnerAdvanceOnNoDecisiveObstruction moreAdvance) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, moreAdvance});
 		}
 
@@ -509,7 +509,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException
 	 */
 	public void makeActionOn(RunnerAdvanceOnDefensiveChoice moreAdvance) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, moreAdvance});
 		}
 
@@ -528,7 +528,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException
 	 */
 	public void makeActionOn(RunnerAdvanceOnNonDecisiveFlyError moreAdvance) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, moreAdvance});
 		}
 
@@ -658,7 +658,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @param action action reference to the action
 	 */
 	public void makeActionOn(RunnerDontAdvanceOnError action) {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 	}
@@ -669,7 +669,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @param action action reference to the action
 	 */
 	public void makeActionOn(RunnerDontAdvanceOnPickOffWithError action) {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 	}
@@ -680,7 +680,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @param action action reference to the action
 	 */
 	public void makeActionOn(RunnerDontAdvanceOnCaughtStealingWithError action) {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 	}
@@ -691,7 +691,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @param action action reference to the action
 	 */
 	public void makeActionOn(RunnerDontAdvanceOnThrowError action) {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 	}
@@ -702,7 +702,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @param action action reference to the action
 	 */
 	public void makeActionOn(RunnerDontAdvanceOnReceiveError action) {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 	}
@@ -713,7 +713,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @param action action reference to the action
 	 */
 	public void makeActionOn(RunnerDontAdvanceOnNonDecisiveThrowError action) {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 	}
@@ -724,7 +724,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @param action action reference to the action
 	 */
 	public void makeActionOn(RunnerDontAdvanceOnNonDecisiveReceiveError action) {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 	}
@@ -736,7 +736,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnOtherPlayerError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -758,7 +758,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnRule action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -780,7 +780,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnNonDecisiveReceiveError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -802,7 +802,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnNonDecisiveThrowError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -824,7 +824,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnReceiveError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -846,7 +846,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnFielderChoice action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -868,7 +868,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnThrowError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -890,7 +890,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnIndiference action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -912,7 +912,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnThrow action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -934,7 +934,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnOccupedBall action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -956,7 +956,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnCaughtStealingWithError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -978,7 +978,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnPickOffWithError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1000,7 +1000,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnBalk action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1022,7 +1022,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnPassBall action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1044,7 +1044,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnWildPitch action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1066,7 +1066,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnStolenBase action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1088,7 +1088,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceOnError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1110,7 +1110,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(RunnerAdvanceByBatterAction action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1138,7 +1138,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1165,7 +1165,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1192,7 +1192,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1219,7 +1219,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 		int runnerPosition;
@@ -1246,7 +1246,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1268,7 +1268,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 */
 	public void makeActionOn(RunnerMustBeOutOnError action){
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 	}
@@ -1389,7 +1389,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @param action reference to the action
 	 */
 	public void makeActionOn(BatterBalk action) {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 	}
@@ -1400,7 +1400,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @param action reference to the action
 	 */
 	public void makeActionOn(BatterMustOutOnFlyFoulBall action) {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 	}
@@ -1411,7 +1411,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @param action reference to the action
 	 */
 	public void makeActionOn(BatterLostTurn action) {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1425,7 +1425,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnIndiference action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1442,7 +1442,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnDefensiveChoice action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1459,7 +1459,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnOccupedBall action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1476,7 +1476,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnKWithFielderChoice action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1493,7 +1493,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnObstruction action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1510,7 +1510,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnCatcherInterference action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1527,7 +1527,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnSacrificeFlyWithFielderChoice action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1544,7 +1544,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnSacrificeFlyWithError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1561,7 +1561,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnSacrificeHitWithFielderChoice action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1578,7 +1578,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnSacrificeHitWithError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1595,7 +1595,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnKWithError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1612,7 +1612,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnKAbr action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1629,7 +1629,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnKWildPitch action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1646,7 +1646,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnKPassBall action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1663,7 +1663,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnHitByPitch action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1680,7 +1680,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnIntentionalBaseOnBall action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1697,7 +1697,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnBaseOnBall action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1714,7 +1714,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnInsidePark action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1731,7 +1731,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnHomeRun action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1748,7 +1748,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnTripleHit action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1765,7 +1765,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnDoubleHit action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1782,7 +1782,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnSingleHit action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1799,7 +1799,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnGdpWithError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1816,7 +1816,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnGdpWithFielderChoice action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1833,7 +1833,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnThrowError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1850,7 +1850,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnReceiveError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1867,7 +1867,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnFlyError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1885,7 +1885,7 @@ public abstract class AbstractActionManager implements IActionManager {
 	 * @throws OccupedbaseException 
 	 */
 	public void makeActionOn(BatterAdvanceOnPopError action) throws OccupedbaseException {
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1909,7 +1909,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1929,7 +1929,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1949,7 +1949,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1969,7 +1969,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -1989,7 +1989,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -2009,7 +2009,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -2029,7 +2029,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -2049,7 +2049,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -2069,7 +2069,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -2089,7 +2089,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -2109,7 +2109,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -2129,7 +2129,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -2149,7 +2149,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -2169,7 +2169,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,DEBUG_FORMAT_STRING_1, new Object[] {currentTeam, action});
 		}
 
@@ -2189,7 +2189,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			StringBuilder str = new StringBuilder("[" + currentTeam + "]:" + action.getCurrentBatter() + " : "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			str.append(DEBUG_FORMAT_STRIKE_OUT + action.getStrikeOutValue());
 			logger.log(Level.FINE,"{0}",str); //$NON-NLS-1$
@@ -2211,7 +2211,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			StringBuilder str = new StringBuilder("[" + currentTeam + "]:" + action.getCurrentBatter() + " : "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			str.append(DEBUG_FORMAT_STRIKE_OUT + action.getStrikeOutValue());
 			logger.log(Level.FINE,"{0}",str); //$NON-NLS-1$
@@ -2233,7 +2233,7 @@ public abstract class AbstractActionManager implements IActionManager {
 			visitorIpCounter.addPutOut();
 		}
 
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			StringBuilder str = new StringBuilder("[" + currentTeam + "]:" + action.getCurrentBatter() + " : "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			str.append(DEBUG_FORMAT_STRIKE_OUT + action.getStrikeOutValue());
 			logger.log(Level.FINE,"{0}",str); //$NON-NLS-1$

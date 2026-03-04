@@ -33,6 +33,7 @@ public class Messages extends NLS {
 	/** Name of the bundle */
 	private static final String BUNDLE_NAME = "org.bpy.score.internationalization.rcp.messages"; //$NON-NLS-1$
 
+
 	/*----------------------------------------------------------------------- */
 	/* GameMultipageEditor class                                              */
 	/*----------------------------------------------------------------------- */
@@ -119,6 +120,10 @@ public class Messages extends NLS {
 	/** Dialog no error for select a relative path */ 
 	public static String GameReportWizardPageOne_DialogNoError_Title;
 	
+	/*----------------------------------------------------------------------- */
+	/* GameReportWizard class                                                 */
+	/*----------------------------------------------------------------------- */
+	public static String reportWizardGenerationTitle;
 
 	/*----------------------------------------------------------------------- */
 	/* GameReportWizardPageOne class                                          */
@@ -141,16 +146,15 @@ public class Messages extends NLS {
 	public static String GameReportWizardPageOne_RegularExpressionGameSelection;
 	/** New Game Page One Wizard : Apply */ 
 	public static String GameReportWizardPageOne_ApplyButton;
-	/** New Game Page One Wizard : Regular selection for games display */ 
-	public static String GameReportWizardPageOne_RegularExpressionGameDisplay;
-	/** New Game Page One Wizard : Report absolute path generation folder  */ 
-	public static String GameReportWizardPageOne_GenereationAbsolutePathTextButton;
-	/** New Game Page One Wizard : Report relative path generation folder  */ 
-	public static String GameReportWizardPageOne_GenereationRelativePathTextButton;
-	/** New Game Page One Wizard : Report absolute path generation folder (tooltip) */ 
-	public static String GameReportWizardPageOne_GenereationAbsolutePathToolTip;
-	/** New Game Page One Wizard : Report absolute path generation folder (tooltip) */ 
-	public static String GameReportWizardPageOne_GenereationRelativeToolTip;
+   /** New Game Page One Wizard : Regular selection for games display */ 
+   public static String GameReportWizardPageOne_RegularExpressionGameDisplay;
+   /** New Game Page One Wizard : Regular expression for display is invalid */ 
+   public static String GameReportWizardPageOne_DisplayRegexInvalid;
+   /** New Game Page One Wizard : Regular expression for selection is invalid */ 
+   public static String GameReportWizardPageOne_SelectionRegexInvalid;
+   /** Folder path must be defined */
+   public static String GameReportWizardPageOne_AFolderMustBeDefined;
+	
 
 	/*----------------------------------------------------------------------- */
 	/* GameReportWizardPageTwo class                                          */
@@ -176,9 +180,10 @@ public class Messages extends NLS {
 	/** New Game Page Two Wizard : Banner file Selection message */ 
 	public static String GameReportWizardPageTwo_BannerSelectionMessage;
 	/** Error message if no games are selected */
-	public static String GameReportWizardPageOne_OneGameMustBeSeelcted;
+	public static String GameReportWizardPageOne_OneGameMustBeSelected;
 	/** Error message if not a valid folder for the genereation of the reports */
 	public static String GameReportWizardPageOne_NotAValidFolder;
+	
 	/*----------------------------------------------------------------------- */
 	/* ImportHtmlWizard class                                                 */
 	/*----------------------------------------------------------------------- */
@@ -200,6 +205,8 @@ public class Messages extends NLS {
 	public static String ImportHtmlWizardPage_FilePathNotValidError;
 	/** Message for request selection of HTML file */ 
 	public static String ImportHtmlWizardPage_SelectHtmlFile;
+	/** Message for empty path */
+   public static String ImportHtmlWizardPage_needToDefinedPath;
 
 	/*----------------------------------------------------------------------- */
 	/* NewCategoryWizardPage class                                            */
@@ -363,6 +370,9 @@ public class Messages extends NLS {
 	public static String NewTeamPageOneWizard_BlankClubAlreadyDefiendError;
 	/** New Team Page One Wizard : Blank city name error */ 
 	public static String NewTeamPageOneWizard_BlankCityNameError;
+	/** No category defined */
+   public static String NewTeamPageOneWizard_MissingCategories;
+
 
 	/*----------------------------------------------------------------------- */
 	/* NewTeamPageThreeWizard class                                           */
@@ -445,6 +455,14 @@ public class Messages extends NLS {
 	public static String SearchGameByDateWizardPageOne_DescriptionColumnTable;
 	/** Search Game By Date Wizard Page One : Missing game selection error */ 
 	public static String SearchGameByDateWizardPageOne_MissingGameSelectionError;
+   /** Search Game By Date Wizard Page One : date selection label */ 
+   public static String SearchGameByDateWizardPageOne_dateSelection;
+   /** Search Game By Date Wizard Page One : list of selected games */ 
+   public static String SearchGameByDateWizardPageOne_listOfGames;
+   /** Search Game By Date Wizard Page One : search button */ 
+   public static String SearchGameByDateWizardPageOne_btnSearch_text;
+   /** Search Game By Date Wizard Page One : Select range or simple date */ 
+   public static String SearchGameByDateWizardPageOne_btnRange_text;
 	
 	/*----------------------------------------------------------------------- */
 	/* SearchGameForTeamWizardPageOne class                                   */
@@ -530,26 +548,6 @@ public class Messages extends NLS {
 	public static String ApplicationWorkbenchWindowAdvisor_RcpTitle;
 	
 	/*----------------------------------------------------------------------- */
-	/* GraphicalPreferencePage class                                               */
-	/*----------------------------------------------------------------------- */
-	/** Graphical Preference Page : Line Color label */
-	public static String GraphicalPreferencePage_LineColorLabel;
-	/** Graphical Preference Page : Pencil Color label */
-	public static String GraphicalPreferencePage_PencilColorLabel;
-	/** Graphical Preference Page : No statistics */
-	public static String GraphicalPreferencePage_NoStatistics;
-	/** Graphical Preference Page : SF1 display */
-	public static String GraphicalPreferencePage_Sf1Display;
-	/** Graphical Preference Page : Full display */
-	public static String GraphicalPreferencePage_FullDisplay;
-	/** Graphical Preference Page : Display statistics label */
-	public static String GraphicalPreferencePage_DisplayStatisticsLabel;
-	/** Graphical Preference Page : Display Win/Lose/Save */
-	public static String GraphicalPreferencePage_DisplayWinLoseSave;
-	/** Graphical Preference Page : New style sheet display */
-	public static String GraphicalPreferencePage_NewStyleSheetDisplay;
-	
-	/*----------------------------------------------------------------------- */
 	/* HtmlPreferences class                                               */
 	/*----------------------------------------------------------------------- */
 	/** Html Preferences : Generation folder */
@@ -591,6 +589,66 @@ public class Messages extends NLS {
 	/* ApplicationActionBarAdvisor class                                      */
 	/*----------------------------------------------------------------------- */
 	public static String ApplicationActionBarAdvisor_HelpMenu;
+	public static String GameReportWizardPageOne_lblNewLabel_text;
+	public static String GameReportWizardPageTwo_grpTtt_text;
+	public static String GraphicalPreferencePage_lblNewLabel_2_text;
+	public static String GraphicalPreferencePage_btnCheckButton_text;
+	
+   /*----------------------------------------------------------------------- */
+   /* ImportHtmlWizardPage class                                      */
+   /*----------------------------------------------------------------------- */
+	public static String ImportHtmlWizardPage_pathSelectionComposite_message;
+	
+   /*----------------------------------------------------------------------- */
+   /* ImportTournamentWizardPageOne class                                      */
+   /*----------------------------------------------------------------------- */
+	public static String WizardProjectsImportPage_CreateProjectsTask;
+	public static String WizardExternalProjectImportPage_errorMessage;
+	public static String WizardProjectsImportPage_projectsInWorkspaceAndInvalid;
+	public static String WizardProjectsImportPage_SelectArchiveDialogTitle;
+	public static String WizardProjectsImportPage_SelectDialogTitle;
+	public static String WizardProjectsImportPage_CheckingMessage;
+	public static String ZipImport_couldNotRead;
+	public static String TarImport_badFormat;
+	public static String WizardProjectsImportPage_invalidProjectName;
+	public static String WizardProjectsImportPage_projectLabel;
+	public static String WizardProjectsImportPage_ImportProjectsTitle;
+	public static String WizardProjectsImportPage_ImportProjectsDescription;
+	public static String WizardProjectsImportPage_ProjectsListTitle;
+	public static String DataTransfer_selectAll;
+	public static String DataTransfer_deselectAll;
+	public static String DataTransfer_refresh;
+	public static String WizardProjectsImportPage_RootSelectTitle;
+	public static String WizardProjectsImportPage_ArchiveSelectTitle;
+	public static String DataTransfer_browse;
+	public static String WizardProjectsImportPage_SearchingMessage;
+	public static String WizardProjectsImportPage_ProcessingMessage;
+	public static String WizardProjectsImportPage_projectsInWorkspace;
+	public static String WizardProjectsImportPage_projectsInvalid;
+	public static String WizardProjectsImportPage_noProjectsToImport;
+	public static String ZipImport_badFormat;
+	
+	public static String ImportTournamentWizardPageOne_Description;
+	public static String ImportTournamentWizardPageOne_SelectAFolder;
+	public static String ImportTournamentWizardPageOne_FolderPath;
+	public static String ImportTournamentWizardPageOne_SelectZipFile;
+	public static String ImportTournamentWizardPageOne_ZipFilePath;
+	public static String ImportTournamentWizardPageOne_ListOfProjects;
+	public static String ImportTournamentWizardPageOne_SelectAll;
+	public static String ImportTournamentWizardPageOne_UnselectAll;
+	public static String ImportTournamentWizardPageOne_lblNewLabel_text;
+	
+   /*----------------------------------------------------------------------- */
+   /* NewChampionatWizard class                                              */
+   /*----------------------------------------------------------------------- */
+	public static String NewChampionatWizard_Title;
+	public static String NewGamePageTwoWizard_lblNewLabel_text;
+
+	
+   /*----------------------------------------------------------------------- */
+   /* NewSeasonWizard class                                              */
+   /*----------------------------------------------------------------------- */
+	public static String NewSeasonWizard_Title;
 	
 	/**
 	 * Initialize the internationalization

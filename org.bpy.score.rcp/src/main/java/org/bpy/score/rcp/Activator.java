@@ -18,17 +18,16 @@
  */
 package org.bpy.score.rcp;
 
-import org.bpy.score.engine.util.EngineConstants;
-import org.bpy.score.rcp.preferences.PreferenceConstants;
+import org.bpy.score.rcp.wizard.GenerateGameReportWizard;
+import org.bpy.score.rcp.wizard.NewChampionatWizard;
+import org.bpy.score.rcp.wizard.NewGameWizard;
+import org.bpy.score.rcp.wizard.NewSeasonWizard;
+import org.bpy.score.rcp.wizard.NewTeamWizard;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
+import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -44,7 +43,7 @@ public class Activator extends AbstractUIPlugin {
 
 	/** The shared instance */
 	private static Activator plugin;
-	
+
 	/**
 	 * The constructor
 	 */
@@ -54,26 +53,28 @@ public class Activator extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 * 
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.
+	 * BundleContext)
 	 */
 	@Override
-	@SuppressWarnings("java:S2696")
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		
+
 		IEclipsePreferences node = new ConfigurationScope().getNode(IDEWorkbenchPlugin.IDE_WORKBENCH);
-		node.putBoolean(IDE.Preferences.SHOW_WORKSPACE_SELECTION_DIALOG,true);
-		node.putInt(IDE.Preferences.MAX_RECENT_WORKSPACES, 10);		
-		
+		node.putBoolean(IDE.Preferences.SHOW_WORKSPACE_SELECTION_DIALOG, true);
+		node.putInt(IDE.Preferences.MAX_RECENT_WORKSPACES, 10);
+
 		plugin = this;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	@Override
-	@SuppressWarnings("java:S2696")
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
@@ -89,8 +90,8 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns an image descriptor for the image file at the given
-	 * plug-in relative path
+	 * Returns an image descriptor for the image file at the given plug-in relative
+	 * path
 	 *
 	 * @param path the path
 	 * @return the image descriptor
@@ -99,44 +100,32 @@ public class Activator extends AbstractUIPlugin {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
 
-  @Override
-  @Deprecated
-  protected void initializeDefaultPreferences(IPreferenceStore store) {
-    
-    Color defaulLineColor = Display.getDefault().getSystemColor(SWT.COLOR_BLUE);
-    PreferenceConverter.setDefault(store,  EngineConstants.GRAPHIC_COLOR_LINE, defaulLineColor.getRGB());
+	/**
+	 * Create an image from a file path
+	 * 
+	 * @param imagePath image file path
+	 * 
+	 * @return image reference, <b>null</b> if not found
+	 */
+	public static Image getImage(String imagePath) {
+		ImageDescriptor imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, imagePath);
+		return imageDescriptor.createImage();
+	}
 
-    Color defaultextColor = Display.getDefault().getSystemColor(SWT.COLOR_BLACK);
-    PreferenceConverter.setDefault(store,  EngineConstants.GRAPHIC_COLOR_TEXT, defaultextColor.getRGB());
-    
-    /** Set preference default values for graphics */
-    store.setDefault(EngineConstants.GRAPHIC_DISPLAY_STATISTICS, true);
-    store.setDefault(EngineConstants.GRAPHIC_DISPLAY_WIN_LOSE_PITCHER, false);
-    store.setDefault(EngineConstants.GRAPHIC_NEW_STYLE_SHEET, false);
+	@Override
+	protected void initializeImageRegistry(ImageRegistry registry) {
+		super.initializeImageRegistry(registry);
+		
+      registry.put(GenerateGameReportWizard.REPORT_GENERATION_ICON_NAME, 
+            imageDescriptorFromPlugin(PLUGIN_ID, "icons/report_generation_75.png")); //$NON-NLS-1$
+      registry.put(NewChampionatWizard.NEW_CHAMPIONAT_WIZARD_ICON_NAME, 
+            imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_tournament_75.jpeg")); //$NON-NLS-1$
+      registry.put(NewGameWizard.NEW_GAME_CREATION_ICON_NAME, 
+            imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_game_wizard_icon_75.jpeg")); //$NON-NLS-1$
+      registry.put(NewSeasonWizard.NEW_SEASON_WIZARD_ICON_NAME, 
+            imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_season_wizard_icon_75.jpeg")); //$NON-NLS-1$
+      registry.put(NewTeamWizard.NEW_TEAM_CREATION_ICON_NAME, 
+            imageDescriptorFromPlugin(PLUGIN_ID, "icons/new_team_wizard_icons_75.jpeg")); //$NON-NLS-1$
+	}
 
-    /** Set preference default values for reports */
-    store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER, true);
-    store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER, true);
-    store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE, org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_XML);
-    store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER, ""); //$NON-NLS-1$
-    store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH, ""); //$NON-NLS-1$
-    store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH, ""); //$NON-NLS-1$
-    store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH, ""); //$NON-NLS-1$
-    
-    /** Set preference default values for validation */
-    store.setDefault(PreferenceConstants.CHECK_FLY_OUT_LOCATION, PreferenceConstants.WARNING);
-    store.setDefault(PreferenceConstants.CHECK_MISSING_EARNED_POINT, PreferenceConstants.IGNORE);
-  }
-
-  /**
-   * Create an image from a file path 
-   * 
-   * @param imagePath image file path
-   * 
-   * @return image reference, <b>null</b> if not found
-   */
-  public static Image getImage(String imagePath) {
-    ImageDescriptor imageDescriptor = AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, imagePath);
-    return imageDescriptor.createImage();
-  }
 }

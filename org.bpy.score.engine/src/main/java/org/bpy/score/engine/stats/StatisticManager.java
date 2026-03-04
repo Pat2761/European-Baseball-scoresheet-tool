@@ -153,7 +153,7 @@ public class StatisticManager extends AbstractActionManager implements PointList
 	@Override
 	public void manage(Action action) throws OccupedbaseException {
 		super.manage(action);
-		if (EngineConstants.debugStatistics) {
+		if (EngineConstants.DEBUG_STATISTIQUE) {
 			this.debug();
 		}
 	}

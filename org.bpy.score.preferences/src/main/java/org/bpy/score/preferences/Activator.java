@@ -70,16 +70,16 @@ public class Activator extends AbstractUIPlugin {
 
 		/** Set preference default values for reports */
 		store.setDefault(
-				org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER,
+				org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_CATEGORY_GENERATION_FOLDER,
 				true);
 		store.setDefault(
-				org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER, true);
-		store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_GENERATED_FILE,
-				org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_TYPE_XML);
-		store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER,""); //$NON-NLS-1$
-		store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH, ""); //$NON-NLS-1$
-		store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH, ""); //$NON-NLS-1$
-		store.setDefault(org.bpy.score.preferences.core.PreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH, ""); //$NON-NLS-1$
+				org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_USE_STANDARD_FORMATTER, true);
+		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GRW_PREFERENCE_TYPE_GENERATED_FILE,
+				org.bpy.score.preferences.core.ScorePreferenceConstants.GRW_TYPE_XML);
+		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_GENERATION_FOLDER,""); //$NON-NLS-1$
+		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_CSS_FILE_PATH, ""); //$NON-NLS-1$
+		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_XSLT_FILE_PATH, ""); //$NON-NLS-1$
+		store.setDefault(org.bpy.score.preferences.core.ScorePreferenceConstants.GAME_REPORT_PREFERENCE_BANNER_FILE_PATH, ""); //$NON-NLS-1$
 	}
 
 }

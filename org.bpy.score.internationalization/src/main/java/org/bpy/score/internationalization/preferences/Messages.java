@@ -8,6 +8,9 @@ public class Messages extends NLS {
 	/** Name of the bundle */
 	private static final String BUNDLE_NAME = "org.bpy.score.internationalization.preferences.messages"; //$NON-NLS-1$
 
+   public static String EnableProjectSetting;
+   public static String ConfigureWorkspaceSetting;
+	
 	/*----------------------------------------------------------------------- */
 	/* ControlPreferencePage class                                               */
 	/*----------------------------------------------------------------------- */
@@ -15,6 +18,12 @@ public class Messages extends NLS {
 	public static String ControlPreferencePage_FlyOutLocationlabel;
 	/** Control Preference Page : Missing Earned point label */
 	public static String ControlPreferencePage_MissingEarnedPointlabel;
+   /** Control level ignore */
+   public static String Compile_Ignore;
+   /** Control level Warning */
+   public static String Compile_Warning;
+   /** Control level Error */
+   public static String Compile_Error;
 
 	/*----------------------------------------------------------------------- */
 	/* GameReportPreferencePage class                                         */
@@ -138,6 +147,24 @@ public class Messages extends NLS {
 	/** Main report properties page message */  
 	public static String ReportPropertiesPage_Message;
 
+	/** CSS File check */
+   public static String ReportParameterComposite_CSSConfiguration;
+   /** XSLT File check */
+   public static String ReportParameterComposite_XSLTConfiguration;
+   /** Banner File check */
+   public static String ReportParameterComposite_BannerConfiguration;
+	
+   /** Not a valid file name */
+   public static String NotAValidFileName;
+   /** Not a file */ 
+   public static String NotAFile;
+   /** Not a Directory */ 
+   public static String NotAFolder;
+   /** Bad file type */
+   public static String BadFileType;
+   /** Undefined error */
+   public static String undefinedError;
+   
 	/*------------------------------------------------------------------------------*/
 	/* class ProgressBarDialog                                                      */ 
 	/*------------------------------------------------------------------------------*/
@@ -150,6 +177,53 @@ public class Messages extends NLS {
 	/*------------------------------------------------------------------------------*/
 	public static String ProcessThread_PleaseWaiting;
 
+	/*------------------------------------------------------------------------------*/
+	/* class PathSelectionComposite                                                      */ 
+	/*------------------------------------------------------------------------------*/
+	public static String workspaceSelectorButton;
+	public static String fillSystemButton;
+	public static String variableButton;
+	public static String pathSelectionCompositeTitle;
+	public static String pathSelectionCompositeMessage;
+	
+   /*------------------------------------------------------------------------------*/
+   /* class ScorePreferencesManager                                                     */ 
+   /*------------------------------------------------------------------------------*/
+	public static String typeIsNotManageByPreferences;
+   public static String missingDefaultValueForPreferences;
+   public static String noTypeDefinedForPreferenceValue;
+   public static String badTypeElement;
+	public static String cannotFindPropertyPageForKey; 
+	public static String cannotFindSpecificSettingsForKey;
+	public static String GameReportPreferencePage_pathSelectionComposite_text;
+	public static String GameReportPreferencePage_pathSelectionComposite_1_message;
+	public static String GameReportPreferencePage_pathSelectionComposite_message;
+	public static String ReportPropertyPageParameters_btnCheckButton_text;
+	public static String ReportPropertyPageParameters_lblNewLabel_text;
+
+	/*----------------------------------------------------------------------- */
+   /* GraphicalPreferencePage class                                               */
+   /*----------------------------------------------------------------------- */
+   /** Graphical Preference Page : Line Color label */
+   public static String GraphicalPreferencePage_LineColorLabel;
+   /** Graphical Preference Page : Pencil Color label */
+   public static String GraphicalPreferencePage_PencilColorLabel;
+   /** Graphical Preference Page : No statistics */
+   public static String GraphicalPreferencePage_NoStatistics;
+   /** Graphical Preference Page : SF1 display */
+   public static String GraphicalPreferencePage_Sf1Display;
+   /** Graphical Preference Page : Full display */
+   public static String GraphicalPreferencePage_FullDisplay;
+   /** Graphical Preference Page : Display statistics label */
+   public static String GraphicalPreferencePage_DisplayStatisticsLabel;
+   /** Graphical Preference Page : Display Win/Lose/Save */
+   public static String GraphicalPreferencePage_DisplayWinLoseSave;
+   /** Graphical Preference Page : New style sheet display */
+   public static String GraphicalPreferencePage_NewStyleSheetDisplay;
+   /** Preview label */
+   public static String GraphicalPreferencePage_preview;
+   public static String GraphicalPropertyPage_lblNewLabel_text;
+   
 	/**
 	 * Initialize the internationalization
 	 */

@@ -315,7 +315,7 @@ public class SubstitutionManager {
 			}
 			substitutions.add(replacementData);
 	
-			if (EngineConstants.debugEngine) {
+			if (EngineConstants.DEBUG_ENGINE) {
 				StringBuilder strBuilder = new StringBuilder("OFFENSIVE REPLACEMENT:"); //$NON-NLS-1$
 				strBuilder.append(replacementData.player.getPlayerDescription().getName() + "(" //$NON-NLS-1$
 						+ replacementData.currentDefensivePosition + ") replace by "); //$NON-NLS-1$
@@ -341,7 +341,7 @@ public class SubstitutionManager {
 		moveToData.currentDefensivePosition = sub.getCurrentDefensivePosition();
 
 		substitutions.add(moveToData);
-		if (EngineConstants.debugEngine) {
+		if (EngineConstants.DEBUG_ENGINE) {
 			logger.log(Level.FINE,"------------------------------------------------------------------------"); //$NON-NLS-1$
 			StringBuilder strBuilder = new StringBuilder("DEFENSIVE REPLACEMENT:"); //$NON-NLS-1$
 			strBuilder.append(

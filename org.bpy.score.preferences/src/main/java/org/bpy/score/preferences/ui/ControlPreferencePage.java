@@ -18,15 +18,10 @@
  */
 package org.bpy.score.preferences.ui;
 
-import org.bpy.score.engine.util.EngineConstants;
-import org.bpy.score.internationalization.preferences.Messages;
-import org.bpy.score.preferences.Activator;
-import org.bpy.score.preferences.core.PreferenceConstants;
-import org.eclipse.jface.preference.ComboFieldEditor;
-import org.eclipse.jface.preference.IPreferenceStore;
+import org.bpy.score.preferences.core.ScorePreferencesManager;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbench;
@@ -38,17 +33,10 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  * @author Patrick BRIAND
  *
  */
-public class ControlPreferencePage extends PreferencePage implements IWorkbenchPreferencePage, IPropertyChangeListener {
+public class ControlPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 
-	/** Fly out location combo box */
-	private ComboFieldEditor flyOutLocationCheck;
-	/** Missing earned point combo box */
-	private ComboFieldEditor missingEarnedPoint;
-
-	/** Flyed out new value */
-	private String flyOutLocationCheckNewValue = ""; //$NON-NLS-1$
-	/** Earned point new value */
-	private String missingEarnedPointNewValue = ""; //$NON-NLS-1$
+   /** SWT Control composite for define compiler control */
+   private ControlPreferenceComposite controlPreferenceComposite;
 
 	/**
 	 * Constructor of the page.
@@ -78,82 +66,33 @@ public class ControlPreferencePage extends PreferencePage implements IWorkbenchP
 
 	@Override
 	public void init(IWorkbench workbench) {
-
-		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-
-		flyOutLocationCheckNewValue = EngineConstants.checkFlyOutLocation;
-		missingEarnedPointNewValue = EngineConstants.checkMissingEarnedPoint;
-	}
-
-	@Override
-	@SuppressWarnings("java:S2696")
-	protected void performApply() {
-
-		EngineConstants.checkFlyOutLocation = flyOutLocationCheckNewValue;
-		EngineConstants.checkMissingEarnedPoint = missingEarnedPointNewValue;
-
-		IPreferenceStore store = getPreferenceStore();
-		store.setValue(PreferenceConstants.CHECK_FLY_OUT_LOCATION, flyOutLocationCheckNewValue);
-		store.setValue(PreferenceConstants.CHECK_MISSING_EARNED_POINT, missingEarnedPointNewValue);
-
-		super.performApply();
-	}
-
-	@Override
-	protected void performDefaults() {
-		flyOutLocationCheck.loadDefault();
-		missingEarnedPoint.loadDefault();
-
-		super.performDefaults();
-	}
-
-	@Override
-	@SuppressWarnings("java:S2696")
-	public boolean performOk() {
-
-		EngineConstants.checkFlyOutLocation = flyOutLocationCheckNewValue;
-		EngineConstants.checkMissingEarnedPoint = missingEarnedPointNewValue;
-
-		IPreferenceStore store = getPreferenceStore();
-		store.setValue(PreferenceConstants.CHECK_FLY_OUT_LOCATION, flyOutLocationCheckNewValue);
-		store.setValue(PreferenceConstants.CHECK_MISSING_EARNED_POINT, missingEarnedPointNewValue);
-
-		return super.performOk();
+	   // Nothing to do
 	}
 
 	@Override
 	protected Control createContents(Composite parent) {
 
-		Composite controlPreferencePage = new Composite(parent, 2);
+      IEclipsePreferences store = ScorePreferencesManager.getInstance().getWorkspacePreferenceStore();
 
-		IPreferenceStore store = getPreferenceStore();
-
-		flyOutLocationCheck = new ComboFieldEditor(PreferenceConstants.CHECK_FLY_OUT_LOCATION,
-				Messages.ControlPreferencePage_FlyOutLocationlabel, PreferenceConstants.errorLevel,
-				controlPreferencePage);
-		flyOutLocationCheck.setPropertyChangeListener(this);
-		flyOutLocationCheck.setPreferenceName(PreferenceConstants.CHECK_FLY_OUT_LOCATION);
-		flyOutLocationCheck.setPreferenceStore(store);
-		flyOutLocationCheck.load();
-
-		missingEarnedPoint = new ComboFieldEditor(PreferenceConstants.CHECK_MISSING_EARNED_POINT,
-				Messages.ControlPreferencePage_MissingEarnedPointlabel, PreferenceConstants.errorLevel, controlPreferencePage);
-		missingEarnedPoint.setPropertyChangeListener(this);
-		missingEarnedPoint.load();
-		missingEarnedPoint.setPreferenceName(PreferenceConstants.CHECK_MISSING_EARNED_POINT);
-		missingEarnedPoint.setPreferenceStore(store);
-		missingEarnedPoint.load();
-
-		return controlPreferencePage;
+      controlPreferenceComposite = new ControlPreferenceComposite(parent, store);
+		return controlPreferenceComposite;
 	}
 
-	@Override
-	public void propertyChange(org.eclipse.jface.util.PropertyChangeEvent event) {
-		if (event.getSource() == flyOutLocationCheck) {
-			flyOutLocationCheckNewValue = (String) event.getNewValue();
-		} else if (event.getSource() == missingEarnedPoint) {
-			missingEarnedPointNewValue = (String) event.getNewValue();
-		}
-	}
+   @Override
+   protected void performApply() {
+      controlPreferenceComposite.performApply();
+      super.performApply();
+   }
 
+   @Override
+   protected void performDefaults() {
+      controlPreferenceComposite.performDefaults();
+      super.performDefaults();
+   }
+
+   @Override
+   public boolean performOk() {
+      controlPreferenceComposite.performOk();
+      return super.performOk();
+   }
 }

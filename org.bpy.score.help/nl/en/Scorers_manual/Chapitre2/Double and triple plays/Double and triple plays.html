@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Double and triple plays</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Double and triple plays.</h2>
+	<p class="normalText">
+		<span>According to the Definition of Terms of the <b>OBR</b>, a double or triple play is "</span>	
+		<span class="obrReference">a play by the defense in which two or three offensive players are put out as a result 
+		of continuous action, providing there is no error between putouts."</span></p>
+
+	<p class="normalText">
+		<span class="obrReference">The official scorer shall credit participation in a double play or triple play to each 
+		fielder who earns a putout or an assist when two or three players are put out between the time a pitch is delivered 
+		and the time the ball next becomes dead or is next in possession of the pitcher in a pitching position, unless an 
+		error or misplay intervenes between putouts</span>
+		<span><b>[OBR 9.11].</b></span>
+	</p>
+	<table class="contentDescription">
+		<tr>
+			<td class="contentDescriptionName">
+				<img
+					src="Double%20and%20triple%20plays_html_6f777f7.gif"
+						alt="Defense statistics"
+						width="126"
+						height="103"/>
+			</td>
+			<td class="contentDescriptionDescription">Consequently, on the score-sheet (column on the defense side) a participation 
+			in a double play or triple play should be credited to every fielder who took part in the play
+			</td>
+		</tr>
+	</table>
+
+	<p class="normalText"><b>IMPORTANT:</b> It should also be borne in mind that an error or misplay (even if not 
+	recorded as an error) breaks the double or triple play.
+	</p>
+
+	<p class="normalText">The symbol used is a single circle around the putouts and a line joining the two or three circles.
+	</p>
+	
+	<p class="normalText">
+		<span class="obrReference">The official scorer shall credit a double play or triple play also if an appeal play 
+		after the ball is in possession of the pitcher results in an additional putout</span>
+		<span><b> [OBR 9.11, Comment]</b>.</span>
+	</p>
+	
+	<table class="contentDescription">
+		<tr>
+			<td class="contentDescriptionName">
+				<img
+					src="Double%20and%20triple%20plays_html_4f5d515c.gif"
+						alt="Double play"
+						width="183"
+						height="49"/>
+			</td>
+			<td class="contentDescriptionDescription"><b>The total number of double and/or triple plays</b> earned by each 
+			team should be recorded in the square above the pitchers’ defending statistics, to the right of the words 
+			“DOUBLE PLAYS”. The totals line under the “DP” column should contain the total number of times each individual 
+			fielder participated in a double or triple play.
+			</td>
+		</tr>
+	</table>
+
+	<ol class="olTypeA">
+		<li class="olTypeA">
+			<p>
+			    <span><b>Reverse force double play</b> [OBR Definition of Terms]. "</span>
+			    <span class="obrReference">Is one in which the first out is a force play and the second out is made on a 
+			    runner for whom the force is removed by reason of the first out. Example of reverse force play: runner on 
+			    first, one out; batter grounds to first baseman, who steps on first base (one out) and throws to second 
+			    baseman or shortstop for the second out (a tag play)</span>
+			    <span>hindmost runner is put out, the leading runner or runners are no longer forced to advance and have to 
+			    be tagged out. </p> 
+			<P>The same symbols are used to indicate this type of double or triple play as for the others.
+			</p></li>
+		<li class="olTypeA">
+		<p>
+			<span><b>Grounded into double play</b></span>
+			<span>- This is charged against a batter when the situation on the field meets
+					the following criteria:<br /> 1. Less than two out. <br /> 2. One or more
+					runners forced to advance (or reverse-forced).<br /> 3. Ground ball to the
+					infield that results in two or three putouts or that would have done so if
+					it had not been for decisive errors.
+			</span>
+		</p></li>
+	</ol>
+	
+	<p class="normalText"> If the double or triple play is a result of ‘interference of a preceding runner’ the official scorer 
+	will not charge a grounded into double play to the batter’ <b>[OBR 9.02 (a) (17) Comment]</b> 
+	</p>
+
+	<table class="contentDescription">
+		<tr>
+			<td class="contentDescriptionName">
+				<img
+					src="Double%20and%20triple%20plays_html_2c09e6f6.gif"
+						alt="Offense stats"
+						width="235"
+						height="116"/>
+			</td>
+			<td class="contentDescriptionDescription">The symbol for grounded into double play is "GDP" written inside the 
+			circle that indicates the putout of the same batter, or, in the event that he reached first base, the box for 
+			first base. Each time that the initials "GDP" appear on the score report we must charge a “grounded into double play” 
+			against the batter in question by recording it in the appropriate column on the offensive team’s sheet.
+			</td>
+		</tr>
+	</table>
+
+	<p class="exampleText">
+		<span class="exampleNumber">Example 1:</span>
+		<span>With first base occupied, the batter hits a line ball which is caught by the second baseman.</span><br/>
+		<span>The runner, who had broken away from first base, tries to retouch but is anticipated by an assist from 
+		the second baseman.</span>
+	</p>
+
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+					<img
+						src="Double%20and%20triple%20plays_html_8a6b059e.gif"
+						alt="Sample 1"
+						width="76"
+						height="159"
+					/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* First batter advances on a BB */</span><br />
+				<span class="codeAction">action</span>
+				<span>{ batter -> </span><span class="codeAdvance">bb</span><span> } </span><br /><br />
+				<span class="codeComment">/* Second batter out on a line drive by the second baseman. Double play; 
+				the second base throws in time to the first base to make the out */</span><br />
+				<span class="codeAction">action</span>
+				<span>{ batter -> </span><span class="codeAdvance">L4,</span>
+				<span> runner1 -> </span><span class="codePutout">43</span>
+				<span> } </span><br /><br />
+				</td>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_eb613764.gif"
+						alt="Sample 1"
+						width="77"
+						height="160"/>
+			</td>
+		</tr>
+	</table>				
+
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Example 2:</span>
+		<span>With a runner on second base, the batter hits a ground ball to the shortstop, who catches it and tags out the 
+		runner attempting to reach third base from second, then throws the ball to first base in time to put out the 
+		batter runner</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_9150f141.gif"
+					alt="Sample 2"
+					width="76"
+					height="155"/>
+			</td>
+			<td class="exampleCode">
+			<span class="codeComment">/* First batter advances on a double to center field */</span><br/>
+			<span class="codeAction">action</span><span> { </span>
+			<span>batter -> </span><span class="codeAdvance">2B8</span>
+			<span> }</span><br /><br />
+			<span class="codeComment">/* Second batter out on a ground hit to shortstop. Double play: the shortstop 
+			throws in time to the first baseman to make the out. */</span><br/>
+			<span class="codeAction">action</span><span> {</span>
+			<span>batter -> </span><span class="codePutout">6</span><span>, </span>
+			<span>runner2 -> </span><span class="codePutout">63</span>			
+			<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_a4993184.gif"
+					alt="Sample 2"
+					width="76"
+					height="155"/>
+			</td>
+		</tr>
+	</table>				
+	<p class="normalText">This is not a GDP, since the runner on second base was not forced to advance.</p>
+
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Example 3:</span>
+		<span> First base is occupied and the batter has two strikes against him. On the next pitch, the runner 
+		tries to steal second base. The pitch is a third strike, which means the batter is struck out. The catcher then 
+		succeeds in throwing to second base in time to put out the runner.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_6a12ab7a.gif"
+					alt="Sample 3"
+					width="76"
+					height="155"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* First batter advances on a 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+				<span class="codeComment">/* Second batter strikeout swing. It's a double play; the catcher throws 
+				the ball back to the second baseman in time to get out the runner who was stealing second base.
+				</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS</span><span>, </span>
+				<span>runner1 -> </span><span class="codePutout">CS24</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_c6df207e.gif"
+					alt="Sample 3"
+					width="76"
+					height="155"/>
+			</td>
+		</tr>
+	</table>
+	<p class="normalText">Clearly, this is not a hit into a double play, although it is a double play, since there was no 
+	break between the two outs; in other words, the two outs were made during the course of the same action, without any errors.</p>				
+
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Example : 4</span>
+		<span>With first and second bases occupied, the third batter hits a ground ball to the shortstop, who throws the 
+		ball to first base in time to put out the batter-runner.</span><br />
+        <span>Both runners advance, and the lead runner continues to run for home plate.</span><br />
+        <span>The first baseman throws to home in time to put out the runner.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_c9d72b26.gif"
+					alt="Sample 4"
+					width="76"
+					height="234"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* First batter leads a double hit to left field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B7</span><br /><br />
+				<span>}</span><br /><br />
+				<span class="codeComment">/* Second batter advances on a 'Base on Ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br /><br/>
+				<span class="codeComment">/* The batter hits a ground ball toward the shortstop, who relays it in 
+				time to first base for the out. Both runners take advantage to advance one base. The runner reaching 
+				third base tries to score, but is put out by the catcher, assisted by the first baseman. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">63</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span><span class="codePutout"> 32</span>		
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_832c83df.gif"
+					alt="Sample 4"
+					width="76"
+					height="231"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">The defense is awarded a double play but not a grounded into double play, because the runner is 
+	not forced to advance. A participation should be credited to every fielder who took part in the play.
+	</p>
+
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Example 5.a:</span>
+		<span>With first and second bases occupied, the batter hits a ground ball to the third baseman who puts out the 
+		runner who is forced to third base, and completes the double play by assisting the second baseman. A GDP is 
+		charged against the batter-runner, even though he was not put out himself.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_3f9230fc.gif"
+					alt="Sample 5.a"
+					width="76"
+					height="220"/>
+			</td>
+			<td class="exampleCode">
+			<span class="codeComment">/* The first batter advances on 'Base on Ball' */</span><br/>
+			<span class="codeAction">action</span><span> {</span>
+			<span>batter -> </span><span class="codeAdvance">BB</span>
+			<span>}</span><br /><br />
+			<span class="codeComment">/* The second batter advances on a hit to left field, the runner on first base advances */</span><br/>
+			<span class="codeAction">action</span><span> {</span>
+			<span>batter -> </span><span class="codeAdvance">1B7</span>
+			<span>, </span>
+			<span>runner1 -> </span><span class="codeAdvance">+</span>	
+			<span>}</span><br /><br />
+			<span class="codeComment">/* The batter hits a ground ball to the third baseman, who touches his base, then relays 
+			in time to the second baseman to get out the runner coming in from the first base. */</span><br/>
+			<span class="codeAction">action</span><span> {</span>
+			<span>batter -> </span><span class="codeAdvance">GDP05</span>
+			<span>, </span>
+			<span>runner1 -> </span><span class="codePutout">54</span>
+			<span>, </span>			
+			<span>runner2 -> </span><span class="codePutout">5</span>			
+			<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_c6f6a281.gif"
+					alt="Sample 5.a"
+					width="84"
+					height="257"/>
+			</td>
+		</tr>
+	</table>				
+	<p class="normalText">A GDP is charged against the batter-runner, even though he was not put out himself.
+	</p>
+
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Example 5.b:</span>
+		<span>With first and second bases occupied, the batter hits a ground ball to shortstop who assists the second 
+		baseman to putout the runner who is forced to second base, and completes the double play by assisting the 
+		third baseman for the putout on the lead runner. This is a reverse double play.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_958e100d.gif"
+					alt="Sample 5.b"
+					width="76"
+					height="224"/>
+			</td>
+			<td class="exampleCode">
+			<span class="codeComment">/* The first batter advances on 'Base on Ball' */</span><br/>
+			<span class="codeAction">action</span><span> {</span>
+			<span>batter -> </span><span class="codeAdvance">BB</span>
+			<span>}</span><br /><br />
+			<span class="codeComment">/* The second batter advances on a hit to left field, the runner on first base advances */</span><br/>
+			<span class="codeAction">action</span><span> {</span>
+			<span>batter -> </span><span class="codeAdvance">1B7</span>
+			<span>, </span>
+			<span>runner1 -> </span><span class="codeAdvance">+</span>	
+			<span>}</span><br /><br />
+			<span class="codeComment">/* The batter hits a ground ball to the short stop, who throws it back to the second 
+			baseman to get out the runner coming from the first base. The second baseman throws to the third baseman, who hits the 
+			runner coming from the second base. */</span><br/>
+			<span class="codeAction">action</span><span> {</span>
+			<span>batter -> </span><span class="codeAdvance">GDP06</span>
+			<span>, </span>
+			<span>runner1 -> </span><span class="codePutout">64</span>
+			<span>, </span>			
+			<span>runner2 -> </span><span class="codePutout">45</span>			
+			<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_50f1a631.gif"
+					alt="Sample 5.b"
+					width="76"
+					height="231"/>
+			</td>
+		</tr>
+	</table>				
+	<p class="normalText">Also in this case a GDP is charged against the batter-runner, even though he was not put out himself.
+	</p>
+
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 6:</span>
+		<span>With a runner on first base, the batter hits a ground ball which is caught by the shortstop, who throws to 
+		second in time to put out the runner.</span><br/> 
+		<span>In turn, the second baseman throws to first and puts out the batter-runner.</span><br />
+        <span>The official scorer awards a double play to the team, participation in a double play to the three fielders who 
+        took part in the action (shortstop, second baseman, first baseman) and a grounded into double play to the batter.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_6f3c9b11.gif"
+					alt="Sample 6"
+					width="76"
+					height="159"/>
+			</td>
+			<td class="exampleCode">
+			   <span class="codeComment">/* The first batter advances on 'Base on Ball' */</span><br/>
+			   <span class="codeAction">action</span><span> {</span>
+			   <span>batter -> </span><span class="codeAdvance">BB</span>
+     		   <span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter hits a ground ball to shortstop, relaying 
+				the ball in time to the second baseman to get out the runner coming from first. The second 
+				baseman then relays the ball in time to the first baseman to get out the batter. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">GDP43</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">64</span>
+                <span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_50f93780.gif"
+					alt="Sample 6"
+					width="76"
+					height="153"/>
+			</td>
+		</tr>
+	</table>				
+	<p class="normalText">Since the column “DP” is used for recording both double and triple plays, when a triple play 
+	occurs the NOTES on the score card should state “The DP column for the … team also includes one triple play”. 
+	Batter-runner may also be given a “GDP” for a triple play, and the symbol remains the same.
+	</p>
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 7:</span>
+		<span>Bases are full. The batter hits a line drive which is caught by the third baseman.</span><br />
+		<span>The third baseman, after catching it, tags third base and retires the runner who had left third base, 
+		then throws to second in time to put out the runner who had left second.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_a843ce6f.gif"
+						alt="Sample 7"
+						width="76"
+						height="317"/>
+			</td>
+			<td class="exampleCode">
+			   <span class="codeComment">/* The first batter advances on 'Base on Ball' */</span><br/>
+			   <span class="codeAction">action</span><span> {</span>
+			   <span>batter -> </span><span class="codeAdvance">BB</span>
+     		   <span>}</span><br /><br />
+
+			   <span class="codeComment">/* The second batter advances on a hit to center field. The runner on first 
+			   base reaches second base. */</span><br/>
+			   <span class="codeAction">action</span><span> {</span>
+			   <span>batter -> </span><span class="codeAdvance">1B8</span>
+			   <span>, </span>
+			   <span>runner1 -> </span><span class="codeAdvance">+</span>	
+			   <span>}</span><br /><br />
+	
+			   <span class="codeComment">/* The third batter advances on a first base on an error after a throw from the 
+			   second baseman. Both runners gain a base */</span><br/>
+			   <span class="codeAction">action</span><span> {</span>
+			   <span>batter -> </span><span class="codeAdvance">4E3</span>
+			   <span>, </span>
+			   <span>runner1 -> </span><span class="codeAdvance">+</span>		
+			   <span>, </span>
+			   <span>runner2 -> </span><span class="codeAdvance">+</span>		
+			   <span>}</span><br /><br />
+	
+			   <span class="codeComment">/* The fourth batter is put out by the third baseman on a line drive. The fielder 
+			   touches his base and puts out the runner on third before he can return to his base, then relays the ball in 
+			   time to the second baseman to put out the runner on second before he touches his base. */</span><br/>
+			   <span class="codeAction">action</span><span> {</span>
+			   <span>batter -> </span><span class="codePutout">L5</span>
+			   <span>, </span>
+			   <span>runner1 -> </span><span class="codeAdvance">+</span>	
+			   <span>, </span>
+			   <span>runner2 -> </span><span class="codePutout">54</span>	
+			   <span>, </span>
+			   <span>runner3 -> </span><span class="codePutout">5</span>	
+			   <span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_329efda1.gif"
+					alt="Sample 7"
+					width="76"
+					height="303"/>
+			</td>
+		</tr>
+	</table>				
+	<p class="normalText">This is not a grounded into double play because it was not a ground ball.
+	</p>
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 8:</span>
+		<span>Bases are loaded. The batter hits a ground ball which is fielded by the third baseman. He tags the base, 
+		then throws the ball to the second baseman who catches it, touches the base and throws it to first base for 
+		the third out.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_322fbe1c.gif"
+					alt="Sample 8"
+					width="76"
+					height="323"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batsman advances on a fly ball recovery error due to the short stop */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E6F</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter advances on a hit to center field, the runner on first base advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* The third batter advances on 'Base on Ball', all the runners advance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* The fourth batter hits a ground ball to the third baseman, who touches his base 
+				and puts out the runner coming from the second base. He relays in time to the second baseman to put out the runner 
+				coming from the first base. The second baseman also relays in time to the first baseman to put out the batter/runner. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">GDP43</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">54</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">5</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="Double%20and%20triple%20plays_html_924a10b9.gif"
+					name="Sample 8"
+					align="bottom"
+					width="76"
+					height="302"/>
+			</td>
+		</tr>
+	</table>				
+	<p class="normalText">A “GDP” is charged against the batter-runner.</p>
+
+	<table class="contentDescription">
+		<tr>
+			<td class="contentDescriptionName">
+				<img
+					src="Double%20and%20triple%20plays_html_83738a4e.gif"
+					alt="Defense area"
+					width="155"
+					height="250"/>
+			</td>
+			<td class="contentDescriptionDescription">
+				<p class="normalText>">In the case of Example 6, the double play is noted in the defense score report as shown opposite:
+				<ul class="dotList">
+					<li class="dotList">With a vertical stroke in the “PO” column next to the fielders who made the outs;</li>
+					<li class="dotList">With a vertical stroke in the “A” column next to any fielders who assisted;</li>
+					<li class="dotList">With a single vertical stroke in the “DP” column next to the fielders who participated 
+					in the double play, regardless of whether they made an out, an assist or both.</li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+
+	<p class="normalText">In practice, an assist should be credited to the short stop, an assist and a putout to the second 
+	baseman and a putout to the first baseman.Moreover, one participation in a double play should be credited to all three fielders.</p>
+
+	<p class="normalText">A double or triple play is also credited to the team, the total number of such at the end of the game should be reported at 
+	that time in the square above the pitchers’ defense statistics, to the right of the words “DOUBLEPLAYS”.
+	</p>
+</body>
+</html>

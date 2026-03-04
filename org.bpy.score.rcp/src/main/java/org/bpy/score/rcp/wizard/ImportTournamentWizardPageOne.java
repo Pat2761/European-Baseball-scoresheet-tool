@@ -17,6 +17,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
+import org.bpy.score.internationalization.rcp.Messages;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
@@ -63,7 +64,6 @@ import org.eclipse.ui.dialogs.WizardDataTransferPage;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.ide.StatusUtil;
 import org.eclipse.ui.internal.wizards.datatransfer.ArchiveFileManipulations;
-import org.eclipse.ui.internal.wizards.datatransfer.DataTransferMessages;
 import org.eclipse.ui.internal.wizards.datatransfer.ILeveledImportStructureProvider;
 import org.eclipse.ui.internal.wizards.datatransfer.TarEntry;
 import org.eclipse.ui.internal.wizards.datatransfer.TarException;
@@ -182,11 +182,11 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 
 					// If we can get a description pull the name from there
 					if (stream == null) {
-						if (projectArchiveFile instanceof ZipEntry) {
-							IPath path = new Path(((ZipEntry) projectArchiveFile).getName());
+						if (projectArchiveFile instanceof ZipEntry zipEntry) {
+							IPath path = new Path(zipEntry.getName());
 							projectName = path.segment(path.segmentCount() - 2);
-						} else if (projectArchiveFile instanceof TarEntry) {
-							IPath path = new Path(((TarEntry) projectArchiveFile).getName());
+						} else if (projectArchiveFile instanceof TarEntry tarEntry) {
+							IPath path = new Path(tarEntry.getName());
 							projectName = path.segment(path.segmentCount() - 2);
 						}
 					} else {
@@ -214,7 +214,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 
 				}
 			} catch (CoreException | IOException e) {
-				this.projectName = DataTransferMessages.WizardProjectsImportPage_invalidProjectName;
+				this.projectName = Messages.WizardProjectsImportPage_invalidProjectName;
 				this.isInvalid = true;
 			}
 		}
@@ -264,7 +264,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		 */
 		public String getProjectLabel() {
 			String path = projectSystemFile == null ? structureProvider.getFullPath(parent)	: projectSystemFile.getParent();
-			return NLS.bind(DataTransferMessages.WizardProjectsImportPage_projectLabel,projectName, path);
+			return NLS.bind(Messages.WizardProjectsImportPage_projectLabel,projectName, path);
 		}
 
 		/**
@@ -342,10 +342,11 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 	
 	/**
 	 * Creates a new project creation wizard page.
+	 * @wbp.parser.constructor
 	 *
 	 */
 	public ImportTournamentWizardPageOne() {
-		this("wizardExternalProjectsPage", null, null); //$NON-NLS-1$
+		this("ImportTournamentWizardPageOne", null, null); //$NON-NLS-1$
 	}
 
 	/**
@@ -373,18 +374,18 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		} else {
 			if (currentSelection != null) {
 				Object firstElement = currentSelection.getFirstElement();
-				if (firstElement instanceof File) {
-					this.initialPath = ((File) firstElement).getAbsolutePath();
-				} else if (firstElement instanceof IResource) {
-					this.initialPath = ((IResource) firstElement).getLocation().toFile().getAbsolutePath();
-				} else if (firstElement instanceof String && new File((String) firstElement).exists()) {
-					this.initialPath = new File((String) firstElement).getAbsolutePath();
+				if (firstElement instanceof File file) {
+					this.initialPath = file.getAbsolutePath();
+				} else if (firstElement instanceof IResource iResource) {
+					this.initialPath = iResource.getLocation().toFile().getAbsolutePath();
+				} else if ((firstElement instanceof String aString) && new File(aString).exists()) {
+					this.initialPath = new File(aString).getAbsolutePath();
 				}
 			}
 		}
 		setPageComplete(false);
-		setTitle(DataTransferMessages.WizardProjectsImportPage_ImportProjectsTitle);
-		setDescription(DataTransferMessages.WizardProjectsImportPage_ImportProjectsDescription);
+		setTitle(Messages.WizardProjectsImportPage_ImportProjectsTitle);
+		setDescription(Messages.WizardProjectsImportPage_ImportProjectsDescription);
 	}
 
 	@Override
@@ -415,7 +416,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 	private void createProjectsList(Composite workArea) {
 
 		Label title = new Label(workArea, SWT.NONE);
-		title.setText(DataTransferMessages.WizardProjectsImportPage_ProjectsListTitle);
+		title.setText(Messages.WizardProjectsImportPage_ProjectsListTitle);
 
 		Composite listComposite = new Composite(workArea, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -497,7 +498,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 				GridData.VERTICAL_ALIGN_BEGINNING));
 
 		Button selectAll = new Button(buttonsComposite, SWT.PUSH);
-		selectAll.setText(DataTransferMessages.DataTransfer_selectAll);
+		selectAll.setText(Messages.DataTransfer_selectAll);
 		selectAll.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -513,7 +514,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		setButtonLayoutData(selectAll);
 
 		Button deselectAll = new Button(buttonsComposite, SWT.PUSH);
-		deselectAll.setText(DataTransferMessages.DataTransfer_deselectAll);
+		deselectAll.setText(Messages.DataTransfer_deselectAll);
 		deselectAll.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -526,7 +527,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		setButtonLayoutData(deselectAll);
 
 		Button refresh = new Button(buttonsComposite, SWT.PUSH);
-		refresh.setText(DataTransferMessages.DataTransfer_refresh);
+		refresh.setText(Messages.DataTransfer_refresh);
 		refresh.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -560,7 +561,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 
 		// new project from directory radio button
 		projectFromDirectoryRadio = new Button(projectGroup, SWT.RADIO);
-		projectFromDirectoryRadio.setText(DataTransferMessages.WizardProjectsImportPage_RootSelectTitle);
+		projectFromDirectoryRadio.setText(Messages.WizardProjectsImportPage_RootSelectTitle);
 
 		// project location entry combo
 		this.directoryPathField = new Combo(projectGroup, SWT.BORDER);
@@ -571,12 +572,12 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 
 		// browse button
 		browseDirectoriesButton = new Button(projectGroup, SWT.PUSH);
-		browseDirectoriesButton.setText(DataTransferMessages.DataTransfer_browse);
+		browseDirectoriesButton.setText(Messages.DataTransfer_browse);
 		setButtonLayoutData(browseDirectoriesButton);
 
 		// new project from archive radio button
 		projectFromArchiveRadio = new Button(projectGroup, SWT.RADIO);
-		projectFromArchiveRadio.setText(DataTransferMessages.WizardProjectsImportPage_ArchiveSelectTitle);
+		projectFromArchiveRadio.setText(Messages.WizardProjectsImportPage_ArchiveSelectTitle);
 
 		// project location entry combo
 		archivePathField = new Combo(projectGroup, SWT.BORDER);
@@ -585,7 +586,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		archivePathData.widthHint = new PixelConverter(archivePathField).convertWidthInCharsToPixels(25);
 		archivePathField.setLayoutData(archivePathData); // browse button
 		browseArchivesButton = new Button(projectGroup, SWT.PUSH);
-		browseArchivesButton.setText(DataTransferMessages.DataTransfer_browse);
+		browseArchivesButton.setText(Messages.DataTransfer_browse);
 		setButtonLayoutData(browseArchivesButton);
 
 		projectFromDirectoryRadio.setSelection(true);
@@ -758,7 +759,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		
 		// on an empty path empty selectedProjects
 		if (path == null || path.isEmpty()) {
-			setMessage(DataTransferMessages.WizardProjectsImportPage_ImportProjectsDescription);
+			setMessage(Messages.WizardProjectsImportPage_ImportProjectsDescription);
 			selectedProjects = new ProjectRecord[0];
 			projectsList.refresh(true);
 			projectsList.setCheckedElements(selectedProjects);
@@ -779,7 +780,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		try {
 			getContainer().run(true, true, monitor -> {
 
-				monitor.beginTask(DataTransferMessages.WizardProjectsImportPage_SearchingMessage,100);
+				monitor.beginTask(Messages.WizardProjectsImportPage_SearchingMessage,100);
 				selectedProjects = new ProjectRecord[0];
 				monitor.worked(10);
 				if (!dirSelected && ArchiveFileManipulations.isTarFile(path)) {
@@ -799,7 +800,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 					selectedProjects = new ProjectRecord[files.size()];
 					int index1 = 0;
 					monitor.worked(50);
-					monitor.subTask(DataTransferMessages.WizardProjectsImportPage_ProcessingMessage);
+					monitor.subTask(Messages.WizardProjectsImportPage_ProcessingMessage);
 					while (filesIterator1.hasNext()) {
 						selectedProjects[index1++] = filesIterator1.next();
 					}
@@ -820,7 +821,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 					selectedProjects = new ProjectRecord[files.size()];
 					int index2 = 0;
 					monitor.worked(50);
-					monitor.subTask(DataTransferMessages.WizardProjectsImportPage_ProcessingMessage);
+					monitor.subTask(Messages.WizardProjectsImportPage_ProcessingMessage);
 					while (filesIterator2.hasNext()) {
 						selectedProjects[index2++] = filesIterator2
 								.next();
@@ -837,7 +838,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 					selectedProjects = new ProjectRecord[files.size()];
 					int index3 = 0;
 					monitor.worked(50);
-					monitor.subTask(DataTransferMessages.WizardProjectsImportPage_ProcessingMessage);
+					monitor.subTask(Messages.WizardProjectsImportPage_ProcessingMessage);
 					while (filesIterator3.hasNext()) {
 						File file = filesIterator3.next();
 						selectedProjects[index3] = new ProjectRecord(file);
@@ -880,17 +881,17 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		}
 
 		if (displayConflictWarning && displayInvalidWarning) {
-			setMessage(DataTransferMessages.WizardProjectsImportPage_projectsInWorkspaceAndInvalid, WARNING);
+			setMessage(Messages.WizardProjectsImportPage_projectsInWorkspaceAndInvalid, WARNING);
 		} else if (displayConflictWarning) {
-			setMessage(DataTransferMessages.WizardProjectsImportPage_projectsInWorkspace, WARNING);
+			setMessage(Messages.WizardProjectsImportPage_projectsInWorkspace, WARNING);
 		} else if (displayInvalidWarning) {
-			setMessage(DataTransferMessages.WizardProjectsImportPage_projectsInvalid, WARNING);
+			setMessage(Messages.WizardProjectsImportPage_projectsInvalid, WARNING);
 		} else {
-			setMessage(DataTransferMessages.WizardProjectsImportPage_ImportProjectsDescription);
+			setMessage(Messages.WizardProjectsImportPage_ImportProjectsDescription);
 		}
 		setPageComplete(projectsList.getCheckedElements().length > 0);
 		if(selectedProjects.length == 0) {
-			setMessage(DataTransferMessages.WizardProjectsImportPage_noProjectsToImport, WARNING);
+			setMessage(Messages.WizardProjectsImportPage_noProjectsToImport, WARNING);
 		}
 	}
 
@@ -909,9 +910,9 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		try {
 			return new ZipFile(fileName);
 		} catch (ZipException e) {
-			displayErrorDialog(DataTransferMessages.ZipImport_badFormat);
+			displayErrorDialog(Messages.ZipImport_badFormat);
 		} catch (IOException e) {
-			displayErrorDialog(DataTransferMessages.ZipImport_couldNotRead);
+			displayErrorDialog(Messages.ZipImport_couldNotRead);
 		}
 
 		archivePathField.setFocus();
@@ -934,9 +935,9 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		try {
 			return new TarFile(fileName);
 		} catch (TarException e) {
-			displayErrorDialog(DataTransferMessages.TarImport_badFormat);
+			displayErrorDialog(Messages.TarImport_badFormat);
 		} catch (IOException e) {
-			displayErrorDialog(DataTransferMessages.ZipImport_couldNotRead);
+			displayErrorDialog(Messages.ZipImport_couldNotRead);
 		}
 
 		archivePathField.setFocus();
@@ -963,7 +964,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 			return false;
 		}
 		monitor.subTask(NLS.bind(
-				DataTransferMessages.WizardProjectsImportPage_CheckingMessage,
+				Messages.WizardProjectsImportPage_CheckingMessage,
 				directory.getPath()));
 		File[] contents = directory.listFiles();
 		if (contents == null) {
@@ -1033,7 +1034,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 			return false;
 		}
 		monitor.subTask(NLS.bind(
-				DataTransferMessages.WizardProjectsImportPage_CheckingMessage,
+				Messages.WizardProjectsImportPage_CheckingMessage,
 				structureProvider.getLabel(entry)));
 		List<?> children = structureProvider.getChildren(entry);
 		if (children == null) {
@@ -1060,7 +1061,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 	protected void handleLocationDirectoryButtonPressed() {
 
 		DirectoryDialog dialog = new DirectoryDialog(directoryPathField.getShell(), SWT.SHEET);
-		dialog.setMessage(DataTransferMessages.WizardProjectsImportPage_SelectDialogTitle);
+		dialog.setMessage(Messages.WizardProjectsImportPage_SelectDialogTitle);
 
 		String dirName = directoryPathField.getText().trim();
 		if (dirName.isEmpty()) {
@@ -1093,7 +1094,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		FileDialog dialog = new FileDialog(archivePathField.getShell(), SWT.SHEET);
 		dialog.setFilterExtensions(FILE_IMPORT_MASK);
 		dialog
-				.setText(DataTransferMessages.WizardProjectsImportPage_SelectArchiveDialogTitle);
+				.setText(Messages.WizardProjectsImportPage_SelectArchiveDialogTitle);
 
 		String fileName = archivePathField.getText().trim();
 		if (fileName.isEmpty()) {
@@ -1137,7 +1138,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 				// Import as many projects as we can; accumulate errors to
 				// report to the user
 				MultiStatus status = new MultiStatus(IDEWorkbenchPlugin.IDE_WORKBENCH, 1,
-						DataTransferMessages.WizardProjectsImportPage_projectsInWorkspaceAndInvalid);
+						Messages.WizardProjectsImportPage_projectsInWorkspaceAndInvalid);
 				for (Object element : selected) {
 					status.add(createExistingProject((ProjectRecord) element, subMonitor.split(1)));
 				}
@@ -1157,10 +1158,10 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 		} catch (InvocationTargetException e) {
 			// one of the steps resulted in a core exception
 			Throwable t = e.getTargetException();
-			String message = DataTransferMessages.WizardExternalProjectImportPage_errorMessage;
+			String message = Messages.WizardExternalProjectImportPage_errorMessage;
 			IStatus status;
-			if (t instanceof CoreException) {
-				status = ((CoreException) t).getStatus();
+			if (t instanceof CoreException coreException) {
+				status = coreException.getStatus();
 			} else {
 				status = new Status(IStatus.ERROR,
 						IDEWorkbenchPlugin.IDE_WORKBENCH, 1, message, t);
@@ -1267,7 +1268,7 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 
 		try {
 			SubMonitor subTask = subMonitor.split(1).setWorkRemaining(100);
-			subTask.setTaskName(DataTransferMessages.WizardProjectsImportPage_CreateProjectsTask);
+			subTask.setTaskName(Messages.WizardProjectsImportPage_CreateProjectsTask);
 			project.create(record.description, subTask.split(30));
 			project.open(IResource.BACKGROUND_REFRESH, subTask.split(70));
 			subTask.setTaskName(""); //$NON-NLS-1$
@@ -1447,7 +1448,6 @@ public class ImportTournamentWizardPageOne extends WizardDataTransferPage {
 	 * @param settings 
 	 * @param key 
 	 * @param combo 
-	 * @param value 
 	 */
 	private void restoreFromHistory(IDialogSettings settings, String key, Combo combo) {
 		String[] sourceNames = settings.getArray(key);
