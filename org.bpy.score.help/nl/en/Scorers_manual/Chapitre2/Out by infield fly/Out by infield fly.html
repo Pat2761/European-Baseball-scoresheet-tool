@@ -79,1679 +79,314 @@
 	<p class="normalText">The examples show how events are recorded differently depending on whether the ball falls untouched 
 	or is caught.</p>
 	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 20:</span>
+		<span>With bases loaded and one out, the batter hits a high ball to shortstop, which the umpire declares `infield fly´. 
+		The fly ball is caught by the shortstop.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="cebd9833.png"
+					alt="infield fly"
+					width="87"
+					height="91"/>
+			</td>
+			<td class="exampleCode">
+			   <span class="codeComment">/* The batter hits a ball in infield fly condition and the ball is caught on the 
+			   fly by the shortstop */</span><br/>
+			   <span class="codeAction">action</span><span> {</span>
+			   <span>batter -> </span><span class="codePutout">IF6</span>
+			   <span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="cbe2ec99.png"
+					alt="infield fly"
+					width="87"
+					height="94"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 21:</span>
+		<span> With bases loaded and one out, the batter hits a high ball to third, which the umpire declares 
+		“Infield fly if fair”. As it falls, the ball hits the runner touching third base.</span><br />
+		<span>The batter is declared out under “Out By Rule” rule 8, and the putout is credited to the third baseman. 
+		The runner who was hit is not out, and remains on the same base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="c2a77bde.png"
+					alt="infield fly"
+					width="87"
+					height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The batter hits a bell in an infield fly situation and the ball, upon landing, 
+				hits the runner who was on third base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR8-5</span>
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="80fa1dd7.png"
+					alt="infield fly"
+					width="87"
+					height="94"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 22:</span>
+		<span>With first and second bases occupied the batter hits a high ball along the line between first base and 
+		home plate, and the umpire therefore declares “Infield fly if fair”; the first baseman goes for the ball but 
+		fails to catch it.</span><br />
+		<span>The runner on second base, seeing the bad play, tries to advance to third base, but the first baseman 
+		recovers the ball and assists the third baseman in a putout. The batter is automatically put out under ‘Out By Rule” 8 
+		[9.09(c)(1)] (Infield Fly), while the runner is tagged out.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="2a102fb8.png"
+					alt="infield fly"
+					width="87"
+					height="268"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter hits a double to center field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance"2B8></span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* The second batter wins the first base on 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance"bb></span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* The third batter hits a high ball in the infield, and an infield fly is called 
+				by the umpire. The third baseman tries to catch the fly ball but makes a mistake, and the ball falls to 
+				the ground. The second baseman, seeing the mistake, tries to reach third but is tagged by the 
+				third baseman. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR8-3 dontCountAsDoublePlay</span>
+				<span>, </span>
+				<span>runner -> </span><span class="codePutout">35</span>			
+				<span>}</span><br /><br />
+
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="559203f0.png"
+					alt="infield fly"
+					width="87"
+					height="267"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">No error is charged against the first baseman as there were no negative consequences. Score a 
+	putout by Infield Fly to the batter, an assist to the first baseman and a putout to both the first baseman and the
+	third baseman.
+	</p>
 	
+	<p class="normalText">This is not a double play, as the continuity of action between the two putouts was interrupted 
+	by the misplay. This is recorded in the notes of the score-sheet.
+	</p>
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 23:</span>
+		<span>With first and second bases occupied and one out, the batter hits a fly ball along the line between first 
+		base and home plate, and the umpire therefore calls “Infield fly if fair”; the ball lands in foul territory and 
+		bounces fair before being touched by a fielder: charge a putout by infield fly to the batter and credit a putout 
+		to the fielder nearest the ball (in this case the first baseman).</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+					<img
+						src="e6a75559.png"
+						alt="Infield fly"
+						width="87"
+						height="92"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter hits a high ball along the line between home plate and first base. 
+				An infield fly is called, but the ball lands in foul zone but rolls into fair zone. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR8-3</span>
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="74320ce8.png"
+					alt="Infield fly"
+					width="87"
+					height="94"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">If interference is called during an infield fly, the ball remains alive until it is determined 
+	whether the ball is fair or foul.</p>
 	
-	<table
-		width="631"
-		cellpadding="7"
-		cellspacing="0"
-	>
-		<colgroup>
-			<col width="97" />
-			<col width="2" />
-		</colgroup>
-		<colgroup>
-			<col width="374" />
-		</colgroup>
-		<colgroup>
-			<col width="5" />
-			<col width="78" />
-		</colgroup>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 24:</span>
+		<span>If interference is called during an infield fly, the ball remains alive until it is determined whether the ball 
+		is fair or foul.</span><br/>
+		<span>If fair, both the runner who interfered with the fielder and the batter are out. [OBR Definition of Terms]</span>
+	</p>	
+	<table class="exampleDescription">
 		<tr>
-			<td
-				colspan="5"
-				width="611"
-				valign="top"
-				style="border-top: 2.25pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: 2.25pt solid #000000; padding: 0cm 0.19cm"
-			><p
-					lang="fr-FR"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<span lang="en-US"><u>Example 20:</u></span><span lang="en-US"> With
-						bases loaded and one out, the batter hits a high ball to shortstop, which
-						the umpire declares `infield fly´. The fly ball is caught by the
-						shortstop.</span>
-				</p></td>
-		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="7"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.27cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">WBSC</span></font></font></font></span></span></font></font></font>
-				</p></td>
-			<td
-				width="2"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="374"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="orphans: 2; widows: 2"
-				>Traduction dans l’outil de scorage</p></td>
-			<td
-				width="5"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">Outil</span></font></font></font></span></span></font></font></font>
-				</p></td>
-		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="59"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.17cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_cebd9833.png"
-						name="Image 22"
-						align="bottom"
-						width="87"
-						height="91"
-						border="0"
-					/>
-				</p></td>
-			<td
-				width="2"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="374"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>/* Le batteur frappe un cloche be condition d'infield fly et la balle
-									est rattrapée de volée par l'arrêt court */</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#7f0055"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> { batter -&gt; </font></font></font><font color="#ff0000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><b>IF6</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> }</font></font></font></font>
-				</p>
-				<p
-					lang="en-GB"
-					class="western"
-					align="left"
-					style="margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="5"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0.5cm; margin-left: -0.69cm; margin-right: -0.3cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_cbe2ec99.png"
-						name="Image 19"
-						align="bottom"
-						width="87"
-						height="94"
-						border="0"
-					/>
-				</p></td>
-		</tr>
-	</table>
-	<p style="margin-bottom: 0.35cm">
-		<br /> <br />
-
-	</p>
-	<table
-		width="631"
-		cellpadding="7"
-		cellspacing="0"
-	>
-		<colgroup>
-			<col width="97" />
-			<col width="2" />
-		</colgroup>
-		<colgroup>
-			<col width="374" />
-		</colgroup>
-		<colgroup>
-			<col width="5" />
-			<col width="78" />
-		</colgroup>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
 		<tr>
-			<td
-				colspan="5"
-				width="611"
-				valign="top"
-				style="border-top: 2.25pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: 2.25pt solid #000000; padding: 0cm 0.19cm"
-			><p
-					lang="fr-FR"
-					style="margin-bottom: 0.35cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<span lang="en-US"><u>Example 21:</u></span><span lang="en-US"> With
-						bases loaded and one out, the batter hits a high ball to third, which the
-						umpire declares “Infield fly if fair”. As it falls, the ball hits the
-						runner touching third base.</span>
-				</p>
-				<p
-					lang="fr-FR"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<span lang="en-US">The batter is declared out under “Out By Rule”
-						rule 8, and the putout is credited to the third baseman. The runner who
-						was hit is not out, and remains on the same base.</span>
-				</p></td>
+			<td class="exampleImage">
+				<img
+					src="441990d9.png"
+					alt="Infield fly"
+					width="87"
+					height="181"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* the first batter hits a hit in right field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* The second batter hits a high ball and the infield fly is called. The second baseman 
+				drops the ball due to interference from the runner on first base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR8-4</span>
+				<span>, </span>
+				<span>runner -> </span><span class="codePutout">OBR13-4</span>			
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="d874dc4f.png"
+					alt="Infield fly"
+					width="87"
+					height="178"/>
+			</td>
 		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="7"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.27cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">WBSC</span></font></font></font></span></span></font></font></font>
-				</p></td>
-			<td
-				width="2"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
+	</table>				
 
-				</p></td>
-			<td
-				width="374"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="orphans: 2; widows: 2"
-				>Traduction dans l’outil de scorage</p></td>
-			<td
-				width="5"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">Outil</span></font></font></font></span></span></font></font></font>
-				</p></td>
-		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="59"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.17cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_c2a77bde.png"
-						name="Image 25"
-						align="bottom"
-						width="87"
-						height="94"
-						border="0"
-					/>
-				</p></td>
-			<td
-				width="2"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="374"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>/* Le batteur frappe un cloche en condition d'infield fly et la balle
-									en retombant touche le coureur qui était sur la troisième base */</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#7f0055"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> { batter -&gt; </font></font></font><font color="#ff0000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><b>OBR8-5</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> }</font></font></font></font>
-				</p>
-				<p
-					lang="en-GB"
-					class="western"
-					align="left"
-					style="margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="5"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0.5cm; margin-left: -0.69cm; margin-right: -0.3cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_80fa1dd7.png"
-						name="Image 28"
-						align="bottom"
-						width="87"
-						height="94"
-						border="0"
-					/>
-				</p></td>
-		</tr>
-	</table>
-	<p style="margin-bottom: 0.35cm">
-		<br /> <br />
-
-	</p>
-	<table
-		width="631"
-		cellpadding="7"
-		cellspacing="0"
-	>
-		<colgroup>
-			<col width="97" />
-			<col width="2" />
-		</colgroup>
-		<colgroup>
-			<col width="374" />
-		</colgroup>
-		<colgroup>
-			<col width="5" />
-			<col width="78" />
-		</colgroup>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 25:</span>
+		<span>If foul, even if caught, the runner is out and the batter returns to bat. [OBR Definition of Terms]</span><br />
+	</p>	
+	<table class="exampleDescription">
 		<tr>
-			<td
-				colspan="5"
-				width="611"
-				valign="top"
-				style="border-top: 2.25pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: 2.25pt solid #000000; padding: 0cm 0.19cm"
-			><p
-					lang="fr-FR"
-					style="margin-bottom: 0.35cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<span lang="en-US"><u>Example 22:</u></span><span lang="en-US"> With
-						first and second bases occupied the batter hits a high ball along the line
-						between first base and home plate, and the umpire therefore declares
-						“Infield fly if fair”; the first baseman goes for the ball but fails to
-						catch it.</span>
-				</p>
-				<p
-					lang="fr-FR"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<span lang="en-US">The runner on second base, seeing the bad play,
-						tries to advance to third base, but the first baseman recovers the ball
-						and assists the third baseman in a putout. The batter is automatically put
-						out under ‘Out By Rule” 8 [9.09(c)(1)](Infield Fly), while the runner is
-						tagged out.</span>
-				</p></td>
-		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="7"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.27cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">WBSC</span></font></font></font></span></span></font></font></font>
-				</p></td>
-			<td
-				width="2"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="374"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="orphans: 2; widows: 2"
-				>Traduction dans l’outil de scorage</p></td>
-			<td
-				width="5"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">Outil</span></font></font></font></span></span></font></font></font>
-				</p></td>
-		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="59"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.17cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_2a102fb8.png"
-						name="Image 31"
-						align="bottom"
-						width="87"
-						height="268"
-						border="0"
-					/>
-				</p></td>
-			<td
-				width="2"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="374"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"> </font><font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>/* Le premier batteur frappe un double dans le champs centre */</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#7f0055"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> { batter -&gt; </font></font></font><font color="#008000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><b>2B8</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> }</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>/* Le deuxième batteur arrive sur base sur 'base on Ball' */</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#7f0055"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> { batter -&gt; </font></font></font><font color="#008000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><b>BB</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> }</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>/* Le troisième batteur frappe une cloche dans le champ interne et un
-									Infield fly est annoncé par l'arbitre. Le défenseur de la troisième
-									base tente de rattraper la balle de volée, mais commet une erreur et la
-									balle tombe au sol. Le coureur en deuxième base, voyant l'erreur, tente
-									de gagner la troisième base mais se fait tagger par le défenseur de la
-									troisième base */</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#7f0055"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><span lang="en-GB"><b>action</b></span></font></font></font><font color="#000000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><span lang="en-GB"> { batter -&gt; </span></font></font></font><font color="#ff0000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><span lang="en-GB"><b>OBR8-3</b></span></font></font></font><font color="#000000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><span lang="en-GB"> </span></font></font></font><font color="#7f0055"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><span lang="en-GB"><b>dontCountAsDoublePlay</b></span></font></font></font><font
-						color="#000000"
-					><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><span lang="en-GB"> , runner2 -&gt; </span></font></font></font><font color="#ff0000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><span lang="en-GB"><b>35</b></span></font></font></font><font color="#000000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><span lang="en-GB"> }</span></font></font></font></font>
-				</p>
-				<p
-					lang="en-GB"
-					class="western"
-					align="left"
-					style="margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="5"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0.5cm; margin-left: -0.69cm; margin-right: -0.3cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_559203f0.png"
-						name="Image 34"
-						align="bottom"
-						width="87"
-						height="267"
-						border="0"
-					/>
-				</p></td>
-		</tr>
-	</table>
-	<p style="margin-bottom: 0.35cm">
-		<br /> <br />
-
-	</p>
-	<p
-		lang="fr-FR"
-		style="margin-bottom: 0.35cm; text-indent: 0cm"
-	>
-		<span lang="en-US">No error is charged against the first baseman as
-			there were nonegative consequences. Score a putout by Infield Fly to the
-			batter, anassist to the first baseman and a putout to both the first baseman
-			and thethird baseman.</span>
-	</p>
-	<p
-		lang="fr-FR"
-		style="margin-bottom: 0.35cm"
-	>
-		<span lang="en-US">This is not a double play, as the continuity of
-			action between the twoputouts was interrupted by the misplay. This is
-			recorded in the notes of thescore-sheet.</span>
-	</p>
-	<table
-		width="631"
-		cellpadding="7"
-		cellspacing="0"
-	>
-		<colgroup>
-			<col width="97" />
-			<col width="2" />
-		</colgroup>
-		<colgroup>
-			<col width="374" />
-		</colgroup>
-		<colgroup>
-			<col width="5" />
-			<col width="78" />
-		</colgroup>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
 		<tr>
-			<td
-				colspan="5"
-				width="611"
-				valign="top"
-				style="border-top: 2.25pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: 2.25pt solid #000000; padding: 0cm 0.19cm"
-			><p
-					lang="fr-FR"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<span lang="en-US"><u>Example 23:</u></span><span lang="en-US"> With
-						first and second bases occupied and one out, the batter hits a fly ball
-						along the line between first base and home plate, and the umpire therefore
-						calls “Infield fly if fair”; the ball lands in foul territory and bounces
-						fair before being touched by a fielder: charge a putout by infield fly to
-						the batter and credit a putout to the fielder nearest the ball (in this
-						case the first baseman).</span>
-				</p></td>
+			<td class="exampleImage">
+				<img
+					src="846aea58.png"
+					alt="Infield fly"
+					width="87"
+					height="177"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The batter hits a hit in right field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner -> </span><span class="codePutout">OBR13-4</span>			
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c7bfa65d.png"
+					alt="Infield fly"
+					width="87"
+					height="175"/>
+			</td>
 		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="7"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.27cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">WBSC</span></font></font></font></span></span></font></font></font>
-				</p></td>
-			<td
-				width="2"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
+	</table>				
 
-				</p></td>
-			<td
-				width="374"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="orphans: 2; widows: 2"
-				>Traduction dans l’outil de scorage</p></td>
-			<td
-				width="5"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
+	
 
-				</p></td>
-			<td
-				width="78"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">Outil</span></font></font></font></span></span></font></font></font>
-				</p></td>
-		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="59"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.17cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_e6a75559.png"
-						name="Image 37"
-						align="bottom"
-						width="87"
-						height="92"
-						border="0"
-					/>
-				</p></td>
-			<td
-				width="2"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="374"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>/* Le premier batteur frappe une cloche le long de la ligne entre le
-									marbre et la première base. </font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>Infiled fly est annoncé, mais la balle tombe dans la zone des fausses
-									balles mais roule en zone des bonnes balles */</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#7f0055"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> { batter -&gt; </font></font></font><font color="#ff0000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><b>OBR8-3</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> }</font></font></font></font>
-				</p>
-				<p
-					lang="en-GB"
-					class="western"
-					align="left"
-					style="margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="5"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0.5cm; margin-left: -0.69cm; margin-right: -0.3cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_74320ce8.png"
-						name="Image 40"
-						align="bottom"
-						width="87"
-						height="94"
-						border="0"
-					/>
-				</p></td>
-		</tr>
-	</table>
-	<p
-		lang="fr-FR"
-		style="margin-bottom: 0.35cm"
-	>
-		<span lang="en-GB">If interference is called during an infield fly, the
-			ball remains alive until it is determined whether the ball is fair or foul.</span>
+	<p class="normalText">
+	
+		<span class="exampleNumber">Example 26:</span>
+		<span> With first and second bases occupied and one out, the batter hits a fly ball along the line between third base 
+		and home plate, and the umpire therefore calls “Infield fly if fair”; the ball lands in fair territory and bounces foul 
+		before being touched by a fielder. This is considered a foul ball, and consequently the batter is not out, he is charged 
+		with a further strike (except if he already has two) and returns to bat.</span>
 	</p>
-	<table
-		width="631"
-		cellpadding="7"
-		cellspacing="0"
-	>
-		<colgroup>
-			<col width="97" />
-			<col width="2" />
-		</colgroup>
-		<colgroup>
-			<col width="374" />
-		</colgroup>
-		<colgroup>
-			<col width="5" />
-			<col width="78" />
-		</colgroup>
-		<tr>
-			<td
-				colspan="5"
-				width="611"
-				valign="top"
-				style="border-top: 2.25pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: 2.25pt solid #000000; padding: 0cm 0.19cm"
-			><p
-					lang="fr-FR"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font face="Calibri, sans-serif"><span lang="en-US"><u>Example
-								24: </u></span></font><span lang="en-US">If fair, both the runner who interfered
-						with the fielder and the batter are out. [OBR Definition of Terms]</span>
-				</p></td>
-		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="7"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.27cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">WBSC</span></font></font></font></span></span></font></font></font>
-				</p></td>
-			<td
-				width="2"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="374"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="orphans: 2; widows: 2"
-				>Traduction dans l’outil de scorage</p></td>
-			<td
-				width="5"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">Outil</span></font></font></font></span></span></font></font></font>
-				</p></td>
-		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="59"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.17cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_441990d9.png"
-						name="Image 43"
-						align="bottom"
-						width="87"
-						height="181"
-						border="0"
-					/>
-				</p></td>
-			<td
-				width="2"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="374"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>/* le premier batteur frappe un hit dans le champ droit */</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#7f0055"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> { batter -&gt; </font></font></font><font color="#008000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><b>1B9</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> }</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>/* Le deuxième batteur frappe une cloche et l'infield fly est appelé.
-									le défenseur </font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>de la deuxième base laisse tombée la balle, a cause d'une interférence
-									du coureur en première base. */</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#7f0055"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> { batter -&gt; </font></font></font><font color="#ff0000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><b>OBR8-4</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> , runner1 -&gt; </font></font></font><font color="#ff0000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><b>OBR13-4</b></font></font></font><font color="#000000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							> }</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="5"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0.5cm; margin-left: -0.69cm; margin-right: -0.3cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_d874dc4f.png"
-						name="Image 46"
-						align="bottom"
-						width="87"
-						height="178"
-						border="0"
-					/>
-				</p></td>
-		</tr>
-	</table>
-	<p
-		lang="fr-FR"
-		style="font-style: normal; margin-bottom: 0.35cm; letter-spacing: normal"
-	>
-		<br /> <br />
-
-	</p>
-	<table
-		width="631"
-		cellpadding="7"
-		cellspacing="0"
-	>
-		<colgroup>
-			<col width="97" />
-			<col width="2" />
-		</colgroup>
-		<colgroup>
-			<col width="374" />
-		</colgroup>
-		<colgroup>
-			<col width="5" />
-			<col width="78" />
-		</colgroup>
-		<tr>
-			<td
-				colspan="5"
-				width="611"
-				valign="top"
-				style="border-top: 2.25pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: 2.25pt solid #000000; padding: 0cm 0.19cm"
-			><p
-					lang="fr-FR"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font face="Calibri, sans-serif"><span lang="en-US"><u>Example
-								25</u></span></font><span lang="en-US"><u>:</u></span><span lang="en-US"> If foul,
-						even if caught, the runner is out and the batter returns to bat. [OBR
-						Definition of Terms]</span>
-				</p></td>
-		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="7"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.27cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">WBSC</span></font></font></font></span></span></font></font></font>
-				</p></td>
-			<td
-				width="2"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="374"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="orphans: 2; widows: 2"
-				>Traduction dans l’outil de scorage</p></td>
-			<td
-				width="5"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				bgcolor="#c5e0b3"
-				style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font color="#000000"><font face="Calibri, sans-serif"><font
-							size="2"
-							style="font-size: 10pt"
-						><span style="font-style: normal"><span
-									style="font-weight: normal"
-								><font color="#000000"><font face="Times New Roman, serif"><font
-												size="3"
-												style="font-size: 12pt"
-											><span lang="en-US">Outil</span></font></font></font></span></span></font></font></font>
-				</p></td>
-		</tr>
-		<tr valign="top">
-			<td
-				width="97"
-				height="59"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="margin-right: -0.17cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_846aea58.png"
-						name="Image 49"
-						align="bottom"
-						width="87"
-						height="177"
-						border="0"
-					/>
-				</p></td>
-			<td
-				width="2"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="374"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>/* Le batteur frappe un hit dans le champ droit */</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#7f0055"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> { batter -&gt; </font></font></font><font color="#008000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><b>1B9</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> }</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#3f7f5f"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							>/* */</font></font></font></font>
-				</p>
-				<p
-					lang="fr-FR"
-					class="western"
-					align="left"
-					style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<font
-						size="2"
-						style="font-size: 11pt"
-					><font color="#7f0055"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font
-								size="2"
-								style="font-size: 10pt"
-							> { runner1 -&gt; </font></font></font><font color="#ff0000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							><b>OBR13-4</b></font></font></font><font color="#000000"><font
-							face="Consolas, serif"
-						><font
-								size="2"
-								style="font-size: 10pt"
-							> }</font></font></font></font>
-				</p>
-				<p
-					lang="en-GB"
-					class="western"
-					align="left"
-					style="margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2"
-				>
-					<br />
-
-				</p></td>
-			<td
-				width="5"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"
-			><p style="text-indent: 0cm; orphans: 2; widows: 2">
-					<br />
-
-				</p></td>
-			<td
-				width="78"
-				style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"
-			><p
-					lang="fr-FR"
-					align="center"
-					style="text-indent: 0.5cm; margin-left: -0.69cm; margin-right: -0.3cm; orphans: 2; widows: 2"
-				>
-					<img
-						src="Out%20by%20infield%20fly_html_c7bfa65d.png"
-						name="Image 52"
-						align="bottom"
-						width="87"
-						height="175"
-						border="0"
-					/>
-				</p></td>
-		</tr>
-	</table>
-	<p
-		lang="fr-FR"
-		style="margin-bottom: 0.35cm; text-indent: 0cm"
-	>
-		<br /> <br />
-
-	</p>
-	<p
-		lang="fr-FR"
-		style="margin-bottom: 0.35cm; text-indent: 0cm"
-	>
-		<span lang="en-US"><u>Example 26:</u></span><span lang="en-US"> With
-			first and second bases occupied and one out, the batterhits a fly ball along
-			the line between third base and home plate, and theumpire therefore calls
-			“Infield fly if fair”; the ball lands in fair territory andbounces foul
-			before being touched by a fielder. This is considered a foulball, and
-			consequently the batter is not out, he is charged with a furtherstrike
-			(except if he already has two) and returns to bat.</span>
-	</p>
-	<p
-		lang="fr-FR"
-		style="margin-bottom: 0.35cm"
-	>
-		<span lang="en-US">An error is charged to the fielder who was in the
-			best position to catch theball.</span>
-	</p>
-	<p
-		lang="fr-FR"
-		style="margin-bottom: 0.35cm"
-	>
-		<font face="Calibri-Bold, sans-serif"><span lang="en-US"><b>NOTE:
-			</b></span></font><span lang="en-US">As “Out By Rule” rule 8 is an automatic putout,
-			even if it isgoverned by rule 5.09(a)(12) of the OBR, it is applied when all
-			of the conditions provided by the rule and the note are true, namely:</span>
-	</p>
-	<ul>
-		<li><p
-				lang="fr-FR"
-				style="margin-bottom: 0.35cm; text-indent: 0cm"
-			>
-				<span lang="en-US">Less than two out;</span>
-			</p></li>
-		<li><p
-				lang="fr-FR"
-				style="margin-bottom: 0.35cm; text-indent: 0cm"
-			>
-				<span lang="en-US">Runners on first base, first and second, first and
-					third, or first, secondand third;</span>
-			</p></li>
-		<li><p
-				lang="fr-FR"
-				style="margin-bottom: 0.35cm; text-indent: 0cm"
-			>
-				<span lang="en-US">The batter hits a line drive or fly ball;</span>
-			</p></li>
-		<li><p
-				lang="fr-FR"
-				style="margin-bottom: 0.35cm; text-indent: 0cm"
-			>
-				<span lang="en-US">A fielder drops the ball after having touched it;</span>
-			</p></li>
-		<li><p
-				lang="fr-FR"
-				style="margin-bottom: 0.35cm; text-indent: 0cm"
-			>
-				<span lang="en-US">The umpire, judging the fielder’s action to be
-					deliberate, declares thebatter-runner out.</span>
-			</p></li>
+	
+	<p class="normalText">An error is charged to the fielder who was in the best position to catch the ball.</p>
+	
+	<p class="normalText"><b>NOTE:</b> As “Out By Rule” rule 8 is an automatic putout, even if it is governed by rule 5.09(a)(12) 
+	of the OBR, it is applied when all of the conditions provided by the rule and the note are true, namely:</p>
+	
+	<ul class="dotList">
+		<li>
+			<p class="dotList">Less than two out;</p>
+		</li>
+		<li>
+			<p class="dotList">Runners on first base, first and second, first and third, or first, secondand third;</p>
+		</li>
+		<li>
+			<p class="dotList">The batter hits a line drive or fly ball;</p>
+		</li>
+		<li>
+			<p class="dotList">A fielder drops the ball after having touched it;</p>
+		</li>
+		<li>
+			<p class="dotList">The umpire, judging the fielder’s action to be deliberate, declares the batter-runner out.</p>
+		</li>
 	</ul>
-	<p
-		lang="fr-FR"
-		style="margin-bottom: 0.35cm; text-indent: 0cm"
-	>
-		<a name="_GoBack"></a> <font face="Calibri-Bold, sans-serif"><span
-			lang="en-US"
-		><b>ATTENTION</b></span></font><span lang="en-US">: If this rule is applied the
-			ball is dead, unlike in the case of an infield fly.</span>
-	</p>
-	<p
-		style="margin-bottom: 0.35cm; text-indent: 0cm; font-style: normal; letter-spacing: normal"
-	>
-		<br /> <br />
-
-	</p>
+	
+	<p class="normalText"><b>ATTENTION</b>: If this rule is applied the ball is dead, unlike in the case of an infield fly.</p>
 </body>
 </html>
