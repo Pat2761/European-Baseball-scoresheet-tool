@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Les assistances</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+
+<body>
+	<h2 class="title2">Les assistances.</h2>
+
+	<p class="normalText">
+		<span class="obrReference">Une assistance est une statistique attribuée à un joueur défensif dont l'action contribue à l'élimination d'un frappeur-coureur ou d'un coureur.</span>
+		<span>[OBR9.10].</span>
+	</p>
+
+	<p class="normalText">Une assistance sera créditée à chaque joueur défensif qui:</p>
+
+	<ul class="dotList">
+		<li>
+			<p class="dotList">
+				<span class="obrReference">Lance ou dévie une balle frappée ou lancée de manière à provoquer un retrait, ou aurait permis 
+				un retrait sans une erreur ultérieure d'un joueur défensif. Une seule assistance, et pas plus, sera créditée à chaque 
+				joueur défensif qui lance ou dévie la balle lors d'une course-poursuite qui provoque un retrait, ou aurait permis un 
+				retrait sans une erreur ultérieure. </span> 
+				<span>[OBR 9.10(a)(1)];</span><br /><br /> 
+				<span><b>Commentaire:</b> </span> 
+				<span class="obrReference">	Un simple contact inefficace avec la balle ne sera pas considéré comme une assistance. 
+				« Dévier » signifie ralentir ou modifier la trajectoire de la balle et ainsi contribuer efficacement à 
+				l'élimination d'un frappeur ou d'un coureur. Si une élimination résulte d'un appel dans le cours normal du jeu, 
+				le scoreur officiel attribuera une assistance à chaque joueur défensif, à l'exception de celui qui a effectué 
+				l'élimination, dont l'action a conduit à celle-ci. Si une élimination résulte d'un appel initié par le lanceur 
+				qui lance à un joueur défensif après la fin de l'action précédente, le scoreur officiel attribuera une assistance 
+				au lanceur, et à lui seul. </span> 
+				<span>[OBR 9.10(a)(1) Commentaire].</span>
+			</p>
+		</li>
+		<li>
+			<p class="dotList">
+				<span class="obrReference">Lance ou dévie le balle pendant une action de jeu, ce qui entraîne l'élimination 
+				d'un coureur pour obstruction ou pour sortie de ligne. </span> 
+				<span>[OBR 9.10(a)(2)];</span>
+			</p>
+		</li>
+	</ul>
+
+	<table class="contentDescription">
+		<tr>
+			<td class="contentDescriptionDescription">L'assistance doit être enregistrée par un trait vertical dans la colonne 
+			'A' de la défense, en correspondance avec la position défensive du joueur concerné</td>
+			<td class="contentDescriptionName">
+				<img
+					src="1bac0f0a.png"
+					alt="Assists"
+					width="172"
+					height="192"/>
+				</td>
+		</tr>
+	</table>
+
+	<p class="normalText">Le même joueur de champ peut néanmoins se voir attribuer une assistance et un retrait, ou une assistance 
+	et une erreur.</p>
+
+	<p class="normalText">Ne pas attribuer une assistance à [OBR 9.10(b)(1), (2), (3)]:</p>
+
+	<ul class="dotList">
+		<li>
+			<p class="dotList">
+				<span class="obrReference">Le lanceur est retiré sur une prise, sauf s'il récupère une troisième prise non 
+				attrapée et effectue un lancer qui entraîne un retrait;</span>
+			</p>
+		</li>
+		<li>
+			<p class="normalText">
+				<span class="obrReference">Le lanceur, lorsqu'un coureur est éliminé suite à un lancer légal reçu par le 
+				receveur (par exemple, lorsque le receveur retire un coureur hors des bases, élimine un coureur tentant de 
+				voler une base ou touche un coureur tentant de marquer un point); ou</span>
+			</p>
+		</li>
+		<li>
+			<p class="normalText">
+				<span class="obrReference">un défenseur dont le lancer erroné permet à un coureur d'avancer, même 
+				si le coureur est ensuite éliminé durant la même phase de jeu</span>
+			</p>
+		</li>
+		<li>
+			<p class="normalText">
+				<span class="obrReference">Une action qui suit une erreur de jeu (qu'il s'agisse ou non d'une faute) est une 
+				nouvelle action, et le joueur ayant commis l'erreur ne se verra pas attribuer une assistance à moins qu'il 
+				ne participe à la nouvelle action.</span>
+			</p>
+		</li>
+	</ul>
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 33:</span> 
+		<span>Avec un coureur en première base, le frappeur frappe une balle au sol vers le défenseur de la troisième base, qui 
+		dévie la balle vers l'arrêt-court, qui l'attrape et la lance au défenseur de la deuxième base à temps pour éliminer le 
+		coureur.</span><br /> 
+		<span>On crédite une assistance aux défenseurs de la troisième base et de l'arrêt-court, et un retrait pour le 
+		défenseur de la deuxième base.</span>
+	</p>
+	<table class="exampleDescription">
+		<tr>
+			<th class="exampleHeader">WBSC</th>
+			<th class="exampleHeader">Transcription dans l'outil de scorage</th>
+			<th class="exampleHeader">Outil</th>
+		</tr>
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="cbaed3be.png"
+					alt="Assists"
+					width="97"
+					height="196"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur atteint la première base sur un 'Base on Ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le second batteur atteint la première base sur un choix défensif du défenseur 
+				de la cinquième base. Le défenseur de la cinquième base relaye à l'arrêt court qui relaye au défenseur de 
+				la deuxième base pour retirer le coureur arrivant de la première base  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">564</span>			
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="b92b277c.png"
+					alt="Assists"
+					width="87"
+					height="173"/>
+			</td>
+		</tr>
+	</table>
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 34:</span>
+		<span>Avec un coureur en première base, le frappeur frappe une balle au sol vers la deuxième base, qui lance vers 
+		l'arrêt-court trop tard pour éliminer le coureur.</span><br />
+		<span>L'arrêt-court lance la balle au défenseur de la première base qui élimine le frappeur-coureur.</span><br />
+		<span>On crédite une assistance aux défenseurs de la deuxième base et à l'arrêt-court, et un retrait au défenseur 
+		de la première base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="9f901be2.png"
+					alt="Assists"
+					width="97"
+					height="191"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un hit sur l'arrêt court */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le second frappeur frappe une balle au sol qui est rattrapé par le défenseur 
+				de la deuxième base. Il relaye la balle à l'arrêt court pour tenté de retirer le coureur sans succès. 
+				L'arrêt court relaye alors la balle au défenseur de la première base pour retirer le batteur coureur  */</span><br />
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">463</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>			
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="fcbf04ed.png"
+					alt="Assists"
+					width="87"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 35:</span>
+		<span>Avec un coureur en deuxième base, le frappeur frappe une balle au sol vers la troisième base, qui attrape 
+		la balle et la lance en deuxième base, éliminant ainsi le coureur hors de la base.</span><br />
+		<span>Cela conduit à une souricière</span><br />
+		<span>La balle circule d'un joueur défensif à l'autre (troisième base, deuxième base, receveur, arrêt-court, 
+		troisième base, deuxième base, receveur) jusqu'à ce que l'arrêt-court effectue un retrait. Inscrivez le déroulement 
+		complet sur la feuille de scorage, mais n'accordez qu'une seule assistance au troisième base, deuxième base, à 
+		l'arrêt-court et au receveur, et un retrait à l'arrêt-court.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="4d0fc22b.png"
+					alt="Assists"
+					width="97"
+					height="191"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un double dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième batteur frappe une balle au sol sur la troisième base, il arrive 
+				sur base sur un choix défensif. Le coureur venant de la deuxième base est pris en souricière  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O5</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codePutout">54265426</span>			
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="39958842.png"
+					alt="Assists"
+					width="98"
+					height="176"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 36:</span>
+		<span>Le frappeur envoie une balle au sol vers le défenseur de la troisième base, qui l'attrape à temps pour l'éliminer 
+		en première base, mais son lancer vers la première base est imprécis.</span><br />
+		<span>Le coureur avance vers le deuxième base, mais est retiré par l'arrêt-court, aidé par le défenseur du champ droit 
+		qui a attrapé la balle lancée par le défenseur de la troisième base. On impute une erreur au défenseur de la troisième 
+		base, une assistance au défenseur du champ droit et un retrait à l'arrêt-court.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b050250.png"
+					alt="Assists"
+					width="97"
+					height="103"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe une balle vers le défenseur de la troisième base qui fait 
+				une erreur de relaye vers la première base. Le batteur coureur en profite pour tenter de gagner la deuxième. 
+				La balle est récupérée par le défenseur du champ droit qui relaie à l'arrêt court pour retirer le batteur 
+				coureur */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E5T </span><span class="codePutout">96</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="3c274f16.png"
+					alt="Assists"
+					width="87"
+					height="89"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 37:</span>
+		<span>Le frappeur envoie une balle au sol lente vers le défenseur de la troisième base, qui l'attrape trop tard pour 
+		l'éliminer en première base, mais lance quand même, ratant son lancer.</span><br />
+		<span>Le coureur poursuit sa route vers la deuxième base, mais est éliminé par l'arrêt-court, grâce à un relais du 
+		défenseur du champ droit qui a attrapé la balle lancée par le défenseur de la troisième base. On attribue une assistance 
+		au défenseur du champ droit et une élimination à l'arrêt-court.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="63ed82e.png"
+					alt="Assists"
+					width="97"
+					height="102"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe un hit vers le défenseur de la troisième base qui fait une erreur 
+				de relais vers la première base. Le batteur coureur en profite pour tenter de gagner la deuxième base. La balle 
+				est récupérée par le défenseur du champ droit qui relaie à l'arrêt court pour retirer le batteur coureur */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5 </span><span class="codePutout">96</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="90f2f9f9.png"
+					alt="Assists"
+					width="86"
+					height="93"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 38:</span>
+		<span>Le frappeur est retiré sur trois prises, mais sur le troisième strike, le receveur ne parvient pas à attraper 
+		la balle, qui rebondit contre les barrières de protection derrière lui et revient sur le terrain.</span><br />
+		<span>Le lanceur attrape la balle et aide le défenseur de la première base à éliminer le coureur. On attribue une 
+		assistance au lanceur et une élimination au défenseur de la première base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="a2d8f482.png"
+					alt="Assists"
+					width="97"
+					height="104"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Troisième strike relaché, le lanceur récupère la balle a le renvoie au défenseur 
+				de la première base pour retirer le batteur-coureur  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS13</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="ab5ac01c.png"
+					alt="Assists"
+					width="86"
+					height="94"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 39:</span>
+		<span>Le frappeur envoie une balle haute et difficile entre la deuxième base et le champ droit. Le défenseur de la 
+		deuxième base recule et, en sautant pour effectuer l'élimination, dévie la balle avec son gant mais ne parvient pas à 
+		l'attraper. Avant que la balle ne touche le sol, le champ droit la rattrape et effectue l'élimination. On attribue une 
+		assistance au défenseur de la deuxième base et une élimination au champ droit. 
+		Ou</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="22334fc4.png"
+					alt="Assists"
+					width="97"
+					height="104"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe en balle en l'air. le défenseur de la deuxième base touche 
+				la balle sans la rattrapée et le défenseur du champ droit la rattrape avant qu'elle ne touche le sol */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">F49</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="3a7563d8.png"
+					alt="Assists"
+					width="87"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 40:</span>
+		<span>Le frappeur envoie une balle haute et facile entre la deuxième base et le champ droit. Le défenseur de la deuxième 
+		base tente d'éliminer le coureur, mais dévie simplement la balle avec son gant. Avant que la balle ne touche le sol, 
+		le champ droit la rattrape et effectue l'élimination. On attribue une assistance au défenseur de la deuxième base et 
+		une élimination au champ droit. L'action du deuxième but doit être considérée comme une erreur de jeu, mais n'est pas 
+		comptabilisée comme une faute, puisque l'élimination est effective.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="e41497f3.png"
+					alt="Assists"
+					width="97"
+					height="104"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe en balle en l'air. le défenseur de la deuxième base touche 
+				la balle sans la rattrapée et le défenseur du champ droit la rattrape avant qu'elle ne touche le sol  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">F49</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="e9472af.png"
+					alt="Assists"
+					width="87"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 41:</span>
+		<span>Le frappeur frappe une balle facile au sol vers le défenseur de la troisième base, qui la dévie mais ne parvient 
+		pas à l'attraper. Le joueur d'arrêt-court la rattrape et la lance au défenseur de la première base à temps pour 
+		effectuer l'élimination. On attribue une assistance au joueur d'arrêt-court et une élimination au défenseur de la 
+		premère base. Aucune assistance n'est attribuée au défenseur de la cinquième base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="ed392d85.png"
+					alt="Assists"
+					width="97"
+					height="102"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* retrait du batteur coureur sur une frappe sur l'arrêt court qui relai vers le défenseur de la troisième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">63</span>
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="8f13e26a.png"
+					alt="Assists"
+					width="87"
+					height="91"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+
+</html>

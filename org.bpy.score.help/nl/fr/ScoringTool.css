@@ -155,7 +155,7 @@ span.exposant {
 }
 
 span.obrReference {
-	color: #8080ff;
+	color: rgb(0, 0, 174);
 	font-style: italic;
 }
 
@@ -283,6 +283,10 @@ col.abreviationDescription {
 	text-align: left;
 }
 
+/* ------------------------------------------------------------------------------ 
+	Styles used for a dot list
+	----------------------------------------------------------------------------- */
+
 .dotList {
 	list-style-type: disc;
 	font-family: var(--main-font-family);
@@ -300,6 +304,10 @@ col.abreviationDescription {
 	line-height: 1;
 }
 
+/* ------------------------------------------------------------------------------ 
+	Styles used for a alphabetical list
+	----------------------------------------------------------------------------- */
+
 .olTypeA {
 	list-style-type:lower-alpha;
 }
@@ -309,6 +317,27 @@ col.abreviationDescription {
 }
 
 .olTypeA li {
+	list-style-type: disc;
+	margin-left: 1px;
+	margin-bottom: 0;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	line-height: 1;
+}
+
+/* ------------------------------------------------------------------------------ 
+	Styles used for a decimal list
+	----------------------------------------------------------------------------- */
+
+.olTypeNumber {
+	list-style-type:decimal;
+}
+
+.olTypeNumber li::marker {
+	content: "("counter(list-item, decimal) ")";
+}
+
+.olTypeNumber li {
 	list-style-type: disc;
 	margin-left: 1px;
 	margin-bottom: 0;
