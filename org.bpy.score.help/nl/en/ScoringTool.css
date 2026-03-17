@@ -345,3 +345,38 @@ col.abreviationDescription {
 	font-size: 12pt;
 	line-height: 1;
 }
+
+/* ------------------------------------------------------------------------------ 
+	Styles used for error description
+	----------------------------------------------------------------------------- */
+
+.errorTable {
+    border-collapse: collapse;
+    margin-left: 30px;
+}
+
+.errorTable td {
+    padding: 2px 6px;
+    vertical-align: top;
+}
+
+/* colonne puce */
+.errorTable .bullet {
+    width: 5%;
+    text-align: center;
+}
+
+/* description */
+.errorTable .desc {
+    text-align: left;
+    width: 60%;
+}
+
+/* code */
+.errorTable .code {
+    width: 35%;
+    text-indent: 100px;
+    font-family: Consolas, monospace;
+    text-align: left;
+    white-space: nowrap;
+}
