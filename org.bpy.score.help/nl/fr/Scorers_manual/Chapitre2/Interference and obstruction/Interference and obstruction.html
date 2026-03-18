@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Interférence et obstruction</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Interférence et obstruction</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">Lorsqu’un arbitre accorde au batteur ou à tout autre coureur une ou plusieurs bases à la 
+		suite d’interférence ou d'obstruction, le scoreur officiel attribuera une erreur au compte du défenseur qui a commis 
+		cette interférence ou obstruction, quel que soit le nombre de bases que le batteur, le coureur ou les coureurs ont 
+		gagné</span>
+		<span>[OBR 9.12(c)].</span>
+	</p>
+		
+	<p class="normalText">
+		<span class="obrReference">Une interférence défensive est commise par un défenseur lorsqu’il gêne un batteur pour 
+		l’empêcher de frapper un lancer</span>
+		<span>[OBR Définition des termes].</span>
+	</p>
+	
+	<p class="normalText">Le joueur de champ qui a commis l'interférence (généralement le receveur) se voit attribuer une 
+	erreur, notée « INT ».</p>
+
+	<p class="normalText">
+	<span class="obrReference">Une interférence offensive est commise par l’équipe en attaque lorsqu’elle gêne, entrave, obstrue 
+	ou trouble la progression d’un défenseur pour l’empêcher d’accomplir un jeu </span>
+	<span>[OBR Définition des termes]. Ceci est abordé dans les règles 13 et 14 des «Éliminations automatiques».</span>
+	</p>
+	
+	<p class="normalText">
+		<span class="obrReference">Une obstruction est une action par laquelle un défenseur, n’étant pas en possession de la 
+		balle ni en position pour attraper une balle, gêne la progression d’un coureur</span>
+		<span> [OBR Définition des termes].</span>
+	</p>
+	
+	<p class="normalText">L'obstruction d'un coureur-batteur avant qu'il n'atteigne le premier but est une erreur décisive, 
+	enregistrée comme « OB » (en majuscules) suivi du numéro du joueur de champ qui a commis l'obstruction.
+	</p>
+	
+	<p class="normalText"><b>NB:</b> Ni « INT » ni « OB » ne comptent comme un At-bat.
+	</p>
+	
+	<p class="normalText">L'obstruction d'un coureur est une erreur de base supplémentaire et est enregistrée avec « ob » 
+	(en minuscules) suivi du numéro du joueur de champ qui a commis l'obstruction.
+	</p>
+	
+	<p class="normalText"><b>NOTE:</b> Si l'arbitre signale une « obstruction » et que, de l'avis du scoreur, le coureur 
+	aurait avancé de toute façon, l'action est enregistrée comme si elle s'était déroulée normalement, et aucune obstruction 
+	n'est reprochée au défenseur.
+	</p>
+	
+	<p class="normalText"><b>IMPORTANT:</b> Les avancées réalisées par « obstruction » (en minuscules « ob ») ne sont pas 
+	enregistrées dans la colonne « IO » de la feuille offensive, qui ne doit être utilisée que pour les avancées du 
+	frappeur-coureur vers la première base via « INT » ou « OB » (en majuscules).
+	</p>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 42:</span>
+		<span>Le coureur atteint la première base suite à une interférence du receveur. Marquez l'action comme « INT » et 
+		imputez au receveur une erreur décisive.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="d3580d60.gif"
+					alt="Interference and obstruction"
+					width="87"
+					height="92"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le frappeur atteint le premier but suite à l'interférence du receveur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+ 				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c6c4a459.png"
+					alt="Interference and obstruction"
+					width="87"
+					height="94"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 43:</span>
+		<span>Le coureur atteint la première base suite à une obstruction du défenseur de la première base. Indiquez « OB » suivi 
+		du numéro du joueur ayant commis l'obstruction. Imputez une erreur décisive au joueur responsable, en l'occurrence le 
+		défenseur de la première base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="f339edf0.gif"
+					alt="Interference and obstruction"
+					width="87"
+					height="98"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base suite à une obstruction du défenseur 
+				de la première base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">OB3</span>
+ 				<span>}</span><br /><br />
+			
+			</td>
+			<td class="exampleImage">
+				<img
+					src="7daf314f.png"
+					alt="Interference and obstruction"
+					width="87"
+					height="93"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
