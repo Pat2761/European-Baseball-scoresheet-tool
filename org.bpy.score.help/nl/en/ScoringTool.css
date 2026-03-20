@@ -138,11 +138,13 @@ span.codeAction {
 /* Style of coloration syntaxic for an advance */
 span.codeAdvance {
 	color: #008000;
+	font-weight: bold;
 }
 
 /* Style of coloration syntaxic for a putout */
 span.codePutout {
-	color: #ff0000
+	color: #ff0000;
+	font-weight: bold;
 }
 
 /* ------------------------------------------------------------------------------ 
