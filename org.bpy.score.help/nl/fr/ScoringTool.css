@@ -321,7 +321,7 @@ col.abreviationDescription {
 .olTypeA li {
 	list-style-type: disc;
 	margin-left: 1px;
-	margin-bottom: 0;
+	margin-bottom: 12px;
 	font-family: var(--main-font-family);
 	font-size: 12pt;
 	line-height: 1;

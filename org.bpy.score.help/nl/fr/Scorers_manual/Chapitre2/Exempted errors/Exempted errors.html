@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Erreurs exemptées</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Erreurs exemptées.</h2>
+	
+	<p class="normalText">Il s'agit d'erreurs dont les effets sont compensés par le même défenseur ou un coéquipier ; autrement 
+	dit, la défense parvient néanmoins à forcer l'élimination. Ces erreurs ne sont donc pas comptabilisées contre le joueur qui 
+	les a commises et ne sont par conséquent pas signalées sur la feuille de scorage. Elles déterminent cependant la continuité 
+	du jeu lors des doubles ou triples jeux.</span>
+	</p>
+	
+	<p class="normalText">
+		<span><b>AUCUNE ERREUR N'EST, </b> imputée, conformément à la règle 9.12(d) de l'OBR </span>
+		<span> (il s'agit des « erreurs exemptées ):</span>
+	</p>
+	
+	<ol class="olTypeA">
+		<li class="olTypeA">
+			<span class="obrReference">du receveur lorsque ce dernier, après avoir reçu un lancer, exécute un mauvais relais 
+			en essayant d’empêcher un vol de base, à moins que ce mauvais relais ne permette au coureur voleur de gagner une ou 
+			plusieurs bases supplémentaires ou à un autre coureur de gagner une ou plusieurs bases 
+			</span> [OBR9.12(d)(1)].</span>
+		</li>
+		<li class="olTypeA">
+			<span class="obrReference">d’un défenseur qui exécute un mauvais relais si, selon son jugement, le coureur n’aurait 
+			pas pu être retiré sur un relais précis et avec un effort ordinaire, à moins qu’un tel mauvais relais ne permette à 
+			un coureur d’avancer au-delà de la base qu’il aurait dû atteindre si le relais n’avait pas été mal exécuté. </span>
+			<span>[OBR9.12(d)(2)].</span>
+		</li>
+		<li>
+			<span class="obrReference">d’un défenseur qui exécute un mauvais relais en tentant de compléter un double ou un 
+			triple jeu, à moins qu’un tel mauvais relais ne permette à un coureur d’avancer au-delà de la base qu’il aurait dû 
+			atteindre si le relais n’avait pas été mal exécuté. </span>
+			<span>[OBR 9.12(d)(3)].</span><br/>
+			<span lang="en-US"><b>Commentaire:</b></span>
+			<span class="obrReference"> lorsqu’un défenseur manque un relais qui, attrapé aurait complété un double ou un triple 
+			jeu, le scoreur officiel doit attribuer une erreur au défenseur qui a manqué la balle et une assistance au défenseur 
+			qui a exécuté le relais. </span>
+			<span>[OBR 9.12(d) Comment].</span>
+		</li>
+		<li class="olTypeA">
+			<span class=obrReference>d’un défenseur lorsque, après avoir manqué un roulant, un fly ou un relais, reprend la balle 
+			à temps pour retirer un coureur forcé à n’importe quelle base, ou </span>
+			<span>[OBR 9.12(d)(4)]. Peu importe que ce soit le même joueur ou un autre qui réalise l'élimination ou la passe 
+			décisive. Si l'erreur a des conséquences néfastes, elle doit être sanctionnée.</span>
+		</li>
+		<li class="olTypeA">
+			<span class="obrReference">Un certain nombre d'erreurs concernent spécifiquement le lanceur et le receveur. Il ne 
+			s'agit pas d'erreurs à proprement parler, mais de lancers irréguliers ou de lancer fou pour le lanceur, et de balles 
+			passées pour le receveur.</span>
+			<span> [OBR 9.12(e), (f)(1),(2)].</span>
+		</li>
+	</ol>
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 76:</span>
+		<span>Le frappeur envoie une balle au sol profonde vers l'arrêt-court qui la récupère et rate son lancer vers la 
+		première base.</span><br />
+		<span>Le scoeur officiel estime que, même si le lancer avait été parfait, le frappeur-coureur aurait néanmoins atteint 
+		la première base en toute sécurité, et il se voit donc accorder un coup sûr.</span><br />
+		<span>Aucune erreur n'est imputée, car le lancer manqué n'a eu aucun effet sur le résultat de l'action.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="1972c5d5.gif"
+					alt="Exempted errors"
+					width="87"
+					height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le frappeur envoie la balle en direction de l'arrêt-court, qui ne la contrôle pas. 
+				Le marqueur compte comme un coup sûr car, même sans erreur, il s'agirait d'un coup sûr. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="1fdd4dbd.png"
+					alt="Exempted errors"
+					width="87"
+					height="93"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 77:</span>
+		<span>Avec un coureur en première base, le frappeur envoie une fly vers le joueur de champ centre, qui rate la prise 
+		mais récupère la balle à temps pour éliminer le coureur en lançant en deuxième base.</span><br />
+		<span>Dans ce cas, aucune erreur n'est imputée, car le joueur de champ a récupéré la balle à temps pour éliminer le 
+		coureur lors d'un jeu forcé, et l'erreur de jeu n'a eu aucun effet sur l'issue du jeu.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="a26239df.gif"
+					alt="Exempted errors"
+					width="87"
+					height="180"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur arrive sur base grâce à un 'base on ball'. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième frappeur frappe une fly au champ centre, mais le joueur de champ centre 
+				la laisse échapper. Il récupère la balle et la relance en deuxième base pour éliminer le coureur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">84</span>			
+
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="6c5dea07.png"
+					alt="Exempted errors"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 78:</span>
+		<span>Avec un coureur en première et un autre en deuxième base, le frappeur envoie une balle en hauteur vers le 
+		champ centre, qui la rate. Le champ droit, posté à proximité, récupère la balle à temps pour éliminer le coureur 
+		parti de la première base en la relançant en deuxième base. Le coureur en deuxième base avance alors en troisième.</span><br/>
+		<span>Dans ce cas, on attribue l'assistance au défenseur du champ droit et l'élimination au défenseur de la deuxième 
+		base. Comme l'avancement du coureur de la deuxième à la troisième base a été rendu possible uniquement par la réception 
+		manquée de la balle, une erreur de base supplémentaire sera imputée au défenseur du champ centre. Veuillez inscrire 
+		une note sur la feuille de scorage pour expliquer cette situation.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b36a1936.gif"
+					alt="Exempted errors"
+					width="87"
+					height="269"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur arrive sur base grâce à un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième frappeur est atteint par un lancer, il atteint le premier but, 
+				le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur frappe une fly au champ droit, le joueur de champ la laisse tomber. Ce 
+				dernier la récupère à temps et la lance en deuxième base pour éliminer le coureur qui arrivait de la première base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">94</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">e8</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c7242ccb.png"
+					alt="Exempted errors"
+					width="87"
+					height="264"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 79:</span>
+		<span>Avec un coureur en troisième base et moins de deux retraits, le frappeur frappe une fausse balle au champ gauche. 
+		Le défenseur du champ gauche laisse tomber la balle délibérément pour empêcher le coureur de troisième base de marquer 
+		après la prise. Le frappeur reste au bâton, sans que le marqueur n'inscrive l'« erreur de réception ».</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="c5d8df13.gif"
+					alt="Exempted errors"
+					width="87"
+					height="183"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur frappe un triple au champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième frappeur envoie une balle en hauteur dans la zone des fausses balles 
+				au champ gauche. Le joueur de champ préfère laisser tomber la balle pour empêcher le coureur de marquer un point. */</span><br/>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a4848d48.png"
+					alt="Exempted errors"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
