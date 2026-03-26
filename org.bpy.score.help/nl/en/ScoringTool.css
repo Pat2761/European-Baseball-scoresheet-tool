@@ -289,6 +289,23 @@ col.abreviationDescription {
 	Styles used for a dot list
 	----------------------------------------------------------------------------- */
 
+.dashList {
+	list-style-type: none;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	margin-left: 30px;
+	padding-left: 30px;
+	list-style-type: none;
+}
+
+.dashList li::before{
+	content: '- ';
+}
+
+/* ------------------------------------------------------------------------------ 
+	Styles used for a dot list
+	----------------------------------------------------------------------------- */
+
 .dotList {
 	list-style-type: disc;
 	font-family: var(--main-font-family);
@@ -347,6 +364,44 @@ col.abreviationDescription {
 	font-size: 12pt;
 	line-height: 1;
 }
+
+/* ------------------------------------------------------------------------------ 
+	Styles used hit table description
+	----------------------------------------------------------------------------- */
+/* Style of the table */
+table.hitDescription {
+    margin-left: 4%;
+    font-family: var(--main-font-family);
+    font-size: 12pt;
+    width: 95%;
+    border-collapse: collapse;
+    border: 2px solid black;
+    table-layout: auto;
+    border: none
+}
+
+.hitDescription th,
+.hitDescription td {
+    padding: 8px;
+}
+
+/* Style of the image aroud the code */
+td.hitImage {
+    vertical-align: top;
+    padding-bottom: 15px;
+    width: 1%;
+    white-space: nowrap;
+}
+
+/* Style of the code in the center of the table */
+td.hitText {
+	width: auto;
+	text-align: center;
+	padding-bottom: 15px;
+    vertical-align: top;
+    padding: 0 20px 15px 20px;
+}
+
 
 /* ------------------------------------------------------------------------------ 
 	Styles used for error description
