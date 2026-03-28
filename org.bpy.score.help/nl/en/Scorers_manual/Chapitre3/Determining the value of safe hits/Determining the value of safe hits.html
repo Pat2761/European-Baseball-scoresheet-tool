@@ -1,395 +1,215 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
-	<meta name="generator" content="LibreOffice 25.8.5.2 (Windows)"/>
-	<meta name="author" content="uidq0529"/>
-	<meta name="created" content="2019-02-08T10:02:00"/>
-	<meta name="changedby" content="Patrick BRIAND"/>
-	<meta name="changed" content="2019-05-14T12:56:00"/>
-	<meta name="AppVersion" content="12.0000"/>
-	<style type="text/css">
-		@page { size: 21.59cm 27.94cm; margin: 2.5cm }
-		p { line-height: 115%; text-align: justify; orphans: 2; widows: 2; text-indent: 0.7cm; margin-right: 1cm; margin-bottom: 0.25cm; direction: ltr; background: transparent }
-		p.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: fr-FR }
-		p.cjk { font-size: 12pt }
-		h3 { line-height: 115%; text-align: justify; orphans: 2; widows: 2; margin-right: 1cm; margin-top: 0.35cm; margin-bottom: 0cm; direction: ltr; background: transparent }
-		h3.western { font-family: "Times New Roman", serif; font-weight: bold; font-size: 12pt; so-language: fr-FR }
-		h3.cjk { font-size: 12pt; font-weight: bold; font-family: "Calibri" }
-		h3.ctl { font-family: "Tahoma"; font-weight: bold }
-		a:link { color: #0563c1; text-decoration: underline }
-	</style>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Determining the value of safe hits</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
 </head>
-<body lang="en-US" link="#0563c1" vlink="#800000" dir="ltr"><h3 lang="fr-FR" class="western">
-<span lang="en-US">Determining the value of safe hits</span></h3>
-<p style="margin-bottom: 0.35cm"><br/>
-<br/>
+<body>
+	
+	<h2 class="title2">Determining the value of safe hits.</h2>
+	
+	<p class="normalText">According to rule 9.06 of the OBR, a safe hit shall be scored as a one base hit, two-base hit, 
+	three-base hit or home run when the batter reaches the corresponding base when no error, putout or fielder’s choice 
+	results.</p>
+	
+	<p class="normalText">When, with one or more runners on base, the batter advances more than one base on a safe hit and 
+	the defensive team makes an attempt to put out a preceding runner, the scorer shall determine whether the batter made 
+	a legitimate two-base hit or three-base hit, or whether the batter runner advanced beyond first base on the fielder’s 
+	choice </span>
+	<span>[OBR 9.06(b)].</span></p>
+	
+	<p class="normalText">
+		<span>It should also be borne in mind that a batter cannot be awarded a </span>
+		<span class="obrReference">three-base hit when a preceding runner is put out on home plate, or would have been put 
+		out but for an error. Nor may the batter be credited with a two-base hit when a preceding runner is put out at third 
+		base or would have been out but for an error. In both cases the batter-runner’s last advance must be recorded as a 
+		fielder’s choice.</span></p>
+		
+	<p class="normalText">
+		<span class="obrReference">In any case, the value of a hit should not be determined from the number of bases advanced 
+		by a preceding runner. A batter may deserve a two-base hit even though a preceding runner advances only one base, or 
+		even none, just as he may deserve only a one-base hit even though he reaches second base, and a preceding runner 
+		advances two bases</span>
+		<span>[OBR 10.06 comment]. The following examples should help to clarify this.</span></p>
+		
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 3:</span>
+		<span>The runner on first base advances to third on the hit. The right fielder tries unsuccessfully to throw to 
+		third to put out the runner. Thanks to this throw, the batter reaches second safely.</span><br/>
+		<span>This is not a double, but a single with an advance by fielder’s choice (throw). The continuation of the 
+		batter-runner to second base is noted with a small vertical line joining the first base and second base squares.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="9bea8639.gif"
+					alt="Determining the value of safe hits"
+					width="87"
+					height="184"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches the first base on a 'Base on Ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
 
-</p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">According
-to rule 9.06 of the OBR, a safe hit shall be scored as a one base
-hit, two-base hit, three-base hit or home run when the batter reaches
-the corresponding base when no error, putout or fielder’s choice
-results. </span></font></font></font></span></span></font></font></font>
-</p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><font color="#000000"><font face="Calibri-Italic, serif"><font size="2" style="font-size: 10pt"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US"><span style="font-style: normal">When,
-with one or more runners on base, the batter advances more than one
-base on a safe hit and the defensive team makes an attempt to put out
-a preceding runner, the scorer shall determine whether the batter
-made a legitimate two-base hit or three-base hit, or whether the
-batter runner advanced beyond first base on the fielder’s choice
-</span></span></font></font></font></span></font></font></font><font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">[OBR
-9.06(b)].</span></font></font></font></span></span></font></font></font></p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">It
-should also be borne in mind that a batter cannot be awarded a
-</span></font></font></font></span></span></font></font></font><font color="#000000"><font face="Calibri-Italic, serif"><font size="2" style="font-size: 10pt"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US"><span style="font-style: normal">three-base
-hit when a preceding runner is put out on home plate, or would have
-been put out but for an error. Nor may the batter be credited with a
-two-base hit when a preceding runner is put out at third base or
-would have been out but for an error. In both cases the
-batter-runner’s last advance must be recorded as a fielder’s
-choice.</span></span></font></font></font></span></font></font></font></p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><span lang="en-US">In
-any case, the value of a hit should not be determined from the number
-of bases advanced by a preceding runner. A batter may deserve a
-two-base hit even though a preceding runner advances only one base,
-or even none, just as he may deserve only a one-base hit even though
-he reaches second base, and a preceding runner advances two bases
-[OBR 10.06 comment]. The following examples should help to clarify
-this. </span>
-</p>
-<table width="631" cellpadding="7" cellspacing="0">
-	<colgroup>
-		<col width="97"/>
-		<col width="2"/>
-	</colgroup>
-	<colgroup>
-		<col width="374"/>
-	</colgroup>
-	<colgroup>
-		<col width="5"/>
-		<col width="78"/>
-	</colgroup>
-	<tr>
-		<td colspan="5" width="611" valign="top" style="border-top: 2.25pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: 2.25pt solid #000000; padding: 0cm 0.19cm"><p lang="fr-FR" style="text-indent: 0cm; margin-bottom: 0.35cm; orphans: 2; widows: 2">
-			<span lang="en-US"><u>Example 3:</u></span><span lang="en-US"> The
-			runner on first base advances to third on the hit. The right
-			fielder tries unsuccessfully to throw to third to put out the
-			runner. Thanks to this throw, the batter reaches second safely. </span>
-			</p>
-			<p lang="fr-FR" style="text-indent: 0cm; orphans: 2; widows: 2"><span lang="en-US">This
-			is not a double, but a single with an advance by fielder’s
-			choice (throw). The continuation of the batter-runner to second
-			base is noted with a small vertical line joining the first base
-			and second base squares.</span></p>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td width="97" height="7" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="margin-right: -0.27cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">WBSC</span></font></font></font></span></span></font></font></font></p>
-		</td>
-		<td width="2" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
+				<span class="codeComment">/* The second batter hits a hit to right field. The right fielder throws the ball 
+				back to the fifth baseman to try and get the runner out, but is unsuccessful. The batter then takes advantage 
+				to advance to second base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9 T95</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
 
-			</p>
-		</td>
-		<td width="374" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="orphans: 2; widows: 2">
-			Traduction dans l’outil de scorage</p>
-		</td>
-		<td width="5" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="1eb99cab.png"
+					alt="Determining the value of safe hits"
+					width="87"
+					height="179"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 4:</span>
+		<span>The runner on second advances only one base because he holds back to see if the fly ball is caught. The batter, 
+		however, reaches second base normally.</span><br/>
+		<span>This is a double even though the runner advanced only one base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b75889ad.gif"
+					alt="Determining the value of safe hits"
+					width="87"
+					height="185"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter hits a double to center field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8</span>
+				<span>}</span><br /><br />
 
-			</p>
-		</td>
-		<td width="78" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">Outil</span></font></font></font></span></span></font></font></font></p>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td width="97" height="59" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="margin-right: -0.17cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<img src="Determining%20the%20value%20of%20safe%20hits_html_9bea8639.gif" name="Image 1" alt="Image 1" align="bottom" hspace="4" vspace="4" width="87" height="184"/>
-</p>
-		</td>
-		<td width="2" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
+				<span class="codeComment">/* The second batter hits a double to right field, the runner advances */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2BRC</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a3a2a841.png"
+					alt="Determining the value of safe hits"
+					width="87"
+					height="185"/>
+			</td>
+		</tr>
+	</table>				
 
-			</p>
-		</td>
-		<td width="374" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#3f7f5f"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">/*
-			Le premier frappeur arrive sur base sur un 'Base on Ball' */</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#7f0055"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			{ batter -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>BB</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			}</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
+	<p class="exampleText">
+		<span class="exampleNumber">Example 5:</span>
+		<span>On the hit, the runner on third base moves away then turns back to touch the base, thinking that the ball 
+		might be caught on the fly. The ball nevertheless falls to the ground, becoming a safe hit, and the batter reaches 
+		second base without the runner daring to score.</span><br/>
+		<span>This is also a two-base hit.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="6e5ba173.gif"
+					alt="Determining the value of safe hits"
+					width="87"
+					height="182"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter hits a triple to right field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
 
-			</p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#3f7f5f"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">/*
-			Le deuxième frappeur frappe un hit sur le champ droit. Le
-			défenseur du champ droit relance la balle vers le défenseur de
-			la cinquième base pour essayé de retirer le coureur sans succès.
-			Le batteur en profite alors pour gagner la deuxième base */</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#7f0055"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			{ batter -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>1B9</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			</font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>T95,</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			runner1 -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>++</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			}</font></font></font></font></p>
-			<p class="western" align="left" style="margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
+				<span class="codeComment">/* The second batter hits a double to center field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="19f47f54.png"
+					alt="Determining the value of safe hits"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
 
-			</p>
-		</td>
-		<td width="5" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="78" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0.5cm; margin-left: -0.69cm; margin-right: -0.3cm; orphans: 2; widows: 2">
-			<img src="Determining%20the%20value%20of%20safe%20hits_html_1eb99cab.png" name="Image 1" align="bottom" width="87" height="179" border="0"/>
-</p>
-		</td>
-	</tr>
-</table>
-<p style="margin-bottom: 0.35cm"><br/>
-<br/>
-
-</p>
-<table width="631" cellpadding="7" cellspacing="0">
-	<colgroup>
-		<col width="97"/>
-		<col width="2"/>
-	</colgroup>
-	<colgroup>
-		<col width="374"/>
-	</colgroup>
-	<colgroup>
-		<col width="5"/>
-		<col width="78"/>
-	</colgroup>
-	<tr>
-		<td colspan="5" width="611" valign="top" style="border-top: 2.25pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: 2.25pt solid #000000; padding: 0cm 0.19cm"><p lang="fr-FR" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US"><u>Example
-			4:</u></span></font></font></font></span></span></font></font></font><font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">
-			The runner on second advances only one base because he holds back
-			to see if the fly ball is caught. The batter, however, reaches
-			second base normally. This is a double even though the runner
-			advanced only one base.</span></font></font></font></span></span></font></font></font></p>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td width="97" height="7" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="margin-right: -0.27cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">WBSC</span></font></font></font></span></span></font></font></font></p>
-		</td>
-		<td width="2" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="374" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="orphans: 2; widows: 2">
-			Traduction dans l’outil de scorage</p>
-		</td>
-		<td width="5" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="78" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">Outil</span></font></font></font></span></span></font></font></font></p>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td width="97" height="59" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="margin-right: -0.17cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<img src="Determining%20the%20value%20of%20safe%20hits_html_b75889ad.gif" name="Image 4" alt="Image 4" align="bottom" hspace="4" vspace="4" width="87" height="185"/>
-</p>
-		</td>
-		<td width="2" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="374" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#3f7f5f"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">/*
-			Le premier batteur frappe un double dans le champ centre */</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#7f0055"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			{ batter -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>2B8</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			}</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#3f7f5f"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">/*
-			Le second frappeur frappe un double dans le champ droit, le
-			coureur avance */</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#7f0055"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			{ batter -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>2BRC</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			, runner2 -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>+</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			}</font></font></font></font></p>
-			<p class="western" align="left" style="margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="5" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="78" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0.5cm; margin-left: -0.69cm; margin-right: -0.3cm; orphans: 2; widows: 2">
-			<img src="Determining%20the%20value%20of%20safe%20hits_html_a3a2a841.png" name="Image 4" align="bottom" width="87" height="185" border="0"/>
-</p>
-		</td>
-	</tr>
-</table>
-<p style="text-indent: 0cm; margin-bottom: 0.35cm"><br/>
-<br/>
-
-</p>
-<table width="631" cellpadding="7" cellspacing="0">
-	<colgroup>
-		<col width="97"/>
-		<col width="2"/>
-	</colgroup>
-	<colgroup>
-		<col width="374"/>
-	</colgroup>
-	<colgroup>
-		<col width="5"/>
-		<col width="78"/>
-	</colgroup>
-	<tr>
-		<td colspan="5" width="611" valign="top" style="border-top: 2.25pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: 2.25pt solid #000000; padding: 0cm 0.19cm"><p lang="fr-FR" style="text-indent: 0cm; margin-bottom: 0.35cm; orphans: 2; widows: 2"><a name="_GoBack"></a>
-			<font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US"><u>Example
-			5:</u></span></font></font></font></span></span></font></font></font><font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">
-			On the hit, the runner on third base moves away then turns back to
-			touch the base, thinking that the ball might be caught on the fly.
-			The ball nevertheless falls to the ground, becoming a safe hit,
-			and the batter reaches second base without the runner daring to
-			score. </span></font></font></font></span></span></font></font></font>
-			</p>
-			<p lang="fr-FR" style="text-indent: 0cm; orphans: 2; widows: 2"><font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">This
-			is also a two-base hit.</span></font></font></font></span></span></font></font></font><span lang="en-US">
-			</span>
-			</p>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td width="97" height="7" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="margin-right: -0.27cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">WBSC</span></font></font></font></span></span></font></font></font></p>
-		</td>
-		<td width="2" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="374" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="orphans: 2; widows: 2">
-			Traduction dans l’outil de scorage</p>
-		</td>
-		<td width="5" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="78" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">Outil</span></font></font></font></span></span></font></font></font></p>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td width="97" height="59" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="margin-right: -0.17cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<img src="Determining%20the%20value%20of%20safe%20hits_html_6e5ba173.gif" name="Image 7" alt="Image 7" align="bottom" hspace="4" vspace="4" width="87" height="182"/>
-</p>
-		</td>
-		<td width="2" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="374" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#3f7f5f"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">/*
-			Le premier batteur frappe un triple dans le champ droit */</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#7f0055"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			{ batter -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>3B9</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			}</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#3f7f5f"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">/*
-			Le second frappeur frappe un double dans le champ centre */</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#7f0055"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			{ batter -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>2B8</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">}</font></font></font></font></p>
-			<p class="western" align="left" style="margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="5" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="78" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0.5cm; margin-left: -0.69cm; margin-right: -0.3cm; orphans: 2; widows: 2">
-			<img src="Determining%20the%20value%20of%20safe%20hits_html_19f47f54.png" name="Image 7" align="bottom" width="87" height="177" border="0"/>
-</p>
-		</td>
-	</tr>
-</table>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><span lang="en-US">When
-the batter attempts to make a two-base hit or a three-base hit by
-sliding, he must hold the last base to which he advances. If a
-batter-runner over slides and is tagged out before getting back to
-the base safely, he shall be credited with only as many bases as he
-attained safely. If a batter runner over slides second base and is
-tagged out, the official scorer shall credit him with a one-base hit;
-if the batter-runner over slides third base and is tagged out, the
-official scorer shall credit him with a two-base hit [OBR 9.06(c)]. </span>
-</p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><span lang="en-US">It
-is important to note the difference between reaching a base by
-sliding and by running. If a runner overruns a base, he is considered
-to have safely reached that base, and is credited with a hit
-corresponding to the number of that base, even if he is subsequently
-tagged out trying to return. </span>
-</p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><span lang="en-US">However,
-if he over slides a base, he has not safely reached that base, and
-the hit will therefore be scored according to the number of the
-previous base.</span></p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><span lang="en-US">When
-the batter, after making a safe hit, is called out for having failed
-to touch a base, the last base he reached safely shall determine if
-the official scorer shall credit him with a one-base hit, a two-base
-hit or a three-base hit. If a batter-runner is called out after
-missing home plate, the official scorer shall credit him with a
-three-base hit. If a batter-runner is</span><span lang="en-US"><br/>
-</span><span lang="en-US">called
-out for missing third base, the official scorer shall credit him with
-a two-base hit.</span></p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><span lang="en-US">If a
-batter-runner is called out for missing second base, the official
-scorer shall credit him with a one-base hit. If a batter-runner is
-called out for missing first base, the official scorer shall credit
-him with a time at bat, but no hit [OBR 9.06(d)].</span></p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"> <span lang="en-US">When
-a batter-runner is awarded two bases, three bases or a home run under
-the provisions of Rules 5.06(b)(4) or 6.01(h)(1), the official scorer
-shall credit the batter-runner with a two-base hit, a three-base hit
-or a home run, as the case may be [OBR 9.06(e)]. </span>
-</p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm; text-indent: 0cm"><span lang="en-US"><b>NOTE:</b></span><span lang="en-US">
-A batter, who has made a safe hit and, despite being trapped between
-bases, safely reaches the next base without any defensive errors,
-shall be awarded a hit corresponding to the last base he reached
-safely.</span></p>
+	<p class="normalText">
+		<span class="obrReference">When the batter attempts to make a two-base hit or a three-base hit by sliding, he must 
+		hold the last base to which he advances. If a batter-runner over slides and is tagged out before getting back to 
+		the base safely, he shall be credited with only as many bases as he attained safely. If a batter runner over slides 
+		second base and is tagged out, the official scorer shall credit him with a one-base hit; if the batter-runner over 
+		slides third base and is tagged out, the official scorer shall credit him with a two-base hit </span>
+		<span>[OBR 9.06(c)].</span></p>
+		
+	<p class="normalText">It is important to note the difference between reaching a base by sliding and by running. If a 
+	runner overruns a base, he is considered to have safely reached that base, and is credited with a hit corresponding 
+	to the number of that base, even if he is subsequently tagged out trying to return.</p>
+	
+	<p class="normalText">However, if he over slides a base, he has not safely reached that base, and the hit will therefore 
+	be scored according to the number of the previous base.</p>
+	
+	<p class="normalText">
+		<span class="obrReference">When the batter, after making a safe hit, is called out for having failed to touch a base, 
+		the last base he reached safely shall determine if the official scorer shall credit him with a one-base hit, a 
+		two-base hit or a three-base hit. If a batter-runner is called out after missing home plate, the official scorer 
+		shall credit him with a three-base hit. If a batter-runner is called out for missing third base, the official scorer 
+		shall credit him with a two-base hit.</span></p>
+		
+	<p class="normalText">
+		<span class="obrReference">If a batter-runner is called out for missing second base, the official scorer shall credit 
+		him with a one-base hit. If a batter-runner is called out for missing first base, the official scorer shall credit 
+		him with a time at bat, but no hit [OBR 9.06(d)].</span></p>
+		
+	<p class="normalText">
+		<span class="obrReference">When a batter-runner is awarded two bases, three bases or a home run under the provisions 
+		of Rules 5.06(b)(4) or 6.01(h)(1), the official scorer shall credit the batter-runner with a two-base hit, a 
+		three-base hit or a home run, as the case may be </span>
+		<span>[OBR 9.06(e)]. </span>
+	</p>
+	
+	<p class="normalText"><b>NOTE:</b> A batter, who has made a safe hit and, despite being trapped between bases, safely 
+	reaches the next base without any defensive errors, shall be awarded a hit corresponding to the last base he reached 
+	safely.</p>
+	
 </body>
 </html>
