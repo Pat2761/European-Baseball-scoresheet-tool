@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Coups décisifs</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Coups décisifs.</h2>
+
+	<p class="normalText">
+		<span>Sous réserve des dispositions de la règle 9.06(g),</span>
+		<span class="obrReference">lorsqu’un batteur termine la rencontre par un coup sûr qui fait marquer suffisamment de 
+		points pour que son équipe gagne, le scoreur officiel lui créditera uniquement le nombre de bases gagnées par le 
+		coureur qui a marqué le point gagnant, à la condition qu’il ait lui-même avancé d’autant de bases que ce coureur</span>
+		<span>[OBR 9.06(f)].</span></p>
+		
+	<p class="normalText">Ainsi, si le coureur qui marque le point de la victoire se trouve en troisième base, il s'agira 
+	d'un simple, même si le coup sûr aurait une valeur supérieure. De même, si le coureur est en deuxième base, il s'agira 
+	d'un double et s'il est en première base, d'un triple, à condition que le frappeur-coureur touche effectivement les bases. 
+	En revanche, si le frappeur-coureur s'arrête en première base et qu'un coureur en deuxième base marque le point de la 
+	victoire, il se verra créditer d'un simple, même si le coureur ayant marqué a avancé de deux bases.</p>
+	
+	<p class="normalText">
+		<span>Cependant, </span>
+		<span class="obrReference">Le scoreur officiel créditera au batteur la base atteinte dans le cours naturel du jeu, 
+		même si le point de la victoire est marqué quelques instants avant sur le même jeu. Par exemple, en fin de neuvième 
+		manche, le score étant à égalité avec un coureur en deuxième base, le batteur frappe un coup sûr dans le champ 
+		extérieur. Le coureur marque après que le batteur ait touché la première base et continué sa course vers la deuxième 
+		base, mais très peu de temps avant que le batteur-coureur ait atteint la deuxième base. Si le batteur-coureur atteint 
+		la deuxième base, le scoreur officiel lui créditera un double. </span>
+		><span>[OBR 9.06(f) Commentaire].</span></p>
+
+	<p class="normalText">
+		<span>La seule exception est </span>
+		<span class="obrReference">Lorsqu’un batteur termine la rencontre avec un coup de circuit à l’extérieur du terrain, 
+		lui et les autres coureurs sur bases ont droit de marquer.</span>
+		<span>[OBR 9.06(g)]. </span></p>
+		
+	<p class="normalText">Prenons deux exemples. En neuvième manche, alors que le score est de 4-4, l'équipe locale est à la 
+	batte et il y a des coureurs en première et troisième base, les situations suivantes se produisent :</p>
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 6:</span>
+		<span>Le frappeur réussit un coup sûr et le coureur en troisième base marque le point gagnant. Le frappeur se voit 
+		attribuer un simple, quelle que soit la nature de son coup, et le résultat final est de 5 à 4 en faveur de l'équipe 
+		locale. [OBR 7.01(g)(3)].</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="5c35d05a.gif"
+					alt="Game-ending hits"
+					width="87"
+					height="269"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un triple en champ centre */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le second batteur arrive sur base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le batteur frappe un hit en champ droit et est crédité d'un simple hit puisque 
+				le coureur en 3 marque le point de la victoire */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+			</td>
+			<td class="exampleImage">
+				<img
+					src="7fdf0e24.png"
+					alt="Game-ending hits"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 7:</span>
+		<span>Le frappeur envoie la balle hors du terrain. Le coup de circuit est comptabilisé comme d'habitude, et tous les 
+		points marqués sont accordés. Le score final est de 7 à 4 pour l'équipe locale. [OBR 7.01(g)(3) Exception].</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="6b38a2fd.gif"
+					alt="Game-ending hits"
+					width="87"
+					height="271"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un triple en champ centre */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le second batteur arrive sur base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* La batteur frappe un homerun dans le champ droit, tous les coureurs 
+				marque un point  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HR9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="e47a9ac1.png"
+					alt="Game-ending hits"
+					width="87"
+					height="267"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
