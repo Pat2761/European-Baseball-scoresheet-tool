@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Amorti sacrifice</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Amorti sacrifice.</h2>
+	
+	<p class="normalText">Conformément à la règle 9.08 de l'OBR:</p>
+	
+	<ol class="olTypeA">
+		<li class="olTypeA">
+			<p>
+				<span class="obrReference">Inscrire un amorti sacrifice lorsque, avant deux retraits, le batteur fait avancer 
+				un ou plusieurs coureurs avec un amorti et est retiré en première base ou aurait été retiré s’il n’y avait pas 
+				eu une erreur défensive, à moins que selon le jugement du scoreur officiel, le batteur n’exécute l’amorti pour 
+				réussir un coup sûr d’une base plutôt que pour faire avancer un ou plusieurs coureurs. Dans ce cas, attribuer 
+				une présence à la batte.</span></p>
+			<p>
+				<span class="obrReference"><b>Commentaire:</b> Pour déterminer si le batteur a sacrifié volontairement sa 
+				chance d'atteindre la première base pour permettre l'avance d'un coureur, le scoreur officiel devra accorder 
+				le bénéfice du doute au batteur. Le scoreur officiel devra prendre en considération les circonstances de 
+				cette présence à la batte, ce qui inclut la manche, le nombre de retraits et le score.</span></p>
+		</li>
+		
+		<li class="olTypeA">
+			<span class="obrReference">Inscrire un amorti sacrifice lorsque, avant deux retraits, les joueurs défensifs 
+			contrôlent un amorti sans commettre d’erreur, et essayent sans succès de retirer un coureur précédent qui 
+			avance d’une base, à moins qu’une tentative sur un amorti sacrifice n’échoue, et que, selon le jugement du
+			scoreur officiel, un effort ordinaire n’aurait pas permis de retirer le batteur en première base, on doit 
+			créditer le batteur d’un coup sûr et non un sacrifice.</span>	
+		</li>
+		
+		<li class="olTypeA">
+			<span class="obrReference">Ne pas inscrire un amorti sacrifice lorsqu’un coureur est retiré en tentant d’avancer 
+			à une base sur un amorti ou aurait été retiré autrement que par une erreur défensive. Attribuer seulement une 
+			présence à la batte</span>
+		</li>
+	</ol>
+	
+	<p class="normalText">L'abréviation d'un sacrifice (bunt) est « SH » suivie du numéro du joueur de champ ayant participé 
+	à l'action. Un sacrifice (bunt) ne compte pas comme un passage au bâton.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 8:</span>
+		<span>Le sacrifice (amorti) au lanceur permet au coureur d'avancer jusqu'en deuxième base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="2ca0ef6f.gif"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="182"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur arrive sur base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le second batteur frappe un bunt , se fait retirer par le défenseur de la 
+				première base assisté par le lanceur, et fait avancer le coureur en une  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SH13</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="3c53a75e.png"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 9:</span>
+		<span>Le sacrifice (amorti) en troisième base permet au coureur d'avancer de la deuxième à la troisième base. Une 
+		erreur du défenseur de la première base permet au frappeur-coureur d'atteindre la première base en toute sécurité.</span><br/>
+		<span>Comme vous pouvez le constater dans cet exemple, chaque avancée est notée avec le numéro de l'ordre de 
+		passage au bâton du joueur qui a effectué le sacrifice.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="fd1912e0.gif"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="179"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un double dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le second batteur frappe un bunt vers le défenseur de la troisième base qui 
+				récupère la balle et la relaie au défenseur de la première base pour retirer le coureur batteur, mais le 
+				défenseur relâche la balle. Le coureur en deuxième base avance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">SH5E3</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="7bde49be.png"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+
+
+		
+	<p class="exampleText">
+		<span>Le règlement stipule que, pour qu'un amorti soit validé, un ou plusieurs coureurs doivent avancer.</span>
+		<span class="exampleNumber">Exemple 10:</span>
+		<span>Même ici, un seul coureur a avancé, mais cela suffit pour transformer le coup en un amorti sacrifice (bunt)..</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="340a9924.gif"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="273"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un triple dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le second batteur arrive sur base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le troisième batteur frappe un bunt vers le défenseur de la première base, 
+				qui récupère la balle et la renvoie au défenseur de la deuxième base pour retirer le batteur coureur. 
+				Le coureur en première base avance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SH34</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="78ec4721.png"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="269"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span>Très souvent, lors d'un sacrifice, le défenseur de la première base court vers l'avant pour récupérer la balle; 
+		dans ces exemples, c'est généralement le lanceur ou le défenseur de la deuxième base qui se porte volontaire pour 
+		couvrir la première base. Le scoreur doit veiller scrupuleusement à consigner l'action telle qu'elle s'est réellement 
+		déroulée.</span>
+		<span class="exampleNumber">Exemple 11:</span>
+		<span>Étant donné que le défenseur de la deuxième base s'est déplacé pour couvrir la première base et a reçu l'aide 
+		du joueur de première base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="aea71fae.gif"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="177"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frape un hit dans le champ centre */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* le batteur frappe un bunt sur le défenseur de la première base qui 
+				récupère la balle qui renvoie la balle au défenseur de la deuxième base pour retirer le batteur coureur. 
+				Le coureur avance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SH34</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a8fd2a02.png"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 12:</span>
+		<span>Un cas particulier de sacrifice (amorti) se produit lorsque la défense tente d'éliminer un coureur sans y 
+		parvenir, sans commettre d'erreur. Dans ce cas, le frappeur qui atteint le premier but doit bénéficier d'un 
+		sacrifice et d'un choix du défenseur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="565a857e.gif"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="188"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur atteint la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur frappe un bunt vers le défenseur de la troisième base qui récupère 
+				la balle et la relaie au défenseur de la deuxième base pour tenter sans succés de retirer le coureur */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">SHFC54</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="830ac279.png"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="184"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText"><b>ATTENTION:</b> Lorsque, de l’avis du scoreur, ni le frappeur qui a frappé le sacrifice bunt, ni 
+	aucun des coureurs, n’auraient pu être éliminés par la défense avec un effort ordinaire, un coup sûr (bunt) doit être 
+	comptabilisé.</p>
+	
+	<p class="normalText">Aucun sacrifice (bunt) n'est accordé si le bunt entraîne l'élimination d'un coureur, même si un ou 
+	plusieurs coureurs sont en mesure d'avancer.</span></p>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 13:</span>
+		<span>Le lanceur récupère la balle amortie, élimine le coureur qui tentait de passer de la troisième base au 
+		marbre, tandis que le coureur en première base atteint la deuxième base en toute sécurité.</span><br/>
+		<span>Il ne s'agit pas d'un amorti (sacrifice) et le frappeur est crédité d'un passage au bâton. Ajoutez un B majuscule pour 
+		indiquer qu'il s'agit d'un amorti.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img 
+					src="d5143f65.gif"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="86"
+					height="272"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un triple en champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième batteur arrive sur base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le premier batteur frappe un bunt sur le lanceur qui récupère la balle et 
+				fait le choix de relayer cette balle au receveur pour retirer le coureur qui était en troisième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O1b</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">O1</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codePutout">12</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="900f6cfc.png"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+
+
+	<p class="normalText"><b>EXCEPTION:</b> Si un coureur est éliminé en tentant d'atteindre la base après celle qu'il a 
+	atteinte sur le coup sacrifice (amorti), le frappeur se voit également accorder un coup sacrifice (amorti).</p>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 14:</span>
+		<span>Le coureur en deuxième base, après avoir atteint la troisième, continue vers le marbre pour tenter de 
+		profiter de l'erreur du frappeur-coureur, mais il est éliminé par le receveur avec l'aide du défenseur de la 
+		première base.</span><br/>
+		<span><b>NOTE</b>: Il arrive qu'un frappeur tente de frapper la balle avec l'intention d'obtenir un coup sûr, mais 
+		ne la touche que faiblement. Dans ce cas, il ne doit pas se voir accorder un amorti, même si un ou plusieurs 
+		coureurs avancent, car ce n'était pas son intention. L'action est comptabilisée comme un retrait normal au 
+		premier but.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="c7077cf6.gif"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="86"
+					height="263"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un double dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième batteur arrive sur base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur frappe un bunt sur le lanceur qui renvoie la balle au défenseur de 
+				la première base. Le défenseur relâche la balle, et le batteur coureur arrive safe. il récupère à temps la 
+				balle pour la renvoyer au receveur qui retire le coureur arrivant de la deuxième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">SH1E3</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+ </span><span class="codePutout">32</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="fcabe250.png"
+					alt="Sacrifice hit / Sacrifice bunt"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
