@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Sacrifice fly</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2>Sacrifice fly.</h2>
+	
+	<p class="normalText">
+		<span>Conformément à la règle 9.08(d) de l'OBR : </span>
+		<span class="obrReference">Inscrire un sacrifice fly, quand avec moins de deux retraits, le batteur frappe un fly en 
+		direction d’un joueur de champ extérieur, ou d’un joueur de champ intérieur courant dans le champ extérieur dans le 
+		territoire des bonnes ou des mauvaises balles qui :</span></p>
+		
+	<ol class="olTypeNumber">
+		<li class="olTypeNumber">
+			<span class="obrReference"> est attrapé, et qu’un coureur marque après l’attrapé, ou </span>
+		</li>
+		<li class="olTypeNumber">
+			<span class="obrReference">est échappé, et qu’un coureur marque un point si, selon le jugement du scoreur 
+			officiel, le coureur aurait pu marquer après l’attrapé,</span> 
+		</li>
+	</ol>
+	
+	<p class="normalText">
+		<span class="obrReference"><b>Commentaire:</b> Le scoreur officiel doit inscrire un sacrifice fly dans le respect 
+		de la règle 9.08(d)(2) même si un autre coureur est retiré sur un jeu forcé parce que le batteur devient coureur.</span></p>
+	
+	<p class="normalText">Le règlement stipule que la balle doit être attrapée au champ extérieur. Par conséquent, un 
+	sacrifice au champ extérieur est validé même si la balle est attrapée par un joueur de champ intérieur courant au champ 
+	extérieur. Ceci s'applique particulièrement à l'arrêt-court qui, de par sa position, évolue souvent en retrait, en 
+	bordure de la zone de terre battue, et peut donc, en courant rapidement, atteindre le champ extérieur pour attraper 
+	une balle au champ extérieur. </p>
+	
+	<p class="normalText">Un sacrifice fly (comme un amorti sacrifice) ne compte pas comme un passage au bâton. L'abréviation 
+	pour sacrifice fly est « SF » suivie du numéro du joueur de champ qui a effectué l'élimination.</p>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 15:</span>
+		<span>Une balle haute au champ centre devient un sacrifice car elle permet au coureur en troisième base de marquer. 
+		De toute évidence, le coureur en troisième base a attendu que la balle soit attrapée avant de quitter la base, sinon 
+		il aurait été retiré sur appel et le sacrifice annulé.</span><br/>
+		<span><b>IMPORTANT:</b> Alors qu'un amorti (bunt) est crédité s'il permet à un coureur d'avancer d'une base, un 
+		sacrifice fly n'est crédité que s'il permet à un coureur d'atteindre le marbre.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b3debc9b.gif"
+					alt="Sacrifice fly"
+					width="87"
+					height="188"/>
+ 			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un triple dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3BRC</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur frappe une fly ans dans le champ centre qui est rattrapée de volé par le 
+				défenseur, le coureur marque le point  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SF8</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="16b4bb77.png"
+					alt="Sacrifice fly"
+					width="87"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Un sacrifice fly est validé même si le défenseur laisse tomber la balle, à condition que, 
+	de l'avis du scoreur, le coureur aurait pu marquer un point même sans cette erreur.</p>
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 16:</span>
+		<span>Sacrifice fly dans le de champ gauche, mais le défenseur laisse échapper la balle. Comme vous pouvez le 
+		constater, l'avancement du coureur au marbre est indiqué par le numéro de frappe du joueur ayant frappé le sacrifice. 
+		Malgré l'erreur qui permet au coureur d'occuper la première base, son temps de présence au bâton n'est pas comptabilisé.</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b157e185.gif"
+					alt="Sacrifice fly"
+					width="87"
+					height="186"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un double dans le champs gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B7</span>
+				<span>}</span><br /><br />
+			
+				<span class="codeComment">/* Le coureur en 2 vole la troisième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codeAdvance">SB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* le batteur frappe une fly dans le champ. Le défenseur commet une erreur en 
+				rattrapant la balle, le coureur marque le point */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">SFE7</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="246708af.png"
+					alt="Sacrifice fly"
+					width="87"
+					height="181"/>
+			</td>
+		</tr>
+	</table>				
+
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 17:</span>
+		<span>Un sacrifice fly se produit également lorsque la balle est frappée en territoire des fausses balles au champ 
+		extérieur. En effet, une prise par un joueur de champ extérieur en territoire des fausses balles remet les coureurs 
+		en jeu, et ils peuvent tenter d'avancer.</span><br/>
+		<span>L’abréviation « FSF » est utilisée pour désigner une balle sacrifice en territoire des fausses balles.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="62f78517.gif"
+					alt="Sacrifice fly"
+					width="87"
+					height="174"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un triple dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* le deuxième frappeur frappe une fly dans le champ droit dans la zone des 
+				fausses balles, et le défenseur rattrape la balle de volé  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">FSF9</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="df9be50c.png"
+					alt="Sacrifice fly"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+
+
+	<p class="normalText">Un sacrifice fly doit être validé s'il permet à un coureur de marquer un point, même si un autre 
+	coureur est éliminé sur la base qu'il tentait d'atteindre.</p>
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 18:</span>
+		<span>Après avoir attrapé une balle au vol, le joueur de champ centre aide le défenseur de la deuxième base à temps 
+		pour éliminer le coureur arrivant de la première base, tandis que le coureur en troisième base atteint le marbre. 
+		On parle alors d'un double jeu.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="a27df186.gif"
+					alt="Sacrifice fly"
+					width="87"
+					height="267"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* le premier frappeur frappe un triple dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième frappeur arrive sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/*Le frappeur frappe une fly dans le champ centre, le défenseur attrape la 
+				balle de volée. Le défenseur renvoie la balle au défenseur de la deuxième base pour retirer le 
+				coureur arrivant de la 1. Le coureur en troisième abse en profite pour marquer le point */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SF8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">84</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c84cd31e.png"
+					alt="Sacrifice fly"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Si la défense avait déjà effectué un retrait, le point aurait dû être marqué avant le retrait 
+	en deuxième base (troisième retrait), sinon aucun point n'aurait été marqué et il ne s'agirait pas d'un sacrifice fly.</p>
+	
+	<p class="normalText">Un sacrifice fly doit également être crédité si la balle est échappée par la défense et qu'un 
+	coureur est retiré, pourvu que le coureur en troisième base marque.</p>
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 19:</span>
+		<span>Le joueur de champ centre, après avoir laissé tomber la balle, élimine le coureur en deuxième base, 
+		tandis que l'autre coureur marque un point. Dans ce cas, aucune erreur n'est imputée au joueur de champ extérieur, 
+		conformément à la règle 9.12(d)(4) du règlement.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="dfc4753b.gif"
+					alt="Sacrifice fly"
+					width="87"
+					height="257"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* le premier frappeur frappe un triple dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième frappeur arrive sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur frappe une fly dans le champ centre, le défenseur attrape la balle 
+				de volée mais la laisse retomber. Le défenseur renvoie la balle au défenseur de la deuxième base pour retirer 
+				le coureur arrivant de la 1. Le coureur en troisième base en profite pour marquer le point */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SFO8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">84</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span>
+			</td>
+			<td class="exampleImage">
+				<img
+					src="8ec175e.png"
+					alt="Sacrifice fly"
+					width="87"
+					height="268"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
