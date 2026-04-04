@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Base sur balles</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	
+	<h2>Base sur balles.</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">La première base est accordée au batteur qui, lors de son passage à la batte, reçoit quatre 
+		lancers en dehors de la zone de strike</span>
+		<span>[OBR Definition of Terms]. </span>
+	</p>
+	
+	<p class="normalText">
+		<span class="obrReference">Le batteur devient coureur et a le droit à la première base sans danger d’être retiré 
+		(à condition qu’il avance vers et touche la première base) quand quatre balles ont été annoncées par l’arbitre </span>
+		<span>[OBR 5.05(b)(1)].</span>
+	</p>
+	
+	<p class="normalText">
+		<span class="obrReference">Le scoreur officiel doit inscrire une base sur balles toutes les fois qu’un batteur gagne 
+		la première base suite à quatre lancers en dehors de la zone de strike  </span>
+		<span>[OBR 9.14(a)].</span>
+		
+	</p>
+	<p class="normalText">L'abréviation à utiliser dans la première case de base est « BB », suivie d'un nombre représentant 
+	le nombre cumulé de bases concédées par le même lanceur (comme pour les retraits sur prises). Dans l'exemple 20 donné ici, 
+	il s'agit de la quatrième base concédée par le même lanceur.
+	</p>
+	
+		
+	<p class="exampleText">
+		<span>Dans </span>
+		<span class="exampleNumber">Exemple 20: </span>
+		<span>Dans le cas présent, il s'agit du la quatrième base sur balles concédé par le même lanceur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="613e9275.gif"
+					alt="Base on balls"
+					width="87"
+					height="97"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur arrive sur base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="b3773eb3.png"
+					alt="Base on balls"
+					width="87"
+					height="97"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">En cas de changement de lanceur, le décompte des bases sur balles est remis à zéro.</p>
+	
+	<p class="normalText">Lorsqu'un lanceur remplaçant retourne sur le monticule, le premier base sur balles qu'il concède 
+	se verra attribuer un numéro supérieur de un à celui qu'il avait accumulé avant son remplacement.</p>
+	
+	<p class="normalText">Comme cela a déjà été noté, un base sur balles ne compte pas comme un passage au bâton.</p>
+	
+	<p class="normalText">Lorsqu'un ou plusieurs joueurs sont contraints d'avancer en raison de l'attribution d'un base sur 
+	balles, leurs avancées sont enregistrées avec le numéro de l'ordre de passage au bâton du frappeur qui a obtenu le base 
+	sur balles.</p>
+	
+	<p class="normalText"><b>NOTE:</b> Dans ce cas, comme dans d'autres que nous verrons, l'avancement est noté de la même 
+	manière qu'un avancement suite à un coup sûr. Nous avons dit précédemment que le nombre sans parenthèses indiquait que 
+	les coureurs avaient avancé suite à un coup sûr ; nous pouvons maintenant préciser que ce nombre indique que les coureurs 
+	ont avancé grâce au frappeur (qui, dans ce cas, les a forcés à avancer).</p>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 21:</span>
+		<span>L'octroi d'un base sur balles au frappeur (le troisième au marbre) a forcé les deux coureurs sur les bases à 
+		avancer.
+		</span><br/>
+		<span>IMPORTANT: Si la quatrième balle atteint le frappeur, l'avance en première base est comptabilisée non pas comme 
+		un base sur balles, mais comme un « atteint par un lancer » [OBR 9.14(a)]. Si, après avoir obtenu un base sur balles, 
+		un frappeur refuse d'avancer en première base, ce base sur balles n'est pas accordé. Le frappeur est alors retiré et s
+		on at bat lui est imputé, comme nous l'avons déjà vu [OBR 9.14(c)].</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b88672c8.gif"
+					alt="Base on balls"
+					width="87"
+					height="268"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur arrive sur base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième batteur frappe une balle roulante vers l'arrêt court. Le défenseur 
+				relance mal la balle  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E6T</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant arrive sur base sur un 'base on ball'  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="95545bc6.png"
+					alt="Base on balls"
+					width="87"
+					height="262"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
