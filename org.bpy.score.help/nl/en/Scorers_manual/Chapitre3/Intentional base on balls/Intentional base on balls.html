@@ -1,157 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
-	<meta name="generator" content="LibreOffice 25.8.5.2 (Windows)"/>
-	<meta name="author" content="uidq0529"/>
-	<meta name="created" content="2019-02-08T10:05:00"/>
-	<meta name="changedby" content="Patrick BRIAND"/>
-	<meta name="changed" content="2019-05-15T06:21:00"/>
-	<meta name="AppVersion" content="12.0000"/>
-	<style type="text/css">
-		@page { size: 21.59cm 27.94cm; margin: 2.5cm }
-		p { line-height: 115%; text-align: justify; orphans: 2; widows: 2; text-indent: 0.7cm; margin-right: 1cm; margin-bottom: 0.25cm; direction: ltr; background: transparent }
-		p.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: fr-FR }
-		p.cjk { font-size: 12pt }
-		h3 { line-height: 115%; text-align: justify; orphans: 2; widows: 2; margin-right: 1cm; margin-top: 0.35cm; margin-bottom: 0cm; direction: ltr; background: transparent }
-		h3.western { font-family: "Times New Roman", serif; font-weight: bold; font-size: 12pt; so-language: fr-FR }
-		h3.cjk { font-size: 12pt; font-weight: bold; font-family: "Calibri" }
-		h3.ctl { font-family: "Tahoma"; font-weight: bold }
-		a:link { color: #0563c1; text-decoration: underline }
-	</style>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Intentional base on balls</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
 </head>
-<body lang="en-US" link="#0563c1" vlink="#800000" dir="ltr"><h3 lang="fr-FR" class="western">
-<span lang="en-US">Intentional base on balls</span></h3>
-<p class="western" style="margin-bottom: 0.35cm"><br/>
-<br/>
+<body>
+	<h2 class="title2">Intentional base on balls.</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">The official scorer shall score an intentional base on balls when the pitcher makes no 
+		attempt to throw the last pitch to the batter into the strike zone but purposely throws the ball wide to the catcher 
+		outside the catcher’s box </span>
+		<span>[OBR 9.14(b)].</span>	</p>
+		
+	<p class="normalText">The scorer must pay particular attention to intentional bases on balls. The intent must be very 
+	clear, and is usually justified by particular playing situations, such as the need not to confront a particularly good 
+	batter, or to fill up the bases so that all runners are forced to advance. The abbreviation “IBB” is used for an 
+	intentional base on balls.</p>
+	
+	<p class="normalText">An intentional base on balls counts as a normal base on balls, and is included in the cumulative 
+	count.</p>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Example 22:</span>
+		<span>After three normal bases on balls an intentional base on balls is given. Regardless of the intent, this counts 
+		as the fourth base on balls by this same pitcher.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="6fa8b085.gif"
+					alt="Intentional base on balls"
+					width="87"
+					height="178"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter arrives on base on a 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
 
-</p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><font color="#000000"><font face="Calibri-Italic, serif"><font size="2" style="font-size: 10pt"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US"><span style="font-style: normal">The
-official scorer shall score an intentional base on balls when the
-pitcher makes no attempt to throw the last pitch to the batter into
-the strike zone but purposely throws the ball wide to the catcher
-outside the catcher’s box </span></span></font></font></font></span></font></font></font><font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">[OBR
-9.14(b)]. </span></font></font></font></span></span></font></font></font>
-</p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">The
-scorer must pay particular attention to intentional bases on balls.
-The intent must be very clear, and is usually justified by particular
-playing situations, such as the need not to confront a particularly
-good batter, or to fill up the bases so that all runners are forced
-to advance. The abbreviation “IBB” is used for an intentional
-base on balls. </span></font></font></font></span></span></font></font></font>
-</p>
-<p lang="fr-FR" style="margin-bottom: 0.35cm"><font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">An
-intentional base on balls counts as a normal base on balls, and is
-included in the cumulative count.</span></font></font></font></span></span></font></font></font></p>
-<table width="631" cellpadding="7" cellspacing="0">
-	<colgroup>
-		<col width="97"/>
-		<col width="2"/>
-	</colgroup>
-	<colgroup>
-		<col width="374"/>
-	</colgroup>
-	<colgroup>
-		<col width="5"/>
-		<col width="78"/>
-	</colgroup>
-	<tr>
-		<td colspan="5" width="611" valign="top" style="border-top: 2.25pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: 2.25pt solid #000000; padding: 0cm 0.19cm"><p lang="fr-FR" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US"><u>Example
-			22:</u></span></font></font></font></span></span></font></font></font><font color="#000000"><font face="Calibri, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">
-			After three normal bases on balls an intentional base on balls is
-			given. Regardless of the intent, this counts as the fourth base on
-			balls by this same pitcher.</span></font></font></font></span></span></font></font></font></p>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td width="97" height="7" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="margin-right: -0.27cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font color="#000000"><font face="Calibri-Italic, serif"><font size="2" style="font-size: 10pt"><i><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">WBSC</span></font></font></font></span></i></font></font></font></p>
-		</td>
-		<td width="2" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="374" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="orphans: 2; widows: 2">
-			Traduction dans l’outil de scorage</p>
-		</td>
-		<td width="5" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="78" bgcolor="#c5e0b3" style="background: #c5e0b3; border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0cm; orphans: 2; widows: 2">
-			<font color="#000000"><font face="Calibri-Italic, serif"><font size="2" style="font-size: 10pt"><i><span style="font-weight: normal"><font color="#000000"><font face="Times New Roman, serif"><font size="3" style="font-size: 12pt"><span lang="en-US">Outil</span></font></font></font></span></i></font></font></font></p>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td width="97" height="59" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" align="center" style="margin-right: -0.17cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<img src="Intentional%20base%20on%20balls_html_6fa8b085.gif" name="Image 1" alt="Image 1" align="bottom" hspace="4" vspace="4" width="87" height="178"/>
-</p>
-		</td>
-		<td width="2" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="374" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#3f7f5f"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">/*
-			Le premier batteur arrive sur base sur un 'base on ball' */</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#7f0055"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			{ batter -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>BB</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			}</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-			<p lang="fr-FR" class="western" align="left" style="margin-bottom: 0cm; margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#3f7f5f"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">/*
-			Le lance lance intentionnellement quatre balles */</font></font></font></font></p>
-			<p lang="fr-FR" class="western" align="left" style="margin-right: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
-			<font size="2" style="font-size: 11pt"><font color="#7f0055"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>action</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			{ batter -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>IBB</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">,
-			runner1 -&gt; </font></font></font><font color="#008000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt"><b>+</b></font></font></font><font color="#000000"><font face="Consolas, serif"><font size="2" style="font-size: 10pt">
-			}</font></font></font></font></p>
-		</td>
-		<td width="5" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.19cm; padding-right: 0cm"><p style="text-indent: 0cm; orphans: 2; widows: 2">
-			<br/>
-
-			</p>
-		</td>
-		<td width="78" style="border-top: 1.00pt solid #000000; border-bottom: 2.25pt solid #000000; border-left: none; border-right: 2.25pt solid #000000; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0cm; padding-right: 0.19cm"><p lang="fr-FR" align="center" style="text-indent: 0.5cm; margin-left: -0.69cm; margin-right: -0.3cm; orphans: 2; widows: 2"><a name="_GoBack"></a>
-			<img src="Intentional%20base%20on%20balls_html_a4fadafd.png" name="Image 1" align="bottom" width="87" height="177" border="0"/>
-</p>
-		</td>
-	</tr>
-</table>
-<p style="margin-bottom: 0.35cm; text-indent: 0cm; font-style: normal; letter-spacing: normal">
-<br/>
-<br/>
-
-</p>
-<p style="font-style: normal; margin-bottom: 0.35cm; letter-spacing: normal">
-<br/>
-<br/>
-
-</p>
-<p style="font-style: normal; margin-bottom: 0.35cm; letter-spacing: normal">
-<br/>
-<br/>
-
-</p>
-<p style="font-style: normal; margin-bottom: 0.35cm; letter-spacing: normal">
-<br/>
-<br/>
-
-</p>
-<p style="font-style: normal; margin-bottom: 0.35cm; letter-spacing: normal">
-<br/>
-<br/>
-
-</p>
+				<span class="codeComment">/* intentional four balls */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">IBB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a4fadafd.png"
+					alt="Intentional base on balls"
+					width="87"
+					height="177"/>			
+			</td>
+		</tr>
+	</table>				
 </body>
 </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Base sur balles intentionnelle</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Base sur balles intentionnelle.</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">Le scoreur officiel doit inscrire une base sur balles intentionnelle lorsqu’un lanceur 
+		n’essaye pas de lancer son dernier lancer dans la zone de strike, mais volontairement lance la balle loin du receveur 
+		qui se tient en dehors de son rectangle </span>
+		<span>[OBR 9.14(b)].</span>	</p>
+		
+	<p class="normalText">Le scoreur doit porter une attention particulière aux bases sur balles intentionnelles. L'intention 
+	doit être parfaitement claire et se justifie généralement par des situations de jeu particulières, comme la nécessité 
+	d'éviter un frappeur particulièrement efficace ou de remplir les bases afin de forcer tous les coureurs à avancer. 
+	L'abréviation « IBB » désigne une base sur balle intentionnel.</p>
+	
+	<p class="normalText">Une base sur balles intentionnelle compte comme un base sur balles normal et est inclus dans le compte 
+	cumulatif.</p>
+			
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 22:</span>
+		<span>Après trois bases sur balles normales, un base sur balles intentionnel est accordé. Quelle que soit l'intention, 
+		cela compte comme le quatrième base sur balles accordé par ce même lanceur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="6fa8b085.gif"
+					alt="Intentional base on balls"
+					width="87"
+					height="178"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur arrive sur base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Base sur balle intentionelle */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">IBB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a4fadafd.png"
+					alt="Intentional base on balls"
+					width="87"
+					height="177"/>			
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
