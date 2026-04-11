@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<toc label="Manuel du scoreur" topic="Scorers_manual/Header/Header1/Header1.html">
+<toc label="Manuel du scoreur" topic="Scorers_manual/Chapitre3/Hit by pitch/Hit by pitch.html">
    <topic href="Scorers_manual/Header/Header2/Header2.html" label="En-tête">
    </topic>
    <topic href="Scorers_manual/Header/Copyright/Copyright.html" label="Droit d&apos;auteurs">
@@ -94,7 +94,7 @@
             </topic>
             <topic href="Scorers_manual/Chapitre3/Intentional base on balls/Intentional base on balls.html" label="Base sur balles intentionnelle">
             </topic>
-            <topic href="Scorer&apos;s_manual/Chapitre3/Hit_by_pitch.html" label="Hit by pitch">
+            <topic href="Scorers_manual/Chapitre3/Hit by pitch/Hit by pitch.html" label="Toucher par un lancer">
             </topic>
             <topic href="Scorer&apos;s_manual/Chapitre3/Defensive_interference.html" label="Defensive interference">
             </topic>

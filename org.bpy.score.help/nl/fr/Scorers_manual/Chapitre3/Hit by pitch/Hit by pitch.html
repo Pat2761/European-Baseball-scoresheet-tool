@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Toucher par un lancer</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Toucher par un lancer.</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">Le batteur devient coureur et a le droit à la première base sans danger d’être retiré (à 
+		condition qu’il avance vers et touche la première base) quand … il est touché par un lancer qu’il n’essaye pas de 
+		frapper à moins : </span>
+	</p>
+	
+	<ol class="olTypeNumber">
+		<li class="olTypeNumber">
+			<span class="obrReference">que la balle ne soit dans la zone de strike quand elle le touche, ou </span>
+		</li>
+		<li class="olTypeNumber">
+			<span class="obrReference">qu’il n’essaye pas d’éviter d’être touché par la balle; </span>
+		</li>
+	</ol>
+	
+	<p class="normalText">
+		<span class="obrReference">Si la balle est dans la zone de strike quand elle touche le batteur, elle est appelée 
+		strike, que le batteur essaye ou non de l’éviter. Si la balle est hors de la zone de strike quand elle touche le 
+		batteur, elle est appelée balle s’il n’essaye pas d’éviter d’être touché.</span>
+		<span>[OBR 5.05(b)(2)]. </span>
+	</p>
+	
+	<p class="normalText">L'abréviation utilisée ici est « HP »et le f	ait d'être touché par un lancé ne compte pas comme 
+	un passage au bâton. La balle est morte et aucun coureur ne peut avancer, sauf s'il y est forcé.</p>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 23:</span>
+		<span>Lorsqu'un frappeur est touché par un lancé force un ou plusieurs coureurs à avancer, leur avancée est notée avec 
+		le numéro du frappeur dans l'ordre de passage au bâton, comme nous l'avons vu pour les bases sur balles</span><br/>
+		<span class="obrReference"><b>DÉCISION APPROUVÉE:</b> Lorsqu'un frappeur est touché par une balle lancée qui ne lui 
+		donne pas droit à la première base, la balle est morte et aucun coureur ne peut avancer. </span>
+		<span>[OBR 5.05(b)(2)].</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="e171771b.gif"
+					alt="Hit by pitch"
+					width="87"
+					height="183"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr au champ centre */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant est touché par un lancer légal, il atteint la première 
+				base et le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="e7d856aa.png"
+					alt="Hit by pitch"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Dans ce cas également, si le frappeur refuse d'avancer jusqu'en première base, il est éliminé 
+	et se voit imputer un passage au bâton.</p>
+</body>
+</html>
