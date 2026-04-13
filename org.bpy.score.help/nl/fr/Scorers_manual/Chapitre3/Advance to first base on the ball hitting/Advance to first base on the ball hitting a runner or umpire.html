@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Avance en première base si la balle touche un coureur ou un arbitre</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Avance en première base si la balle touche un coureur ou un arbitre.</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">Le batteur devient coureur et a le droit à la première base sans danger d’être retiré 
+		(à condition qu’il avance vers et touche la première base) quand … Une bonne balle touche un arbitre ou un coureur 
+		dans le territoire des bonnes balles avant de toucher un défenseur </span>
+		<span>[OBR 5.05(b)(4)]. </span>
+	</p>
+	
+	<p class="normalText">Dans ce cas, la balle est morte, le frappeur-coureur obtient un coup sûr, et si un coureur a été 
+	touché, il est automatiquement retiré (Retrait par la règle 9). Même s'il s'agit du troisième retrait, le 
+	frappeur-coureur a droit à un coup sûr.</p>
+	
+	<p class="normalText">La balle étant morte, aucun coureur ne peut avancer sauf s'il y est contraint.</p>
+	
+	<p class="normalText">
+		<span>Cependant, </span>
+		<span class="obrReference">Si une bonne balle touche un arbitre après qu’elle ait passé un défenseur autre que le 
+		lanceur, ou après avoir touché un défenseur y compris le lanceur, la balle est en jeu.</span>
+		<span>[OBR 5.05(b)(4)]</span>
+	</p>
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 24:</span>
+		<span>Avec des coureurs en première et troisième base, la balle frappée par le huitième frappeur dans l'alignement 
+		atteint l'arbitre de deuxième base. La balle est morte. Le frappeur obtient un coup sûr (le chiffre à côté du symbole 
+		indique la zone où le coup a été porté). Parmi les coureurs sur les bases, seul le coureur forcé en deuxième base 
+		avance.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="ac446e32.gif"
+					alt="Advance to first base on the ball hitting a runner or umpire"
+					width="87"
+					height="269"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur gagne la première base sur un 'Base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le second batteur frappe un hit dans le champ droit, le coureur avance 
+				de deux bases */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe une balle vers la deuxième base qui touche l'arbitre */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="9e4c7db7.png"
+					alt="Advance to first base on the ball hitting a runner or umpire"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 25:</span>
+		<span>Avec moins de deux retraits et des coureurs en première et troisième base, le coureur venant de la première 
+		base est touché par une balle au sol frappée par le troisième frappeur.</span><br/>
+		<span>Le coureur touché est éliminé (Éliminé par la règle automatique 9).</span><br/>
+		<span>Le frappeur-coureur obtient la première base sur le coup sûr.</span><br/>
+		<span>Si un point est marqué à la suite de cette action par le coureur non forcé, il n'est pas comptabilisé, et 
+		le joueur doit donc retourner à la base qu'il occupait précédemment.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="6e849844.gif"
+					alt="Advance to first base on the ball hitting a runner or umpire"
+					width="87"
+					height="264"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un hit en champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* le batteur suivant frappe une balle vers le défenseur de la troisième base qui 
+				récupère la balle mais commet une erreur en la relayant. Le coureur avance sur la frappe et gagne une base 
+				supplémentaire sur l'erreur */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E5T</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+ (2)</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe une balle qui touche le coureur venant de la première 
+				base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">OBR9-4</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c884bb89.png"
+					alt="Advance to first base on the ball hitting a runner or umpire"
+					width="87"
+					height="275"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText"><b>ATTENTION:</b> Si un coureur qui ne touche pas une base est atteint par une balle frappée à 
+	l'intérieur du champ, le frappeur est retiré (retrait automatique 8) ainsi que le coureur (retrait automatique 9). Il 
+	s'agit d'un double jeu.</p>
+	
+	<p class="normalText">En revanche, si le coureur est touché par une balle frappée à l'intérieur du champ alors qu'il est 
+	en contact avec la base, seul le frappeur est déclaré éliminé.</p>
+	
+	<p class="normalText">Notez que dans une situation de balle haute intérieure (infield fly), la balle demeure vivante et 
+	en jeu ; par conséquent, tous les coureurs peuvent avancer à leurs propres risques.</p>
+</body>
+</html>
