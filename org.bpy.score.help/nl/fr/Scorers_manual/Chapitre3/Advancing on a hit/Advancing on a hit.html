@@ -5,7 +5,7 @@
 	http-equiv="content-type"
 	content="text/html; charset=utf-8"
 />
-<title>Advancing on a hit</title>
+<title>Avancer sur un coup sur</title>
 <link
 	rel="stylesheet"
 	type="text/css"
@@ -13,22 +13,22 @@
 >
 </head>
 <body>
-	<h2 class="title2">Advancing on a hit.</h2>
+	<h2 class="title2">Avancer sur un coup sur.</h2>
 	
 		
 	<p class="exampleText">
-		<span>When a runner advances on a hit, it is recorded by writing the batting order number of the batter who was 
-		awarded a base hit in the square corresponding to the base reached. Thus, (</span>
-		<span class="exampleNumber">Example 26</span>
-		<span>) if first and second bases are occupied and the third batter in the batting order hits a single, allowing 
-		the runners to reach second and third respectively, the runners’ arrival at second and third bases is recorded 
-		with a number three in the squares corresponding to those bases</span>
+		<span>Lorsqu'un coureur avance sur un coup sûr, cela est enregistré en inscrivant le numéro de l'ordre de passage au bâton du 
+		frappeur qui a obtenu le coup sûr dans la case correspondant à la base atteinte. Ainsi, (</span>
+		<span class="exampleNumber">Exemple 26</span>
+		<span>) Si les première et deuxième bases sont occupées et que le troisième frappeur dans l'ordre des frappeurs réussit un simple, 
+		permettant aux coureurs d'atteindre respectivement la deuxième et la troisième base, l'arrivée des coureurs à la deuxième et à la 
+		troisième base est enregistrée par le chiffre trois dans les cases correspondantes.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -39,17 +39,17 @@
 					height="267">
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter hits a double to left field */</span><br/>
+				<span class="codeComment">/* Le premier batteur frappe un double dans le champ gauche */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">2B7</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter reaches first base on a 'base on ball' */</span><br/>
+				<span class="codeComment">/* Le batteur suivant gagne la première base sur un 'base on ball' */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The next batter hits a single to center field, the two runners advance */</span><br/>
+				<span class="codeComment">/* Le batteur suivant frappe un simple dans le champ centre, les deux coureurs avance */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B8</span>
 				<span>, </span>
@@ -69,15 +69,15 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 27:</span>
-		<span>With a runner on first base, the batter (second in the batting order) hits a single, allowing the runner to 
-		reach third base. This is recorded with a number two in the corresponding square.</span>
+		<span class="exampleNumber">Exemple 27:</span>
+		<span>Avec un coureur en première base, le frappeur (deuxième dans l'ordre de passage au bâton) réussit un simple, permettant au 
+		coureur d'atteindre la troisième base. Ceci est noté par le chiffre deux dans la case correspondante.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -88,12 +88,12 @@
 					height="184"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first	batter reaches first base on a 'base on ball' */</span><br/>
+				<span class="codeComment">/* Le premier batteur gagne la première base sur un 'base on ball' */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The next batter hits a hit to center field, the runner gains two bases' */</span><br/>
+				<span class="codeComment">/* Le batteur suivant frappe un hit en champ centre, le coureur gagne deux bases */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B8</span>
 				<span>, </span>
@@ -113,15 +113,15 @@
 
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 28:</span>
-		<span>With a runner on first base, the batter (eighth in the batting order) hits a double, enabling the runner to 
-		reach home base. The number eight is therefore noted in the home base square.</span>
+		<span class="exampleNumber">Exemple 28:</span>
+		<span>Avec un coureur en première base, le frappeur (huitième dans l'ordre des frappeurs) réussit un double, permettant au coureur 
+		d'atteindre le marbre. Le chiffre huit est donc inscrit dans la case du marbre.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -132,12 +132,13 @@
 					height="186"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first	batter reaches first base on a 'base on ball' */</span><br/>
+				<span class="codeComment">/* Le premier batteur gagne la première base sur un 'base on ball' */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The next batter hits a double to left field, the runner gains three bases and scores the run. */</span><br/>
+				<span class="codeComment">/* Le batteur suivant frappe un double en champ gauche, le coureur gagne trois bases et 
+				marque le point */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">2BLC</span>
 				<span>, </span>
