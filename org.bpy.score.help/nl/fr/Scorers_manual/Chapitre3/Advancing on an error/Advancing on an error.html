@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Avancer sur une erreur</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Avancer sur une erreur.</h2>
+	
+	<p class="normalText">Si un ou plusieurs coureurs avancent au-delà des bases qu'ils avaient légalement atteintes grâce à une erreur 
+	commise contre le frappeur ou un autre coureur, leur avance est enregistrée dans la case correspondant à la base atteinte en indiquant 
+	entre parenthèses le numéro de l'ordre de frappe du frappeur ou du coureur contre lequel l'erreur a été commise.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 31:</span>
+		<span>Avec un coureur en première base, le frappeur frappe en direction de la troisième base, qui commet une erreur et laisse passer 
+		la balle. Le frappeur atteint ainsi la deuxième base et le coureur la troisième. L'arrivée du coureur en deuxième base est notée 2, 
+		sans parenthèses, puisqu'il l'a atteinte grâce à l'action (le coureur aurait atteint la base même si le lancer de la troisième base 
+		avait été parfait). Son arrivée en troisième base est notée 2 entre parenthèses, car la base a été atteinte grâce à l'erreur commise 
+		par le frappeur qui était le deuxième dans l'ordre de passage au bâton.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="49c3d8be.gif"
+					alt="Advancing on an error"
+					width="87"
+					height="180"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur gagne la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième batteur frappe une balle vers le défenseur de troisième base. Le défenseur récupère 
+				la balle mais commet une erreur en la relayant */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E5T+</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+ (2)</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="e5e02cae.png"
+					alt="Advancing on an error"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 32:</span>
+		<span>Avec un coureur en première base et un autre en troisième, le lanceur tente d'éliminer le coureur en première base, mais 
+		rate son lancer.</span><br/>
+		<span>Grâce à cette erreur, le coureur en troisième base marque un point et le coureur en première base avance en deuxième base.</span><br/>
+		<span>L'avance du coureur en troisième base est comptabilisée avec le chiffre cinq entre parenthèses, car il a profité de l'erreur 
+		du cinquième frappeur ; dans ce cas, l'arrivée du dernier coureur en deuxième base est considérée comme due à une erreur ayant 
+		permis d'avancer d'une base supplémentaire. Pour ce coureur, on indique le numéro du frappeur au moment de l'erreur dans le coin 
+		supérieur du carré de base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="9e41914e.gif"
+					alt="Advancing on an error"
+					width="87"
+					height="179"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un triple dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième batteur arrive sur base sur un 'Base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le lanceur tente un PickOff sur le coureur en 1, mais manque sont lancé. Le coureur en profite 
+				pour gagner la deuxième et le coureur en marque */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">POe1T</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">(2)</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="2b5f811b.png"
+					alt="Advancing on an error"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText"><b>ATTENTION</b>: Si une erreur décisive est commise avec deux coureurs retirés, aucune avance n'est comptabilisée 
+	sur un coup sûr, et tous les chiffres sont indiqués entre parenthèses, car si le jeu avait été correct, il y aurait eu trois retraits et 
+	personne n'aurait pu avancer. Si un défenseur commet une erreur de réception, les avances sont enregistrées entre parenthèses, à condition 
+	que le scoreur ne considère pas que le coureur aurait pu avancer si la balle avait été correctement attrapée.</p>
+	
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 33:</span>
+		<span>Avec des coureurs en première et deuxième base et moins de deux retraits, le frappeur frappe une balle au sol vers la troisième 
+		base, qui rate la prise, permettant ainsi à tous les coureurs d'atteindre les bases en toute sécurité. Dans ce cas, les avancées ne 
+		sont pas notées entre parenthèses car, malgré l'erreur, on suppose que le défenseur de la troisième base n'aurait pu jouer que pour 
+		le frappeur-coureur.</span><br/>
+		<span>Les coureurs auraient atteint les bases en toute sécurité même avec un jeu correct.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="e54725bd.gif"
+					alt="Advancing on an error"
+					width="87"
+					height="264"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur arrive sur base sur un 'Base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant arrive sur base sur un 'Base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe une balle vers le défenseur de la troisième base qui commet une erreur 
+				en récupérant la balle. Les autre coureur avance sur la frappe sans tenir compte de l'erreur */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="4b8ab287.png"
+					alt="Advancing on an error"
+					width="87"
+					height="268"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Mais ....</p>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 34:</span>
+		<span>S’il est jugé que le défenseur de la troisième base aurait pu plus facilement jouer pour le coureur en deuxième base, l’action 
+		est enregistrée dans cet exemple, mais même dans ce cas, il n’y a pas de parenthèses pour le coureur en troisième base, et le 
+		frappeur-coureur est enregistré comme ayant atteint la première base sur un choix du joueur de champ.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="4deb4820.gif"
+					alt="Advancing on an error"
+					width="87"
+					height="268"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur arrive sur base sur un 'Base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant arrive sur base sur un 'Base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe une balle vers le défenseur de la troisième base, 
+				qui commet une erreur */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">E5</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="fec50769.png"
+					alt="Advancing on an error"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
