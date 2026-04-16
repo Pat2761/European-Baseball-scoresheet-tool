@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Avance sur le retrait d'un coureur</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Avance sur le retrait d'un coureur.</h2>
+	
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 30:</span>
+		<span>Si, avec un coureur en première base et un autre en deuxième base, le frappeur (quatrième dans l'ordre des frappeurs) frappe 
+		la balle vers l'arrêt-court, qui lance en deuxième base à temps pour éliminer le coureur arrivant de la première base, nous noterons 
+		l'arrivée de l'autre coureur en troisième base par le numéro quatre, tandis que l'arrivée du frappeur en première base sera attribuée 
+		au choix du défenseur. En effet, le coureur a avancé sur le coup sûr (l'arrêt-court a clairement compris qu'il n'avait pas le temps 
+		d'éliminer le coureur, sinon il aurait lancé en troisième base), tandis que le frappeur a atteint la première base parce que la 
+		défense a préféré éliminer un coureur plus avancé.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="568bfb12.gif"
+					alt="Runner called out"
+					width="87"
+					height="270"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le première batteur frappe un double dans le champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant gagne la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe une balle vers l'arrêt court qui récupère la balle et la 
+				relaie au défenseur de la deuxième base pour retirer le coureur arrivant de la premier base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O6</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">64</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c3594bba.png"
+					alt="Runner called out"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
