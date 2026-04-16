@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Avance sur le retrait du batteur</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Avance sur le retrait du batteur.</h2>
+	
+		
+	<p class="exampleText">
+		<span>Comme nous l'avons vu pour les coups sûrs, si un coup sûr permet à un coureur d'avancer, même si le frappeur est retiré, 
+		l'avancement est enregistré en inscrivant le numéro du frappeur dans l'ordre de passage au bâton dans la case correspondant à 
+		la base atteinte. Ainsi, si, (</span>
+		<span class="exampleNumber">Exemple 29:</span>
+		<span>) Avec un coureur en première base, le frappeur (cinquième dans l'ordre de frappe) frappe vers la deuxième base, qui le retire 
+		en première base, permettant néanmoins au coureur d'atteindre la deuxième base, le chiffre cinq est écrit dans la case correspondante.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="ac53c883.gif"
+					alt="Batter called out"
+					width="87"
+					height="184"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur gagne la première base sur un 'base on ball'  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe une balle vers le défenseur de la deuxième base, qui relai au 
+				défenseur de la première base pour faire le retrait. Le coureur avance d'une base  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">43</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="10224281.png"
+					alt="Batter called out"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
