@@ -5,7 +5,7 @@
 	http-equiv="content-type"
 	content="text/html; charset=utf-8"
 />
-<title>Advancing on interference</title>
+<title>Avancer sur l'interférence</title>
 <link
 	rel="stylesheet"
 	type="text/css"
@@ -13,26 +13,26 @@
 >
 </head>
 <body>
-	<h2 class="title2">Advancing on interference.</h2>
+	<h2 class="title2">Avancer sur l'interférence.</h2>
 
 	<p class="normalText">
-		<span class="obrReference">The batter becomes a runner and is entitled to first base without liability to be put out 
-		(provided he advances to and touches first base) when … the catcher or any fielder interferes with him </span>
+		<span class="obrReference">Le batteur devient coureur et a le droit à la première base sans danger d’être retiré 
+		(à condition qu’il avance vers et touche la première base) quand : Le receveur ou un défenseur quelconque le gêne </span>
 		<span>[OBR 5.05(b)(3)].</span></p>
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 35:</span>
-		<span>When runners are forced to advance because of interference, it is recorded with the batting order number of the 
-		batter.</span><br/>
-		<span>Any runner who, having been awarded first base for interference, refuses to advance, is called out and charged 
-		with a time at bat.</span>
+		<span class="exampleNumber">Exemple 35:</span>
+		<span>Lorsque les coureurs sont contraints d'avancer en raison d'une interférence, cela est enregistré avec le numéro de 
+		l'ordre de passage au bâton du frappeur.</span><br/>
+		<span>Tout coureur qui, après avoir obtenu la première base pour interférence, refuse d'avancer, est éliminé et se voit 
+		attribuer un temps de passage au bâton.</span>
 	</p>	
 
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -43,12 +43,12 @@
 					height="181"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter wins first base on a 'base on ball' */</span><br/>
+				<span class="codeComment">/* Le premier batteur gagne la première base sur un 'base on ball' */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter wins the first base on catcher interference */</span><br/>
+				<span class="codeComment">/* Le batteur suivant gagne la première sur une interférence du receveur */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">INT</span>
 				<span>, </span>
@@ -66,15 +66,15 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 36:</span>
-		<span>As a rule, once the catcher interferes with the batter and the umpire has called interference, the ball is dead, 
-		the batter is awarded first base and no runners may advance unless forced.</span>
+		<span class="exampleNumber">Exemple 36:</span>
+		<span>En règle générale, une fois que le receveur gêne le frappeur et que l'arbitre a signalé l'interférence, la balle est 
+		morte, le frappeur obtient la première base et aucun coureur ne peut avancer à moins d'y être forcé.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -85,22 +85,22 @@
 					height="179"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter hits a single to third base */</span><br/>
+				<span class="codeComment">/* Le premier batteur frappe un simple vers la troisième base */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B5</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The runner steals second base */</span><br/>
+				<span class="codeComment">/* Le coureur vole la deuxième base */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner1 -> </span><span class="codeAdvance">SB</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* then takes advantage of a wild pitch to advance */</span><br/>
+				<span class="codeComment">/* puis profite d'un lancer fou pour avancer */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner2 -> </span><span class="codeAdvance">WP</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The next batter wins the first base on catcher interference */</span><br/>
+				<span class="codeComment">/* Le batteur suivant gagne la première sur une interférence du receveur */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">INT</span>
 				<span>}</span><br /><br />
@@ -116,16 +116,16 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 37:</span>
-		<span>With less than two out and a runner on third base the batter, despite interference, succeeds in hitting a deep fly 
-		ball, allowing the runner to score. The manager of the offensive team, once the action is completed, can choose whether 
-		to keep the run and let the batter be called out or …</span>
+		<span class="exampleNumber">Exemple 37:</span>
+		<span>Avec moins de deux retraits et un coureur en troisième base, le frappeur, malgré une interférence, réussit à frapper 
+		un fly, permettant au coureur de marquer. Le coatch de l'équipe offensive, une fois l'action terminée, peut choisir de 
+		conserver le point et de laisser le frappeur être retiré ou …</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -136,18 +136,18 @@
 					height="181"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter hits a double to center field */</span><br/>
+				<span class="codeComment">/* Le premier batteur frappe un double dans le champ centre */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">2B8</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The runner on second base takes advantage of a passed ball to reach third base */</span><br/>
+				<span class="codeComment">/* Le coureur en 2 profite d'une balle passée pour gagner la troisième base */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">PB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a fly ball to right field which is caught on the fly by the fielder, 
-				the runner scores the run */</span><br/>
+				<span class="codeComment">/* Le frappeur frappe un fly dans le champ droit qui est rattrapé de volée par le 
+				défenseur, le coureur marque le point */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">SF9</span>
 				<span>, </span>
@@ -165,14 +165,14 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 38:</span>
-		<span>to keep the runner on third base and the batter on first.</span>
+		<span class="exampleNumber">Exemple 38:</span>
+		<span>pour maintenir le coureur en troisième base et le frappeur en première.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -183,17 +183,17 @@
 					height="178"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter hits a double to center field */</span><br/>
+				<span class="codeComment">/* Le premier batteur frappe un double dans le champ centre  */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">2B8</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The runner on second base takes advantage of a passed ball to reach third base */</span><br/>
+				<span class="codeComment">/* Le coureur en deux profite d'une balle passée fou pour avancer en 3 */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">PB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter reaches first base on catcher interference */</span><br/>
+				<span class="codeComment">/* Le batteur suivant atteint la première base sur une interférence du receveur */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">INT</span>
 				<span>}</span><br /><br />
@@ -209,26 +209,26 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 39:</span>
-		<span>The first batter hits a single.</span><br/>
-		<span>The second is awarded a base on balls and forces the runner to second base.</span><br/>
-		<span>The catcher interferes with the third and forces the other two to advance.</span><br/>
-		<span>Bases are now full.</span><br/>
-		<span>All runners’ advances are legal.</span><br/>
-		<span>The fourth batter is struck out.</span><br/>
-		<span>The fifth hits an infield fly which is called by the umpire.</span><br/>
-		<span>The sixth also suffers interference. The first batter scores the run. This is recorded by the batting order 
-		number of the batter concerned.</span><br/>
-		<span>If, despite the interference, the batter succeeds in hitting the ball and creating a play with runners on bases, 
-		the umpire will call attention to the irregularity and let the action continue.</span><br/>
-		<span>Once the action has finished the manager in question may choose to forgo the penalty for interference or accept 
-		the situation that resulted from the hit.</span>
+		<span class="exampleNumber">Exemple 39:</span>
+		<span>Le premier frappeur réussit un simple.</span><br/>
+		<span>Le deuxième coureur obtient un but sur balles et force le coureur à se rendre en deuxième base.</span><br/>
+		<span>Le receveur gêne le troisième coureur et force les deux autres à avancer.</span><br/>
+		<span>Les bases sont maintenant pleines.</span><br/>
+		<span>Toutes les progressions des coureurs sont légales.</span><br/>
+		<span>Le quatrième frappeur est retiré sur trois prises.</span><br/>
+		<span>Le cinquième frappe un infield fly qui est déclarée comme telle par l'arbitre.</span><br/>
+		<span>Le sixième frappeur subit également une interférence. Le premier frappeur marque le point. Ceci est enregistré par 
+		le numéro de frappeur concerné.</span><br/>
+		<span>Si, malgré l'interférence, le frappeur parvient à frapper la balle et à créer une action avec des coureurs sur 
+		les bases, l'arbitre signalera l'irrégularité et laissera l'action se poursuivre.</span><br/>
+		<span>Une fois l'action terminée, le coatch concerné peut choisir de renoncer à la pénalité pour obstruction ou d'accepter 
+		la situation résultant du coup.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -239,19 +239,19 @@
 					height="525"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter hits a single in the left field */</span><br/>
+				<span class="codeComment">/* Le premier batteur frappe un simple dans le champ gauche */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B7</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The second is awarded a base on balls and forces the runner to second base */</span><br/>
+				<span class="codeComment">/* Le batteur suivant gagne la première base sur un 'base on ball', le coureur avance */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The catcher interferes with the third and forces the other two to advance. */</span><br/>
+				<span class="codeComment">/* Le batteur suivant gagne la première base sur une interférence du receveur, les coureurs avancent */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">INT</span>
 				<span>, </span>
@@ -260,17 +260,17 @@
 				<span>runner2 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The fourth batter is struck out */</span><br/>
+				<span class="codeComment">/* Le batteur suivant est retiré un strike looké */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">KL</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The fifth hits an infield fly which is called by the umpire */</span><br/>
+				<span class="codeComment">/* Le batteur suivant est retiré un infeild fly vers la troisième base */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">IF5</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The sixth also suffers interference, all runners advance */</span><br/>
+				<span class="codeComment">/* Le batteur suivant gagne la première base sur une interférence du receveur, les coureurs avance */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">INT</span>
 				<span>, </span>
@@ -292,17 +292,17 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 40:</span>
-		<span>With a runner on second base, the catcher interferes with the batter as he bunts the ball, which allows the 
-		runner to advance.</span><br/>
-		<span>After the batter is put out at first base, the manager has the option to choose whether to accept the situation 
-		that was created after the sacrifice or …</span>
+		<span class="exampleNumber">Exemple 40:</span>
+		<span>Avec un coureur en deuxième base, le receveur gêne le frappeur au moment où celui-ci amortit la balle, ce qui permet 
+		au coureur d'avancer.</span><br/>
+		<span>Une fois le frappeur éliminé en première base, le coatch a la possibilité de choisir d'accepter ou non la situation 
+		créée après le sacrifice. …</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -313,14 +313,14 @@
 					height="185"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter hits a hit to center field and capitalizes on the fielder's mistake 
-				to gain second base. */</span><br/>
+				<span class="codeComment">/* le premier batteur frappe un hit dans le champ centre, et profite de l'erreur du 
+				défenseur pour gagner la deuxième base */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B8 e8</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter hits a bunt to the pitcher, who throws the ball back to the first 
-				baseman to get the runner out. The runner on second lead */</span><br/>
+				<span class="codeComment">/* Le batteur suivant frappe un bunt sur le lanceur qui renvoie la balle au défenseur 
+				de la première base pour retirer le batteur coureur. Le coureur en 2 avance */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">SH13</span>
 				<span>, </span>
@@ -338,14 +338,14 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 41:</span>
-		<span>to bring the runner back to second and the batter-runner to first.</span>
+		<span class="exampleNumber">Exemple 41:</span>
+		<span>pour ramener le coureur en deuxième base et le frappeur-coureur en première.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -356,13 +356,13 @@
 					height="184"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter hits a hit to center field and capitalizes on the fielder's mistake 
-				to gain second base. */</span><br/>
+				<span class="codeComment">/* le premier batteur frappe un hit dans le champ centre, et profite de l'erreur du 
+				défenseur pour gagner la deuxième base */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B8 e8</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter scores first base on catcher interference */</span><br/>
+				<span class="codeComment">/* Le batteur suivant gagne la première base sur une interférence du receveur */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">INT</span>
 				<span>}</span><br /><br />
@@ -377,25 +377,25 @@
 		</tr>
 	</table>				
 
-	<p class="normalText">Rule 5.05(b)(3) of the OBR provides that, if a fielder interferes with the batter and a runner on 
-	third base attempts to score by a steal or a squeeze, the runner scores and the batter is awarded first base (also OBR 
-	6.01(g)).</p>
+	<p class="normalText">La règle 5.05(b)(3) de l'OBR prévoit que, si un joueur de champ interfère avec le frappeur et qu'un 
+	coureur sur la troisième base tente de marquer par un vol ou un amorti , le coureur marque et le frappeur se voit attribuer 
+	la première base (également OBR 6.01(g)).</p>
 	
-	<p class="normalText">Rule 5.06(b)(3)(D) of the OBR states that any other runners present may advance only if, at the 
-	time of the interference, they were attempting to steal a base.</p>
+	<p class="normalText">La règle 5.06(b)(3)(D) de l'OBR stipule que tout autre coureur présent ne peut avancer que si, au moment 
+	de l'interférence, il tentait de voler une base.</p>
 	
 	<p class="exampleText">
-		<span class="exampleNumber">Example 42:</span>
-		<span>While the runner on third base runs towards home base to take advantage of the squeeze by his colleague in the 
-		box, the catcher interferes with the batter.</span><br/>
-		<span>The ball is dead and a run is scored.</span><br/>
-		<span>The batter-runner is awarded first base. The runner, who is already committed, is awarded a stolen base.</span>
+		<span class="exampleNumber">Exemple 42:</span>
+		<span>Pendant que le coureur en troisième base court vers le marbre pour profiter du sacrifice de son coéquipier au 
+		marbre, le receveur interfère avec le frappeur.</span><br/>
+		<span>Le balle est morte et un point est marqué.</span><br/>
+		<span>Le frappeur-coureur obtient la première base. Le coureur, déjà engagé, se voit attribuer une base volée.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -406,22 +406,22 @@
 					height="181"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* the first batter hits a double to left field */</span><br/>
+				<span class="codeComment">/* le premier batteur frappe un double dans le champ gauche */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">2B7</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The runner in 2 advances in 3 on a wild pitch */</span><br/>
+				<span class="codeComment">/* Le coureur en 2 avance en 3 sur un lancer fou */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner2 -> </span><span class="codeAdvance">WP</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The runner on 3 steals home plate and scores a run */</span><br/>
+				<span class="codeComment">/* Le coureur en 3 vole le marbre et marque un point */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner3 -> </span><span class="codeAdvance">SB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter scores first base on interference from the catcher */</span><br/>
+				<span class="codeComment">/* Le batteur gagne la première base sur une interférence du receveur */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">INT</span>
 				<span>}</span><br /><br />
