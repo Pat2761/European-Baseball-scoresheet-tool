@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Avancer sur une obstruction</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Avancer sur une obstruction.</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">Si un jeu est effectué contre le joueur victime de l’obstruction … le jeu est arrêté et tous les 
+		coureurs peuvent avancer sans risque d’être retirés et jusqu’aux bases qu’ils auraient atteintes, selon l’arbitre, s’il n’y 
+		avait pas eu obstruction. Le coureur gêné par l’obstruction se voit accorder au moins une base en plus de celle qu’il avait 
+		régulièrement touchée avant l’obstruction. Tous les coureurs précédents, forcés d’avancer par la gratification des bases 
+		comme pénalité pour l’obstruction, avancent sans risque d’être retirés. </span>
+		<span>[OBR 6.01(h)(1)].</span>
+	</p>
+	
+	<p class="normalText">Pour le coureur gêné, on écrit « ob » (en minuscules) suivi du numéro du joueur de champ ayant commis 
+	l'erreur. Il s'agit d'une erreur entraînant une avance supplémentaire. Pour tout autre coureur qui avance, le numéro de frappe 
+	du coureur gêné est indiqué entre parenthèses.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 43:</span>
+		<span></span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="21974629.gif"
+					alt="Advancing on obstruction"
+					width="87"
+					height="95"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur frappe un hit dans le champ gauche, et gagne une base supplémentaire sur 
+				obstruction en première base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1BLS ob4</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="fd17a1e5.png"
+					alt="Advancing on obstruction"
+					width="87"
+					height="93"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
