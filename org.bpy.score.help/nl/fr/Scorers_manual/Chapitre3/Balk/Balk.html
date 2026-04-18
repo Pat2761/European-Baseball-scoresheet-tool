@@ -16,22 +16,22 @@
 	<h2 class="title2">Balk.</h2>
 	
 	<p class="normalText">
-		<span class="obrReference">A BALK is an illegal act by the pitcher with a runner or runners on base, entitling all runners 
-		to advance one base></span>
-		<span lang="en-US">[OBR Definition of Terms].</span></p>
+		<span class="obrReference">Un BALK est une action irrégulière commise par le lanceur lorsqu’un ou plusieurs coureurs sont 
+		sur les bases, donnant le droit à tous les coureurs d’avancer d’une base.></span>
+		<span lang="en-US">[Définition des termes de l'OBR].</span></p>
 		
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 44:</span>
-		<span>The abbreviation used for an advance on a balk is “BK” followed by the batting order number of the player at bat 
-		at the time of the balk. If there is more than one runner on base, “BK” (upper case) is used for the lead runner and “bk” 
-		(lower case) for the subsequent runners.</span>
+		<span class="exampleNumber">Exemple 44:</span>
+		<span>L'abréviation utilisée pour une avance sur un balk est « BK » suivie du numéro de frappe du joueur au bâton au moment 
+		du balk. S'il y a plus d'un coureur sur les bases, « BK » (majuscule) est utilisé pour le coureur de tête et « bk » (minuscule) 
+		pour les suivants.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -42,19 +42,19 @@
 					height="184"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter hits a hit in left field */</span><br/>
+				<span class="codeComment">/* Le premier batteur frappe un hit dans le champ gauche */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B7</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter reaches first base on a 'base on ball', the runner advances */</span><br/>
+				<span class="codeComment">/* Le batteur suivant gagne la première base sur un 'base on ball', le coureur avance */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The pitcher makes a balk, the two runners advance */</span><br/>
+				<span class="codeComment">/* Le lanceur fait un balk, les deux coureurs avancent */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner1 -> </span><span class="codeAdvance">bk</span>
 				<span>, </span>
