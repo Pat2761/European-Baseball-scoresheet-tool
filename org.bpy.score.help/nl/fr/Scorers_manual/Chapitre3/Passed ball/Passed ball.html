@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Balles passées</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Balles passées.</h2>
+
+
+	<p class="normalText">
+		<span class="obrReference">Une balle passée est une statistique attribuée au receveur dont l'action est responsable de 
+		l'avance d'un ou plusieurs coureurs </span>
+		<span>[OBR 9.13].</span></p>
+		
+	<p class="normalText">
+		<span class="obrReference">Le scoreur officiel doit attribuer une balle passée au compte du receveur lorsqu’il ne peut 
+		attraper ou contrôler une balle lancée de façon réglementaire qui aurait pu être attrapée ou contrôlée, avec un effort 
+		ordinaire, permettant ainsi à un ou plusieurs coureurs d’avancer </span>
+		<span>[OBR 9.13(b)]. </span></p>
+		
+	<p class="normalText">L'abréviation à utiliser en cas d'avance sur une balle passée est « PB » suivie du numéro de l'ordre de 
+	passage au bâton du joueur qui est au bâton au moment de la balle passée.</p>
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 49:</span>
+		<span>Dans le cas où plusieurs coureurs avancent, l'abréviation « PB » (en majuscules) est utilisée pour le coureur de 
+		tête et « pb » (en minuscules) pour les coureurs suivants.</span>
+	</p>
+		
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="81b49328.gif"
+					alt="Pass ball"
+					width="87"
+					height="183"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un double dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant gagne la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Les deux coureur avancent sur un 'pass ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">pb</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">PB</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="cd2646f2.png"
+					alt="Pass ball"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+
+
+	
+	<p class="normalText"><b>EXCEPTION:</b> Comme pour les lancers fous, l'abréviation « PB » (en majuscules) précédé de « K » et 
+	du numéro de retraits sur prises du lanceur est utilisée pour le frappeur s'il atteint la première base après que le receveur 
+	ait manqué la troisième prise. L'abréviation « pb » (en minuscules) est utilisée pour les coureurs. Toutes les autres remarques 
+	concernant les lancers fous s'appliquent également aux balles passées.</p>
+
+	<p class="normalText">« Effort ordinaire » pour le receveur signifie qu’il doit être capable d’attraper et de retenir la balle 
+	lancée dans la position délimitée par l’arc qu’il peut décrire avec son gant, en position accroupie, en attendant la balle.</p>
+	
+		
+	<p class="exampleText">
+	<span>Dans l'</span>
+		<span class="exampleNumber">Exemple 50:</span>
+		<span>, Le coureur atteint la deuxième base après que la balle lancée au cinquième frappeur ait été manquée..</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="90337b8a.gif"
+					alt="Pass ball"
+					width="87"
+					height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un hit dans le champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur profite d'un 'pass ball' pour gagner une base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">PB</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="ae700caf.png"
+					alt="Pass ball"
+					width="87"
+					height="93"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 51:</span>
+		<span>Alors que le jeu se poursuit, le même coureur profite d'une autre balle passée pour avancer jusqu'en troisième base, 
+		et au même moment le frappeur atteint la première base en toute sécurité.</span><br/>
+		<span>Pour cette dernière phase, l’abréviation « PB » (en majuscules) est enregistrée dans la case de la première base, 
+		tandis que « pb » (en minuscules) est utilisé pour signaler l’arrivée du coureur en troisième base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="3da0fc13.gif"
+					alt="Pass ball"
+					width="87"
+					height="183"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un hit dans le champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur profite d'un 'pass ball' pour gagner une base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">PB</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* troisième strike relaché sur un pass ball, le batteur coureur gagne la première base, 
+				le coureur avance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSPB</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">pb</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="1b86184c.png"
+					alt="Pass ball"
+					width="87"
+					height="179"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
