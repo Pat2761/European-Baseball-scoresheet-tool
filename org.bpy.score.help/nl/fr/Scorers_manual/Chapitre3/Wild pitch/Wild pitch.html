@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Lancer fou</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Lancer fou.</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">Un lancer fou est un lancer trop haut, trop bas ou trop à côté de la plaque de but pour être 
+		attrapé par le receveur avec un effort ordinaire </span>
+		<span>[Définition des termes de l'OBR].</span>
+	</p>
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 45:</span>
+		<span>L'abréviation utilisée pour un lancer fou est « WP » suivie du numéro de l'ordre de frappe du joueur qui se trouve 
+		au marbre au moment du lancer fou.</span><br/>
+		<span class="obrReference">Le scoreur officiel doit attribuer un lancer fou lorsque la balle lancée de façon réglementaire 
+		est soit si haute, si éloignée, ou si basse que le receveur ne peut l’arrêter et la contrôler avec un effort ordinaire, 
+		permettant ainsi à un ou plusieurs coureurs d’avancer. </span><br/>
+		<span class="obrReference">Il doit attribuer un lancer fou lorsqu’une balle lancée de façon réglementaire, touche le sol ou 
+		la plaque de but avant d’atteindre le receveur et n’est pas attrapée par ce dernier, permettant à un ou plusieurs coureurs 
+		d’avancer </span>
+		<span>[OBR 9.13(a)]</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="a8f6bb56.gif"
+					alt="Wild pitch"
+					width="87"
+					height="180"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un triple dans le champ droit */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3BRC</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant gagne la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le lanceur fait un lancer fou, les deux coureurs avance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">wp</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">WP</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="9dc39c9b.png"
+					alt="Wild pitch"
+					width="87"
+					height="179"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Si plus d'un coureur avance sur un lancer fou, l'abréviation « WP » (en majuscules) est utilisée pour le 
+	coureur de tête, avec « wp » (en minuscules) pour les coureurs suivants.</p>
+		
+	<p class="exampleText">
+		<span><b>EXCEPTION</b>: </span>
+		<span class="exampleNumber">Exemple 46:</span>
+		<span> Dans le cas ou </span>
+		<span class="obrReference">Lorsque le troisième strike est un lancer fou, permettant au batteur d'atteindre la première base,le 
+		scoreur officiel doit inscrire un strike out et un lancer fou. </span>
+		<span>[OBR 9.13(a)].</span><br/>
+		<span>L’abréviation K suivie de WP (en majuscules) pour retrait sur trois prises (suivi, bien sûr, du nombre cumulé 
+		de retraits sur trois prises pour ce lanceur) doit être utilisée pour le frappeur. L’abréviation « wp » (en minuscules) est 
+		utilisée pour les coureurs qui avancent.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="f4776bfe.gif"
+					alt="Wild pitch"
+					width="87"
+					height="180"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe un double dans le champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2BLC</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Sur le strike le batteur suivant swing et atteint la première base, le coureur avance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSWP</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">wp</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="fad89f34.png"
+					alt="Wild pitch"
+					width="87"
+					height="181"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 47:</span>
+		<span>Si un coureur avance de plus d'une base sur un lancer fou, une flèche est utilisée pour indiquer la poursuite de son avance.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="a6ee2dcb.gif"
+					alt="Wild pitch"
+					width="87"
+					height="95"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur gagne la première base sur un 'base on ball'  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur profite d'un lancer fou pour gagner deux bases */</span><br/> 
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">WP+</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="9ef32239.png"
+					alt="Wild pitch"
+					width="87"
+					height="95"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 48:</span>
+		<span>Si un coureur avance de plus d'une base sur plus d'un lancer fou contre le même frappeur, l'abréviation « WP » est 
+		utilisée pour chaque lancer fou.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="8ce8f63a.gif"
+					alt="Wild pitch"
+					width="87"
+					height="97"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur gagne la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur profite d'un lancer fou pour gagner une base */</span><br/> 
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">WP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur profite d'un deuxième lancer fou pour gagner une base */</span><br/> 
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codeAdvance">WP</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="d2c2ba77.png"
+					alt="Wild pitch"
+					width="87"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">
+		<span class="obrReference">Le scoreur officiel ne doit pas attribuer de lancer fou […] si l’équipe en défense réalise un 
+		retrait avant l'avance de n'importe quel coureur. Par exemple, si un lancer touche le sol et échappe au receveur avec un 
+		coureur en première base, mais que le receveur récupère la balle et relaie en deuxième base à temps pour retirer le coureur, 
+		le scoreur officiel ne doit pas attribuer de lancer fou. Le scoreur officiel crédite l'avance des autres coureurs comme un 
+		choix défensif. </span>
+		<span>[OBR 9.13 Commentaire]</span>
+	</p>
+</body>
+</html>
