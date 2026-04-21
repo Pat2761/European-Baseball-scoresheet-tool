@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Balle occupée</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Balle occupée.</h2>
+	
+	<p class="normalText">L’abréviation « O » est généralement utilisée pour confirmer que l’avancement du frappeur-coureur vers 
+	la première base est dû au choix du joueur défensif d’éliminer un coureur précédent. <b>Une condition essentielle est que, 
+	durant l'action, le coureur choisi ne soit éliminé ou sauvé que par une erreur.</b></p>
+	
+	<p class="normalText">En fait, l'expression « balle occupée » suit toujours une occasion de jeu en défense, que le résultat soit 
+	un retrait ou une erreur.</p>
+	
+	<p class="normalText">Le « O » pour « balle occupée » est suivi du numéro du joueur défensif qui, une fois la balle frappée récupérée, 
+	initie le jeu alternatif.</p>
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 52:</span>
+		<span>Le « O6 » inscrit dans le carré de première base indique clairement que si l'arrêt-court avait joué pour le 
+		frappeur-coureur, il aurait certainement été éliminé.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="ba7e0856.gif"
+					alt="Occupied ball"
+					width="87"
+					height="186"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* le premier batteur gagne la première base un 'base on ball'  */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe une balle vers l'arrêt court qui récupère la balle et 
+				la relaie au défenseur de deuxième base pour retirer le coureur */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O6</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">64</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="9d39f5a7.png"
+					alt="Occupied ball"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 53:</span>
+		<span>Le coureur forcé atteint la deuxième base en toute sécurité grâce à une erreur de réception du défenseur de la 
+		deuxième base sur un lancer de l'arrêt-court. Dans les deux cas, la mention « balle occupée » est utilisée après une 
+		occasion de jeu.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b08cebcb.gif"
+					alt="Occupied ball"
+					width="87"
+					height="186"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur obtient la première base sur un « base sur balle ». */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie la balle vers l'arrêt-court, qui la rattrape et la lance 
+				au défenseur de la deuxième base pour éliminer le coureur. Le joueur de champ commet une erreur en laissant tomber 
+				la balle.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O6</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">6E4</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+			<img
+					src="d6e59761.png"
+					alt="Occupied ball"
+					width="87"
+					height="178"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 54:</span>
+		<span>Avec moins de deux retraits et des coureurs en première et troisième base, le troisième frappeur envoie une balle en 
+		hauteur vers le champ centre, qui rate une prise facile.</span><br/>
+		<span>Pendant que le coureur de tête marque, le joueur de champ extérieur récupère la balle et aide l'arrêt-court à éliminer 
+		le coureur suivant, qui est forcé d'avancer à cause de l'erreur.</span><br/>
+		<span>Puisque l'OBR 9.12(d)(4) stipule qu’aucune erreur n’est imputée lorsqu’un coureur est ensuite retiré, l’avancement du 
+		frappeur-coureur vers la première base est enregistré comme une balle occupée.</span><br/>
+		<span>Le sacrifice fly dans cet exemple indique que le point aurait été marqué même sans l'erreur du joueur de champ 
+		extérieur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="3375e26a.gif"
+					alt="Occupied ball"
+					width="87"
+					height="274"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr contre l'arrêt-court */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ droit, le coureur avance de deux bases */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie une balle en hauteur au champ centre, mais le défenseur 
+				commet une erreur. Le joueur de champ la récupère et la renvoie pour éliminer le coureur qui arrivait de la 
+				deuxième base. Le coureur en troisième base marque le point */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">SFO8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">86</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="ac24d8f3.png"
+					alt="Occupied ball"
+					width="87"
+					height="270"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span>Ce n'est pas le cas pour le  </span>
+		<span class="exampleNumber">Exemple 55:</span>
+		<span>L'absence de toute mention du sacrifice fly et l'erreur concernant l'arrivée au marbre démontrent clairement que, 
+		sans cette erreur, aucun point n'aurait été marqué. [OBR 9.12].</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="2ebd6623.gif"
+					alt="Occupied ball"
+					width="87"
+					height="272"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* e premier frappeur réussit un coup sûr contre l'arrêt-court */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ droit, le coureur avance de deux bases */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie une balle en hauteur au champ centre, mais défenseur commet 
+				une erreur. Le joueur de champ récupère la balle et la renvoie pour éliminer le coureur arrivant de la deuxième base. 
+				Le coureur en troisième base marque le point. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">86</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">e8</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="7a7e3767.png"
+					alt="Occupied ball"
+					width="87"
+					height="268"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 56:</span>
+		<span>Sans aucun retrait et avec les bases pleines, le défenseur de la troisième base récupère la balle frappée au sol par 
+		le quatrième frappeur et, après avoir touché sa base, aide le défenseur de la deuxième base à conclure le double jeu.</span><br/>
+		<span>L’avancée du frappeur-coureur vers la première base est indiquée par le symbole « balle occupée », ainsi que par 
+		« GDP » pour un double jeu.</span><br/>
+		<span>L’avance du premier coureur est parfaitement légale, même si le point ne peut pas être comptabilisé comme ayant été 
+		marqué.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+					<img
+					src="17d21948.gif"
+					alt="Occupied ball"
+					width="87"
+					height="369"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la base sur un lancer fou. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSWP</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au lanceur, le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B1</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur un 'base on ball', les coureurs 
+				avancent. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur suivant frappe une balle au sol vers la troisième base, qui touche le sol. 
+				Il lance ensuite la balle au défenseur de la deuxième base, qui élimine le coureur arrivant de la première base. Le 
+				coureur en troisième base en profite pour marquer.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">GDPO5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">54</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codePutout">5</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="b924bd85.png"
+					alt="Occupied ball"
+					width="87"
+					height="354"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 57:</span>
+		<span>Le coureur-frappeur, après avoir atteint la première base sur un choix du défenseur, profite du jeu de poursuite en 
+		cours pour continuer jusqu'en deuxième base.</span><br/>
+		<span>Cette avancée supplémentaire est indiquée par une flèche.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="d6e5f436.gif"
+					alt="Occupied ball"
+					width="87"
+					height="189"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base sur un lancer fou. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSWP</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le coureur profite d'une balle passée pour avancer jusqu'en deuxième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">PB</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur envoie la balle au receveur, qui la transmet au défenseur de la troisième 
+				base pour éliminer le coureur ; une souricière élimine le coureur.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O2+</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codePutout">2565</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="b3a87c13.png"
+					alt="Occupied ball"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Dans les exemples précédents, le symbole de la « balle occupée » n'a été utilisé que pour représenter 
+	l'avancée d'un coureur-frappeur jusqu'en première base. Nous allons maintenant examiner comment il peut être utilisé pour 
+	représenter les avancées des coureurs.</p>
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 58:</span>
+		<span>Le premier frappeur atteint la base grâce à une mauvaise réception d'un joueur de champ extérieur, et est forcé 
+		d'avancer en deuxième base lorsque le frappeur suivant frappe un simple.</span><br/>
+		<span>Sur une balle frappée par le troisième frappeur, l'arrêt-court aide le défenseur de la troisième base à éliminer le 
+		premier coureur.</span><br/>
+		<span>Dans ce cas également, le déroulement de l'action a permis au scoreur d'affirmer avec certitude que le défenseur 
+		aurait pu éliminer le coureur forcé en deuxième base, plutôt que le premier coureur. C'est pourquoi l'avancement du coureur 
+		en deuxième base est comptabilisé comme un choix du défenseur, et non avec le numéro du frappeur dans l'ordre de passage au 
+		bâton.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="4479461c.gif"
+					alt="Occupied ball"
+					width="87"
+					height="272"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur envoie la balle au champ centre, le défenseur fait une erreur et la rattrape. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E8F</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr en deuxième base, le coureur avance.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur suivant envoie la balle à l'arrêt-court, qui la transmet au défenseur de la 
+				troisième base. Ce dernier élimine alors le coureur arrivant de la deuxième base. Le coureur en première base et le 
+				frappeur profitent de l'occasion pour avancer.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O6</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">O6</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codePutout">65</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="e97696ca.png"
+					alt="Occupied ball"
+					width="87"
+					height="268"/>
+			</td>
+		</tr>
+	</table>				
+	
+	<p class="normalText">Il existe un autre type de balle occupée, comme dans « KO2 ».</p>
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 59:</span>
+		<span>Avec des coureurs en deuxième et troisième base, le receveur laisse tomber la troisième prise mais la récupère à 
+		temps pour aider le lanceur à éliminer le coureur qui vient de quitter la troisième base.</span><br/>
+		<span>Le frappeur-coureur arrive en toute sécurité en première base, comme indiqué par « KS1 O2 » (en supposant qu'il s'agit 
+		du premier retrait sur trois prises pour le lanceur actuel).</span><br/>
+		<span>L'avance du coureur en deuxième base est notée avec « O2 » comme décrit dans le commentaire de la règle 9.13(b).</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="ccc00f42.gif"
+					alt="Occupied ball"
+					width="87"
+					height="279"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un double au champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B9</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ gauche et profite d'un relais pour 
+				atteindre la deuxième base; le coureur en deuxième avance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7 T75</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur suivant, sur une troisième prise relâchée, obtient la première base car 
+				le receveur décide d'éliminer le coureur venant de la troisième base.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSO2</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">O2</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codePutout">21</span>		
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c2e177ca.png"
+					alt="Occupied ball"
+					width="87"
+					height="267"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 60:</span>
+		<span>Le frappeur envoie une balle au sol vers la troisième base, qui touche le coureur en troisième base alors qu'il 
+		tente de toucher la base.</span><br/>
+		<span>Lors de cette action, la balle est échappée et l'arbitre annonce « Balle au sol ». Le coureur en troisième base 
+		retourne sain et sauf à sa base et le défenseur de la troisième base commet une erreur. Cette erreur est décisive et doit 
+		être inscrite en petits caractères dans le carré de troisième base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="2dadf2eb.gif"
+					alt="Occupied ball"
+					width="87"
+					height="186"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur suivant envoie la balle en troisième base ; le défenseur aurait dû 
+				éliminer le coureur qui ne bougeait pas.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O5</span>
+				<span>, </span>
+				<span>noAdvance on runner3 -> </span><span class="codeAdvance">E5</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="6534cedd.png"
+					alt="Occupied ball"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+	
+	<p class="normalText">Ce type d'erreur se rencontrera toujours en troisième ou deuxième base, et ne doit pas être confondu avec 
+	une erreur qui prolonge le temps passé au bâton qui, bien qu'enregistrée de la même manière, est inscrite dans la case de la 
+	première base.</p>
+	
+	<p class="normalText"><b>ATTENTION:</b> Pour comptabiliser l’avancement d’un coureur sur un choix du défenseur plutôt que sur 
+	un coup sûr, le marqueur doit être absolument convaincu qu’une autre action sur ce joueur aurait conduit à son élimination.
+	</p>
+</body>
+</html>
