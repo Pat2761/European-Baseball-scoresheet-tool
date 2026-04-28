@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Indifférence défensive / choix du défenseur en cas de vol de base raté</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Indifférence défensive / choix du défenseur en cas de vol de base raté</h2>
+
+	<p class="normalText">La notation « O/ » est utilisée pour indiquer toute progression d'un coureur du au choix de l'équipe en 
+	défense. « O/ » est suivi du numéro d'identification du défenseur ayant effectué le choix.</p>
+
+	<p class="normalText">
+		<span>Conformément à la norme OBR 9.07(g) : </span>
+		<span class="obrReference">Le scoreur officiel ne doit pas inscrire de base volée lorsqu’un coureur avance en raison 
+		de l’indifférence de l’équipe en défense. Le scoreur officiel doit inscrire ce jeu comme un choix défensif.</span>
+	</p>
+	
+		
+	<p class="exampleText">
+		<span class="obrReference">Commentaire: Le scoreur officiel doit considérer, pour déterminer si la défense a été 
+		indifférente à l'avance du coureur, l'ensemble des circonstances, ce qui inclut la manche et le score de la rencontre, 
+		si la défense avait retenu le coureur sur base, si le lanceur avait tenté des pickoffs sur ce coureur avant qu'il n'avance, 
+		si le défenseur qui couvre habituellement la base vers laquelle le coureur a avancé a fait un mouvement pour couvrir cette 
+		base, si la défense avait un intérêt stratégique à laisser avancer le coureur ou si la défense a peut-être tenté d'empêcher 
+		le coureur de se voir accorder un vol de base. Par exemple, avec des coureurs en première et troisième bases, le scoreur 
+		officiel créditera habituellement un vol de base au coureur qui avance en deuxième base si, selon son jugement, la défense 
+		a un intérêt stratégique à ne pas empêcher l'avance en deuxième base, c'est-à-dire empêcher que le coureur de troisième 
+		base ne marque sur le relais en deuxième base. Le scoreur officiel peut déduire que l'équipe en défense a tenté d'empêcher 
+		le coureur de se voir créditer un vol de base, si par exemple la défense ne tente pas d'empêcher l'avance d'un coureur qui 
+		se rapproche  […] titre statistique. </span>
+		<span> (</span>
+		<span class="exampleNumber">Exemple 61:</span>
+		<span>)</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="a815e047.gif"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="186"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur frappe une fly vers le champ droit, mais celle-ci est mal attrapée. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E8F</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ droit, le coureur avance de deux bases */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en première base vole la deuxième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="107073f7.png"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 62:</span>
+		<span>Bien qu'ayant constaté que le coureur en première base tente de voler une base, le receveur ne fait rien pour l'en 
+		empêcher. Le scoreur officiel juge qu'il n'y a aucun motif stratégique légitime pour ne pas effectuer le lancer ; il s'agit 
+		donc d'une indifférence défensive (vol de base non défendu). Le coureur avance en deuxième base et l'action est donc 
+		enregistrée avec « O/2 ».</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="8c4235c6.gif"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="186"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur frappe une fly vers le champ droit, mais celle-ci est mal attrapée. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E8F</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ droit, le coureur avance de deux bases */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en première base vole la deuxième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">O/2</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="cb9c45e4.png"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 63:</span>
+		<span>Avec des coureurs en deuxième et troisième base, le receveur laisse échapper la troisième prise.</span><br/>
+		<span>Il réussit à récupérer la balle et à éliminer le frappeur-coureur, mais les autres coureurs atteignent les bases 
+		sains et saufs.</span><br/>
+		<span>Conformément à la règle 9.12(f)(2), cela sera comptabilisé comme un choix du joueur de champ.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="c2cfe654.gif"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="272"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint le premier but sur un « but sur balle » */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en première base vole la deuxième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Troisième prise, le receveur récupère la balle et la transmet au défenseur de la première 
+				base pour éliminer le frappeur. Les deux autres coureurs avancent. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS23</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">O/2</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">O/2</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="487f8f36.png"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">
+		<span class="obrReference">lorsque le receveur reprend la balle après un lancer fou ou une balle passée sur un troisième 
+		strike, et relaie en première base pour retirer le batteur-coureur ou touche le batteur-coureur, mais qu’un ou plusieurs 
+		coureurs avancent, le scoreur officiel doit inscrire le retrait à la batte, le retrait et les assistances, s’il y a lieu, 
+		et créditer l’avance du ou des coureurs comme si elle avait eu lieu au cours de ce jeu.</span>
+		<span>[OBR 9.12(f)(2)].</span>
+	</p>
+	
+	<p class="normalText">
+		<span class="obrReference">Le scoreur officiel ne doit pas attribuer une erreur lorsqu’un ou plusieurs coureurs avancent 
+		sur une balle passée (…) Si un receveur échappe un lancer, par exemple, avec un coureur en première base, mais que le 
+		receveur récupère la balle et relaie en deuxième base à temps pour retirer le coureur, le scoreur officiel ne doit pas 
+		attribuer au receveur une balle passée. Il doit créditer l'avance des autres coureurs comme un choix défensif. </span>
+		<span>[OBR 9.13 Commentaire].</span>
+	</p>
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 64:</span>
+		<span>Il s’ensuit que le choix du défenseur serait également utilisé lorsque, dans une action similaire, le frappeur-coureur 
+		atteint la base en toute sécurité sur « KS E2T » ou « KS 2E3 ».</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="ad79520b.gif"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="269"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter hits a triple to right field */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur un « Base on ball ». */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en première base vole la deuxième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Troisième prise relachée, le receveur récupère la balle et la transmet en première base
+				pour éliminer le frappeur. Les deux autres coureurs avancent. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KSE2T</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">O/2</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">O/2</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="90ab2bb0.png"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText"><b>IMPORTANT:</b> En règle générale, l'avancement d'un coureur suite à un coup sûr ou un retrait est 
+	enregistré avec le numéro de frappeur. Un avancement suite à une erreur commise contre le frappeur ou un autre coureur est 
+	enregistré avec le numéro de frappeur, si les coureurs auraient avancé de toute façon. Lorsqu'un coureur n'aurait pas dû 
+	avancer en raison d'une erreur, inscrivez le numéro du frappeur ou du coureur entre parenthèses..
+	</p>
+	
+	<p class="normalText">Une autre situation où le symbole « O/ » est utilisé est celle où, lors de plusieurs tentatives de vol de 
+	base (simultanées ou non), un coureur est éliminé (ou atteint la base en toute sécurité suite à une erreur), tandis que les 
+	autres atteignent la base suivante. Pour comptabiliser ces dernières avancées, le symbole « O/ » est utilisé, suivi du chiffre 
+	deux si l'action défensive a été initiée par le receveur, ou d'un si elle a été initiée par le lanceur.
+	</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 65:</span>
+		<span>La tentative de vol de base échoue suite à l'élimination du coureur en troisième base. L'avancement de l'autre coureur 
+		est donc indiqué par le symbole « O/2 ».</span><br/>
+		<span>La même notation serait utilisée même si la retrait avait échoué en raison d'une erreur.</span><br/>
+		<span>Placez une flèche entre la tentative de vol et le O/2 pour indiquer qu'elle a eu lieu lors de la même action.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="f45291e1.gif"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="187"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un simple contre l'arrêt-court. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur un « Base on ball ». */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Les coureurs tentent de voler une base, mais le coureur en deuxième base est éliminé. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">O/2</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codePutout">CS25</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="e7eee64.png"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 66:</span>
+		<span>Le coureur en première base est éliminé suite à un pick-off. Le symbole « O/1 » indique l’avancement de l’autre 
+		coureur en troisième base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="8fa60bdc.gif"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="187"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur atteint la première base sur un 'Hit by pitch' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième frappeur réussit un coup sûr en première base, le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B3</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Les deux coureurs tentent de voler une base, mais le coureur en première base est piégé 
+				et éliminé. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codePutout">CS1364</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">O/1</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c9e4e259.png"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="183"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 67:</span>
+		<span>Il y a un joueur éliminé et un coureur en deuxième base.</span><br/>
+		<span>La balle frappée au sol par le troisième frappeur est rattrapée par le lanceur, qui aide rapidement le joueur en 
+		première base à éliminer de justesse le coureur-frappeur.</span><br/>
+		<span>Dans la précipitation, le joueur de première base se cogne violemment le pied contre la base et se blesse gravement.</span><br/>
+		<span>L'incident l'empêche d'arrêter le coureur, qui gagne le marbre.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="8c3626dd.gif"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="277"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie la balle sur la deuxième base qui la relaye en première base pour 
+				éliminer le coureur; ce dernier avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">43</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie la balle au lanceur qui la relaye en première base pour 
+				éliminer le coureur, celui-ci avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">13</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">O/3</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="21a726f5.png"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="264"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Il convient de noter que l'arbitre, après avoir déclaré le frappeur-coureur éliminé, n'a pas jugé 
+	nécessaire de suspendre le jeu, n'ayant constaté aucune raison de blâmer un joueur en particulier.</p>
+	
+	<p class="normalText">L’exemple illustre clairement la progression des coureurs en fonction des différentes phases du jeu dont 
+	ils sont issus : l’avancement en troisième base suite à un coup sûr et la poursuite jusqu’au marbre en raison de l’indifférence 
+	du défenseur (dans ce cas précis, il n’était pas en mesure d’arrêter l’avancée, et ce n’était certainement pas dû à une erreur 
+	ou à une défaillance technique de sa part).
+	</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 68:</span>
+		<span>Sans coureur éliminé et avec la deuxième base occupée, le lanceur dévie la balle frappée au sol par le frappeur, 
+		forçant l'arrêt-court qui courait à intervenir, hors de sa trajectoire.</span><br/>
+		<span>L'arrêt-court récupère néanmoins la balle et la lance en première base, où le frappeur-coureur arrive sain et sauf.</span><br/>
+		<span>Le défenseur de la première base, jugeant la décision injuste, conteste vigoureusement celle de l'arbitre, ignorant 
+		le fait que le coureur en tête profite de l'occasion pour marquer. Cette avance, parfaitement légale, est enregistrée avec 
+		« O/3 » car elle a été déterminée par <b>l'indifférence</b> du défenseur de la première base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="c3291f0c.gif"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="184"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur remporte la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en première base vole la deuxième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple sur l'arrêt-court, le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+ O/3</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="3ce3c021.png"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="178"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Il peut arriver, lors d'un appel, que la balle soit en jeu, un ou plusieurs coureurs profitent de 
+	l'occasion pour avancer vers la base suivante. Ces avancées doivent également être notées avec le symbole O/, suivi du numéro 
+	du joueur de champ visé par l'appel.
+	</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 69:</span>
+		<span>Sans aucun retrait et avec des coureurs en première et troisième base, le cinquième frappeur envoie une balle en 
+		l'air vers le champ droit, permettant au coureur en troisième base de marquer.</span><br/>
+		<span>Avant de lancer la première balle au frappeur suivant, la défense fait appel au motif qu'il a quitté la base 
+		prématurément.</span><br/>
+		<span>Au cours de l'appel, qui est accepté par l'arbitre concerné, le coureur en première base avance en deuxième : « O/1 ». 
+		Notez également le double jeu et la flèche reliant l'appel à l'indifférence.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="bf14b0d3.gif"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="274"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un simple au champ gauche. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en première base vole la deuxième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ centre, le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie une balle en hauteur au champ droit, qui est attrapée. 
+				Le coureur en troisième base atteint le marbre mais ne touche pas le marbre. Le coureur en première base avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">F9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">O/1</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codePutout">A15</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="bf8efec1.png"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="264"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Example 70:</span>
+		<span>Ce cas diffère du précédent uniquement par le rejet de l'appel. Le point est validé, le coureur en première base 
+		avance avec « O/1 » et le cinquième frappeur dans l'alignement se voit attribuer un sacrifice.</span><br/>
+		<span><b>NOTE</b>: Contrairement aux cas fréquents où la notation « O/ » est utilisée pour comptabiliser des avances qu’il 
+		n’est pas possible, selon les règles, de considérer comme « volées », toutes les autres avances pour lesquelles « O/ » est 
+		utilisé doivent avoir les circonstances notées à l’endroit approprié sur la feuille de score.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Translation in the scoring tool</th>
+        <th class="exampleHeader">Tool</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="2b930506.gif"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="277"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un simple au champ gauche. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en première base vole la deuxième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ centre, le coureur avance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un sacrifice fly au champ droit, le coureur en troisième 
+				base marque le point, le coureur en première base avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SF9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">O/1</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="f7e4b065.png"
+					alt="Defensive indifference - fielders choice with caught stealing"
+					width="87"
+					height="270"/>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
