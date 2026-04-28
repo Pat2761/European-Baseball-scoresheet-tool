@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Choix défensif</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Choix défensif.</h2>
+ 
+ 	<p class="normalText">L’abréviation « FC » est également utilisée dans la case de première base pour indiquer que l’avancement 
+ 	du frappeur-coureur en première base est dû à un choix du défenseur. Contrairement à la notation « balle occupée », qui est 
+ 	toujours précédée d’une ou plusieurs occasions de jeu en défense, <b>« FC » est utilisé lorsque le jeu alternatif, bien 
+ 	qu'exécuté correctement par la défense, ne permet pas d'éliminer un adversaire.</b></p>
+ 	
+	<p class="normalText">Par conséquent, le choix du défenseur ne doit pas être considéré comme une opportunité défensive.</p>
+	
+	<p class="normalText">La notation à utiliser est « FC » suivi de deux nombres, le premier représentant le défenseur qui a 
+	initié le jeu et le second identifiant la base vers laquelle il a lancé.</p>
+			
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 71:</span>
+		<span>La balle au sol à l'intérieur du terrain est récupérée par le défenseur de la troisième base qui choisit de tenter de 
+		retirer le coureur forcé et ne parvient pas à effectuer l'élimination.</span><br/>
+		<span>Cela indique également que lorsqu'une balle au sol à l'intérieur du terrain est récupérée par le défenseur de la 
+		deuxième base, qui choisit de jouer pour le coureur forcé arrivant de la première base et lance au joueur d'arrêt-court, 
+		mais ne parvient pas à effectuer l'élimination, nous marquons FC44 pour le frappeur (le premier 4 est le défenseur qui a 
+		initié le jeu et le second 4 est la base vers laquelle il a lancé).</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="90f0606a.gif"
+					alt="Fielders choice"
+					width="87"
+					height="184"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un simple contre le lanceur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B1</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie la balle en direction du défenseur de la troisième base, 
+				qui choisit de la relayer en deuxième base, mais sans succès. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">FC54</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="34fc697.png"
+					alt="Fielders choice"
+					width="87"
+					height="179"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span>La mention « FC » dans le carré de première base indique qu’une tentative de jeu pour cette base aurait entraîné 
+		l’élimination du frappeur-coureur, comme illustré dans l'</span>
+		<span class="exampleNumber">Exemple 72:</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="cc085e94.gif"
+					alt="Fielders choice"
+					width="87"
+					height="185"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un simple contre le lanceur */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B1</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie la balle vers le défenseur de la troisième base, qui la 
+				relaie en première base pour éliminer le coureur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">54</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="5cc21886.png"
+					alt="Fielders choice"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 73:</span>
+		<span>Si le scoreur n'est pas convaincu que le frappeur aurait été éliminé en première base, le résultat sera un coup sûr.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="593ba98f.gif"
+					alt="Fielders choice"
+					width="87"
+					height="183"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un simple contre le lanceur */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B1</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie la balle en direction de la troisième base, qui choisit de 
+				la relayer en deuxième base, mais sans succès. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a7bddcd3.png"
+					alt="Fielders choice"
+					width="87"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 74:</span>
+		<span>Avec les première et deuxième bases occupées, sur un amorti du neuvième frappeur, le lanceur tente sans succès 
+		d'éliminer le coureur forcé en troisième base, donnant ainsi au frappeur-coureur l'opportunité d'atteindre la première 
+		base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="87db1bd5.gif"
+					alt="Fielders choice"
+					width="87"
+					height="282"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur obtient la première base sur un « base on ball ». */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr vers la deuxième base, le coureur avance 
+				jusqu'en deuxième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur réussit un amorti sacrifice, mais le défenseur choisit d'éliminer le 
+				coureur en deuxième base sans succès.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">SHFC15</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="3edad4a8.png"
+					alt="Fielders choice"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 75:</span>
+		<span>Si, dans l’action décrite ci-dessus, le coureur de tête avait été éliminé (ou avait atteint la base en toute sécurité 
+		suite à une erreur de l’un des deux défenseur qui ont participé à l’action), l’arrivée du frappeur-coureur en première base 
+		aurait été enregistrée comme une « balle occupée ».</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b7025e2.gif"
+					alt="Fielders choice"
+					width="87"
+					height="276"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur obtient la première base sur un « base on ball ». */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr vers la deuxième base, le coureur avance 
+				jusqu'en deuxième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant tente un amorti, le lanceur récupère la balle et choisit 
+				d'éliminer le coureur arrivant en troisième base sur trois prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O1b</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">O1</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codePutout">15</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="b1ddd7b6.png"
+					alt="Fielders choice"
+					width="87"
+					height="266"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span>L'</span>
+		<span class="exampleNumber">exemple 76:</span>
+		<span>montre ce qui se passe lorsqu'il n'y a aucune possibilité de retier un des coureurs.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="35ef6033.gif"
+					alt="Fielders choice"
+					width="87"
+					height="275"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur obtient la première base sur un « base on ball » */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr vers la deuxième base, le coureur avance jusqu'en deuxième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant tente un amorti vers le lanceur, qui récupère la balle et la 
+				renvoie pour éliminer le coureur qui se dirige vers la troisième base, mais sans succès. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B1b</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="2f4894f9.png"
+					alt="Fielders choice"
+					width="87"
+					height="267"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText"><b>ATTENTION:</b> Lorsque, dans une telle action, le scoreur juge que la défense n'aurait pas été en 
+	mesure d'effectuer d'autres éliminations, y compris celle du frappeur-coureur, ce dernier doit se voir attribuer un coup sûr.</p>
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 77:</span>
+		<span>Le septième frappeur tente sa chance sur la troisième prise, manquée par le receveur. Malgré la récupération de la 
+		balle à temps pour éliminer le coureur en première base, le receveur essaie d'éliminer le coureur qui a quitté sa base 
+		sur la balle passée. Le coureur atteint le but sain et sauf.</span><br/>
+		<span>L’avancement en troisième base se produit sur une balle passée, tandis que l’avancement du frappeur-coureur en 
+		première base est enregistré comme « FC », précédé de la prise et du nombre cumulatif de retraits sur prises, et suivi du 
+		numéro du receveur qui a effectué le lancer et du numéro de la base vers laquelle le jeu alternatif a été effectué.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="475dd4a1.gif"
+					alt="Fielders choice"
+					width="87"
+					height="184"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un double au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Troisième prise sur une balle passée, le receveur choisit d'éliminer le coureur 
+				arrivant en troisième base, mais sans succès. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSFC25</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">PB</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="56510107.png"
+					alt="Fielders choice"
+					width="87"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">L’avancement en troisième base se produit sur une balle passée, tandis que l’avancement du 
+	frappeur-coureur en première base est enregistré comme « FC », précédé de la prise et du nombre cumulatif de retraits sur 
+	prises, et suivi du numéro du receveur qui a effectué le lancer et du numéro de la base vers laquelle le jeu alternatif a été 
+	effectué.</p>
+		
+	<p class="exampleText">
+		<span>l'</span>
+		<span class="exampleNumber">exemple 78:</span>
+		<span> Illustre les effets d'une action réussie pour atteindre la première base. Aucune balle passée n'est imputée au 
+		receveur, en raison de l'élimination.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="7364ed23.gif"
+					alt="Fielders choice"
+					width="87"
+					height="181"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un double au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Troisième prise sur une balle passée, le receveur élimine le frappeur-coureur 
+				avec un lancer en première base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS23</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">O/2</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="36332731.png"
+					alt="Fielders choice"
+					width="87"
+					height="178"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
