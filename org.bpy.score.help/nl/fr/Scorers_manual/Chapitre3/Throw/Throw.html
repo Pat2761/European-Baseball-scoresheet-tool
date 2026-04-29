@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Avance sur un relais</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Avance sur un relais.</h2>
+	
+	<p class="normalText">Ceci est généralement utilisé pour justifier l'avance d'un coureur (y compris le coureur-batteur) qui, 
+	atteignant la base sur une balle frappée, profite d'un jeu sur un coureur précédent pour avancer.</p>
+	
+	<p class="normalText">En plus de la définition donnée ci-dessus, il convient de préciser que ces avancées supplémentaires sont 
+	toujours dues à des lancers depuis le champ extérieur vers le champ intérieur.</p>
+	
+	<p class="normalText">La notation à utiliser est « T » suivi de deux nombres, le premier représentant le <b>défenseur</b> qui a 
+	effectué le lancer et le second identifiant la <b>base</b> vers laquelle il a lancé.</p>
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 79:</span>
+		<span>Après un simple qui permet au coureur d'avancer de deux bases, le frappeur profite d'un lancer du joueur de champ 
+		centre vers la troisième base pour continuer jusqu'à la base suivante.</span><br/>
+		<span>Son arrivée en deuxième base est enregistrée avec un « T » suivi du numéro identifiant le joueur de champ centre (8) 
+		qui a lancé la balle, et celui de la base vers laquelle la balle a été lancée, c'est-à-dire la troisième base (5), que la 
+		base soit couverte par le défenseur de la troisième base ou l'arrêt-court.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="382cb0d8.gif"
+					alt="Throw"
+					width="87"
+					height="187"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe une balle en hauteur sur le joueur d'arrêt court, qui laisse 
+				tomber la balle. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E6F</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ centre et profite d'un relais du champ 
+				centre vers la troisième base pour atteindre la deuxième base.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8 T85</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="2b32c457.png"
+					alt="Throw"
+					width="87"
+					height="181"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Le scoreur doit observer attentivement la progression du frappeur-coureur pour déterminer s'il a atteint 
+	la base supplémentaire grâce à un coup sûr (auquel cas il obtient un double) ou grâce à un choix du défenseur.</p>
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 80:</span>
+		<span>Dans cet exemple, le frappeur-coureur profite d'un lancer du défenseur de champ extérieur pour avancer en 
+		deuxième base,</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b51f4d2a.gif"
+					alt="Throw"
+					width="87"
+					height="182"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur gagnge la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie une balle en hauteur au champ droit, mais le défenseur rate 
+				la prise. Le coureur en première base avance de deux bases grâce à cette erreur, et le frappeur profite de cette 
+				choix défensif pour avancer en deuxième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E9F T95</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">(2)+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="969e997.png"
+					alt="Throw"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span>pendant que dans l'</span>
+		<span class="exampleNumber">Exemple 81:</span>
+		<span>Cette même avance est une conséquence directe d'une erreur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="43351cb3.gif"
+					alt="Throw"
+					width="87"
+					height="187"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur gagnge la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie une balle en hauteur au champ droit, et le défenseur commet 
+				une erreur en voulant la rattrapée. Le coureur en première base avance de deux bases grâce à cette erreur, et le 
+				frappeur en profite pour avancer en deuxième. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E9F+</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">(2)+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="66b83df4.png"
+					alt="Throw"
+					width="87"
+					height="178"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 82:</span>
+		<span>Sur le coup sûr, le coureur de tête marque, tandis que l'autre coureur et le frappeur-coureur atteignent tous deux 
+		une base supplémentaire lorsque le joueur de champ extérieur lance vers le marbre dans une tentative douteuse d'empêcher 
+		qu'un point ne soit marqué.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="eedf3c9d.gif"
+					alt="Throw"
+					width="87"
+					height="280"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'Hit by Pitch' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr en deuxième base, le coureur avance */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie la balle au champ gauche, le coureur en deuxième base tente 
+				d'atteindre le marbre. Le frappeur-coureur et le coureur en première base profitent de cette occasion pour avancer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7 T72</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+ T72</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="fdb8b060.png"
+					alt="Throw"
+					width="87"
+					height="267"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
