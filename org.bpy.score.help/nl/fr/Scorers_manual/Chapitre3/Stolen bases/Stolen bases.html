@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Bases volées</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Bases volées.</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">Le scoreur officiel doit créditer une base volée au coureur à chaque fois qu’il gagne une base 
+		sans l’intervention d’un coup sûr, d’un retrait, d’une erreur, d’un retrait forcé, d’un choix défensif, d’une balle passée, 
+		d’un lancer fou ou d’un balk </span>
+		<span>[OBR 9.07].</span></p>
+		
+	<p class="normalText">L'abréviation pour vol de base est « SB » suivie du numéro du joueur au bâton au moment du vol. Le vol de 
+	base a lieu lorsque le lanceur est encore en train d'armer son lancer et que le coureur atteint la base suivante avant ou 
+	pendant le lancer.</p>
+	
+	<p class="normalText">Lorsqu'un coureur frappe une balle en territoire des bonnes balles lors d'une tentative de vol de base, 
+	que la frappe soit sûre ou non, ou si d'autres événements surviennent, l'avancement du coureur est considéré comme ayant été 
+	effectué grâce à la frappe, et non comme un vol de base. Il en va de même pour les coureurs forcés, lorsqu'un frappeur obtient 
+	la première base suite à un but sur balles, un frappeur atteint, une interférence ou une obstruction.</p>
+	
+	<p class="normalText">Une tentative de vol de base doit être effectuée dans l'intervalle de temps qui commence lorsque le 
+	lanceur est sur le monticule et se termine lorsque la balle est morte ou qu'elle est de nouveau en possession du lanceur sur 
+	son monticule.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 83:</span>
+		<span>Si, avec des coureurs en première et troisième base, le receveur lance en première base pour tenter d'éliminer le 
+		coureur hors base, et que le coureur en troisième base en profite pour atteindre le marbre, ce dernier coureur doit se 
+		voir créditer d'un vol de base.</span>
+	</p>
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="37ad5f2.gif"
+					alt="Stolen bases"
+					width="87"
+					height="183"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur un « base on ball ». */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en troisième base vole le marbre */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner3 -> </span><span class="codeAdvance">SB</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="ea0759c6.png"
+					alt="Stolen bases"
+					width="87"
+					height="182"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Une base volée doit également être attribuée dans les cas suivants:</p>
+	
+	<ol class="olTypeA">
+		<li class="olTypeA">
+			<span class="obrReference">Lorsqu’un coureur commence sa course vers la base suivante avant que le lanceur ne délivre 
+			la balle et que ce lancer ne soit inscrit comme lancer fou ou une balle passée </span>
+			<span>[OBR 9.07(a)].</span>
+				
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 84:</span>
+				<span>Si le coureur parvient à avancer d'une seule base, on lui attribue un vol de base. S'il parvient à avancer 
+				d'une base supplémentaire, on lui attribue un vol de base pour la première base et un lancer fou ou une balle passée 
+				pour la base supplémentaire.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="dad58dff.gif"
+							alt="Stolen bases"
+							width="87"
+							height="95"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur remporte la première base sur un 'base on ball' */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">BB</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Il vole la deuxième base et profite d'un lancer fou pour atteindre la troisième base. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">SB WP</span>
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="54451826.png"
+							alt="Stolen bases"
+							width="87"
+							height="95"/>
+					</td>
+				</tr>
+			</table>				
+	
+		</li>
+		
+		<li class="olTypeA">
+			<span class="obrReference">Quand un coureur essaye de voler une base, et que le receveur, après avoir reçu le lancer, 
+			fait un mauvais relais en essayant d’empêcher le vol de base </span>
+			<span>[OBR 9.07(b)]</span>.
+
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 85:</span>
+				<span>Dans ce cas, le vol de base est crédité au coureur et aucune erreur n'est imputée au receveur.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="2ae6a23a.gif"
+							alt="Stolen bases"
+							width="87"
+							height="91"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'base on ball' */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">BB</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Il vole la deuxième base */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">SB</span>
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="5ff1acd7.png"
+							alt="Stolen bases"
+							width="87"
+							height="92"
+							border="0"/>
+					</td>
+				</tr>
+			</table>				
+				
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 86:</span>
+				<span>… à moins que le coureur n’ait réussi à avancer d’une base supplémentaire, auquel cas le receveur devrait 
+				être accusé d’une erreur de base supplémentaire.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="18db489d.gif"
+							alt="Stolen bases"
+							width="87"
+							height="97"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'base on ball' */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">BB</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Il vole la deuxième base et profite d'une erreur pour atteindre la troisième base. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">SB e2T</span>
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="3052b52e.png"
+							alt="Stolen bases"
+							width="87"
+							height="91"/>
+					</td>
+				</tr>
+			</table>				
+		</li>		
+
+		<li class="olTypeA">
+			<span class="obrReference">Lorsqu’un coureur, qui essaie de voler une base, ou après avoir été surpris en dehors de 
+			celle-ci, échappe au retrait en courant entre les bases et gagne la suivante sans l’aide d’une erreur </span>
+			<span>[OBR 9.07(c)].</span>
+		</li>
+
+		<li class="olTypeA">
+			<span class="obrReference">Si un autre coureur avance aussi sur ce jeu, le scoreur officiel doit créditer les deux 
+			coureurs d’une base volée </span>
+			<span>[OBR 9.07(c)].</span>
+
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 87:</span>
+				<span>Tous ces coureurs devraient être crédités de bases volées.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="3d4835c2.gif"
+							alt="Stolen bases"
+							width="87"
+							height="189"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur réussit un simple au champ gauche. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">1B7</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le frappeur suivant gagne la première base sur un « Hit by pitch », 
+						le coureur avance */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">HP</span>
+						<span>, </span>
+						<span>runner1 -> </span><span class="codeAdvance">+</span>	
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Les deux coureurs volent une base */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">SB</span>
+						<span>, </span>
+						<span>runner2 -> </span><span class="codeAdvance">SB</span>	
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="99be8b52.png"
+							alt="Stolen bases"
+							width="87"
+							height="181"/>
+					</td>
+				</tr>
+			</table>				
+				
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 88:</span>
+				<span>…à moins que l’un d’eux ne soit éliminé (ou n’aurait été éliminé sans une erreur de champ), auquel cas les 
+				autres coureurs se voient attribuer un choix défensif.</span><br/>
+				<span>Dans ce cas, placez une flèche entre les deux annotations pour indiquer que le vol de base et le choix du 
+				joueur de champ se sont produits lors d'une même action.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="7c9e38d8.gif"
+							alt="Stolen bases"
+							width="87"
+							height="181"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur réussit un simple au champ gauche. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">1B7</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le frappeur suivant gagne la première base sur un « Hit by pitch », 
+						le coureur avance */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">HP</span>
+						<span>, </span>
+						<span>runner1 -> </span><span class="codeAdvance">+</span>	
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Les deux coureurs volent une base, mais celui qui est en tête est éliminé. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">O/2</span>
+						<span>, </span>
+						<span>runner2 -> </span><span class="codePutout">CS25</span>	
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="11d0d2d1.png"
+							alt="Stolen bases"
+							width="87"
+							height="175"/>
+					</td>
+				</tr>
+			</table>				
+		</li>
+
+		<li class="olTypeA">
+			<span class="obrReference">Si un coureur avance lorsqu'un autre coureur, tentant de voler et, pris en souricière, 
+			échappe au retrait en courant entre les bases et retourne sauf, sans l’aide d’une erreur, à la base qu’il occupait 
+			à l’origine</span>
+			<span>[OBR 9.07(c)].</span><br/><br/>
+			<span>Dans ce cas, le coureur est crédité d'un vol de base. Si l'autre coureur est éliminé, en revanche, le coureur qui 
+			a avancé est crédité d'un choix du défenseur (O/.).</span><br/><br/>
+
+			<table class="contentDescription">
+				<tr>
+					<td class="contentDescriptionName">
+						<img
+							src="cd97a7c9.gif"
+							alt="Stolen bases"
+							width="209"
+							height="139"/>
+					</td>
+					<td class="contentDescriptionDescription">Chaque base volée est créditée au coureur qui l'a volée, et cela se 
+					fait en traçant un trait vertical dans la colonne appropriée des statistiques offensive de la feuille de scorage, 
+					à côté du nom du joueur. La même notation est utilisée dans le tableau du receveur (bases volées concédées), à 
+					condition que le défenseur au marbre ait eu la possibilité de s'opposer à l'action, ou que, au moment de la 
+					tentative de vol, un lancer légal ait été effectué.
+					</td>
+				</tr>
+			</table>
+	
+			<span>Si un vol de base est accordé suite à un retrait au champ, il doit être attribué au lanceur. Inscrivez le nom du 
+			lanceur dans la case du receveur, sur une ligne de couleur, et tracez un trait vertical derrière ce nom. Ainsi, le total 
+			des vols de base sera identique à celui indiqué dans les statistiques offensives.
+			</span>	
+		</li>
+
+	</ol>
+
+
+	<p class="normalText">Les bases volées ne doivent pas être créditées dans les cas suivants:</p>
+	
+	<ol class="olTypeA">
+		<li class="olTypeA">
+			<span class="obrReference">Lorsqu’un coureur est retiré pour avoir été touché après avoir glissé au-delà d’une base, 
+			alors qu’il tentait de retourner à cette base ou de gagner la base suivante </span>
+			<span>[OBR9.07(e)].</span><br/><br/>
+			<span>Le coureur est retiré pour “caught stealing”.</span><br/><br/>
+			<span><b>ATTENTION</b>: Si le coureur dépasse la base qu'il tentait de voler et qu'il est touché, il est accusé d'avoir 
+			volé la base et est déclaré éliminé.</span>
+		</li>
+		
+		<li class="olTypeA">
+			<span class="obrReference">Lorsque d’après le jugement du scoreur officiel, un coureur qui essaie de voler est sauf à 
+			la suite d’un relais mal attrapé</span>
+			<span>[OBR 9.07(f)].</span>
+					
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 89:</span>
+				<span>Dans ce cas, le coureur est retiré pour « caught stealing », une erreur est imputée au défenseur qui a raté 
+				le lancer et une assistance ainsi que le vol de base sont crédités au défenseur qui a effectué le lancer.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="204dc094.gif"
+							alt="Stolen bases"
+							width="87"
+							height="95"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur réussit un simple contre l'arrêt-court. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">1B6</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le coureur tente un vol de base en deuxième base, et il aurait été éliminé si 
+						le défenseur de la deuxième base n'avait pas commis d'erreur. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">CS2E4</span>	
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="396a1f24.png"
+							alt="Stolen bases"
+							width="87"
+							height="92"/>
+					</td>
+				</tr>
+			</table>				
+		</li>
+		
+		<li class="olTypeA">
+			<span class="obrReference">Le scoreur officiel ne doit pas inscrire de base volée lorsqu’un coureur avance en raison 
+			de l’indifférence de l’équipe en défense </span>
+			<span>[OBR 9.07(g)].</span>
+			
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 90:</span>
+				<span>Bien qu'ayant constaté que le coureur en première base tente de voler une base, le receveur ne fait rien 
+				pour l'en empêcher. Le marqueur officiel juge qu'il n'y a aucun motif stratégique légitime pour ne pas effectuer 
+				le lancer ; il s'agit donc d'une indifférence défensive (vol de base non défendu). Le coureur avance en deuxième 
+				base et l'action est donc enregistrée avec « O/2 ». Ceci est également expliqué dans le commentaire de 
+				l'OBR [9.07(g)].</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="a9802d42.gif"
+							alt="Stolen bases"
+							width="87"
+							height="187"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur envoie une balle en hauteur au champ centre, le défenseur 
+						commet une erreur en tentant de l'attraper. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">E8F</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le frappeur suivant frappe un coup sûr au champ droit, le coureur avance de deux bases */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">1B9</span>
+						<span>, </span>
+						<span>runner1 -> </span><span class="codeAdvance">++</span>	
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le coureur en première base tente de voler la base, la défense reste indifférente. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">O/2</span>	
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="1df9bce5.png"
+							alt="Stolen bases"
+							width="87"
+							height="180"
+							border="0"/>
+					</td>
+				</tr>
+			</table>				
+			<p class="normalText">Si le receveur ne tente pas d'éliminer le coureur qui tente de voler une base, mais tente plutôt 
+			une autre action, comme lancer la balle au lanceur ou en deuxième base qui s'est avancé, ou en troisième base dans le 
+			but d'éliminer le coureur en troisième base ou de le faire avancer, une base volée est crédité au coureur qui a 
+			avancé.</p>
+
+			<p class="normalText">À moins que la tentative de faire avancer le coureur en troisième base ne réussisse et qu'il 
+			soit éliminé, auquel cas un vol de base raté est crédité au coureur en troisième base et un choix du défenseur au 
+			coureur qui a atteint la deuxième base.</p>
+
+			<p class="normalText"><b>NOTE:</b> Si le coureur n'a pas tenté d'avancer mais a été éliminé en retournant en troisième 
+			base, il n'est pas accusé d'avoir été « pris en flagrant délit de vol de base ».</p>
+			
+			<p class="normalText"><b>ATTENTION:</b> Lorsqu'une souricière échoue sans erreur et que le coureur retourne à sa base, 
+			rien n'est inscrit sur la feuille de match. En revanche, si le coureur retourne à sa base suite à une erreur, 
+			l'assistance, l'erreur et la tentative de vol de base doivent être notées.</p>			
+
+			<p class="normalText">Il convient à ce stade de conclure la section sur les bases volées par quelques exemples précis.</p>
+				
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 91:</span>
+				<span>Avec les première et troisième bases occupées, le coureur en première base tente de voler la deuxième. Le 
+				receveur lance la balle en deuxième base pour l'éliminer. Le coureur en troisième base, voyant cela, se lance à 
+				la conquête du marbre. Si le coureur qui a tenté de voler la deuxième base atteint également la base sain et sauf, 
+				les deux coureurs se voient attribuer un vol de base.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="4c31b3e.gif"
+							alt="Stolen bases"
+							width="87"
+							height="184"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'base on ball' */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">BB</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le frappeur suivant frappe un coup sûr au champ droit, le coureur avance de deux bases */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">1B9</span>
+						<span>, </span>
+						<span>runner1 -> </span><span class="codeAdvance">++</span>	
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Les deux coureurs volent une base */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">SB</span>
+						<span>, </span>
+						<span>runner3 -> </span><span class="codeAdvance">SB</span>	
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="3ed9cfaf.png"
+							alt="Stolen bases"
+							width="87"
+							height="182"/>
+					</td>
+				</tr>
+			</table>				
+				
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 92:</span>
+				<span>En revanche, si le coureur qui tente de voler la deuxième base est éliminé (ou l'aurait été sans une erreur), 
+				il est accusé d'avoir été « pris en flagrant délit de vol », et le point de l'autre coureur est comptabilisé comme 
+				un choix du joueur de champ.
+				</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="c04b590c.gif"
+							alt="Stolen bases"
+							width="87"
+							height="186"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'base on ball' */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">BB</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le frappeur suivant frappe un coup sûr au champ gauche, le coureur avance de deux bases */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">1B7</span>
+						<span>, </span>
+						<span>runner1 -> </span><span class="codeAdvance">++</span>	
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Les deux coureurs ont volé une base, le coureur en première base aurait dû être éliminé. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">CS2E4</span>
+						<span>, </span>
+						<span>runner3 -> </span><span class="codeAdvance">O/2</span>	
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="d63df411.png"
+							alt="Stolen bases"
+							width="87"
+							height="180"/>
+					</td>
+				</tr>
+			</table>				
+				
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 93:</span>
+				<span>Avec des coureurs en première et deuxième base, le coureur en deuxième base tente de voler la troisième. Le 
+				lancer est incontrôlé et, par conséquent, le coureur en première base atteint la deuxième. Dans ce cas, un vol de 
+				base est accordé au coureur qui a atteint la troisième base, et une avancée due à un lancer incontrôlé est accordée 
+				à l'autre coureur, qui n'aurait pas pu atteindre la deuxième base sans ce lancer.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="b1a8bc8.gif"
+							alt="Stolen bases"
+							width="87"
+							height="183"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'base on ball' */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">BB</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le frappeur suivant atteint la base sur un « base on ball », le coureur gagne une base */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">BB</span>
+						<span>, </span>
+						<span>runner1 -> </span><span class="codeAdvance">+</span>	
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le coureur en deuxième base vole une base, le coureur en première base avance 
+						en deuxième sur un lancer fou */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">WP</span>
+						<span>, </span>
+						<span>runner2 -> </span><span class="codeAdvance">SB</span>	
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="5ad41c45.png"
+							alt="Stolen bases"
+							width="87"
+							height="182"/>
+					</td>
+				</tr>
+			</table>				
+				
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 94:</span>
+				<span>Avec des coureurs en première et troisième base, le coureur en première tente de voler la deuxième. Le 
+				receveur rate son relais vers la deuxième base et le coureur en troisième en profite pour marquer un point. Le vol 
+				de base est validé pour le coureur en première base, et l'avance du coureur en troisième est attribuée à une 
+				erreur du receveur.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="523df48a.gif"
+							alt="Stolen bases"
+							width="87"
+							height="185"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur réussit un triple au champ droit. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">3B9</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le deuxième frappeur atteint la première base en raison d'une interférence du 
+						receveur. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">INT</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le coureur vole la deuxième base, le receveur tente d'empêcher le vol mais 
+						commet une erreur, et le coureur en troisième base en profite pour marquer un point. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">SB</span>
+						<span>, </span>
+						<span>runner3 -> </span><span class="codeAdvance">e2T</span>	
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="291ea785.png"
+							alt="Stolen bases"
+							width="87"
+							height="180"/>
+					</td>
+				</tr>
+			</table>				
+				
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 95:</span>
+				<span>Le coureur en troisième base est pris au piège entre la troisième base et le marbre, mais parvient à 
+				atteindre le marbre sain et sauf sans qu'aucune erreur ne soit commise par la défense. Il est crédité d'un vol de 
+				base.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="4a856e28.gif"
+							alt="Stolen bases"
+							width="87"
+							height="92"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur atteint la troisième base sur un triple au champ droit */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">3BRC</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Malgré la souricière, le coureur marque le point */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner3 -> </span><span class="codeAdvance">SB</span>
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="dc653ecc.png"
+							alt="Stolen bases"
+							width="87"
+							height="93"/>
+					</td>
+				</tr>
+			</table>				
+				
+			<p class="exampleText">
+				<span class="exampleNumber">Exemple 96:</span>
+				<span>Avec des coureurs en première et deuxième base, il y a double vol de base. Le receveur, au lieu de défendre 
+				le coureur en deuxième base, défend celui en première, et lorsqu'il élimine le coureur précédent, ce dernier marque. 
+				L'avancée jusqu'au marbre constitue également un vol de base, et le trait de liaison indique la continuité de 
+				l'action.</span>
+			</p>	
+			<table class="exampleDescription">
+				<tr>
+		        <th class="exampleHeader">WBSC</th>
+		        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+		        <th class="exampleHeader">Outil</th>
+		    </tr>  
+				<tr>
+					<td class="exampleImage">
+						<img
+							src="1d053a53.gif"
+							alt="Stolen bases"
+							width="87"
+							height="187"/>
+					</td>
+					<td class="exampleCode">
+						<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'base on ball' */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">BB</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Le frappeur suivant gagne la première base sur un « base on ball », le coureur gagne une base */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>batter -> </span><span class="codeAdvance">BB</span>
+						<span>, </span>
+						<span>runner1 -> </span><span class="codeAdvance">+</span>
+						<span>}</span><br /><br />
+		
+						<span class="codeComment">/* Les coureurs volent une base, et le coureur arrivant en troisième base en profite pour voler le marbre. */</span><br/>
+						<span class="codeAction">action</span><span> {</span>
+						<span>runner1 -> </span><span class="codeAdvance">SB</span>
+						<span>, </span>
+						<span>runner2 -> </span><span class="codeAdvance">SB SB</span>
+						<span>}</span><br /><br />
+					</td>
+					<td class="exampleImage">
+						<img
+							src="3731036c.png"
+							alt="Stolen bases"
+							width="87"
+							height="182"/>
+					</td>
+				</tr>
+			</table>				
+		</li>
+		
+	</ol>
+</body>
+</html>
