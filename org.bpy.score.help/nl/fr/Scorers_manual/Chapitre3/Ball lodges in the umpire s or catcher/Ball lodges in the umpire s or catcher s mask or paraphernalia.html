@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>La balle se loge dans le masque ou l'équipement de l'arbitre ou du receveur.</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">La balle se loge dans le masque ou l'équipement de l'arbitre ou du receveur.</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">Le jeu est arrêté (la balle est morte) et les coureurs avancent d’une base ou retournent à leurs 
+		bases sans pouvoir être retirés quand … Un lancer se loge dans le masque ou l’équipement du receveur ou dans ou contre le 
+		corps de l’arbitre, son masque ou son équipement et demeure hors-jeu, les coureurs avancent d’une base </span>
+		<span>[OBR 5.06(c)(7)].</span></p>
+		
+	<p class="normalText">La même règle stipule que si le lancer est la troisième prise avec deux retraits ou la quatrième balle, 
+	le frappeur obtient également la première base. S'il y a moins de deux retraits et que le lancer est la troisième prise, le 
+	frappeur est retiré.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 108:</span>
+		<span>Avec les première et deuxième bases occupées, et une balle et une prise pour le frappeur, le lancer fou se loge dans 
+		le masque du receveur, et les coureurs avancent d'une base tandis que le frappeur reste dans la boîte pour terminer son tour.</span><br/>
+		<span>Il obtient une balle ou une prise selon la décision de l'arbitre. Ces actions sont notées « Wild pitch ».</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="2fdd1432.gif"
+					alt="Particular advances"
+					width="87"
+					height="184"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur remporte la première base sur un 'hit by pitch' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr au champ gauche, le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Suite à un lancer fou, la balle se loge dans l'arbitre ; les deux coureurs avancent 
+				grâce à ce lancer erroné. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">wp</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">WP</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="196efcf2.png"
+					alt="Particular advances"
+					width="87"
+					height="175"
+					border="0"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Il est également possible que la balle se loge dans le masque du receveur après une balle passée ; dans ce 
+	cas, utilisez le symbole de la balle passée.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 109:</span>
+		<span>Avec deux retraits, les troisième et première bases occupées, deux balles et deux prises au frappeur.</span><br/>
+		<span>La balle lancée, qu'il s'agisse d'un lancer fou ou d'une balle passée, se loge dans les vêtements de l'arbitre et 
+		est appelée la troisième prise.</span><br/>
+		<span>Le frappeur obtient donc la première base et les coureurs avancent d'une base. Utilisez le symbole de pointage 
+		approprié en cas de lancer fou ou de balle passée.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="4656b54a.gif"
+					alt="Particular advances"
+					width="87"
+					height="276"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr contre le lanceur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B1b</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un coup sûr au champ gauche, le coureur avance de deux buts */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur une balle passée. Les deux coureurs 
+				avancent sur la balle passée. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSPB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">pb</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">pb</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="3cb8212c.png"
+					alt="Particular advances"
+					width="87"
+					height="263"/>
+			</td>
+		</tr>
+	</table>				
+	
+	<p class="normalText"><b>ATTENTION:</b> Lorsque le lancer en question est jugé comme étant la quatrième balle, le frappeur 
+	obtient un 'base on ball' normal. Par conséquent, toute avancée forcée d'un coureur est considérée comme une conséquence de ce 
+	'base on ball'.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 110:</span>
+		<span>Avec les première et troisième bases occupées et le compte à trois balles et une prise, la balle se loge dans les 
+		vêtements de l'arbitre suite à un lancer fou ou une balle passée. Dans ce cas, le lancer est considéré comme la quatrième 
+		balle et le frappeur obtient la première base.</span><br/>
+		<span>L'avance du coureur en troisième base est enregistrée avec « WP » ou « PB » car il n'a pas été forcé et le frappeur 
+		était troisième dans l'ordre de frappe.</span><br/>
+		<span>Le coureur en première base, qui aurait de toute façon avancé en deuxième base à la suite du 'base on ball', est 
+		marqué du numéro de l'ordre de frappe du frappeur, puisqu'il s'agit d'une avance forcée normale.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="368d84dd.gif"
+					alt="Particular advances"
+					width="87"
+					height="270"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr contre le lanceur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B1</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un simple au champ centre. Le coureur avance d'une base 
+				sur ce coup sûr et profite d'une erreur du défenseur pour atteindre la deuxième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+ e8</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le troisième frappeur atteint la première base sur un 'base on ball'. Le coureur 
+				profite de ce lancer sfou pour marquer le point.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">WP</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a77b0c5e.png"
+					alt="Particular advances"
+					width="87"
+					height="268"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
