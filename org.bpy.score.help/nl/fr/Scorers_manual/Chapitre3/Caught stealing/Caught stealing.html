@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Retrait sur tentative de vol</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Retrait sur tentative de vol.</h2>
+	
+	<p class="normalText">
+		<span class="obrReference">Le scoreur officiel doit attribuer à un coureur un "retrait sur tentative de vol" s'il est 
+		retiré, ou aurait été retiré s’il n’y avait pas eu erreur, alors que ce coureur : [OBR 9.07(h)]:</span>
+	</p>
+	<ol class="olTypeNumber">
+		<li class="olTypeNumber">
+			<span class="obrReference">essaie de voler une base,</span>
+		</li>
+		<li class="olTypeNumber">
+			<span class="obrReference">est surpris en dehors de sa base par un retour rapide de la balle sur celle-ci (pickoff) 
+			et tente d’avancer (tout mouvement vers la base suivante doit être considéré comme une tentative d’avancer), ou</span>
+		</li>
+		<li class="olTypeNumber">
+			<span class="obrReference">glisse au-delà d’une base qu’il est en train de voler.</span>
+		</li>
+	</ol>
+
+	<p class="normalText">
+		<span class="obrReference"><b>Commentaire</b>: Dans le cas où la balle lancée passe loin du receveur et que le coureur est 
+		retiré en tentant d'avancer, aucun retrait sur tentative de vol ne doit être attribué. Le scoreur officiel ne doit pas 
+		attribuer de retrait sur tentative de vol lorsqu’un coureur avance du fait d'une obstruction ou lorsque le coureur est 
+		retiré en raison de l'interférence du batteur</span>
+	</p>
+	
+	<p class="normalText">
+		<span class="obrReference">Il n’attribuera pas de retrait sur tentative de vol au coureur s’il n’avait pas crédité de vol 
+		de base au cas où le coureur aurait été sauf (par exemple, lorsque le receveur retire le coureur sur un relais alors que 
+		le coureur essayait d'avancer après qu'un lancer soit passé loin du receveur.</span>
+	</p>
+	
+	<p class="normalText">La notation pour « vol de base raté » est « CS » suivie des numéros des joueurs ayant effectué l'assistance 
+	et l'élimination. L'assistance est très souvent, mais pas systématiquement, réalisée par le receveur, comme le montrent les 
+	exemples suivants. À l'abréviation CS, on ajoute dans un coin le numéro de l'ordre de passage au bâton du joueur qui était au 
+	bâton au moment du vol de base raté.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 97:</span>
+		<span>Le coureur en première base est pris en flagrant délit de vol grâce à l'aide du receveur en deuxième base, alors que 
+		le troisième joueur de l'ordre de frappe est au bâton.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="8e1299eb.gif"
+					alt="Caught stealing"
+					width="87"
+					height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr contre l'arrêt-court. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur tente de voler la deuxième base, mais il est éliminé. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codePutout">CS24</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="d2f8b79d.png"
+					alt="Caught stealing"
+					width="87"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 98:</span>
+		<span>Le coureur en première base est éliminé par un lancer précis du lanceur. Il tente alors d'avancer, mais est retiré par 
+		le défenseur de la deuxième base grâce à une assistance du défenseur de la première base. Les assistances sont comptabilisées 
+		pour le lanceur et le défenseur de la première base, et l'élimination pour le défenseur de la deuxième base. Dans ce cas, 
+		le receveur n'est pas crédité d'une tentative de vol de base, mais le lanceur. Inscrivez le nom du lanceur dans la case du 
+		receveur, dans la ligne de couleur correspondante, et tracez un trait vertical derrière ce nom. Ainsi, le total des bases 
+		volés sera identique à celui indiqué dans les statistiques offensives.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="18619bb0.gif"
+					alt="Caught stealing"
+					width="87"
+					height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr contre l'arrêt-court. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur tente de voler la deuxième base, mais il est éliminé. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codePutout">CS134</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="b2da4c52.png"
+					alt="Caught stealing"
+					width="87"
+					height="91"
+					border="0"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 99:</span>
+		<span>Lorsqu'un coureur en première base est éliminé par un lancer précis du lanceur, tente d'avancer puis retourne en 
+		première base où il est retiré par le défenseur de la première base, on note l'action complète. Dans cet exemple, les 
+		assistances sont créditées au lanceur, au joueur de première base et à l'arrêt-court, et l'élimination est créditée au 
+		joueur de première base. Dans ce cas, le retrait au vol de base n'est pas crédité au receveur, mais au lanceur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="eb1cbb27.gif"
+					alt="Caught stealing"
+					width="87"
+					height="95"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr contre l'arrêt-court. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur tente de voler la deuxième base, mais il est éliminé. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codePutout">CS1363</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="f29e7b55.png"
+					alt="Caught stealing"
+					width="87"
+					height="91"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 100:</span>
+		<span>Lorsqu'un coureur retourne en toute sécurité en première base suite à une erreur de réception du défenseur de la 
+		première base, il faut consigner l'erreur car elle prolonge la présence du coureur sur les bases [OBR 9.12]. Une assistance 
+		est attribuée au lanceur, au défenseur de la première base et à l'arrêt-court, et une erreur est également imputée au défenseur 
+		de la première base. Le vol de base est attribué au lanceur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="20c03539.gif"
+					alt="Caught stealing"
+					width="87"
+					height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr contre l'arrêt-court. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième frappeur réussit un coup sûr en deuxième base, le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur tente de voler une base. Il est piégé mais parvient à retourner sur sa 
+				base grâce à une erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span class="codeAction">noAdvance on </span><span>runner1 -> </span><span class="codeAdvance">CS136E4</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="ae85a01f.png"
+					alt="Caught stealing"
+					width="87"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 101:</span>
+		<span><b>ATTENTION</b>: Si un coureur tente de voler le marbre et est éliminé par le receveur en attrapant un lancer 
+		régulier du lanceur, le lanceur ne se voit pas créditer d'une assistance.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="fedfbc9e.gif"
+					alt="Caught stealing"
+					width="87"
+					height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur tente de voler le marbre mais est éliminé par le receveur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner3 -> </span><span class="codePutout">CS2</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c59942cd.png"
+					alt="Caught stealing"
+					width="87"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+	 	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 102:</span>
+		<span>Le lanceur, comprenant à temps l'intention du coureur, descend du marbre et lance la balle au receveur. Il obtient 
+		une assistance.</span><br/>
+		<span>Le scoreur doit donc être très attentif au comportement du lanceur lorsqu'un coureur tente de voler le marbre.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="7e624298.gif"
+					alt="Caught stealing"
+					width="87"
+					height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur tente de voler le marbre mais est éliminé par le receveur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner3 -> </span><span class="codePutout">CS12</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="ec5e1cb9.png"
+					alt="Caught stealing"
+					width="87"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 103:</span>
+		<span>Avec des coureurs en première et deuxième base, il y a un double vol de base. Le receveur tente d'éliminer le coureur 
+		en troisième base, mais le joueur de troisième base rate le relais, et le coureur est sauf en troisième base. On attribue 
+		une assistance au receveur et une erreur au défenseur de la troisième base sur la tentative de vol de base réussie pour 
+		le coureur de la deuxième à la troisième base, et un choix défensif au coureur de la première à la deuxième base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="eff9f9a9.gif"
+					alt="Caught stealing"
+					width="87"
+					height="187"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr au champ gauche. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième frappeur atteint la première base sur « hit by pitch », le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Les deux coureurs volent une base, mais l'un d'eux aurait dû être éliminé. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">O/2</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">CS2E5</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a08a8776.png"
+					alt="Caught stealing"
+					width="87"
+					height="179"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 104:</span>
+		<span>Avec des coureurs en première et deuxième base, le coureur en deuxième base tente de voler la troisième base. Le 
+		receveur effectue un bon lancer, mais le défenseur de la troisième base fait une erreur. Voyant l'erreur du défenseur de la 
+		troisième base, le coureur de première base décide d'avancer en deuxième base (donc pas en même temps que celui de deuxième 
+		base). Comptez une assistance pour le receveur et une erreur pour le défenseur de troisième base sur la tentative de vol de 
+		base du coureur en troisième base. Inscrivez le numéro du coureur en tête de l'ordre de passage au bâton entre parenthèses 
+		dans la case de deuxième base de ce dernier coureur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b5c72114.gif"
+					alt="Caught stealing"
+					width="87"
+					height="188"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr au champ gauche. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le deuxième frappeur atteint la première but sur un « hit by pitch », le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Les deux coureurs volent une base, mais l'un d'eux aurait dû être éliminé. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">(1)</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">CS2E5</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="85388a65.png"
+					alt="Caught stealing"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 105:</span>
+		<span>Avec un coureur en première base, le frappeur tente un amorti sacrifice et ne parvient pas à toucher la balle. Le 
+		coureur, qui avait déjà commencé sa course vers la deuxième base, tente de revenir mais est éliminé sur une assistance du 
+		receveur. Dans ce cas également, la raison de l'élimination pour vol de base doit être consignée dans les notes.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="19e24f0c.gif"
+					alt="Caught stealing"
+					width="87"
+					height="93"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en première base est éliminé en tentant de voler une base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">CS24</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="2ffa01e0.png"
+					alt="Caught stealing"
+					width="87"
+					height="91"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 106:</span>
+		<span>Surpris par un pick-off, un coureur en première base tente de voler la deuxième. Alors que la défense a une occasion 
+		en or d'éliminer le coureur, le lanceur rate son lancer, la balle étant hors de portée du joueur de première base. Le 
+		coureur atteint ainsi la deuxième base sain et sauf.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="2bfc0ba1.gif"
+					alt="Caught stealing"
+					width="87"
+					height="92"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr au champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur vole la deuxième base, il n'est pas éliminé à cause d'une erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">CSE1T</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="b31bc70e.png"
+					alt="Caught stealing"
+					width="87"
+					height="92"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 107:</span>
+		<span>Si le coureur commence à avancer vers la deuxième base, mais retourne sain et sauf au premier, il faut tout de même 
+		signaler l'erreur, car cela prolonge son temps passé sur les bases. Indiquez l'erreur entre la première et la deuxième base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="8f8379b2.gif"
+					alt="Caught stealing"
+					width="87"
+					height="91"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr au champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur vole la deuxième base, il n'est pas éliminé à cause d'une erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span class="codeAction">noAdvance on </span><span>runner1 -> </span><span class="codeAdvance">CSE1T</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="19af128b.png"
+					alt="Caught stealing"
+					width="72"
+					height="78"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
