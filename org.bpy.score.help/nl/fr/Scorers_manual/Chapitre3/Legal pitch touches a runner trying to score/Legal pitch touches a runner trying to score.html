@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Un lancer légal touche un coureur qui tente de marquer</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Un lancer légal touche un coureur qui tente de marquer.</h2>
+
+	<p class="normalText">
+		<span class="obrReference">Le jeu est arrêté (la balle est morte) et les coureurs avancent d’une base ou retournent à leurs 
+		bases sans pouvoir être retirés quand … Tout lancer régulier qui touche un coureur en train d’essayer de marquer ; 
+		les coureurs avancent </span>
+		<span>[OBR 5.06(c)(8)].</span></p>
+		
+	<p class="normalText">Règlge 6.05(n), Cette règle, qui sera examinée plus en détail ultérieurement, décrit les conséquences 
+	pour un coureur tentant de voler le marbre d'être touché par une balle lancée dans la zone de strike. Il est important de 
+	noter que le lancer légal visé par cette règle doit toucher le coureur avant d'entrer dans la zone de strike.</p>
+	
+	<p class="normalText">Dans cette situation, le frappeur se voit attribuer une balle, le point est marqué et le coureur touché 
+	se voit attribuer un vol de base.</p>
+	
+	<p class="normalText">En ce qui concerne les avancées des autres coureurs, il faut évaluer si, au moment du lancer, l'équipe 
+	offensive était engagée dans une tentative de vol de base ; si oui, le vol doit leur être crédité ; sinon, leurs avancées sont 
+	notées dans la case des bases qui leur ont été attribuées avec le symbole « WP » ou « PB ».</p>
+	
+	<p class="normalText">Il convient de noter que lorsque la balle en question est la quatrième, le frappeur se voit attribuer la 
+	première base et toutes les avances forcées des coureurs sont traitées comme si elles avaient eu lieu sur un Base on ball, y 
+	compris un point marqué avec les bases pleines.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 111:</span>
+		<span>Au cours d'une tentative de double vol de base, le coureur de tête est touché par la balle lancée avant d'atteindre 
+		le marbre.</span><br/>
+		<span>Comme il était manifestement en train de voler une base, les deux avancées sont enregistrées avec l'abréviation « SB ».</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="293fe6df.gif"
+					alt="Legal pitch touches a runner trying to score"
+					width="87"
+					height="187"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'hit by pitch' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en première base avance suite à un balk. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">BK</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple vers l'arrêt-court, le coureur avance d'une base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B6</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Les deux coureurs volent une base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="7d5ce450.png"
+					alt="Legal pitch touches a runner trying to score"
+					width="87"
+					height="179"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 112:</span>
+		<span>Avec des coureurs en première et troisième base, le coureur de tête est touché par la balle lancée légalement 
+		avant d'atteindre le marbre.</span><br/>
+		<span>Le point est légal, le coureur en tête se voit créditer d'un vol de base et l'avancement de l'autre coureur en 
+		deuxième base est enregistré avec la notation « WP » ou « PB », selon la situation.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="46a1f6c6.gif"
+					alt="Legal pitch touches a runner trying to score"
+					width="87"
+					height="191"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'hit by pitch' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur en première base avance suite à un balk. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">BK</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ droit, le coureur avance d'une base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le premier coureur vole une base, tandis que le second profite d'un wild pitch. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">WP</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="ea997a69.png"
+					alt="Legal pitch touches a runner trying to score"
+					width="87"
+					height="182"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 113:</span>
+		<span></span>Avec les première et troisième bases occupées, et un compte complet pour le frappeur, il y a une tentative 
+		de double vol.<br/>
+		<span>Le coureur de tête est touché par la balle avant d'atteindre la zone de strike.</span><br/>
+		<span>Le point est accordé, le coureur qui a marqué est crédité d'un vol de base et le frappeur, comme il s'agissait de la 
+		quatrième balle, se voit attribuer la première base.</span><br/>
+		<span>Ce dernier événement justifie également l’avancée du deuxième coureur, qu’il ait déjà tenté ou non de voler une base 
+		(avancée forcée).</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="fc3f5a32.gif"
+					alt="Legal pitch touches a runner trying to score"
+					width="87"
+					height="282"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe une balle en direction de l'arrêt-court, qui commet une erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E6</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ droit, le coureur avance de deux bases */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant obtient un base on ball pendant que le coureur volait une base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a5c1365b.png"
+					alt="Legal pitch touches a runner trying to score"
+					width="87"
+					height="268"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 114:</span>
+		<span>Avec les bases pleines, deux retraits et un compte complet pour le frappeur, la balle lancée légalement glisse de la 
+		main du lanceur et frappe le coureur qui quitte la troisième base avant d'entrer dans la zone de strike.</span><br/>
+		<span>Étant donné que le lancer est également la quatrième balle, toutes les avancées (forcées) se produisent en conséquence 
+		de la base accordée au quatrième frappeur, indépendamment de toute tentative de vol de base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="302641e6.gif"
+					alt="Legal pitch touches a runner trying to score"
+					width="87"
+					height="359"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr au champ gauche. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie une balle en hauteur au champ centre, mal attrapée, et 
+				le coureur avance grâce à cette erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E8F</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">(2)</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur suivant atteint la première base sur un « Hit by pitch », les deux coureurs 
+				avancent. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur suivant gagne la première base sur un 'base on ball'. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="64d91c84.png"
+					alt="Legal pitch touches a runner trying to score"
+					width="87"
+					height="353"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
