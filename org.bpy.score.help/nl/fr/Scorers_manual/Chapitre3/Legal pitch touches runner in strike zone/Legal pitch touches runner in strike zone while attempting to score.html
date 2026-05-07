@@ -5,7 +5,7 @@
 	http-equiv="content-type"
 	content="text/html; charset=utf-8"
 />
-<title>Legal pitch touches runner in strike zone while attempting to score</title>
+<title>Un lancer légal touche un coureur dans la zone de strike en tentant de marquer.</title>
 <link
 	rel="stylesheet"
 	type="text/css"
@@ -13,29 +13,29 @@
 >
 </head>
 <body>
-	<h2 class="title2">Legal pitch touches runner in strike zone while attempting to score.</h2>
+	<h2 class="title2">Un lancer légal touche un coureur dans la zone de strike en tentant de marquer..</h2>
 
 	<p class="normalText">
-		<span>As mentioned earlier, rule 5.09(a)(14) of the OBR states that </span>
-		<span class="obrReference">with two out, a runner on third base, and two strikes on the batter, the runner attempts to 
-		steal home base on a legal pitch and the ball touches the runner in the batter’s strike zone. The umpire shall call 
-		“Strike Three”, the batter is out and the run shall not count; before two are out, the umpire shall call “Strike Three”, 
-		the ball is dead and the run counts</span></p>
+		<span>Comme mentionné précédemment, la règle 5.09(a)(14) de l'OBR stipule que </span>
+		<span class="obrReference">Avec deux retraits et deux strikes au compte du batteur, si le coureur en troisième base, essaye 
+		de voler la plaque de but lors d’un lancer régulier et que la balle le touche dans la zone de strike, l’arbitre annonce 
+		« troisième strike », le batteur est retiré et le point n’est pas marqué ; avant deux retraits l’arbitre annonce 
+		« troisième strike », la balle est morte et le point compte.</span></p>
 
-	<p class="normalText">Any advances are recorded with “O/1”, except if an attempt to steal was already under way.</p>
+	<p class="normalText">Toute avance est enregistrée avec « O/1 », sauf si une tentative de vol était déjà en cours.</p>
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 115:</span>
-		<span>With first and third bases occupied and less than two strikes on the batter, the runner on third is touched by 
-		a legally pitched ball while passing through the strike zone.</span><br/>
-		<span>The umpire allows the run, charges a strike to the batter and awards the other runner second base.</span><br/>
-		<span>The run counts as “stolen” while the advance to second base is recorded with the abbreviation “O/1”.</span>
+		<span class="exampleNumber">Exemple 115:</span>
+		<span>Avec les première et troisième bases occupées et moins de deux prises sur le frappeur, le coureur en troisième base 
+		est touché par une balle lancée légalement alors qu'il traverse la zone de strikes.</span><br/>
+		<span>L'arbitre valide le point, compte une prise pour le frappeur et accorde la deuxième base à l'autre coureur.</span><br/>
+		<span>Le point est comptabilisé comme « volé » tandis que l'avancement en deuxième base est enregistré avec l'abréviation « O/1 »..</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -46,24 +46,24 @@
 					height="181"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter wins first base on a 'Hit by pitch' */</span><br/>
+				<span class="codeComment">/* Le premier frappeur gagnge la première base sur un 'Hit by pitch' */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HP</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The runner advances on a wild pitch */</span><br/>
+				<span class="codeComment">/* Le coureur avance sur un wild pitch */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner1 -> </span><span class="codeAdvance">WP</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter hits a right-field hit, the runner advances */</span><br/>
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr au champ droit, le coureur avance. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B9</span>
 				<span>, </span>
 				<span>runner2 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* One runner steals the base, the second advances on indifference */</span><br/>
+				<span class="codeComment">/* Un coureur vole le marbre, le second avance par indifférence */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner1 -> </span><span class="codeAdvance">O/1</span>
 				<span>, </span>
@@ -81,15 +81,15 @@
 	</table>				
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 116:</span>
-		<span>starts with the same situation as example 115, but now the second runner was trying to steal the next base: both 
-		are credited with a stolen base.</span>
+		<span class="exampleNumber">Exemple 116:</span>
+		<span>Commence par la même situation que l'exemple 115, mais maintenant le deuxième coureur essayait de voler la base 
+		suivante et se voit créditer d'une base volée.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -100,24 +100,24 @@
 					height="182"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter wins first base on a 'Hit by pitch' */</span><br/>
+				<span class="codeComment">/* Le premier frappeur gagnge la première base sur un 'Hit by pitch' */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HP</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The runner advances on a wild pitch */</span><br/>
+				<span class="codeComment">/* Le coureur avance sur un wild pitch */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner1 -> </span><span class="codeAdvance">WP</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter hits a right-field hit, the runner advances */</span><br/>
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr au champ droit, le coureur avance. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B9</span>
 				<span>, </span>
 				<span>runner2 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The two runners steal a base */</span><br/>
+				<span class="codeComment">/* Les deux coureurs volent une base */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner1 -> </span><span class="codeAdvance">SB</span>
 				<span>, </span>
@@ -135,19 +135,19 @@
 	</table>				
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 117:</span>
-		<span>With first and third bases occupied, less than two out and two strikes on the batter, the runner on third tries 
-		to steal home base but is touched by the ball while passing through the strike zone.</span><br/>
-		<span>The umpire calls out the batter on the third strike, validates the run and awards the other runner an additional 
-		base.</span><br/>
-		<span>The scorer therefore credits the runner who scored with a stolen base, and notes down the advance to second with 
-		the notation “O/1”.</span>
+		<span class="exampleNumber">Exemple 117:</span>
+		<span>Avec les première et troisième bases occupées, moins de deux retraits et deux prises sur le frappeur, le coureur en 
+		troisième base tente de voler le marbre mais est touché par la balle en passant dans la zone de strikes.</span><br/>
+		<span>L'arbitre retire le frappeur sur la troisième prise, valide le point et accorde une base supplémentaire à l'autre 
+		coureur.</span><br/>
+		<span>Le scoreur crédite donc le coureur qui a marqué avec un vol de base et note l'avancement en deuxième base avec la 
+		notation « O/1 ».</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -158,24 +158,24 @@
 					height="266"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter hits a hit on first base and capitalizes on a mistake to gain 
-				second base */</span><br/>
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr en première base et profite d'une erreur pour 
+				atteindre la deuxième base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B3 e3</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The runner takes advantage of a wild pitch to reach third base */</span><br/>
+				<span class="codeComment">/* Le coureur profite d'un lancer fou pour atteindre la troisième base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner2 -> </span><span class="codeAdvance">WP</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter reaches first base on a 'base on ball' */</span><br/>
+				<span class="codeComment">/* Le frappeur suivant atteint la première base grâce à un 'base on ball' */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter is struck out, a runner steals home plate, and the other advances on an 
-				indifference */</span><br/>
+				<span class="codeComment">/* Le frappeur est retiré sur trois prises, un coureur vole le marbre, et l'autre avance 
+				sur l'indifférence */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">KS</span>
 				<span>, </span>
@@ -195,16 +195,16 @@
 	</table>				
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 118:</span>
-		<span>With first and third bases occupied, two out and two strikes on the batter, the runner on third is touched by the 
-		ball in the strike zone as he is trying to score.</span><br/>
-		<span>The umpire calls out the batter and (as this is the third putout) no run is scored.</span>
+		<span class="exampleNumber">Exemple 118:</span>
+		<span>Avec les première et troisième bases occupées, deux retraits et deux prises sur le frappeur, le coureur en troisième 
+		base est touché par la balle dans la zone de strikes alors qu'il tente de marquer.</span><br/>
+		<span>L'arbitre déclare le frappeur éliminé et (comme il s'agit du troisième retrait) aucun point n'est marqué.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -215,24 +215,25 @@
 					height="282"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The first batter wins first base on a throwing error by the fifth baseman. */</span><br/>
+				<span class="codeComment">/* Le premier frappeur obtient la première base suite à une erreur de lancer du 
+				défenseur de la cinquième base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">E5T</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The runner steals a base */</span><br/>
+				<span class="codeComment">/* Le coureur vole une base */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner1 -> </span><span class="codeAdvance">SB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter hits a single to the pitcher, the runner advances one base */</span><br/>
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au lanceur, le coureur avance d'une base */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B1</span>
 				<span>, </span>
 				<span>runner2 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter is strike out */</span><br/>
+				<span class="codeComment">/* Le frappeur est retiré sur trois prises. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">KL</span>
 				<span>}</span><br /><br />
