@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Un joueur de champ, après avoir attrapé une balle en vol, tombe sur un banc ou une tribune, ou dans une 
+foule de spectateurs sur le terrain</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Un joueur de champ, après avoir attrapé une balle en vol, tombe sur un banc ou une tribune, 
+	ou dans une foule de spectateurs sur le terrain.</h2>
+
+	<p class="normalText">
+		<span class="obrReference">Chaque coureur, autre que le batteur, peut, sans risque d’être retiré, avancer 
+		d’une base quand … Un défenseur, après avoir attrapé un fly, marche ou tombe sur toute surface hors des 
+		limites de jeu  </span>
+		<span>[OBR 5.06(b)(3)(C)].</span></p>
+		
+	<p class="normalText">La règle stipule que dans une telle situation, les coureurs avancent d'une base 
+	(la balle est morte). Cette avance légale est notée avec le numéro du frappeur qui a été retiré sur la balle en 
+	l'air. Si le scoreur estime que le coureur en troisième base aurait atteint le marbre sans l'incident, le frappeur 
+	se voit créditer d'un sacrifice (FSF).</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 119:</span>
+		<span>Sans aucun retrait et avec les bases pleines, le septième frappeur envoie une courte balle en territoire 
+		des fausses balles vers l'abri des joueurs de troisième base. Le joueur de champ effectue la prise, mais tombe 
+		dans l'abri au moment de l'impact.</span><br/>
+		<span>L'arbitre désigne le frappeur comme éliminé et tous les coureurs avancent d'une base.</span><br/>
+		<span>Chaque avancée est notée avec le numéro du batteur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="843c291b.gif"
+					alt="A fielder, after catching a fly ball, falls into"
+					width="87"
+					height="367"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr au champ centre */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur avance sur un lancer fou */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">WP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr contre le receveur, le coureur 
+				avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B2</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur un « base on ball », le coureur avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie une balle en l'air dans la zone des fausses 
+				balles, qui est attrapée au vol, et tous les coureurs avancent */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">FF5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="8f739506.png"
+					alt="A fielder, after catching a fly ball, falls into"
+					width="87"
+					height="356"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText"><b>ATTENTION</b>: Lorsque le joueur de champ, après avoir attrapé une balle fausse, se 
+	retrouve dans l'abri mais ne tombe pas, le frappeur est déclaré éliminé et la balle reste en jeu.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 120:</span>
+		<span>Sans retrait et avec un coureur en troisième base, le frappeur envoie une longue balle en territoire des 
+		fausses balles vers le champ gauche. Le défenseur du champ gauche, après une course effrénée, parvient à 
+		attraper la balle mais tombe contre la clôture, se retrouvant hors du terrain. L'arbitre déclare le frappeur 
+		retiré et le coureur marque.</span><br/>
+		<span>L'avance est indiquée par le numéro du frappeur dans l'ordre de passage au bâton.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="5fab128f.gif"
+					alt="A fielder, after catching a fly ball, falls into"
+					width="87"
+					height="183"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr au champ centre */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Puis il vole une base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Il profite ensuite d'un lancer fou pour atteindre la troisième base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codeAdvance">WP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant envoie une balle en hauteur dans la zone des fausses 
+				balles, au champ gauche, qui est attrapée, et le coureur marque un point */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">FF7</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="2b6b7c39.png"
+					alt="A fielder, after catching a fly ball, falls into"
+					width="87"
+					height="180"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText"><b>ATTENTION:</b> Si, de l'avis du scoreur, le coup frappé au champ extérieur aurait permis 
+	au coureur de marquer dans tous les cas, il doit le comptabiliser comme un sacrifice fly, et le point est considéré 
+	comme ayant été produit.</p>
+	
+	<p class="normalText"><b>ATTENTION:</b> Étant donné le nombre et la variété des causes possibles, il est essentiel, 
+	en cas d'une de ces avancées particulières, de noter dans l'espace approprié du rapport de score le numéro de la 
+	règle qui a donné lieu à l'avancée.</p>
+	
+</body>
+</html>
