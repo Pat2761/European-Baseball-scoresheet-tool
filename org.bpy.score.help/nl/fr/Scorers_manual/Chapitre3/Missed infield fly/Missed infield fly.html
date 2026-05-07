@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Infield fly manqué</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2>Infield fly manqué.</h2>
+	
+	<p class="normalText">La définition des termes du règlement OBR stipule que lorsqu'un infield fly est annoncé, la 
+	balle reste en jeu et tous les coureurs peuvent avancer à leurs risques et périls. Il peut donc arriver qu'un ou 
+	plusieurs joueurs offensifs profitent d'une balle intérieure non attrapée pour avancer jusqu'à la base suivante. 
+	Ces avances, généralement dues à une erreur défensive, sont notées par l'abréviation « e » (erreur de base 
+	supplémentaire), suivie de la position du défenseur ayant manqué la prise facile, dans la case correspondant au 
+	coureur de tête, c'est-à-dire celui qui a le plus profité de l'erreur.</p>
+	
+	<p class="normalText">Les autres coureurs avancent en fonction du numéro de l'ordre de passage au bâton du frappeur, 
+	entre parenthèses.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 121:</span>
+		<span>Sans retrait et avec les première et deuxième bases occupées, l'arrêt-court rate un infield fly facile 
+		frappé par le batteur numéro neuf, donnant aux deux coureurs l'occasion d'avancer d'une base.</span><br/>
+		<span>L'arrivée en troisième base est annotée avec l'erreur de base supplémentaire du défenseur, tandis que 
+		l'avancement en deuxième base est annoté avec le numéro de l'ordre de frappe (entre parenthèses) du frappeur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="c284aa33.gif"
+					alt="Missed infield fly"
+					width="87"
+					height="266"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'hit by pitch' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr en cinquième base, le coureur 
+				avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance"></span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Il frappe un infield fly, mais le joueur d'arrêt-court commet une erreur, 
+				le coureur avance grâce à cette erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR8-6</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">(1)</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">e6</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="67398e3.png"
+					alt="Missed infield fly"
+					width="87"
+					height="268"/>
+			</td>
+		</tr>
+	</table>				
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 122:</span>
+		<span></span>Conditions et situation identiques à celles de l'exemple précédent.<br/>
+		<span>La seule différence, c'est que l'arrêt-court rate la prise parce qu'il a été ébloui par le soleil 
+		(ou les lumières artificielles), ou déstabilisé par le vent qui a modifié la trajectoire naturelle de la balle.</span><br/>
+		<span>Étant donné que de tels phénomènes empêchent le defenseur de jouer à son meilleur niveau, les avancées des 
+		deux coureurs sont enregistrées comme ayant eu lieu lors du coup sûr.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="dbc7d859.gif"
+					alt="Missed infield fly"
+					width="87"
+					height="269"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur gagne la première base sur un 'hit by pitch' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un coup sûr en cinquième base, le coureur 
+				avance. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance"></span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/*Il frappe un infield fly, mais les deux coureurs avancent tout de même. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">OBR8-6</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="85293189.png"
+					alt="Missed infield fly"
+					width="87"
+					height="267"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
