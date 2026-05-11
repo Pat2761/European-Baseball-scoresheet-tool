@@ -377,6 +377,27 @@ col.abreviationDescription {
 }
 
 /* ------------------------------------------------------------------------------ 
+	Styles used for a decimal list
+	----------------------------------------------------------------------------- */
+
+.olTypeDash {
+	list-style-type:decimal;
+}
+
+.olTypeDash li::marker {
+	content: "- " ;
+}
+
+.olTypeDash li {
+	list-style-type: disc;
+	margin-left: 1px;
+	margin-bottom: 12px;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	line-height: 1;
+}
+
+/* ------------------------------------------------------------------------------ 
 	Styles used hit table description
 	----------------------------------------------------------------------------- */
 /* Style of the table */

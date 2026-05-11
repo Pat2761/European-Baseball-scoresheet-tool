@@ -323,6 +323,17 @@ col.abreviationDescription {
 	line-height: 1;
 }
 
+.bullet {
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	margin-left: 30px;
+	padding-left: 30px;
+}
+
+.bullet::before {
+    content: "• ";
+}
+
 /* ------------------------------------------------------------------------------ 
 	Styles used for a alphabetical list
 	----------------------------------------------------------------------------- */
@@ -353,13 +364,34 @@ col.abreviationDescription {
 }
 
 .olTypeNumber li::marker {
-	content: "("counter(list-item, decimal) ")";
+	content: "("counter(list-item, decimal) ") ";
 }
 
 .olTypeNumber li {
 	list-style-type: disc;
 	margin-left: 1px;
-	margin-bottom: 0;
+	margin-bottom: 12px;
+	font-family: var(--main-font-family);
+	font-size: 12pt;
+	line-height: 1;
+}
+
+/* ------------------------------------------------------------------------------ 
+	Styles used for a decimal list
+	----------------------------------------------------------------------------- */
+
+.olTypeDash {
+	list-style-type:decimal;
+}
+
+.olTypeDash li::marker {
+	content: "- " ;
+}
+
+.olTypeDash li {
+	list-style-type: disc;
+	margin-left: 1px;
+	margin-bottom: 12px;
 	font-family: var(--main-font-family);
 	font-size: 12pt;
 	line-height: 1;

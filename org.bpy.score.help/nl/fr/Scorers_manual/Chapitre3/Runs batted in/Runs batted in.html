@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Points produits</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Points produits.</h2>
+	
+	<p class="normalText">
+		<span>Selon la règle 9.04 du règlement OBR, un point est considéré comme produit (RBI) si le coureur qui a 
+		marqué a été amené au marbre par le frappeur (ou a marqué grâce au frappeur). Il s'ensuit qu'un point est 
+		comptabilisé comme produit si le coureur a atteint le marbre grâce à :</p>
+		
+	<ul class="olTypeDash">
+		<li class="olTypeDash">un coup sûr;
+		</li>
+		<li class="olTypeDash">une balle frappée qui a entraîné l'élimination du frappeur ou d'un autre coureur, mais 
+		qui a permis au coureur en troisième base de marquer ; </li>
+		<li class="olTypeDash">un amorti sacrifice ou une chandelle sacrifice; 
+		</li>
+		<li class="olTypeDash">une base sur balles, ou l'attribution de la première base pour avoir été touché par une balle 
+		lancée, ou pour interférence ou obstruction (avec les bases pleines), ce qui force le coureur en troisième base 
+		à franchir le marbre;
+		</li>
+		<li class="olTypeDash">une erreur est commise sur une action où un coureur en troisième base marquerait 
+		normalement un point avant que deux coureurs ne soient éliminés..
+		</li>
+	</ul>
+	
+	<p class="normalText"><b>ATTENTION:</b> S'il y a deux retraits, un point marqué sur une balle frappée qui a 
+	entraîné une erreur, ou suite à une obstruction avec les bases pleines, ne peut jamais être comptabilisé comme 
+	un point produit, car si l'erreur n'avait pas été commise, la manche aurait été terminée et le point n'aurait pas 
+	été marqué.</p>
+	
+	<p class="normalText">Un point produit est inscrit dans la case du marbre, avec le numéro de frappeur ayant permis 
+	au coureur de marquer. Ce frappeur se voit créditer d'un point produit, dans la case appropriée. </p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 123:</span>
+		<span>Avec des coureurs en première et troisième base, le frappeur frappe un double au champ droit, permettant 
+		aux deux coureurs de marquer.</span><br/>
+		<span>Cela signifie que le quatrième frappeur dans l'ordre de passage au bâton se voit attribuer deux points 
+		produits.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="a72607eb.gif"
+					alt="Runs batted in"
+					width="87"
+					height="271"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur suivant atteint la première base suite à une obstruction du 
+				receveur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un double au champ droit, les deux coureurs 
+				marquent un point. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="bfaedfcb.png"
+					alt="Runs batted in"
+					width="87"
+					height="267"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 124:</span>
+		<span>Avec des coureurs en première et troisième base, le frappeur frappe un simple vers le champ centre, qui 
+		laisse passer la balle entre ses jambes. Les deux coureurs marquent alors un point et le frappeur atteint la 
+		deuxième base.</span><br/>
+		<span>Le point marqué par le coureur depuis la troisième base est comptabilisé, car il a été marqué sur le coup 
+		sûr.</span><br/>
+		<span>Le point marqué par le coureur depuis la première base n'est cependant pas un point produit car il est dû 
+		à une erreur du joueur de champ centre.</span><br/>
+		<span>Dans cet exemple, on considère que le coureur parti de la première base aurait atteint la troisième base 
+		grâce à ce seul coup sûr.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="49af80a7.gif"
+					alt="Runs batted in"
+					width="87"
+					height="277"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur suivant remporte la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un simple au champ centre et profite d'une 
+				erreur pour atteindre la deuxième base. Les deux coureurs avancent, et le deuxième coureur profite de 
+				l'erreur pour marquer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8 e8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++ (3)</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="fa70e4a3.png"
+					alt="Runs batted in"
+					width="87"
+					height="268"/>
+			</td>
+		</tr>
+	</table>				
+
+
+
+	<p class="normalText">Les parenthèses autour du chiffre quatre, qui enregistre le point marqué par le deuxième 
+	coureur, indiquent qu'il ne s'agit pas d'un point produit, car il a été obtenu en raison d'une erreur commise 
+	pendant le passage au bâton du quatrième frappeur, et non grâce à son coup sûr.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 125:</span>
+		<span>Avec des coureurs en première et troisième base, le frappeur frappe vers l'arrêt-court, qui élimine le 
+		coureur de première base avec l'aide du défenseur de la deuxième base.</span><br/>
+		<span>Le coureur parti de la troisième base marque.</span><br/>
+		<span>Ce point compte comme un point produit, puisqu'il a été marqué sur la balle frappée.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="ec1d48a3.gif"
+					alt="Runs batted in"
+					width="87"
+					height="274"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur suivant remporte la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur envoie la balle en direction de l'arrêt-court, qui l'attrape 
+				et la transmet pour éliminer le coureur arrivant da la première base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O6</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">64</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c42bd98a.png"
+					alt="Runs batted in"
+					width="87"
+					height="267"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 126:</span>
+		<span>Lorsque les bases sont pleines, le frappeur est touché par la balle et se rend directement en première 
+		base, obligeant les autres coureurs à avancer.</span><br/>
+		<span>Le coureur en troisième base marque donc un point.</span><br/>
+		<span>Ce point est comptabilisé comme un point produit, puisqu'il a été forcé par le frappeur.</span><br/>
+		<span>La même situation se produit non seulement lorsqu'un frappeur-coureur atteint la première base sur un 
+		lancer frappé, mais aussi sur un but sur balles ou suite à une interférence.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="7c70d165.gif"
+					alt="Runs batted in"
+					width="87"
+					height="364"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr au champ gauche. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un coup sûr au champ droit, le coureur avance 
+				de deux bases */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur un « Hit by pitch », 
+				tous les coureurs avancent. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="66622348.png"
+					alt="Runs batted in"
+					width="87"
+					height="353"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 127:</span>
+		<span>Avec les première et deuxième bases occupées, le frappeur réussit un coup de circuit et trois points 
+		sont marqués.</span><br/>
+		<span>Les trois points sont produits et sont attribués au frappeur (y compris son propre coup de circuit).</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="9193708b.gif"
+					alt="Runs batted in"
+					width="87"
+					height="271"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un coup sûr au champ centre */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un coup sûr au champ droit, le coureur 
+				avance d'une base */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur envoie la balle au champ centre, tout le monde marque. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HR8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="e207c857.png"
+					alt="Runs batted in"
+					width="87"
+					height="264"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 128:</span>
+		<span>La troisième base étant occupé, le frappeur envoie une balle en hauteur vers le champ centre et est 
+		éliminé.</span><br/>
+		<span>Le coureur en troisième base quitte base après la prise et marque un point.</span><br/>
+		<span>Le point est marqué et crédité au frappeur qui a réussi le sacrifice.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="eb89acaa.gif"
+					alt="Runs batted in"
+					width="87"
+					height="185"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur frappe un sacrifice fly au champ centre, le coureur marque */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SF8</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="ad560fd0.png"
+					alt="Runs batted in"
+					width="87"
+					height="178"/>
+			</td>
+		</tr>
+	</table>				
+
+
+
+
+	<p class="normalText"><b>AUCUN POINT PRODUIT</b> n'est marqué suite à: </p>
+	
+	<ul class="olTypeDash">
+		<li class="olTypeDash">Une erreur défensive; 
+		</li>
+		<li class="olTypeDash">Un lancer sauvage, une balle passée ou un balk;
+		</li>
+		<li class="olTypeDash">
+			<span>Un jeu où </span>
+			<span class="obrReference"> lorsque le batteur frappe un roulant dans un double-jeu forcé ou un double-jeu 
+			forcé inversé </span>
+			<span>[OBR 9.04(b)(1)]; </span>
+		</li>
+		<li class="olTypeDash">Une base volée;</li>
+		<li class="olTypeDash">Un choix défensif (O/).
+		</li>
+	</ul>
+	
+	<p class="normalText">Voici quelques exemples.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 129:</span>
+		<span>Avec un coureur en troisième base, le lanceur effectue un lancer fou, permettant au coureur de marquer.</span><br/>
+		<span>Ce point n'est pas un point produit. Il en va de même pour une balle passée.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="3a8b3bd9.gif"
+					alt="Runs batted in"
+					width="87"
+					height="94"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur profite d'un lancer fou pour marquer le point. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">WP</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="6949e90f.png"
+					alt="Runs batted in"
+					width="87"
+					height="94"
+					border="0"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 130:</span>
+		<span>Avec un coureur en deuxième base, le frappeur réussit un amorti sacrifice qui permet au coureur 
+		d'atteindre la troisième base.</span><br/>
+		<span>Cependant, le lanceur, qui attrape le ballon amorti, rate son lancer vers la première base, permettant 
+		ainsi au coureur de marquer et au frappeur d'atteindre la deuxième base.</span><br/>
+		<span>Le point n'est pas validé car il a été marqué suite à une erreur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="19618470.gif"
+					alt="Runs batted in"
+					width="87"
+					height="181"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur frappe un double au champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un sacrifice, mais se retrouve sur les bases 
+				suite à une erreur. Le coureur avance et profite de l'erreur pour marquer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">SHE1T+</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+ (2)</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="cfcc8977.png"
+					alt="Runs batted in"
+					width="87"
+					height="182"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 131:</span>
+		<span>Avec des coureurs en première et troisième base, le frappeur frappe vers l'arrêt-court qui passe la balle 
+		au défenseur de la deuxième base. Ce dernier élimine le coureur arrivant de la première base, puis lance vers 
+		le défenseur de la première base, réalisant un double jeu. Le coureur en troisième base marque.</span><br/>
+		<span>L’avance du coureur de tête est parfaitement légale, même si le point ne peut être comptabilisé comme 
+		ayant été produit, car il a été inscrit suite à une balle frappée qui a conduit à un double jeu.</span><br/>
+		<span>Dans ce cas, il est important de noter le numéro du frappeur dans l'ordre de passage au bâton, marqué 
+		d'un trait, afin de montrer qu'il ne s'agit pas d'un point produit, même si l'avance était légale.</span>	
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="f3bf754b.gif"
+					alt="Runs batted in"
+					width="87"
+					height="278"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur un 'base on ball' */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe une balle au sol près de l'arrêt-court, ce qui 
+				provoque un double jeu ; le coureur en troisième base marque le point. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">GDP43</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">64</span>			
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="9d9051a6.png"
+					alt="Runs batted in"
+					width="87"
+					height="272"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 132:</span>
+		<span>Avec deux retraits et un coureur en troisième base, le frappeur frappe vers l'arrêt-court qui rate la 
+		prise, permettant au coureur en troisième base de marquer et au frappeur d'atteindre la première base en toute 
+		sécurité.</span><br/>
+		<span>Le point n'est pas un point produit car il y avait déjà deux retraits, et si l'arrêt-court n'avait pas 
+		commis cette erreur, la manche aurait été terminée.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="f4dc9461.gif"
+					alt="Runs batted in"
+					width="87"
+					height="179"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un triple au champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3BRC</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base suite à une erreur, et le 
+				coureur profite de cette erreur pour marquer le point. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E6</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">(2)</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="f81daaa8.png"
+					alt="Runs batted in"
+					width="87"
+					height="178"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Pour conclure cette section sur les points produits, nous allons profiter de cette occasion 
+	pour attirer votre attention sur une situation fréquente qui peut mettre le scoreur dans une situation délicate.</p>
+	
+	<p class="normalText">Prenons l'exemple suivant.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 133:</span>
+		<span>Avec un coureur en deuxième base, le frappeur frappe un simple vers le champ centre, qui laisse passer 
+		la balle entre ses jambes.</span><br/>
+		<span>Le coureur en deuxième base réussit à marquer, tandis que le frappeur atteint la deuxième base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="c11d57d.gif"
+					alt="Runs batted in"
+					width="87"
+					height="183"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier coureur frappe un double au champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un coup sûr au champ centre et profite de 
+				l'erreur pour atteindre la deuxième base; le coureur marque. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8 e8</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="1f4d93be.png"
+					alt="Runs batted in"
+					width="87"
+					height="179"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">À ce stade, nous nous demandons si le point a été produit ou non, et si le coureur en 
+	deuxième base aurait marqué de toute façon, sans l'erreur du joueur de champ centre.</p>
+	
+	<p class="normalText">Pour résoudre correctement ce problème, le scoreur doit suivre de très près l'évolution de 
+	la situation sur le terrain et prendre particulièrement note de la position du coureur au moment où le défenseur 
+	a manqué la balle, et s'il était près du marbre ou loin, ce qui rendrait un lancer vers le marbre très difficile.</p>
+	
+	<p class="normalText">Il devrait noter attentivement si, une fois arrivé en troisième base, le coureur a ralenti 
+	puis a repris de la vitesse après avoir constaté l'erreur du joueur de champ, ou s'il a dépassé la troisième base 
+	en courant et a continué vers le marbre sans prêter attention à ce qui se passait dans le champ extérieur.</p>
+	
+	<p class="normalText">Si le marqueur détermine que le coureur se dirigeait de toute façon vers le marbre, et que le 
+	défenseur a commis l'erreur dans une position qui aurait rendu difficile pour lui d'effectuer un retrait au marbre, 
+	le frappeur devrait se voir créditer un point produit.</p>
+		
+	<p class="exampleText">
+		<span>Sinon</span>
+		<span class="exampleNumber">Exemple 134:</span>
+		<span>Le point ne serait pas comptabilisé comme un point produit.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="b51d1db4.gif"
+					alt="Runs batted in"
+					width="87"
+					height="176"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier coureur frappe un double au champ gauche */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un coup sûr au champ centre et profite de 
+				l'erreur pour atteindre la deuxième base, le coureur marque. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8 e8</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+ (2)</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="9b2a1b75.png"
+					alt="Runs batted in"
+					width="87"
+					height="179"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
