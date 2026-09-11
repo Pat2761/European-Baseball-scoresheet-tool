@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Points mérités</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Points mérités.</h2>
+	
+	<p class="normalText">Conformément à la règle 9.16 des OBR, un point mérité (ER) est comptabilisé lorsque, avec 
+	moins de trois occasions de retrait, toutes les progressions sur les buts du joueur ayant atteint le marbre peuvent 
+	être attribuées au lanceur. Un point mérité est comptabilisé lorsque ces progressions résultent des situations 
+	suivantes :</p>
+	
+	<ul class="dotList">
+		
+		<li><b>Batteur-coureur:</b> coups sûrs, choix défensifs (balles occupées), bases sur balles (y compris les bases 
+		sur balles intentionnels), frappeurs atteints par un lancer et, en l'absence d'occasion de jeu défensif, 
+		progression en première base sur un retrait au bâton combiné à un lancer fou.</li>
+		
+		<li><b>Coureurs:</b> toutes les progressions résultant de coups sûrs, de bases volés, d'amortis-sacrifices, de 
+		sacrifices flys, de retraits, de choix défensifs, de feintes illégales (balks), de lancers fous, d'interférences 
+		du receveur et d'avancées forcées consécutives à l'attribution de la première base au batteur.</li>
+		
+	</ul>
+
+	<table class="contentDescription">
+		<tr>
+			<td class="contentDescriptionDescription">À cet égard, il convient de noter que, pour un point mérité, le 
+			petit losange situé au centre de chaque case formé par les traits tracés au fur et à mesure que le coureur 
+			progresse sur les bases doit être rempli.</td>
+												
+			<td class="contentDescriptionName">
+				<img
+					src="ba3c54a8.gif"
+					alt="Earned runs"
+					width="87"
+					height="91"/>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="contentDescriptionDescription">Si le point n'est pas mérité, le losange reste vide.
+			</td>
+			
+			<td class="contentDescriptionName">
+				<img
+					src="db781071.gif"
+					alt="Earned runs"
+					width="87"
+					height="89"/>
+			</td>	
+		</tr>
+		<tr>
+			<td class="contentDescriptionDescription">Si le point n'est PAS mérité contre l'équipe, une croix doit 
+			être tracée à l'intérieur du losange.
+			</td>
+			
+			<td class="contentDescriptionName">
+				<img
+					src="8832eba8.gif"
+					alt="Earned runs"
+					width="87"
+					height="92"/>
+			</td>	
+		</tr>
+						
+	</table>
+
+	<p class="normalText">Avant d'aborder la question complexe des points mérités, il convient d'examiner ce que l'on 
+	entend par « occasion défensive ».</p>
+	
+	<p class="normalText">Une « occasion de jeu défensif » se définit comme tout moment où, selon l’avis du scoreur, 
+	la défense a la possibilité d’effectuer un retrait, que cette occasion ait été saisie avec succès ou manquée en 
+	raison d’une erreur.</p>
+	
+	<p class="normalText"><b>Les occasions de jeu défensif incluent</b>: les retraits (putouts), toutes les erreurs 
+	décisives (y compris celles ayant permis au batteur auteur d'un coup sûr de sacrifice d'atteindre la première base 
+	en toute sécurité), ainsi que toutes les arrivées sur base de batteurs-coureurs enregistrées sous les codes 
+	« K PB », « OB » et, dans des cas précis, « K WP » (selon que la situation implique KL ou KS combiné à PB ou WP).</p>
+	
+	<p class="normalText">Si le lanceur n'est pas tenu responsable des points marqués après la troisième occasion de 
+	jeu défensif, c'est parce que, si la défense avait su tirer parti de chacune de ces opportunités, elle aurait 
+	réalisé trois retraits et cette phase de la manche aurait pris fin.</p>
+	
+	<p class="exampleText">
+		<span>Dans l' </span>
+		<span class="exampleNumber">Exemple 1</span>
+		<span> Dans la situation présente, la défense a déjà eu trois occasions d'intervenir : deux retraits ont été 
+		effectués et un troisième coureur a atteint sa base à la faveur d'une erreur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="d2caeb30.gif"
+					alt="Earned runs"
+					width="87"
+					height="277"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur est retiré sur un strike out. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe la balle en direction de l'arrêt-court, qui la 
+				relaie pour éliminer le batteur-coureur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">63</span>
+				<span>}</span><br /><br />
+	
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur une erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E6T</span>
+				<span>}</span><br /><br />
+
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="95f575f7.png"
+					alt="Earned runs"
+					width="87"
+					height="260"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Une balle non rattrapée considérée comme une erreur doit également être considérée comme une 
+	occasion de jeu défensif, puisque le batteur aurait pu être éliminé. Il existe par ailleurs d'autres situations où 
+	une telle occasion peut se présenter sans pour autant aboutir à une élimination ou à une erreur défensive.</p>
+	
+	<p class="exampleText">
+		<span>En général, lorsque deux occasions de réaliser un retrait se présentent pour un même joueur, une seule 
+		est comptabilisée, car un joueur ne peut être retiré qu'une seule fois. </span>
+		<span class="exampleNumber">Exemple 2</span>
+		<span>  montre deux actions défensives : une erreur du receveur et une balle en hauteur captée par le joueur de 
+		champ droit.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="adae73ea.gif"
+					alt="Earned runs"
+					width="87"
+					height="95"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur aurait dû être éliminé sur une pop. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">EF2</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur est retiré sur une fly frappée vers le champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">F9</span>
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">	
+				<img
+					src="4de88cb4.png"
+					alt="Earned runs"
+					width="87"
+					height="94"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText"><b>ATTENTION:</b> Ces exemples illustrent des situations où deux occasions d'intervention se 
+	présentent pour un même joueur, mais où une seule d'entre elles est comptabilisée.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 3:</span>
+		<span> Comme le batteur-coureur aurait été retiré sans l'erreur, il n'y avait aucune possibilité de le prendre 
+		en Pick-off.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="c2fa9889.gif"
+					alt="Earned runs"
+					width="87"
+					height="189"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur réussit un simple sur le lanceur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B1</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe la balle en direction de l'arrêt-court, qui la 
+				relaie en première base. Le joueur de champ commet une erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">6E3</span>
+				<span>, </span>
+				<span>runner -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur est retiré sur un pick off. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">PO13</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="6b57f03b.png"
+					alt="Earned runs"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 4:</span>
+		<span>Il y a deux occasions de jeu défensif concernant le coureur retiré en deuxième base. Il convient toutefois 
+		de noter que si ce coureur avait été retiré en première base au lieu d'atteindre la base en toute sécurité grâce 
+		à une erreur, la défense aurait également retiré le frappeur suivant, réalisant ainsi deux retraits au total.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="6d7aed9a.gif"
+					alt="Earned runs"
+					width="87"
+					height="180"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur atteint la première base sur une erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E6F</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe la balle en direction de l'arrêt-court, qui la 
+				relaie pour éliminer le coureur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O6</span>
+				<span>, </span>
+				<span>runner -> </span><span class="codePutout">64</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="2fee07cc.png"
+					alt="Earned runs"
+					width="87"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Par conséquent, dans ce genre de situation, deux occasions de jeu défensif sont comptabilisées. 
+	Tout point marqué par le coureur ayant atteint sa base sur une action impliquant un joueur déjà sur base ne serait 
+	pas considéré comme un point mérité.</p>
+
+	<p class="normalText"><b>IMPORTANT:</b> Si, au cours d'une manche, la défense fait face à trois occasions de jeu 
+	défensif, aucun point mérité n'est imputé au lanceur. La raison de cette règle est assez simple à comprendre : si 
+	ces trois occasions s'étaient soldées par trois retraits, la manche aurait pris fin et l'équipe en attaque n'aurait 
+	plus pu marquer de points. En revanche, si la manche se poursuit, le fait que ces occasions ne se soient pas 
+	concrétisées par des retraits relève de la seule responsabilité de la défense ; c'est pourquoi aucun point mérité 
+	supplémentaire n'est porté au compte du lanceur.</p>
+	
+	<p class="normalText">Un batteur est automatiquement déclaré retiré lorsque, avec moins de deux retraits et la 
+	première base occupée, le troisième *strike* survient sur un lancer fou (*wild pitch*). Si la première base est 
+	libre ou s'il y a deux retraits, le batteur-coureur peut tenter de l'atteindre. S'il y parvient, le symbole à 
+	utiliser pour noter sa progression vers la première base est « KS1 WP » ; bien qu'il ne s'agisse généralement pas 
+	d'une occasion de jeu défensif, ce cas fait exception à la règle, comme c'est parfois le cas.</p>
+	
+	<p class="normalText">En effet, si la première base est libre parce que le coureur a profité d'une erreur ou d'une 
+	balle passée pour avancer, la situation « KS1 WP » (retrait sur prises, balle échappée/fole) est alors considérée 
+	comme une occasion de jeu défensif. Cela ressort clairement du fait qu'en l'absence d'erreur ou de balle passée, 
+	la première base serait resté occupée et le batteur aurait, par conséquent, été automatiquement déclaré retiré. 
+	Par conséquent, les points marqués par un batteur devenu coureur à la suite d'une telle situation ne peuvent être 
+	comptabilisés comme des points mérités.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 5:</span>
+		<span>Alors qu'il n'y a aucun retrait et qu'un coureur occupe la première base, le huitième frappeur de 
+		l'alignement frappe la balle en direction du champ droit ; le défenseur ne parvient pas à la saisir, et le 
+		frappeur-coureur en profite pour avancer d'une base. Le frappeur suivant s'élance sur le troisième prises qui 
+		est également un mauvais lancer et parvient à atteindre la première base en toute sécurité, tandis que les 
+		autres coureurs avancent d'une base sur ce mauvais lancer.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="915eca8d.gif"
+					alt="Earned runs"
+					width="87"
+					height="271"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base sur un base sur balles. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe la balle vers le champ droit et avance d'une 
+				base sur une erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9 e9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant atteint la première base sur une troisième prise relachée, et les coureurs avancent. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSWP</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">wp</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">wp earned</span>	
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="9f0d7c83.png"
+					alt="Earned runs"
+					width="87"
+					height="268"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 6:</span>
+		<span>Si le défenseur du champ droit de l'exemple 5 n'avait pas commis d'erreur, le neuvième frappeur aurait 
+		trouvé la première but occupée et aurait été retiré sur prise, tandis que les coureurs auraient avancé d'une 
+		base sur le mauvais lancer.</span><br>
+		<span>« KS1 WP » dans l'exemple 5 correspond donc à une occasion de jeu sur le terrain.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="5069363d.gif"
+					alt="Earned runs"
+					width="87"
+					height="272"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base sur un base sur balles. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe la balle vers le champ droit et avance d'une 
+				base sur une erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant atteint la première base sur une troisième prise relaché, et les coureurs avancent. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">wp</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">WP earned</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="ffb284eb.png"
+					alt="Earned runs"
+					width="87"
+					height="267"
+					border="0"/>
+			</td>
+		</tr>
+	</table>				
+
+	
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 7:</span>
+		<span>Une tentative ratée de prendre le coureur avec pick off en première base permet à celui-ci d'avancer 
+		en deuxième base et offre au frappeur l'occasion d'atteindre la première base sur un « KS1 WP ».</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="210ca82b.gif"
+					alt="Earned runs"
+					width="87"
+					height="180"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base sur un base sur balles. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur aurait dû être éliminé en tentative de pick-off, mais il a 
+				progressé sur une erreur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner -> </span><span class="codeAdvance">POe1T</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Sur un troisième retrait sur prise relachée, le frappeur atteint la *
+				première base et le coureur avance sur le mauvais lancer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSWP</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">wp</span>	
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="41ebd8be.png"
+					alt="Earned runs"
+					width="87"
+					height="175"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 8:</span>
+		<span>Sans l’erreur du lanceur, la première base aurait été occupée et, par conséquent, automatiquement interdit 
+		au batteur.</span><br>
+		<span>Le « KS1 WP » constitue donc une opportunité de jeu défensif.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="a6701a02.gif"
+					alt="Earned runs"
+					width="87"
+					height="186"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* The first batter reaches first base on a base on balls. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Sur un troisième retrait sur prise relachée, le frappeur atteint la première 
+				base et le coureur progresse sur le mauvais lancer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">WP</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c05b4201.png"
+					alt="Earned runs"
+					width="87"
+					height="177"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 9:</span>
+		<span>Après s'être élancé sur le troisième prises, le batteur-coureur parvient à atteindre la première base 
+		grâce à une balle échappée (*passed ball*) survenue plus tôt. La séquence « KS1 WP » constitue donc une occasion 
+		de jeu défensif.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="59a89762.gif"
+					alt="Earned runs"
+					width="87"
+					height="186"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base sur un hit by pitch. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur avance sur une balle passée. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">PB</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Troisième prise relachée : le batteur atteint la première base et le 
+				coureur progresse sur le mauvais lancer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSWP</span>
+				<span>, </span>
+				<span>runner -> </span><span class="codeAdvance">wp</span>	
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="96caed39.png"
+					alt="Earned runs"
+					width="87"
+					height="181"/>			
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 10:</span>
+		<span>Sur les trois points produits grâce au homerun, seuls le premier et le dernier sont considérés comme 
+		mérités, car le deuxième frappeur a atteint la première base sur un « KS1 WP » (retrait sur des prises, balle 
+		relachée par le receveur) consécutif à une balle relachéeprécédente. Le « KS1 WP » constitue donc une occasion 
+		de jeu défensif.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="a4e26807.gif"
+					alt="Earned runs"
+					width="87"
+					height="269"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base sur un hit by pitch. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur avance sur une balle relachée. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">PB</span>
+				<span>}</span><br /><br />
+			
+				<span class="codeComment">/* Troisième prise relachée : le batteur atteint la première base et le 
+				coureur progresse sur le mauvais lancer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">KSWP</span>
+				<span>, </span>
+				<span>runner -> </span><span class="codeAdvance">wp</span>	
+				<span>}</span><br /><br />
+		
+				<span class="codeComment">/* Le batteur suivant frappe un home run et tout le monde marque un point. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HR8 earned</span>
+				<span>, </span>
+				<span>runner -> </span><span class="codeAdvance">+++</span>	
+				<span>, </span>
+				<span>runner -> </span><span class="codeAdvance">+ earned</span>	
+				<span>}</span><br /><br />
+			
+			</td>
+			<td class="exampleImage">
+				<img
+					src="feec1cf3.png"
+					alt="Earned runs"
+					width="87"
+					height="267"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText"><b>IMPORTANT</b>: Toutes les progressions résultant d'un retrait sur des prises combiné à un 
+	mauvais lancer (KS1 WP) sont considérées comme régulières, puisqu'elles ont eu lieu sur un mauvais lancer.</p>
+
+</body>
+</html>
