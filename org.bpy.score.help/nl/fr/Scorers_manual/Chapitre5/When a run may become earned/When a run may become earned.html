@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Quand un point peut être considéré comme mérité</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Quand un point peut être considéré comme mérité.</h2>
+	
+	<p class="normalText">Il arrive qu'un point ne soit pas considéré comme « mérité » au moment où il est marqué, mais 
+	qu'il le devienne au cours de l'action qui suit, sous certaines conditions.</p>
+	
+		
+	<p class="exampleText">
+		<span>Pour mieux comprendre, nous allons examiner l'</span>
+		<span class="exampleNumber">Exemple 11.</span>
+		<span>Avant que trois occasions de jeu défensif ne se soient présentées, le batteur frappe un triple et atteint 
+		la troisième base. Le batteur suivant bénéficie d'une balle passsée (*passed ball*), ce qui permet au coureur de 
+		marquer. Ce point ne doit pas être comptabilisé comme un point mérité du moins pas pour l'instant car, bien 
+		que le lanceur soit responsable du fait que le coureur a atteint la troisième base, il n'est pas responsable 
+		de sa progression illicite jusqu'au marbre.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="917298b8.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="97"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur frappe un triple vers le champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le coureur marque un point sur une pass ball. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner3 -> </span><span class="codeAdvance">PB</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="fabf9013.png"
+					alt="When a run may become earned"
+					width="87"
+					height="90"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="normalText">Toutefois, il subsiste une possibilité que le point soit comptabilisé comme « mérité » 
+	(earned run) si, avant toute occasion de jeu défensif, survient une action dont le lanceur est seul responsable, 
+	de telle sorte qu'elle aurait permis au coureur s'il s'était encore trouvé sur la troisième base de marquer.</p>
+
+	<p class="normalText">Pour en revenir à notre exemple, si le frappeur suivant réussit un coup sûr, le point est 
+	comptabilisé comme un point mérité, car le coureur aurait pu marquer même sans la pass ball (avance illicite).</p>
+	
+	<p class="normalText">Des situations de ce genre, susceptibles de retarder l'attribution d'un point mérité, peuvent 
+	résulter d'erreurs permettant aux coureurs de gagner des bases supplémentaires, d'une obstruction à l'encontre 
+	des coureurs ou de balles passées (*passed balls*). Il s'agit d'actions irrégulières.</p>
+	
+	<p class="normalText">On peut donc affirmer que l'action réglementaire d'un batteur suivant valide l'action du 
+	batteur précédent, lorsque ce dernier aurait de toute façon atteint cette base, comme dans le cas que nous venons 
+	d'examiner.</p> 
+	
+	<p class="normalText">Nous allons maintenant clarifier ce qui précède en examinant plusieurs exemples.</p>
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 12:</span>
+		<span>Le premier batteur obtient une base sur balles. Le deuxième batteur frappe un double et force le coureur 
+		à avancer jusqu'en troisième base. Le troisième batteur frappe une balle en hauteur en direction du champ 
+		centre, ce qui permet au coureur situé en troisième base de marquer. Il s'agit d'un point mérité.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="444a6f97.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="268"
+				/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base sur un base sur balles. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un double vers le champ droit ; le coureur 
+				avance de deux bases.*/</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe un sacrifice fly vers le champ centre, et le 
+				coureur en troisième base marque un point. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SF8</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+ earned</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="f4c81a0.png"
+					alt="When a run may become earned"
+					width="87"
+					height="268"/>			
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 13:</span>
+		<span>Le premier frappeur réussit un coup sûr en direction de la troisième base, tandis que le frappeur suivant 
+		le fait avancer jusqu'en troisième base grâce à un simple vers le champ droit. Lors d'une tentative de vol du 
+		coureur en deuxième base, le receveur effectue un lancer vers le joueur de deuxième base mais ne parvient pas 
+		à réaliser le retrait. Le coureur posté en troisième base profite de l'occasion pour avancer jusqu'au marbre 
+		et marquer un point. Les deux coureurs se voient créditer d'une base volée et le point est comptabilisé comme 
+		un point mérité.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="f47f2321.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="182"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur frappe la balle vers la troisième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le batteur suivant frappe la balle vers le champ droit, et le coureur 
+				avance de deux bases. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Les deux coureurs volent une base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">SB earned</span>		
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="80f8dc3c.png"
+					alt="When a run may become earned"
+					width="87"
+					height="178"/>
+				</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 14:</span>
+		<span>Avec moins de deux retraits, le premier frappeur obtient une base sur balles.</span><br>
+		<span>Le batteur suivant frappe un double en direction du champ centre, forçant le coureur à avancer jusqu'en 
+		troisième base.</span><br>
+		<span>Le troisième frappeur avance en première base après avoir été touché par un lancer.</span><br>
+		<span>Le batteur suivant frappe la balle en direction de l'arrêt-court, qui la lance vers le marbre pour tenter 
+		d'éliminer le coureur sur le point de marquer.</span><br>
+		<span>Le coureur atteint toutefois la base avant la balle et marque un point. Le choix défensif ne constitue 
+		pas une occasion de jeu défensif.</span><br>
+		<span>Tous les autres coureurs avancent d'une base.</span><br>
+		<span>Le point est un point mérité.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="98711f6b.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="362"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base sur une base on balls. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+	
+				<span class="codeComment">/* Le deuxième frappeur frappe un double vers le champ centre, le coureur 
+				avance de deux bases. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B8</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur un hit by a pitch. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe la balle en direction de l'arrêt-court, qui se 
+				retrouve face à un choix défensif. Les coureurs avancent */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">FC62</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+ earned</span>			
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="b7fc0b98.png"
+					alt="When a run may become earned"
+					width="87"
+					height="353"/>			
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 15:</span>
+		<span>Le premier frappeur obtient une base sur balles.</span><br>
+		<span>Les deux batteurs suivants ont frappé des simples en champ intérieur, remplissant les bases.</span><br>
+		<span>Le quatrième batteur obtient une base sur balles, ce qui force tous les autres coureurs à avancer d'une 
+		base et permet au coureur situé en troisième base de marquer.</span><br>
+		<span>Il s'agit d'un point mérité.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="954aecc6.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="362"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base sur une base sur balles. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+	
+				<span class="codeComment">/* Le frappeur suivant frappe un simple vers la troisième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur suivant frappe un simple vers la deuxième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B4</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base grâce à une base sur balles. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+ earned</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a5e96a7c.png"
+					alt="When a run may become earned"
+					width="87"
+					height="362"/>
+			</td>
+		</tr>
+	</table>				
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 16:</span>
+		<span>Le premier frappeur atteint la première base sur une erreur de lancer du défenseur de troisième base.</span><br>
+		<span>Le deuxième frappeur réussit un double vers le champ droit, et le coureur parti de la première base court 
+		jusqu'au marbre.</span><br>
+		<span>Le frappeur suivant est retiré sur des prises, et le quatrième frappeur réussit un simple vers le 
+		champ droit, permettant au coureur parti de la deuxième base de marquer.</span><br>
+		<span>Les deux batteurs suivants sont éliminés.</span><br>
+		<span>Le premier point ne peut pas être comptabilisé, car le batteur a atteint la première base sur une erreur.</span>
+		<span>Le deuxième point est un point mérité, car il a été obtenu en seulement deux occasions de jeu défensif.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="9786a718.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="535"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier batteur frappe la balle en direction du défenseur de troisième 
+				base, qui commet une erreur lors du lancer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E5T</span>
+				<span>}</span><br /><br />
+	
+				<span class="codeComment">/* Le batteur suivant frappe un double vers le champ droit et le coureur 
+				marque. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS</span>
+				<span>}</span><br /><br />
+	
+				<span class="codeComment">/* Le frappeur suivant frappe un simple vers le champ droit, et le coureur en 
+				deuxième base marque. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++ earned</span>	
+				<span>}</span><br /><br />
+	
+				<span class="codeComment">/* Le batteur suivant frappe la balle en direction de l'arrêt-court, qui la 
+				relaie en première base pour retirer le batteur-coureur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">63</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+	
+				<span class="codeComment">/* Le frappeur suivant est retiré sur une fly captée par l'arrêt-court. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">F6</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="8aa56e2e.png"
+					alt="When a run may become earned"
+					width="87"
+					height="521"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 17:</span>
+		<span>Le premier frappeur atteint la première base grâce à un coup sûr vers le champ gauche et progresse 
+		jusqu'en deuxième base grâce au frappeur suivant, qui obtient unz base sur balles.</span><br>
+		<span>Le troisième frappeur réussit un amorti-sacrifice, permettant aux deux coureurs d'avancer d'une base.</span><br>
+		<span>Alors que le quatrième batteur se présente au marbre, le lanceur commet un *balk* (lancer illégal), ce 
+		qui permet aux deux coureurs d'avancer d'une base et entraîne la marque d'un point.</span><br>
+		<span>Le batteur se voit alors accorder une base sur balles.</span><br>
+		<span>Le batteur suivant reçoit un lancer fou qui permet aux deux coureurs d'avancer d'une base, et un point 
+		supplémentaire est marqué.</span><br>
+		<span>Les deux points sont des points mérités.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="32850d5a.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="360"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur frappe un simple vers le champ gauche. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base grâce à une base sur balles. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant réussit un jeu de sacrifice ; les deux coureurs avancent. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SH13</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Les deux coureurs avancent sur un balk. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner2 -> </span><span class="codeAdvance">bk</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">BK earned</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le batteur avance sur une base sur balles. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Les deux coureurs avancent sur un lancer fou. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">wp</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">WP earned</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="7783dd52.png"
+					alt="When a run may become earned"
+					width="87"
+					height="348"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 18:</span>
+		<span>Le premier batteur frappe une balle en hauteur dans la zone des fausses balles ; le receveur devrait 
+		pouvoir la capter, mais il la laisse tomber. Le marqueur juge qu'il s'agissait d'une prise facile et crédite le 
+		receveur d'une erreur. Le batteur reprend sa place et frappe un home run vers le champ centre. Le batteur 
+		suivant est retiré sur des prises, et le troisième frappe un triple vers le champ droit.</span><br>
+		<span>À ce stade, alors que le quatrième batteur est à la plaque, le lanceur effectue un mauvais lancer, 
+		permettant au coureur en troisième base de marquer le deuxième point. Le batteur est ensuite retiré sur des 
+		prises.</span><br>
+		<span>Le cinquième frappeur réussit un triple vers le champ centre et inscrit ensuite le troisième point grâce 
+		à un mouvement illégal du lanceur.</span><br>
+		<span>Le premier point marqué sur le home run ne peut être comptabilisé comme point mérité, car la présence du 
+		batteur sur base avait été prolongée par une erreur.</span><br>
+		<span>Le deuxième point a été mérité, car il a été obtenu en ne concédant que deux occasions de jeu défensif.</span><br>
+		<span>Le troisième point, en revanche, n'a pas été comptabilisé comme un point mérité, puisqu'il a été inscrit 
+		après la troisième occasion défensive.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="8939057e.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="455"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur aurait dû être éliminé sur une fausse balle en hauteur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">EF2</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Ensuite, il frappe un home run vers le champ centre. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HR8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePoutout">KL</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un triple vers le champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePoutout">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Il marque sur un wild pitch. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner3 -> </span><span class="codePoutout">WP earned</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePoutout">KS</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe un triple. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePoutout">3B8</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Il marque sur un balk. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner3 -> </span><span class="codePoutout">BK</span>
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="588c6bc4.png"
+					alt="When a run may become earned"
+					width="87"
+					height="445"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 19:</span>
+		<span>Le premier frappeur obtient un base sur balles.</span><br>
+		<span>Le batteur suivant frappe la balle en direction de l'arrêt-court ; celui-ci effectue un lancer vers la 
+		deuxième base à temps pour éliminer le coureur, mais il rate la réception du lancer.</span><br>
+		<span>Alors que les première et deuxième bases sont occupées, le receveur laisse passer un lancer qu'il aurait 
+		dû capter, permettant ainsi aux deux coureurs d'avancer.</span><br>
+		<span>Le troisième frappeur frappe une balle en hauteur vers le champ centre, permettant au coureur parti de la  
+		troisième base de marquer.</span><br>
+		<span>Le quatrième frappeur frappe un simple vers le champ centre, envoyant ainsi le coureur parti de la 
+		deuxième base au marbre.</span><br>
+		<span>Le cinquième batteur est éliminé sur des prises, et le sixième frappe un home run vers le champ droit, 
+		permettant de marquer deux points supplémentaires.</span><br>
+		<span>Aucun de ces quatre points n'est mérité.</span><br>
+		<span>Le premier point ne peut pas être comptabilisé, car le coureur a atteint la deuxième base sur une 
+		erreur.</span><br>
+		<span>Le deuxième point a été obtenu avec seulement deux occasions de jeu défensif, mais il faut noter que le 
+		coureur a atteint la deuxième base sur une balle échappée ; sans cela, le coup sûr du quatrième batteur ne lui 
+		aurait permis d'atteindre au mieux la troisième base, ce qui aurait constitué la troisième occasion de jeu 
+		défensif. Les deux autres points ont été marqués après trois occasions de jeu défensif.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="e1e17f98.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="552"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur atteint la première base grâce à un base sur balles. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">BB</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant frappe la balle et atteint le base grâce à un choix 
+				défensif et une erreur de la défense. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O6</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">E6T</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Les deux coureurs avancent sur une balle passée. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="pb">O6</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="PB">E6T</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le prochain frappeur réussit un sacrifice ; le coureur en troisième base marque. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SF8</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant frappe un double vers le champ centre et le coureur marque. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B8</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* TLe batteur suivant frappe un home run et le coureur marque. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HR9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="dfdbfd68.png"
+					alt="When a run may become earned"
+					width="87"
+					height="526"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 20:</span>
+		<span>Le premier frappeur frappe un triple vers le champ centre.</span><br>
+		<span>Le deuxième frappeur atteint la première base en toute sécurité lorsque l'arrêt-court manque une 
+		fly.</span><br>
+		<span>Pendant que le troisième frappeur est à la batte, le coureur en première base vole la deuxième base, et 
+		l'autre coureur profite du fait que les joueurs de champ se concentrent sur son coéquipier pour marquer un point.</span><br>
+		<span>Les troisième et quatrième frappeurs sont retirés sur des prises.</span><br>
+		<span>Le cinquième batteur est retiré en première base sur une assistance de l'arrêt-court.</span><br>
+		<span>Le seul point marqué n'était pas un point mérité, car sans l'erreur de l'arrêt-court, le deuxième 
+		frappeur aurait été retiré et n'aurait par conséquent pas pu voler la deuxième base, ce qui a permis au coureur 
+		posté en troisième base de marquer.</span><br>
+		<span>En effet, ce dernier coureur serait resté sur la troisième base, étant donné que les actions des batteurs 
+		suivants ne lui auraient offert aucune occasion ultérieure d'avancer.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="35cd0b70.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="435"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le premier frappeur frappe un triple vers le champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">3B9</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant atteint la première base sur une erreur de l'arrêt-court. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">E6F</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Les deux coureurs volent un but. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>runner1 -> </span><span class="codeAdvance">SB</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">SB</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KL</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KL</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur suivant est retiré sur une balle au sol. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">63</span>
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="14602aef.png"
+					alt="When a run may become earned"
+					width="87"
+					height="444"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span>Dans le cas d'une interférence du receveur sur le batteur-coureur (avant que celui-ci n'atteigne la 
+		première base), il s'agit d'une erreur déterminante qui, selon le règlement [commentaire de la règle OBR 9.16(a)], 
+		n'est pas considérée comme une occasion de jeu défensif ; par conséquent, les points marqués par ce 
+		batteur-coureur ne peuvent être comptabilisés comme des points mérités.</span><br>
+		<span class="exampleNumber"> Exemple 21:</span>
+		<span>Avec deux retraits, le troisième frappeur atteint la première base sur une obstruction du receveur.</span><br>
+		<span>Le quatrième frappeur frappe un home run.</span><br>
+		<span>Le cinquième frappeur est retiré sur des prises.</span><br>
+		<span>Deux points ont été marqués, mais un seul (celui du quatrième frappeur) est un point mérité, car le 
+		scoreur officiel ne peut présumer que le troisième frappeur aurait été retiré pour clore la manche en l'absence 
+		de l'interférence du receveur.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="1771520e.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="434"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur est retiré sur une balle au sol. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">63</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur est éliminé sur une fly. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">F6</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur atteint la première base en raison d'une interférence du receveur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le batteur frappe un coup de circuit vers le champ droit, le coureur 
+				avance et marque. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HR9 earned</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="e2d85837.png"
+					alt="When a run may become earned"
+					width="87"
+					height="445"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 22:</span>
+		<span>Les deux premiers batteurs sont éliminés sur des prises.</span><br>
+		<span>Le troisième frappeur atteint la première base grâce à un coup sûr en direction de la troisième base.</span><br>
+		<span>Le quatrième frappeur atteint la première base grâce à un coup sûr vers le champ gauche, permettant au 
+		coureur d'avancer jusqu'en deuxième base.</span><br>
+		<span>Le receveur gêne le cinquième batteur et force les deux autres à avancer.</span><br>
+		<span>Le sixième frappeur avance en première base après avoir été atteint par un lancer, tous les coureurs 
+		avancent et le troisième frappeur de l'ordre au bâton marque un point.</span><br>
+		<span>Ce point est comptabilisé comme un point produit, mais non comme un point mérité, car le scoreur 
+		officiel ne doit pas présumer que le batteur ayant atteint la première base à la suite d'une interférence du 
+		receveur aurait été retiré.</span>
+		<span class="obrReference"> Comme ce batteur n'a pas eu la possibilité de compléter son tour de batte, il est 
+		impossible de savoir ce qui ce serait passé pour lui sans l'interférence du receveur</span>
+		<span> [OBR 9.16(a) Commentaire]. </span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="7ede9c0b.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="516"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KL</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KL</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur frappe un simple en direction de la troisième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ gauche. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le batteur atteint la première base en raison d'une interférence du receveur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur atteint la première base après avoir été atteint par un lancer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a6589108.png"
+					alt="When a run may become earned"
+					width="87"
+					height="530"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 23:</span>
+		<span>On reprend la situation décrite dans l'exemple 23. Le septième batteur atteint alors la première base 
+		grâce à un coup sûr vers le champ droit, ce qui permet à tous les coureurs d'avancer d'une base.</span><br>
+		<span>Désormais, le point du troisième batteur est comptabilisé comme point mérité ; celui du quatrième batteur 
+		ne l'est pas encore.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="7f3acb1.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="614"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KL</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KL</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur frappe un simple en direction de la troisième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ gauche. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le batteur atteint la première base en raison d'une interférence du receveur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur atteint la première base après avoir été atteint par un lancer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+ earned</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="dcf07946.png"
+					alt="When a run may become earned"
+					width="87"
+					height="617"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span class="exampleNumber">Exemple 24:</span>
+		<span>On reprend la situation de l'exemple 23. Le batteur suivant frappe un homerun, permettant à tous les 
+		autres coureurs de marquer.</span><br>
+		<span>Désormais, tous les points sont comptabilisés comme des points mérités, à l'exception de celui du 
+		cinquième batteur, qui a atteint la première base en raison d'une interférence du receveur. Ce batteur n'a 
+		jamais eu l'occasion de terminer son tour au bâton, et l'on ne peut savoir quelle aurait été l'issue de son 
+		passage en l'absence de cette interférence.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="e00bcfdd.gif"
+					alt="When a run may become earned"
+					width="87"
+					height="713"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* Le batteur est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KL</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KL</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le frappeur frappe un simple en direction de la troisième base. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B5</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ gauche. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B7</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le batteur atteint la première base en raison d'une interférence du receveur. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">INT</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeComment">/* Le frappeur atteint la première base après avoir été atteint par un lancer. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HP</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+ earned</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ droit. */</span><br/>
+				<span class="codeAction">action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HR9</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++ earned</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++ earned</span>	
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+ earned</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="a364c4c2.png"
+					alt="When a run may become earned"
+					width="87"
+					height="705"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
