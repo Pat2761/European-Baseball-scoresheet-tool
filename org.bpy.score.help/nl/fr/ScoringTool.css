@@ -135,6 +135,30 @@ span.codeAction {
 	font-weight: bold;
 }
 
+/* Style of coloration syntaxic for substitution keyword */
+span.codeSubstitution {
+	color: #7f0055;
+	font-weight: bold;
+}
+
+/* Style of coloration syntaxic for numbers */
+span.codeNumber {
+	color: #3580BB;
+	font-weight: bold;
+}
+
+/* Style of coloration syntaxic for names */
+span.codeName {
+	color: #0000FF;
+	font-weight: bold;
+}
+
+/* Style of coloration syntaxic for replacement keyword */
+span.codeReplacement {
+	color: #7f0055;
+	font-weight: bold;
+}
+
 /* Style of coloration syntaxic for an advance */
 span.codeAdvance {
 	color: #008000;

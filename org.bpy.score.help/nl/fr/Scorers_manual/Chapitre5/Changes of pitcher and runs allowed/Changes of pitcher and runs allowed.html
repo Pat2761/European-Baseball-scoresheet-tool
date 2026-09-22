@@ -5,7 +5,7 @@
 	http-equiv="content-type"
 	content="text/html; charset=utf-8"
 />
-<title>Changes of pitcher and runs allowed</title>
+<title>Changements de lanceur et points mérités</title>
 <link
 	rel="stylesheet"
 	type="text/css"
@@ -13,38 +13,39 @@
 />
 </head>
 <body>
-	<h2 class="title2">Changes of pitcher and runs allowed.</h2>
+	<h2 class="title2">Changements de lanceur et points mérités.</h2>
 	
 	<p class="normalText">
-	<span>The situation becomes more complicated when here are one or more changes of pitcher. The rules state:</span> 
-	<span class="obrReference">When pitchers are changed during an inning, the official scorer shall not charge the 
-	relief pitcher with any run (earned or unearned) scored by a runner who was on base at the time such relief 
-	pitcher entered the game, nor for runs scored by any runner who reaches base on a fielder’s choice that puts out 
-	a runner left on base by any preceding pitcher </span>
+	<span>La situation se complique lorsqu'il y a un ou plusieurs changements de lanceur. Le règlement stipule :</span> 
+	<span class="obrReference">Lorsqu’il y a changement de lanceur au cours d’une manche, le scoreur officiel ne doit 
+	pas rendre le lanceur de relève responsable du point (mérité ou non) marqué par un coureur qui était sur une base 
+	au moment de l’entrée en jeu du lanceur de relève, ni d’aucun point marqué par tout coureur qui atteint une base 
+	sur un choix défensif permettant de retirer un coureur laissé sur une base par le lanceur précédent </span>
 	<span>[OBR 9.16(g)].</span></p>
 
-	<p class="normalText">Let us look more closely at this.</p>
+	<p class="normalText">Examinons cela de plus près.</p>
 	
-	<p class="normalText">When there is a change of pitcher, any runners left on base are charged to the pitcher who 
-	put them on base, who is also charged with any runs they might score. Problems arise in the interpretation of the 
-	second part of the rule. The phrase is understood to refer to the actions of a runner (understood here to be the 
-	batter-runner) that lead to a preceding runner, who was put on base by the previous pitcher, being put out.</p>
+	<p class="normalText">Lors d'un changement de lanceur, les coureurs encore sur les bases sont imputés au lanceur 
+	qui les y a placés ; ce dernier est également tenu pour responsable de tout point qu'ils viendraient à marquer. 
+	Des difficultés d'interprétation surviennent toutefois concernant le second volet de cette règle. Cette disposition 
+	vise les actions d'un coureur (en l'occurrence, le batteur-coureur) entraînant le retrait d'un coureur précédent, 
+	lequel avait été placé sur base par le lanceur sortant.</p>
 	
-	<p class="normalText">This can be seen more clearly in the following examples.</p>
+	<p class="normalText">Cela peut être observé plus clairement dans les exemples suivants.</p>
 	
 	<p class="exampleText">
-		<span class="exampleNumber">Example 25:</span>
-		<span> The starting pitcher leaves one runner on base when he is relieved. The next batter hits a single to 
-		right field and the previous runner scores.</span><br>
-		<span>As a rule, to which there are no exceptions, the runners left on base by a pitcher belong to the 
-		starting pitcher.</span><br>
-		<span>For this reason, the run is charged to the first pitcher.</span>
+		<span class="exampleNumber">Exemple 25:</span>
+		<span> Le lanceur sortant laisse un coureur sur les bases lorsqu'il est relevé. Le frappeur suivant réussit un 
+		simple vers le champ droit et le coureur précédent marque.</span><br>
+		<span>En règle générale, et sans exception, les coureurs laissés sur les bases par un lanceur sont attribués au 
+		lanceur sortant.</span><br>
+		<span>C'est pour cette raison que le point est attribué au premier lanceur.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -55,12 +56,12 @@
 					height="189"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter hits a single to center field. */</span><br/>
+				<span class="codeComment">/* Le frappeur frappe un simple vers le champ centre. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B9</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -72,7 +73,7 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a single to right field, and the runner scores. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ droit et le coureur marque. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B9</span>
 				<span>, </span>
@@ -91,19 +92,19 @@
 
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 26:</span>
-		<span>The first pitcher leaves one runner on base, and he is put out after the pitcher is relieved by a 
-		normal action as a result of a batted ball.</span><br>
-		<span>Given that the first pitcher left one runner on base, he must be charged with a run.</span><br>
-		<span>We have here the two fundamental conditions: an occupied ball and the putout of a runner put on base 
-		by the first pitcher.</span><br>
-		<span>The run is therefore charged to the first pitcher.</span>
+		<span class="exampleNumber">Exemple 26:</span>
+		<span>Le premier lanceur laisse un coureur sur les bases, et celui-ci est retiré après le remplacement du 
+		lanceur, à la suite d'une action de jeu normale impliquant une balle frappée.</span><br>
+		<span>Étant donné que le premier lanceur a laissé un coureur sur les bases, un point doit lui être imputé.</span><br>
+		<span>Nous avons ici les deux conditions fondamentales : une balle en jeu et le retrait d'un coureur placé sur 
+		base par le premier lanceur.</span><br>
+		<span>Le point est donc imputé au premier lanceur.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -114,12 +115,12 @@
 					height="274"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint le but sur un base sur balles. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -131,14 +132,15 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits the ball to the shortstop, who chooses to put out the runner. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe la balle en direction de l'arrêt-court, qui choisit 
+				d'éliminer le coureur. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O6</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codePutout">64</span>			
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a double to right field. */</span><br/>
+				<span class="codeComment">/* Le frappeur frappe un double vers le champ droit. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">2BRC</span>
 				<span>, </span>
@@ -157,18 +159,18 @@
 
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 27:</span>
-		<span>In this example, the second baseman failed to put out the runner.</span><br>
-		<span>As the second run cannot be charged to the first pitcher, as he would in that case be charged with two 
-		runs, despite having left only one runner on base, the fielding chance (6E4) is transferred to the second 
-		pitcher (in place of the ‘O6’).</span><br>
-		<span>The first run is therefore earned and the second is unearned.</span>
+		<span class="exampleNumber">Exemple 27:</span>
+		<span>Dans cet exemple, le joueur de deuxième base n'a pas réussi à éliminer le coureur.</span><br>
+		<span>Comme le deuxième point ne peut être imputé au premier lanceur, ce qui reviendrait à lui en attribuer deux alors 
+		qu'il n'a laissé qu'un seul coureur sur les bases, l'occasion de jeu défensif (6E4) est transférée au second 
+		lanceur (à la place du « O6 »).</span><br>
+		<span>Le premier point est donc mérité, tandis que le second ne l'est pas.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -179,12 +181,12 @@
 					height="265"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on ball. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -196,14 +198,15 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits a ball to the shortstop, who chooses to put out the runner. */</span><br/>
+				<span class="codeComment">/* Le frappeur frappe une balle sur l'arrêt-court, qui choisit de retirer 
+				le coureur. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O6</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">6E4</span>			
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a double to right field. */</span><br/>
+				<span class="codeComment">/* Le frappeur frappe un double vers le champ droit. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">2BRC</span>
 				<span>, </span>
@@ -223,17 +226,18 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 28:</span>
-		<span>The first pitcher leaves one runner on base.</span><br>
-		<span>The runner is picked off base, i.e. the putout is not due to an action by the batter.</span><br>
-		<span>The first pitcher is therefore not charged with any runs, and the run is consequently charged to the 
-		relief pitcher.</span>
+		<span class="exampleNumber">Exemple 28:</span>
+		<span>Le premier lanceur laisse un coureur sur les bases.</span><br>
+		<span>Le coureur est éliminé alors qu'il est sur base ; autrement dit, l'élimination ne résulte pas 
+		d'une action du batteur.</span><br>
+		<span>Aucun point n'est donc imputé au premier lanceur, et le point est par conséquent imputé au lanceur de 
+		relève.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -244,12 +248,12 @@
 					height="258"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter hits a double to center field. */</span><br/>
+				<span class="codeComment">/* Le frappeur frappe un double vers le champ centre. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">2B8</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -261,17 +265,17 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The next batter reaches first base on a base on balls. */</span><br/>
+				<span class="codeComment">/* Le frappeur suivant atteint la première base grâce à un Base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The runner on second is picked off. */</span><br/>
+				<span class="codeComment">/* Le coureur en deuxième base est retiré sur un pick off. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner2 -> </span><span class="codePutout">PO16</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a double to right field, and the runner scores. */</span><br/>
+				<span class="codeComment">/* Le frappeur réussit un double vers le champ droit et le coureur marque. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">2B8</span>
 				<span>, </span>
@@ -290,17 +294,18 @@
 
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 29:</span>
-		<span>The first pitcher leaves one runner on base, who is subsequently put out trying to advance on a hit.</span><br>
-		<span>The author of the hit reaches second and subsequently scores.</span><br>
-		<span>The run is charged to the second pitcher as the runner put on base by the first pitcher was put out by 
-		his own fault and not by the fault of the batter.</span>
+		<span class="exampleNumber">Exemple 29:</span>
+		<span>Le premier lanceur laisse un coureur sur les bases, celui-ci est ensuite retiré alors qu'il tente de 
+		progresser sur un coup sûr.</span><br>
+		<span>L'auteur du coup sûr atteint la deuxième base et marque ensuite un point.</span><br>
+		<span>Le point est imputé au deuxième lanceur, car le coureur placé sur les bases par le premier lanceur a été 
+		retiré par sa propre faute, et non par la faute du batteur.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -311,12 +316,12 @@
 					height="257"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -328,15 +333,15 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a single to center field and takes advantage of a throw 
-				from center field to reach second base. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ centre et profite d'un relais 
+				en provenance du champ centre pour atteindre la deuxième base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B8 T85</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">+</span> <span class="codePutout">85</span>			
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a single to right field and the runner scores a run. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ droit et le coureur marque un point. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B9</span>
 				<span>, </span>
@@ -354,19 +359,19 @@
 	</table>				
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 30:</span>
-		<span>The first and second pitchers both leave one runner on base when they are relieved, and must therefore 
-		be charged with one run each.</span><br>
-		<span>The first runner is put out on a batted ball, likewise the second, while the batter-runners reach base 
-		safely on an occupied ball.</span><br>
-		<span>The fifth batter hits a home run to the right field.</span><br>
-		<span>A run is charged to each pitcher.</span>
+		<span class="exampleNumber">Exemple 30:</span>
+		<span>Les premier et deuxième lanceurs laissent chacun un coureur sur les bases au moment de leur remplacement 
+		et doivent donc être crédités d'un point encaissé chacun.</span><br>
+		<span>Le premier coureur est retiré sur une balle frappée, tout comme le second, tandis que les batteurs-coureurs 
+		atteignent les bases en toute sécurité sur une action impliquant une balle en jeu.</span><br>
+		<span>Le cinquième frappeur frappe un home run vers le champ droit.</span><br>
+		<span>Un point est imputé à chaque lanceur.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -377,12 +382,12 @@
 					height="447"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première vase sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -394,15 +399,15 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a single to center field and takes advantage of a throw 
-				from center field to reach second base. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ centre et profite d'un relais 
+				en provenance du champ centre pour atteindre la deuxième base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B8</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">++</span>			
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -414,8 +419,8 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits the ball to the shortstop, who chooses to put out 
-				the lead runner. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe la balle en direction de l'arrêt-court, qui choisit 
+				d'éliminer le coureur de tête. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O6</span>
 				<span>, </span>
@@ -424,8 +429,8 @@
 				<span>runner2 -> </span><span class="codePutout">65</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits the ball toward the pitcher, who chooses to put out 
-				the lead runner. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe la balle en direction du lanceur, qui choisit d'éliminer 
+				le coureur de tête. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O1</span>
 				<span>, </span>
@@ -434,7 +439,7 @@
 				<span>runner2 -> </span><span class="codePutout">15</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a home run; everyone scores a run. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un homerun ; tout le monde marque un point. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR9 earned</span>
 				<span>, </span>
@@ -455,20 +460,20 @@
 
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 31:</span>
-		<span>The first pitcher leaves one runner on base.</span><br>
-		<span>He must be charged with one run.</span><br>
-		<span>During the play in which the runner put on base by the first pitcher is put out, the other runners 
-		reach base safely because the ball is occupied.</span><br>
-		<span>Two runs are then scored.</span><br>
-		<span>The first run is charged to the first pitcher, while the second is charged to the second pitcher.</span><br>
-		<span>Indeed, the first pitcher may be charged with only one run as he left only one man on base.</span>
+		<span class="exampleNumber">Exemple 31:</span>
+		<span>Le premier lanceur laisse un coureur sur les bases.</span><br>
+		<span>Un point doit lui être imputé.</span><br>
+		<span>Lors de l'action où le coureur placé sur base par le premier lanceur est retiré, les autres coureurs 
+		atteignent leur base en toute sécurité car la balle est occupée par le jeu en cours.</span><br>
+		<span>Deux points sont alors marqués.</span><br>
+		<span>Le premier point est imputé au premier lanceur, tandis que le second est imputé au deuxième lanceur.</span><br>
+		<span>En effet, le premier lanceur ne peut être crédité que d'un seul point, puisqu'il n'a laissé qu'un seul coureur sur les bases.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -479,12 +484,12 @@
 					height="362"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -496,15 +501,16 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter comes on base on a 'base on ball', the runner advances */</span><br/>
+				<span class="codeComment">/* Le batteur atteint la première base grâce à un base on balls et le 
+				coureur avance. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits the ball to the shortstop, who chooses to put out 
-				the lead runner. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe la balle en direction de l'arrêt-court, qui choisit 
+				d'éliminer le coureur de tête. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O6</span>
 				<span>, </span>
@@ -513,7 +519,7 @@
 				<span>runner2 -> </span><span class="codePutout">65</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits the ball to center field, and both runners score. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe la balle vers le champ centre et les deux coureurs marquent. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">2B8</span>
 				<span>, </span>
@@ -532,32 +538,31 @@
 		</tr>
 	</table>				
 
-
 	<p class="normalText">
 		<span><b>Comment:</b></span>
-		<span class="obrReference"> It is the intent of Rule 9.16(g) to charge each pitcher with the number of 
-		runners he put on base, rather than with the individual runners. When a pitcher puts runners on base, and 
-		is relieved, such pitcher shall be charged with all runs subsequently scored up to and including the number 
-		of runners such pitcher left on base when such pitcher left the game, unless such runners are put out without 
-		action by the batter,( i.e. caught stealing, picked off base, or called out for interference when a 
-		batter-runner does not reach first base on the play</span>
+		<span class="obrReference"> Le but de la règle 9.16(g) est de rendre le lanceur responsable du nombre de 
+		coureurs qu’il a mis sur les bases, plutôt que de considérer les coureurs de façon individuelle. Lorsqu’un 
+		lanceur met des coureurs sur base et est relevé, un tel lanceur doit être crédité de tous les points marqués 
+		par la suite par ces coureurs à concurrence du nombre de coureurs laissés sur les sentiers, à moins que ces 
+		coureurs n’aient été retirés sans action du batteur (sur tentative de vol de base, pickoff en dehors de leurs 
+		bases ou sur interférence alors que le batteur-coureur n’a pas atteint la première base sur ce jeu).</span>
 		<span> [OBR 9.16(g)].</span>
 	</p>
 	
 	<p class="exampleText">
-		<span class="exampleNumber">Example 32:</span>
-		<span>Both the first and second pitchers leave one runner on base.</span><br>
-		<span>The runner on first base, who was put there by the second pitcher, is put out on a ground ball by 
-		the third batter.</span><br>
-		<span>The preceding runner is put out on a batted ball by the fourth batter.</span><br>
-		<span>The next home run hit brings in three runs, all earned.</span><br>
-		<span>Each pitcher is charged with one run.</span>
+		<span class="exampleNumber">Exemple 32:</span>
+		<span>Le premier lanceur comme le second laissent un coureur sur les bases.</span><br>
+		<span>Le coureur en première base, qui y a été placé par le deuxième lanceur, est retiré sur une balle au sol 
+		frappée par le troisième batteur.</span><br>
+		<span>Le coureur qui précède est retiré sur une balle frappée par le quatrième frappeur.</span><br>
+		<span>Le prochain homerun permet de marquer trois points, tous mérités.</span><br>
+		<span>Chaque lanceur est crédité d'un point mérité.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -568,19 +573,19 @@
 					height="441"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits the ball to center field, and the runner advances. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe la balle vers le champ centre et le coureur avance. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B8</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -592,8 +597,8 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits the ball toward second base, where the fielder chooses to 
-				put out the runner coming from first base. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe la balle en direction de la deuxième base, où le joueur 
+				de champ choisit d'éliminer le coureur venant de le première base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O4</span>
 				<span>, </span>
@@ -602,8 +607,8 @@
 				<span>runner2 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits the ball toward the pitcher, who chooses to put out the 
-				runner approaching home plate. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe la balle en direction du lanceur, qui choisit d'éliminer 
+				le coureur s'approchant du marbre. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O1</span>
 				<span>, </span>
@@ -612,7 +617,7 @@
 				<span>runner3 -> </span><span class="codePutout">12</span>	
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits a home run, everyone scores a run. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un homerun, tout le monde marque un point. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR9 earned</span>
 				<span>, </span>
@@ -633,17 +638,18 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 33:</span>
-		<span>The first pitcher leaves one runner on base when he is substituted. The batter on the second pitcher 
-		is put out. A third pitcher climbs the mound. The first runner is put out on a batted ball, while the 
-		batter-runner reaches base safely on an occupied ball. The fourth batter hits a home run to the right field.</span><br>
-		<span>An earned run is charged to the first and the third pitcher.</span>
+		<span class="exampleNumber">Exemple 33:</span>
+		<span>Le premier lanceur laisse un coureur sur les bases lorsqu'il est remplacé. Le batteur affrontant le 
+		deuxième lanceur est retiré. Un troisième lanceur monte sur le monticule. Le premier coureur est retiré sur une 
+		balle frappée, tandis que le batteur-coureur atteint sa base en toute sécurité lors de l'action. Le quatrième 
+		batteur frappe un homerun vers le champ droit.</span><br>
+		<span>Un point mérité est imputé au premier et troisième lanceur.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -654,12 +660,12 @@
 					height="348"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter hits a single to right field. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ droit. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B9</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -671,14 +677,14 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter is put out on a ground ball; the runner advances. */</span><br/>
+				<span class="codeComment">/* Le batteur est retiré sur une balle au sol, le coureur progresse. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">43</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -690,15 +696,15 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits the ball toward the shortstop, who makes a defensive 
-				choice by putting out the runner. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe la balle en direction de l'arrêt-court, qui effectue un 
+				choix défensif en éliminant le coureur. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O6</span>
 				<span>, </span>
 				<span>runner2 -> </span><span class="codePutout">65</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a home run, everyone scores a run. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un homerun, tout le monde marque un point. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR9</span>
 				<span>, </span>
@@ -716,42 +722,43 @@
 	</table>				
 
 	<p class="normalText">
-		<span>The OBR states in rule 9.16(i) that </span>
-		<span class="obrReference">when pitchers are changed during an inning, the relief pitcher shall not
-			have the benefit of previous chances for outs not accepted in determining earned runs. </span>
+		<span>L'OBR stipule dans la règle 9.16(i) que </span>
+		<span class="obrReference">Lorsqu'il y a changement de lanceur au cours d'une manche, le lanceur de relève ne 
+		doit pas bénéficier des précédentes opportunités de retraits non réalisées, pour déterminer les points mérités. </span>
 	</p>
 
 	<p class="normalText">
-		<span><b>Rule 9.16(i) Comment:</b></span>
-		<span class="obrReference"> It is the intent of Rule 9.16(i) to charge a relief pitcher with earned runs 
-		for which such relief pitcher is solely responsible. In some instances, runs charged as earned against the 
-		relief pitcher can be charged as unearned against the team</span>
+		<span><b>Rule 9.16(i) Commentaire:</b></span>
+		<span class="obrReference"> Il est dans l'intention de la règle 9.16(i) que soient portés au compte des 
+		lanceurs de relève les points mérités dont ils sont seuls responsables. Dans certains cas, les points attribués 
+		comme mérités contre le lanceur de relève, peuvent être accordés comme non mérités contre l’équipe.</span>
 	</p>
 
-	<p class="normalText">To clarify the meaning of this note, let us look at the following example:</p>
+	<p class="normalText">Pour clarifier le sens de cette remarque, examinons l'exemple suivant.:</p>
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 34:</span>
-		<span>The first batter hits a fly ball and is put out by the left fielder.</span><br>
-		<span>The next batter reaches second base safely on a catching error by the center fielder.</span><br>
-		<span>The third batter hits a single to the right field, sending the runner to third base.</span><br>
-		<span>The fourth batter hits a sacrifice fly that enables the runner on third to score the first run 
-		(the runner on first base stays put).</span><br>
-		<span>After a pitching change, the fifth batter hits a home run that brings in two runs.</span><br>
-		<span>The first pitcher is charged with two unearned runs (there had been three fielding chances at the time 
-		the home run was hit: ‘F7’, ‘E8F’ and ‘SF8’).</span><br>
-		<span>The second pitcher is charged with one earned run (only two fielding chances were transferred by the 
-		previous pitcher: ‘F7’ and ‘SF8’).</span><br>
-		<span>The team is charged with three runs, none of which is earned, as the team had three fielding chances: 
-		‘F7’, ‘E8F’ and ‘SF8’.</span><br>
-		<span>This example shows that the third run is a run unearned against the team, but earned against the 
-		pitcher.</span>
+		<span class="exampleNumber">Exemple 34:</span>
+		<span>Le premier batteur frappe une fly et est retiré par le champ gauche.</span><br>
+		<span>Le batteur suivant atteint la deuxième base en toute sécurité grâce à une erreur de réception du joueur 
+		de champ centre.</span><br>
+		<span>Le troisième frappeur frappe un simple vers le champ droit, envoyant le coureur au troisième base.</span><br>
+		<span>Le quatrième frappeur frappe unsacrifice fly qui permet au coureur posté en troisième base de marquer le 
+		premier point (le coureur en première base reste sur place).</span><br>
+		<span>Après un changement de lanceur, le cinquième frappeur réussit un homerun qui permet de marquer deux points.</span><br>
+		<span>Le premier lanceur est crédité de deux points non mérités (trois occasions de jeu défensif s'étaient 
+		présentées au moment où le coup de circuit a été frappé : « F7 », « E8F » et « SF8 »)..</span><br>
+		<span>Le deuxième lanceur est crédité d'un point mérité (seules deux occasions de jeu défensif ont été 
+		transmises par le lanceur précédent : « F7 » et « SF8 »).</span><br>
+		<span>Trois points sont imputé à l'équipe, dont aucun n'est un point mérité, car elle a eu trois occasions de 
+		jeu défensif : « F7 », « E8F » et « SF8 ».</span><br>
+		<span>Cet exemple montre que le troisième point est un point non mérité pour l'équipe, mais un point mérité 
+		pour le lanceur.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -762,32 +769,32 @@
 					height="446"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter is retired on a fly ball to left field. */</span><br/>
+				<span class="codeComment">/* Le batteur est retiré sur une fly vers le champ gauche. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">F7</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter reaches base on an error by the center fielder and takes 
-				advantage of the error to advance to second base. */</span><br/>
+				<span class="codeComment">/* Le batteur atteint la première base sur une erreur du défenseur du champ 
+				centre et profite de cette erreur pour avancer jusqu'en deuxième base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">E8F+</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits a single to right field; the runner advances one base. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ droit, le coureur avance d'une base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B9</span>
 				<span>, </span>
 				<span>runner2 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a sacrifice fly, and the runner scores the run. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe une balle un sacrifice fly et le coureur marque le point. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">SF8</span>
 				<span>, </span>
 				<span>runner3 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 			
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -799,7 +806,7 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a home run; two runs are scored. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un homerun, deux points sont marqués. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR8 </span><span class="codeAction">unEarnedForTeam </span>
 				<span>, </span>
@@ -826,34 +833,36 @@
 					height="131"/>
 			</td>
 			<td class="contentDescriptionDescription">
-				<span class="exampleNumber">Example 34:</span>
-				<span>Evidently, when a situation such as that described above occurs during the course of a game, 
-				the total number of runs earned against the team will be less than the total number of runs earned 
-				against the pitchers.</span>
+				<span class="exampleNumber">Exemple 34:</span>
+				<span>Il est évident que, lorsqu'une situation telle que celle décrite ci-dessus survient au cours 
+				d'un match, le nombre total de points mérités concédés par l'équipe sera inférieur au nombre total de 
+				points mérités concédés par les lanceurs.</span>
 			</td>
 		</tr>
 	</table>		
 
-	<p class="normalText">In order to make this clear, the number of runs earned against the team must be 
-	circled.</p>
+	<p class="normalText">Pour que cela soit bien clair, le nombre de points mérités concédés par l'équipe doit être 
+	entouré.</p>
 	
-	<p class="normalText"><b>ATTENTION: </b> In the cumulative totals compiled at the end of each half inning, 
-	the total runs earned against the pitcher, including those unearned against the team, are recorded.</p>
+	<p class="normalText"><b>ATTENTION: </b> Dans les totaux cumulés établis à la fin de chaque demi-manche, on 
+	comptabilise le nombre total de points concédés par le lanceur, y compris ceux qui ne lui sont pas imputés 
+	personnellement (points non mérités).</p>
 	
 	<p class="exampleText">
-		<span class="exampleNumber">Example 36:</span>
-		<span>With two out, i.e. with two fielding chances, there is a base on balls followed by an error.</span><br>
-		<span>This error constitutes the third fielding chance for the first pitcher, who therefore cannot be charged 
-		with any further earned runs.</span><br>
-		<span>The relief pitcher, on the other hand, does not benefit from the failed putout.</span><br>
-		<span>Consequently, the home run, which is charged to the relief pitcher, is earned against the pitcher but 
-		unearned against the team.</span>
+		<span class="exampleNumber">Exemple 36:</span>
+		<span>Avec deux retraits, c'est-à-dire deux occasions de réaliser un retrait, il y a un base on balls suivi 
+		d'une erreur.</span><br>
+		<span>Cette erreur constitue la troisième occasion de jeu défensif pour le premier lanceur, par conséquent, 
+		aucune autre « point mérité » ne peut lui être imputée.</span><br>
+		<span>Le lanceur remplaçant, en revanche, ne bénéficie pas du retrait manqué.</span><br>
+		<span>Par conséquent, le homerun, qui est imputé au lanceur remplaçant, est considéré comme mérité pour le 
+		lanceur, mais non mérité pour l'équipe.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -864,30 +873,30 @@
 					height="441"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter struck out. */</span><br/>
+				<span class="codeComment">/* Le batteur a été retiré sur des prises. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">KS</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter is out on a ground ball. */</span><br/>
+				<span class="codeComment">/* Le batteur est retiré sur une balle au sol. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">63</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint le but sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter reaches base on a fielding error by the first baseman, and 
-				the runner advances on the error. */</span><br/>
+				<span class="codeComment">/* Le batteur atteint la base sur une erreur défensive en première base, et 
+				le coureur progresse sur l'erreur. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">6E3</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">(+)</span>	
 				<span>}</span><br /><br />
 			
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -899,7 +908,7 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 			
-				<span class="codeComment">/* The batter hits a home run; the runners advance. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un homerun, les coureurs avancent. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR8 </span><span class="codeAction">unEarnedForTeam </span>
 				<span>, </span>
@@ -919,21 +928,23 @@
 	</table>				
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 37:</span>
-		<span>With two out, there follow two bases on balls, after which the pitcher is relieved. An error is committed 
-		against the next batter.</span><br>
-		<span>This error constitutes the third fielding chance for the relief pitcher, who can also count the two putouts.</span><br>
-		<span>But it is also the third fielding chance for the first pitcher, as the relief pitcher cannot count failed 
-		putouts, although the replaced pitcher can.</span><br>
-		<span>From this moment, therefore, no runs charged to either the first or the second pitcher can be earned.</span><br>
-		<span>Thus, with the subsequent home run, two runs are charged to the first pitcher and two to the second, 
-		although none are earned.</span>
+		<span class="exampleNumber">Exemple 37:</span>
+		<span>Avec deux retraits, deux bases on balls sont concédés, après quoi le lanceur est remplacé. Une erreur est 
+		commise aux dépens du batteur suivant.</span><br>
+		<span>Cette erreur constitue la troisième occasion de jeu défensif pour le lanceur de relève, qui peut 
+		également comptabiliser les deux retraits.</span><br>
+		<span>Mais c'est aussi la troisième occasion d'effectuer un jeu défensif pour le lanceur sortant, car le 
+		lanceur de relève ne peut pas comptabiliser les retraits manqués, alors que le lanceur remplacé le peut.</span><br>
+		<span>Dès ce moment, par conséquent, aucun point imputé au premier ou au second lanceur ne peut être considéré 
+		comme un point mérité.</span><br>
+		<span>Ainsi, avec le homerun qui suit, deux points sont portés imputé au premier lanceur et deux à celui du 
+		second, bien qu'aucun ne soit un point mérité.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -944,29 +955,29 @@
 					height="542"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter is out on a ground ball. */</span><br/>
+				<span class="codeComment">/* Le batteur est retiré sur une balle au sol. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">63</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter is retired on a fly ball to center field. */</span><br/>
+				<span class="codeComment">/* Le batteur est retiré sur une fly au champ centre. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">F8</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* TLe frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -978,8 +989,8 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter reaches base on a throwing error by the shortstop, and both 
-				runners advance on the play. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur une erreur de lancer de 
+				l'arrêt-court, et les deux coureurs progressent sur l'action. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">E6T</span>
 				<span>, </span>
@@ -988,7 +999,7 @@
 				<span>runner2 -> </span><span class="codeAdvance">(+)</span>	
 				<span>}</span><br /><br />
 			
-				<span class="codeComment">/* The batter hits a home run, and all the runners score. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un homerun et tous les coureurs marquent. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR7</span>
 				<span>, </span>
@@ -1010,20 +1021,21 @@
 	</table>				
 	
 	<p class="exampleText">
-		<span class="exampleNumber">Example 38:</span>
-		<span>In this inning, after a putout, with the batter runner on first base because of an error, the third 
-		batter is awarded a base on balls.</span><br>
-		<span>The fourth batter reaches first base safely on a fielder’s choice, as on the hit the pitcher tried 
-		unsuccessfully to put out the runner heading for second.</span><br>
-		<span>Bearing in mind that fielder’s choice is not a fielding chance, the runs by the third, fourth and fifth 
-		batters are earned runs, both for the team and the relief pitchers, because team and pitchers only have two 
-		and one fielding chances respectively at this moment.</span>
+		<span class="exampleNumber">Exemple 38:</span>
+		<span>Au cours de cette manche, après un retrait, alors que le batteur-coureur occupe la première base à la 
+		suite d'une erreur, le troisième batteur obtient un base on balls.</span><br>
+		<span>Le quatrième frappeur atteint la première base en toute sécurité grâce à un choix défensif, le lanceur 
+		ayant tenté en vain, sur l'action, d'éliminer le coureur qui se dirigeait vers la deuxième base.</span><br>
+		<span>En gardant à l'esprit qu'un choix du défenseur (*fielder’s choice*) ne constitue pas une occasion de jeu 
+		défensif, les points marqués par les troisième, quatrième et cinquième batteurs sont considérés comme des 
+		points mérités, tant pour l'équipe que pour les lanceurs de relève ; en effet, à ce stade, l'équipe et les 
+		lanceurs ne disposent respectivement que de deux et d'une occasion de jeu défensif.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -1034,24 +1046,24 @@
 					height="445"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter struck out. */</span><br/>
+				<span class="codeComment">/* Le batteur a été retiré sur des prises. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">KS</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The next batter reaches base on an error by the second baseman. */</span><br/>
+				<span class="codeComment">/* Le frappeur suivant atteint la première bases sur une erreur du défenseur en deuxième base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">E4</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter reaches base on a defensive choice. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un choix défensif. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">FC14</span>
 				<span>, </span>
@@ -1060,7 +1072,7 @@
 				<span>runner2 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -1072,7 +1084,7 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a home run, all the runners advance. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un homerun, tous les coureurs avancent. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR8 earned</span>
 				<span>, </span>
@@ -1094,22 +1106,22 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 39:</span>
-		<span> In this inning, after a base on balls, there is an error, which constitutes the first and only fielding 
-		chance for the first pitcher, who is then relieved.</span><br>
-		<span>The relief pitcher therefore begins with no fielding chances to his credit.</span><br>
-		<span>He gives up a three-run home run: the first two runs are charged to the first pitcher, and only the 
-		first is earned, as the second was compromised by an error.</span><br>
-		<span>The home run itself is charged to the second pitcher, and is an earned run.</span><br>
-		<span>The inning continues with two strikeouts, after which there is another error.</span><br>
-		<span>This is the third fielding chance for the second pitcher, and thus no runs charged against him from this 
-		moment on are arned.</span>
+		<span class="exampleNumber">Exemple 39:</span>
+		<span> Au cours de cette manche, après un base on balls, une erreur survient ; il s'agit de la première et 
+		unique occasion d'intervention défensive pour le premier lanceur, qui est alors remplacé.</span><br>
+		<span>Le lanceur de relève commence donc sans aucune occasion de jeu défensif à son actif.</span><br>
+		<span>Il concède un homerun de trois points : les deux premiers points sont portés au compte du premier 
+		lanceur, et seul le premier est considéré comme mérité, le second ayant été favorisé par une erreur.</span><br>
+		<span>Le homerun lui-même est porté au compte du deuxième lanceur et constitue un point mérité.</span><br>
+		<span>La manche se poursuit avec deux retraits sur des prises, suivis d'une nouvelle erreur.</span><br>
+		<span>Il s'agit de la troisième occasion de jeu défensif pour le deuxième lanceur ; par conséquent, aucun point 
+		inscrit contre lui à partir de ce moment-là n'est considéré comme un point mérité.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -1120,19 +1132,19 @@
 					height="521"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter reaches base on a fly ball recovery error */</span><br/>
+				<span class="codeComment">/* Le batteur atteint la première base à la suite d'une erreur sur une fly. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">E8F</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">(+)</span>	
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -1144,7 +1156,7 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a home run, all the runners advance. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un homerun, tous les coureurs marquent. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR8 earned</span>
 				<span>, </span>
@@ -1153,17 +1165,17 @@
 				<span>runner2 -> </span><span class="codeAdvance">++ earned</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter struck out. */</span><br/>
+				<span class="codeComment">/* Le batteur a été retiré sur des prises. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">KS</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter struck out. */</span><br/>
+				<span class="codeComment">/* Le batteur a été retiré sur des prises. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">KS</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter reaches base on an error by the shortstop. */</span><br/>
+				<span class="codeComment">/* Le batteur atteint la base sur une erreur de l'arrêt-court. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">E6</span>
 				<span>}</span><br /><br />
@@ -1179,25 +1191,27 @@
 	</table>				
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 40:</span>
-		<span> The first batter reaches first base on an error. The pitcher is replaced.</span><br>
-		<span>The second batter is awarded a base on balls and the third hits a ground ball to the shortstop who 
-		assists the third baseman in putting out the lead runner, while the others reach base safely.</span><br>
-		<span>Finally, the fourth batter hits a safe hit, sending the second runner home.</span><br>
-		<span>The run is charged to the first pitcher but is not earned because of the batter reaching first base on 
-		the error.</span><br>
-		<span>When, after a pitcher change, a batted ball results in a putout of a runner, both for the batter as well 
-		as any other runner an occupied shall be written.</span><br>
-		<span>Especially in cases like this one, we have to keep in mind that the relief pitcher cannot be charged 
-		with any run (earned or unearned) scored by a runner who was on base at the time such relief pitcher entered 
-		the game [OBR 9.16(g)]. Instead the first pitcher must be charged with the number of runners he put on base, 
-		rather than with the individual runners.</span>
+		<span class="exampleNumber">Exemple 40:</span>
+		<span> Le premier frappeur atteint la première base sur une erreur. Le lanceur est remplacé.</span><br>
+		<span>Le deuxième batteur obtient un base on balls et le troisième frappe une balle au sol en direction de 
+		l'arrêt-court, qui relaie au défenseur de la troisième base pour éliminer le coureur de tête, tandis que les 
+		autres atteignent les bases en toute sécurité.</span><br>
+		<span>Enfin, le quatrième frappeur réussit un coup sûr, permettant au deuxième coureur de marquer.</span><br>
+		<span>Le point est imputé au premier lanceur mais n'est pas considéré comme mérité, car le batteur a atteint la 
+		première base à la faveur de l'erreur.</span><br>
+		<span>Lorsqu'un changement de lanceur a eu lieu et qu'une balle frappée entraîne le retrait d'un coureur, un 
+		retrait doit être porté au crédit du batteur ainsi que de tout autre coureur impliqué.</span><br>
+		<span>Dans des cas comme celui-ci en particulier, il faut garder à l'esprit que le lanceur de relève ne peut 
+		être tenu responsable d'aucun point (mérité ou non) marqué par un coureur qui se trouvait sur bases au moment 
+		où ce lanceur de relève est entré en jeu [OBR 9.16(g)]. Au lieu de cela, le premier lanceur doit être crédité 
+		de la responsabilité du nombre de coureurs qu'il a placés sur les bases, plutôt que de celle des coureurs 
+		individuels eux-mêmes.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -1208,12 +1222,13 @@
 					height="364"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches base on an error by the third baseman. */</span><br/>
+				<span class="codeComment">/* Le batteur atteint la première base sur une erreur du défenseur de la 
+				troisième base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">E5</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -1225,15 +1240,15 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter reaches base on a defensive choice by the shortstop; the runner 
-				on second base is put out. */</span><br/>
+				<span class="codeComment">/* Le batteur atteint la première base base sur un choix défensif de 
+				l'arrêt-court ; le coureur en deuxième base est retiré. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O6</span>
 				<span>, </span>
@@ -1242,7 +1257,7 @@
 				<span>runner2 -> </span><span class="codePutout">65</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a single to right field, and the runners advance two bases. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ droit et les coureurs avancent de deux bases. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B9</span>
 				<span>, </span>
@@ -1263,24 +1278,25 @@
 
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 41:</span>
-		<span>The first batter reaches first base on an error.</span><br>
-		<span>The second is awarded a base on balls and the pitcher is replaced.</span><br>
-		<span>The third batter hits a safe hit, filling the bases.</span><br>
-		<span>The fourth batter hits a ground ball to the third baseman who throws an assist to home base, putting 
-		out the first runner.</span><br>
-		<span>The fifth batter hits a ground ball to shortstop who throws an assist to home base, putting out the 
-		second runner.</span><br>
-		<span>The sixth batter hits a four-run home run, and the inning finally ends with the seventh batter being 
-		struck out.</span><br>
-		<span>The first pitcher should be charged with two runs, as he was replaced with two men on base.</span><br>
-		<span>The runs in question are the first two, and they are indicated by the occupied ball notation.</span>
+		<span class="exampleNumber">Exemple 41:</span>
+		<span>Le premier frappeur atteint la première base sur une erreur.</span><br>
+		<span>Le deuxième joueur obtient un base on balls et le lanceur est remplacé.</span><br>
+		<span>Le troisième frappeur réussit un coup sûr, remplissant les bases.</span><br>
+		<span>Le quatrième frappeur frappe une balle au sol en direction du défenseur de la troisième base, qui 
+		effectue un relais au marbre pour éliminer le premier coureur.</span><br>
+		<span>Le cinquième batteur frappe une balle au sol en direction de l'arrêt-court, qui effectue un relais au 
+		marbre pour éliminer le deuxième coureur.</span><br>
+		<span>Le sixième frappeur réussit un homerun de quatre points, et la manche se termine enfin lorsque le 
+		septième frappeur est retiré sur des prises.</span><br>
+		<span>Deux points devraient être imputés au premier lanceur, puisqu'il a été remplacé alors que deux coureurs 
+		étaient sur les bases.</span><br>
+		<span>Les points en question sont les deux premiers, et ils sont indiquées par la notation de case occupée.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -1291,19 +1307,20 @@
 					height="605"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches base on a throwing error by the shortstop. */</span><br/>
+				<span class="codeComment">/* Le batteur atteint la première base sur une erreur de lancer de 
+				l'arrêt-court. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">E6T</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>, </span>
 				<span>runner1 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* pitcher replacement */</span><br/>
+				<span class="codeComment">/* Remplacement du lanceur */</span><br/>
 				<span class="codeSubstitution">substitution hometeam</span><span> {</span>
 				<span class="codeReplacement">player </span>
 				<span class="codeNumber">1 </span>
@@ -1315,7 +1332,7 @@
 				<span class="codeNumber">1</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits a single to left field, the runners advance. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ gauche, les coureurs avancent. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B7</span>
 				<span>, </span>
@@ -1324,8 +1341,8 @@
 				<span>runner2 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter reaches base on a fielder's choice, and the runner 
-				coming from third base is put out. */</span><br/>
+				<span class="codeComment">/* Le batteur suivant atteint les bases sur un choix défensif, et le coureur 
+				venant de la troisième base est retiré. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O5</span>
 				<span>, </span>
@@ -1336,8 +1353,8 @@
 				<span>runner3 -> </span><span class="codeAdvance">52</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter reaches base on a fielder's choice, and the runner 
-				coming from third base is put out. */</span><br/>
+				<span class="codeComment">/* Le batteur suivant atteint les bases sur un choix défensif, et le coureur 
+				venant de la troisième base est retiré. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">O6</span>
 				<span>, </span>
@@ -1348,7 +1365,7 @@
 				<span>runner3 -> </span><span class="codeAdvance">62</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter hits a home run, all the runners advance. */</span><br/>
+				<span class="codeComment">/* Le batteur suivant frappe un coup de circuit, tous les coureurs avancent. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR7 </span><span class="codeAction">unEarnedForTeam </span>
 				<span>, </span>
@@ -1359,7 +1376,7 @@
 				<span>runner3 -> </span><span class="codeAdvance">+</span>	
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The next batter strikes out. */</span><br/>
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">KL</span>
 				<span>}</span><br /><br />
@@ -1375,36 +1392,39 @@
 	</table>				
 	
 
-	<p class="normalText">Neither of these, however, is earned, as for the first a fielding chance was transferred from 
-	the first batter, and with the second run there had already been three fielding chances.</p>
+	<p class="normalText">Aucun de ces deux points n'est toutefois considéré comme mérité : pour le premier, une 
+	occasion de jeu défensif avait été transférée depuis le premier batteur, et pour le second, trois occasions de 
+	jeu défensif s'étaient déjà produites.</p>
 	
-	<p class="normalText">The other two runs are charged to the second pitcher, and they are earned against the pitcher 
-	but not against the team, since the pitcher had amassed only two fielding chances.</p>
+	<p class="normalText">Les deux autres points sont imputés au deuxième lanceur ; ils sont considérés comme mérités 
+	à son encontre, mais pas à celle de l'équipe, étant donné que le lanceur n'avait eu à traiter que deux occasions 
+	de jeu défensif.</p>
 	
-	<p class="normalText">As far as fielding chances are concerned, it should be noted that in the event of an 
-	attempted double play, there are two opportunities in the same action, with either two putouts, or a putout 
-	and an 	error.</p>
+	<p class="normalText">En ce qui concerne les occasions de jeu en défensive, il convient de noter qu'une tentative 
+	de double retrait offre deux opportunités au sein d'une même action, pouvant se solder soit par deux retraits, 
+	soit par un retrait et une erreur.</p>
 	
-	<p class="normalText">However, if just one putout is made, and the other attempted putout is unsuccessful, but not 
-	because of an error, only one fielding chance has occurred.</p>
+	<p class="normalText">Toutefois, si une seule élimination est réalisée et qu'une autre tentative d'élimination 
+	échoue sans qu'il y ait eu d'erreur, une seule occasion de jeu défensif a eu lieu.</p>
 	
-	<p class="normalText">To conclude this chapter on earned runs, we shall look a little more closely at the issue of 
-	legal and illegal advances.</p>
+	<p class="normalText">Pour conclure ce chapitre sur les points mérités, nous examinerons de plus près la question 
+	des avancées réglementaires et non réglementaires.</p>
 	
-	<p class="normalText">A base runner is not static but he can make a play. When a runner should not have been on 
-	base, or should not have advanced to that point (because of an error or a passed ball), no account must be taken 
-	of any plays made by him for the purposes of calculating earned runs.</p>
+	<p class="normalText">Un coureur sur base n'est pas statique et peut participer à une action de jeu. Lorsqu'un 
+	coureur n'aurait pas dû se trouver sur base ou n'aurait pas dû atteindre cette position (en raison d'une erreur ou 
+	d'une balle échappée), aucune action qu'il a effectuée ne doit être prise en compte pour le calcul des points 
+	mérités.</p>
 	
 	<p class="exampleText">
-		<span class="exampleNumber">Example 42:</span>
-		<span>The runner on second base would not have been able to advance if the game had been played correctly, so 
-		for the purposes of calculating earned runs he should be considered as being on first base.</span>
+		<span class="exampleNumber">Exemple 42:</span>
+		<span>Le coureur situé en deuxième base n'aurait pas pu avancer si le jeu s'était déroulé correctement, par 
+		conséquent, aux fins du calcul des points mérités, il doit être considéré comme se trouvant en première base.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -1415,8 +1435,8 @@
 					height="100"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter hits a single to left field and takes advantage of the error 
-				to advance an extra base. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ gauche et profite de l'erreur 
+				pour gagner une base supplémentaire. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B7 e7</span>
 				<span>}</span><br /><br />
@@ -1432,20 +1452,20 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 43:</span>
-		<span>The first batter hits to the right field and, thanks to an error by the outfielder, reaches third base. 
-		The second batter walks and goes on to steal second base. The third batter hits to the left field, enabling 
-		both runners to score.</span><br>
-		<span>Up to this moment, the first run is earned, but not the second, since if it had not been for the 
-		outfielder’s error, the lead runner would have remained on second base, thus removing from the other runner 
-		any possibility of stealing, and the third batter’s safe hit would have sent home only the first runner, while 
-		the second runner would have stopped at third base.</span>
+		<span class="exampleNumber">Exemple 43:</span>
+		<span>Le premier frappeur envoie la balle au champ droit et, grâce à une erreur du défenseur, atteint la 
+		troisième base. Le deuxième frappeur obtient un base on balls et vole ensuite la deuxième base. Le troisième 
+		frappeur frappe la balle au champ gauche, permettant aux deux coureurs de marquer.</span><br>
+		<span>Jusqu'à ce stade, le premier point est considéré comme mérité, mais pas le second, en effet, sans 
+		l'erreur du joueur de champ extérieur, le coureur de tête serait resté sur la deuxième base privant ainsi 
+		l'autre coureur de toute possibilité de vol de base et le coup sûr du troisième batteur n'aurait permis de 
+		marquer qu'au premier coureur, tandis que le second se serait arrêté en troisième base.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -1456,23 +1476,23 @@
 					height="272"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter hits a single to right field and takes advantage of the error 
-				to advance two extra bases. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ droit et profite de l'erreur 
+				pour avancer de deux bases supplémentaires. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B9 e9+</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter reaches base on a walk. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The runner on first base steals a base. */</span><br/>
+				<span class="codeComment">/* Le coureur au premier but vole une base. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner1 -> </span><span class="codeAdvance">SB</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits a single to left field, both runners score. */</span><br/>
+				<span class="codeComment">/* Le frappeur réussit un simple vers le champ gauche et les deux coureurs marquent. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B7</span>
 				<span>, </span>
@@ -1492,18 +1512,20 @@
 	</table>				
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 44:</span>
-		<span>The first batter is awarded a base on balls and reaches second base on an error when the first baseman 
-		attempts to pick him off. The second batter reaches first on a wild pitch after having swung at the third 
-		strike, and the runner reaches third base. The third batter hits a home run. The first and third runs are 
-		earned, but not the second, because if it had not been for the fielding error on the first runner, first base 
-		was occupied and the second batter would have been called out under rule 5.09(a)(3) of the OBR.</span>
+		<span class="exampleNumber">Exemple 44:</span>
+		<span>Le premier batteur obtient un base on balls et atteint la deuxième base à la suite d'une erreur commise 
+		par le défenseur de la première base alors qu'il tentait de le retirer par un pick off. Le deuxième batteur 
+		atteint la première base sur un mauvais lancer après s'être élancé sur la troisième prises, tandis que le 
+		coureur atteint la troisième base. Le troisième batteur frappe un homerun. Les premier et troisième points sont 
+		des points mérités, mais pas le deuxième ; en effet, sans l'erreur défensive commise sur le premier coureur, la 
+		première base aurait été occupé et le deuxième batteur aurait été déclaré retiré en vertu de la règle 5.09(a)(3) 
+		du règlement officiel du baseball (OBR).</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -1514,24 +1536,24 @@
 					height="275"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches first base on a base on balls. */</span><br/>
+				<span class="codeComment">/* Le frappeur atteint la première base sur un base on balls. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">BB</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The runner reaches second base on a failed pick-off attempt. */</span><br/>
+				<span class="codeComment">/* Le coureur atteint la deuxième base sur une tentative de retrait par relais du lanceur ratée. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>runner1 -> </span><span class="codeAdvance">PO1e3</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter reaches base on a dropped third strike. */</span><br/>
+				<span class="codeComment">/* Le batteur atteint la première base sur un troisième prises échappé. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">KSWP</span>
 				<span>, </span>
 				<span>runner2 -> </span><span class="codeAdvance">wp</span>	
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits a home run. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un homerun. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR7 earned</span>
 				<span>, </span>
@@ -1550,26 +1572,28 @@
 		</tr>
 	</table>				
 
-	<p class="normalText"><b>IMPORTANT:</b> From the two previous examples it can be seen that an illegal advance by 
-	a previous runner can affect the legality of a subsequent action.</p>
+	<p class="normalText"><b>IMPORTANT:</b> Il ressort des deux exemples précédents qu'une avance illégale prise par 
+	un coureur précédent peut affecter la légalité d'une action ultérieure.</p>
 	
 	<p class="exampleText">
-		<span class="exampleNumber">Example 45:</span>
-		<span>With a man on second base due to an error, a safe hit to the center fielder enables him to score, while 
-		the batter runner reaches second base on the throw to home base.</span><br>
-		<span>If the play had been legal, the first runner would not have been where he was, so the center fielder 
-		would not have thrown to home base and the batter would have remained on first base.</span><br>
-		<span>On the next hit another run is scored, which for the time being is unearned since the runner, after 
-		having advanced two bases, would have been on third base.</span><br>
-		<span>We therefore recommend reconstructing the action carefully to determine whether an advance is legal 
-		or not. In this respect it can be helpful to reconstruct an imaginary inning, only with legal advances, 
-		excluding all advances because of errors or passed balls.</span>
+		<span class="exampleNumber">Exemple 45:</span>
+		<span>Alors qu'un coureur occupe la deuxième base à la suite d'une erreur, un coup sûr en direction du champ 
+		centre lui permet de marquer, tandis que le batteur-coureur atteint la deuxième base pendant le relais vers le 
+		marbre.</span><br>
+		<span>Si l'action avait été réglementaire, le premier coureur ne se serait pas trouvé là où il était ; par 
+		conséquent, le défenseur n'aurait pas effectué de lancer vers le marbre et le frappeur serait resté en première 
+		base.</span><br>
+		<span>Sur le coup suivant, un nouveau point est marqué. Pour l'instant, il est considéré comme non mérité, car 
+		le coureur, après avoir progressé de deux bases, se serait retrouvé en troisième base.</span><br>
+		<span>Nous recommandons donc de reconstituer soigneusement l'action pour déterminer si une progression est 
+		réglementaire ou non. À cet égard, il peut être utile de reconstituer une manche fictive ne comportant que des 
+		progressions réglementaires, en excluant toutes celles résultant d'erreurs ou de balles échappées.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -1580,26 +1604,26 @@
 					height="359"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter reaches base on an error on a fly ball and takes an extra base 
-				on the play. */</span><br/>
+				<span class="codeComment">/* Le batteur atteint la première base sur une erreur commise sur une fly et 
+				gagne une base supplémentaire sur l'action. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">E9F+</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits a single to center field and takes advantage of the 
-				throw to reach second base, the runner scores. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ centre et profite du relais 
+				pour atteindre la deuxième base ; le coureur marque. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B8 T82</span>
 				<span>, </span>
 				<span>runner2 -> </span><span class="codeAdvance">++</span>	
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The next batter strikes out. */</span><br/>
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">KS</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits a single to left field, and the runner scores. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ gauche et le coureur marque. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B7</span>
 				<span>, </span>
@@ -1618,18 +1642,20 @@
 
 		
 	<p class="exampleText">
-		<span class="exampleNumber">Example 46:</span>
-		<span>In this situation we see the action as it occurred. We have an indication of what would have happened 
-		with legal play: the second batter would not yet have scored, but would have stopped at third base.</span><br>
-		<span>With this method it is possible to see clearly that if a runner had scored through legal play, the 
-		corresponding run in the real action would be earned, even if the play had been illegal. If not, a run actually 
-		scored would be unearned.</span>
+		<span class="exampleNumber">Exemple 46:</span>
+		<span>Dans cette situation, nous voyons l'action telle qu'elle s'est déroulée. Nous avons une indication de ce 
+		qui se serait passé si le jeu avait été régulier* : le deuxième frappeur n'aurait pas encore marqué de point, 
+		mais se serait arrêté en troisième base.</span><br>
+		<span>Grâce à cette méthode, on peut clairement constater que si un coureur avait marqué sur une action 
+		régulière, le point correspondant dans l'action réelle serait considéré comme mérité, même si l'action 
+		elle-même avait été irrégulière. Dans le cas contraire, un point effectivement marqué serait considéré comme 
+		non mérité.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -1640,22 +1666,22 @@
 					height="355"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The beater is put out on a fly */</span><br/>
+				<span class="codeComment">/* Le batteur est retiré sur une fly. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">F9</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits a single to center field. */</span><br/>
+				<span class="codeComment">/* Le frappeur frappe un simple vers le champ centre. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B8</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The next batter strikes out. */</span><br/>
+				<span class="codeComment">/* Le batteur suivant est retiré sur des prises. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codePutout">KS</span>
 				<span>}</span><br /><br />
 
-				<span class="codeComment">/* The batter hits a strike into left field. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un hit au champ gauche */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B7</span>
 				<span>, </span>
@@ -1673,19 +1699,19 @@
 	</table>				
 
 	<p class="exampleText">
-		<span class="exampleNumber">Example 47:</span>
-		<span>With a runner on first base, the first baseman muffs a foul fly on an easy hit and an error is therefore 
-		noted in the first base square.</span><br>
-		<span>The second batter hits a home run.</span><br>
-		<span>The second run cannot be earned in any circumstances.</span><br>
-		<span>In order to determine whether the first run is earned, we have to wait for the subsequent turns at bat, 
-		as in the reconstruction of the inning the first batsman should be considered as being still on first base.</span>
+		<span class="exampleNumber">Exemple 47:</span>
+		<span>Avec un coureur en première base, le défenseur en première base laisse échapper une balle, une erreur est 
+		donc inscrite dans la case da la première base.</span><br>
+		<span>Le deuxième batteur frappe un homerun.</span><br>
+		<span>Le second point ne peut être obtenue en aucune circonstance.</span><br>
+		<span>Pour déterminer si le premier point est mérité, il faut attendre les passages au bâton suivants, car dans 
+		la reconstitution de la manche, le premier batteur doit être considéré comme étant toujours sur la première base.</span>
 	</p>	
 	<table class="exampleDescription">
 		<tr>
         <th class="exampleHeader">WBSC</th>
-        <th class="exampleHeader">Translation in the scoring tool</th>
-        <th class="exampleHeader">Tool</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
     </tr>  
 		<tr>
 			<td class="exampleImage">
@@ -1696,17 +1722,17 @@
 					height="185"/>
 			</td>
 			<td class="exampleCode">
-				<span class="codeComment">/* The batter hits a single to left field. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un simple vers le champ gauche. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">1B7</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter should have been put out on a foul fly ball. */</span><br/>
+				<span class="codeComment">/* Le batteur aurait dû être retiré sur une fly dans la zone des fausses balles. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">EF3</span>
 				<span>}</span><br /><br />
 				
-				<span class="codeComment">/* The batter hits a home run to center field. */</span><br/>
+				<span class="codeComment">/* Le batteur frappe un coup de circuit vers le champ centre. */</span><br/>
 				<span class="codeAction">action</span><span> {</span>
 				<span>batter -> </span><span class="codeAdvance">HR8</span>
 				<span>, </span>
