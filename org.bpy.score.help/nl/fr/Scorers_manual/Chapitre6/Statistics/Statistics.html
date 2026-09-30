@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Statistiques</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Statistiques.</h2>
+	
+	<p class="normalText">La règle 9.21 des OBR fournit les formules de calcul des statistiques des joueurs :</p>
+	
+	<ul class="dotList">
+		<li class="dotList">
+			<p>Moyenne offensive <b>AVG</b> : Hits / at Bat<br/>
+			<b>[H / AB]</b></p>
+		</li>
+
+		<li class="dotList">
+			<p>Puissance offensive <b>SLG</b>: Total des bases sur coups sûrs / at Bat <br/>
+			<b>[(H + (2B x 2) + (3B x 3) + (HR x 4)) / AB]</b></p>
+		</li>
+		
+		<li class="dotList">
+			<p>Moyenne défensive <b>FLD%</b>: (Retraits + Assistances) / (Retraits + Assistances + Erreurs)<br/>
+			<b>[(PO + A) / (PO + A + E)]</b></p>
+		</li>
+		
+		<li class="dotList">
+			<p>Moyenne des points mérités <b>ERA</b>: (Points mérités x Nombre de manches prévues pour chaque match) / Manches lancées <br/>
+			<b>[(ER x 9) / IP]</b></p>
+		</li>
+		
+		<li class="dotList">
+			<p>Moyenne de victoire d'une équipe <b>AVG</b>: (W/L): (Matchs gagnés / (Matchs gagnés + Matchs perdus)<br/>
+			<b>[W / (W + L)]</b></p>
+		</li>
+		
+		<li class="dotList">
+			<p>Moyenne d'arrivée en première base <b>OBP</b>: (Hits + Bases on Balls + Hit by Pitch) / (times At Bat + Bases on Balls + 
+			Hit By Pitch + Sacrifice Flies) <br/>
+			<b>[(H + BB + HP) / (AB + BB + HP + SF)]</b></p>
+		</li>
+
+		<li class="dotList">
+			<p>Puissance de présence sur bases (OPS): statistique combinant le pourcentage de présence sur les bases (OBP) et le 
+			pourcentage de puissance (SLG), permettant d'évaluer globalement la production offensive d'un frappeur. <br/>
+			<b>OBP + SLG</b></p>
+		</li>
+	</ul>
+	
+	<p class="normalText"><b>NOTE</b>: Aux fins du calcul du pourcentage de présence sur les bases, ne pas tenir compte 
+	de l'attribution de la première base pour cause d'interférence ou d'obstruction.</p>
+	
+	<p class="normalText"><b>NOTE</b>: Les résultats sont arrondis à la troisième décimale, selon qu'ils soient 
+	supérieurs ou inférieurs à la valeur initiale. 0.0005.</p>
+	
+	<p class="normalText"><b>IMPORTANT</b>: Pour être inclus dans les statistiques, un joueur doit satisfaire aux normes 
+	de performance minimales conformément au règlement des tournois de la Division Baseball de la WBSC.</p>
+	
+	<p class="normalText">La dernière statistique que nous examinerons est le <b>nombre de matchs de retard (GB)</b>, qui 
+	sert à établir le classement de l'équipe. Elle se calcule comme suit : </p>
+	
+	<p class="normalText">Les statistiques de l'équipe concernant les matchs gagnés (W) et perdus (L) sont utilisées.</p>
+	
+	<p class="normalText">L'équipe en tête du classement se voit attribuer la valeur 0 ; la formule suivante est 
+	appliquée aux autres équipes :</p>
+	
+	<p class="normalText"><b>[((W première équipe - W équipe x) + (L équipe x - L première équipe)) / 2]</b>
+	</p>
+</body>
+</html>
