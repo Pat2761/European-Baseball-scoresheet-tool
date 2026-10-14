@@ -493,3 +493,19 @@ td.hitText {
     text-align: left;
     white-space: nowrap;
 }
+
+/* ------------------------------------------------------------------------------ 
+	Styles used appendix header
+	----------------------------------------------------------------------------- */
+
+p.appendixMainHeader {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+p.appendixSubHeader {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
