@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta
+	http-equiv="content-type"
+	content="text/html; charset=utf-8"
+/>
+<title>Règle relative aux manches supplémentaires / Tiebreak</title>
+<link
+	rel="stylesheet"
+	type="text/css"
+	href="../../../ScoringTool.css"
+>
+</head>
+<body>
+	<h2 class="title2">Annexe 2 : Règle relative aux manches supplémentaires / Tiebreak</h2>
+	
+	<p class="appendixMainHeader">Annexe 2</p>
+	
+	<p class="appendixSubHeader">Règle relative aux manches supplémentaires / Tiebreak</p>
+
+	<p class="normalText">Symbole de notation <b>TIE</b></p>
+
+	<p class="normalText">Si le match demeure à égalité après l’achèvement de neuf (9) manches, les procédures suivantes seront 
+	appliquées durant les manches supplémentaires :</p>
+	
+	<p class="normalText">Chaque équipe entamera la 10<sup>ieme</sup> manche (ainsi que toute manche supplémentaire nécessaire par la suite) avec un 
+	joueur en première base et un autre en deuxième base, sans aucun retrait.</p>
+	
+	<p class="normalText">
+		Au début de la 10<sup>ieme</sup> manche, des représentants de chaque équipe se réuniront au marbre et indiqueront 
+		(simultanément) à l’arbitre principal à quel point de l’alignement des frappeurs leur équipe souhaite commencer. En d’autres 
+		termes, les équipes ont la possibilité de débuter la 10<sup>ieme</sup> manche à n’importe quel rang de l’alignement des 
+		frappeurs tel qu’il était établi à la fin de la 9<sup>ieme</sup> manche. Il est important de noter qu’il ne s’agit pas d’un 
+		nouvel alignement (mais potentiellement d’un ordre différent) ; il peut très bien s’agir du même ordre que celui en vigueur à 
+		la fin de la 9<sup>ieme</sup> manche. L’objectif de cette mesure est de garantir que les deux équipes aient des chances égales 
+		de placer leurs meilleurs frappeurs et coureurs selon leur propre évaluation dans une position favorable pour marquer des points 
+		durant la 10<sup>ieme</sup> manche.</p>
+	
+	<p class="exampleText">
+		<span>Par exemple : si l’équipe décide de faire passer en premier le frappeur occupant le 5<sup>ieme</sup> rang de l’alignement, 
+		alors le frappeur occupant le 3<sup>ieme</sup> rang sera placé en deuxième base, et celui occupant le 4<sup>ieme</sup> rang sera 
+		placé en première base. Par ailleurs, si l’équipe décide de faire passer en premier le frappeur occupant le 2<sup>ieme</sup> 
+		rang de l’alignement, alors le frappeur occupant le 9<sup>ieme</sup> rang sera placé en deuxième base, et celui occupant le 
+		1<sup>ier</sup> rang sera placé en première base.</span>
+	</p>	
+	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="bfe14d53.gif"
+					alt="Extra inning rule / Tiebreak"
+					width="98"
+					height="247"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* 10<sup>ieme</sup> manche */</span><br/>
+				<span class="codeAction">inning hometeam number 10</span><span> {</span><br>
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Retrait du frappeur sur des prises */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Retrait du frappeur sur des prises */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Le frappeur réussit un simple vers le champ gauche. */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>;batter -> </span><span class="codePutout">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Retrait du frappeur sur des prises */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KL</span>
+				<span>}</span><br />
+
+				<span>}</span><br /><br />
+				<span class="codeComment">/* 10<sup>ieme</sup> manche  */</span><br/>
+				<span class="codeAction">inning visitor number 10</span><span> {</span><br>
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Tie break */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;specialSituation { tieBreak } </span><br>
+
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="b16561c3.png"
+					alt="Extra inning rule / Tiebreak"
+					width="146"
+					height="327"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span>Une fois ces joueurs (ou coureurs) déterminés pour la 10<sup>e</sup> manche, l’ordre de passage pour les manches 
+		suivantes dépendra de la manière dont la manche précédente s’est terminée. Ainsi, si la 10<sup>ieme</sup> manche s’achève alors 
+		que le 5<sup>ieme</sup> frappeur de l’alignement effectue son passage au bâton, la 11<sup>ieme</sup> manche débutera avec le 
+		6<sup>ieme</sup> frappeur au bâton, tandis que le 4<sup>ieme</sup> frappeur sera placé en deuxième base et le 5<sup>ieme</sup> 
+		frappeur en première base.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="2d0e8fd9.png"
+					alt="Extra inning rule / Tiebreak"
+					width="132"
+					height="244"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* 9<sup>ieme</sup> manche  */</span><br/>
+				<span class="codeAction">inning hometeam number 9</span><span> {</span><br>
+				
+				<span>...</span><br>
+	
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Le frappeur réussit un simple vers le champ gauche. */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">1B7</span>
+				<span>}</span><br /><br />
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Retrait du frappeur sur des prises */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KL</span>
+				<span>}</span><br />
+
+				<span>}</span><br /><br />
+				<span class="codeComment">/* 10<sup>ieme</sup> manche  */</span><br/>
+				<span class="codeAction">inning visitor number 10</span><span> {</span><br>
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Tie break */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;specialSituation { tieBreak } </span><br><br>
+				
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* coureur éliminé pour avoir été pris en train de voler une base */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>runner2 -> </span><span class="codePutout">CS25</span>			
+				<span>}</span><br /><br />
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Double jeu sur une balle au sol */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">GDP43</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codePutout">54</span>			
+				<span>}</span><br /><br />
+
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="bacabe18.png"
+					alt="Extra inning rule / Tiebreak"
+					width="146"
+					height="260"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>Aucune ré entrance d’un joueur n’est autorisé durant les manches supplémentaires.</span><br>
+		<span>Le système traditionnel, selon lequel l’équipe visiteuse passe au bâton en début de manche et l’équipe locale en fin de 
+		manche (si nécessaire), demeure en vigueur jusqu’à ce qu’un vainqueur soit désigné.</span><br>
+		<span>Tout coureur commençant en deuxième base (2B) ou en première base (1B) dans le cadre de la règle du tie break ne se 
+		verra créditer ni passage au bâton (PA), ni présence officielle au bâton (AB).</span><br>
+		<span>Un point marqué par des joueurs qui, au début de l’action, occupaient les première et deuxième bases, est porté au compte 
+		de l’équipe en défense et non à celui du lanceur ; il ne peut donc, par définition, être considéré comme un point mérité. Quant 
+		à savoir si un point marqué par tout autre joueur doit être porté au compte du lanceur, cela relève de l’appréciation du 
+		scoreur officiel.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="166f7d33.gif"
+					alt="Extra inning rule / Tiebreak"
+					width="87"
+					height="730"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* 10<sup>ieme</sup> manche  */</span><br/>
+				<span class="codeAction">inning visitor number 10</span><span> {</span><br><br>
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Tie break */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;specialSituation { tieBreak } </span><br><br>
+
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O1b (3)</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+ (3)+</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">E1T+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">1B9</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>runner3 -> </span><span class="codeAdvance">WP</span>	
+				<span>}</span><br /><br />
+
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">2B7</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++ earned</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">43</span>
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">SF7</span>
+				<span>, </span>
+				<span>runner3 -> </span><span class="codeAdvance">+</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codePutout">KS</span>
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="bc6c8859.png"
+					alt="Extra inning rule / Tiebreak"
+					width="87"
+					height="694"/>
+			</td>
+		</tr>
+	</table>				
+
+		
+	<p class="exampleText">
+		<span>Si une action entreprise par un frappeur suivant par exemple, un choix défensif entraîne le retrait du coureur qui 
+		occupait la position la plus avancée, le premier point marqué au cours de cette manche peut être porté au compte de l’équipe. 
+		(Exemple : si un coureur atteint la première base en toute sécurité à la suite d’un choix défensif par exemple, lors d’un 
+		retrait effectué entre le premier et le troisième but, ce nouveau coureur est tout de même porté au compte de l’équipe.)</span><br>
+		<span>Si le coureur qui occupe la deuxième base est retiré sans intervention du frappeur (retiré en tentant de voler un but, 
+		pris au piège hors de sa base ou ayant quitté sa base trop tôt), alors aucun point n’est porté au compte de l’équipe.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="f1dc8e63.gif"
+					alt="Extra inning rule / Tiebreak"
+					width="87"
+					height="372"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* 10<sup>ieme</sup> manche  */</span><br/>
+				<span class="codeAction">inning visitor number 10</span><span> {</span><br><br>
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Tie break */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;specialSituation { tieBreak } </span><br><br>
+
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">O6</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">O6</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codePutout">64</span>	
+				<span>}</span><br /><br />
+				
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;action</span><span> {</span>
+				<span>batter -> </span><span class="codeAdvance">HR9 earned</span>
+				<span>, </span>
+				<span>runner1 -> </span><span class="codeAdvance">+++</span>	
+				<span>, </span>
+				<span>runner2 -> </span><span class="codeAdvance">++</span>	
+				<span>}</span><br /><br />
+			</td>
+			<td class="exampleImage">
+				<img
+					src="2d99cea4.png"
+					alt="Extra inning rule / Tiebreak"
+					width="87"
+					height="351"/>
+			</td>
+		</tr>
+	</table>				
+
+	<p class="exampleText">
+		<span>En cas de changement de lanceur au début de la manche supplémentaire, il est très important d'indiquer ce changement 
+		au-dessus des deux joueurs placés sur les bases en début de manche. La manche supplémentaire a pour vocation de permettre la 
+		réalisation du point de la victoire, ce qui détermine les statistiques à attribuer aux lanceurs. Un point marqué par l'un des 
+		joueurs ayant débuté la manche sur les bases doit être porté au débit du lanceur de relève.</span>
+	</p>	
+	<table class="exampleDescription">
+		<tr>
+        <th class="exampleHeader">WBSC</th>
+        <th class="exampleHeader">Transcription dans l'outil de scorage</th>
+        <th class="exampleHeader">Outil</th>
+    </tr>  
+		<tr>
+			<td class="exampleImage">
+				<img
+					src="4b35f489.gif"
+					alt="Extra inning rule / Tiebreak"
+					width="109"
+					height="235"/>
+			</td>
+			<td class="exampleCode">
+				<span class="codeComment">/* 10<sup>th</sup> inning  */</span><br/>
+				<span class="codeAction">inning visitor number 10</span><span> {</span><br><br>
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* Tie break */</span><br/>
+				<span class="codeAction">&nbsp;&nbsp;&nbsp;specialSituation { tieBreak } </span><br><br>
+
+				<span class="codeComment">&nbsp;&nbsp;&nbsp;/* pitcher replacement */</span><br/>
+				<span class="codeSubstitution">&nbsp;&nbsp;&nbsp;substitution hometeam</span><span> {</span>
+				<span class="codeReplacement">player </span>
+				<span class="codeNumber">1 </span>
+				<span class="codeReplacement">replaceBy </span>
+				<span class="codeName">"WILLIS Bruce"</span>
+				<span class="codeReplacement"> shirtNumber= </span>
+				<span class="codeNumber">32</span>
+				<span class="codeReplacement"> at </span>
+				<span class="codeNumber">1</span>
+				<span>}</span><br /><br />
+
+			</td>
+			<td class="exampleImage">
+				<img
+					src="c6383377.png"
+					alt="Extra inning rule / Tiebreak"
+					width="98"
+					height="174"/>
+			</td>
+		</tr>
+	</table>				
+</body>
+</html>
