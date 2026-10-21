@@ -46,7 +46,7 @@
 		<!-- Eclipse link -->
 		<repository>
 			<id>Eclipse-2023-06</id>
-			<url>http://download.eclipse.org/releases/2023-06</url>
+			<url>https://download.eclipse.org/releases/2023-06</url>
 			<layout>p2</layout>
 		</repository>
 
