@@ -1,19 +1,26 @@
-## Central Section Record
+#European Baseball scoresheet tool
 
-The various squares building the central section record record the plays in a
-**counter-clockwise direction**:
+Vous pouvez trouver la version anglaisee de ce document [ici](README.md)
 
-- **Bottom right square**: batter-runner’s play for **first base**
-- **Top right square**: play for **second base**
-- **Top left square**: play for **third base**
-- **Bottom left square**: play for **home**
+Il existe aujourd'hui de nombreuses solutions informatiques permettant de saisir et d'éditer des feuilles de scorage de baseball. Toutefois, ces outils sont principalement conçus selon les pratiques américaines et ne répondent pas nécessairement aux spécificités du scorage européen.
+Le scorage européen possède ses propres règles et conventions de notation, qu'il est important de respecter pour garantir la conformité des feuilles de match et la cohérence des statistiques produites.
+Ce projet a pour objectif de proposer une solution informatique adaptée au scorage européen, permettant de saisir, de gérer et d'éditer des feuilles de score conformément aux pratiques européennes.
+Il vise ainsi à mettre à la disposition des scoreurs, des clubs et des personnes impliquées dans le baseball européen un outil répondant à leurs besoins spécifiques.
 
-The put out of the batter-runner or runner should fill all the available space.
+##Présentation du logiciel
 
-When the runner reaches a base, an **oblique line** is added to close off the
-square representing that base.
+##Fonctionnalités
 
-The open area in the centre of the square should be filled in case of
-**earned runs** (see chapter 5).
+##Installation/ Utilisation
 
-![Central section record diagram](images/central-section-record.png)
+##Compilation pour les développeurs
+
+##Technologies utilisées
+
+##Documentation
+
+##Contribuer / signaler un bug
+
+##Licence
+
+##Limitations
