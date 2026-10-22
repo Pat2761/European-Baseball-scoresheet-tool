@@ -1,4 +1,4 @@
-#European Baseball scoresheet tool
+# European Baseball scoresheet tool
 
 Vous pouvez trouver la version anglaisee de ce document [ici](README.md)
 
@@ -41,6 +41,7 @@ Si vous souhaitez reconstruire cette application, vous devez utiliser maven. Cet
 ## Technologies utilisées
 Voici les principaux outils utilisés
 
+| outil | Description |   
 | :----- | :----- |
 |Java	 | Java 17|
 |Edition | 	Eclipse 2023-06 développeur DSL|
@@ -48,6 +49,7 @@ Voici les principaux outils utilisés
 
 Liste des plugins utilisés sous eclipse.
 
+| Technologie | Description |   
 | :----- | :----- |
 |WindowBuilder|	Edition des interfaces graphiques
 |Sonarlint|	Analyse de la qualité du code|
@@ -56,6 +58,7 @@ Liste des plugins utilisés sous eclipse.
 
 Langages utilisés. 
 
+| Technologie | Description |   
 | :----- | :----- |
 |Java|	Code de l’application|
 |Xtend|	Tests unitaires|
