@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <toc label="Manuel utilisateur de l&apos;outil de scorage" topic="nl/fr/Manuel_utilisateur/Manuel utilisateur.html">
       <topic href="User_manual/Chapter 1/Chapter 1 - Tool description/Tool_description.html" label="Description de l&apos;outil">
-         <topic href="User_manual/Chapter 1/Environnement/Environnement.html" label="Environment">
-            <topic label="Les vues">
+         <topic href="User_manual/Chapter 1/Environnement/Environnement.html" label="Environnement">
+            <topic href="User_manual/Chapter 1/The_views/The_views.html" label="Les vues">
             </topic>
             <topic label="Les éditeurs.">
                <topic label="La coloration syntaxique">
