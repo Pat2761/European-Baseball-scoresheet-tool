@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <toc label="Manuel utilisateur de l&apos;outil de scorage" topic="nl/fr/Manuel_utilisateur/Manuel utilisateur.html">
       <topic href="User_manual/Chapter 1/Chapter 1 - Tool description/Tool_description.html" label="Description de l&apos;outil">
-         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Introduction.html" label="Introduction">
-         </topic>
-         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/l&apos;environnement Eclipse..html" label="L’environnement éclipse">
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les vues.html" label="Les vues">
+         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Introduction.html" label="Environnement">
+            <topic label="Les vues">
             </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les editeurs.html" label="Les éditeurs">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les perspectives.html" label="La perspective">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/La gestion des erreurs.html" label="La gestion des erreurs">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Aide dans l outil.html" label="L’aide dans l&apos;outil">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les preferences.html" label="Les préférences">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les proprietes.html" label="Les propriétés">
-            </topic>
+            <topic label="Les éditeurs.">
+               <topic label="La coloration syntaxique">
+               </topic>
+               <topic label="L’auto-complétion">
+               </topic>
+               <topic label="Les templates.">
+               </topic>
+               <topic label="La validation en temps réel">
+               </topic>
+               <topic label="La mise en forme automatique">
+               </topic>
+               <topic label="Le repliement du texte">
+               </topic>
+	         </topic>
+	           <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les perspectives.html" label="La perspective">
+	           </topic>
+	           <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/La gestion des erreurs.html" label="La gestion des erreurs">
+	           </topic>
+	           <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Aide dans l outil.html" label="L’aide dans l&apos;outil">
+	           </topic>
+	           <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les preferences.html" label="Les préférences">
+	           </topic>
+	           <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les proprietes.html" label="Les propriétés">
+	           </topic>
          </topic>
          <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les vues specifiques de l outil.html" label="Les vues de l’outil">
             <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/La vue manageur de championnat.html" label="Vue manageur de championnat">
