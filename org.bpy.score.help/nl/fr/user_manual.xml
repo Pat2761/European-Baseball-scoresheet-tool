@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <toc label="Manuel utilisateur de l&apos;outil de scorage" topic="nl/fr/Manuel_utilisateur/Manuel utilisateur.html">
       <topic href="User_manual/Chapter 1/Chapter 1 - Tool description/Tool_description.html" label="Description de l&apos;outil">
-         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Introduction.html" label="Environnement">
+         <topic href="User_manual/Chapter 1/Environnement/Environnement.html" label="Environment">
             <topic label="Les vues">
             </topic>
             <topic label="Les éditeurs.">
