@@ -4,43 +4,9 @@
          <topic href="User_manual/Chapter 1/Environnement/Environnement.html" label="Environment">
             <topic href="User_manual/Chapter 1/The_views/The_views.html" label="The views">
             </topic>
-         </topic>
-         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/l&apos;environnement Eclipse..html" label="The Eclipse environment">
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les vues.html" label="The views">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les editeurs.html" label="The editors">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les perspectives.html" label="The perspective">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/La gestion des erreurs.html" label="Error management">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Aide dans l outil.html" label="Tool help">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les preferences.html" label="The preferences">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les proprietes.html" label="The properties">
-            </topic>
-         </topic>
-         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les vues specifiques de l outil.html" label="Specific tool views">
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/La vue manageur de championnat.html" label="The chnampinship manager view">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/La vue du champ interieur.html" label="Infeild view">
-            </topic>
-            <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les vues des feuilles de scorage visiteur et recevant.html" label="Score sheet view for hometeam and visitor">
-            </topic>
-            <topic label="Main score view">
-            </topic>
-            <topic href="nl/fr/InWork.html" label="Console view">
-            </topic>
-            <topic href="nl/fr/InWork.html" label="Problem view">
-            </topic>
-            <topic href="nl/fr/InWork.html" label="Outline view">
-            </topic>
-         </topic>
-         <topic href="nl/fr/Manuel_utilisateur/Chapitre_1_-_Description_de_l&apos;outil/Les_éditeurs_spécifique_de_l&apos;outil.html" label="The editors">
-            <topic label="The team editor">
-            </topic>
-            <topic label="The game editor">
+            <topic href="nl/en/User_manual/Chapter 1/The_editors/The_editors.html" label="The editors">
+               <topic href="User_manual/Chapter 1/Syntax_highlighting/Syntax_highlighting.html" label="Syntax highlighting">
+               </topic>
             </topic>
          </topic>
       </topic>

@@ -5,7 +5,7 @@
             <topic href="User_manual/Chapter 1/The_views/The_views.html" label="Les vues">
             </topic>
             <topic href="User_manual/Chapter 1/The_editors/The_editors.html" label="Les éditeurs.">
-               <topic label="La coloration syntaxique">
+               <topic href="User_manual/Chapter 1/Syntax_highlighting/Syntax_highlighting.html" label="La coloration syntaxique">
                </topic>
                <topic label="L’auto-complétion">
                </topic>
