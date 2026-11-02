@@ -4,7 +4,7 @@
          <topic href="User_manual/Chapter 1/Environnement/Environnement.html" label="Environnement">
             <topic href="User_manual/Chapter 1/The_views/The_views.html" label="Les vues">
             </topic>
-            <topic label="Les éditeurs.">
+            <topic href="User_manual/Chapter 1/The_editors/The_editors.html" label="Les éditeurs.">
                <topic label="La coloration syntaxique">
                </topic>
                <topic label="L’auto-complétion">
