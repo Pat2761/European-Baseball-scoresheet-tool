@@ -7,6 +7,8 @@
             <topic href="nl/en/User_manual/Chapter 1/The_editors/The_editors.html" label="The editors">
                <topic href="User_manual/Chapter 1/Syntax_highlighting/Syntax_highlighting.html" label="Syntax highlighting">
                </topic>
+               <topic href="User_manual/Chapter 1/Autocompletion/Autocompletion.html" label="Autocompletion">
+               </topic>
             </topic>
          </topic>
       </topic>

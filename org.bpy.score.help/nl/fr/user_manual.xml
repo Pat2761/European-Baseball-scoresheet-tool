@@ -7,7 +7,7 @@
             <topic href="User_manual/Chapter 1/The_editors/The_editors.html" label="Les éditeurs.">
                <topic href="User_manual/Chapter 1/Syntax_highlighting/Syntax_highlighting.html" label="La coloration syntaxique">
                </topic>
-               <topic label="L’auto-complétion">
+               <topic href="User_manual/Chapter 1/Autocompletion/Autocompletion.html" label="L’auto-complétion">
                </topic>
                <topic label="Les templates.">
                </topic>
