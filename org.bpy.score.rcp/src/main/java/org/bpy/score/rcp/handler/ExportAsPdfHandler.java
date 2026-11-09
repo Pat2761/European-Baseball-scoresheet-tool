@@ -28,11 +28,14 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.commands.IHandlerListener;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
@@ -68,8 +71,7 @@ public class ExportAsPdfHandler implements IHandler {
     if (dir != null) {
 
       IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-      if (editor instanceof XtextEditor) {
-        XtextEditor xtextEditor = (XtextEditor) editor;
+      if (editor instanceof XtextEditor xtextEditor) {
         IXtextDocument document = xtextEditor.getDocument();
         
         document.readOnly(new IUnitOfWork.Void<XtextResource>() {
@@ -78,26 +80,33 @@ public class ExportAsPdfHandler implements IHandler {
             
             IParseResult parseResult = resource.getParseResult();
             Game game = (Game) parseResult.getRootASTElement();
+           
+            if (xtextEditor.getEditorInput() instanceof IFileEditorInput fileInput) {
+               IFile file = fileInput.getFile();
+               IProject project = file.getProject();
             
-            /* needs stats for file the sheets */
-            StatisticEngine statisticEngine = new StatisticEngine();
-            statisticEngine.setGame(game);
-            statisticEngine.setActionsManager(new StatisticManager());
-            statisticEngine.run();
-       
-            /* fill sheet */
-            ScoreSheetEngine scoreSheetEngine = new ScoreSheetEngine();
-            scoreSheetEngine.setGame(game);
-            scoreSheetEngine.setActionsManager(new ScoringSheetManager());
-            scoreSheetEngine.setPath(dir);
-            scoreSheetEngine.setStatisticEngine(statisticEngine);
-            scoreSheetEngine.run();
-            
-            String fileName = ((XtextEditor) editor).getPartName().replace(".game", ".pdf"); //$NON-NLS-1$ //$NON-NLS-2$
-            String message = NLS.bind(Messages.ExportAsPdfHandler_ExportResume, new Object[] {fileName,dir});
-            
-            MessageDialog.openInformation(new Shell(), Messages.ExportAsPdfHandler_ExportSuccesFull, message);
-          }
+               /* needs stats for file the sheets */
+               StatisticEngine statisticEngine = new StatisticEngine();
+               statisticEngine.setGame(game);
+               statisticEngine.setActionsManager(new StatisticManager());
+               statisticEngine.run();
+          
+               /* fill sheet */
+               ScoreSheetEngine scoreSheetEngine = new ScoreSheetEngine();
+               scoreSheetEngine.setGame(game);
+               ScoringSheetManager sheetManager = new ScoringSheetManager();
+               sheetManager.readGraphicalPreferences(project);
+               scoreSheetEngine.setActionsManager(sheetManager);
+               scoreSheetEngine.setPath(dir);
+               scoreSheetEngine.setStatisticEngine(statisticEngine);
+               scoreSheetEngine.run();
+               
+               String fileName = ((XtextEditor) editor).getPartName().replace(".game", ".pdf"); //$NON-NLS-1$ //$NON-NLS-2$
+               String message = NLS.bind(Messages.ExportAsPdfHandler_ExportResume, new Object[] {fileName,dir});
+               
+               MessageDialog.openInformation(new Shell(), Messages.ExportAsPdfHandler_ExportSuccesFull, message);
+               }
+            }
         });
       }  
     }
