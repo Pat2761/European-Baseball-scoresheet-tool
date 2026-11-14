@@ -35,7 +35,7 @@
       <plugin id="ch.qos.logback.classic"/>
       <plugin id="ch.qos.logback.core"/>
       <plugin id="com.google.gson"/>
-      <plugin id="com.google.guava" version="31.1.0.jre"/>
+      <plugin id="com.google.guava"/>
       <plugin id="com.google.guava.failureaccess"/>
       <plugin id="com.google.inject"/>
       <plugin id="com.ibm.icu"/>
@@ -52,7 +52,6 @@
       <plugin id="javax.servlet.jsp-api"/>
       <plugin id="javax.xml"/>
       <plugin id="org.aopalliance"/>
-      <plugin id="org.apache.aries.spifly.dynamic.bundle"/>
       <plugin id="org.apache.batik.constants"/>
       <plugin id="org.apache.batik.css"/>
       <plugin id="org.apache.batik.i18n"/>
@@ -253,13 +252,6 @@
       <plugin id="org.eclipse.ltk.core.refactoring.nl_fr" fragment="true"/>
       <plugin id="org.eclipse.ltk.ui.refactoring"/>
       <plugin id="org.eclipse.ltk.ui.refactoring.nl_fr" fragment="true"/>
-      <plugin id="org.eclipse.m2e.archetype.common"/>
-      <plugin id="org.eclipse.m2e.core"/>
-      <plugin id="org.eclipse.m2e.core.ui"/>
-      <plugin id="org.eclipse.m2e.logback" fragment="true"/>
-      <plugin id="org.eclipse.m2e.maven.runtime"/>
-      <plugin id="org.eclipse.m2e.model.edit"/>
-      <plugin id="org.eclipse.m2e.workspace.cli"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
       <plugin id="org.eclipse.osgi.services"/>
@@ -303,14 +295,6 @@
       <plugin id="org.eclipse.ui.workbench.texteditor.nl_fr" fragment="true"/>
       <plugin id="org.eclipse.urischeme"/>
       <plugin id="org.eclipse.urischeme.nl_fr" fragment="true"/>
-      <plugin id="org.eclipse.wst.common.core"/>
-      <plugin id="org.eclipse.wst.common.emf"/>
-      <plugin id="org.eclipse.wst.common.environment"/>
-      <plugin id="org.eclipse.wst.common.frameworks"/>
-      <plugin id="org.eclipse.wst.common.uriresolver"/>
-      <plugin id="org.eclipse.wst.server.preview"/>
-      <plugin id="org.eclipse.wst.sse.core"/>
-      <plugin id="org.eclipse.wst.xml.core"/>
       <plugin id="org.eclipse.xtend.lib"/>
       <plugin id="org.eclipse.xtend.lib.macro"/>
       <plugin id="org.eclipse.xtext"/>
@@ -332,7 +316,6 @@
       <plugin id="org.eclipse.xtext.xbase.ide"/>
       <plugin id="org.eclipse.xtext.xbase.lib"/>
       <plugin id="org.eclipse.xtext.xbase.ui"/>
-      <plugin id="org.glassfish.web.javax.servlet.jsp"/>
       <plugin id="org.hamcrest.core"/>
       <plugin id="org.junit"/>
       <plugin id="org.objectweb.asm"/>
