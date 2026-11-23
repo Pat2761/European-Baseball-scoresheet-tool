@@ -44,6 +44,7 @@ import org.eclipse.ui.internal.ide.ChooseWorkspaceData;
 import org.eclipse.ui.internal.ide.ChooseWorkspaceDialog;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 import org.eclipse.ui.internal.ide.application.IDEApplication.ReturnCode;
+import org.osgi.framework.Bundle;
 
 /**
  * This class controls all aspects of the application's execution
@@ -52,8 +53,43 @@ public class Application implements IApplication {
 
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
-		
-		Display display = PlatformUI.createDisplay();
+	   
+	   Bundle jasper = Platform.getBundle("org.apache.jasper.glassfish");
+
+	   try {
+	      Class<?> clazz = jasper.loadClass(
+	          "org.apache.jasper.compiler.Compiler"
+	      );
+
+	      System.out.println("Classe Compiler : " + clazz);
+	      System.out.println("ClassLoader : " + clazz.getClassLoader());
+
+	      System.out.println("CodeSource : "
+	          + clazz.getProtectionDomain().getCodeSource());
+
+	      System.out.println("Ressource : "
+	          + clazz.getResource("Compiler.class"));
+
+	  } catch (Exception e) {
+	      e.printStackTrace();
+	  }
+	   Class<?> clazz = jasper.loadClass(
+	         "org.apache.jasper.compiler.Compiler"
+	     );
+
+	     System.out.println("Version : "
+	         + clazz.getPackage().getImplementationVersion());
+
+	     System.out.println("Source : "
+	         + clazz.getProtectionDomain().getCodeSource());
+
+	     for (var method : clazz.getDeclaredMethods()) {
+	         if (method.getName().equals("initJavaCompiler")) {
+	             System.out.println("Méthode : " + method);
+	         }
+	     }	   
+	   
+	   Display display = PlatformUI.createDisplay();
 		try {
 			 
 			int returnCode = PlatformUI.createAndRunWorkbench(display, new ApplicationWorkbenchAdvisor());
