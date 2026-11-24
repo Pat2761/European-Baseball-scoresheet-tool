@@ -61,6 +61,14 @@ import com.google.inject.Injector;
  */
 public class GameMultipageEditor extends MultiPageEditorPart {
 
+   /** Page number of game editor */
+   public static int XTEXT_EDITOR_PAGE_NUMBER = 2;
+   /** Page number of the visitor sheet */
+   public static int VISITOR_SHEET_PAGE_NUMBER = 0;
+   /** Page number of the home team page */
+   public static int HOMETEAM_SHEET_PAGE_NUMBER = 1;
+   
+   
    /** Logger of the class */
    public static final Logger logger = Logger.getLogger(GameMultipageEditor.class.getSimpleName());
 
@@ -97,13 +105,18 @@ public class GameMultipageEditor extends MultiPageEditorPart {
 
    @Override
    protected void createPages() {
-      createXtextPage();
+      GameActivator activator = GameActivator.getInstance();
+      final Injector injector = activator.getInjector(GameActivator.ORG_BPY_SCORE_GAME_GAME);
+      editor = injector.getInstance(XtextEditor.class);
+      
       try {
          createVisitorScoresheet();
          createHometeamScoresheet();
       } catch (PartInitException e) {
          logger.log(Level.SEVERE, e.getMessage());
       }
+      createXtextPage();
+      initializeListener();
    }
 
    /**
@@ -114,8 +127,8 @@ public class GameMultipageEditor extends MultiPageEditorPart {
    private void createVisitorScoresheet() throws PartInitException {
       ScoreSheetEditor visitorSheetEditor = new ScoreSheetEditor(editor, EngineConstants.VISITOR);
 
-      addPage(1, visitorSheetEditor, getEditorInput());
-      setPageText(1, "Visitor score sheet"); //$NON-NLS-1$
+      addPage(VISITOR_SHEET_PAGE_NUMBER, visitorSheetEditor, getEditorInput());
+      setPageText(VISITOR_SHEET_PAGE_NUMBER, Messages.VisitorSheetPanelName); 
    }
 
    /**
@@ -125,8 +138,8 @@ public class GameMultipageEditor extends MultiPageEditorPart {
     */
    private void createHometeamScoresheet() throws PartInitException {
       ScoreSheetEditor homeTeamSheetEditor = new ScoreSheetEditor(editor, EngineConstants.HOMETEAM);
-      addPage(2, homeTeamSheetEditor, getEditorInput());
-      setPageText(2, "Hometeam score sheet"); //$NON-NLS-1$
+      addPage(HOMETEAM_SHEET_PAGE_NUMBER, homeTeamSheetEditor, getEditorInput());
+      setPageText(HOMETEAM_SHEET_PAGE_NUMBER, Messages.HometeamSheetPanelName); 
    }
 
    @Override
@@ -149,17 +162,12 @@ public class GameMultipageEditor extends MultiPageEditorPart {
     * Create the game editor.
     */
    private void createXtextPage() {
-      try {
 
-         GameActivator activator = GameActivator.getInstance();
-         final Injector injector = activator.getInjector(GameActivator.ORG_BPY_SCORE_GAME_GAME);
-         editor = injector.getInstance(XtextEditor.class);
+     try {
 
-         addPage(0, editor, getEditorInput());
+         addPage(XTEXT_EDITOR_PAGE_NUMBER, editor, getEditorInput());
          this.setPartName(editor.getTitle());
-         setPageText(0, "Game editor"); //$NON-NLS-1$
-
-         initializeListener();
+         setPageText(XTEXT_EDITOR_PAGE_NUMBER, Messages.EditorSheetPanelName); 
 
       } catch (PartInitException e) {
          ErrorDialog.openError(getSite().getShell(), Messages.GameMultipageEditor_ErrorOpenEditor, null, e.getStatus());
@@ -190,10 +198,10 @@ public class GameMultipageEditor extends MultiPageEditorPart {
     */
    protected void initializeListener() {
 
-      this.addPageChangedListener(event -> {
+      addPageChangedListener(event -> {
          Object page = event.getSelectedPage();
-         if (page instanceof ScoreSheetEditor) {
-            updateScoreSheet((ScoreSheetEditor) page);
+         if (page instanceof ScoreSheetEditor scoreSheetEditor) {
+            updateScoreSheet(scoreSheetEditor);
          }
       });
    }
@@ -204,7 +212,7 @@ public class GameMultipageEditor extends MultiPageEditorPart {
     * @param scoreSheetEditor reference to the score sheet editor
     */
    protected void updateScoreSheet(ScoreSheetEditor scoreSheetEditor) {
-      EditorPart editorPart = (EditorPart) getEditor(0);
+      EditorPart editorPart = (EditorPart) getEditor(XTEXT_EDITOR_PAGE_NUMBER);
       Control control = editorPart.getAdapter(Control.class);
 
       if (control instanceof StyledText text) {
@@ -241,4 +249,6 @@ public class GameMultipageEditor extends MultiPageEditorPart {
          scoreSheetEditor.updateView(game, scoreViewEngine, statisticEngine);
       }
    }
+   
+   
 }

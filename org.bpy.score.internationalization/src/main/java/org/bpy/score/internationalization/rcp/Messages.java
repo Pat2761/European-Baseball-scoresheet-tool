@@ -644,6 +644,12 @@ public class Messages extends NLS {
 	public static String NewChampionatWizard_Title;
 	public static String NewGamePageTwoWizard_lblNewLabel_text;
 
+   /*----------------------------------------------------------------------- */
+   /* GameMultipageEditor class                                              */
+   /*----------------------------------------------------------------------- */
+   public static String VisitorSheetPanelName;
+   public static String HometeamSheetPanelName;
+   public static String EditorSheetPanelName;
 	
    /*----------------------------------------------------------------------- */
    /* NewSeasonWizard class                                              */

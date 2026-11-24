@@ -58,7 +58,7 @@
             class="org.bpy.score.rcp.editor.GameMultipageEditor"
             default="true"
             extensions="game"
-            id="org.bpy.score.rcp.editor1"
+            id="org.bpy.score.rcp.editor.GameMultipageEditor"
             name="%rcp.editor.name">
       </editor>
       <editor

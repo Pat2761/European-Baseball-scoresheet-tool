@@ -6,7 +6,7 @@
 		<editor
 			class="org.bpy.score.game.ui.GameExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
-			default="true"
+			default="false"
 			extensions="game"
 			id="org.bpy.score.game.Game"
 			name="Game Editor">
