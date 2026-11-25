@@ -18,6 +18,7 @@
  */
 package org.bpy.score.rcp.view;
 
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,9 @@ import org.bpy.score.game.GameStandaloneSetup;
 import org.bpy.score.game.game.Game;
 import org.bpy.score.rcp.editor.GameMultipageEditor;
 import org.eclipse.jface.text.IDocument;
+import org.eclipse.jface.text.ITextSelection;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.custom.CaretListener;
 import org.eclipse.swt.custom.StyledText;
@@ -36,13 +40,18 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPartListener;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
+import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 
 import com.google.inject.Inject;
 
@@ -54,157 +63,195 @@ import com.google.inject.Inject;
  */
 public abstract class AbstractContextualPanel extends ViewPart {
 
-	/** Logger of the class */
-	public static final Logger logger = Logger.getLogger(AbstractContextualPanel.class.getSimpleName());
-	
-	/** XText parser reference */
-	@Inject	protected IParser parser;
-	
-	/** Caret Listener */
-	private CaretListener caretListener;
+   /** Logger of the class */
+   public static final Logger logger = Logger.getLogger(AbstractContextualPanel.class.getSimpleName());
 
-	/** Cursor position in the editor */
-	private int cursorPosition;
+   /** XText parser reference */
+   @Inject
+   protected IParser parser;
 
-	/**
-	 * Constructor of the class
-	 * .
-	 * Initialize the injectors.
-	 */
-	public AbstractContextualPanel() {
-		com.google.inject.Injector injector = new GameStandaloneSetup().createInjectorAndDoEMFRegistration();
-		injector.injectMembers(this);
-	}
+   /** Caret Listener */
+   private CaretListener caretListener;
 
-	/**
-	 * Clear the panel
-	 */
-	public abstract void clearPanel();
+   /** Cursor position in the editor */
+   private int cursorPosition;
 
-	/**
-	 * Call for update the panel with the edition of a game file. 
-	 * 
-	 * @param game Reference on the game parsing result
-	 * @param scoreGameEngine Reference on the score game engine
-	 * @param statisticEngine Reference on the statistic engine
-	 */
-	public abstract void updatePanel(Game game, ScoreGameEngine scoreGameEngine, StatisticEngine statisticEngine);
+   private final ISelectionListener outlineListener = (part, selection) -> {
+      if (selection instanceof IStructuredSelection sel && sel.getFirstElement() instanceof IOutlineNode node) {
 
-	/**
-	 * Get cursor position.
-	 * 
-	 * @return cursor position
-	 */
-	protected int getCursorPosition() {
-		return cursorPosition;
-	}
+          IEditorPart active = getSite().getPage().getActiveEditor();
+          if (active instanceof GameMultipageEditor multiPageEditor) {
 
-	/**
-	 * Set the cursor position.
-	 * 
-	 * @param cursorPosition cursor position
-	 */
-	protected void setCursorPosition(int cursorPosition) {
-		this.cursorPosition = cursorPosition;
-	}
+             XtextEditor xtextEditor = multiPageEditor.getGameSourceEditor();
+             ISelection textSelection = xtextEditor.getSelectionProvider().getSelection();
+             if (textSelection instanceof ITextSelection itextSelection) {
+                 setCursorPosition( itextSelection.getOffset());
+             }
+             
+             IEditorInput input = multiPageEditor.getEditorInput();
+             ITextEditor textEditor = multiPageEditor.getGameSourceEditor();
+             IDocument document = textEditor.getDocumentProvider().getDocument(input);
+             
+             runScoreEngine(document, input);
+          }
+      }
+   };
 
-	/**
-	 * Initialize the listener
-	 */
-	protected void initializeListener() {
+   /**
+    * Constructor of the class . Initialize the injectors.
+    */
+   public AbstractContextualPanel() {
+      com.google.inject.Injector injector = new GameStandaloneSetup().createInjectorAndDoEMFRegistration();
+      injector.injectMembers(this);
+   }
 
-		caretListener = event -> {setCursorPosition(event.caretOffset); runScoreEngine();} ;
+   /**
+    * Clear the panel
+    */
+   public abstract void clearPanel();
 
-		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().addPartListener(new IPartListener() {
+   /**
+    * Call for update the panel with the edition of a game file.
+    * 
+    * @param game            Reference on the game parsing result
+    * @param scoreGameEngine Reference on the score game engine
+    * @param statisticEngine Reference on the statistic engine
+    */
+   public abstract void updatePanel(Game game, ScoreGameEngine scoreGameEngine, StatisticEngine statisticEngine);
 
-			@Override
-			public void partOpened(IWorkbenchPart part) {
+   /**
+    * Get cursor position.
+    * 
+    * @return cursor position
+    */
+   protected int getCursorPosition() {
+      return cursorPosition;
+   }
 
-				IEditorPart currentEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-				if (currentEditor != null) {
-					Control control = currentEditor.getAdapter(Control.class);
-					if (control instanceof StyledText) {
-						StyledText text = (StyledText) control;
-						text.addCaretListener(caretListener);
-						setCursorPosition(text.getCaretOffset());
-					}
+   /**
+    * Set the cursor position.
+    * 
+    * @param cursorPosition cursor position
+    */
+   protected void setCursorPosition(int cursorPosition) {
+      System.out.println("BPY: curseur position =" + cursorPosition);
 
-					runScoreEngine();
-				}
-			}
+      this.cursorPosition = cursorPosition;
+   }
 
-			@Override
-			public void partDeactivated(IWorkbenchPart part) {
-				// notinh to do
-			}
+   /**
+    * Initialize the listener
+    */
+   protected void initializeListener() {
+      
+      getSite().getPage().addSelectionListener(IPageLayout.ID_OUTLINE, outlineListener);
+      
+      caretListener = event -> {
+         setCursorPosition(event.caretOffset);
+         runScoreEngine();
+      };
 
-			@Override
-			public void partClosed(IWorkbenchPart part) {
-				IEditorPart currentEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-				if (currentEditor != null) {
-					Control control = currentEditor.getAdapter(Control.class);
-					if (control instanceof StyledText) {
-						StyledText text = (StyledText) control;
-						text.removeCaretListener(caretListener);
-					}
-				}
+      PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().addPartListener(new IPartListener() {
 
-				clearPanel();
-			}
+         @Override
+         public void partOpened(IWorkbenchPart part) {
 
-			@Override
-			public void partBroughtToTop(IWorkbenchPart part) {
-				runScoreEngine();
-			}
+            IEditorPart currentEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+            if (currentEditor != null) {
+               Control control = currentEditor.getAdapter(Control.class);
+               if (control instanceof StyledText text) {
+                  text.addCaretListener(caretListener);
+                  setCursorPosition(text.getCaretOffset());
+               }
 
-			@Override
-			public void partActivated(IWorkbenchPart part) {
-				runScoreEngine();
-			}
-		});
-	}
+               runScoreEngine();
+            }
+         }
 
-	/**
-	 * Execute the game engine
-	 */
-	protected void runScoreEngine() {
-		IEditorPart currentEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-		if (currentEditor instanceof GameMultipageEditor) {
-			currentEditor = ((GameMultipageEditor) currentEditor).getGameSourceEditor();
-		}
+         @Override
+         public void partDeactivated(IWorkbenchPart part) {
+            // notinh to do
+         }
 
-		if (currentEditor instanceof ITextEditor) {
-			IEditorInput input = currentEditor.getEditorInput();
-			IDocument document = (((ITextEditor) currentEditor).getDocumentProvider()).getDocument(input);
+         @Override
+         public void partClosed(IWorkbenchPart part) {
+            IEditorPart currentEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+            if (currentEditor != null) {
+               Control control = currentEditor.getAdapter(Control.class);
+               if (control instanceof StyledText text) {
+                  text.removeCaretListener(caretListener);
+               }
+            }
 
-			try {
-				String content = document.get().substring(0, getCursorPosition());
-				IParseResult parserResult = parser.parse(new StringReader(content));
-				Game game = (Game) parserResult.getRootASTElement();
+            clearPanel();
+         }
 
-				StatisticEngine statisticEngine = new StatisticEngine();
-				statisticEngine.setGame(game);
-				statisticEngine.setActionsManager(new StatisticManager());
-				statisticEngine.run();
+         @Override
+         public void partBroughtToTop(IWorkbenchPart part) {
+            runScoreEngine();
+         }
 
-				ScoreGameEngine scoreGameEngine = new ScoreGameEngine();
-				scoreGameEngine.runEngine(game);
+         @Override
+         public void partActivated(IWorkbenchPart part) {
+            runScoreEngine();
+         }
+      });
+   }
 
-				updatePanel(game, scoreGameEngine, statisticEngine);
-			} catch (StringIndexOutOfBoundsException|SWTException e) {
-				logger.log(Level.SEVERE, e.getMessage());
-			}
-		}
-	}
+   /**
+    * Execute the game engine
+    */
+   protected void runScoreEngine() {
+      IEditorPart currentEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+      if (currentEditor instanceof GameMultipageEditor multiPageEditor) {
+         IEditorInput input = multiPageEditor.getEditorInput();
+         ITextEditor textEditor = multiPageEditor.getGameSourceEditor();
+         IDocument document = textEditor.getDocumentProvider().getDocument(input);
+         runScoreEngine(document, input);
+      }
 
-	/**
-	 * Set label widget value
-	 * @param label label to set
-	 * @param value value to set
-	 */
-	protected void setLabelValue(Label label, String value) {
-		if (!label.isDisposed()) {
-			label.setText(value);
-		}
-	}
+      if (currentEditor instanceof ITextEditor textEditor) {
+         IEditorInput input = textEditor.getEditorInput();
+         IDocument document = (((ITextEditor) currentEditor).getDocumentProvider()).getDocument(input);
+         runScoreEngine(document, input);
+      }
+   }
+
+   /**
+    * Allow to draw the panel.
+    * 
+    * @param document reference on the document
+    * @param input    reference on editor input
+    */
+   private void runScoreEngine(IDocument document, IEditorInput input) {
+      try {
+         String content = document.get().substring(0, getCursorPosition());
+         IParseResult parserResult = parser.parse(new StringReader(content));
+         Game game = (Game) parserResult.getRootASTElement();
+
+         StatisticEngine statisticEngine = new StatisticEngine();
+         statisticEngine.setGame(game);
+         statisticEngine.setActionsManager(new StatisticManager());
+         statisticEngine.run();
+
+         ScoreGameEngine scoreGameEngine = new ScoreGameEngine();
+         scoreGameEngine.runEngine(game);
+
+         updatePanel(game, scoreGameEngine, statisticEngine);
+      } catch (StringIndexOutOfBoundsException | SWTException e) {
+         logger.log(Level.SEVERE, e.getMessage());
+      }
+   }
+
+   /**
+    * Set label widget value
+    * 
+    * @param label label to set
+    * @param value value to set
+    */
+   protected void setLabelValue(Label label, String value) {
+      if (!label.isDisposed()) {
+         label.setText(value);
+      }
+   }
 }

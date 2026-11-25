@@ -197,7 +197,7 @@
          point="org.eclipse.ui.commands">
       <command
             id="org.bpy.score.rcp.command.new.championat"
-            name="%org.bpy.score.rcp.new_tournament">
+            name="%rcp.command.new_tournament">
       </command>
       <command
             id="org.bpy.score.rcp.command.newseason"
@@ -293,6 +293,38 @@
       <command
             id="org.bpy.score.rcp.command.configure.setseasonfolder"
             name="%rcp.command.set_as_season_nature">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.firstInning"
+            name="%rcp.command.navigation.firstInning">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.firstAction"
+            name="%rcp.command.navigation.firstAction">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.nextInning"
+            name="%rcp.command.navigation.nextInning">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.nextAction"
+            name="%rcp.command.navigation.nextAction">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.previousInning"
+            name="%rcp.command.navigation.previousInning">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.previousAction"
+            name="%rcp.command.navigation.previousAction">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.lastAction"
+            name="%rcp.command.navigation.lastAction">
+      </command>
+      <command
+            id="org.bpy.score.rcp.command.lastInning"
+            name="%rcp.command.navigation.lastInning">
       </command>
    </extension>
    <extension
@@ -472,6 +504,49 @@
             <command
                   commandId="org.bpy.score.rcp.search.official"
                   label="%rcp.menu.search_game_by_official"
+                  style="push">
+            </command>
+         </menu>
+         <menu
+               label="%rcp.menu.navigation">
+            <command
+                  commandId="org.bpy.score.rcp.command.firstInning"
+                  label="%rcp.menu.navigation.firstInning"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.bpy.score.rcp.command.firstAction"
+                  label="%rcp.menu.navigation.firstAction"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.bpy.score.rcp.command.nextInning"
+                  label="%rcp.menu.navigation.nextInning"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.bpy.score.rcp.command.nextAction"
+                  label="%rcp.menu.navigation.nextAction"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.bpy.score.rcp.command.previousInning"
+                  label="%rcp.menu.navigation.previousInning"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.bpy.score.rcp.command.previousAction"
+                  label="%rcp.menu.navigation.previousAction"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.bpy.score.rcp.command.lastAction"
+                  label="%rcp.menu.navigation.lastAction"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.bpy.score.rcp.command.lastInning"
+                  label="%rcp.menu.navigation.lastInning"
                   style="push">
             </command>
          </menu>

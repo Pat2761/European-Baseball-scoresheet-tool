@@ -170,5 +170,5 @@ public class ScoreSheetEditor extends EditorPart implements MouseWheelListener {
 			panel.repaint();
 		}
 	}
-
+	
 }

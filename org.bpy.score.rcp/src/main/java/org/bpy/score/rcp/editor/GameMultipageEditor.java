@@ -26,6 +26,7 @@ import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.engine.util.EngineConstants;
 import org.bpy.score.game.GameStandaloneSetup;
+import org.bpy.score.game.game.Action;
 import org.bpy.score.game.game.Game;
 import org.bpy.score.game.ui.internal.GameActivator;
 import org.bpy.score.graphics.ScoreViewEngine;
@@ -34,6 +35,7 @@ import org.bpy.score.internationalization.rcp.Messages;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.custom.StyledText;
@@ -43,10 +45,17 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.part.MultiPageEditorPart;
+import org.eclipse.ui.services.IServiceLocator;
 import org.eclipse.ui.texteditor.ITextEditor;
+import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.eclipse.ui.views.properties.IPropertySheetPage;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -67,8 +76,7 @@ public class GameMultipageEditor extends MultiPageEditorPart {
    public static int VISITOR_SHEET_PAGE_NUMBER = 0;
    /** Page number of the home team page */
    public static int HOMETEAM_SHEET_PAGE_NUMBER = 1;
-   
-   
+
    /** Logger of the class */
    public static final Logger logger = Logger.getLogger(GameMultipageEditor.class.getSimpleName());
 
@@ -84,6 +92,7 @@ public class GameMultipageEditor extends MultiPageEditorPart {
 
    /** Current cursor position */
    private int cursorPosition;
+   private ScoreSheetEditor visitorSheetEditor;
 
    /**
     * Constructor of the class. create the EMF injector
@@ -108,7 +117,8 @@ public class GameMultipageEditor extends MultiPageEditorPart {
       GameActivator activator = GameActivator.getInstance();
       final Injector injector = activator.getInjector(GameActivator.ORG_BPY_SCORE_GAME_GAME);
       editor = injector.getInstance(XtextEditor.class);
-      
+      org.eclipse.swt.widgets.Display.getDefault().asyncExec(() -> goToFirstAction(editor));
+
       try {
          createVisitorScoresheet();
          createHometeamScoresheet();
@@ -117,6 +127,39 @@ public class GameMultipageEditor extends MultiPageEditorPart {
       }
       createXtextPage();
       initializeListener();
+
+   }
+
+   /**
+    * Allow to set the editor cursor just before the first action of the game
+    * 
+    * @param xtextEditor reference on xtext editor
+    */
+   private void goToFirstAction(XtextEditor xtextEditor) {
+      xtextEditor.getDocument().readOnly(new IUnitOfWork.Void<XtextResource>() {
+         @Override
+         public void process(XtextResource resource) throws Exception {
+            if (resource == null || resource.getContents().isEmpty()) {
+               return;
+            }
+            EObject root = resource.getContents().get(0);
+
+            // get first action element
+            for (java.util.Iterator<EObject> it = root.eAllContents(); it.hasNext();) {
+               EObject o = it.next();
+               if (o instanceof Action) { // ton type généré par Xtext
+                  ICompositeNode node = NodeModelUtils.findActualNodeFor(o);
+                  if (node != null) {
+                     final int offset = node.getOffset();
+                     final int length = node.getLength();
+                     org.eclipse.swt.widgets.Display.getDefault().asyncExec(() -> xtextEditor.selectAndReveal(offset, length));
+                  }
+
+                  return;
+               }
+            }
+         }
+      });
    }
 
    /**
@@ -125,10 +168,10 @@ public class GameMultipageEditor extends MultiPageEditorPart {
     * @throws PartInitException
     */
    private void createVisitorScoresheet() throws PartInitException {
-      ScoreSheetEditor visitorSheetEditor = new ScoreSheetEditor(editor, EngineConstants.VISITOR);
+      visitorSheetEditor = new ScoreSheetEditor(editor, EngineConstants.VISITOR);
 
       addPage(VISITOR_SHEET_PAGE_NUMBER, visitorSheetEditor, getEditorInput());
-      setPageText(VISITOR_SHEET_PAGE_NUMBER, Messages.VisitorSheetPanelName); 
+      setPageText(VISITOR_SHEET_PAGE_NUMBER, Messages.VisitorSheetPanelName);
    }
 
    /**
@@ -139,7 +182,7 @@ public class GameMultipageEditor extends MultiPageEditorPart {
    private void createHometeamScoresheet() throws PartInitException {
       ScoreSheetEditor homeTeamSheetEditor = new ScoreSheetEditor(editor, EngineConstants.HOMETEAM);
       addPage(HOMETEAM_SHEET_PAGE_NUMBER, homeTeamSheetEditor, getEditorInput());
-      setPageText(HOMETEAM_SHEET_PAGE_NUMBER, Messages.HometeamSheetPanelName); 
+      setPageText(HOMETEAM_SHEET_PAGE_NUMBER, Messages.HometeamSheetPanelName);
    }
 
    @Override
@@ -163,11 +206,11 @@ public class GameMultipageEditor extends MultiPageEditorPart {
     */
    private void createXtextPage() {
 
-     try {
+      try {
 
          addPage(XTEXT_EDITOR_PAGE_NUMBER, editor, getEditorInput());
          this.setPartName(editor.getTitle());
-         setPageText(XTEXT_EDITOR_PAGE_NUMBER, Messages.EditorSheetPanelName); 
+         setPageText(XTEXT_EDITOR_PAGE_NUMBER, Messages.EditorSheetPanelName);
 
       } catch (PartInitException e) {
          ErrorDialog.openError(getSite().getShell(), Messages.GameMultipageEditor_ErrorOpenEditor, null, e.getStatus());
@@ -216,7 +259,7 @@ public class GameMultipageEditor extends MultiPageEditorPart {
       Control control = editorPart.getAdapter(Control.class);
 
       if (control instanceof StyledText text) {
-         
+
          if (scoreSheetEditor instanceof ITextEditor textEditor) {
             IEditorInput input = textEditor.getEditorInput();
 
@@ -249,6 +292,16 @@ public class GameMultipageEditor extends MultiPageEditorPart {
          scoreSheetEditor.updateView(game, scoreViewEngine, statisticEngine);
       }
    }
-   
-   
+
+   @Override
+   public <T> T getAdapter(Class<T> adapter) {
+      if (adapter == IContentOutlinePage.class || adapter == IPropertySheetPage.class) {
+         if (getGameSourceEditor() != null) {
+            T result = getGameSourceEditor().getAdapter(adapter);
+            if (result != null)
+               return result;
+         }
+      }
+      return super.getAdapter(adapter);
+   }
 }
