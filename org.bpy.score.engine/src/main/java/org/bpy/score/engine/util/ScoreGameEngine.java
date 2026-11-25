@@ -18,7 +18,6 @@
  */
 package org.bpy.score.engine.util;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bpy.score.engine.exception.OccupedbaseException;

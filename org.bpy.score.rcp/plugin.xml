@@ -511,6 +511,7 @@
                label="%rcp.menu.navigation">
             <command
                   commandId="org.bpy.score.rcp.command.firstInning"
+                  icon="icons/FirstInning24x24.jpg"
                   label="%rcp.menu.navigation.firstInning"
                   style="push">
             </command>
@@ -521,6 +522,7 @@
             </command>
             <command
                   commandId="org.bpy.score.rcp.command.nextInning"
+                  icon="icons/NextInning24x24.jpg"
                   label="%rcp.menu.navigation.nextInning"
                   style="push">
             </command>
@@ -546,6 +548,7 @@
             </command>
             <command
                   commandId="org.bpy.score.rcp.command.lastInning"
+                  icon="icons/LastInning24x24.jpg"
                   label="%rcp.menu.navigation.lastInning"
                   style="push">
             </command>

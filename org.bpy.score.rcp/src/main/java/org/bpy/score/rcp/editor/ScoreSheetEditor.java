@@ -22,25 +22,36 @@ import java.awt.BorderLayout;
 import java.awt.Frame;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.io.StringReader;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import org.bpy.score.engine.stats.StatisticEngine;
+import org.bpy.score.engine.stats.StatisticManager;
+import org.bpy.score.game.GameStandaloneSetup;
 import org.bpy.score.game.game.Game;
 import org.bpy.score.graphics.ScoreViewEngine;
 import org.bpy.score.graphics.ScoringSheetGraphicalManager;
 import org.bpy.score.rcp.graphical.ScoreSheetPanel;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
+import org.eclipse.swt.custom.CaretEvent;
+import org.eclipse.swt.custom.CaretListener;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
+import org.eclipse.xtext.parser.IParseResult;
+import org.eclipse.xtext.parser.IParser;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+
+import com.google.inject.Inject;
 
 /**
  * This class is the Editor of Game files.
@@ -61,6 +72,12 @@ public class ScoreSheetEditor extends EditorPart implements MouseWheelListener {
 	private ScoreSheetPanel panel;
 	/** Reference to the score sheet graphical manager */
 	ScoringSheetGraphicalManager scoringSheetGraphicalManager = new ScoringSheetGraphicalManager();
+	private CaretListener caretListener;
+	private StyledText sourceText;
+	private int cursorPosition;
+   /** Reference on the game parser */
+   @Inject
+   private IParser parser;
 
 	/** Scroll pane for tehe ditor */
 	private JScrollPane scrollPane;
@@ -73,10 +90,50 @@ public class ScoreSheetEditor extends EditorPart implements MouseWheelListener {
 	 */
 	public ScoreSheetEditor(XtextEditor editor, String currentTeam) {
 		super();
-		this.editor = editor;
+
+		com.google.inject.Injector injector = new GameStandaloneSetup().createInjectorAndDoEMFRegistration();
+      injector.injectMembers(this);
+		
+      this.editor = editor;
 		this.currentTeam = currentTeam;
 	}
 
+	public void listenCursor() {
+	    if (caretListener != null) {
+	        return; // déjà abonné
+	    }
+	    sourceText = editor.getInternalSourceViewer().getTextWidget();
+	    if (sourceText == null || sourceText.isDisposed()) {
+	        return;
+	    }
+	    caretListener = (CaretEvent event) -> onCursorMoved(event.caretOffset);
+	    sourceText.addCaretListener(caretListener);
+	}
+	
+	private void onCursorMoved(int offset) {
+	    cursorPosition = offset;
+
+       IEditorInput input = editor.getEditorInput();
+       IDocument document = editor.getDocumentProvider().getDocument(input);
+
+       String content = document.get().substring(0, cursorPosition);
+       IParseResult parserResult = parser.parse(new StringReader(content));
+       Game game = (Game) parserResult.getRootASTElement();
+ 
+       StatisticEngine statisticEngine = new StatisticEngine();
+       statisticEngine.setGame(game);
+       statisticEngine.setActionsManager(new StatisticManager());
+       statisticEngine.run();
+
+       ScoreViewEngine scoreViewEngine = new ScoreViewEngine();
+       scoreViewEngine.setGame(game);
+       scoreViewEngine.setActionsManager(new ScoringSheetGraphicalManager());
+       scoreViewEngine.setStatisticEngine(statisticEngine);
+
+       updateView(game,scoreViewEngine,statisticEngine);
+	    // ici : ton calcul (runScoreEngine) puis updateView(game, scoreViewEngine, statisticEngine)
+	}
+	
 	/**
 	 * Create contents of the editor part.
 	 *

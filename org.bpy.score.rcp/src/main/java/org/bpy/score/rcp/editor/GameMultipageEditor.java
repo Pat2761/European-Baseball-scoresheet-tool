@@ -93,6 +93,7 @@ public class GameMultipageEditor extends MultiPageEditorPart {
    /** Current cursor position */
    private int cursorPosition;
    private ScoreSheetEditor visitorSheetEditor;
+   private ScoreSheetEditor homeTeamSheetEditor;
 
    /**
     * Constructor of the class. create the EMF injector
@@ -126,6 +127,10 @@ public class GameMultipageEditor extends MultiPageEditorPart {
          logger.log(Level.SEVERE, e.getMessage());
       }
       createXtextPage();
+
+      visitorSheetEditor.listenCursor();
+      homeTeamSheetEditor.listenCursor();
+
       initializeListener();
 
    }
@@ -169,7 +174,7 @@ public class GameMultipageEditor extends MultiPageEditorPart {
     */
    private void createVisitorScoresheet() throws PartInitException {
       visitorSheetEditor = new ScoreSheetEditor(editor, EngineConstants.VISITOR);
-
+ 
       addPage(VISITOR_SHEET_PAGE_NUMBER, visitorSheetEditor, getEditorInput());
       setPageText(VISITOR_SHEET_PAGE_NUMBER, Messages.VisitorSheetPanelName);
    }
@@ -180,7 +185,8 @@ public class GameMultipageEditor extends MultiPageEditorPart {
     * @throws PartInitException
     */
    private void createHometeamScoresheet() throws PartInitException {
-      ScoreSheetEditor homeTeamSheetEditor = new ScoreSheetEditor(editor, EngineConstants.HOMETEAM);
+      homeTeamSheetEditor = new ScoreSheetEditor(editor, EngineConstants.HOMETEAM);
+      
       addPage(HOMETEAM_SHEET_PAGE_NUMBER, homeTeamSheetEditor, getEditorInput());
       setPageText(HOMETEAM_SHEET_PAGE_NUMBER, Messages.HometeamSheetPanelName);
    }

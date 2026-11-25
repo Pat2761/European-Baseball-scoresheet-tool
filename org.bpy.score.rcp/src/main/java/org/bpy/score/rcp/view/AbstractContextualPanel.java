@@ -18,7 +18,6 @@
  */
 package org.bpy.score.rcp.view;
 
-import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,7 +42,6 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.ISelectionListener;
-import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
@@ -56,7 +54,7 @@ import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import com.google.inject.Inject;
 
 /**
- * Abstract common view for all speicific view of the application.
+ * Abstract common view for all specific view of the application.
  * 
  * @author Patrick BRIAND
  *
@@ -76,31 +74,10 @@ public abstract class AbstractContextualPanel extends ViewPart {
    /** Cursor position in the editor */
    private int cursorPosition;
 
-   private final ISelectionListener outlineListener = (part, selection) -> {
-      if (selection instanceof IStructuredSelection sel && sel.getFirstElement() instanceof IOutlineNode node) {
-
-          IEditorPart active = getSite().getPage().getActiveEditor();
-          if (active instanceof GameMultipageEditor multiPageEditor) {
-
-             XtextEditor xtextEditor = multiPageEditor.getGameSourceEditor();
-             ISelection textSelection = xtextEditor.getSelectionProvider().getSelection();
-             if (textSelection instanceof ITextSelection itextSelection) {
-                 setCursorPosition( itextSelection.getOffset());
-             }
-             
-             IEditorInput input = multiPageEditor.getEditorInput();
-             ITextEditor textEditor = multiPageEditor.getGameSourceEditor();
-             IDocument document = textEditor.getDocumentProvider().getDocument(input);
-             
-             runScoreEngine(document, input);
-          }
-      }
-   };
-
    /**
     * Constructor of the class . Initialize the injectors.
     */
-   public AbstractContextualPanel() {
+   protected AbstractContextualPanel() {
       com.google.inject.Injector injector = new GameStandaloneSetup().createInjectorAndDoEMFRegistration();
       injector.injectMembers(this);
    }
@@ -134,8 +111,6 @@ public abstract class AbstractContextualPanel extends ViewPart {
     * @param cursorPosition cursor position
     */
    protected void setCursorPosition(int cursorPosition) {
-      System.out.println("BPY: curseur position =" + cursorPosition);
-
       this.cursorPosition = cursorPosition;
    }
 
@@ -143,7 +118,23 @@ public abstract class AbstractContextualPanel extends ViewPart {
     * Initialize the listener
     */
    protected void initializeListener() {
-      
+      ISelectionListener outlineListener = (part, selection) -> {
+         if (selection instanceof IStructuredSelection sel && sel.getFirstElement() instanceof IOutlineNode) {
+
+             IEditorPart active = getSite().getPage().getActiveEditor();
+             if (active instanceof GameMultipageEditor multiPageEditor) {
+                
+                XtextEditor xtextEditor = multiPageEditor.getGameSourceEditor();
+                ISelection textSelection = xtextEditor.getSelectionProvider().getSelection();
+                if (textSelection instanceof ITextSelection itextSelection) {
+                    setCursorPosition( itextSelection.getOffset());
+                }
+                
+                runScoreEngine();
+             }
+                
+         }
+      };
       getSite().getPage().addSelectionListener(IPageLayout.ID_OUTLINE, outlineListener);
       
       caretListener = event -> {
