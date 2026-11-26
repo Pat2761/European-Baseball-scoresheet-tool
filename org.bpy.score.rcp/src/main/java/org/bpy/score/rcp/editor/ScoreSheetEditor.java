@@ -23,6 +23,7 @@ import java.awt.Frame;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.io.StringReader;
+import java.util.Optional;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -34,7 +35,9 @@ import org.bpy.score.game.game.Game;
 import org.bpy.score.graphics.ScoreViewEngine;
 import org.bpy.score.graphics.ScoringSheetGraphicalManager;
 import org.bpy.score.rcp.graphical.ScoreSheetPanel;
+import org.bpy.score.rcp.utils.MultipageEditorUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
@@ -61,171 +64,187 @@ import com.google.inject.Inject;
  */
 public class ScoreSheetEditor extends EditorPart implements MouseWheelListener {
 
-	/** ID of the editor */
-	public static final String ID = "org.bpy.score.rcp.editor.ScoreSheetEditor"; //$NON-NLS-1$
+   /** ID of the editor */
+   public static final String ID = "org.bpy.score.rcp.editor.ScoreSheetEditor"; //$NON-NLS-1$
 
-	/** Reference to the Xtext Editor of game */
-	private XtextEditor editor;
-	/** Current team edited */
-	private String currentTeam;
-	/** Reference the to score sheet panel */
-	private ScoreSheetPanel panel;
-	/** Reference to the score sheet graphical manager */
-	ScoringSheetGraphicalManager scoringSheetGraphicalManager = new ScoringSheetGraphicalManager();
-	private CaretListener caretListener;
-	private StyledText sourceText;
-	private int cursorPosition;
+   /** Reference to the Xtext Editor of game */
+   private XtextEditor editor;
+   /** Current team edited */
+   private String currentTeam;
+   /** Reference the to score sheet panel */
+   private ScoreSheetPanel panel;
+   /** Reference to the score sheet graphical manager */
+   ScoringSheetGraphicalManager scoringSheetGraphicalManager = new ScoringSheetGraphicalManager();
+   /** Listen event on the cursor */
+   private CaretListener caretListener;
+
    /** Reference on the game parser */
+
    @Inject
    private IParser parser;
 
-	/** Scroll pane for tehe ditor */
-	private JScrollPane scrollPane;
+   /** Scroll pane for the editor */
+   private JScrollPane scrollPane;
 
-	/**
-	 * Constructor of the class
-	 * 
-	 * @param editor Reference to the Xtext Editor of game
-	 * @param currentTeam Current team edited
-	 */
-	public ScoreSheetEditor(XtextEditor editor, String currentTeam) {
-		super();
+   /**
+    * Constructor of the class
+    * 
+    * @param editor      Reference to the Xtext Editor of game
+    * @param currentTeam Current team edited
+    */
+   public ScoreSheetEditor(XtextEditor editor, String currentTeam) {
+      super();
 
-		com.google.inject.Injector injector = new GameStandaloneSetup().createInjectorAndDoEMFRegistration();
+      com.google.inject.Injector injector = new GameStandaloneSetup().createInjectorAndDoEMFRegistration();
       injector.injectMembers(this);
-		
+
       this.editor = editor;
-		this.currentTeam = currentTeam;
-	}
+      this.currentTeam = currentTeam;
+   }
 
-	public void listenCursor() {
-	    if (caretListener != null) {
-	        return; // déjà abonné
-	    }
-	    sourceText = editor.getInternalSourceViewer().getTextWidget();
-	    if (sourceText == null || sourceText.isDisposed()) {
-	        return;
-	    }
-	    caretListener = (CaretEvent event) -> onCursorMoved(event.caretOffset);
-	    sourceText.addCaretListener(caretListener);
-	}
-	
-	private void onCursorMoved(int offset) {
-	    cursorPosition = offset;
+   /**
+    * Listen to the cursor movement.
+    */
+   public void listenCursor() {
+      StyledText sourceText;
+      if (caretListener != null) {
+         return; // déjà abonné
+      }
+      sourceText = editor.getInternalSourceViewer().getTextWidget();
+      if (sourceText == null || sourceText.isDisposed()) {
+         return;
+      }
+      caretListener = (CaretEvent event) -> onCursorMoved(event.caretOffset);
+      sourceText.addCaretListener(caretListener);
+   }
 
-       IEditorInput input = editor.getEditorInput();
-       IDocument document = editor.getDocumentProvider().getDocument(input);
+   /**
+    * Manage the cursor movement.
+    * 
+    * @param offset Position of the cursor
+    */
+   private void onCursorMoved(int offset) {
+      int cursorPosition;
+      int objectLength = 0;
+      
+      Optional<EObject> referencedObject = MultipageEditorUtils.getObjectAtCursor();
+      if (referencedObject.isPresent()) {
+         objectLength = MultipageEditorUtils.getObjectLenght(referencedObject.get());
+      }
+      
+      cursorPosition = offset + objectLength;
 
-       String content = document.get().substring(0, cursorPosition);
-       IParseResult parserResult = parser.parse(new StringReader(content));
-       Game game = (Game) parserResult.getRootASTElement();
- 
-       StatisticEngine statisticEngine = new StatisticEngine();
-       statisticEngine.setGame(game);
-       statisticEngine.setActionsManager(new StatisticManager());
-       statisticEngine.run();
+      IEditorInput input = editor.getEditorInput();
+      IDocument document = editor.getDocumentProvider().getDocument(input);
 
-       ScoreViewEngine scoreViewEngine = new ScoreViewEngine();
-       scoreViewEngine.setGame(game);
-       scoreViewEngine.setActionsManager(new ScoringSheetGraphicalManager());
-       scoreViewEngine.setStatisticEngine(statisticEngine);
+      String content = document.get().substring(0, cursorPosition);
+      IParseResult parserResult = parser.parse(new StringReader(content));
+      Game game = (Game) parserResult.getRootASTElement();
 
-       updateView(game,scoreViewEngine,statisticEngine);
-	    // ici : ton calcul (runScoreEngine) puis updateView(game, scoreViewEngine, statisticEngine)
-	}
-	
-	/**
-	 * Create contents of the editor part.
-	 *
-	 * @param parent
-	 */
-	@Override
-	public void createPartControl(Composite parent) {
-		Composite composite = new Composite(parent, SWT.EMBEDDED);
+      StatisticEngine statisticEngine = new StatisticEngine();
+      statisticEngine.setGame(game);
+      statisticEngine.setActionsManager(new StatisticManager());
+      statisticEngine.run();
 
-		Frame frame = SWT_AWT.new_Frame(composite);
-		frame.setLayout(new BorderLayout());
+      ScoreViewEngine scoreViewEngine = new ScoreViewEngine();
+      scoreViewEngine.setGame(game);
+      scoreViewEngine.setActionsManager(new ScoringSheetGraphicalManager());
+      scoreViewEngine.setStatisticEngine(statisticEngine);
 
-		panel = new ScoreSheetPanel(currentTeam);
+      updateView(game, scoreViewEngine, statisticEngine);
+   }
 
-		scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setViewportView(panel);
-		panel.addMouseWheelListener(this);
-		frame.add(scrollPane);
-		frame.pack();
-	}
+   /**
+    * Create contents of the editor part.
+    *
+    * @param parent
+    */
+   @Override
+   public void createPartControl(Composite parent) {
+      Composite composite = new Composite(parent, SWT.EMBEDDED);
 
-	@Override
-	public IEditorSite getEditorSite() {
-		return editor.getEditorSite();
-	}
+      Frame frame = SWT_AWT.new_Frame(composite);
+      frame.setLayout(new BorderLayout());
 
-	@Override
-	public IWorkbenchPartSite getSite() {
-		return editor.getSite();
-	}
+      panel = new ScoreSheetPanel(currentTeam);
 
-	@Override
-	public void setFocus() {
-		// Set the focus
-	}
+      scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+      scrollPane.setViewportView(panel);
+      panel.addMouseWheelListener(this);
+      frame.add(scrollPane);
+      frame.pack();
+   }
 
-	@Override
-	public void doSave(IProgressMonitor monitor) {
-		// Do the Save operation
-	}
+   @Override
+   public IEditorSite getEditorSite() {
+      return editor.getEditorSite();
+   }
 
-	@Override
-	public void doSaveAs() {
-		// Do the Save As operation
-	}
+   @Override
+   public IWorkbenchPartSite getSite() {
+      return editor.getSite();
+   }
 
-	@Override
-	public void init(IEditorSite site, IEditorInput input) throws PartInitException {
-		// Initialize the editor part
-	}
+   @Override
+   public void setFocus() {
+      // Set the focus
+   }
 
-	@Override
-	public boolean isDirty() {
-		return false;
-	}
+   @Override
+   public void doSave(IProgressMonitor monitor) {
+      // Do the Save operation
+   }
 
-	@Override
-	public boolean isSaveAsAllowed() {
-		return false;
-	}
+   @Override
+   public void doSaveAs() {
+      // Do the Save As operation
+   }
 
-	/**
-	 * Update view when the edition has changed.
-	 *  
-	 * @param game Reference on the game parsing result
-	 * @param scoreViewEngine Manager of Score sheet view 
-	 * @param statisticEngine Manager of statistics
-	 */
-	public void updateView(Game game, ScoreViewEngine scoreViewEngine, StatisticEngine statisticEngine) {
-		panel.updateView(null, game, scoreViewEngine, statisticEngine);
-	}
+   @Override
+   public void init(IEditorSite site, IEditorInput input) throws PartInitException {
+      // Initialize the editor part
+   }
 
-	@Override
-	public void mouseWheelMoved(MouseWheelEvent e) {
-		int count = e.getWheelRotation() * 5;
+   @Override
+   public boolean isDirty() {
+      return false;
+   }
 
-		if (!e.isControlDown()) {
-			int maxValue = scrollPane.getVerticalScrollBar().getMaximum();
-			int position = scrollPane.getVerticalScrollBar().getValue();
+   @Override
+   public boolean isSaveAsAllowed() {
+      return false;
+   }
 
-			if ((count > 0) && (position < maxValue)) {
-				int newPosition = (position + count) > maxValue ? maxValue : position + count;
-				scrollPane.getVerticalScrollBar().setValue(newPosition);
+   /**
+    * Update view when the edition has changed.
+    * 
+    * @param game            Reference on the game parsing result
+    * @param scoreViewEngine Manager of Score sheet view
+    * @param statisticEngine Manager of statistics
+    */
+   public void updateView(Game game, ScoreViewEngine scoreViewEngine, StatisticEngine statisticEngine) {
+      panel.updateView(null, game, scoreViewEngine, statisticEngine);
+   }
 
-			} else if ((count < 0) && position > 0) {
-				int newPosition = (position + count) >= 0 ? position + count : 0;
-				scrollPane.getVerticalScrollBar().setValue(newPosition);
-			}
+   @Override
+   public void mouseWheelMoved(MouseWheelEvent e) {
+      int count = e.getWheelRotation() * 5;
 
-			panel.repaint();
-		}
-	}
-	
+      if (!e.isControlDown()) {
+         int maxValue = scrollPane.getVerticalScrollBar().getMaximum();
+         int position = scrollPane.getVerticalScrollBar().getValue();
+
+         if ((count > 0) && (position < maxValue)) {
+            int newPosition = (position + count) > maxValue ? maxValue : position + count;
+            scrollPane.getVerticalScrollBar().setValue(newPosition);
+
+         } else if ((count < 0) && position > 0) {
+            int newPosition = (position + count) >= 0 ? position + count : 0;
+            scrollPane.getVerticalScrollBar().setValue(newPosition);
+         }
+
+         panel.repaint();
+      }
+   }
+
 }

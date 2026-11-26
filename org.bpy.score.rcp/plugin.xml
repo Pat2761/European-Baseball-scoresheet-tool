@@ -177,6 +177,10 @@
             class="org.bpy.score.rcp.handler.SetFolderAsSeasonFolderHandler"
             commandId="org.bpy.score.rcp.command.configure.setseasonfolder">
       </handler>
+      <handler
+            class="org.bpy.score.rcp.handler.GotoFirstInningHandller"
+            commandId="org.bpy.score.rcp.command.firstInning">
+      </handler>
    </extension>
    <extension
          point="org.eclipse.ui.intro.config">

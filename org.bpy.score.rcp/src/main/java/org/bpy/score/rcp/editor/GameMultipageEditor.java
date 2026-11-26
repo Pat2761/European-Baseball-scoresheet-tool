@@ -26,8 +26,8 @@ import org.bpy.score.engine.stats.StatisticEngine;
 import org.bpy.score.engine.stats.StatisticManager;
 import org.bpy.score.engine.util.EngineConstants;
 import org.bpy.score.game.GameStandaloneSetup;
-import org.bpy.score.game.game.Action;
 import org.bpy.score.game.game.Game;
+import org.bpy.score.game.game.HalfInning;
 import org.bpy.score.game.ui.internal.GameActivator;
 import org.bpy.score.graphics.ScoreViewEngine;
 import org.bpy.score.graphics.ScoringSheetGraphicalManager;
@@ -45,7 +45,6 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.part.MultiPageEditorPart;
-import org.eclipse.ui.services.IServiceLocator;
 import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
@@ -71,11 +70,11 @@ import com.google.inject.Injector;
 public class GameMultipageEditor extends MultiPageEditorPart {
 
    /** Page number of game editor */
-   public static int XTEXT_EDITOR_PAGE_NUMBER = 2;
+   public static final int XTEXT_EDITOR_PAGE_NUMBER = 2;
    /** Page number of the visitor sheet */
-   public static int VISITOR_SHEET_PAGE_NUMBER = 0;
+   public static final int VISITOR_SHEET_PAGE_NUMBER = 0;
    /** Page number of the home team page */
-   public static int HOMETEAM_SHEET_PAGE_NUMBER = 1;
+   public static final int HOMETEAM_SHEET_PAGE_NUMBER = 1;
 
    /** Logger of the class */
    public static final Logger logger = Logger.getLogger(GameMultipageEditor.class.getSimpleName());
@@ -92,7 +91,9 @@ public class GameMultipageEditor extends MultiPageEditorPart {
 
    /** Current cursor position */
    private int cursorPosition;
+   /** Reference on the visitor sheet */
    private ScoreSheetEditor visitorSheetEditor;
+   /** Reference on the home team sheet */
    private ScoreSheetEditor homeTeamSheetEditor;
 
    /**
@@ -104,7 +105,7 @@ public class GameMultipageEditor extends MultiPageEditorPart {
 
    }
 
-   /**
+    /**
     * Get the reference to the game file editor
     * 
     * @return Reference to the game file editor
@@ -152,7 +153,7 @@ public class GameMultipageEditor extends MultiPageEditorPart {
             // get first action element
             for (java.util.Iterator<EObject> it = root.eAllContents(); it.hasNext();) {
                EObject o = it.next();
-               if (o instanceof Action) { // ton type généré par Xtext
+               if (o instanceof HalfInning) { // ton type généré par Xtext
                   ICompositeNode node = NodeModelUtils.findActualNodeFor(o);
                   if (node != null) {
                      final int offset = node.getOffset();
@@ -273,7 +274,6 @@ public class GameMultipageEditor extends MultiPageEditorPart {
             if (input instanceof IFileEditorInput fileInput) {
                IFile file = fileInput.getFile();
                project = file.getProject();
-
             }
          }
 

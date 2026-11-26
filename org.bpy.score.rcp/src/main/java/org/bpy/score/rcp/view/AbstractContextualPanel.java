@@ -19,6 +19,7 @@
 package org.bpy.score.rcp.view;
 
 import java.io.StringReader;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +29,7 @@ import org.bpy.score.engine.util.ScoreGameEngine;
 import org.bpy.score.game.GameStandaloneSetup;
 import org.bpy.score.game.game.Game;
 import org.bpy.score.rcp.editor.GameMultipageEditor;
+import org.bpy.score.rcp.utils.MultipageEditorUtils;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.viewers.ISelection;
@@ -193,18 +195,12 @@ public abstract class AbstractContextualPanel extends ViewPart {
     * Execute the game engine
     */
    protected void runScoreEngine() {
-      IEditorPart currentEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-      if (currentEditor instanceof GameMultipageEditor multiPageEditor) {
-         IEditorInput input = multiPageEditor.getEditorInput();
-         ITextEditor textEditor = multiPageEditor.getGameSourceEditor();
-         IDocument document = textEditor.getDocumentProvider().getDocument(input);
-         runScoreEngine(document, input);
-      }
-
-      if (currentEditor instanceof ITextEditor textEditor) {
-         IEditorInput input = textEditor.getEditorInput();
-         IDocument document = (((ITextEditor) currentEditor).getDocumentProvider()).getDocument(input);
-         runScoreEngine(document, input);
+      
+      Optional<IEditorInput> editorInput = MultipageEditorUtils.getEditorInput();
+      Optional<IDocument> document = MultipageEditorUtils.getEditorDocument();
+      
+      if (editorInput.isPresent() && document.isPresent()) {
+         runScoreEngine(document.get(), editorInput.get());
       }
    }
 

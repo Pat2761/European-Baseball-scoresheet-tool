@@ -20,6 +20,7 @@ package org.bpy.score.rcp.view;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,6 +35,8 @@ import org.bpy.score.engine.util.ScoreGameEngine;
 import org.bpy.score.game.game.Game;
 import org.bpy.score.game.game.HalfInning;
 import org.bpy.score.game.util.ScoreGameOutUtil;
+import org.bpy.score.rcp.utils.MultipageEditorUtils;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
@@ -546,16 +549,23 @@ public class GeneralDisplayPanelView extends AbstractContextualPanel {
 			}
 		}
 
-		String currentTeam = scoreGameEngine.getScoreGameManager().getLastCurrentTeam();
-		if (currentTeam != null) {
+		Optional<EObject> optionalElement = MultipageEditorUtils.getObjectAtCursor();
+		Optional<String> currentTeam = MultipageEditorUtils.getCurrentTeam(optionalElement);
+//		System.out.println("BPY: team name=" + currentTeam.get() );
+		if (currentTeam.isPresent()) {
 			GameStatistic stats = statisticEngine.getStatisticManager().getStats();
-			TeamStatistic teamStats = (EngineConstants.HOMETEAM.equals(currentTeam) ? stats.getVisitor() : stats.getHometeam());
+			if (stats == null) {
+			   return;
+			}
+			TeamStatistic teamStats = (EngineConstants.HOMETEAM.equals(currentTeam.get()) ? stats.getVisitor() : stats.getHometeam());
 			LineupEntry pitcher = teamStats.getCurrentPitcher();
 			if (pitcher != null) {
 				setLabelValue(pitchesCounter, "" + pitcher.getPitcherStatistic().getPitchCount()); //$NON-NLS-1$
 			} else {
 				setLabelValue(pitchesCounter, "0"); //$NON-NLS-1$
 			}
+		} else {
+		   return;
 		}
 
 		StatisticManager manager = statisticEngine.getStatisticManager();
