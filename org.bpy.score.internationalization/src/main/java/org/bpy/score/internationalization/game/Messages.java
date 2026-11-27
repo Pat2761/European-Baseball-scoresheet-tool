@@ -201,6 +201,10 @@ public class Messages extends NLS {
 	public static String GameOutlineTreeProvider_HalfInningHometeam;
 	/** Game Outline Tree Provider: game resume */
 	public static String GameOutlineTreeProvider_GameResume;
+   /** Game Outline Tree Provider: Substitution */
+   public static String GameOutlineTreeProvider_SubstitutionDescription;
+   /** Game Outline Tree Provider: Action */
+   public static String GameOutlineTreeProvider_ActionDescription;
 	
 	/*----------------------------------------------------------------------- */
 	/* GameHighlightingConfiguration class                                         */

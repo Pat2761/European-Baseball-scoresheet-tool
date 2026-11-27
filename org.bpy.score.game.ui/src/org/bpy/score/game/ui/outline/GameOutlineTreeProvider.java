@@ -20,6 +20,7 @@
 package org.bpy.score.game.ui.outline;
 
 import org.bpy.score.engine.util.EngineConstants;
+import org.bpy.score.game.game.Action;
 import org.bpy.score.game.game.Actions;
 import org.bpy.score.game.game.Game;
 import org.bpy.score.game.game.GameResume;
@@ -27,11 +28,16 @@ import org.bpy.score.game.game.HalfInning;
 import org.bpy.score.game.game.LineUp;
 import org.bpy.score.game.game.Player;
 import org.bpy.score.game.game.Roster;
+import org.bpy.score.game.game.SubstitutionEvent;
 import org.bpy.score.internationalization.game.Messages;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.xtext.ui.IImageHelper;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
+
+import com.google.inject.Inject;
 
 /**
  * Customization of the default outline structure.
@@ -39,8 +45,11 @@ import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
  * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#outline
  */
 public class GameOutlineTreeProvider extends DefaultOutlineTreeProvider {
-
-	@Override
+   
+   @Inject
+   private IImageHelper imageHelper;
+	
+   @Override
 	public void _createChildren(IOutlineNode parentNode, EObject parentModelElement) {
 
 		if (parentModelElement instanceof Game) {
@@ -64,8 +73,7 @@ public class GameOutlineTreeProvider extends DefaultOutlineTreeProvider {
 				createNode(parentNode, player);
 			}
 		
-		} else if (parentModelElement instanceof Actions) {
-			Actions actions = (Actions) parentModelElement;
+		} else if (parentModelElement instanceof Actions actions) {
 			
 			if (actions.getLineup() != null) {
 				for ( LineUp lineup : actions.getLineup()) {
@@ -82,6 +90,19 @@ public class GameOutlineTreeProvider extends DefaultOutlineTreeProvider {
 			if (actions.getGameResume() != null) {
 				createNode(parentNode, actions.getGameResume());
 			}
+			
+      } else if (parentModelElement instanceof HalfInning halfInning) {
+         
+         for ( EObject element : halfInning.getInningElements()) {
+            
+            if (element instanceof SubstitutionEvent substitution) {
+               createNode(parentNode, substitution);
+               
+            } else if (element instanceof Action action) {
+               createNode(parentNode, action);
+               
+            }
+         }
 		}
 	}	
 
@@ -92,7 +113,6 @@ public class GameOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	 * 
 	 * @return Displayed constant name 
 	 */
-	@SuppressWarnings("java:S100")
 	public Object _text(GameResume gameResume) {
 		return Messages.GameOutlineTreeProvider_GameResume;
 	}
@@ -104,7 +124,6 @@ public class GameOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	 * 
 	 * @return Displayed constant name 
 	 */
-	@SuppressWarnings("java:S100")
 	public Object _text(HalfInning halfInnning) {
 		
 		if (halfInnning.getTeam().equals(EngineConstants.VISITOR)) {
@@ -121,7 +140,6 @@ public class GameOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	 * 
 	 * @return Displayed name 
 	 */
-	@SuppressWarnings("java:S100")
 	public Object _text(LineUp lineup) {
 		if (lineup.getTeamType().equals(EngineConstants.VISITOR)) {
 			return Messages.GameOutlineTreeProvider_LineupVisitor;
@@ -138,7 +156,6 @@ public class GameOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	 * 
 	 * @return Displayed name 
 	 */
-	@SuppressWarnings("java:S100")
 	public Object _text(Roster roster) {
 		if (roster.getWho().equals(EngineConstants.VISITOR)) {
 			return NLS.bind(Messages.GameOutlineTreeProvider_RosterVisitor, new Object[] {roster.getName()});
@@ -154,8 +171,44 @@ public class GameOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	 * 
 	 * @return Displayed constant name 
 	 */
-	@SuppressWarnings("java:S100")
 	public Object _text(Actions actions) {
 		return Messages.GameOutlineTreeProvider_GameDescription;
 	}
+
+   /**
+    * Set Action names 
+    * 
+    * @param action reference on the action rule
+    * 
+    * @return Displayed constant name 
+    */
+   public Object _text(Action action) {
+      return Messages.GameOutlineTreeProvider_ActionDescription;
+   }
+
+   /**
+    * Set Action names 
+    * 
+    * @param action reference on the action rule
+    * 
+    * @return Displayed constant name 
+    */
+   public Object _text(SubstitutionEvent substitution) {
+      return Messages.GameOutlineTreeProvider_SubstitutionDescription;
+   }
+
+   /**
+	 * Define the icon of the Half inning node.
+	 * 
+	 * @param halfInning Reference on the Half inning
+	 * @return Reference on the image
+	 */
+	public Image _image(HalfInning halfInning) {
+	   if (EngineConstants.VISITOR.equals(halfInning.getTeam()) ) {
+	      return imageHelper.getImage("outline_inning_visitor_16x16.png"); //$NON-NLS-N$
+	   } else {
+         return imageHelper.getImage("outline_inning_hometeam_16x16.png"); //$NON-NLS-N$
+	   }
+  }
+	
 }
