@@ -21,7 +21,9 @@ package org.bpy.score.rcp.handler;
 import java.util.Optional;
 
 import org.bpy.score.game.game.Actions;
+import org.bpy.score.game.game.Game;
 import org.bpy.score.game.game.HalfInning;
+import org.bpy.score.rcp.utils.MultipageEditorUtils;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -37,7 +39,20 @@ public class GotoFirstInningHandller extends AbstractNavigationHandler {
 
    @Override
    public boolean isEnabled() {
-      return true;
+      Optional<EObject> currentElement = MultipageEditorUtils.getObjectAtCursor();
+      if (currentElement.isPresent()) {
+
+         Optional<Game> game = findElement(currentElement.get(), Game.class);
+         if (game.isPresent()) {
+
+            Optional<Actions> actions = findElement(game.get(), Actions.class);
+            if (actions.isPresent()) {
+               HalfInning firstHalfInning = actions.get().getHalfInnings().get(0);
+               return (firstHalfInning != currentElement.get());
+            }
+         }
+      }
+      return false;
    }
 
    @Override
@@ -47,12 +62,13 @@ public class GotoFirstInningHandller extends AbstractNavigationHandler {
 
    @Override
    protected void doExecute(XtextEditor editor, EObject element, ILeafNode leaf) {
-      Optional<HalfInning> halfInning = findElement(element, HalfInning.class);
-      halfInning.ifPresent(h -> gotoFirstHalfInning(halfInning.get()));
-   }
+      Optional<Game> game = findElement(element, Game.class);
+      if (game.isPresent()) {
 
-   private void gotoFirstHalfInning(HalfInning halfInning) {
-     Actions actions = (Actions) halfInning.eContainer(); 
-     moveCursor(actions.getHalfInnings().get(0));
+         Optional<Actions> actions = findElement(game.get(), Actions.class);
+         if (actions.isPresent() && actions.get().getHalfInnings() != null) {
+            moveCursor(actions.get().getHalfInnings().get(0));
+         }
+      }   
    }
 }

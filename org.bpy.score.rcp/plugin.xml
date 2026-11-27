@@ -181,6 +181,10 @@
             class="org.bpy.score.rcp.handler.GotoFirstInningHandller"
             commandId="org.bpy.score.rcp.command.firstInning">
       </handler>
+      <handler
+            class="org.bpy.score.rcp.handler.GotoFirstActionHandller"
+            commandId="org.bpy.score.rcp.command.firstAction">
+      </handler>
    </extension>
    <extension
          point="org.eclipse.ui.intro.config">
@@ -915,6 +919,26 @@
             <control
                   class="org.bpy.score.rcp.contribution.CategorySelectionToolbar">
             </control>
+            <separator
+                  name="org.bpy.score.rcp.separator1">
+            </separator>
+         </toolbar>
+         <toolbar
+               id="org.bpy.score.rcp.toolbar.navigation"
+               label="Navigation">
+            <command
+                  commandId="org.bpy.score.rcp.command.firstInning"
+                  icon="icons/FirstInning16x16.jpg"
+                  label="%rcp.menu.navigation.firstInning"
+                  style="push"
+                  tooltip="%rcp.menu.navigation.firstInning">
+            </command>
+            <command
+                  commandId="org.bpy.score.rcp.command.firstAction"
+                  label="%rcp.command.navigation.firstAction"
+                  style="push"
+                  tooltip="%rcp.command.navigation.firstAction">
+            </command>
          </toolbar>
       </menuContribution>
    </extension>

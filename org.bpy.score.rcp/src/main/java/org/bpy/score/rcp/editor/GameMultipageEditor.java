@@ -267,16 +267,6 @@ public class GameMultipageEditor extends MultiPageEditorPart {
 
       if (control instanceof StyledText text) {
 
-         if (scoreSheetEditor instanceof ITextEditor textEditor) {
-            IEditorInput input = textEditor.getEditorInput();
-
-            IProject project = null;
-            if (input instanceof IFileEditorInput fileInput) {
-               IFile file = fileInput.getFile();
-               project = file.getProject();
-            }
-         }
-
          setCursorPosition(text.getCaretOffset());
 
          IEditorInput input = editor.getEditorInput();
