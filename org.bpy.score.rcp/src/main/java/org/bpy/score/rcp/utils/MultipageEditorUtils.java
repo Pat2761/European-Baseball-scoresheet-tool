@@ -160,7 +160,7 @@ public class MultipageEditorUtils {
     * @param <T> Type of object 
     * @param start starting object
     * @param type Type of object to search
-    * 
+m    * 
     * @return Reference of the found object 
     */
    public static <T extends EObject> Optional<T> findElement(EObject start, Class<T> type) {
